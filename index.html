@@ -1,131 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Manifest — The App for Skydivers | Coming Soon</title>
-  <meta name="description" content="The all-in-one app for skydivers. Jump logbook, gear tracker with OCR, expiry reminders, event finder, and gear marketplace. Coming soon." />
-  <meta property="og:title" content="Manifest — The App for Skydivers" />
-  <meta property="og:description" content="Jump logbook, gear tracker, OCR data card scan, expiry reminders, boogie finder, gear marketplace. One app for everything." />
-  <meta property="og:url" content="https://jumpmanifest.com" />
+  <meta name="description" content="The all-in-one app for skydivers. Jump logbook, gear tracker with OCR, expiry reminders, event finder, and gear marketplace.">
+  <meta property="og:title" content="Manifest — The App for Skydivers">
+  <meta property="og:description" content="Jump logbook, gear tracker, OCR data card scan, expiry reminders, boogie finder, gear marketplace. One app for everything.">
+  <meta property="og:url" content="https://jumpmanifest.com">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:           #05050e;
-      --bg2:          #090916;
-      --card:         rgba(255,255,255,0.035);
-      --card-hover:   rgba(255,255,255,0.065);
-      --border:       rgba(255,255,255,0.07);
-      --border-blue:  rgba(59,130,246,0.3);
-      --blue:         #3b82f6;
-      --cyan:         #06b6d4;
-      --gold:         #f59e0b;
-      --purple:       #a855f7;
-      --green:        #22c55e;
-      --txt:          #f1f5f9;
-      --txt2:         #94a3b8;
-      --txt3:         #475569;
+      --bg:      #0b0b0d;
+      --bg1:     #101013;
+      --line:    rgba(255,255,255,0.065);
+      --line2:   rgba(255,255,255,0.11);
+      --t1:      #ededed;
+      --t2:      #72727a;
+      --t3:      #3a3a42;
+      --sky:     #7aa8c4;
+      --warm:    #b08e50;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Inter', -apple-system, sans-serif;
       background: var(--bg);
-      color: var(--txt);
+      color: var(--t1);
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
       line-height: 1.6;
     }
 
-    /* ---- Canvas ---- */
-    #bg {
+    /* Grain overlay — adds depth, very subtle */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 998;
+      pointer-events: none;
+      opacity: 0.022;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 256px;
+    }
+
+    /* Stars canvas — static */
+    #stars {
       position: fixed;
       inset: 0;
       z-index: 0;
       pointer-events: none;
     }
 
-    /* ---- Nav ---- */
+    /* ── Nav ── */
     nav {
       position: fixed;
       inset: 0 0 auto 0;
-      z-index: 200;
-      height: 64px;
+      z-index: 100;
+      height: 58px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 2rem;
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      background: rgba(5,5,14,0.75);
-      border-bottom: 1px solid var(--border);
+      padding: 0 1.75rem;
+      background: rgba(11,11,13,0.82);
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      border-bottom: 1px solid var(--line);
     }
 
     .logo {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 9px;
       text-decoration: none;
     }
 
     .logo-mark {
-      width: 34px;
-      height: 34px;
-      border-radius: 9px;
-      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      border: 1px solid var(--line2);
+      background: rgba(255,255,255,0.04);
       display: grid;
       place-items: center;
-      flex-shrink: 0;
-      box-shadow: 0 0 20px rgba(59,130,246,0.35);
     }
 
-    .logo-name {
-      font-size: 1.1rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      background: linear-gradient(120deg, #fff 30%, var(--txt2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .logo-word {
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--t1);
     }
 
-    .badge {
-      padding: 5px 14px;
-      border-radius: 100px;
-      background: rgba(245,158,11,0.1);
-      border: 1px solid rgba(245,158,11,0.25);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
+    .nav-pill {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 7px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--t2);
     }
 
-    .badge-dot {
-      width: 6px;
-      height: 6px;
+    .nav-dot {
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
-      background: var(--gold);
-      animation: blink 2s infinite;
+      background: var(--sky);
+      opacity: 0.75;
+      animation: breathe 3s ease-in-out infinite;
     }
 
-    @keyframes blink {
-      0%,100% { opacity:1; }
-      50%      { opacity:0.3; }
+    @keyframes breathe {
+      0%, 100% { opacity: 0.75; }
+      50%       { opacity: 0.3; }
     }
 
-    /* ---- Main ---- */
+    /* ── Main ── */
     main { position: relative; z-index: 1; }
 
-    /* ---- Hero ---- */
+    /* ── Hero ── */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -134,117 +136,55 @@
       justify-content: center;
       text-align: center;
       padding: 96px 1.5rem 5rem;
-      position: relative;
     }
 
-    /* Decorative altitude lines */
-    .alt-lines {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
-
-    .alt-lines::before,
-    .alt-lines::after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      border-radius: 50%;
-      border: 1px solid rgba(59,130,246,0.06);
-    }
-
-    .alt-lines::before {
-      width: 900px; height: 900px;
-      top: -300px;
-    }
-
-    .alt-lines::after {
-      width: 1400px; height: 1400px;
-      top: -600px;
-    }
-
-    /* Top glow */
-    .hero-glow {
-      position: absolute;
-      top: -100px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 800px;
-      height: 600px;
-      background: radial-gradient(ellipse at 50% 0%, rgba(59,130,246,0.13) 0%, transparent 65%);
-      pointer-events: none;
-    }
-
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 18px;
-      border-radius: 100px;
-      background: rgba(59,130,246,0.1);
-      border: 1px solid rgba(59,130,246,0.2);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
+    .hero-kicker {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: #93c5fd;
-      margin-bottom: 2rem;
+      color: var(--t3);
+      margin-bottom: 2.75rem;
     }
 
-    .hero-title {
-      font-size: clamp(3.5rem, 11vw, 7.5rem);
-      font-weight: 900;
-      letter-spacing: -0.045em;
-      line-height: 0.95;
-      margin-bottom: 1.75rem;
+    .hero-h1 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(3.5rem, 10.5vw, 7rem);
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      color: var(--t1);
+      margin-bottom: 1.875rem;
     }
 
-    .title-white {
-      display: block;
-      color: #fff;
+    .hero-h1 em {
+      font-style: italic;
+      color: #c8c8c8;
     }
 
-    .title-grad {
-      display: block;
-      background: linear-gradient(115deg, var(--blue) 0%, var(--cyan) 55%, #67e8f9 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 40px rgba(6,182,212,0.3));
-    }
-
-    .hero-sub {
-      font-size: clamp(0.95rem, 2.2vw, 1.15rem);
-      color: var(--txt2);
-      max-width: 520px;
-      margin: 0 auto 2.75rem;
+    .hero-body {
+      font-size: clamp(0.875rem, 1.8vw, 0.975rem);
+      color: var(--t2);
+      max-width: 430px;
       line-height: 1.75;
       font-weight: 400;
+      margin: 0 auto 2.75rem;
     }
 
-    /* ---- Form ---- */
-    .form-wrap {
-      width: 100%;
-      max-width: 460px;
-      margin: 0 auto;
-    }
+    /* Form */
+    .form-wrap { width: 100%; max-width: 400px; margin: 0 auto; }
 
-    .form-pill {
+    .form-row {
       display: flex;
-      align-items: center;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.09);
-      border-radius: 16px;
-      padding: 6px;
-      gap: 8px;
-      transition: border-color 0.25s, box-shadow 0.25s;
+      gap: 5px;
+      padding: 5px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      transition: border-color 0.2s;
     }
 
-    .form-pill:focus-within {
-      border-color: var(--border-blue);
-      box-shadow: 0 0 0 4px rgba(59,130,246,0.1);
-    }
+    .form-row:focus-within { border-color: var(--line2); }
 
     .form-input {
       flex: 1;
@@ -252,705 +192,541 @@
       background: transparent;
       border: none;
       outline: none;
-      color: var(--txt);
       font-family: inherit;
-      font-size: 0.9rem;
-      padding: 9px 12px;
+      font-size: 0.845rem;
+      color: var(--t1);
+      padding: 8px 10px;
     }
 
-    .form-input::placeholder { color: var(--txt3); }
+    .form-input::placeholder { color: var(--t3); }
 
     .form-btn {
       flex-shrink: 0;
-      background: linear-gradient(135deg, var(--blue), var(--cyan));
-      color: #fff;
+      background: var(--t1);
+      color: #0b0b0d;
       border: none;
-      border-radius: 11px;
-      padding: 10px 20px;
+      border-radius: 7px;
+      padding: 9px 17px;
       font-family: inherit;
-      font-size: 0.875rem;
+      font-size: 0.78rem;
       font-weight: 700;
+      letter-spacing: 0.01em;
       cursor: pointer;
-      letter-spacing: -0.01em;
-      transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
-      box-shadow: 0 4px 18px rgba(59,130,246,0.25);
+      transition: opacity 0.18s, transform 0.12s;
     }
 
-    .form-btn:hover  { opacity: 0.88; transform: scale(1.03); }
+    .form-btn:hover  { opacity: 0.82; }
     .form-btn:active { transform: scale(0.97); }
 
     .form-note {
-      font-size: 0.78rem;
-      color: var(--txt3);
-      margin-top: 10px;
-      text-align: center;
-    }
-
-    .success-msg {
-      display: none;
-      margin-top: 12px;
-      padding: 13px 20px;
-      border-radius: 12px;
-      background: rgba(34,197,94,0.1);
-      border: 1px solid rgba(34,197,94,0.2);
-      color: #4ade80;
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-align: center;
-    }
-
-    /* ---- Stats row ---- */
-    .stats {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
-      margin-top: 4rem;
-      flex-wrap: wrap;
-    }
-
-    .stat {
-      text-align: center;
-      padding: 0 2.25rem;
-    }
-
-    .stat:not(:last-child) {
-      border-right: 1px solid var(--border);
-    }
-
-    .stat-val {
-      font-size: 1.6rem;
-      font-weight: 900;
-      letter-spacing: -0.04em;
-      background: linear-gradient(135deg, #fff, var(--txt2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .stat-lbl {
-      font-size: 0.73rem;
-      color: var(--txt3);
-      font-weight: 600;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      margin-top: 3px;
-    }
-
-    /* ---- Scroll Divider ---- */
-    .scroll-hint {
-      position: absolute;
-      bottom: 2.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      opacity: 0.35;
-    }
-
-    .scroll-hint span {
       font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--txt2);
-    }
-
-    .scroll-line {
-      width: 1px;
-      height: 36px;
-      background: linear-gradient(to bottom, var(--txt2), transparent);
-      animation: scrollDrop 1.8s ease-in-out infinite;
-    }
-
-    @keyframes scrollDrop {
-      0%   { transform: scaleY(0); transform-origin: top; opacity: 0; }
-      40%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
-      60%  { transform: scaleY(1); transform-origin: bottom; opacity: 1; }
-      100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
-    }
-
-    /* ---- Features ---- */
-    .section {
-      padding: 7rem 1.5rem;
-      max-width: 1160px;
-      margin: 0 auto;
-    }
-
-    .sec-eyebrow {
+      color: var(--t3);
+      margin-top: 9px;
       text-align: center;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 1rem;
     }
 
-    .sec-title {
+    .form-ok {
+      display: none;
+      margin-top: 10px;
+      padding: 11px 16px;
+      background: rgba(80,180,110,0.07);
+      border: 1px solid rgba(80,180,110,0.14);
+      border-radius: 8px;
+      font-size: 0.845rem;
+      font-weight: 500;
+      color: rgba(110,210,140,0.85);
       text-align: center;
-      font-size: clamp(1.9rem, 5vw, 2.85rem);
-      font-weight: 900;
-      letter-spacing: -0.04em;
-      line-height: 1.1;
-      margin-bottom: 1rem;
     }
 
-    .sec-desc {
-      text-align: center;
-      color: var(--txt2);
-      font-size: 1rem;
-      max-width: 500px;
-      margin: 0 auto 3.75rem;
-      line-height: 1.7;
-    }
-
-    /* Features grid — 3 cols desktop, 2 tablet, 1 mobile */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.125rem;
-    }
-
-    @media (max-width: 900px) {
-      .grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 580px) {
-      .grid { grid-template-columns: 1fr; }
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 1.875rem;
-      position: relative;
-      overflow: hidden;
-      transition: background 0.25s, border-color 0.25s, transform 0.25s, box-shadow 0.25s;
-    }
-
-    .card::after {
-      content: '';
-      position: absolute;
-      inset: 0 0 auto 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent 10%, rgba(255,255,255,0.09) 50%, transparent 90%);
-    }
-
-    .card:hover {
-      background: var(--card-hover);
-      border-color: rgba(59,130,246,0.22);
-      transform: translateY(-3px);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.3);
-    }
-
-    /* First card spans 2 columns on desktop for visual variety */
-    .card.wide {
-      grid-column: span 2;
-    }
-
-    @media (max-width: 900px) {
-      .card.wide { grid-column: span 1; }
-    }
-
-    .card-icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 13px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 1.25rem;
-    }
-
-    .card-title {
-      font-size: 1.05rem;
-      font-weight: 700;
-      letter-spacing: -0.025em;
-      margin-bottom: 0.6rem;
-    }
-
-    .card-desc {
-      font-size: 0.875rem;
-      color: var(--txt2);
-      line-height: 1.7;
+    /* Capability tags */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 7px;
+      margin-top: 2.5rem;
     }
 
     .tag {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 3px 10px;
-      border-radius: 6px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
+      font-size: 0.67rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
+      color: var(--t3);
+      padding: 4px 11px;
+      border: 1px solid var(--line);
+      border-radius: 100px;
     }
 
-    /* ---- Horizontal rule ---- */
-    .hr {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border), transparent);
-      margin: 0 1.5rem;
-    }
+    /* ── Divider ── */
+    .rule { height: 1px; background: var(--line); }
 
-    /* ---- CTA ---- */
-    .cta-outer {
-      padding: 5rem 1.5rem 7rem;
-      position: relative;
-    }
-
-    .cta-glow {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 50% 50%, rgba(59,130,246,0.09), transparent 65%);
-      pointer-events: none;
-    }
-
-    .cta-box {
-      position: relative;
-      max-width: 680px;
+    /* ── Features ── */
+    .features {
+      padding: 5.5rem 1.75rem 6rem;
+      max-width: 1120px;
       margin: 0 auto;
-      border-radius: 28px;
-      padding: 4rem 3.5rem;
-      text-align: center;
-      background: linear-gradient(160deg, rgba(59,130,246,0.08), rgba(6,182,212,0.05), rgba(168,85,247,0.04));
-      border: 1px solid rgba(59,130,246,0.18);
+    }
+
+    .sec-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      padding-bottom: 1.375rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .sec-label {
+      font-size: 0.67rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--t3);
+      flex-shrink: 0;
+    }
+
+    .sec-h2 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(1.7rem, 3.8vw, 2.4rem);
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      margin-bottom: 0.875rem;
+      max-width: 500px;
+    }
+
+    .sec-h2 em { font-style: italic; color: #b4b4b4; }
+
+    .sec-desc {
+      font-size: 0.875rem;
+      color: var(--t2);
+      max-width: 400px;
+      line-height: 1.7;
+      margin-bottom: 3rem;
+    }
+
+    /* Bento grid — 3 cols on desktop */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line); /* gap color */
+      border: 1px solid var(--line);
+      border-radius: 14px;
       overflow: hidden;
     }
 
-    .cta-box::before {
-      content: '';
-      position: absolute;
-      inset: 0 0 auto 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(59,130,246,0.5), rgba(6,182,212,0.5), transparent);
+    @media (max-width: 860px)  { .grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 520px)  { .grid { grid-template-columns: 1fr; } }
+
+    .cell {
+      background: var(--bg);
+      padding: 1.75rem 1.625rem;
+      transition: background 0.2s;
     }
 
-    .cta-title {
-      font-size: clamp(1.8rem, 4.5vw, 2.5rem);
-      font-weight: 900;
-      letter-spacing: -0.04em;
+    .cell:hover { background: var(--bg1); }
+
+    /* Logbook spans 2 cols */
+    .cell.span2 { grid-column: span 2; }
+    @media (max-width: 860px)  { .cell.span2 { grid-column: span 1; } }
+
+    /* Marketplace spans all 3 */
+    .cell.span3 { grid-column: span 3; }
+    @media (max-width: 860px)  { .cell.span3 { grid-column: span 2; } }
+    @media (max-width: 520px)  { .cell.span2, .cell.span3 { grid-column: span 1; } }
+
+    .cell-num {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      color: var(--t3);
+      margin-bottom: 1.25rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .cell-icon {
+      width: 28px;
+      height: 28px;
+      color: var(--t2);
+      margin-bottom: 1rem;
+    }
+
+    .cell-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      color: var(--t1);
+      margin-bottom: 0.5rem;
+    }
+
+    .cell-desc {
+      font-size: 0.815rem;
+      color: var(--t2);
+      line-height: 1.7;
+    }
+
+    .cell-tag {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--t3);
+      padding: 3px 8px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+    }
+
+    .cell-tag.pro { color: var(--warm); border-color: rgba(176,142,80,0.2); }
+
+    /* ── CTA ── */
+    .cta {
+      padding: 5rem 1.75rem 7rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-inner { max-width: 520px; margin: 0 auto; }
+
+    .cta-kicker {
+      font-size: 0.67rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--t3);
+      margin-bottom: 1.375rem;
+    }
+
+    .cta-h2 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(2rem, 5vw, 2.875rem);
+      letter-spacing: -0.025em;
+      line-height: 1.1;
       margin-bottom: 0.875rem;
     }
 
-    .cta-sub {
-      color: var(--txt2);
-      margin-bottom: 2.5rem;
-      font-size: 1rem;
+    .cta-h2 em { font-style: italic; color: #c0c0c0; }
+
+    .cta-desc {
+      font-size: 0.875rem;
+      color: var(--t2);
+      margin-bottom: 2.375rem;
     }
 
-    /* ---- Footer ---- */
+    /* ── Footer ── */
     footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem 2rem;
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--line);
+      padding: 1.625rem 1.75rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 1rem;
-      position: relative;
-      z-index: 1;
     }
 
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    .foot-copy { font-size: 0.75rem; color: var(--t3); }
+
+    .foot-links { display: flex; gap: 1.375rem; }
+
+    .foot-link {
+      font-size: 0.75rem;
+      color: var(--t3);
       text-decoration: none;
+      transition: color 0.15s;
     }
 
-    .footer-copy {
-      font-size: 0.8rem;
-      color: var(--txt3);
-    }
+    .foot-link:hover { color: var(--t2); }
 
-    .footer-links {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .footer-link {
-      font-size: 0.8rem;
-      color: var(--txt3);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-link:hover { color: var(--txt2); }
-
-    /* ---- Reveal animation ---- */
+    /* ── Reveal ── */
     .reveal {
       opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.65s cubic-bezier(.22,1,.36,1), transform 0.65s cubic-bezier(.22,1,.36,1);
+      transform: translateY(18px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
     }
 
-    .reveal.in {
-      opacity: 1;
-      transform: none;
-    }
+    .reveal.in { opacity: 1; transform: none; }
 
-    /* ---- Responsive tweaks ---- */
-    @media (max-width: 640px) {
-      .form-pill { flex-direction: column; border-radius: 14px; }
-      .form-btn  { width: 100%; padding: 12px; border-radius: 10px; }
-      .stat:not(:last-child) { border-right: none; border-bottom: 1px solid var(--border); padding: 1rem 2rem; }
-      .stats { flex-direction: column; gap: 0; }
-      .cta-box { padding: 2.5rem 1.5rem; }
-      footer { flex-direction: column; text-align: center; }
-      .footer-links { justify-content: center; }
+    /* ── Responsive ── */
+    @media (max-width: 560px) {
+      .form-row  { flex-direction: column; border-radius: 12px; }
+      .form-btn  { border-radius: 8px; padding: 12px; }
+      footer     { flex-direction: column; text-align: center; }
+      .foot-links { justify-content: center; }
     }
   </style>
 </head>
 <body>
 
-<canvas id="bg"></canvas>
+<canvas id="stars"></canvas>
 
-<!-- ---- Navigation ---- -->
+<!-- ── Navigation ── -->
 <nav>
   <a href="#" class="logo">
     <div class="logo-mark">
-      <!-- Parachute canopy icon -->
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-        <path d="M12 3C7.03 3 3 7.03 3 12h18C21 7.03 16.97 3 12 3z" fill="white"/>
-        <path d="M12 12L8 21M12 12l4 9" stroke="rgba(6,182,212,0.85)" stroke-width="1.75" stroke-linecap="round"/>
-        <path d="M8 21h8" stroke="rgba(6,182,212,0.85)" stroke-width="1.75" stroke-linecap="round"/>
+      <!-- Minimal parachute canopy -->
+      <svg width="15" height="14" viewBox="0 0 15 14" fill="none">
+        <path d="M7.5 1C4.19 1 1.5 3.69 1.5 7h12C13.5 3.69 10.81 1 7.5 1z" fill="rgba(240,240,240,0.88)"/>
+        <path d="M7.5 7L5 12.5M7.5 7l2.5 5.5M5 12.5h5" stroke="rgba(122,168,196,0.75)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
-    <span class="logo-name">Manifest</span>
+    <span class="logo-word">Manifest</span>
   </a>
-  <div class="badge">
-    <span class="badge-dot"></span>
+  <div class="nav-pill">
+    <span class="nav-dot"></span>
     Coming Soon
   </div>
 </nav>
 
 <main>
 
-<!-- ---- Hero ---- -->
+<!-- ── Hero ── -->
 <section class="hero">
-  <div class="alt-lines"></div>
-  <div class="hero-glow"></div>
+  <p class="hero-kicker">jumpmanifest.com &nbsp;·&nbsp; 2025</p>
 
-  <div class="hero-eyebrow">
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="opacity:.7"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
-    Built for skydivers, by skydivers
-  </div>
-
-  <h1 class="hero-title">
-    <span class="title-white">Every Jump.</span>
-    <span class="title-grad">Manifested.</span>
+  <h1 class="hero-h1">
+    Every jump,<br>
+    <em>manifested.</em>
   </h1>
 
-  <p class="hero-sub">
-    The all-in-one app for the modern skydiver — jump logbook, gear tracking with OCR data card scan, expiry reminders, boogie finder, and gear marketplace.
+  <p class="hero-body">
+    The all-in-one app for the modern skydiver — logbook, gear tracking, OCR data card scan, expiry reminders, event finder, and marketplace.
   </p>
 
-  <!-- Waitlist form -->
-  <div class="form-wrap" id="hero-wrap">
-    <div class="form-pill" id="hero-pill">
-      <input
-        type="email"
-        id="hero-email"
-        class="form-input"
-        placeholder="Enter your email address"
-        autocomplete="email"
-      />
-      <button class="form-btn" id="hero-btn">Join Waitlist</button>
+  <div class="form-wrap" id="hw">
+    <div class="form-row" id="hr">
+      <input type="email" id="he" class="form-input" placeholder="Enter your email" autocomplete="email">
+      <button class="form-btn" id="hb">Join Waitlist</button>
     </div>
-    <p class="form-note" id="hero-note">Be the first to know when we launch. No spam, ever.</p>
-    <div class="success-msg" id="hero-ok">
-      ✓ You're on the list — see you at altitude!
-    </div>
+    <p class="form-note" id="hn">Be first to know when we launch. No spam, ever.</p>
+    <div class="form-ok" id="ho">✓ You're on the list — see you at altitude.</div>
   </div>
 
-  <div class="stats reveal">
-    <div class="stat">
-      <div class="stat-val">∞</div>
-      <div class="stat-lbl">Jump Logs</div>
-    </div>
-    <div class="stat">
-      <div class="stat-val">OCR</div>
-      <div class="stat-lbl">Data Card Scan</div>
-    </div>
-    <div class="stat">
-      <div class="stat-val">0</div>
-      <div class="stat-lbl">Missed Expiries</div>
-    </div>
-    <div class="stat">
-      <div class="stat-val">Pro</div>
-      <div class="stat-lbl">Subscription</div>
-    </div>
-  </div>
-
-  <div class="scroll-hint" aria-hidden="true">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
+  <div class="tags reveal">
+    <span class="tag">Jump Logbook</span>
+    <span class="tag">Gear Tracker</span>
+    <span class="tag">OCR Scan</span>
+    <span class="tag">Expiry Alerts</span>
+    <span class="tag">Events</span>
+    <span class="tag">Marketplace</span>
   </div>
 </section>
 
-<!-- ---- Features ---- -->
-<div class="hr"></div>
+<div class="rule"></div>
 
-<section class="section">
-  <p class="sec-eyebrow reveal">Everything you need</p>
-  <h2 class="sec-title reveal">Built for the drop zone.<br>Designed for your gear bag.</h2>
+<!-- ── Features ── -->
+<section class="features">
+  <div class="sec-row">
+    <span class="sec-label">Features</span>
+  </div>
+
+  <h2 class="sec-h2 reveal">
+    Built for the drop zone.<br>
+    <em>Designed for your gear bag.</em>
+  </h2>
   <p class="sec-desc reveal">
-    Manifest brings every part of the skydiving experience into one beautifully designed app.
+    Manifest brings every part of the skydiving experience into one app — beautifully designed, genuinely useful.
   </p>
 
-  <div class="grid">
+  <div class="grid reveal">
 
-    <!-- Logbook — wide card -->
-    <div class="card wide reveal">
-      <div class="card-icon" style="background:rgba(59,130,246,0.12)">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2" stroke="#3b82f6" stroke-width="1.75" stroke-linecap="round"/>
-          <rect x="9" y="3" width="6" height="4" rx="1.5" stroke="#3b82f6" stroke-width="1.75"/>
-          <path d="M9 12h6M9 16h4" stroke="#3b82f6" stroke-width="1.75" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <h3 class="card-title">Jump Logbook</h3>
-      <p class="card-desc">Log every skydive with exit altitude, freefall time, canopy type, DZ location, weather conditions, formation details, and personal notes. Your complete jump history — always in your pocket, beautifully organised, and exportable anytime.</p>
-      <span class="tag" style="background:rgba(59,130,246,0.1);color:#93c5fd;">Core Feature</span>
+    <!-- 01 Logbook (wide) -->
+    <div class="cell span2">
+      <p class="cell-num">01</p>
+      <svg class="cell-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/>
+        <rect x="9" y="3" width="6" height="4" rx="1.5"/>
+        <path d="M9 12h6M9 16h4"/>
+      </svg>
+      <h3 class="cell-title">Jump Logbook</h3>
+      <p class="cell-desc">Log every skydive — exit altitude, freefall time, canopy type, DZ location, weather, formation details, and personal notes. Your complete jump history, always in your pocket and exportable anytime.</p>
+      <span class="cell-tag">Core</span>
     </div>
 
-    <!-- Gear Tracker -->
-    <div class="card reveal">
-      <div class="card-icon" style="background:rgba(6,182,212,0.12)">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <rect x="2" y="7" width="20" height="14" rx="2" stroke="#06b6d4" stroke-width="1.75"/>
-          <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" stroke="#06b6d4" stroke-width="1.75"/>
-          <circle cx="12" cy="14" r="2.5" stroke="#06b6d4" stroke-width="1.5"/>
-        </svg>
-      </div>
-      <h3 class="card-title">Gear Tracker</h3>
-      <p class="card-desc">Track container, reserve, AAD, helmet, and all components. Full service history. Know exactly what's on your back before every jump.</p>
-      <span class="tag" style="background:rgba(6,182,212,0.1);color:#67e8f9;">Core Feature</span>
+    <!-- 02 Gear Tracker -->
+    <div class="cell">
+      <p class="cell-num">02</p>
+      <svg class="cell-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="7" width="20" height="14" rx="2"/>
+        <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>
+        <circle cx="12" cy="14" r="2.5"/>
+      </svg>
+      <h3 class="cell-title">Gear Tracker</h3>
+      <p class="cell-desc">Container, reserve, AAD, helmet — tracked with full service history. Know exactly what's on your back.</p>
+      <span class="cell-tag">Core</span>
     </div>
 
-    <!-- OCR Scan -->
-    <div class="card reveal">
-      <div class="card-icon" style="background:rgba(245,158,11,0.12)">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <rect x="3" y="3" width="7" height="7" rx="1" stroke="#f59e0b" stroke-width="1.75"/>
-          <rect x="14" y="3" width="7" height="7" rx="1" stroke="#f59e0b" stroke-width="1.75"/>
-          <rect x="14" y="14" width="7" height="7" rx="1" stroke="#f59e0b" stroke-width="1.75"/>
-          <path d="M3 17.5h4.5V21M3 14h2M7.5 14H10v3" stroke="#f59e0b" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <h3 class="card-title">OCR Data Card Scan</h3>
-      <p class="card-desc">Point your camera at any gear data card and Manifest reads it instantly. No more manual entry — just scan and go.</p>
-      <span class="tag" style="background:rgba(245,158,11,0.1);color:#fde68a;">Pro Feature</span>
+    <!-- 03 OCR Scan -->
+    <div class="cell">
+      <p class="cell-num">03</p>
+      <svg class="cell-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 7V5a2 2 0 012-2h2M17 3h2a2 2 0 012 2v2M21 17v2a2 2 0 01-2 2h-2M7 21H5a2 2 0 01-2-2v-2"/>
+        <rect x="7" y="7" width="10" height="10" rx="1"/>
+      </svg>
+      <h3 class="cell-title">OCR Data Card Scan</h3>
+      <p class="cell-desc">Point your camera at any data card and Manifest reads it instantly. No manual entry — just scan and go.</p>
+      <span class="cell-tag pro">Pro</span>
     </div>
 
-    <!-- Expiry Reminders -->
-    <div class="card reveal">
-      <div class="card-icon" style="background:rgba(239,68,68,0.1)">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M18 8A6 6 0 106 8c0 7-3 9-3 9h18s-3-2-3-9" stroke="#f87171" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M13.73 21a2 2 0 01-3.46 0" stroke="#f87171" stroke-width="1.75" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <h3 class="card-title">Expiry Reminders</h3>
-      <p class="card-desc">Smart alerts for reserve repacks, AAD service windows, and any gear deadline — well before they're due. Stay compliant, stay safe.</p>
-      <span class="tag" style="background:rgba(239,68,68,0.1);color:#fca5a5;">Safety</span>
+    <!-- 04 Expiry -->
+    <div class="cell">
+      <p class="cell-num">04</p>
+      <svg class="cell-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 8A6 6 0 106 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+        <path d="M13.73 21a2 2 0 01-3.46 0"/>
+      </svg>
+      <h3 class="cell-title">Expiry Reminders</h3>
+      <p class="cell-desc">Smart alerts for reserve repacks and AAD service windows — well before they're due. Stay compliant, stay safe.</p>
+      <span class="cell-tag">Safety</span>
     </div>
 
-    <!-- Event Finder -->
-    <div class="card reveal">
-      <div class="card-icon" style="background:rgba(168,85,247,0.12)">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="12" r="9.5" stroke="#a855f7" stroke-width="1.75"/>
-          <path d="M2.5 12h19M12 2.5a15.5 15.5 0 010 19M12 2.5a15.5 15.5 0 000 19" stroke="#a855f7" stroke-width="1.5"/>
-        </svg>
-      </div>
-      <h3 class="card-title">Boogie &amp; Event Finder</h3>
-      <p class="card-desc">Discover boogies, competitions, and fun jumps worldwide. Never miss an event — from local funjumps to world-record attempts.</p>
-      <span class="tag" style="background:rgba(168,85,247,0.1);color:#d8b4fe;">Community</span>
+    <!-- 05 Events -->
+    <div class="cell">
+      <p class="cell-num">05</p>
+      <svg class="cell-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+      </svg>
+      <h3 class="cell-title">Boogie &amp; Event Finder</h3>
+      <p class="cell-desc">Discover boogies, competitions, and fun jumps worldwide. From local funjumps to world-record attempts.</p>
+      <span class="cell-tag">Community</span>
     </div>
 
-    <!-- Marketplace -->
-    <div class="card reveal">
-      <div class="card-icon" style="background:rgba(34,197,94,0.12)">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" stroke="#22c55e" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-          <line x1="3" y1="6" x2="21" y2="6" stroke="#22c55e" stroke-width="1.75"/>
-          <path d="M16 10a4 4 0 01-8 0" stroke="#22c55e" stroke-width="1.75" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <h3 class="card-title">Gear Marketplace</h3>
-      <p class="card-desc">Buy and sell skydiving gear with confidence. Verified jump counts, full gear history, and trusted community listings — safer than any Facebook group.</p>
-      <span class="tag" style="background:rgba(34,197,94,0.1);color:#86efac;">Marketplace</span>
+    <!-- 06 Marketplace (full width) -->
+    <div class="cell span3">
+      <p class="cell-num">06</p>
+      <svg class="cell-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <path d="M16 10a4 4 0 01-8 0"/>
+      </svg>
+      <h3 class="cell-title">Gear Marketplace</h3>
+      <p class="cell-desc">Buy and sell skydiving gear with confidence — verified jump counts, full gear history, and trusted community listings. Safer and smarter than any Facebook group.</p>
+      <span class="cell-tag">Marketplace</span>
     </div>
 
   </div>
 </section>
 
-<div class="hr"></div>
+<div class="rule"></div>
 
-<!-- ---- CTA ---- -->
-<section class="cta-outer">
-  <div class="cta-glow"></div>
-  <div class="cta-box reveal">
-    <h2 class="cta-title">Ready to jump in?</h2>
-    <p class="cta-sub">Join the waitlist. Be the first to get access when Manifest launches.</p>
+<!-- ── CTA ── -->
+<section class="cta">
+  <div class="cta-inner reveal">
+    <p class="cta-kicker">Early Access</p>
+    <h2 class="cta-h2">
+      Ready to<br>
+      <em>jump in?</em>
+    </h2>
+    <p class="cta-desc">Join the waitlist. Be first in the door when Manifest launches.</p>
 
-    <div class="form-wrap" id="cta-wrap">
-      <div class="form-pill" id="cta-pill">
-        <input
-          type="email"
-          id="cta-email"
-          class="form-input"
-          placeholder="your@email.com"
-          autocomplete="email"
-        />
-        <button class="form-btn" id="cta-btn">Get Early Access</button>
+    <div class="form-wrap" id="cw">
+      <div class="form-row" id="cr">
+        <input type="email" id="ce" class="form-input" placeholder="your@email.com" autocomplete="email">
+        <button class="form-btn" id="cb">Get Early Access</button>
       </div>
-      <p class="form-note" id="cta-note">No spam. Unsubscribe anytime.</p>
-      <div class="success-msg" id="cta-ok">
-        ✓ You're on the list — see you at altitude!
-      </div>
+      <p class="form-note" id="cn">No spam. Unsubscribe anytime.</p>
+      <div class="form-ok" id="co">✓ You're on the list — see you at altitude.</div>
     </div>
   </div>
 </section>
 
 </main>
 
-<!-- ---- Footer ---- -->
+<!-- ── Footer ── -->
 <footer>
-  <a href="#" class="footer-logo">
-    <div class="logo-mark" style="width:26px;height:26px;border-radius:7px;box-shadow:none;">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-        <path d="M12 3C7.03 3 3 7.03 3 12h18C21 7.03 16.97 3 12 3z" fill="white"/>
-        <path d="M12 12L8 21M12 12l4 9M8 21h8" stroke="rgba(6,182,212,0.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </div>
-    <span class="logo-name" style="font-size:0.9rem;">Manifest</span>
-  </a>
-  <span class="footer-copy">© 2025 Manifest. Built for skydivers.</span>
-  <nav class="footer-links" aria-label="Footer">
-    <a href="mailto:hello@jumpmanifest.com" class="footer-link">Contact</a>
-    <a href="#" class="footer-link">Privacy</a>
-    <a href="#" class="footer-link">Terms</a>
+  <span class="foot-copy">© 2025 Manifest. Built for skydivers.</span>
+  <nav class="foot-links" aria-label="Footer">
+    <a href="mailto:hello@jumpmanifest.com" class="foot-link">Contact</a>
+    <a href="#" class="foot-link">Privacy</a>
+    <a href="#" class="foot-link">Terms</a>
   </nav>
 </footer>
 
-<!-- ===== Scripts ===== -->
 <script>
-/* -------- Canvas background -------- */
+/* ── Static starfield — drawn once, no animation ── */
 (function () {
-  const cvs = document.getElementById('bg');
+  const cvs = document.getElementById('stars');
   const ctx = cvs.getContext('2d');
-  let W, H;
+  const W = cvs.width  = window.innerWidth;
+  const H = cvs.height = window.innerHeight;
 
-  function resize() {
-    W = cvs.width  = window.innerWidth;
-    H = cvs.height = window.innerHeight;
+  ctx.fillStyle = '#0b0b0d';
+  ctx.fillRect(0, 0, W, H);
+
+  const count = Math.round(W * H / 6800);
+  for (let i = 0; i < count; i++) {
+    const x  = Math.random() * W;
+    const y  = Math.random() * H;
+    const r  = Math.random() * 0.75 + 0.1;
+    const a  = Math.random() * 0.28 + 0.04;
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, 6.283);
+    ctx.fillStyle = `rgba(208,218,232,${a.toFixed(3)})`;
+    ctx.fill();
   }
-  resize();
-  window.addEventListener('resize', resize);
-
-  /* Particles — falling dots suggest altitude */
-  const N = 140;
-  const pts = Array.from({ length: N }, () => ({
-    x:  Math.random(),
-    y:  Math.random(),
-    r:  Math.random() * 1.2 + 0.25,
-    s:  Math.random() * 0.00018 + 0.00006,   // speed as fraction of H per frame
-    dx: (Math.random() - 0.5) * 0.00008,
-    a:  Math.random() * 0.45 + 0.08,
-    c:  Math.random() > 0.65
-          ? [59, 130, 246]
-          : Math.random() > 0.5
-            ? [6, 182, 212]
-            : [255, 255, 255],
-  }));
-
-  function frame() {
-    ctx.clearRect(0, 0, W, H);
-
-    /* Base gradient */
-    const g = ctx.createLinearGradient(0, 0, 0, H);
-    g.addColorStop(0, '#03030b');
-    g.addColorStop(1, '#07071a');
-    ctx.fillStyle = g;
-    ctx.fillRect(0, 0, W, H);
-
-    /* Radial glow top-centre */
-    const rg = ctx.createRadialGradient(W/2, 0, 0, W/2, 0, W * 0.65);
-    rg.addColorStop(0, 'rgba(59,130,246,0.08)');
-    rg.addColorStop(1, 'transparent');
-    ctx.fillStyle = rg;
-    ctx.fillRect(0, 0, W, H);
-
-    /* Particles */
-    for (const p of pts) {
-      ctx.beginPath();
-      ctx.arc(p.x * W, p.y * H, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${p.c[0]},${p.c[1]},${p.c[2]},${p.a})`;
-      ctx.fill();
-
-      p.y += p.s;
-      p.x += p.dx;
-
-      if (p.y > 1.02) { p.y = -0.02; p.x = Math.random(); }
-      if (p.x < -0.02 || p.x > 1.02) p.x = Math.random();
-    }
-
-    requestAnimationFrame(frame);
+  /* Sparse brighter stars for depth */
+  for (let i = 0; i < Math.round(count * 0.08); i++) {
+    const x = Math.random() * W;
+    const y = Math.random() * H;
+    ctx.beginPath();
+    ctx.arc(x, y, Math.random() * 0.5 + 0.6, 0, 6.283);
+    ctx.fillStyle = `rgba(230,238,248,${(Math.random() * 0.3 + 0.3).toFixed(3)})`;
+    ctx.fill();
   }
-  frame();
 })();
 
-/* -------- Scroll reveal -------- */
+/* ── Scroll reveal ── */
 (function () {
-  const els = document.querySelectorAll('.reveal');
-  const io  = new IntersectionObserver((entries) => {
+  const io = new IntersectionObserver(entries => {
     entries.forEach((e, i) => {
       if (!e.isIntersecting) return;
-      setTimeout(() => e.target.classList.add('in'), i * 70);
+      setTimeout(() => e.target.classList.add('in'), i * 55);
       io.unobserve(e.target);
     });
-  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
-  els.forEach(el => io.observe(el));
+  }, { threshold: 0.07, rootMargin: '0px 0px -24px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 })();
 
-/* -------- Waitlist form -------- */
-function setupForm(id) {
-  const emailEl   = document.getElementById(id + '-email');
-  const btnEl     = document.getElementById(id + '-btn');
-  const pillEl    = document.getElementById(id + '-pill');
-  const noteEl    = document.getElementById(id + '-note');
-  const okEl      = document.getElementById(id + '-ok');
-
-  function submit() {
-    const val = (emailEl.value || '').trim();
-    if (!val || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
-      emailEl.style.color = '#f87171';
-      emailEl.focus();
-      setTimeout(() => { emailEl.style.color = ''; }, 1400);
+/* ── Waitlist forms ── */
+function wire(row, email, btn, note, ok) {
+  function go() {
+    const v = (email.value || '').trim();
+    if (!v || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) {
+      email.style.color = '#d07070';
+      email.focus();
+      setTimeout(() => { email.style.color = ''; }, 1400);
       return;
     }
-
-    /* Persist locally — wire up your email service (e.g. Formspree / ConvertKit / Resend) here */
     try {
-      const list = JSON.parse(localStorage.getItem('mf_waitlist') || '[]');
-      if (!list.includes(val)) { list.push(val); localStorage.setItem('mf_waitlist', JSON.stringify(list)); }
+      const l = JSON.parse(localStorage.getItem('mf') || '[]');
+      if (!l.includes(v)) { l.push(v); localStorage.setItem('mf', JSON.stringify(l)); }
     } catch (_) {}
-
-    pillEl.style.display = 'none';
-    if (noteEl) noteEl.style.display = 'none';
-    okEl.style.display   = 'block';
+    /* ↑ Wire up a real email service here: Resend, Formspree, ConvertKit, etc. */
+    row.style.display  = 'none';
+    note.style.display = 'none';
+    ok.style.display   = 'block';
   }
-
-  btnEl.addEventListener('click', submit);
-  emailEl.addEventListener('keydown', e => { if (e.key === 'Enter') submit(); });
+  btn.addEventListener('click', go);
+  email.addEventListener('keydown', e => { if (e.key === 'Enter') go(); });
 }
 
-setupForm('hero');
-setupForm('cta');
+wire(
+  document.getElementById('hr'), document.getElementById('he'),
+  document.getElementById('hb'), document.getElementById('hn'),
+  document.getElementById('ho')
+);
+wire(
+  document.getElementById('cr'), document.getElementById('ce'),
+  document.getElementById('cb'), document.getElementById('cn'),
+  document.getElementById('co')
+);
 </script>
 
 </body>
