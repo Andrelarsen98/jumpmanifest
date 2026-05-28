@@ -17,15 +17,16 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:      #0b0b0d;
-      --bg1:     #101013;
-      --line:    rgba(255,255,255,0.065);
-      --line2:   rgba(255,255,255,0.11);
-      --t1:      #ededed;
-      --t2:      #72727a;
-      --t3:      #3a3a42;
+      --bg:      #181826;
+      --bg1:     #1f1f30;
+      --bg2:     #26263a;
+      --line:    rgba(255,255,255,0.1);
+      --line2:   rgba(255,255,255,0.18);
+      --t1:      #f4f4f6;
+      --t2:      #9898a8;
+      --t3:      #5c5c6e;
       --sky:     #7aa8c4;
-      --warm:    #b08e50;
+      --warm:    #c49a50;
     }
 
     html { scroll-behavior: smooth; }
@@ -69,7 +70,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 1.75rem;
-      background: rgba(11,11,13,0.82);
+      background: rgba(24,24,38,0.88);
       backdrop-filter: blur(20px) saturate(1.4);
       -webkit-backdrop-filter: blur(20px) saturate(1.4);
       border-bottom: 1px solid var(--line);
@@ -159,11 +160,11 @@
 
     .hero-h1 em {
       font-style: italic;
-      color: #c8c8c8;
+      color: #dcdce6;
     }
 
     .hero-body {
-      font-size: clamp(0.875rem, 1.8vw, 0.975rem);
+      font-size: clamp(0.975rem, 2vw, 1.05rem);
       color: var(--t2);
       max-width: 430px;
       line-height: 1.75;
@@ -203,7 +204,7 @@
     .form-btn {
       flex-shrink: 0;
       background: var(--t1);
-      color: #0b0b0d;
+      color: #181826;
       border: none;
       border-radius: 7px;
       padding: 9px 17px;
@@ -296,10 +297,10 @@
       max-width: 500px;
     }
 
-    .sec-h2 em { font-style: italic; color: #b4b4b4; }
+    .sec-h2 em { font-style: italic; color: #c8c8d8; }
 
     .sec-desc {
-      font-size: 0.875rem;
+      font-size: 0.9375rem;
       color: var(--t2);
       max-width: 400px;
       line-height: 1.7;
@@ -321,12 +322,12 @@
     @media (max-width: 520px)  { .grid { grid-template-columns: 1fr; } }
 
     .cell {
-      background: var(--bg);
+      background: var(--bg1);
       padding: 1.75rem 1.625rem;
       transition: background 0.2s;
     }
 
-    .cell:hover { background: var(--bg1); }
+    .cell:hover { background: var(--bg2); }
 
     /* Logbook spans 2 cols */
     .cell.span2 { grid-column: span 2; }
@@ -338,7 +339,7 @@
     @media (max-width: 520px)  { .cell.span2, .cell.span3 { grid-column: span 1; } }
 
     .cell-num {
-      font-size: 0.62rem;
+      font-size: 0.67rem;
       font-weight: 600;
       letter-spacing: 0.14em;
       color: var(--t3);
@@ -354,7 +355,7 @@
     }
 
     .cell-title {
-      font-size: 0.9rem;
+      font-size: 0.975rem;
       font-weight: 600;
       letter-spacing: -0.015em;
       color: var(--t1);
@@ -362,7 +363,7 @@
     }
 
     .cell-desc {
-      font-size: 0.815rem;
+      font-size: 0.875rem;
       color: var(--t2);
       line-height: 1.7;
     }
@@ -410,10 +411,10 @@
       margin-bottom: 0.875rem;
     }
 
-    .cta-h2 em { font-style: italic; color: #c0c0c0; }
+    .cta-h2 em { font-style: italic; color: #d4d4e2; }
 
     .cta-desc {
-      font-size: 0.875rem;
+      font-size: 0.9375rem;
       color: var(--t2);
       margin-bottom: 2.375rem;
     }
@@ -657,7 +658,7 @@
   const W = cvs.width  = window.innerWidth;
   const H = cvs.height = window.innerHeight;
 
-  ctx.fillStyle = '#0b0b0d';
+  ctx.fillStyle = '#181826';
   ctx.fillRect(0, 0, W, H);
 
   const count = Math.round(W * H / 6800);
@@ -665,10 +666,10 @@
     const x  = Math.random() * W;
     const y  = Math.random() * H;
     const r  = Math.random() * 0.75 + 0.1;
-    const a  = Math.random() * 0.28 + 0.04;
+    const a  = Math.random() * 0.32 + 0.08;
     ctx.beginPath();
     ctx.arc(x, y, r, 0, 6.283);
-    ctx.fillStyle = `rgba(208,218,232,${a.toFixed(3)})`;
+    ctx.fillStyle = `rgba(215,224,240,${a.toFixed(3)})`;
     ctx.fill();
   }
   /* Sparse brighter stars for depth */
@@ -677,7 +678,7 @@
     const y = Math.random() * H;
     ctx.beginPath();
     ctx.arc(x, y, Math.random() * 0.5 + 0.6, 0, 6.283);
-    ctx.fillStyle = `rgba(230,238,248,${(Math.random() * 0.3 + 0.3).toFixed(3)})`;
+    ctx.fillStyle = `rgba(235,242,255,${(Math.random() * 0.3 + 0.35).toFixed(3)})`;
     ctx.fill();
   }
 })();
