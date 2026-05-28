@@ -17,17 +17,47 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:      #181826;
-      --bg1:     #1f1f30;
-      --bg2:     #26263a;
-      --line:    rgba(255,255,255,0.1);
-      --line2:   rgba(255,255,255,0.18);
-      --t1:      #f4f4f6;
-      --t2:      #9898a8;
-      --t3:      #5c5c6e;
-      --sky:     #7aa8c4;
-      --warm:    #c49a50;
+      --bg:       #111111;
+      --bg1:      #1e1e1e;
+      --bg2:      #282828;
+      --line:     rgba(255,255,255,0.12);
+      --line2:    rgba(255,255,255,0.22);
+      --t1:       #ffffff;
+      --t2:       #ffffff;
+      --t3:       #bbbbbb;
+      --sky:      #7aa8c4;
+      --warm:     #c49a50;
+      --nav-bg:   rgba(17,17,17,0.9);
+      --btn-bg:   #ffffff;
+      --btn-text: #111111;
     }
+
+    [data-theme="light"] {
+      --bg:       #ffffff;
+      --bg1:      #f5f5f5;
+      --bg2:      #e8e8e8;
+      --line:     rgba(0,0,0,0.1);
+      --line2:    rgba(0,0,0,0.18);
+      --t1:       #111111;
+      --t2:       #111111;
+      --t3:       #555555;
+      --sky:      #2a72a8;
+      --warm:     #8a5e18;
+      --nav-bg:   rgba(255,255,255,0.92);
+      --btn-bg:   #111111;
+      --btn-text: #ffffff;
+    }
+
+    /* Smooth transition applied only during theme switch */
+    .transitioning,
+    .transitioning *,
+    .transitioning *::before,
+    .transitioning *::after {
+      transition: background-color 0.3s ease, border-color 0.3s ease,
+                  color 0.3s ease, fill 0.3s ease, stroke 0.3s ease !important;
+    }
+
+    [data-theme="light"] #stars { opacity: 0; }
 
     html { scroll-behavior: smooth; }
 
@@ -70,7 +100,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 1.75rem;
-      background: rgba(24,24,38,0.88);
+      background: var(--nav-bg);
       backdrop-filter: blur(20px) saturate(1.4);
       -webkit-backdrop-filter: blur(20px) saturate(1.4);
       border-bottom: 1px solid var(--line);
@@ -160,7 +190,7 @@
 
     .hero-h1 em {
       font-style: italic;
-      color: #dcdce6;
+      color: var(--t1);
     }
 
     .hero-body {
@@ -203,8 +233,8 @@
 
     .form-btn {
       flex-shrink: 0;
-      background: var(--t1);
-      color: #181826;
+      background: var(--btn-bg);
+      color: var(--btn-text);
       border: none;
       border-radius: 7px;
       padding: 9px 17px;
@@ -259,6 +289,41 @@
       border-radius: 100px;
     }
 
+    /* ── Theme toggle ── */
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .theme-toggle {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      border: 1px solid var(--line2);
+      background: rgba(128,128,128,0.08);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      color: var(--t1);
+      transition: background 0.2s;
+      flex-shrink: 0;
+      padding: 0;
+    }
+
+    .theme-toggle:hover { background: rgba(128,128,128,0.16); }
+
+    .theme-toggle svg { display: block; }
+
+    /* Show sun in dark mode (clicking switches to light), moon in light mode */
+    .icon-moon { display: block; }
+    .icon-sun  { display: none; }
+    [data-theme="light"] .icon-moon { display: none; }
+    [data-theme="light"] .icon-sun  { display: block; }
+
+    /* Logo mark adapts to light mode */
+    [data-theme="light"] .logo-mark-canopy { fill: rgba(15,15,15,0.88); }
+
     /* ── Divider ── */
     .rule { height: 1px; background: var(--line); }
 
@@ -297,7 +362,7 @@
       max-width: 500px;
     }
 
-    .sec-h2 em { font-style: italic; color: #c8c8d8; }
+    .sec-h2 em { font-style: italic; color: var(--t1); }
 
     .sec-desc {
       font-size: 0.9375rem;
@@ -411,7 +476,7 @@
       margin-bottom: 0.875rem;
     }
 
-    .cta-h2 em { font-style: italic; color: #d4d4e2; }
+    .cta-h2 em { font-style: italic; color: var(--t1); }
 
     .cta-desc {
       font-size: 0.9375rem;
@@ -471,17 +536,29 @@
 <nav>
   <a href="#" class="logo">
     <div class="logo-mark">
-      <!-- Minimal parachute canopy -->
       <svg width="15" height="14" viewBox="0 0 15 14" fill="none">
-        <path d="M7.5 1C4.19 1 1.5 3.69 1.5 7h12C13.5 3.69 10.81 1 7.5 1z" fill="rgba(240,240,240,0.88)"/>
+        <path class="logo-mark-canopy" d="M7.5 1C4.19 1 1.5 3.69 1.5 7h12C13.5 3.69 10.81 1 7.5 1z" fill="rgba(240,240,240,0.88)"/>
         <path d="M7.5 7L5 12.5M7.5 7l2.5 5.5M5 12.5h5" stroke="rgba(122,168,196,0.75)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
     <span class="logo-word">Manifest</span>
   </a>
-  <div class="nav-pill">
-    <span class="nav-dot"></span>
-    Coming Soon
+  <div class="nav-right">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode">
+      <!-- Sun icon — shown in light mode to switch back to dark -->
+      <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+      </svg>
+      <!-- Moon icon — shown in dark mode to switch to light -->
+      <svg class="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+      </svg>
+    </button>
+    <div class="nav-pill">
+      <span class="nav-dot"></span>
+      Coming Soon
+    </div>
   </div>
 </nav>
 
@@ -651,6 +728,29 @@
 </footer>
 
 <script>
+/* ── Theme toggle ── */
+(function () {
+  const root    = document.documentElement;
+  const btn     = document.getElementById('theme-toggle');
+  const PREF_KEY = 'mf_theme';
+
+  function applyTheme(theme, animate) {
+    if (animate) {
+      document.body.classList.add('transitioning');
+      setTimeout(() => document.body.classList.remove('transitioning'), 350);
+    }
+    root.setAttribute('data-theme', theme);
+    localStorage.setItem(PREF_KEY, theme);
+  }
+
+  /* Load saved preference, fall back to dark */
+  applyTheme(localStorage.getItem(PREF_KEY) || 'dark', false);
+
+  btn.addEventListener('click', () => {
+    applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark', true);
+  });
+})();
+
 /* ── Static starfield — drawn once, no animation ── */
 (function () {
   const cvs = document.getElementById('stars');
@@ -658,7 +758,7 @@
   const W = cvs.width  = window.innerWidth;
   const H = cvs.height = window.innerHeight;
 
-  ctx.fillStyle = '#181826';
+  ctx.fillStyle = '#111111';
   ctx.fillRect(0, 0, W, H);
 
   const count = Math.round(W * H / 6800);
