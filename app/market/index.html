@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Marketplace — Manifest</title>
+  <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('mf_theme') || 'dark')</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/app/styles.css">
+  <style>
+    .filter-row {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      margin-bottom: 1rem;
+      scrollbar-width: none;
+    }
+    .filter-row::-webkit-scrollbar { display: none; }
+    .filter-chip {
+      padding: 6px 14px;
+      border-radius: 100px;
+      border: 1px solid var(--border2);
+      background: transparent;
+      color: var(--t2);
+      font-family: inherit;
+      font-size: 0.775rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+    }
+    .filter-chip.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-dim);
+    }
+    .filter-chip:hover { border-color: var(--border2); color: var(--t1); }
+    .photo-container   { background: #1e2535; }
+    .photo-canopy      { background: #1e2a1e; }
+    .photo-aad         { background: #1a2535; }
+    .photo-helmet      { background: #2a1e1e; }
+    .photo-javelin     { background: #231e2a; }
+  </style>
+</head>
+<body>
+<div class="app-shell">
+
+  <!-- Top nav -->
+  <header class="top-nav">
+    <a href="/app" class="nav-back" aria-label="Back">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </a>
+    <h1 class="nav-title">Marketplace</h1>
+    <div class="nav-actions">
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        <svg class="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </button>
+      <a href="/app/market/new" class="nav-add" aria-label="New listing">+</a>
+    </div>
+  </header>
+
+  <div class="page-body">
+
+    <!-- Search -->
+    <div class="search-bar">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input class="search-input" type="search" placeholder="Search canopies, containers, AADs…">
+    </div>
+
+    <!-- Filter chips -->
+    <div class="filter-row">
+      <button class="filter-chip active">All</button>
+      <button class="filter-chip">Containers</button>
+      <button class="filter-chip">Canopies</button>
+      <button class="filter-chip">AADs</button>
+      <button class="filter-chip">Helmets</button>
+      <button class="filter-chip">Nearby</button>
+    </div>
+
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.875rem">
+      <span style="font-size:0.8rem;color:var(--t2);font-weight:500">342 listings</span>
+      <span style="font-size:0.75rem;color:var(--accent);font-weight:600;display:flex;align-items:center;gap:4px">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Verified only
+      </span>
+    </div>
+
+    <!-- Listing: Vector 3 M2 -->
+    <a href="/app/market/listing" class="listing-card">
+      <div class="listing-photo photo-container">
+        <div class="listing-photo-icon">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><circle cx="12" cy="14" r="2"/></svg>
+        </div>
+      </div>
+      <div class="listing-body">
+        <div class="listing-type-label">Container</div>
+        <div class="listing-model-name">Vector 3 M2 · VSE</div>
+        <div class="listing-price-val">$3,200</div>
+        <div class="listing-footer">
+          <span class="listing-loc">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Dubai, UAE
+          </span>
+          <span style="color:var(--t3);font-size:0.72rem">3 days ago</span>
+          <span class="verified">
+            <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            124 jumps
+          </span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Listing: Sabre2 170 -->
+    <a href="/app/market/listing" class="listing-card">
+      <div class="listing-photo photo-canopy">
+        <div class="listing-photo-icon">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12h20C22 6.48 17.52 2 12 2z"/><path d="M12 12l-3 8M12 12l3 8M9 20h6"/></svg>
+        </div>
+      </div>
+      <div class="listing-body">
+        <div class="listing-type-label">Main Canopy</div>
+        <div class="listing-model-name">Sabre2 170 · Performance Designs</div>
+        <div class="listing-price-val">$1,450</div>
+        <div class="listing-footer">
+          <span class="listing-loc">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Eloy, Arizona
+          </span>
+          <span style="color:var(--t3);font-size:0.72rem">1 week ago</span>
+          <span class="verified">
+            <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            312 jumps
+          </span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Listing: CYPRES Expert 2 -->
+    <a href="/app/market/listing" class="listing-card">
+      <div class="listing-photo photo-aad">
+        <div class="listing-photo-icon">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M20 9h3M1 15h3M20 15h3"/></svg>
+        </div>
+      </div>
+      <div class="listing-body">
+        <div class="listing-type-label">AAD</div>
+        <div class="listing-model-name">CYPRES Expert 2 · Airtec</div>
+        <div class="listing-price-val">$900</div>
+        <div class="listing-footer">
+          <span class="listing-loc">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Empuriabrava, Spain
+          </span>
+          <span class="verified">
+            <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Serviced Jan 2025
+          </span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Listing: Pilot 7 188 -->
+    <a href="/app/market/listing" class="listing-card">
+      <div class="listing-photo photo-canopy" style="background:#2a2a1e">
+        <div class="listing-photo-icon">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12h20C22 6.48 17.52 2 12 2z"/><path d="M12 12l-3 8M12 12l3 8M9 20h6"/></svg>
+        </div>
+      </div>
+      <div class="listing-body">
+        <div class="listing-type-label">Main Canopy</div>
+        <div class="listing-model-name">Pilot 7 188 · NZ Aerosports</div>
+        <div class="listing-price-val">$850</div>
+        <div class="listing-footer">
+          <span class="listing-loc">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Oslo, Norway
+          </span>
+          <span class="verified">
+            <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            89 jumps
+          </span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Listing: Javelin Odyssey -->
+    <a href="/app/market/listing" class="listing-card">
+      <div class="listing-photo photo-javelin">
+        <div class="listing-photo-icon">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><circle cx="12" cy="14" r="2"/></svg>
+        </div>
+      </div>
+      <div class="listing-body">
+        <div class="listing-type-label">Container</div>
+        <div class="listing-model-name">Javelin Odyssey · Sun Path</div>
+        <div class="listing-price-val">$2,800</div>
+        <div class="listing-footer">
+          <span class="listing-loc">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Skydive Perris, CA
+          </span>
+          <span class="verified">
+            <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            456 jumps
+          </span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Sell CTA -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.25rem;text-align:center;margin-top:0.5rem">
+      <div style="font-size:0.875rem;font-weight:600;margin-bottom:4px">Selling gear?</div>
+      <div style="font-size:0.8rem;color:var(--t2);margin-bottom:1rem">Listings with verified locker data get 3× more enquiries.</div>
+      <a href="/app/market/new" class="btn btn-primary" style="display:inline-flex">
+        List with verified data
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Bottom nav -->
+  <nav class="bottom-nav">
+    <a href="/app" class="tab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Home
+    </a>
+    <a href="/app/locker" class="tab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><circle cx="12" cy="14" r="2"/></svg>
+      Locker
+    </a>
+    <a href="/app/market" class="tab active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      Market
+    </a>
+    <a href="#" class="tab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      Profile
+    </a>
+  </nav>
+
+</div>
+<script src="/app/app.js"></script>
+<script>
+document.querySelectorAll('.filter-chip').forEach(function(chip) {
+  chip.addEventListener('click', function() {
+    document.querySelectorAll('.filter-chip').forEach(function(c) { c.classList.remove('active'); });
+    chip.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

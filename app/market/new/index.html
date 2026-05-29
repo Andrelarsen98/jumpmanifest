@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>New Listing — Manifest</title>
+  <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('mf_theme') || 'dark')</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/app/styles.css">
+  <style>
+    .locker-select-item {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      padding: 0.875rem 1rem;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.15s;
+      border-radius: 0;
+    }
+    .locker-select-item:first-child { border-radius: 14px 14px 0 0; }
+    .locker-select-item:last-child  { border-radius: 0 0 14px 14px; border-bottom: none; }
+    .locker-select-item:hover  { background: var(--surface2); }
+    .locker-select-item:active { background: var(--surface2); }
+    .locker-select-item.chosen {
+      background: var(--accent-dim);
+      border-color: var(--accent-dim2);
+    }
+    .locker-select-icon {
+      width: 44px; height: 44px;
+      border-radius: 11px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      display: grid; place-items: center;
+      flex-shrink: 0;
+      color: var(--t2);
+    }
+    .locker-select-item.chosen .locker-select-icon {
+      background: var(--accent-dim2);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .select-check {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      border: 2px solid var(--border2);
+      margin-left: auto;
+      display: grid; place-items: center;
+      flex-shrink: 0;
+    }
+    .locker-select-item.chosen .select-check {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #111;
+    }
+    /* Pre-fill magic banner */
+    .magic-banner {
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-dim2);
+      border-radius: 12px;
+      padding: 0.875rem 1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 1.25rem;
+    }
+    .magic-banner-text { font-size: 0.82rem; font-weight: 500; color: var(--accent); line-height: 1.5; }
+    .magic-banner-text strong { font-weight: 700; }
+    /* Preview card */
+    .preview-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+    .preview-photo {
+      height: 140px;
+      background: #1e2a1e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--t3);
+    }
+    .preview-body { padding: 1rem; }
+  </style>
+</head>
+<body>
+<div class="app-shell">
+
+  <!-- Top nav -->
+  <header class="top-nav">
+    <a href="/app/market" class="nav-back" aria-label="Back" id="nav-back-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </a>
+    <h1 class="nav-title">New Listing</h1>
+    <div class="nav-actions">
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        <svg class="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Step indicator -->
+  <div class="steps">
+    <div class="step-dot active" id="d1"></div>
+    <div class="step-dot" id="d2"></div>
+    <div class="step-dot" id="d3"></div>
+    <span style="font-size:0.72rem;color:var(--t3);margin-left:6px" id="slabel">Step 1 of 3 — Select gear</span>
+  </div>
+
+  <!-- ── STEP 1: Pick from locker ── -->
+  <div class="page-body" id="s1">
+    <div style="margin-bottom:1.25rem">
+      <div style="font-size:1.125rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:4px">Which gear are you selling?</div>
+      <div style="font-size:0.845rem;color:var(--t2)">Select from your Gear Locker. Verified data comes with it.</div>
+    </div>
+
+    <div style="border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:1.25rem" id="locker-list">
+
+      <div class="locker-select-item" onclick="selectGear(this,'Vector 3 M-Series','Container','VSE','287 jumps')">
+        <div class="locker-select-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><circle cx="12" cy="14" r="2"/></svg>
+        </div>
+        <div style="flex:1;min-width:0">
+          <div class="gear-name">Vector 3 M-Series</div>
+          <div class="gear-sub">Container · 287 jumps</div>
+        </div>
+        <div class="select-check">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+      </div>
+
+      <div class="locker-select-item" onclick="selectGear(this,'Sabre2 190','Main Canopy','Performance Designs','287 jumps')">
+        <div class="locker-select-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12h20C22 6.48 17.52 2 12 2z"/><path d="M12 12l-3 8M12 12l3 8M9 20h6"/></svg>
+        </div>
+        <div style="flex:1;min-width:0">
+          <div class="gear-name">Sabre2 190</div>
+          <div class="gear-sub">Main Canopy · 287 jumps</div>
+        </div>
+        <div class="select-check">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+      </div>
+
+      <div class="locker-select-item" onclick="selectGear(this,'CYPRES 2 Expert','AAD','Airtec','No jumps tracked')">
+        <div class="locker-select-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M20 9h3M1 15h3M20 15h3"/></svg>
+        </div>
+        <div style="flex:1;min-width:0">
+          <div class="gear-name">CYPRES 2 Expert</div>
+          <div class="gear-sub">AAD · Service overdue</div>
+        </div>
+        <div class="select-check">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+      </div>
+
+      <div class="locker-select-item" onclick="selectGear(this,'Cookie G4','Helmet','Cookie Composites','287 jumps')">
+        <div class="locker-select-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 00-7.07 17.07"/><path d="M12 2a10 10 0 017.07 17.07"/><path d="M5 19a8 8 0 0014 0"/></svg>
+        </div>
+        <div style="flex:1;min-width:0">
+          <div class="gear-name">Cookie G4 Helmet</div>
+          <div class="gear-sub">Helmet · 287 jumps</div>
+        </div>
+        <div class="select-check">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="btn btn-primary btn-full" id="s1-next" onclick="goS(2)" disabled style="opacity:0.4">
+      Continue with selected gear
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+
+  <!-- ── STEP 2: Pre-filled listing form ── -->
+  <div class="page-body" id="s2" style="display:none">
+
+    <!-- THE MAGIC MOMENT -->
+    <div class="magic-banner">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent);flex-shrink:0">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <polyline points="9 12 11 14 15 10"/>
+      </svg>
+      <div class="magic-banner-text">
+        <strong>Listing pre-filled from your Gear Locker.</strong>
+        Buyers can see this data is verified — it can't be faked.
+      </div>
+    </div>
+
+    <!-- Verified (pre-filled) fields -->
+    <div class="field">
+      <label class="field-label">Gear Type</label>
+      <div class="field-prefilled">
+        <span class="field-prefilled-icon">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        <span id="pf-type">Main Canopy</span>
+        <span class="verified" style="margin-left:auto;font-size:0.6rem">Verified</span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="field-label">Brand &amp; Model</label>
+      <div class="field-prefilled">
+        <span class="field-prefilled-icon">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        <span id="pf-model">Sabre2 190 · Performance Designs</span>
+        <span class="verified" style="margin-left:auto;font-size:0.6rem">Verified</span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="field-label">Jump Count</label>
+      <div class="field-prefilled">
+        <span class="field-prefilled-icon">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        <span id="pf-jumps">287 jumps</span>
+        <span class="verified" style="margin-left:auto;font-size:0.6rem">Verified</span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="field-label">Service History</label>
+      <div class="field-prefilled">
+        <span class="field-prefilled-icon">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        Last service: May 2024 — available to buyers
+        <span class="verified" style="margin-left:auto;font-size:0.6rem">Verified</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Manual fields -->
+    <div class="field">
+      <label class="field-label">Asking Price (USD)</label>
+      <input class="field-input" type="number" placeholder="e.g. 1800" min="0" id="price-input">
+    </div>
+
+    <div class="field">
+      <label class="field-label">Location</label>
+      <input class="field-input" type="text" placeholder="e.g. Dubai, UAE">
+    </div>
+
+    <div class="field">
+      <label class="field-label">Description</label>
+      <textarea class="field-textarea" placeholder="Describe condition, reason for selling, what's included…"></textarea>
+    </div>
+
+    <div style="display:flex;gap:0.75rem;margin-top:1.5rem">
+      <button class="btn btn-outline" style="flex:0 0 auto;padding:13px 18px" onclick="goS(1)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      </button>
+      <button class="btn btn-primary btn-full" onclick="goS(3)">
+        Preview listing
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ── STEP 3: Preview ── -->
+  <div class="page-body" id="s3" style="display:none">
+    <div style="margin-bottom:1rem">
+      <div style="font-size:1.125rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:4px">Preview your listing</div>
+      <div style="font-size:0.845rem;color:var(--t2)">This is how buyers will see it.</div>
+    </div>
+
+    <div class="preview-card">
+      <div class="preview-photo">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2C6.48 2 2 6.48 2 12h20C22 6.48 17.52 2 12 2z"/>
+          <path d="M12 12l-3 8M12 12l3 8M9 20h6"/>
+        </svg>
+      </div>
+      <div class="preview-body">
+        <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--t3);margin-bottom:3px" id="prev-type">Main Canopy</div>
+        <div style="font-size:1rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:6px" id="prev-model">Sabre2 190 · Performance Designs</div>
+        <div style="font-size:1.1rem;font-weight:800;letter-spacing:-0.02em;color:var(--accent);margin-bottom:8px" id="prev-price">$—</div>
+        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+          <span class="verified">
+            <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span id="prev-jumps">287 jumps</span>
+          </span>
+          <span class="verified">
+            <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Gear Locker verified
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Verified data as buyers see it -->
+    <div class="verify-panel" style="margin-bottom:1rem">
+      <div class="verify-head">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        <div>
+          <div class="verify-head-title">Verified Gear Locker</div>
+          <div class="verify-head-sub">Buyers see this panel on your listing</div>
+        </div>
+      </div>
+      <div class="verify-row">
+        <span class="verify-key">Jump count</span>
+        <span class="verify-val"><span class="verify-check">✓</span><span id="pv-jumps">287 jumps (verified)</span></span>
+      </div>
+      <div class="verify-row">
+        <span class="verify-key">Last service</span>
+        <span class="verify-val"><span class="verify-check">✓</span>May 2024</span>
+      </div>
+      <div class="verify-row">
+        <span class="verify-key">Seller total jumps</span>
+        <span class="verify-val"><span class="verify-check">✓</span>287 jumps</span>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:0.75rem">
+      <button class="btn btn-outline" style="flex:0 0 auto;padding:13px 18px" onclick="goS(2)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      </button>
+      <a href="/app/market" class="btn btn-primary btn-full">
+        Post Listing
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Bottom nav -->
+  <nav class="bottom-nav">
+    <a href="/app" class="tab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Home
+    </a>
+    <a href="/app/locker" class="tab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><circle cx="12" cy="14" r="2"/></svg>
+      Locker
+    </a>
+    <a href="/app/market" class="tab active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      Market
+    </a>
+    <a href="#" class="tab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      Profile
+    </a>
+  </nav>
+
+</div>
+<script src="/app/app.js"></script>
+<script>
+var chosen = null;
+
+function selectGear(el, model, type, brand, jumps) {
+  document.querySelectorAll('.locker-select-item').forEach(function(i) { i.classList.remove('chosen'); });
+  el.classList.add('chosen');
+  chosen = { model: model, type: type, brand: brand, jumps: jumps };
+
+  var btn = document.getElementById('s1-next');
+  btn.disabled = false;
+  btn.style.opacity = '1';
+}
+
+function goS(n) {
+  document.getElementById('s1').style.display = n === 1 ? '' : 'none';
+  document.getElementById('s2').style.display = n === 2 ? '' : 'none';
+  document.getElementById('s3').style.display = n === 3 ? '' : 'none';
+
+  ['d1','d2','d3'].forEach(function(id, i) {
+    var d = document.getElementById(id);
+    d.className = 'step-dot';
+    if (i + 1 < n) d.classList.add('done');
+    else if (i + 1 === n) d.classList.add('active');
+  });
+
+  var labels = ['Step 1 of 3 — Select gear', 'Step 2 of 3 — Listing details', 'Step 3 of 3 — Preview'];
+  document.getElementById('slabel').textContent = labels[n - 1];
+
+  /* Pre-fill step 2 */
+  if (n === 2 && chosen) {
+    document.getElementById('pf-type').textContent  = chosen.type;
+    document.getElementById('pf-model').textContent = chosen.model + ' · ' + chosen.brand;
+    document.getElementById('pf-jumps').textContent = chosen.jumps;
+  }
+
+  /* Pre-fill step 3 preview */
+  if (n === 3 && chosen) {
+    document.getElementById('prev-type').textContent  = chosen.type;
+    document.getElementById('prev-model').textContent = chosen.model + ' · ' + chosen.brand;
+    document.getElementById('prev-jumps').textContent = chosen.jumps;
+    document.getElementById('pv-jumps').textContent   = chosen.jumps + ' (verified)';
+    var priceVal = document.getElementById('price-input').value;
+    document.getElementById('prev-price').textContent = priceVal ? '$' + parseInt(priceVal).toLocaleString() : '$—';
+  }
+
+  /* Back button destination */
+  if (n > 1) {
+    document.getElementById('nav-back-btn').setAttribute('href', '#');
+    document.getElementById('nav-back-btn').onclick = function(e) { e.preventDefault(); goS(n - 1); };
+  } else {
+    document.getElementById('nav-back-btn').setAttribute('href', '/app/market');
+    document.getElementById('nav-back-btn').onclick = null;
+  }
+
+  window.scrollTo(0, 0);
+}
+</script>
+</body>
+</html>

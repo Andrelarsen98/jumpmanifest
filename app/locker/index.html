@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Gear Locker — Manifest</title>
+  <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('mf_theme') || 'dark')</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/app/styles.css">
+</head>
+<body>
+<div class="app-shell">
+
+  <!-- Top nav -->
+  <header class="top-nav">
+    <a href="/app" class="nav-back" aria-label="Back">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </a>
+    <h1 class="nav-title">Gear Locker</h1>
+    <div class="nav-actions">
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        <svg class="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </button>
+      <a href="/app/locker/add" class="nav-add" aria-label="Add gear">+</a>
+    </div>
+  </header>
+
+  <!-- Body -->
+  <div class="page-body">
+
+    <!-- Status summary -->
+    <div class="alert alert-danger" style="margin-bottom:0.75rem">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <div>
+        <div style="font-weight:700;font-size:0.82rem">AAD service overdue</div>
+        <div style="font-size:0.76rem;opacity:0.85">CYPRES 2 Expert was due March 15, 2026</div>
+      </div>
+    </div>
+    <div class="alert alert-warning">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <div>
+        <div style="font-weight:700;font-size:0.82rem">Reserve repack due in 12 days</div>
+        <div style="font-size:0.76rem;opacity:0.85">PD Reserve 176 — due June 10, 2026</div>
+      </div>
+    </div>
+
+    <!-- Gear list -->
+    <div class="sec-hd">
+      <span class="sec-label">5 Items</span>
+      <span style="font-size:0.75rem;color:var(--t3)">Sort by status</span>
+    </div>
+
+    <div class="card">
+
+      <!-- CYPRES 2 — DANGER -->
+      <a href="/app/locker/item" class="gear-row">
+        <div class="gear-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M20 9h3M1 15h3M20 15h3"/></svg>
+        </div>
+        <div class="gear-info">
+          <div class="gear-name">CYPRES 2 Expert AAD</div>
+          <div class="gear-sub">Airtec · Serial CYP-194523</div>
+          <div class="gear-chips">
+            <span class="chip chip-danger">
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              Service overdue
+            </span>
+          </div>
+        </div>
+        <svg class="gear-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+
+      <!-- PD Reserve — WARNING -->
+      <a href="/app/locker/item" class="gear-row">
+        <div class="gear-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12h20C22 6.48 17.52 2 12 2z"/><path d="M12 12l-3 8M12 12l3 8M9 20h6"/></svg>
+        </div>
+        <div class="gear-info">
+          <div class="gear-name">PD Reserve 176</div>
+          <div class="gear-sub">Performance Designs · Serial PDR-88234</div>
+          <div class="gear-chips">
+            <span class="chip chip-warning">
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+              Repack due in 12 days
+            </span>
+          </div>
+        </div>
+        <svg class="gear-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+
+      <!-- Vector 3 — OK -->
+      <a href="/app/locker/item" class="gear-row">
+        <div class="gear-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><circle cx="12" cy="14" r="2"/></svg>
+        </div>
+        <div class="gear-info">
+          <div class="gear-name">Vector 3 M-Series</div>
+          <div class="gear-sub">VSE · Serial V3-45821</div>
+          <div class="gear-chips">
+            <span class="chip chip-neutral">287 jumps</span>
+            <span class="chip chip-success">
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              All clear
+            </span>
+          </div>
+        </div>
+        <svg class="gear-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+
+      <!-- Sabre2 190 — OK -->
+      <a href="/app/locker/item" class="gear-row">
+        <div class="gear-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12h20C22 6.48 17.52 2 12 2z"/><path d="M12 12l-3 8M12 12l3 8M9 20h6"/></svg>
+        </div>
+        <div class="gear-info">
+          <div class="gear-name">Sabre2 190</div>
+          <div class="gear-sub">Performance Designs · Serial SAB-22847</div>
+          <div class="gear-chips">
+            <span class="chip chip-neutral">287 jumps</span>
+          </div>
+        </div>
+        <svg class="gear-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+
+      <!-- Cookie G4 — OK -->
+      <a href="/app/locker/item" class="gear-row">
+        <div class="gear-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 00-7.07 17.07"/><path d="M12 2a10 10 0 017.07 17.07"/><path d="M5 19a8 8 0 0014 0"/></svg>
+        </div>
+        <div class="gear-info">
+          <div class="gear-name">Cookie G4 Helmet</div>
+          <div class="gear-sub">Cookie Composites · Serial CKG4-3921</div>
+          <div class="gear-chips">
+            <span class="chip chip-neutral">287 jumps</span>
+          </div>
+        </div>
+        <svg class="gear-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+
+    </div>
+
+    <!-- Add gear CTA -->
+    <div style="margin-top:1.25rem">
+      <a href="/app/locker/add" class="btn btn-outline btn-full">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Add gear to your locker
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Bottom nav -->
+  <nav class="bottom-nav">
+    <a href="/app" class="tab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Home
+    </a>
+    <a href="/app/locker" class="tab active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><circle cx="12" cy="14" r="2"/></svg>
+      Locker
+    </a>
+    <a href="/app/market" class="tab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      Market
+    </a>
+    <a href="#" class="tab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      Profile
+    </a>
+  </nav>
+
+</div>
+<script src="/app/app.js"></script>
+</body>
+</html>

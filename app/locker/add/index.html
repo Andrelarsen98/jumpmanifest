@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Add Gear — Manifest</title>
+  <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('mf_theme') || 'dark')</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/app/styles.css">
+</head>
+<body>
+<div class="app-shell">
+
+  <!-- Top nav -->
+  <header class="top-nav">
+    <a href="/app/locker" class="nav-back" aria-label="Back">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </a>
+    <h1 class="nav-title">Add Gear</h1>
+    <div class="nav-actions">
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        <svg class="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Step indicator -->
+  <div class="steps" id="steps">
+    <div class="step-dot active" id="dot1"></div>
+    <div class="step-dot" id="dot2"></div>
+    <div class="step-dot" id="dot3"></div>
+    <span style="font-size:0.72rem;color:var(--t3);margin-left:6px" id="step-label">Step 1 of 3 — Gear type</span>
+  </div>
+
+  <!-- ── STEP 1: Type ── -->
+  <div class="page-body" id="step1">
+    <div style="margin-bottom:1.25rem">
+      <div style="font-size:1.125rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:4px">What are you adding?</div>
+      <div style="font-size:0.845rem;color:var(--t2)">Select the type of gear to add to your locker.</div>
+    </div>
+    <div class="type-grid">
+      <div class="type-option" onclick="selectType(this,'Container')">
+        <div class="type-option-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><circle cx="12" cy="14" r="2"/></svg>
+        </div>
+        <span class="type-option-label">Container</span>
+      </div>
+      <div class="type-option" onclick="selectType(this,'Main Canopy')">
+        <div class="type-option-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12h20C22 6.48 17.52 2 12 2z"/><path d="M12 12l-3 8M12 12l3 8M9 20h6"/></svg>
+        </div>
+        <span class="type-option-label">Main Canopy</span>
+      </div>
+      <div class="type-option" onclick="selectType(this,'Reserve Canopy')">
+        <div class="type-option-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12h20C22 6.48 17.52 2 12 2z"/><path d="M12 12l-3 8M12 12l3 8M9 20h6"/></svg>
+        </div>
+        <span class="type-option-label">Reserve Canopy</span>
+      </div>
+      <div class="type-option" onclick="selectType(this,'AAD')">
+        <div class="type-option-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M20 9h3M1 15h3M20 15h3"/></svg>
+        </div>
+        <span class="type-option-label">AAD</span>
+      </div>
+      <div class="type-option" onclick="selectType(this,'Helmet')">
+        <div class="type-option-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 00-7.07 17.07"/><path d="M12 2a10 10 0 017.07 17.07"/><path d="M5 19a8 8 0 0014 0"/></svg>
+        </div>
+        <span class="type-option-label">Helmet</span>
+      </div>
+      <div class="type-option" onclick="selectType(this,'Other')">
+        <div class="type-option-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+        </div>
+        <span class="type-option-label">Other</span>
+      </div>
+    </div>
+    <button class="btn btn-primary btn-full" id="step1-next" onclick="goStep(2)" disabled style="opacity:0.4">
+      Continue
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+
+  <!-- ── STEP 2: Details ── -->
+  <div class="page-body" id="step2" style="display:none">
+    <div style="margin-bottom:1.25rem">
+      <div style="font-size:1.125rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:4px" id="step2-title">Container details</div>
+      <div style="font-size:0.845rem;color:var(--t2)">Enter the gear details from the data card.</div>
+    </div>
+    <div class="field">
+      <label class="field-label">Brand / Manufacturer</label>
+      <input class="field-input" type="text" placeholder="e.g. Velocity Sports Equipment">
+    </div>
+    <div class="field">
+      <label class="field-label">Model</label>
+      <input class="field-input" type="text" placeholder="e.g. Vector 3 M-Series">
+    </div>
+    <div class="field">
+      <label class="field-label">Serial Number</label>
+      <input class="field-input" type="text" placeholder="e.g. V3-45821">
+    </div>
+    <div class="field">
+      <label class="field-label">Manufacture Date</label>
+      <input class="field-input" type="month" placeholder="YYYY-MM">
+    </div>
+    <div class="field" id="jump-field">
+      <label class="field-label">Total Jumps <span style="color:var(--t3);font-weight:500;text-transform:none;letter-spacing:0">(if applicable)</span></label>
+      <input class="field-input" type="number" placeholder="e.g. 287" min="0">
+    </div>
+    <div style="display:flex;gap:0.75rem;margin-top:1.5rem">
+      <button class="btn btn-outline" style="flex:0 0 auto;padding:13px 18px" onclick="goStep(1)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      </button>
+      <button class="btn btn-primary btn-full" onclick="goStep(3)">
+        Continue
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ── STEP 3: Service dates ── -->
+  <div class="page-body" id="step3" style="display:none">
+    <div style="margin-bottom:1.25rem">
+      <div style="font-size:1.125rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:4px">Service &amp; expiry dates</div>
+      <div style="font-size:0.845rem;color:var(--t2)">Manifest will alert you before deadlines.</div>
+    </div>
+    <div class="field" id="repack-field">
+      <label class="field-label">Last Repack Date</label>
+      <input class="field-input" type="date">
+    </div>
+    <div class="field">
+      <label class="field-label">Last AAD / Component Service</label>
+      <input class="field-input" type="date">
+    </div>
+    <div class="field">
+      <label class="field-label">Notes <span style="color:var(--t3);font-weight:500;text-transform:none;letter-spacing:0">(optional)</span></label>
+      <textarea class="field-textarea" placeholder="e.g. Closing loops replaced, Cypress loops fresh..."></textarea>
+    </div>
+    <div style="display:flex;gap:0.75rem;margin-top:1.5rem">
+      <button class="btn btn-outline" style="flex:0 0 auto;padding:13px 18px" onclick="goStep(2)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      </button>
+      <a href="/app/locker" class="btn btn-primary btn-full">
+        Add to Locker
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </a>
+    </div>
+  </div>
+
+</div>
+<script src="/app/app.js"></script>
+<script>
+var selectedType = null;
+
+function selectType(el, type) {
+  document.querySelectorAll('.type-option').forEach(function(o) { o.classList.remove('selected'); });
+  el.classList.add('selected');
+  selectedType = type;
+  var btn = document.getElementById('step1-next');
+  btn.disabled = false;
+  btn.style.opacity = '1';
+}
+
+function goStep(n) {
+  document.getElementById('step1').style.display = n === 1 ? '' : 'none';
+  document.getElementById('step2').style.display = n === 2 ? '' : 'none';
+  document.getElementById('step3').style.display = n === 3 ? '' : 'none';
+
+  ['dot1','dot2','dot3'].forEach(function(id, i) {
+    var dot = document.getElementById(id);
+    dot.className = 'step-dot';
+    if (i + 1 < n) dot.classList.add('done');
+    else if (i + 1 === n) dot.classList.add('active');
+  });
+
+  var labels = ['Step 1 of 3 — Gear type', 'Step 2 of 3 — Details', 'Step 3 of 3 — Service dates'];
+  document.getElementById('step-label').textContent = labels[n - 1];
+
+  if (n === 2 && selectedType) {
+    document.getElementById('step2-title').textContent = selectedType + ' details';
+  }
+  window.scrollTo(0, 0);
+}
+</script>
+</body>
+</html>
