@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Coaches — Manifest</title>
+  <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('mf_theme') || 'dark')</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/app/styles.css">
+  <style>
+    /* ── Sticky search + filters header ── */
+    .coaches-sticky {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      padding: 12px 18px 0;
+      border-bottom: 1px solid var(--line-soft);
+      padding-bottom: 10px;
+    }
+
+    /* ── Filter chips ── */
+    .filter-row {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      scrollbar-width: none;
+    }
+    .filter-row::-webkit-scrollbar { display: none; }
+    .filter-chip {
+      padding: 6px 14px;
+      border-radius: 100px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink-2);
+      font-family: inherit;
+      font-size: 0.775rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+    }
+    .filter-chip.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-dim);
+    }
+    .filter-chip:hover:not(.active) { border-color: var(--line); color: var(--ink); }
+
+    /* ── Results meta row ── */
+    .results-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px 6px;
+    }
+    .results-count { font-size: 0.8rem; color: var(--ink-2); font-weight: 500; }
+    .results-sort {
+      font-size: 0.75rem;
+      color: var(--accent);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 0;
+    }
+
+    /* ── Coach card ── */
+    .coach-card {
+      background: var(--elev);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 1rem 1rem 1rem 1.125rem;
+      margin: 0 18px 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.15s, background 0.15s;
+      box-shadow: 0 8px 30px -16px rgba(0,0,0,.4);
+    }
+    .coach-card:hover  { border-color: rgba(255,255,255,0.14); }
+    .coach-card:active { opacity: 0.85; }
+
+    /* Avatar */
+    .coach-avatar-wrap { position: relative; flex-shrink: 0; }
+    .coach-avatar {
+      width: 54px; height: 54px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.125rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+    }
+    .coach-verified-dot {
+      position: absolute;
+      bottom: 1px; right: 1px;
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--elev);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Card body */
+    .coach-body { flex: 1; min-width: 0; }
+    .coach-name {
+      font-size: 0.9375rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+    .coach-disciplines {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+      margin-bottom: 5px;
+    }
+    .disc-tag {
+      padding: 2px 8px;
+      border-radius: 5px;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: var(--elev-2);
+      border: 1px solid var(--line);
+      color: var(--ink-2);
+    }
+    .disc-tag.primary {
+      background: var(--accent-dim);
+      border-color: var(--accent-dim2);
+      color: var(--accent);
+    }
+    .coach-meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      color: var(--ink-2);
+    }
+    .coach-rating {
+      font-weight: 700;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .coach-sep { color: var(--ink-3); }
+    .coach-location {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 0.75rem;
+      color: var(--ink-3);
+      margin-top: 3px;
+    }
+
+    .coach-arrow { color: var(--ink-3); flex-shrink: 0; }
+
+    /* Avatar color variants */
+    .av-amber  { background: rgba(243,167,63,0.15); color: var(--accent); }
+    .av-sky    { background: rgba(63,167,243,0.15); color: #5ab8f5; }
+    .av-green  { background: rgba(74,173,128,0.15); color: var(--success); }
+    .av-rose   { background: rgba(232,105,78,0.18); color: var(--danger); }
+    .av-purple { background: rgba(163,118,243,0.15); color: #b388ff; }
+    .av-teal   { background: rgba(63,210,200,0.15); color: #4dd9cf; }
+
+    /* ── Featured coach banner ── */
+    .featured-banner {
+      margin: 14px 18px 18px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-dim2);
+      border-radius: 18px;
+      padding: 1.125rem;
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      transition: opacity 0.15s;
+    }
+    .featured-banner:active { opacity: 0.85; }
+    .featured-label {
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 3px;
+    }
+    .featured-name {
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+    .featured-sub {
+      font-size: 0.78rem;
+      color: var(--ink-2);
+      margin-top: 2px;
+    }
+    .featured-avatar {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: rgba(243,167,63,0.25);
+      color: var(--accent);
+      font-size: 1.125rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 1.5px solid var(--accent-dim2);
+    }
+
+    /* ── Section heading ── */
+    .sec-hd {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4px 18px 10px;
+    }
+    .sec-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+
+    .page-bottom { height: 100px; }
+  </style>
+</head>
+<body>
+<div class="app-shell">
+
+  <!-- Top nav -->
+  <header class="top-nav">
+    <div style="width:34px;flex-shrink:0"></div>
+    <h1 class="nav-title">Coaches</h1>
+    <div class="nav-actions">
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        <svg class="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Sticky search + filters -->
+  <div class="coaches-sticky">
+    <div class="search-bar" style="margin-bottom:10px">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input class="search-input" type="search" placeholder="Search coaches, disciplines, DZs…">
+    </div>
+    <div class="filter-row">
+      <button class="filter-chip active">All</button>
+      <button class="filter-chip">Freefly</button>
+      <button class="filter-chip">Canopy</button>
+      <button class="filter-chip">Formation</button>
+      <button class="filter-chip">AFF</button>
+      <button class="filter-chip">Wingsuit</button>
+      <button class="filter-chip">BASE</button>
+    </div>
+  </div>
+
+  <!-- Featured coach -->
+  <a href="#" class="featured-banner">
+    <div class="featured-avatar">KN</div>
+    <div style="flex:1;min-width:0">
+      <div class="featured-label">Featured Coach</div>
+      <div class="featured-name">Kai Nakamura</div>
+      <div class="featured-sub">Wingsuit · Freefly · Empuriabrava, Spain</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0">
+      <div style="display:flex;align-items:center;gap:3px;font-size:0.825rem;font-weight:800;color:var(--accent)">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="var(--accent)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        5.0
+      </div>
+      <div style="font-size:0.68rem;color:var(--ink-3);font-weight:500">12,000+ jumps</div>
+    </div>
+  </a>
+
+  <!-- Results meta -->
+  <div class="results-meta">
+    <span class="results-count">28 coaches near you</span>
+    <button class="results-sort">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      Verified only
+    </button>
+  </div>
+
+  <!-- Section label -->
+  <div class="sec-hd">
+    <span class="sec-label">Top Rated</span>
+  </div>
+
+  <!-- Coach: Sarah Chen -->
+  <a href="#" class="coach-card">
+    <div class="coach-avatar-wrap">
+      <div class="coach-avatar av-sky">SC</div>
+      <div class="coach-verified-dot">
+        <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+    </div>
+    <div class="coach-body">
+      <div class="coach-name">Sarah Chen</div>
+      <div class="coach-disciplines">
+        <span class="disc-tag primary">Freefly</span>
+        <span class="disc-tag">AFF</span>
+      </div>
+      <div class="coach-meta">
+        <span class="coach-rating">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="var(--accent)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          4.9
+        </span>
+        <span class="coach-sep">·</span>
+        <span>6,200+ jumps</span>
+        <span class="coach-sep">·</span>
+        <span>32 students</span>
+      </div>
+      <div class="coach-location">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Sydney Skydivers, Australia
+      </div>
+    </div>
+    <svg class="coach-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+  </a>
+
+  <!-- Coach: Mike Torres -->
+  <a href="#" class="coach-card">
+    <div class="coach-avatar-wrap">
+      <div class="coach-avatar av-amber">MT</div>
+      <div class="coach-verified-dot">
+        <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+    </div>
+    <div class="coach-body">
+      <div class="coach-name">Mike Torres</div>
+      <div class="coach-disciplines">
+        <span class="disc-tag primary">Canopy</span>
+        <span class="disc-tag">Formation</span>
+      </div>
+      <div class="coach-meta">
+        <span class="coach-rating">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="var(--accent)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          4.8
+        </span>
+        <span class="coach-sep">·</span>
+        <span>8,500+ jumps</span>
+        <span class="coach-sep">·</span>
+        <span>47 students</span>
+      </div>
+      <div class="coach-location">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Skydive Eloy, Arizona
+      </div>
+    </div>
+    <svg class="coach-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+  </a>
+
+  <!-- Coach: Emma Walsh -->
+  <a href="#" class="coach-card">
+    <div class="coach-avatar-wrap">
+      <div class="coach-avatar av-green">EW</div>
+      <div class="coach-verified-dot">
+        <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+    </div>
+    <div class="coach-body">
+      <div class="coach-name">Emma Walsh</div>
+      <div class="coach-disciplines">
+        <span class="disc-tag primary">Formation</span>
+        <span class="disc-tag">AFF</span>
+      </div>
+      <div class="coach-meta">
+        <span class="coach-rating">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="var(--accent)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          4.7
+        </span>
+        <span class="coach-sep">·</span>
+        <span>3,800+ jumps</span>
+        <span class="coach-sep">·</span>
+        <span>21 students</span>
+      </div>
+      <div class="coach-location">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Skydive Perris, California
+      </div>
+    </div>
+    <svg class="coach-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+  </a>
+
+  <!-- Section label -->
+  <div class="sec-hd" style="margin-top:6px">
+    <span class="sec-label">Near You</span>
+  </div>
+
+  <!-- Coach: Bruno Santos -->
+  <a href="#" class="coach-card">
+    <div class="coach-avatar-wrap">
+      <div class="coach-avatar av-rose">BS</div>
+      <div class="coach-verified-dot">
+        <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+    </div>
+    <div class="coach-body">
+      <div class="coach-name">Bruno Santos</div>
+      <div class="coach-disciplines">
+        <span class="disc-tag primary">Wingsuit</span>
+        <span class="disc-tag">BASE</span>
+      </div>
+      <div class="coach-meta">
+        <span class="coach-rating">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="var(--accent)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          4.9
+        </span>
+        <span class="coach-sep">·</span>
+        <span>5,100+ jumps</span>
+        <span class="coach-sep">·</span>
+        <span>18 students</span>
+      </div>
+      <div class="coach-location">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Lauterbrunnen, Switzerland
+      </div>
+    </div>
+    <svg class="coach-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+  </a>
+
+  <!-- Coach: Priya Sharma -->
+  <a href="#" class="coach-card">
+    <div class="coach-avatar-wrap">
+      <div class="coach-avatar av-purple">PS</div>
+      <div class="coach-verified-dot">
+        <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+    </div>
+    <div class="coach-body">
+      <div class="coach-name">Priya Sharma</div>
+      <div class="coach-disciplines">
+        <span class="disc-tag primary">AFF</span>
+        <span class="disc-tag">Tandem</span>
+      </div>
+      <div class="coach-meta">
+        <span class="coach-rating">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="var(--accent)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          4.8
+        </span>
+        <span class="coach-sep">·</span>
+        <span>4,600+ jumps</span>
+        <span class="coach-sep">·</span>
+        <span>55 students</span>
+      </div>
+      <div class="coach-location">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Skydive Dubai, UAE
+      </div>
+    </div>
+    <svg class="coach-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+  </a>
+
+  <!-- Coach: Alex Kim -->
+  <a href="#" class="coach-card">
+    <div class="coach-avatar-wrap">
+      <div class="coach-avatar av-teal">AK</div>
+      <div class="coach-verified-dot">
+        <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+    </div>
+    <div class="coach-body">
+      <div class="coach-name">Alex Kim</div>
+      <div class="coach-disciplines">
+        <span class="disc-tag primary">Canopy</span>
+        <span class="disc-tag">Freefly</span>
+      </div>
+      <div class="coach-meta">
+        <span class="coach-rating">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="var(--accent)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          4.6
+        </span>
+        <span class="coach-sep">·</span>
+        <span>2,900+ jumps</span>
+        <span class="coach-sep">·</span>
+        <span>14 students</span>
+      </div>
+      <div class="coach-location">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Empuriabrava, Spain
+      </div>
+    </div>
+    <svg class="coach-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+  </a>
+
+  <!-- Become a coach CTA -->
+  <div style="margin:6px 18px 0;background:var(--elev);border:1px solid var(--line);border-radius:14px;padding:1.25rem;text-align:center">
+    <div style="font-size:0.875rem;font-weight:700;margin-bottom:4px">Are you a coach?</div>
+    <div style="font-size:0.8rem;color:var(--ink-2);margin-bottom:1rem">Create a verified profile and connect with students worldwide.</div>
+    <button class="btn btn-primary btn-full">
+      Apply to coach
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+
+  <div class="page-bottom"></div>
+
+  <!-- Bottom nav -->
+  <nav class="bottom-nav">
+    <a href="/app" class="tab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>
+      Home
+    </a>
+    <a href="/app/locker" class="tab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a4 4 0 018 0v2"/></svg>
+      Locker
+    </a>
+    <a href="/app/market" class="tab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16l-1 13H5L4 7zM9 7V5a3 3 0 016 0v2"/></svg>
+      Market
+    </a>
+    <a href="/app/coaches" class="tab active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3"/><path d="M4 20c0-3.5 3.5-5.5 8-5.5s8 2 8 5.5"/><path d="M18 5l2 2-2 2"/><path d="M20 7h-4"/></svg>
+      Coaches
+    </a>
+    <a href="/app/profile" class="tab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+      Profile
+    </a>
+  </nav>
+
+</div>
+<script src="/app/app.js"></script>
+<script>
+document.querySelectorAll('.filter-chip').forEach(function(chip) {
+  chip.addEventListener('click', function() {
+    document.querySelectorAll('.filter-chip').forEach(function(c) { c.classList.remove('active'); });
+    chip.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
