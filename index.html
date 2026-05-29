@@ -579,7 +579,7 @@
 
   <div class="form-wrap" id="hw">
     <div class="form-row" id="hr">
-      <input type="email" id="he" class="form-input" placeholder="Enter your email" autocomplete="email">
+      <input type="email" id="he" name="email" class="form-input" placeholder="Enter your email" autocomplete="email">
       <button class="form-btn" id="hb">Join Waitlist</button>
     </div>
     <p class="form-note" id="hn">Be first to know when we launch. No spam, ever.</p>
@@ -706,7 +706,7 @@
 
     <div class="form-wrap" id="cw">
       <div class="form-row" id="cr">
-        <input type="email" id="ce" class="form-input" placeholder="your@email.com" autocomplete="email">
+        <input type="email" id="ce" name="email" class="form-input" placeholder="your@email.com" autocomplete="email">
         <button class="form-btn" id="cb">Get Early Access</button>
       </div>
       <p class="form-note" id="cn">No spam. Unsubscribe anytime.</p>
@@ -795,27 +795,55 @@
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 })();
 
-/* ── Waitlist forms ── */
-function wire(row, email, btn, note, ok) {
+/* ── Waitlist forms — Formspree ── */
+const FORMSPREE = 'https://formspree.io/f/meednyag';
+
+function wire(row, emailEl, btn, note, ok) {
   function go() {
-    const v = (email.value || '').trim();
+    const v = (emailEl.value || '').trim();
+
+    /* Client-side format check */
     if (!v || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) {
-      email.style.color = '#d07070';
-      email.focus();
-      setTimeout(() => { email.style.color = ''; }, 1400);
+      emailEl.style.color = '#d07070';
+      emailEl.focus();
+      setTimeout(() => { emailEl.style.color = ''; }, 1400);
       return;
     }
-    try {
-      const l = JSON.parse(localStorage.getItem('mf') || '[]');
-      if (!l.includes(v)) { l.push(v); localStorage.setItem('mf', JSON.stringify(l)); }
-    } catch (_) {}
-    /* ↑ Wire up a real email service here: Resend, Formspree, ConvertKit, etc. */
-    row.style.display  = 'none';
-    note.style.display = 'none';
-    ok.style.display   = 'block';
+
+    /* Disable button and show loading state */
+    btn.disabled    = true;
+    btn.textContent = '…';
+
+    fetch(FORMSPREE, {
+      method:  'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ email: v }),
+    })
+      .then(res => {
+        if (res.ok) {
+          /* Success — show confirmation, hide form */
+          row.style.display  = 'none';
+          note.style.display = 'none';
+          ok.style.display   = 'block';
+        } else {
+          /* Formspree returned an error status */
+          return res.json().then(data => { throw new Error(data.error || 'Submission failed'); });
+        }
+      })
+      .catch(() => {
+        /* Network error or Formspree error — restore button, show inline message */
+        btn.disabled    = false;
+        btn.textContent = btn.dataset.label;
+        note.textContent = 'Something went wrong — please try again.';
+        note.style.color = '#d07070';
+      });
   }
+
+  /* Store original label for error recovery */
+  btn.dataset.label = btn.textContent;
+
   btn.addEventListener('click', go);
-  email.addEventListener('keydown', e => { if (e.key === 'Enter') go(); });
+  emailEl.addEventListener('keydown', e => { if (e.key === 'Enter') go(); });
 }
 
 wire(
