@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Welcome — Manifest</title>
+  <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('mf_theme') || 'dark')</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/app/styles.css">
+  <style>
+    .ob-shell {
+      max-width: 480px;
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg);
+    }
+
+    .ob-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1rem 0;
+    }
+
+    .ob-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .ob-logo-mark {
+      width: 30px; height: 30px;
+      border-radius: 8px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-dim2);
+      display: grid; place-items: center;
+    }
+    .ob-logo-name {
+      font-size: 0.9375rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .ob-progress {
+      display: flex;
+      gap: 5px;
+      padding: 1rem 1rem 0;
+    }
+    .ob-dot {
+      height: 4px;
+      border-radius: 2px;
+      flex: 1;
+      background: var(--border2);
+      transition: background 0.3s;
+    }
+    .ob-dot.active { background: var(--accent); }
+    .ob-dot.done   { background: var(--success); }
+
+    .ob-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 0 1rem 2rem;
+    }
+
+    /* Screens */
+    .ob-screen { display: none; flex-direction: column; flex: 1; }
+    .ob-screen.visible { display: flex; }
+
+    /* Welcome screen */
+    .ob-welcome {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem 0;
+    }
+    .ob-welcome-icon {
+      width: 72px; height: 72px;
+      border-radius: 20px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-dim2);
+      display: grid; place-items: center;
+      margin-bottom: 2rem;
+    }
+    .ob-headline {
+      font-size: 2.5rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 0.625rem;
+    }
+    .ob-sub {
+      font-size: 1rem;
+      color: var(--t2);
+      letter-spacing: -0.01em;
+    }
+
+    /* Question screens */
+    .ob-question {
+      padding-top: 2.5rem;
+    }
+    .ob-q-label {
+      font-size: 1.625rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 0.375rem;
+    }
+    .ob-q-hint {
+      font-size: 0.875rem;
+      color: var(--t2);
+      margin-bottom: 1.75rem;
+    }
+
+    /* Name input */
+    .ob-name-input {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid var(--border2);
+      border-radius: 0;
+      padding: 0.5rem 0;
+      color: var(--t1);
+      outline: none;
+      width: 100%;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+    .ob-name-input:focus { border-color: var(--accent); }
+    .ob-name-input::placeholder { color: var(--t3); }
+
+    /* Chip selectors */
+    .ob-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .ob-chip {
+      padding: 9px 16px;
+      border-radius: 10px;
+      border: 1.5px solid var(--border2);
+      background: var(--surface);
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--t1);
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s, color 0.15s;
+      letter-spacing: -0.01em;
+    }
+    .ob-chip:hover { border-color: var(--accent); }
+    .ob-chip.selected {
+      border-color: var(--accent);
+      background: var(--accent-dim);
+      color: var(--accent);
+    }
+
+    /* Exact number field */
+    .ob-exact-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .ob-exact-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--t3);
+      white-space: nowrap;
+    }
+    .ob-exact-input {
+      background: var(--surface);
+      border: 1px solid var(--border2);
+      border-radius: 10px;
+      padding: 9px 14px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--t1);
+      outline: none;
+      width: 120px;
+      transition: border-color 0.2s;
+    }
+    .ob-exact-input:focus { border-color: var(--accent); }
+    .ob-exact-input::placeholder { color: var(--t3); }
+
+    /* DZ autocomplete */
+    .ob-dz-wrap { position: relative; margin-bottom: 1rem; }
+    .ob-dz-input {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border2);
+      border-radius: 10px;
+      padding: 11px 14px;
+      font-family: inherit;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--t1);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .ob-dz-input:focus { border-color: var(--accent); }
+    .ob-dz-input::placeholder { color: var(--t3); }
+    .ob-dz-dropdown {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0; right: 0;
+      background: var(--surface);
+      border: 1px solid var(--border2);
+      border-radius: 12px;
+      overflow: hidden;
+      z-index: 50;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      display: none;
+    }
+    .ob-dz-dropdown.open { display: block; }
+    .ob-dz-option {
+      padding: 11px 14px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.1s;
+    }
+    .ob-dz-option:last-child { border-bottom: none; }
+    .ob-dz-option:hover { background: var(--surface2); }
+    .ob-dz-option mark {
+      background: transparent;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .ob-dz-selected {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-dim2);
+      border-radius: 10px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .ob-dz-clear {
+      background: none;
+      border: none;
+      color: var(--accent);
+      cursor: pointer;
+      padding: 0;
+      font-size: 1rem;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Footer area */
+    .ob-footer {
+      padding: 0 1rem 2rem;
+      padding-bottom: max(2rem, env(safe-area-inset-bottom, 2rem));
+    }
+    .ob-skip {
+      text-align: center;
+      margin-top: 0.875rem;
+    }
+    .ob-skip-btn {
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 0.8rem;
+      color: var(--t3);
+      cursor: pointer;
+      letter-spacing: 0.01em;
+    }
+    .ob-skip-btn:hover { color: var(--t2); }
+  </style>
+</head>
+<body>
+<div class="ob-shell">
+
+  <div class="ob-top">
+    <div class="ob-logo">
+      <div class="ob-logo-mark">
+        <svg width="15" height="13" viewBox="0 0 15 13" fill="none">
+          <path d="M7.5 0.5C4.46 0.5 2 2.96 2 6h11C13 2.96 10.54 0.5 7.5 0.5z" fill="rgba(240,162,58,0.9)"/>
+          <path d="M7.5 6L5 11.5M7.5 6l2.5 5.5M5 11.5h5" stroke="rgba(240,162,58,0.45)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="ob-logo-name">Manifest</span>
+    </div>
+    <button class="theme-toggle" aria-label="Toggle theme">
+      <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      <svg class="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+  </div>
+
+  <!-- Progress dots (hidden on welcome) -->
+  <div class="ob-progress" id="ob-progress" style="visibility:hidden">
+    <div class="ob-dot" id="dot-0"></div>
+    <div class="ob-dot" id="dot-1"></div>
+    <div class="ob-dot" id="dot-2"></div>
+    <div class="ob-dot" id="dot-3"></div>
+  </div>
+
+  <!-- Screens -->
+  <div class="ob-body">
+
+    <!-- Screen 0: Welcome -->
+    <div class="ob-screen visible" id="screen-0">
+      <div class="ob-welcome">
+        <div class="ob-welcome-icon">
+          <svg width="34" height="30" viewBox="0 0 15 13" fill="none">
+            <path d="M7.5 0.5C4.46 0.5 2 2.96 2 6h11C13 2.96 10.54 0.5 7.5 0.5z" fill="rgba(240,162,58,0.9)"/>
+            <path d="M7.5 6L5 11.5M7.5 6l2.5 5.5M5 11.5h5" stroke="rgba(240,162,58,0.45)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="ob-headline">Welcome.</div>
+        <div class="ob-sub">Let's set up your profile.</div>
+      </div>
+    </div>
+
+    <!-- Screen 1: Name -->
+    <div class="ob-screen" id="screen-1">
+      <div class="ob-question">
+        <div class="ob-q-label">What's your name?</div>
+        <div class="ob-q-hint">First name is fine.</div>
+        <input
+          type="text"
+          class="ob-name-input"
+          id="input-name"
+          placeholder="Your name"
+          autocomplete="given-name"
+          autocorrect="off"
+          spellcheck="false"
+          maxlength="40"
+        >
+      </div>
+    </div>
+
+    <!-- Screen 2: Jumps + License -->
+    <div class="ob-screen" id="screen-2">
+      <div class="ob-question">
+        <div class="ob-q-label">Tell us about your jumping.</div>
+        <div class="ob-q-hint">Jumps and rating help match gear to your experience.</div>
+
+        <div class="sec-label" style="margin-bottom:0.625rem">Jump count</div>
+        <div class="ob-chips" id="jump-chips">
+          <button class="ob-chip" data-val="<100">&lt;100</button>
+          <button class="ob-chip" data-val="100–500">100–500</button>
+          <button class="ob-chip" data-val="500–1000">500–1,000</button>
+          <button class="ob-chip" data-val="1000–3000">1,000–3,000</button>
+          <button class="ob-chip" data-val="3000+">3,000+</button>
+        </div>
+        <div class="ob-exact-wrap">
+          <span class="ob-exact-label">Exact number</span>
+          <input type="number" class="ob-exact-input" id="input-jumps-exact" placeholder="e.g. 287" min="0" max="99999">
+        </div>
+
+        <div class="sec-label" style="margin-bottom:0.625rem">License &amp; ratings</div>
+        <div class="ob-chips" id="license-chips">
+          <button class="ob-chip" data-val="A">A</button>
+          <button class="ob-chip" data-val="B">B</button>
+          <button class="ob-chip" data-val="C">C</button>
+          <button class="ob-chip" data-val="D">D</button>
+          <button class="ob-chip" data-val="AFF-I">AFF-I</button>
+          <button class="ob-chip" data-val="TI">TI</button>
+          <button class="ob-chip" data-val="Rigger">Rigger</button>
+          <button class="ob-chip" data-val="S&TA">S&amp;TA</button>
+          <button class="ob-chip" data-val="Other">Other</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Screen 3: Home DZ -->
+    <div class="ob-screen" id="screen-3">
+      <div class="ob-question">
+        <div class="ob-q-label">Where do you jump?</div>
+        <div class="ob-q-hint">Your home dropzone.</div>
+
+        <div id="dz-selected-wrap" style="display:none">
+          <div class="ob-dz-selected" id="dz-selected-display">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span id="dz-selected-name"></span>
+            <button class="ob-dz-clear" id="dz-clear" aria-label="Clear">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="ob-dz-wrap" id="dz-search-wrap">
+          <input
+            type="text"
+            class="ob-dz-input"
+            id="dz-input"
+            placeholder="Search dropzones…"
+            autocomplete="off"
+            autocorrect="off"
+            spellcheck="false"
+          >
+          <div class="ob-dz-dropdown" id="dz-dropdown"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="ob-footer">
+    <button class="btn btn-primary btn-full" id="ob-next">Get Started</button>
+    <div class="ob-skip" id="ob-skip-wrap" style="display:none">
+      <button class="ob-skip-btn" id="ob-skip">Skip for now</button>
+    </div>
+  </div>
+
+</div>
+<script src="/app/app.js"></script>
+<script>
+(function () {
+
+  var DZS = [
+    'Skydive Dubai', 'Skydive Voss', 'Skydive Eloy', 'Empuriabrava', 'Skydive Perris',
+    'Skydive Spain', 'Skydive Algarve', 'Skydive Chicago', 'Skydive Arizona',
+    'Skydive Sebastian', 'Skydive Snohomish', 'Skydive Monroe', 'Skydive Dallas',
+    'Skydive Spaceland', 'Skydive San Marcos', 'Skydive The Ranch', 'Skydive New England',
+    'Skydive Philadelphia', 'Skydive Tennessee', 'West Tennessee Skydiving',
+    'Skydive Orange', 'Skydive Deland', 'Skydive Palatka', 'Florida Skydiving Center',
+    'Skydive Moab', 'Skydive Lodi', 'Skydive Sacramento', 'Skydive Hollister',
+    'Skydive Kapowsin', 'Skydive Langar', 'Skydive Hibaldstow', 'Skydive Netheravon',
+    'Skydive Hinton', 'Skydive Seville', 'Skydive Fano', 'Flyland (Paracentro Locarno)'
+  ];
+
+  var state = {
+    screen: 0,
+    name: '',
+    jumpBand: '',
+    jumpsExact: '',
+    licenses: [],
+    homeDZ: ''
+  };
+
+  var screens    = document.querySelectorAll('.ob-screen');
+  var nextBtn    = document.getElementById('ob-next');
+  var skipWrap   = document.getElementById('ob-skip-wrap');
+  var skipBtn    = document.getElementById('ob-skip');
+  var progress   = document.getElementById('ob-progress');
+  var dots       = [
+    document.getElementById('dot-0'),
+    document.getElementById('dot-1'),
+    document.getElementById('dot-2'),
+    document.getElementById('dot-3')
+  ];
+
+  function goTo(n) {
+    screens[state.screen].classList.remove('visible');
+    state.screen = n;
+    screens[state.screen].classList.add('visible');
+    updateUI();
+
+    if (state.screen === 1) {
+      setTimeout(function () { document.getElementById('input-name').focus(); }, 100);
+    }
+    if (state.screen === 3) {
+      setTimeout(function () { document.getElementById('dz-input').focus(); }, 100);
+    }
+  }
+
+  function updateUI() {
+    var s = state.screen;
+
+    /* progress dots */
+    if (s === 0) {
+      progress.style.visibility = 'hidden';
+    } else {
+      progress.style.visibility = 'visible';
+      dots.forEach(function (d, i) {
+        d.classList.remove('active', 'done');
+        if (i < s - 1)      d.classList.add('done');
+        else if (i === s - 1) d.classList.add('active');
+      });
+    }
+
+    /* button label */
+    if (s === 0)        nextBtn.textContent = 'Get Started';
+    else if (s < 3)     nextBtn.textContent = 'Continue';
+    else                nextBtn.textContent = 'Done';
+
+    /* skip link */
+    skipWrap.style.display = (s === 2 || s === 3) ? 'block' : 'none';
+  }
+
+  function canAdvance() {
+    if (state.screen === 1) return state.name.trim().length > 0;
+    return true;
+  }
+
+  nextBtn.addEventListener('click', function () {
+    if (state.screen === 1) {
+      state.name = document.getElementById('input-name').value.trim();
+      if (!state.name) { document.getElementById('input-name').focus(); return; }
+    }
+    if (state.screen === 2) {
+      state.jumpsExact = document.getElementById('input-jumps-exact').value;
+    }
+    if (state.screen < 3) {
+      goTo(state.screen + 1);
+    } else {
+      save();
+    }
+  });
+
+  skipBtn.addEventListener('click', function () {
+    if (state.screen === 2) {
+      state.jumpsExact = document.getElementById('input-jumps-exact').value;
+      goTo(3);
+    } else {
+      save();
+    }
+  });
+
+  function save() {
+    var profile = {
+      name: state.name,
+      jumpBand: state.jumpBand,
+      jumpsExact: state.jumpsExact,
+      licenses: state.licenses,
+      homeDZ: state.homeDZ
+    };
+    localStorage.setItem('manifest_profile', JSON.stringify(profile));
+    window.location.href = '/app';
+  }
+
+  /* Jump band single-select */
+  document.getElementById('jump-chips').addEventListener('click', function (e) {
+    var chip = e.target.closest('.ob-chip');
+    if (!chip) return;
+    document.querySelectorAll('#jump-chips .ob-chip').forEach(function (c) { c.classList.remove('selected'); });
+    chip.classList.add('selected');
+    state.jumpBand = chip.dataset.val;
+  });
+
+  /* License multi-select */
+  document.getElementById('license-chips').addEventListener('click', function (e) {
+    var chip = e.target.closest('.ob-chip');
+    if (!chip) return;
+    chip.classList.toggle('selected');
+    var val = chip.dataset.val;
+    var idx = state.licenses.indexOf(val);
+    if (idx === -1) state.licenses.push(val);
+    else state.licenses.splice(idx, 1);
+  });
+
+  /* Name input — enter key */
+  document.getElementById('input-name').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') nextBtn.click();
+  });
+
+  /* DZ autocomplete */
+  var dzInput    = document.getElementById('dz-input');
+  var dzDropdown = document.getElementById('dz-dropdown');
+  var dzSelWrap  = document.getElementById('dz-selected-wrap');
+  var dzSrchWrap = document.getElementById('dz-search-wrap');
+  var dzSelName  = document.getElementById('dz-selected-name');
+  var dzClear    = document.getElementById('dz-clear');
+
+  function selectDZ(name) {
+    state.homeDZ = name;
+    dzSelName.textContent = name;
+    dzSelWrap.style.display = 'block';
+    dzSrchWrap.style.display = 'none';
+    dzDropdown.classList.remove('open');
+  }
+
+  dzClear.addEventListener('click', function () {
+    state.homeDZ = '';
+    dzSelWrap.style.display = 'none';
+    dzSrchWrap.style.display = 'block';
+    dzInput.value = '';
+    dzInput.focus();
+  });
+
+  dzInput.addEventListener('input', function () {
+    var q = dzInput.value.trim().toLowerCase();
+    dzDropdown.innerHTML = '';
+    if (!q) { dzDropdown.classList.remove('open'); return; }
+
+    var matches = DZS.filter(function (dz) { return dz.toLowerCase().includes(q); }).slice(0, 6);
+
+    /* add manual entry option if typed something not in list */
+    var exact = DZS.find(function (dz) { return dz.toLowerCase() === q; });
+    if (!exact && dzInput.value.trim().length > 2) {
+      matches.push('\"' + dzInput.value.trim() + '\"');
+    }
+
+    if (matches.length === 0) { dzDropdown.classList.remove('open'); return; }
+
+    matches.forEach(function (dz) {
+      var opt = document.createElement('div');
+      opt.className = 'ob-dz-option';
+      var displayName = dz.startsWith('"') ? dz.slice(1, -1) : dz;
+      var re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+      opt.innerHTML = dz.startsWith('"')
+        ? '<span style="color:var(--t3);font-size:0.75rem;margin-right:4px">Enter</span>' + displayName.replace(re, '<mark>$1</mark>')
+        : displayName.replace(re, '<mark>$1</mark>');
+      opt.addEventListener('click', function () { selectDZ(displayName); });
+      dzDropdown.appendChild(opt);
+    });
+    dzDropdown.classList.add('open');
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!dzDropdown.contains(e.target) && e.target !== dzInput) {
+      dzDropdown.classList.remove('open');
+    }
+  });
+
+  /* init */
+  updateUI();
+})();
+</script>
+</body>
+</html>
