@@ -7,13 +7,14 @@
   <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('mf_theme') || 'dark')</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/app/styles.css">
   <style>
     .hub-header {
       display: flex; align-items: center;
       justify-content: space-between;
-      padding: 1rem 1rem 0.75rem;
+      padding: 20px 22px 0;
+      position: relative; z-index: 1;
     }
     .hub-wordmark {
       display: flex; align-items: center; gap: 8px;
@@ -21,7 +22,7 @@
     }
     .hub-mark {
       width: 30px; height: 30px;
-      border-radius: 8px;
+      border-radius: 9px;
       background: var(--accent-dim);
       border: 1px solid var(--accent-dim2);
       display: grid; place-items: center;
@@ -33,19 +34,27 @@
       background: var(--accent-dim);
       border: 1px solid var(--accent-dim2);
       border-radius: 5px;
-      font-size: 0.58rem;
+      font-size: 0.5625rem;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--accent);
     }
-    .greeting { padding: 0.5rem 1rem 1rem; }
-    .greeting-name { font-size: 1.625rem; font-weight: 700; letter-spacing: -0.03em; }
-    .greeting-sub  { font-size: 0.875rem; color: var(--t2); margin-top: 3px; }
+
+    .greeting { padding: 16px 22px 20px; position: relative; z-index: 1; }
+    .greeting-name {
+      font-size: 1.75rem; font-weight: 800;
+      letter-spacing: -0.04em; line-height: 1.1;
+    }
+    .greeting-sub { font-size: 0.875rem; color: var(--ink-2); margin-top: 4px; }
+
+    .hub-body { padding: 0 22px 100px; position: relative; z-index: 1; }
+
+    /* Nav cards */
     .hub-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
+      background: var(--elev);
+      border: 1px solid var(--line);
+      border-radius: 18px;
       padding: 1.125rem;
       margin-bottom: 0.75rem;
       display: flex;
@@ -55,22 +64,27 @@
       text-decoration: none;
       color: inherit;
       transition: border-color 0.15s, background 0.15s;
+      box-shadow: 0 8px 30px -16px rgba(0,0,0,.4);
     }
-    .hub-card:hover  { border-color: var(--border2); background: var(--surface2); }
+    .hub-card:hover  { border-color: rgba(255,255,255,0.16); }
     .hub-card:active { opacity: 0.85; }
+
     .hub-card-icon {
-      width: 50px; height: 50px;
-      border-radius: 14px;
-      background: var(--surface2);
-      border: 1px solid var(--border);
+      width: 48px; height: 48px;
+      border-radius: 13px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-dim2);
       display: grid; place-items: center;
       flex-shrink: 0;
       color: var(--accent);
     }
     .hub-card-body { flex: 1; min-width: 0; }
-    .hub-card-title { font-size: 1rem; font-weight: 700; letter-spacing: -0.015em; }
-    .hub-card-sub   { font-size: 0.8rem; color: var(--t2); margin-top: 3px; }
-    .hub-card-arrow { color: var(--t3); flex-shrink: 0; }
+    .hub-card-title {
+      font-size: 0.9375rem; font-weight: 700; letter-spacing: -0.015em;
+    }
+    .hub-card-sub { font-size: 0.8rem; color: var(--ink-2); margin-top: 3px; }
+    .hub-card-arrow { color: var(--ink-3); flex-shrink: 0; }
+
     .alert-dot {
       display: inline-block;
       width: 7px; height: 7px;
@@ -80,26 +94,33 @@
       vertical-align: middle;
       margin-bottom: 2px;
     }
+
+    /* Stats grid */
     .stats-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.75rem;
+      gap: 0.625rem;
       margin-top: 0.5rem;
     }
     .stat-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
+      background: var(--elev);
+      border: 1px solid var(--line);
+      border-radius: 14px;
       padding: 1rem;
+      box-shadow: 0 4px 16px -8px rgba(0,0,0,.3);
     }
-    .stat-val { font-size: 1.625rem; font-weight: 800; letter-spacing: -0.04em; }
+    .stat-val {
+      font-size: 1.625rem; font-weight: 800;
+      letter-spacing: -0.04em;
+      font-variant-numeric: tabular-nums;
+    }
     .stat-label {
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--t2);
-      margin-top: 3px;
+      color: var(--ink-3);
+      margin-top: 4px;
     }
   </style>
 </head>
@@ -117,8 +138,8 @@
     <div class="hub-wordmark">
       <div class="hub-mark">
         <svg width="15" height="13" viewBox="0 0 15 13" fill="none">
-          <path d="M7.5 0.5C4.46 0.5 2 2.96 2 6h11C13 2.96 10.54 0.5 7.5 0.5z" fill="rgba(240,162,58,0.9)"/>
-          <path d="M7.5 6L5 11.5M7.5 6l2.5 5.5M5 11.5h5" stroke="rgba(240,162,58,0.45)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M7.5 0.5C4.46 0.5 2 2.96 2 6h11C13 2.96 10.54 0.5 7.5 0.5z" fill="rgba(243,167,63,0.9)"/>
+          <path d="M7.5 6L5 11.5M7.5 6l2.5 5.5M5 11.5h5" stroke="rgba(243,167,63,0.45)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
       <span class="hub-name">Manifest</span>
@@ -137,7 +158,7 @@
   </div>
 
   <!-- Body -->
-  <div class="page-body" style="padding-top:0">
+  <div class="hub-body">
 
     <!-- Alert -->
     <div class="alert alert-danger">
@@ -188,7 +209,7 @@
     </div>
     <div class="stats-grid">
       <div class="stat-card">
-        <div class="stat-val">287</div>
+        <div class="stat-val" id="stat-jumps">—</div>
         <div class="stat-label">Total Jumps</div>
       </div>
       <div class="stat-card">
@@ -210,19 +231,19 @@
   <!-- Bottom nav -->
   <nav class="bottom-nav">
     <a href="/app" class="tab active">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>
       Home
     </a>
     <a href="/app/locker" class="tab">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><circle cx="12" cy="14" r="2"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a4 4 0 018 0v2"/></svg>
       Locker
     </a>
     <a href="/app/market" class="tab">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16l-1 13H5L4 7zM9 7V5a3 3 0 016 0v2"/></svg>
       Market
     </a>
     <a href="/app/profile" class="tab">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
       Profile
     </a>
   </nav>
@@ -239,6 +260,17 @@
   }
   var el = document.getElementById('greeting-name');
   if (el) el.textContent = 'Hey, ' + profile.name + '.';
+
+  var jumpsEl = document.getElementById('stat-jumps');
+  if (jumpsEl) {
+    if (profile.jumpsExact && !isNaN(Number(profile.jumpsExact))) {
+      jumpsEl.textContent = Number(profile.jumpsExact).toLocaleString();
+    } else if (profile.jumpBand) {
+      jumpsEl.textContent = profile.jumpBand;
+      jumpsEl.style.fontSize = '1rem';
+      jumpsEl.style.marginTop = '4px';
+    }
+  }
 })();
 </script>
 </body>

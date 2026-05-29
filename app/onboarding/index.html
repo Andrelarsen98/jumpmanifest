@@ -7,7 +7,7 @@
   <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('mf_theme') || 'dark')</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/app/styles.css">
   <style>
     .ob-shell {
@@ -17,6 +17,7 @@
       display: flex;
       flex-direction: column;
       background: var(--bg);
+      font-feature-settings: "tnum" 1, "cv01" 1;
     }
 
     .ob-top {
@@ -33,7 +34,7 @@
     }
     .ob-logo-mark {
       width: 30px; height: 30px;
-      border-radius: 8px;
+      border-radius: 9px;
       background: var(--accent-dim);
       border: 1px solid var(--accent-dim2);
       display: grid; place-items: center;
@@ -50,10 +51,10 @@
       padding: 1rem 1rem 0;
     }
     .ob-dot {
-      height: 4px;
+      height: 3px;
       border-radius: 2px;
       flex: 1;
-      background: var(--border2);
+      background: var(--line);
       transition: background 0.3s;
     }
     .ob-dot.active { background: var(--accent); }
@@ -125,17 +126,17 @@
       letter-spacing: -0.03em;
       background: transparent;
       border: none;
-      border-bottom: 2px solid var(--border2);
+      border-bottom: 2px solid var(--line);
       border-radius: 0;
       padding: 0.5rem 0;
-      color: var(--t1);
+      color: var(--ink);
       outline: none;
       width: 100%;
       font-family: inherit;
       transition: border-color 0.2s;
     }
     .ob-name-input:focus { border-color: var(--accent); }
-    .ob-name-input::placeholder { color: var(--t3); }
+    .ob-name-input::placeholder { color: var(--ink-3); }
 
     /* Chip selectors */
     .ob-chips {
@@ -147,12 +148,12 @@
     .ob-chip {
       padding: 9px 16px;
       border-radius: 10px;
-      border: 1.5px solid var(--border2);
-      background: var(--surface);
+      border: 1px solid var(--line);
+      background: var(--elev);
       font-family: inherit;
       font-size: 0.875rem;
       font-weight: 600;
-      color: var(--t1);
+      color: var(--ink);
       cursor: pointer;
       transition: border-color 0.15s, background 0.15s, color 0.15s;
       letter-spacing: -0.01em;
@@ -172,56 +173,56 @@
       margin-bottom: 1.5rem;
     }
     .ob-exact-label {
-      font-size: 0.75rem;
+      font-size: 0.65rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--t3);
+      letter-spacing: 0.12em;
+      color: var(--ink-3);
       white-space: nowrap;
     }
     .ob-exact-input {
-      background: var(--surface);
-      border: 1px solid var(--border2);
+      background: var(--elev);
+      border: 1px solid var(--line);
       border-radius: 10px;
       padding: 9px 14px;
       font-family: inherit;
       font-size: 0.9rem;
       font-weight: 600;
-      color: var(--t1);
+      color: var(--ink);
       outline: none;
       width: 120px;
       transition: border-color 0.2s;
     }
     .ob-exact-input:focus { border-color: var(--accent); }
-    .ob-exact-input::placeholder { color: var(--t3); }
+    .ob-exact-input::placeholder { color: var(--ink-3); }
 
     /* DZ autocomplete */
     .ob-dz-wrap { position: relative; margin-bottom: 1rem; }
     .ob-dz-input {
       width: 100%;
-      background: var(--surface);
-      border: 1px solid var(--border2);
-      border-radius: 10px;
+      background: var(--elev);
+      border: 1px solid var(--line);
+      border-radius: 11px;
       padding: 11px 14px;
       font-family: inherit;
       font-size: 0.9375rem;
       font-weight: 500;
-      color: var(--t1);
+      color: var(--ink);
       outline: none;
       transition: border-color 0.2s;
     }
     .ob-dz-input:focus { border-color: var(--accent); }
-    .ob-dz-input::placeholder { color: var(--t3); }
+    .ob-dz-input::placeholder { color: var(--ink-3); }
     .ob-dz-dropdown {
       position: absolute;
       top: calc(100% + 6px);
       left: 0; right: 0;
-      background: var(--surface);
-      border: 1px solid var(--border2);
-      border-radius: 12px;
+      background: var(--elev);
+      border: 1px solid var(--line);
+      border-radius: 14px;
       overflow: hidden;
       z-index: 50;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      box-shadow: 0 16px 40px -12px rgba(0,0,0,.5);
       display: none;
     }
     .ob-dz-dropdown.open { display: block; }
@@ -230,11 +231,11 @@
       font-size: 0.875rem;
       font-weight: 500;
       cursor: pointer;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--line-soft);
       transition: background 0.1s;
     }
     .ob-dz-option:last-child { border-bottom: none; }
-    .ob-dz-option:hover { background: var(--surface2); }
+    .ob-dz-option:hover { background: var(--elev-2); }
     .ob-dz-option mark {
       background: transparent;
       color: var(--accent);
@@ -247,7 +248,7 @@
       padding: 8px 12px;
       background: var(--accent-dim);
       border: 1px solid var(--accent-dim2);
-      border-radius: 10px;
+      border-radius: 11px;
       font-size: 0.875rem;
       font-weight: 600;
       color: var(--accent);
@@ -279,11 +280,11 @@
       border: none;
       font-family: inherit;
       font-size: 0.8rem;
-      color: var(--t3);
+      color: var(--ink-3);
       cursor: pointer;
       letter-spacing: 0.01em;
     }
-    .ob-skip-btn:hover { color: var(--t2); }
+    .ob-skip-btn:hover { color: var(--ink-2); }
   </style>
 </head>
 <body>

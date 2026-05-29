@@ -7,221 +7,80 @@
   <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('mf_theme') || 'dark')</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/app/styles.css">
   <style>
+    .scroll { position: relative; z-index: 1; padding: 0 22px 100px; }
+
     /* Hero */
-    .profile-hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem 1rem 1.5rem;
-      text-align: center;
-    }
-    .profile-avatar {
-      width: 76px; height: 76px;
+    .hero { display: flex; flex-direction: column; align-items: center; padding: 20px 0 8px; }
+
+    /* Avatar */
+    .avatar-wrap { position: relative; width: 84px; height: 84px; margin-bottom: 16px; }
+    .avatar-ring {
+      position: absolute; inset: 0;
       border-radius: 50%;
-      background: var(--accent-dim);
-      border: 2px solid var(--accent-dim2);
-      display: grid;
-      place-items: center;
-      font-size: 1.75rem;
-      font-weight: 800;
-      color: var(--accent);
-      letter-spacing: -0.02em;
-      margin-bottom: 0.875rem;
+      border: 1.5px solid var(--accent);
+      opacity: 0.55;
+    }
+    .avatar {
+      position: absolute; inset: 5px;
+      border-radius: 50%;
+      background: linear-gradient(150deg, var(--elev-2), var(--elev));
+      border: 1px solid var(--line);
+      display: grid; place-items: center;
+      font-size: 1.875rem; font-weight: 800;
+      color: var(--accent); letter-spacing: -0.02em;
     }
     .profile-name {
-      font-size: 1.375rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 0.375rem;
-    }
-    .profile-jump-count {
-      font-size: 4rem;
-      font-weight: 900;
-      letter-spacing: -0.06em;
-      line-height: 1;
-      color: var(--t1);
-      margin: 0.5rem 0;
-    }
-    .profile-jump-label {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--t3);
-      margin-bottom: 1rem;
-    }
-    .profile-dz {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 0.875rem;
-      color: var(--t2);
-      font-weight: 500;
-      margin-bottom: 0.75rem;
-    }
-    .profile-dz svg { color: var(--accent); flex-shrink: 0; }
-    .profile-chips {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 6px;
-    }
-    .profile-rating-chip {
-      padding: 4px 10px;
-      border-radius: 7px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      background: var(--accent-dim);
-      border: 1px solid var(--accent-dim2);
-      color: var(--accent);
+      font-size: 1.4375rem; font-weight: 700; letter-spacing: -0.02em;
+      margin-bottom: 2px;
     }
 
-    /* Stats row */
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      overflow: hidden;
-      margin: 0 1rem 1rem;
-      background: var(--surface);
+    /* Altimeter dial */
+    .dial { position: relative; width: 248px; height: 248px; margin: 20px 0 6px; }
+    .dial-svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+    .ticks { position: absolute; inset: 0; }
+    .dial-center {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
     }
-    .stat-cell {
-      padding: 1rem 0.5rem;
-      text-align: center;
-      border-right: 1px solid var(--border);
+    .jnum {
+      font-size: 3.875rem; font-weight: 800;
+      letter-spacing: -0.04em; line-height: 0.92;
+      font-variant-numeric: tabular-nums;
     }
-    .stat-cell:last-child { border-right: none; }
-    .stat-cell-val {
-      font-size: 1.5rem;
-      font-weight: 800;
-      letter-spacing: -0.04em;
+    .jlab {
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.22em; color: var(--ink-3);
+      margin-top: 8px; text-transform: uppercase;
     }
-    .stat-cell-label {
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--t3);
-      margin-top: 3px;
+    .togo {
+      font-size: 0.71rem; font-weight: 500;
+      color: var(--accent); margin-top: 9px;
+      font-variant-numeric: tabular-nums;
     }
 
-    /* Settings sections */
-    .settings-section {
-      margin: 0 1rem 0.75rem;
+    /* Meta */
+    .meta { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 14px; }
+    .dz {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 0.875rem; font-weight: 600; color: var(--ink);
     }
-    .settings-label {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--t3);
-      padding: 0 0.25rem;
-      margin-bottom: 0.5rem;
-    }
-    .settings-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      overflow: hidden;
-    }
-    .settings-row {
-      display: flex;
-      align-items: center;
-      gap: 0.875rem;
-      padding: 0.875rem 1rem;
-      border-bottom: 1px solid var(--border);
-      color: var(--t1);
-    }
-    .settings-row:last-child { border-bottom: none; }
-    .settings-row-icon {
-      width: 34px; height: 34px;
-      border-radius: 9px;
-      display: grid;
-      place-items: center;
-      flex-shrink: 0;
-    }
-    .settings-row-icon.amber { background: var(--accent-dim); color: var(--accent); }
-    .settings-row-icon.neutral { background: var(--surface2); color: var(--t2); }
-    .settings-row-icon.danger { background: var(--danger-dim); color: var(--danger); }
-    .settings-row-body { flex: 1; }
-    .settings-row-title {
-      font-size: 0.875rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-    }
-    .settings-row-sub {
-      font-size: 0.75rem;
-      color: var(--t2);
-      margin-top: 1px;
+    .dz-dot { width: 7px; height: 7px; border-radius: 50%; border: 2px solid var(--accent); flex-shrink: 0; }
+    .creds { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+
+    /* Section label */
+    .sec {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--ink-3);
+      margin: 30px 0 12px;
     }
 
-    /* Toggle switch */
-    .toggle {
-      width: 44px; height: 26px;
-      border-radius: 13px;
-      background: var(--border2);
-      position: relative;
-      cursor: pointer;
-      border: none;
-      padding: 0;
-      transition: background 0.2s;
-      flex-shrink: 0;
-    }
-    .toggle.on { background: var(--accent); }
-    .toggle::after {
-      content: '';
-      position: absolute;
-      top: 3px; left: 3px;
-      width: 20px; height: 20px;
-      border-radius: 50%;
-      background: #fff;
-      transition: transform 0.2s;
-    }
-    .toggle.on::after { transform: translateX(18px); }
-
-    /* Select pill */
-    .select-pill {
-      background: var(--surface2);
-      border: 1px solid var(--border2);
-      border-radius: 8px;
-      padding: 5px 10px;
-      font-family: inherit;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--t1);
-      cursor: pointer;
-      outline: none;
-      -webkit-appearance: none;
-    }
-
-    .signout-btn {
-      background: none;
-      border: none;
-      font-family: inherit;
-      cursor: pointer;
-      width: 100%;
-      text-align: left;
-      color: var(--danger);
-      display: flex;
-      align-items: center;
-      gap: 0.875rem;
-      padding: 0;
-    }
-
-    /* Footer */
-    .profile-footer {
-      text-align: center;
-      padding: 1.5rem 1rem 6rem;
-      font-size: 0.72rem;
-      color: var(--t3);
-      font-weight: 500;
-      letter-spacing: 0.02em;
+    .ver {
+      text-align: center; font-size: 0.6875rem; font-weight: 500;
+      letter-spacing: 0.06em; color: var(--ink-3); margin-top: 20px;
     }
   </style>
 </head>
@@ -230,145 +89,138 @@
 
   <!-- Top nav -->
   <header class="top-nav">
-    <div style="width:36px"></div>
-    <h1 class="nav-title">Profile</h1>
+    <div style="width:34px"></div>
+    <span class="nav-title">Profile</span>
     <div class="nav-actions">
-      <button class="theme-toggle" aria-label="Toggle theme">
+      <button class="theme-toggle" aria-label="Toggle theme" id="theme-btn">
         <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
         <svg class="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
       </button>
     </div>
   </header>
 
-  <!-- Hero -->
-  <div class="profile-hero" id="profile-hero">
-    <div class="profile-avatar" id="profile-avatar">?</div>
-    <div class="profile-name" id="profile-name">—</div>
-    <div class="profile-jump-count" id="profile-jump-count">—</div>
-    <div class="profile-jump-label">Total Jumps</div>
-    <div class="profile-dz" id="profile-dz" style="display:none">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      <span id="profile-dz-name"></span>
-    </div>
-    <div class="profile-chips" id="profile-chips"></div>
-  </div>
+  <div class="scroll">
 
-  <!-- Stats row -->
-  <div class="stats-row">
-    <div class="stat-cell">
-      <div class="stat-cell-val">5</div>
-      <div class="stat-cell-label">In Locker</div>
-    </div>
-    <div class="stat-cell">
-      <div class="stat-cell-val">2</div>
-      <div class="stat-cell-label">Listed</div>
-    </div>
-    <div class="stat-cell">
-      <div class="stat-cell-val" style="color:var(--success)">1</div>
-      <div class="stat-cell-label">Sold</div>
-    </div>
-  </div>
+    <!-- Hero -->
+    <div class="hero">
+      <div class="avatar-wrap">
+        <div class="avatar-ring"></div>
+        <div class="avatar" id="prof-avatar">?</div>
+      </div>
+      <div class="profile-name" id="prof-name">—</div>
 
-  <!-- Settings: Preferences -->
-  <div class="settings-section">
-    <div class="settings-label">Preferences</div>
-    <div class="settings-card">
-
-      <div class="settings-row">
-        <div class="settings-row-icon amber">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+      <!-- Altimeter dial -->
+      <div class="dial">
+        <svg class="dial-svg" viewBox="0 0 248 248" id="dial-svg">
+          <!-- track -->
+          <circle cx="124" cy="124" r="104" fill="none" stroke="var(--track)" stroke-width="6"/>
+          <!-- progress arc -->
+          <circle id="dial-prog" cx="124" cy="124" r="104" fill="none"
+            stroke="var(--accent)" stroke-width="6" stroke-linecap="round"/>
+        </svg>
+        <!-- tick marks -->
+        <div class="ticks" id="dial-ticks"></div>
+        <div class="dial-center">
+          <div class="jnum" id="jnum">0</div>
+          <div class="jlab">Total Jumps</div>
+          <div class="togo" id="dial-togo" style="display:none"></div>
         </div>
-        <div class="settings-row-body">
-          <div class="settings-row-title">Notifications</div>
-          <div class="settings-row-sub">Repack & service reminders</div>
-        </div>
-        <button class="toggle on" id="toggle-notif" aria-label="Toggle notifications"></button>
       </div>
 
-      <div class="settings-row">
-        <div class="settings-row-icon neutral">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-        </div>
-        <div class="settings-row-body">
-          <div class="settings-row-title">Altitude units</div>
-          <div class="settings-row-sub">Display altitudes and distances in</div>
-        </div>
-        <select class="select-pill" id="sel-units" aria-label="Units">
-          <option value="ft">ft</option>
-          <option value="m">m</option>
-        </select>
+      <!-- DZ + credentials -->
+      <div class="meta">
+        <span class="dz" id="prof-dz" style="display:none">
+          <span class="dz-dot"></span>
+          <span id="prof-dz-name"></span>
+        </span>
+        <div class="creds" id="prof-creds"></div>
       </div>
 
-      <div class="settings-row">
-        <div class="settings-row-icon neutral">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+      <!-- Stats row — hairline divided -->
+      <div class="stats-hairline" style="width:100%;margin:24px 0 4px">
+        <div class="stat-h"><div class="n">5</div><div class="l">In Locker</div></div>
+        <div class="stat-h"><div class="n">2</div><div class="l">Listed</div></div>
+        <div class="stat-h"><div class="n accent">1</div><div class="l">Sold</div></div>
+      </div>
+    </div>
+
+    <!-- Preferences -->
+    <div class="sec">Preferences</div>
+    <div class="group">
+
+      <div class="opt">
+        <div>
+          <div class="lab">Notifications</div>
+          <div class="sub">Repack &amp; service reminders</div>
         </div>
-        <div class="settings-row-body">
-          <div class="settings-row-title">Country / Repack rules</div>
-          <div class="settings-row-sub" id="sel-country-sub">Applies local packing interval</div>
-        </div>
-        <select class="select-pill" id="sel-country" aria-label="Country">
-          <option value="US">US</option>
-          <option value="UK">UK</option>
-          <option value="AU">AU</option>
-          <option value="DE">DE</option>
-          <option value="FR">FR</option>
-          <option value="NZ">NZ</option>
-          <option value="Other">Other</option>
-        </select>
+        <button class="sw on" id="sw-notif" aria-label="Toggle notifications"></button>
       </div>
 
-      <div class="settings-row">
-        <div class="settings-row-icon neutral">
-          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      <div class="opt">
+        <div>
+          <div class="lab">Altitude units</div>
+          <div class="sub">Feet or metres</div>
         </div>
-        <div class="settings-row-body">
-          <div class="settings-row-title" id="theme-label">Dark mode</div>
+        <div class="val">
+          <select class="pillval" id="sel-units" aria-label="Units">
+            <option value="ft">ft</option>
+            <option value="m">m</option>
+          </select>
         </div>
-        <button class="toggle on" id="toggle-theme" aria-label="Toggle theme"></button>
+      </div>
+
+      <div class="opt">
+        <div>
+          <div class="lab">Country &amp; repack rules</div>
+          <div class="sub">Local packing interval</div>
+        </div>
+        <div class="val">
+          <select class="pillval" id="sel-country" aria-label="Country">
+            <option value="US">US · 180d</option>
+            <option value="UK">UK · 90d</option>
+            <option value="AU">AU · 90d</option>
+            <option value="UAE">UAE · 6mo</option>
+            <option value="DE">DE · 120d</option>
+            <option value="FR">FR · 90d</option>
+            <option value="NZ">NZ · 90d</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="opt" id="opt-appearance">
+        <div>
+          <div class="lab">Appearance</div>
+          <div class="sub">Theme</div>
+        </div>
+        <div class="val" id="appearance-val">Dark <span class="chev">›</span></div>
       </div>
 
     </div>
-  </div>
 
-  <!-- Settings: Account -->
-  <div class="settings-section">
-    <div class="settings-label">Account</div>
-    <div class="settings-card">
-      <div class="settings-row">
-        <button class="signout-btn" id="signout-btn">
-          <div class="settings-row-icon danger">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-          </div>
-          <div class="settings-row-body">
-            <div class="settings-row-title" style="color:var(--danger)">Sign out</div>
-            <div class="settings-row-sub">Clears local data</div>
-          </div>
-        </button>
-      </div>
-    </div>
-  </div>
+    <!-- Sign out -->
+    <button class="signout-full" style="margin-top:14px" id="signout-btn">Sign out</button>
 
-  <!-- Footer -->
-  <div class="profile-footer">Manifest beta · v0.1</div>
+    <div class="ver">Manifest · v0.1 beta</div>
+
+  </div><!-- /scroll -->
 
   <!-- Bottom nav -->
   <nav class="bottom-nav">
     <a href="/app" class="tab">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>
       Home
     </a>
     <a href="/app/locker" class="tab">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><circle cx="12" cy="14" r="2"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a4 4 0 018 0v2"/></svg>
       Locker
     </a>
     <a href="/app/market" class="tab">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16l-1 13H5L4 7zM9 7V5a3 3 0 016 0v2"/></svg>
       Market
     </a>
     <a href="/app/profile" class="tab active">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
       Profile
     </a>
   </nav>
@@ -377,104 +229,162 @@
 <script src="/app/app.js"></script>
 <script>
 (function () {
+  /* ---- load profile ---- */
   var profile = {};
   try { profile = JSON.parse(localStorage.getItem('manifest_profile') || '{}'); } catch(e) {}
 
-  /* Avatar & name */
-  var name = profile.name || 'Skydiver';
-  document.getElementById('profile-avatar').textContent = name.charAt(0).toUpperCase();
-  document.getElementById('profile-name').textContent = name;
-
-  /* Jump count */
-  var jumpsEl = document.getElementById('profile-jump-count');
-  if (profile.jumpsExact && !isNaN(Number(profile.jumpsExact))) {
-    jumpsEl.textContent = Number(profile.jumpsExact).toLocaleString();
-  } else if (profile.jumpBand) {
-    jumpsEl.textContent = profile.jumpBand;
-    jumpsEl.style.fontSize = '2rem';
-  } else {
-    jumpsEl.textContent = '—';
-  }
-
-  /* Home DZ */
-  if (profile.homeDZ) {
-    document.getElementById('profile-dz').style.display = 'flex';
-    document.getElementById('profile-dz-name').textContent = profile.homeDZ;
-  }
-
-  /* License chips */
-  var chipsEl = document.getElementById('profile-chips');
-  if (profile.licenses && profile.licenses.length) {
-    profile.licenses.forEach(function (lic) {
-      var chip = document.createElement('span');
-      chip.className = 'profile-rating-chip';
-      chip.textContent = lic;
-      chipsEl.appendChild(chip);
-    });
-  }
-
-  /* Settings — load saved values */
   var settings = {};
   try { settings = JSON.parse(localStorage.getItem('manifest_settings') || '{}'); } catch(e) {}
 
-  var notifToggle  = document.getElementById('toggle-notif');
-  var themeToggle  = document.getElementById('toggle-theme');
-  var themeLabel   = document.getElementById('theme-label');
-  var selUnits     = document.getElementById('sel-units');
-  var selCountry   = document.getElementById('sel-country');
+  /* Avatar + name */
+  var name = profile.name || 'Skydiver';
+  document.getElementById('prof-avatar').textContent = name.charAt(0).toUpperCase();
+  document.getElementById('prof-name').textContent = name;
 
-  /* Notifications */
-  if (settings.notif === false) notifToggle.classList.remove('on');
-  notifToggle.addEventListener('click', function () {
-    notifToggle.classList.toggle('on');
-    settings.notif = notifToggle.classList.contains('on');
-    saveSettings();
+  /* DZ */
+  if (profile.homeDZ) {
+    document.getElementById('prof-dz').style.display = 'inline-flex';
+    document.getElementById('prof-dz-name').textContent = profile.homeDZ;
+  }
+
+  /* Creds */
+  var credsEl = document.getElementById('prof-creds');
+  if (profile.licenses && profile.licenses.length) {
+    profile.licenses.forEach(function (lic) {
+      var span = document.createElement('span');
+      span.className = 'cred';
+      span.innerHTML = '<span class="d"></span>' + lic;
+      credsEl.appendChild(span);
+    });
+  }
+
+  /* ---- Altimeter dial ---- */
+  var TOTAL_TARGET = 1000; /* next milestone */
+  var jumps = 0;
+  if (profile.jumpsExact && !isNaN(Number(profile.jumpsExact))) {
+    jumps = Number(profile.jumpsExact);
+  }
+
+  /* Calculate next milestone */
+  var milestones = [100, 200, 500, 1000, 2000, 3000, 5000, 10000];
+  var nextMilestone = milestones.find(function(m) { return m > jumps; }) || jumps + 1000;
+  var prevMilestone = 0;
+  for (var i = milestones.length - 1; i >= 0; i--) {
+    if (milestones[i] <= jumps) { prevMilestone = milestones[i]; break; }
+  }
+  var pct = (nextMilestone > prevMilestone)
+    ? Math.min((jumps - prevMilestone) / (nextMilestone - prevMilestone), 1)
+    : 1;
+
+  /* Tick marks */
+  var ticksEl = document.getElementById('dial-ticks');
+  var N = 60, cx = 124, cy = 124;
+  var svgT = '<svg viewBox="0 0 248 248">';
+  for (var i = 0; i < N; i++) {
+    var a = (i / N) * Math.PI * 2 - Math.PI / 2;
+    var major = (i % 5 === 0);
+    var r1 = major ? 92 : 97, r2 = 104;
+    var x1 = cx + Math.cos(a) * r1, y1 = cy + Math.sin(a) * r1;
+    var x2 = cx + Math.cos(a) * r2, y2 = cy + Math.sin(a) * r2;
+    svgT += '<line x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2 +
+      '" stroke="var(--ink-3)" stroke-width="' + (major ? 1.6 : 1) +
+      '" opacity="' + (major ? 0.55 : 0.28) + '"/>';
+  }
+  svgT += '</svg>';
+  ticksEl.innerHTML = svgT;
+
+  /* Animate arc */
+  var prog = document.getElementById('dial-prog');
+  var C = 2 * Math.PI * 104;
+  prog.style.strokeDasharray = C;
+  prog.style.strokeDashoffset = C;
+  prog.style.transition = 'stroke-dashoffset 1.4s cubic-bezier(.22,1,.36,1)';
+  requestAnimationFrame(function() {
+    setTimeout(function() {
+      prog.style.strokeDashoffset = C * (1 - (jumps > 0 ? pct : 0));
+    }, 120);
   });
 
-  /* Units */
+  /* Count-up jump number */
+  var jnEl = document.getElementById('jnum');
+  if (jumps > 0) {
+    var dur = 1300, st = null;
+    function step(t) {
+      if (!st) st = t;
+      var p = Math.min((t - st) / dur, 1);
+      var e = 1 - Math.pow(1 - p, 3);
+      jnEl.textContent = Math.round(jumps * e).toLocaleString();
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+
+    /* "X to next milestone" label */
+    var togoEl = document.getElementById('dial-togo');
+    if (jumps < nextMilestone) {
+      togoEl.style.display = 'block';
+      togoEl.textContent = (nextMilestone - jumps).toLocaleString() + ' to ' + nextMilestone.toLocaleString();
+    }
+  } else if (profile.jumpBand) {
+    jnEl.textContent = profile.jumpBand;
+    jnEl.style.fontSize = '1.75rem';
+    prog.style.strokeDashoffset = C * 0.7; /* show partial ring for band selection */
+  } else {
+    jnEl.textContent = '—';
+  }
+
+  /* ---- Settings ---- */
+  var swNotif = document.getElementById('sw-notif');
+  var selUnits = document.getElementById('sel-units');
+  var selCountry = document.getElementById('sel-country');
+  var optAppearance = document.getElementById('opt-appearance');
+  var appearanceVal = document.getElementById('appearance-val');
+
+  if (settings.notif === false) swNotif.classList.remove('on');
   if (settings.units) selUnits.value = settings.units;
-  selUnits.addEventListener('change', function () {
+  if (settings.country) selCountry.value = settings.country;
+
+  function saveSettings() {
+    localStorage.setItem('manifest_settings', JSON.stringify(settings));
+  }
+
+  swNotif.addEventListener('click', function() {
+    swNotif.classList.toggle('on');
+    settings.notif = swNotif.classList.contains('on');
+    saveSettings();
+  });
+  selUnits.addEventListener('change', function() {
     settings.units = selUnits.value;
     saveSettings();
   });
-
-  /* Country */
-  if (settings.country) selCountry.value = settings.country;
-  selCountry.addEventListener('change', function () {
+  selCountry.addEventListener('change', function() {
     settings.country = selCountry.value;
     saveSettings();
   });
 
-  /* Theme toggle — synced with global theme */
-  function syncThemeToggle() {
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    themeLabel.textContent = isDark ? 'Dark mode' : 'Light mode';
-    if (isDark) themeToggle.classList.add('on');
-    else        themeToggle.classList.remove('on');
+  /* Appearance row — toggle theme */
+  function syncAppearance() {
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    appearanceVal.innerHTML = (dark ? 'Dark' : 'Light') + ' <span class="chev">›</span>';
   }
-  syncThemeToggle();
+  syncAppearance();
 
-  themeToggle.addEventListener('click', function () {
+  optAppearance.addEventListener('click', function() {
     var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     document.body.classList.add('transitioning');
-    setTimeout(function () { document.body.classList.remove('transitioning'); }, 350);
+    setTimeout(function() { document.body.classList.remove('transitioning'); }, 400);
     document.documentElement.setAttribute('data-theme', next);
     localStorage.setItem('mf_theme', next);
-    syncThemeToggle();
+    syncAppearance();
   });
 
   /* Sign out */
-  document.getElementById('signout-btn').addEventListener('click', function () {
+  document.getElementById('signout-btn').addEventListener('click', function() {
     if (confirm('Sign out and clear local data?')) {
       localStorage.removeItem('manifest_profile');
       localStorage.removeItem('manifest_settings');
       window.location.href = '/app/onboarding';
     }
   });
-
-  function saveSettings() {
-    localStorage.setItem('manifest_settings', JSON.stringify(settings));
-  }
 })();
 </script>
 </body>
