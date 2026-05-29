@@ -12,342 +12,245 @@
   <style>
     /* ── Entry screen ── */
     .entry-hero {
-      padding: 40px 24px 32px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      position: relative;
-      z-index: 1;
+      padding: 40px 24px 28px;
+      display: flex; flex-direction: column;
+      align-items: center; text-align: center;
+      position: relative; z-index: 1;
     }
     .entry-icon {
-      width: 72px; height: 72px;
-      border-radius: 22px;
-      background: var(--accent-dim);
-      border: 1px solid var(--accent-dim2);
+      width: 72px; height: 72px; border-radius: 22px;
+      background: var(--accent-dim); border: 1px solid var(--accent-dim2);
       display: grid; place-items: center;
-      color: var(--accent);
-      margin-bottom: 22px;
+      color: var(--accent); margin-bottom: 22px;
     }
-    .entry-headline {
-      font-size: 1.625rem; font-weight: 800;
-      letter-spacing: -0.04em; margin-bottom: 6px;
-    }
-    .entry-sub {
-      font-size: 0.9rem; color: var(--ink-2);
-      letter-spacing: -0.01em; line-height: 1.5;
-      max-width: 260px;
-    }
+    .entry-headline { font-size: 1.625rem; font-weight: 800; letter-spacing: -0.04em; margin-bottom: 6px; }
+    .entry-sub { font-size: 0.9rem; color: var(--ink-2); letter-spacing: -0.01em; line-height: 1.5; max-width: 260px; }
 
     .scan-btn {
-      width: 100%;
-      padding: 18px 20px;
-      background: var(--accent);
-      border: none;
-      border-radius: 16px;
-      font-family: inherit;
-      font-size: 1rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      color: #111;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+      width: 100%; padding: 18px 20px;
+      background: var(--accent); border: none; border-radius: 16px;
+      font-family: inherit; font-size: 1rem; font-weight: 800; letter-spacing: -0.02em; color: #111;
+      cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
       box-shadow: 0 12px 32px -8px rgba(243,167,63,.4);
       transition: opacity 0.15s, transform 0.1s;
     }
     .scan-btn:active { transform: scale(.98); opacity: 0.9; }
     .scan-btn:hover  { opacity: 0.93; }
 
-    .or-divider {
-      display: flex; align-items: center; gap: 14px;
-      margin: 16px 0;
-    }
-    .or-divider::before, .or-divider::after {
-      content: ""; flex: 1; height: 1px; background: var(--line);
-    }
-    .or-divider span {
-      font-size: 0.72rem; font-weight: 600;
-      letter-spacing: 0.1em; color: var(--ink-3);
-      text-transform: uppercase;
-    }
+    .or-divider { display: flex; align-items: center; gap: 14px; margin: 16px 0; }
+    .or-divider::before, .or-divider::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+    .or-divider span { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; color: var(--ink-3); text-transform: uppercase; }
 
     .manual-link {
-      background: transparent; border: 1px solid var(--line);
-      border-radius: 13px;
-      width: 100%; padding: 14px 20px;
-      font-family: inherit; font-size: 0.9rem;
-      font-weight: 600; color: var(--ink);
-      cursor: pointer;
+      background: transparent; border: 1px solid var(--line); border-radius: 13px;
+      width: 100%; padding: 14px 20px; font-family: inherit; font-size: 0.9rem;
+      font-weight: 600; color: var(--ink); cursor: pointer;
       transition: background 0.15s, border-color 0.15s;
     }
     .manual-link:hover { background: var(--elev); border-color: rgba(255,255,255,0.16); }
 
-    /* ── Capture screen (fixed full-page) ── */
+    /* ── Capture screen ── */
     #screen-capture {
-      position: fixed;
-      inset: 0;
-      z-index: 500;
+      position: fixed; inset: 0; z-index: 500;
       background: #07080a;
-      display: none;
-      flex-direction: column;
-      align-items: center;
+      display: none; flex-direction: column; align-items: center;
     }
     #screen-capture.active { display: flex; }
 
     .capture-nav {
-      width: 100%; max-width: 480px;
-      display: flex; align-items: center;
-      justify-content: space-between;
+      width: 100%; max-width: 480px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: space-between;
       padding: 18px 20px;
       padding-top: max(18px, env(safe-area-inset-top, 18px));
-      flex-shrink: 0;
     }
     .capture-back {
-      width: 34px; height: 34px;
-      display: grid; place-items: center;
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 11px;
-      background: transparent;
-      color: rgba(255,255,255,0.6);
-      cursor: pointer;
+      width: 34px; height: 34px; display: grid; place-items: center;
+      border: 1px solid rgba(255,255,255,0.14); border-radius: 11px;
+      background: transparent; color: rgba(255,255,255,0.6); cursor: pointer;
     }
-    .capture-title {
-      font-size: 0.8125rem; font-weight: 600;
-      letter-spacing: 0.02em; color: rgba(255,255,255,0.5);
-    }
+    .capture-title { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.02em; color: rgba(255,255,255,0.45); }
 
     .capture-mid {
-      flex: 1;
-      width: 100%; max-width: 480px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 28px;
-      padding: 0 20px;
+      flex: 1; width: 100%; max-width: 480px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 24px; padding: 0 20px;
     }
 
-    /* Camera preview area */
+    /* Viewfinder frame */
     .capture-preview {
-      width: 100%;
-      max-width: 340px;
-      aspect-ratio: 8 / 5;
-      position: relative;
-      border-radius: 16px;
-      overflow: hidden;
+      width: 100%; max-width: 340px; aspect-ratio: 8 / 5;
+      position: relative; border-radius: 16px; overflow: hidden;
       background: #0c0e10;
     }
-    /* Subtle texture inside frame */
     .capture-preview-bg {
       position: absolute; inset: 0;
       background:
-        repeating-linear-gradient(
-          0deg,
-          rgba(255,255,255,0.012) 0px,
-          rgba(255,255,255,0.012) 1px,
-          transparent 1px,
-          transparent 32px
-        ),
-        repeating-linear-gradient(
-          90deg,
-          rgba(255,255,255,0.012) 0px,
-          rgba(255,255,255,0.012) 1px,
-          transparent 1px,
-          transparent 32px
-        );
+        repeating-linear-gradient(0deg, rgba(255,255,255,.012) 0, rgba(255,255,255,.012) 1px, transparent 1px, transparent 32px),
+        repeating-linear-gradient(90deg, rgba(255,255,255,.012) 0, rgba(255,255,255,.012) 1px, transparent 1px, transparent 32px);
     }
 
-    /* Amber corner brackets */
-    .vf-corner {
-      position: absolute;
-      width: 22px; height: 22px;
-      border-color: var(--accent);
-      border-style: solid;
-      border-width: 0;
+    /* Live video feed */
+    #cam-video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+      display: none;
     }
+
+    /* Amber corner brackets — always on top */
+    .vf-corner { position: absolute; width: 22px; height: 22px; border-color: var(--accent); border-style: solid; border-width: 0; z-index: 2; }
     .vf-tl { top: 10px; left: 10px; border-top-width: 2.5px; border-left-width: 2.5px; border-top-left-radius: 6px; }
     .vf-tr { top: 10px; right: 10px; border-top-width: 2.5px; border-right-width: 2.5px; border-top-right-radius: 6px; }
     .vf-bl { bottom: 10px; left: 10px; border-bottom-width: 2.5px; border-left-width: 2.5px; border-bottom-left-radius: 6px; }
     .vf-br { bottom: 10px; right: 10px; border-bottom-width: 2.5px; border-right-width: 2.5px; border-bottom-right-radius: 6px; }
 
-    /* Scanning line */
+    /* Scan line (shown in simulation / while waiting for camera) */
     .scan-line {
-      position: absolute;
-      left: 8%; right: 8%;
-      height: 1.5px;
+      position: absolute; left: 8%; right: 8%; height: 1.5px; z-index: 1;
       background: linear-gradient(90deg, transparent, rgba(243,167,63,.9) 30%, rgba(243,167,63,.9) 70%, transparent);
       filter: blur(0.5px);
       animation: scan-sweep 2.2s cubic-bezier(.4,0,.6,1) infinite;
       opacity: 0;
     }
-    @keyframes scan-sweep {
-      0%   { top: 10%; opacity: 0; }
-      8%   { opacity: 1; }
-      92%  { opacity: 1; }
-      100% { top: 90%; opacity: 0; }
+    @keyframes scan-sweep { 0% { top:10%; opacity:0; } 8% { opacity:1; } 92% { opacity:1; } 100% { top:90%; opacity:0; } }
+
+    /* Ghost card lines (pre-camera placeholder) */
+    .card-ghost {
+      position: absolute; inset: 18px 14px; z-index: 1;
+      border-radius: 6px; border: 1px solid rgba(255,255,255,.07);
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 10px 14px; gap: 5px;
+    }
+    .ghost-line { height: 5px; border-radius: 3px; background: rgba(255,255,255,.07); }
+
+    /* Camera initializing label inside preview */
+    .cam-init-label {
+      position: absolute; inset: 0; z-index: 3;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.78rem; font-weight: 500; color: rgba(255,255,255,.35);
+      letter-spacing: 0.02em;
     }
 
-    /* Simulated card ghost inside frame */
-    .card-ghost {
-      position: absolute;
-      inset: 18px 14px;
-      border-radius: 6px;
-      border: 1px solid rgba(255,255,255,0.07);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 10px 14px;
-      gap: 5px;
+    /* Capture flash */
+    .capture-flash {
+      position: absolute; inset: 0; z-index: 10;
+      background: #fff; border-radius: 16px;
+      animation: flash-out 0.35s ease-out forwards; pointer-events: none;
     }
-    .ghost-line {
-      height: 5px; border-radius: 3px;
-      background: rgba(255,255,255,0.07);
-    }
-    .ghost-line.wide { width: 70%; }
-    .ghost-line.med  { width: 48%; }
-    .ghost-line.narrow { width: 32%; }
+    @keyframes flash-out { from { opacity: .85; } to { opacity: 0; } }
 
     .capture-guide {
       font-size: 0.8125rem; font-weight: 500;
-      color: rgba(255,255,255,0.45);
-      text-align: center;
-      letter-spacing: 0.005em;
+      color: rgba(255,255,255,.42); text-align: center; letter-spacing: 0.005em;
     }
 
     .capture-bottom {
-      width: 100%; max-width: 480px;
+      width: 100%; max-width: 480px; flex-shrink: 0;
+      display: flex; flex-direction: column; align-items: center; gap: 18px;
       padding: 0 20px 32px;
       padding-bottom: max(32px, env(safe-area-inset-bottom, 32px));
-      flex-shrink: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
     }
-
     .shutter {
-      width: 68px; height: 68px;
-      border-radius: 50%;
-      background: #fff;
-      border: 3px solid rgba(255,255,255,0.4);
-      box-shadow: 0 0 0 5px rgba(255,255,255,0.12);
-      cursor: pointer;
-      transition: transform 0.12s, box-shadow 0.12s;
+      width: 68px; height: 68px; border-radius: 50%;
+      background: #fff; border: 3px solid rgba(255,255,255,.4);
+      box-shadow: 0 0 0 5px rgba(255,255,255,.12);
+      cursor: pointer; transition: transform 0.12s, box-shadow 0.12s;
     }
-    .shutter:active {
-      transform: scale(.92);
-      box-shadow: 0 0 0 8px rgba(255,255,255,0.18);
-    }
-
+    .shutter:active { transform: scale(.92); box-shadow: 0 0 0 8px rgba(255,255,255,.18); }
     .cant-read {
-      background: none; border: none;
-      font-family: inherit;
-      font-size: 0.8rem; font-weight: 500;
-      color: rgba(255,255,255,0.35);
-      cursor: pointer;
-      letter-spacing: 0.005em;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      text-decoration-color: rgba(255,255,255,0.2);
+      background: none; border: none; font-family: inherit;
+      font-size: 0.8rem; font-weight: 500; color: rgba(255,255,255,.32);
+      cursor: pointer; text-decoration: underline; text-underline-offset: 3px;
+      text-decoration-color: rgba(255,255,255,.18);
     }
-    .cant-read:hover { color: rgba(255,255,255,0.55); }
+    .cant-read:hover { color: rgba(255,255,255,.55); }
+
+    /* ── Camera denied / unsupported state ── */
+    #cam-denied {
+      position: absolute; inset: 0; z-index: 20;
+      background: #07080a;
+      display: none; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 32px 28px;
+      padding-top: max(80px, env(safe-area-inset-top, 80px));
+      text-align: center; gap: 0;
+    }
+    #cam-denied.visible { display: flex; }
+    .denied-icon {
+      width: 56px; height: 56px; border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.1);
+      display: grid; place-items: center;
+      color: rgba(255,255,255,.3); margin-bottom: 20px;
+    }
+    .denied-title { font-size: 1.0625rem; font-weight: 700; letter-spacing: -0.02em; color: rgba(255,255,255,.75); margin-bottom: 8px; }
+    .denied-sub { font-size: 0.845rem; color: rgba(255,255,255,.35); line-height: 1.55; max-width: 280px; margin-bottom: 28px; }
+    .denied-manual {
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+      border-radius: 12px; padding: 13px 24px; font-family: inherit;
+      font-size: 0.9rem; font-weight: 600; color: rgba(255,255,255,.65); cursor: pointer;
+      transition: background 0.15s;
+    }
+    .denied-manual:hover { background: rgba(255,255,255,.11); }
 
     /* ── Loading screen ── */
     #screen-loading {
-      position: fixed; inset: 0;
-      z-index: 500;
+      position: fixed; inset: 0; z-index: 500;
       background: var(--bg);
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
+      display: none; flex-direction: column;
+      align-items: center; justify-content: center; gap: 0;
     }
     #screen-loading.active { display: flex; }
 
     .loading-dial { position: relative; width: 100px; height: 100px; }
     .loading-svg { width: 100%; height: 100%; }
-    .loading-arc-track { /* static track circle */ }
-    .loading-arc {
-      transform-origin: 50px 50px;
-      animation: arc-spin 1.1s linear infinite;
-    }
+    .loading-arc { transform-origin: 50px 50px; animation: arc-spin 1.1s linear infinite; }
     @keyframes arc-spin { to { transform: rotate(360deg); } }
-
-    .loading-center {
-      position: absolute; inset: 0;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 0;
-    }
+    .loading-center { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
     .loading-label {
-      font-size: 0.65rem; font-weight: 700;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--ink-3); margin-top: 20px;
-      text-align: center;
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--ink-3);
+      margin-top: 20px; text-align: center; min-height: 1.4em;
+      font-variant-numeric: tabular-nums;
     }
 
     /* ── Scan banner ── */
     .scan-banner {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      background: var(--accent-dim);
-      border: 1px solid var(--accent-dim2);
-      border-radius: 13px;
-      padding: 13px 14px;
-      margin-bottom: 1.25rem;
+      display: flex; align-items: flex-start; gap: 10px;
+      background: var(--accent-dim); border: 1px solid var(--accent-dim2);
+      border-radius: 13px; padding: 13px 14px; margin-bottom: 1.25rem;
     }
     .scan-banner-icon { color: var(--accent); flex-shrink: 0; margin-top: 1px; }
     .scan-banner-body { flex: 1; }
-    .scan-banner-title {
-      font-size: 0.8rem; font-weight: 700;
-      color: var(--accent); margin-bottom: 2px;
-    }
-    .scan-banner-sub {
-      font-size: 0.75rem; color: var(--ink-2);
-    }
+    .scan-banner-title { font-size: 0.8rem; font-weight: 700; color: var(--accent); margin-bottom: 2px; }
+    .scan-banner-sub { font-size: 0.75rem; color: var(--ink-2); line-height: 1.45; }
     .scan-banner-dismiss {
-      background: none; border: none;
-      color: var(--ink-3); cursor: pointer;
-      padding: 0; flex-shrink: 0;
-      font-size: 1rem; line-height: 1;
-      display: flex; align-items: center;
+      background: none; border: none; color: var(--ink-3); cursor: pointer;
+      padding: 0; flex-shrink: 0; display: flex; align-items: center;
     }
     .scan-banner-dismiss:hover { color: var(--ink-2); }
 
-    /* Pre-filled input highlight */
+    /* Pre-filled input tint */
     .field-input.prefilled {
       border-color: var(--accent-dim2);
       background: var(--accent-dim);
     }
 
-    /* Step form */
+    /* Form steps */
     .form-step { display: none; }
     .form-step.active { display: block; }
-
-    .step-hd {
-      margin-bottom: 1.25rem;
-    }
-    .step-hd-title {
-      font-size: 1.125rem; font-weight: 700;
-      letter-spacing: -0.02em; margin-bottom: 4px;
-    }
+    .step-hd { margin-bottom: 1.25rem; }
+    .step-hd-title { font-size: 1.125rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
     .step-hd-sub { font-size: 0.845rem; color: var(--ink-2); }
   </style>
 </head>
 <body>
 <div class="app-shell">
 
-  <!-- Top nav — hidden during capture/loading -->
+  <!-- Top nav -->
   <header class="top-nav" id="main-nav">
     <button class="nav-back" id="back-btn" aria-label="Back">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
     </button>
-    <h1 class="nav-title" id="nav-title">Add Gear</h1>
+    <h1 class="nav-title">Add Gear</h1>
     <div class="nav-actions">
       <button class="theme-toggle" aria-label="Toggle theme">
         <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
@@ -363,51 +266,42 @@
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
           <rect x="2" y="3" width="20" height="14" rx="3"/>
           <path d="M8 21h8M12 17v4"/>
-          <path d="M7 7h3M7 10h2"/>
+          <path d="M7 7h3M7 10.5h2"/>
           <rect x="13" y="7" width="4" height="4" rx="1"/>
         </svg>
       </div>
       <div class="entry-headline">Add gear</div>
       <div class="entry-sub">Scan the data card for instant setup, or enter details manually.</div>
     </div>
-
     <div style="padding:0 22px 40px">
-      <button class="scan-btn" onclick="startScan()">
+      <button class="scan-btn" id="scan-entry-btn" onclick="startScan()">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M3 7V5a2 2 0 012-2h2M17 3h2a2 2 0 012 2v2M21 17v2a2 2 0 01-2 2h-2M7 21H5a2 2 0 01-2-2v-2"/>
           <rect x="7" y="7" width="10" height="10" rx="2"/>
-          <line x1="11" y1="11" x2="13" y2="11"/>
-          <line x1="12" y1="10" x2="12" y2="14"/>
         </svg>
         Scan data card
       </button>
-
       <div class="or-divider"><span>or</span></div>
-
       <button class="manual-link" onclick="startManual()">Enter manually</button>
     </div>
   </div>
 
-  <!-- ══ LOADING SCREEN ══ -->
+  <!-- ══ LOADING / OCR SCREEN ══ -->
   <div id="screen-loading">
     <div class="loading-dial">
       <svg class="loading-svg" viewBox="0 0 100 100">
-        <!-- track -->
         <circle cx="50" cy="50" r="38" fill="none" stroke="var(--track)" stroke-width="5"/>
-        <!-- spinning arc -->
         <circle cx="50" cy="50" r="38" fill="none" stroke="var(--accent)" stroke-width="5"
-          stroke-dasharray="60 179" stroke-linecap="round"
-          class="loading-arc"/>
+          stroke-dasharray="60 179" stroke-linecap="round" class="loading-arc"/>
       </svg>
       <div class="loading-center">
-        <!-- small inner dot -->
-        <div style="width:8px;height:8px;border-radius:50%;background:var(--accent);opacity:0.6"></div>
+        <div style="width:8px;height:8px;border-radius:50%;background:var(--accent);opacity:.5"></div>
       </div>
     </div>
-    <div class="loading-label">Reading card…</div>
+    <div class="loading-label" id="loading-status">Reading card…</div>
   </div>
 
-  <!-- Step indicator (shown during form steps) -->
+  <!-- Step indicator -->
   <div class="steps" id="step-dots" style="display:none">
     <div class="step-dot" id="dot1"></div>
     <div class="step-dot" id="dot2"></div>
@@ -418,7 +312,7 @@
   <!-- ══ FORM STEPS ══ -->
   <div id="screen-form" style="display:none">
 
-    <!-- STEP 1: Gear type -->
+    <!-- STEP 1 -->
     <div class="page-body form-step" id="step1">
       <div class="step-hd">
         <div class="step-hd-title">What are you adding?</div>
@@ -426,39 +320,27 @@
       </div>
       <div class="type-grid">
         <div class="type-option" onclick="selectType(this,'Container')">
-          <div class="type-option-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><circle cx="12" cy="14" r="2"/></svg>
-          </div>
+          <div class="type-option-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><circle cx="12" cy="14" r="2"/></svg></div>
           <span class="type-option-label">Container</span>
         </div>
         <div class="type-option" onclick="selectType(this,'Main Canopy')">
-          <div class="type-option-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12h20C22 6.48 17.52 2 12 2z"/><path d="M12 12l-3 8M12 12l3 8M9 20h6"/></svg>
-          </div>
+          <div class="type-option-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12h20C22 6.48 17.52 2 12 2z"/><path d="M12 12l-3 8M12 12l3 8M9 20h6"/></svg></div>
           <span class="type-option-label">Main Canopy</span>
         </div>
         <div class="type-option" id="type-reserve" onclick="selectType(this,'Reserve Canopy')">
-          <div class="type-option-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12h20C22 6.48 17.52 2 12 2z"/><path d="M12 12l-3 8M12 12l3 8M9 20h6"/></svg>
-          </div>
+          <div class="type-option-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12h20C22 6.48 17.52 2 12 2z"/><path d="M12 12l-3 8M12 12l3 8M9 20h6"/></svg></div>
           <span class="type-option-label">Reserve Canopy</span>
         </div>
         <div class="type-option" onclick="selectType(this,'AAD')">
-          <div class="type-option-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M20 9h3M1 15h3M20 15h3"/></svg>
-          </div>
+          <div class="type-option-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M20 9h3M1 15h3M20 15h3"/></svg></div>
           <span class="type-option-label">AAD</span>
         </div>
         <div class="type-option" onclick="selectType(this,'Helmet')">
-          <div class="type-option-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 00-7.07 17.07"/><path d="M12 2a10 10 0 017.07 17.07"/><path d="M5 19a8 8 0 0014 0"/></svg>
-          </div>
+          <div class="type-option-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 00-7.07 17.07"/><path d="M12 2a10 10 0 017.07 17.07"/><path d="M5 19a8 8 0 0014 0"/></svg></div>
           <span class="type-option-label">Helmet</span>
         </div>
         <div class="type-option" onclick="selectType(this,'Other')">
-          <div class="type-option-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
-          </div>
+          <div class="type-option-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg></div>
           <span class="type-option-label">Other</span>
         </div>
       </div>
@@ -470,15 +352,14 @@
 
     <!-- STEP 2: Details -->
     <div class="page-body form-step" id="step2">
-      <!-- Scan banner (hidden unless scan path) -->
       <div class="scan-banner" id="scan-banner" style="display:none">
         <svg class="scan-banner-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M3 7V5a2 2 0 012-2h2M17 3h2a2 2 0 012 2v2M21 17v2a2 2 0 01-2 2h-2M7 21H5a2 2 0 01-2-2v-2"/>
           <polyline points="9 12 11 14 15 10"/>
         </svg>
         <div class="scan-banner-body">
-          <div class="scan-banner-title">Scanned — please check the details below.</div>
-          <div class="scan-banner-sub">Pre-filled from your data card. Edit anything that looks wrong.</div>
+          <div class="scan-banner-title" id="banner-title">Scanned — check the details, OCR isn't perfect yet.</div>
+          <div class="scan-banner-sub">Edit anything that looks wrong, and fill in any blanks.</div>
         </div>
         <button class="scan-banner-dismiss" onclick="dismissBanner()" aria-label="Dismiss">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -506,11 +387,10 @@
         <label class="field-label">Manufacture Date</label>
         <input class="field-input" id="f-mfg" type="month">
       </div>
-      <div class="field" id="jump-field">
+      <div class="field">
         <label class="field-label">Total Jumps <span style="font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink-3)">(if applicable)</span></label>
         <input class="field-input" id="f-jumps" type="number" placeholder="e.g. 287" min="0">
       </div>
-
       <div style="display:flex;gap:0.75rem;margin-top:1.5rem">
         <button class="btn btn-outline" style="flex:0 0 auto;padding:13px 18px" onclick="goStep(1)">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
@@ -524,15 +404,14 @@
 
     <!-- STEP 3: Service dates -->
     <div class="page-body form-step" id="step3">
-      <!-- Scan banner copy (same data, shown if scan path) -->
       <div class="scan-banner" id="scan-banner-2" style="display:none">
         <svg class="scan-banner-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M3 7V5a2 2 0 012-2h2M17 3h2a2 2 0 012 2v2M21 17v2a2 2 0 01-2 2h-2M7 21H5a2 2 0 01-2-2v-2"/>
           <polyline points="9 12 11 14 15 10"/>
         </svg>
         <div class="scan-banner-body">
-          <div class="scan-banner-title">Scanned — please check the dates below.</div>
-          <div class="scan-banner-sub">Pre-filled from your data card. Edit anything that looks wrong.</div>
+          <div class="scan-banner-title">Scanned — check the details, OCR isn't perfect yet.</div>
+          <div class="scan-banner-sub">Edit anything that looks wrong, and fill in any blanks.</div>
         </div>
         <button class="scan-banner-dismiss" onclick="dismissBanner()" aria-label="Dismiss">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -543,8 +422,7 @@
         <div class="step-hd-title">Service &amp; expiry dates</div>
         <div class="step-hd-sub">Manifest will alert you before deadlines.</div>
       </div>
-
-      <div class="field" id="repack-field">
+      <div class="field">
         <label class="field-label">Last Repack Date</label>
         <input class="field-input" id="f-repack" type="date">
       </div>
@@ -556,7 +434,6 @@
         <label class="field-label">Notes <span style="font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink-3)">(optional)</span></label>
         <textarea class="field-textarea" id="f-notes" placeholder="e.g. Closing loops replaced, Cypress loops fresh…"></textarea>
       </div>
-
       <div style="display:flex;gap:0.75rem;margin-top:1.5rem">
         <button class="btn btn-outline" style="flex:0 0 auto;padding:13px 18px" onclick="goStep(2)">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
@@ -569,13 +446,29 @@
     </div>
 
   </div><!-- /screen-form -->
-
 </div><!-- /app-shell -->
 
-<!-- ══ CAPTURE SCREEN (outside app-shell, full fixed) ══ -->
+<!-- Hidden capture canvas -->
+<canvas id="cap-canvas" style="display:none;position:absolute;top:-9999px"></canvas>
+
+<!-- ══ CAPTURE SCREEN (fixed, full-page) ══ -->
 <div id="screen-capture">
+
+  <!-- Camera denied / unsupported overlay -->
+  <div id="cam-denied">
+    <div class="denied-icon">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
+        <line x1="1" y1="1" x2="23" y2="23"/>
+      </svg>
+    </div>
+    <div class="denied-title" id="denied-title">Camera access denied</div>
+    <div class="denied-sub" id="denied-sub">To scan data cards, allow camera access in your browser settings, then try again.</div>
+    <button class="denied-manual" onclick="startManual()">Enter details manually instead</button>
+  </div>
+
   <div class="capture-nav">
-    <button class="capture-back" onclick="showEntry()" aria-label="Back">
+    <button class="capture-back" onclick="cancelCapture()" aria-label="Back">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
     </button>
     <span class="capture-title">Scan data card</span>
@@ -583,229 +476,427 @@
   </div>
 
   <div class="capture-mid">
-    <div class="capture-preview">
+    <div class="capture-preview" id="capture-preview-frame">
       <div class="capture-preview-bg"></div>
 
-      <!-- Corner brackets -->
+      <!-- Live camera feed -->
+      <video id="cam-video" autoplay playsinline muted></video>
+
+      <!-- Ghost lines shown while camera initialises -->
+      <div class="card-ghost" id="cam-ghost">
+        <div class="ghost-line" style="width:70%"></div>
+        <div style="height:4px"></div>
+        <div class="ghost-line" style="width:48%"></div>
+        <div style="height:6px"></div>
+        <div style="display:flex;gap:8px">
+          <div class="ghost-line" style="width:32%"></div>
+          <div class="ghost-line" style="width:32%"></div>
+        </div>
+        <div style="height:4px"></div>
+        <div class="ghost-line" style="width:55%"></div>
+        <div style="height:4px"></div>
+        <div class="ghost-line" style="width:28%"></div>
+      </div>
+
+      <!-- Scan line (visible in ghost mode) -->
+      <div class="scan-line" id="scan-line-anim"></div>
+
+      <!-- "Opening camera…" text shown briefly -->
+      <div class="cam-init-label" id="cam-init-label">Opening camera…</div>
+
+      <!-- Amber corner brackets (always on top) -->
       <div class="vf-corner vf-tl"></div>
       <div class="vf-corner vf-tr"></div>
       <div class="vf-corner vf-bl"></div>
       <div class="vf-corner vf-br"></div>
-
-      <!-- Card ghost (simulates a data card inside frame) -->
-      <div class="card-ghost">
-        <div class="ghost-line wide"></div>
-        <div style="height:4px"></div>
-        <div class="ghost-line med"></div>
-        <div style="height:6px"></div>
-        <div style="display:flex;gap:8px">
-          <div class="ghost-line narrow"></div>
-          <div class="ghost-line narrow"></div>
-        </div>
-        <div style="height:4px"></div>
-        <div class="ghost-line wide" style="width:55%"></div>
-        <div style="height:4px"></div>
-        <div class="ghost-line narrow" style="width:28%"></div>
-      </div>
-
-      <!-- Scanning line -->
-      <div class="scan-line"></div>
     </div>
 
-    <div class="capture-guide">Position the data card inside the frame</div>
+    <div class="capture-guide" id="capture-guide">Opening camera…</div>
   </div>
 
   <div class="capture-bottom">
-    <button class="shutter" id="shutter-btn" onclick="triggerScan()" aria-label="Capture"></button>
+    <button class="shutter" id="shutter-btn" onclick="triggerScan()" aria-label="Capture" disabled style="opacity:0.4;cursor:default"></button>
     <button class="cant-read" onclick="startManual()">Couldn't read it? Enter manually</button>
   </div>
-</div>
+
+</div><!-- /screen-capture -->
 
 <script src="/app/app.js"></script>
 <script>
 (function () {
+  'use strict';
 
-  /* ---- state ---- */
-  var selectedType = null;
-  var scannedPath = false;
+  /* ── state ── */
+  var selectedType  = null;
+  var scannedPath   = false;
+  var cameraStream  = null;
+  var ocrTimeout    = null;
 
-  /* Simulated scan result — realistic reserve data card values */
-  var SCAN_DATA = {
-    type:    'Reserve Canopy',
-    brand:   'Performance Designs',
-    model:   'PD Reserve 176',
-    serial:  'PDR-57283',
-    mfg:     '2020-03',
-    jumps:   '',
-    repack:  '2025-11-15',
-    service: '',
-    notes:   ''
-  };
-
-  /* ---- screens ---- */
+  /* ── DOM refs ── */
   var elEntry   = document.getElementById('screen-entry');
   var elCapture = document.getElementById('screen-capture');
   var elLoading = document.getElementById('screen-loading');
   var elForm    = document.getElementById('screen-form');
   var elDots    = document.getElementById('step-dots');
-  var elNav     = document.getElementById('main-nav');
 
+  /* ── Tesseract loader (lazy, CDN) ── */
+  var tesseractState = 'idle'; // idle | loading | ready | failed
+  function loadTesseract(cb) {
+    if (window.Tesseract) { tesseractState = 'ready'; cb(); return; }
+    if (tesseractState === 'loading') { /* will cb when done — just wait */ return; }
+    if (tesseractState === 'failed')  { cb(); return; }
+
+    tesseractState = 'loading';
+    var s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js';
+    s.onload = function () { tesseractState = 'ready'; cb(); };
+    s.onerror = function () { tesseractState = 'failed'; cb(); };
+    document.head.appendChild(s);
+  }
+
+  /* ── screen helpers ── */
   function showEntry() {
-    elEntry.style.display   = '';
+    elEntry.style.display = '';
     elCapture.classList.remove('active');
     elLoading.classList.remove('active');
-    elForm.style.display    = 'none';
-    elDots.style.display    = 'none';
-    document.getElementById('nav-title').textContent = 'Add Gear';
+    elForm.style.display = 'none';
+    elDots.style.display = 'none';
   }
 
   function showForm() {
-    elEntry.style.display   = 'none';
+    elEntry.style.display = 'none';
     elCapture.classList.remove('active');
     elLoading.classList.remove('active');
-    elForm.style.display    = '';
-    elDots.style.display    = 'flex';
+    elForm.style.display = '';
+    elDots.style.display = 'flex';
   }
 
-  /* ---- entry actions ---- */
+  function setLoadingStatus(txt) {
+    var el = document.getElementById('loading-status');
+    if (el) el.textContent = txt;
+  }
+
+  /* ── camera ── */
   window.startScan = function () {
     elEntry.style.display = 'none';
     elCapture.classList.add('active');
+    /* Start loading Tesseract in the background while user prepares to scan */
+    loadTesseract(function () { /* ready when user taps shutter */ });
+    openCamera();
   };
 
-  window.startManual = function () {
-    scannedPath = false;
-    clearPrefill();
-    showForm();
-    goStep(1);
+  function openCamera() {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      showDenied('not-supported');
+      return;
+    }
+    navigator.mediaDevices.getUserMedia({
+      video: { facingMode: { ideal: 'environment' }, width: { ideal: 1920 }, height: { ideal: 1080 } },
+      audio: false
+    }).then(function (stream) {
+      cameraStream = stream;
+      var video = document.getElementById('cam-video');
+      video.srcObject = stream;
+
+      video.addEventListener('loadedmetadata', function () {
+        video.play().then(function () {
+          /* Camera is live — swap UI */
+          video.style.display = 'block';
+          document.getElementById('cam-ghost').style.display = 'none';
+          document.getElementById('scan-line-anim').style.display = 'none';
+          document.getElementById('cam-init-label').style.display = 'none';
+          document.getElementById('capture-guide').textContent = 'Position the data card inside the frame';
+          var shutter = document.getElementById('shutter-btn');
+          shutter.disabled = false;
+          shutter.style.opacity = '1';
+          shutter.style.cursor = 'pointer';
+        }).catch(function () { showDenied('play-failed'); });
+      }, { once: true });
+    }).catch(function (err) {
+      showDenied(err.name || 'unknown');
+    });
+  }
+
+  function showDenied(reason) {
+    var denied = document.getElementById('cam-denied');
+    var title  = document.getElementById('denied-title');
+    var sub    = document.getElementById('denied-sub');
+    denied.classList.add('visible');
+
+    if (reason === 'not-supported' || reason === 'play-failed') {
+      title.textContent = 'Camera not available';
+      sub.textContent = 'Your browser doesn\'t support camera access. Enter the data card details manually.';
+    } else if (reason === 'NotAllowedError' || reason === 'PermissionDeniedError') {
+      title.textContent = 'Camera access denied';
+      sub.textContent = 'To scan data cards, allow camera access in your browser settings, then try again.';
+    } else if (reason === 'NotFoundError' || reason === 'DevicesNotFoundError') {
+      title.textContent = 'No camera found';
+      sub.textContent = 'We couldn\'t find a camera on this device. Enter the data card details manually.';
+    } else {
+      title.textContent = 'Camera unavailable';
+      sub.textContent = 'Something went wrong opening the camera. You can enter the details manually instead.';
+    }
+  }
+
+  function stopCamera() {
+    if (cameraStream) {
+      cameraStream.getTracks().forEach(function (t) { t.stop(); });
+      cameraStream = null;
+    }
+    var video = document.getElementById('cam-video');
+    if (video) video.srcObject = null;
+  }
+
+  window.cancelCapture = function () {
+    stopCamera();
+    document.getElementById('cam-denied').classList.remove('visible');
+    showEntry();
   };
 
-  /* ---- capture / shutter ---- */
+  /* ── shutter / capture ── */
   window.triggerScan = function () {
-    var btn = document.getElementById('shutter-btn');
-    btn.style.transform = 'scale(.9)';
-    setTimeout(function () { btn.style.transform = ''; }, 120);
+    var video  = document.getElementById('cam-video');
+    var canvas = document.getElementById('cap-canvas');
 
+    /* Flash effect */
+    var flash = document.createElement('div');
+    flash.className = 'capture-flash';
+    document.getElementById('capture-preview-frame').appendChild(flash);
+    setTimeout(function () { if (flash.parentNode) flash.parentNode.removeChild(flash); }, 400);
+
+    /* Draw frame to canvas at native res */
+    var vw = video.videoWidth  || 640;
+    var vh = video.videoHeight || 400;
+    canvas.width  = vw;
+    canvas.height = vh;
+    canvas.getContext('2d').drawImage(video, 0, 0, vw, vh);
+
+    stopCamera();
     elCapture.classList.remove('active');
     elLoading.classList.add('active');
+    setLoadingStatus('Reading card…');
 
-    setTimeout(function () {
-      elLoading.classList.remove('active');
-      scannedPath = true;
-      applyScannedData();
-      showForm();
-      goStep(2);
-    }, 1550);
+    /* 20 s timeout safety net */
+    ocrTimeout = setTimeout(function () { finishScan({}); }, 20000);
+
+    function runOCR() {
+      if (!window.Tesseract) {
+        /* Tesseract never loaded — go straight to form */
+        clearTimeout(ocrTimeout);
+        finishScan({});
+        return;
+      }
+      Tesseract.recognize(canvas, 'eng', {
+        logger: function (m) {
+          if (m.status === 'loading tesseract core') {
+            setLoadingStatus('Loading OCR engine…');
+          } else if (m.status === 'initializing tesseract') {
+            setLoadingStatus('Initialising…');
+          } else if (m.status === 'recognizing text') {
+            setLoadingStatus('Reading card… ' + Math.round(m.progress * 100) + '%');
+          }
+        }
+      }).then(function (result) {
+        clearTimeout(ocrTimeout);
+        setLoadingStatus('Parsing…');
+        var parsed = parseOCRText(result.data.text || '');
+        setTimeout(function () { finishScan(parsed); }, 300);
+      }).catch(function () {
+        clearTimeout(ocrTimeout);
+        finishScan({});
+      });
+    }
+
+    /* Tesseract may still be loading if user was very fast */
+    if (tesseractState === 'ready' || tesseractState === 'failed') {
+      runOCR();
+    } else {
+      /* Poll until loaded (max ~5 s before timeout fires anyway) */
+      var poll = setInterval(function () {
+        if (tesseractState !== 'loading') { clearInterval(poll); runOCR(); }
+      }, 200);
+    }
   };
 
-  /* ---- apply scanned data to form fields ---- */
-  function applyScannedData() {
-    var d = SCAN_DATA;
+  /* ── OCR text parsing ── */
+  function parseOCRText(text) {
+    if (!text) return {};
+    var r = {};
 
-    /* auto-select gear type */
-    selectedType = d.type;
-    document.querySelectorAll('.type-option').forEach(function (o) {
-      o.classList.remove('selected');
-      if (o.querySelector('.type-option-label').textContent === d.type) {
-        o.classList.add('selected');
-      }
-    });
-    var nextBtn = document.getElementById('step1-next');
-    nextBtn.disabled = false;
-    nextBtn.style.opacity = '1';
+    /* Serial number — "SERIAL NO: PDR-57283" or bare pattern near keyword */
+    var snm = text.match(/serial\s*(?:no|num|number|#)?\.?\s*[:\-]?\s*([A-Z0-9][A-Z0-9\-]{3,18})/i)
+           || text.match(/\bs\.?n\.?\s*[:\-]\s*([A-Z0-9][A-Z0-9\-]{3,18})/i);
+    if (snm) r.serial = snm[1].replace(/\s/g,'').toUpperCase();
 
-    /* fill fields */
-    setPrefilled('f-brand',   d.brand);
-    setPrefilled('f-model',   d.model);
-    setPrefilled('f-serial',  d.serial);
-    setPrefilled('f-mfg',     d.mfg);
-    setPrefilled('f-jumps',   d.jumps);
-    setPrefilled('f-repack',  d.repack);
-    setPrefilled('f-service', d.service);
-    setPrefilled('f-notes',   d.notes);
+    /* Manufacture date — "DATE OF MANUFACTURE: 03/2020" */
+    var mfgm = text.match(/(?:date\s+of\s+manu?f|mfg\.?\s*date|dom|manufacture\s+date|manufactured)\s*[:\-]?\s*([\d]{1,2}[\/\.\-][\d]{4}|[\d]{4}[\/\.\-][\d]{1,2}[\/\.\-][\d]{1,2}|[\d]{1,2}[\/\.\-][\d]{1,2}[\/\.\-][\d]{2,4}|(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+\d{4})/i);
+    if (mfgm) r.mfgRaw = mfgm[1].trim();
 
-    /* show banners */
+    /* Repack / inspection date — "DATE OF REPACK: 11/15/2025" */
+    var rpm = text.match(/(?:last\s+(?:repack|pack|inspection)|date\s+(?:of\s+)?(?:repack|pack|inspection)|packed|repacked|inspected\s+on|pack\s+date|repack\s+date)\s*[:\-]?\s*([\d]{1,2}[\/\.\-][\d]{1,2}[\/\.\-][\d]{2,4}|[\d]{1,2}[\/\.\-][\d]{4})/i);
+    if (rpm) r.repackRaw = rpm[1].trim();
+
+    /* Manufacturer/brand — "MANUFACTURER: Performance Designs" */
+    var bm = text.match(/(?:manufacturer|mfr|brand|made\s+by)\s*[:\-]+\s*([^\n\r,]{4,45})/i);
+    if (bm) r.brand = clean(bm[1]);
+
+    /* Model — "MODEL: PD Reserve 176" */
+    var mm = text.match(/model\s*[:\-]+\s*([^\n\r,]{3,35})/i);
+    if (mm) r.model = clean(mm[1]);
+
+    /* Convert raw dates → ISO */
+    if (r.mfgRaw)   r.mfgISO   = toISO(r.mfgRaw);
+    if (r.repackRaw) r.repackISO = toISO(r.repackRaw);
+
+    return r;
+  }
+
+  function clean(s) { return s.trim().replace(/\s+/g, ' '); }
+
+  var MON = { jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,oct:10,nov:11,dec:12 };
+
+  function toISO(raw) {
+    if (!raw) return '';
+    raw = raw.trim();
+
+    /* Already YYYY-MM-DD */
+    if (/^\d{4}-\d{2}-\d{2}$/.test(raw)) return raw;
+
+    var m;
+
+    /* YYYY-MM-DD with dots/slashes */
+    m = raw.match(/^(\d{4})[\/\.\-](\d{1,2})[\/\.\-](\d{1,2})$/);
+    if (m) return m[1] + '-' + pad(m[2]) + '-' + pad(m[3]);
+
+    /* MM/YYYY → YYYY-MM (manufacture date style) */
+    m = raw.match(/^(\d{1,2})[\/\.\-](\d{4})$/);
+    if (m) return m[2] + '-' + pad(m[1]);
+
+    /* MM/DD/YYYY */
+    m = raw.match(/^(\d{1,2})[\/\.\-](\d{1,2})[\/\.\-](\d{4})$/);
+    if (m) return m[3] + '-' + pad(m[1]) + '-' + pad(m[2]);
+
+    /* MM/DD/YY */
+    m = raw.match(/^(\d{1,2})[\/\.\-](\d{1,2})[\/\.\-](\d{2})$/);
+    if (m) { var y = parseInt(m[3],10); return ((y<50?2000:1900)+y) + '-' + pad(m[1]) + '-' + pad(m[2]); }
+
+    /* "Jan 2020" or "January 2020" */
+    m = raw.match(/^([A-Za-z]+)\.?\s+(\d{4})$/);
+    if (m) { var mo = MON[m[1].toLowerCase().slice(0,3)]; if (mo) return m[2] + '-' + pad(mo); }
+
+    /* "15 Nov 2025" */
+    m = raw.match(/^(\d{1,2})\s+([A-Za-z]+)\.?\s+(\d{4})$/);
+    if (m) { var mo = MON[m[2].toLowerCase().slice(0,3)]; if (mo) return m[3] + '-' + pad(mo) + '-' + pad(m[1]); }
+
+    return '';
+  }
+
+  function pad(n) { return String(n).padStart(2,'0'); }
+
+  /* ── apply parsed data to form ── */
+  function finishScan(parsed) {
+    clearTimeout(ocrTimeout);
+    scannedPath = true;
+
+    /* Data cards are almost always reserve canopies; default if not already chosen */
+    if (!selectedType) {
+      selectedType = 'Reserve Canopy';
+      document.querySelectorAll('.type-option').forEach(function (o) {
+        var lbl = o.querySelector('.type-option-label');
+        o.classList.toggle('selected', lbl && lbl.textContent === 'Reserve Canopy');
+      });
+      var nb = document.getElementById('step1-next');
+      nb.disabled = false; nb.style.opacity = '1';
+    }
+
+    setField('f-brand',  parsed.brand    || '');
+    setField('f-model',  parsed.model    || '');
+    setField('f-serial', parsed.serial   || '');
+    setField('f-mfg',    parsed.mfgISO   || '');
+    setField('f-jumps',  '');
+    setField('f-repack', parsed.repackISO || '');
+    setField('f-service','');
+    setField('f-notes',  '');
+
+    document.getElementById('step2-title').textContent = (selectedType || 'Gear') + ' details';
+
+    /* Show banners */
     document.getElementById('scan-banner').style.display   = 'flex';
     document.getElementById('scan-banner-2').style.display = 'flex';
 
-    /* update step 2 title */
-    document.getElementById('step2-title').textContent = d.type + ' details';
+    showForm();
+    goStep(2);
   }
 
-  function setPrefilled(id, val) {
+  function setField(id, val) {
     var el = document.getElementById(id);
     if (!el) return;
-    el.value = val || '';
-    if (val) el.classList.add('prefilled');
-    else     el.classList.remove('prefilled');
+    el.value = val;
+    el.classList.toggle('prefilled', !!val);
   }
 
-  function clearPrefill() {
-    ['f-brand','f-model','f-serial','f-mfg','f-jumps','f-repack','f-service','f-notes'].forEach(function(id) {
-      var el = document.getElementById(id);
-      if (el) { el.value = ''; el.classList.remove('prefilled'); }
-    });
-    document.getElementById('scan-banner').style.display   = 'none';
-    document.getElementById('scan-banner-2').style.display = 'none';
-  }
-
-  /* ---- dismiss banner ---- */
   window.dismissBanner = function () {
     document.getElementById('scan-banner').style.display   = 'none';
     document.getElementById('scan-banner-2').style.display = 'none';
-    /* also remove amber tint from inputs */
     document.querySelectorAll('.field-input.prefilled').forEach(function (el) {
       el.classList.remove('prefilled');
     });
   };
 
-  /* ---- type selection ---- */
+  /* ── manual path ── */
+  window.startManual = function () {
+    stopCamera();
+    document.getElementById('cam-denied').classList.remove('visible');
+    scannedPath = false;
+    /* clear any leftover prefill */
+    ['f-brand','f-model','f-serial','f-mfg','f-jumps','f-repack','f-service','f-notes'].forEach(function (id) {
+      setField(id, '');
+    });
+    document.getElementById('scan-banner').style.display   = 'none';
+    document.getElementById('scan-banner-2').style.display = 'none';
+    showForm();
+    goStep(1);
+  };
+
+  /* ── gear type selection ── */
   window.selectType = function (el, type) {
     document.querySelectorAll('.type-option').forEach(function (o) { o.classList.remove('selected'); });
     el.classList.add('selected');
     selectedType = type;
     var btn = document.getElementById('step1-next');
-    btn.disabled = false;
-    btn.style.opacity = '1';
+    btn.disabled = false; btn.style.opacity = '1';
   };
 
-  /* ---- step navigation ---- */
+  /* ── step navigation ── */
   window.goStep = function (n) {
-    /* skip step 1 if scan path already set the type */
-    if (n === 2 && scannedPath && selectedType) {
-      document.getElementById('step2-title').textContent = selectedType + ' details';
-    }
-    if (n === 1 && scannedPath) {
-      /* going back from step2 while on scan path — allow type change */
-    }
-
     ['step1','step2','step3'].forEach(function (id, i) {
       document.getElementById(id).classList.toggle('active', i + 1 === n);
     });
-
     ['dot1','dot2','dot3'].forEach(function (id, i) {
       var dot = document.getElementById(id);
       dot.className = 'step-dot';
-      if (i + 1 < n)      dot.classList.add('done');
+      if (i + 1 < n) dot.classList.add('done');
       else if (i + 1 === n) dot.classList.add('active');
     });
-
-    var labels = ['Step 1 of 3 — Gear type', 'Step 2 of 3 — Details', 'Step 3 of 3 — Service dates'];
+    var labels = ['Step 1 of 3 — Gear type','Step 2 of 3 — Details','Step 3 of 3 — Service dates'];
     document.getElementById('step-label').textContent = labels[n - 1];
+    if (n === 2 && selectedType) {
+      document.getElementById('step2-title').textContent = selectedType + ' details';
+    }
     window.scrollTo(0, 0);
   };
 
-  /* ---- back button ---- */
+  /* ── back button ── */
   document.getElementById('back-btn').addEventListener('click', function () {
-    if (elForm.style.display === '' && elDots.style.display !== 'none') {
-      /* on form steps — go to entry */
+    if (elForm.style.display === '' || elDots.style.display !== 'none') {
+      stopCamera();
       showEntry();
     } else {
       window.location.href = '/app/locker';
     }
   });
 
-  /* ---- init ---- */
+  /* ── init ── */
   showEntry();
 })();
 </script>
