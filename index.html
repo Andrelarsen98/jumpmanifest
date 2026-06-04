@@ -1,862 +1,428 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Manifest — The App for Skydivers | Coming Soon</title>
-  <meta name="description" content="The all-in-one app for skydivers. Jump logbook, gear tracker with OCR, expiry reminders, event finder, and gear marketplace.">
-  <meta property="og:title" content="Manifest — The App for Skydivers">
-  <meta property="og:description" content="Jump logbook, gear tracker, OCR data card scan, expiry reminders, boogie finder, gear marketplace. One app for everything.">
-  <meta property="og:url" content="https://jumpmanifest.com">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg:       #111111;
-      --bg1:      #1e1e1e;
-      --bg2:      #282828;
-      --line:     rgba(255,255,255,0.12);
-      --line2:    rgba(255,255,255,0.22);
-      --t1:       #ffffff;
-      --t2:       #ffffff;
-      --t3:       #bbbbbb;
-      --sky:      #7aa8c4;
-      --warm:     #c49a50;
-      --nav-bg:   rgba(17,17,17,0.9);
-      --btn-bg:   #ffffff;
-      --btn-text: #111111;
-    }
-
-    [data-theme="light"] {
-      --bg:       #ffffff;
-      --bg1:      #f5f5f5;
-      --bg2:      #e8e8e8;
-      --line:     rgba(0,0,0,0.1);
-      --line2:    rgba(0,0,0,0.18);
-      --t1:       #111111;
-      --t2:       #111111;
-      --t3:       #555555;
-      --sky:      #2a72a8;
-      --warm:     #8a5e18;
-      --nav-bg:   rgba(255,255,255,0.92);
-      --btn-bg:   #111111;
-      --btn-text: #ffffff;
-    }
-
-    /* Smooth transition applied only during theme switch */
-    .transitioning,
-    .transitioning *,
-    .transitioning *::before,
-    .transitioning *::after {
-      transition: background-color 0.3s ease, border-color 0.3s ease,
-                  color 0.3s ease, fill 0.3s ease, stroke 0.3s ease !important;
-    }
-
-    [data-theme="light"] #stars { opacity: 0; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--t1);
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      line-height: 1.6;
-    }
-
-    /* Grain overlay — adds depth, very subtle */
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      z-index: 998;
-      pointer-events: none;
-      opacity: 0.022;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      background-size: 256px;
-    }
-
-    /* Stars canvas — static */
-    #stars {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    /* ── Nav ── */
-    nav {
-      position: fixed;
-      inset: 0 0 auto 0;
-      z-index: 100;
-      height: 58px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 1.75rem;
-      background: var(--nav-bg);
-      backdrop-filter: blur(20px) saturate(1.4);
-      -webkit-backdrop-filter: blur(20px) saturate(1.4);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      text-decoration: none;
-    }
-
-    .logo-mark {
-      width: 28px;
-      height: 28px;
-      border-radius: 7px;
-      border: 1px solid var(--line2);
-      background: rgba(255,255,255,0.04);
-      display: grid;
-      place-items: center;
-    }
-
-    .logo-word {
-      font-size: 0.875rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      color: var(--t1);
-    }
-
-    .nav-pill {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--t2);
-    }
-
-    .nav-dot {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--sky);
-      opacity: 0.75;
-      animation: breathe 3s ease-in-out infinite;
-    }
-
-    @keyframes breathe {
-      0%, 100% { opacity: 0.75; }
-      50%       { opacity: 0.3; }
-    }
-
-    /* ── Main ── */
-    main { position: relative; z-index: 1; }
-
-    /* ── Hero ── */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 96px 1.5rem 5rem;
-    }
-
-    .hero-kicker {
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--t3);
-      margin-bottom: 2.75rem;
-    }
-
-    .hero-h1 {
-      font-family: 'Instrument Serif', Georgia, serif;
-      font-weight: 400;
-      font-size: clamp(3.5rem, 10.5vw, 7rem);
-      line-height: 1.02;
-      letter-spacing: -0.025em;
-      color: var(--t1);
-      margin-bottom: 1.875rem;
-    }
-
-    .hero-h1 em {
-      font-style: italic;
-      color: var(--t1);
-    }
-
-    .hero-body {
-      font-size: clamp(0.975rem, 2vw, 1.05rem);
-      color: var(--t2);
-      max-width: 430px;
-      line-height: 1.75;
-      font-weight: 400;
-      margin: 0 auto 2.75rem;
-    }
-
-    /* Form */
-    .form-wrap { width: 100%; max-width: 400px; margin: 0 auto; }
-
-    .form-row {
-      display: flex;
-      gap: 5px;
-      padding: 5px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      transition: border-color 0.2s;
-    }
-
-    .form-row:focus-within { border-color: var(--line2); }
-
-    .form-input {
-      flex: 1;
-      min-width: 0;
-      background: transparent;
-      border: none;
-      outline: none;
-      font-family: inherit;
-      font-size: 0.845rem;
-      color: var(--t1);
-      padding: 8px 10px;
-    }
-
-    .form-input::placeholder { color: var(--t3); }
-
-    .form-btn {
-      flex-shrink: 0;
-      background: var(--btn-bg);
-      color: var(--btn-text);
-      border: none;
-      border-radius: 7px;
-      padding: 9px 17px;
-      font-family: inherit;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-      cursor: pointer;
-      transition: opacity 0.18s, transform 0.12s;
-    }
-
-    .form-btn:hover  { opacity: 0.82; }
-    .form-btn:active { transform: scale(0.97); }
-
-    .form-note {
-      font-size: 0.7rem;
-      color: var(--t3);
-      margin-top: 9px;
-      text-align: center;
-    }
-
-    .form-ok {
-      display: none;
-      margin-top: 10px;
-      padding: 11px 16px;
-      background: rgba(80,180,110,0.07);
-      border: 1px solid rgba(80,180,110,0.14);
-      border-radius: 8px;
-      font-size: 0.845rem;
-      font-weight: 500;
-      color: rgba(110,210,140,0.85);
-      text-align: center;
-    }
-
-    /* Capability tags */
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 7px;
-      margin-top: 2.5rem;
-    }
-
-    .tag {
-      font-size: 0.67rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--t3);
-      padding: 4px 11px;
-      border: 1px solid var(--line);
-      border-radius: 100px;
-    }
-
-    /* ── Theme toggle ── */
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .theme-toggle {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      border: 1px solid var(--line2);
-      background: rgba(128,128,128,0.08);
-      cursor: pointer;
-      display: grid;
-      place-items: center;
-      color: var(--t1);
-      transition: background 0.2s;
-      flex-shrink: 0;
-      padding: 0;
-    }
-
-    .theme-toggle:hover { background: rgba(128,128,128,0.16); }
-
-    .theme-toggle svg { display: block; }
-
-    /* Show sun in dark mode (clicking switches to light), moon in light mode */
-    .icon-moon { display: block; }
-    .icon-sun  { display: none; }
-    [data-theme="light"] .icon-moon { display: none; }
-    [data-theme="light"] .icon-sun  { display: block; }
-
-    /* Logo mark adapts to light mode */
-    [data-theme="light"] .logo-mark-canopy { fill: rgba(15,15,15,0.88); }
-
-    /* ── Divider ── */
-    .rule { height: 1px; background: var(--line); }
-
-    /* ── Features ── */
-    .features {
-      padding: 5.5rem 1.75rem 6rem;
-      max-width: 1120px;
-      margin: 0 auto;
-    }
-
-    .sec-row {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 3rem;
-      padding-bottom: 1.375rem;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .sec-label {
-      font-size: 0.67rem;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--t3);
-      flex-shrink: 0;
-    }
-
-    .sec-h2 {
-      font-family: 'Instrument Serif', Georgia, serif;
-      font-weight: 400;
-      font-size: clamp(1.7rem, 3.8vw, 2.4rem);
-      letter-spacing: -0.025em;
-      line-height: 1.15;
-      margin-bottom: 0.875rem;
-      max-width: 500px;
-    }
-
-    .sec-h2 em { font-style: italic; color: var(--t1); }
-
-    .sec-desc {
-      font-size: 0.9375rem;
-      color: var(--t2);
-      max-width: 400px;
-      line-height: 1.7;
-      margin-bottom: 3rem;
-    }
-
-    /* Bento grid — 3 cols on desktop */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--line); /* gap color */
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      overflow: hidden;
-    }
-
-    @media (max-width: 860px)  { .grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 520px)  { .grid { grid-template-columns: 1fr; } }
-
-    .cell {
-      background: var(--bg1);
-      padding: 1.75rem 1.625rem;
-      transition: background 0.2s;
-    }
-
-    .cell:hover { background: var(--bg2); }
-
-    /* Logbook spans 2 cols */
-    .cell.span2 { grid-column: span 2; }
-    @media (max-width: 860px)  { .cell.span2 { grid-column: span 1; } }
-
-    /* Marketplace spans all 3 */
-    .cell.span3 { grid-column: span 3; }
-    @media (max-width: 860px)  { .cell.span3 { grid-column: span 2; } }
-    @media (max-width: 520px)  { .cell.span2, .cell.span3 { grid-column: span 1; } }
-
-    .cell-num {
-      font-size: 0.67rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      color: var(--t3);
-      margin-bottom: 1.25rem;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .cell-icon {
-      width: 28px;
-      height: 28px;
-      color: var(--t2);
-      margin-bottom: 1rem;
-    }
-
-    .cell-title {
-      font-size: 0.975rem;
-      font-weight: 600;
-      letter-spacing: -0.015em;
-      color: var(--t1);
-      margin-bottom: 0.5rem;
-    }
-
-    .cell-desc {
-      font-size: 0.875rem;
-      color: var(--t2);
-      line-height: 1.7;
-    }
-
-    .cell-tag {
-      display: inline-block;
-      margin-top: 1rem;
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--t3);
-      padding: 3px 8px;
-      border: 1px solid var(--line);
-      border-radius: 4px;
-    }
-
-    .cell-tag.pro { color: var(--warm); border-color: rgba(176,142,80,0.2); }
-
-    /* ── CTA ── */
-    .cta {
-      padding: 5rem 1.75rem 7rem;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .cta-inner { max-width: 520px; margin: 0 auto; }
-
-    .cta-kicker {
-      font-size: 0.67rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--t3);
-      margin-bottom: 1.375rem;
-    }
-
-    .cta-h2 {
-      font-family: 'Instrument Serif', Georgia, serif;
-      font-weight: 400;
-      font-size: clamp(2rem, 5vw, 2.875rem);
-      letter-spacing: -0.025em;
-      line-height: 1.1;
-      margin-bottom: 0.875rem;
-    }
-
-    .cta-h2 em { font-style: italic; color: var(--t1); }
-
-    .cta-desc {
-      font-size: 0.9375rem;
-      color: var(--t2);
-      margin-bottom: 2.375rem;
-    }
-
-    /* ── Footer ── */
-    footer {
-      position: relative;
-      z-index: 1;
-      border-top: 1px solid var(--line);
-      padding: 1.625rem 1.75rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .foot-copy { font-size: 0.75rem; color: var(--t3); }
-
-    .foot-links { display: flex; gap: 1.375rem; }
-
-    .foot-link {
-      font-size: 0.75rem;
-      color: var(--t3);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-
-    .foot-link:hover { color: var(--t2); }
-
-    /* ── Reveal ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.55s ease, transform 0.55s ease;
-    }
-
-    .reveal.in { opacity: 1; transform: none; }
-
-    /* ── Responsive ── */
-    @media (max-width: 560px) {
-      .form-row  { flex-direction: column; border-radius: 12px; }
-      .form-btn  { border-radius: 8px; padding: 12px; }
-      footer     { flex-direction: column; text-align: center; }
-      .foot-links { justify-content: center; }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Manifest — The gear passport for skydivers</title>
+<meta name="description" content="The gear passport for skydivers — verified history that transfers when you sell. Log it. Verify it. Trade it." />
+<meta property="og:title" content="Manifest — The gear passport for skydivers" />
+<meta property="og:description" content="Verified gear history that transfers when you sell. Join the waitlist." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="assets/app-icon.png" />
+<meta name="theme-color" content="#0B0B0F" />
+<link rel="icon" type="image/png" href="assets/app-icon.png" />
+<link rel="apple-touch-icon" href="assets/app-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #100c1d;
+    --purple: #6D28D9;
+    --purple2: #7C3AED;
+    --lilac: #c4b5fd;
+    --teal: #2DD4BF;
+    --muted: #b3acc9;
+    --line: rgba(255,255,255,.10);
+    --glass: rgba(255,255,255,.06);
+    --r: 18px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #fff; background: #0B0B0F; -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  .wrap { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 22px; }
+
+  /* ---------- background field ---------- */
+  .bg {
+    position: fixed; inset: 0; z-index: -1;
+    background:
+      radial-gradient(85% 42% at 50% -12%, rgba(124,58,237,.30) 0%, rgba(124,58,237,0) 62%),
+      radial-gradient(55% 38% at 88% 6%, rgba(124,58,237,.10) 0%, rgba(124,58,237,0) 60%),
+      #0B0B0F;
+  }
+  .bg::after {
+    content: ""; position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,.045) 1.3px, transparent 1.3px);
+    background-size: 34px 34px; opacity: .55;
+  }
+
+  /* ---------- nav ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    background: rgba(12,9,23,.55); border-bottom: 1px solid var(--line);
+  }
+  .nav-in { display: flex; align-items: center; justify-content: space-between; height: 70px; }
+  .brand { display: inline-flex; align-items: center; gap: 12px; }
+  .brand img { width: 38px; height: 38px; border-radius: 11px; box-shadow: 0 6px 18px rgba(124,58,237,.45); }
+  .brand .nm { font-weight: 800; font-size: 22px; letter-spacing: -.02em; }
+  .btn {
+    font-family: inherit; font-weight: 800; font-size: 15px; letter-spacing: -.01em;
+    border: 0; cursor: pointer; border-radius: 100px; padding: 12px 22px;
+    background: #7C3AED; color: #fff; transition: transform .15s ease, box-shadow .15s ease;
+    box-shadow: 0 8px 22px rgba(124,58,237,.4); white-space: nowrap;
+  }
+  .btn:hover { transform: translateY(-1px); box-shadow: 0 12px 30px rgba(124,58,237,.55); }
+  .btn:disabled { opacity: .65; cursor: default; transform: none; box-shadow: 0 8px 22px rgba(124,58,237,.4); }
+  .btn.ghost { background: transparent; color: #fff; box-shadow: none; border: 1px solid var(--line); }
+  .btn.ghost:hover { background: rgba(255,255,255,.06); box-shadow: none; }
+
+  /* ---------- hero ---------- */
+  .hero { text-align: center; padding: 72px 0 0; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 9px; font-weight: 700; font-size: 13px;
+    letter-spacing: .04em; text-transform: uppercase; color: #a78bfa;
+    background: rgba(124,58,237,.12); border: 1px solid rgba(124,58,237,.4);
+    padding: 8px 16px; border-radius: 100px; white-space: nowrap;
+  }
+  .eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: #a78bfa; box-shadow: 0 0 10px #7C3AED; }
+  h1 {
+    margin: 26px auto 0; font-weight: 800; letter-spacing: -.035em; line-height: 1.02;
+    font-size: clamp(40px, 8.5vw, 78px); max-width: 16ch;
+  }
+  h1 .ph { white-space: nowrap; }
+  h1 .accent { color: var(--lilac); }
+  .sub {
+    margin: 22px auto 0; max-width: 620px; color: var(--muted);
+    font-weight: 600; font-size: clamp(16px, 2.3vw, 21px); line-height: 1.5;
+  }
+  .sub b { color: #fff; font-weight: 700; }
+
+  /* ---------- email capture ---------- */
+  .capture { margin: 34px auto 0; max-width: 520px; }
+  form.cap {
+    display: flex; gap: 8px; padding: 8px; border-radius: 100px;
+    background: var(--glass); border: 1px solid var(--line);
+    backdrop-filter: blur(8px);
+  }
+  form.cap input {
+    flex: 1; min-width: 0; background: transparent; border: 0; outline: none;
+    color: #fff; font-family: inherit; font-size: 16px; font-weight: 600; padding: 0 18px;
+  }
+  form.cap input::placeholder { color: #8d86a6; }
+  form.cap .btn { white-space: nowrap; }
+  .note { margin-top: 14px; font-size: 13px; color: #8d86a6; font-weight: 600; }
+  .err { margin-top: 12px; font-size: 13px; color: #ff8da3; font-weight: 700; display: none; }
+  .err.show { display: block; }
+  .ok { display: none; margin: 34px auto 0; max-width: 520px; padding: 18px 24px; border-radius: 16px;
+    background: rgba(124,58,237,.14); border: 1px solid rgba(124,58,237,.45); color: #c4b5fd;
+    font-weight: 700; font-size: 16px; }
+  .ok.show { display: block; }
+
+  /* ---------- fanned phones ---------- */
+  .fan {
+    margin: 6px auto 0; max-width: 940px; padding-top: 34px;
+    display: flex; justify-content: center; align-items: center;
+  }
+  .phone {
+    width: clamp(122px, 27vw, 268px); flex: 0 0 auto;
+    background: #08070c; border-radius: clamp(22px, 4vw, 42px); padding: clamp(4px,.7vw,8px);
+    border: 1px solid rgba(255,255,255,.1);
+    box-shadow: 0 40px 76px rgba(0,0,0,.55), 0 8px 22px rgba(0,0,0,.4);
+  }
+  .phone img { width: 100%; border-radius: clamp(16px,3.2vw,34px); }
+  .phone.left  { transform: rotate(-8deg) translateY(20px); margin-right: -22px; z-index: 1; }
+  .phone.center{ z-index: 3; }
+  .phone.right { transform: rotate(8deg) translateY(20px); margin-left: -22px; z-index: 1; }
+  .phone.left:hover, .phone.right:hover, .phone.center:hover { transform: rotate(0) translateY(0); transition: transform .3s ease; }
+  .phone { transition: transform .3s ease; }
+  .fan + .fan { padding-top: 0; margin-top: clamp(6px, 1.4vw, 18px); }
+
+  /* ---------- section shell ---------- */
+  section.block { padding: clamp(64px, 11vw, 120px) 0 0; }
+  .kicker { color: #a78bfa; font-weight: 700; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; text-align: center; }
+  h2 { text-align: center; margin: 12px auto 0; font-weight: 800; letter-spacing: -.03em; line-height: 1.08;
+    font-size: clamp(28px, 5vw, 46px); max-width: 16ch; }
+  .lead { text-align: center; margin: 16px auto 0; max-width: 560px; color: var(--muted); font-weight: 600; font-size: clamp(15px,2vw,18px); line-height: 1.5; }
+
+  /* ---------- how it works ---------- */
+  .steps { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .step {
+    background: var(--glass); border: 1px solid var(--line); border-radius: 26px;
+    padding: 30px 26px 0; text-align: center; overflow: hidden;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .step .num {
+    width: 38px; height: 38px; border-radius: 11px; display: grid; place-items: center;
+    background: rgba(124,58,237,.18); color: #c4b5fd; font-weight: 800; font-size: 17px;
+    border: 1px solid rgba(124,58,237,.4);
+  }
+  .step h3 { margin-top: 18px; font-weight: 800; font-size: 22px; letter-spacing: -.01em; }
+  .step p { margin-top: 10px; color: var(--muted); font-weight: 600; font-size: 15px; line-height: 1.5; }
+  .step .shot {
+    margin-top: 26px; width: 78%; border-radius: 28px 28px 0 0; padding: 8px 8px 0;
+    background: #08070c; border: 1px solid rgba(255,255,255,.1); border-bottom: 0;
+    box-shadow: 0 26px 50px rgba(0,0,0,.5);
+  }
+  .step .shot img { width: 100%; border-radius: 22px 22px 0 0; }
+  .arrow { display: none; }
+
+  /* ---------- features ---------- */
+  .feature-grid { margin-top: 52px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .feat {
+    background: var(--glass); border: 1px solid var(--line); border-radius: 20px; padding: 24px 22px;
+    transition: border-color .18s ease, transform .18s ease, background .18s ease;
+  }
+  .feat:hover { border-color: rgba(124,58,237,.5); transform: translateY(-3px); background: rgba(255,255,255,.08); }
+  .feat .chip {
+    width: 44px; height: 44px; border-radius: 13px; display: grid; place-items: center;
+    background: rgba(124,58,237,.22); border: 1px solid rgba(124,58,237,.4);
+  }
+  .feat .chip svg { width: 22px; height: 22px; stroke: var(--lilac); fill: none; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+  .feat h4 { margin-top: 16px; font-weight: 800; font-size: 18px; letter-spacing: -.01em; }
+  .feat p { margin-top: 6px; color: var(--muted); font-weight: 600; font-size: 14px; line-height: 1.45; }
+  .feat.soon h4::after { content: "SOON"; margin-left: 8px; font-size: 10px; font-weight: 800; letter-spacing: .08em;
+    color: var(--teal); background: rgba(45,212,191,.12); border: 1px solid rgba(45,212,191,.3); padding: 3px 7px; border-radius: 6px; vertical-align: middle; }
+
+  /* ---------- final CTA ---------- */
+  .final { margin-top: clamp(64px,11vw,120px); text-align: center;
+    background: linear-gradient(160deg, rgba(124,58,237,.30), rgba(124,58,237,.05));
+    border: 1px solid var(--line); border-radius: 32px; padding: clamp(40px,7vw,72px) 24px; }
+  .final h2 { max-width: 18ch; }
+
+  /* ---------- footer ---------- */
+  footer { margin-top: 70px; border-top: 1px solid var(--line); padding: 40px 0 56px; }
+  .foot-in { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: space-between; }
+  .beta { display: inline-flex; align-items: center; gap: 10px; background: rgba(124,58,237,.14); white-space: nowrap;
+    border: 1px solid rgba(124,58,237,.4); border-radius: 100px; padding: 10px 18px; font-weight: 700; font-size: 14px; color: #d6ccf7; }
+  .beta .lock { width: 16px; height: 16px; }
+  .foot-brand { display: inline-flex; align-items: center; gap: 10px; opacity: .9; }
+  .foot-brand img { width: 30px; height: 30px; border-radius: 9px; }
+  .foot-brand .nm { font-weight: 800; font-size: 18px; }
+  .handle { color: var(--muted); font-weight: 700; font-size: 15px; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 860px) {
+    .steps { grid-template-columns: 1fr; max-width: 440px; margin-left: auto; margin-right: auto; }
+    .feature-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .nav-in { height: 62px; }
+    .brand .nm { font-size: 19px; }
+    .btn { padding: 11px 16px; font-size: 14px; }
+    form.cap { flex-direction: column; border-radius: 22px; padding: 10px; }
+    form.cap input { padding: 12px 14px; text-align: center; }
+    form.cap .btn { width: 100%; }
+    .feature-grid { grid-template-columns: 1fr; }
+    .phone.left { margin-right: -16px; } .phone.right { margin-left: -16px; }
+  }
+</style>
 </head>
 <body>
+<div class="bg"></div>
 
-<canvas id="stars"></canvas>
-
-<!-- ── Navigation ── -->
 <nav>
-  <a href="#" class="logo">
-    <div class="logo-mark">
-      <svg width="15" height="14" viewBox="0 0 15 14" fill="none">
-        <path class="logo-mark-canopy" d="M7.5 1C4.19 1 1.5 3.69 1.5 7h12C13.5 3.69 10.81 1 7.5 1z" fill="rgba(240,240,240,0.88)"/>
-        <path d="M7.5 7L5 12.5M7.5 7l2.5 5.5M5 12.5h5" stroke="rgba(122,168,196,0.75)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </div>
-    <span class="logo-word">Manifest</span>
-  </a>
-  <div class="nav-right">
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode">
-      <!-- Sun icon — shown in light mode to switch back to dark -->
-      <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="4"/>
-        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
-      </svg>
-      <!-- Moon icon — shown in dark mode to switch to light -->
-      <svg class="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
-      </svg>
-    </button>
-    <div class="nav-pill">
-      <span class="nav-dot"></span>
-      Coming Soon
-    </div>
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">
+      <img src="assets/app-icon.png" alt="Manifest" />
+      <span class="nm">Manifest</span>
+    </a>
+    <a href="#waitlist" class="btn">Join waitlist</a>
   </div>
 </nav>
 
-<main>
+<header class="hero" id="top">
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span> Now in private beta</span>
+    <h1><span class="ph">Log it.</span> <span class="ph">Verify it.</span> <span class="ph accent">Trade it.</span></h1>
+    <p class="sub">The gear passport for skydivers — <b>verified history</b> that transfers when you sell.</p>
 
-<!-- ── Hero ── -->
-<section class="hero">
-  <p class="hero-kicker">jumpmanifest.com &nbsp;·&nbsp; 2025</p>
-
-  <h1 class="hero-h1">
-    Every jump,<br>
-    <em>manifested.</em>
-  </h1>
-
-  <p class="hero-body">
-    The all-in-one app for the modern skydiver — logbook, gear tracking, OCR data card scan, expiry reminders, event finder, and marketplace.
-  </p>
-
-  <div class="form-wrap" id="hw">
-    <div class="form-row" id="hr">
-      <input type="email" id="he" name="email" class="form-input" placeholder="Enter your email" autocomplete="email">
-      <button class="form-btn" id="hb">Join Waitlist</button>
+    <div class="capture" id="waitlist">
+      <form class="cap" id="waitForm" novalidate>
+        <input type="email" id="email" placeholder="Enter your email" autocomplete="email" required />
+        <button type="submit" class="btn">Join waitlist</button>
+      </form>
+      <div class="note">Be first in when Manifest opens. No spam — just launch news.</div>
+      <div class="err" id="errMsg">Something went wrong. Please try again.</div>
+      <div class="ok" id="okMsg">You're on the list — we'll email you the moment Manifest opens.</div>
     </div>
-    <p class="form-note" id="hn">Be first to know when we launch. No spam, ever.</p>
-    <div class="form-ok" id="ho">✓ You're on the list — see you at altitude.</div>
+
+    <div class="fan">
+      <div class="phone left"><img src="assets/p2-logbook.png" alt="Logbook" loading="lazy" /></div>
+      <div class="phone center"><img src="assets/p2-locker.png" alt="Gear Locker" loading="lazy" /></div>
+      <div class="phone right"><img src="assets/p2-market.png" alt="Marketplace" loading="lazy" /></div>
+    </div>
+    <div class="fan">
+      <div class="phone left"><img src="assets/p3-dropzones.png" alt="Dropzones" loading="lazy" /></div>
+      <div class="phone center"><img src="assets/p3-rigservice.png" alt="Rig Service" loading="lazy" /></div>
+      <div class="phone right"><img src="assets/p3-coaches.png" alt="Coaches" loading="lazy" /></div>
+    </div>
   </div>
+</header>
 
-  <div class="tags reveal">
-    <span class="tag">Jump Logbook</span>
-    <span class="tag">Gear Tracker</span>
-    <span class="tag">OCR Scan</span>
-    <span class="tag">Expiry Alerts</span>
-    <span class="tag">Events</span>
-    <span class="tag">Marketplace</span>
-  </div>
-</section>
+<section class="block">
+  <div class="wrap">
+    <div class="kicker">How it works</div>
+    <h2>Your gear's whole story, in one place</h2>
+    <p class="lead">Every jump and every service feeds a record that follows the equipment for life.</p>
 
-<div class="rule"></div>
-
-<!-- ── Features ── -->
-<section class="features">
-  <div class="sec-row">
-    <span class="sec-label">Features</span>
-  </div>
-
-  <h2 class="sec-h2 reveal">
-    Built for the drop zone.<br>
-    <em>Designed for your gear bag.</em>
-  </h2>
-  <p class="sec-desc reveal">
-    Manifest brings every part of the skydiving experience into one app — beautifully designed, genuinely useful.
-  </p>
-
-  <div class="grid reveal">
-
-    <!-- 01 Logbook (wide) -->
-    <div class="cell span2">
-      <p class="cell-num">01</p>
-      <svg class="cell-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/>
-        <rect x="9" y="3" width="6" height="4" rx="1.5"/>
-        <path d="M9 12h6M9 16h4"/>
-      </svg>
-      <h3 class="cell-title">Jump Logbook</h3>
-      <p class="cell-desc">Log every skydive — exit altitude, freefall time, canopy type, DZ location, weather, formation details, and personal notes. Your complete jump history, always in your pocket and exportable anytime.</p>
-      <span class="cell-tag">Core</span>
-    </div>
-
-    <!-- 02 Gear Tracker -->
-    <div class="cell">
-      <p class="cell-num">02</p>
-      <svg class="cell-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="2" y="7" width="20" height="14" rx="2"/>
-        <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>
-        <circle cx="12" cy="14" r="2.5"/>
-      </svg>
-      <h3 class="cell-title">Gear Tracker</h3>
-      <p class="cell-desc">Container, reserve, AAD, helmet — tracked with full service history. Know exactly what's on your back.</p>
-      <span class="cell-tag">Core</span>
-    </div>
-
-    <!-- 03 OCR Scan -->
-    <div class="cell">
-      <p class="cell-num">03</p>
-      <svg class="cell-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3 7V5a2 2 0 012-2h2M17 3h2a2 2 0 012 2v2M21 17v2a2 2 0 01-2 2h-2M7 21H5a2 2 0 01-2-2v-2"/>
-        <rect x="7" y="7" width="10" height="10" rx="1"/>
-      </svg>
-      <h3 class="cell-title">OCR Data Card Scan</h3>
-      <p class="cell-desc">Point your camera at any data card and Manifest reads it instantly. No manual entry — just scan and go.</p>
-      <span class="cell-tag pro">Pro</span>
-    </div>
-
-    <!-- 04 Expiry -->
-    <div class="cell">
-      <p class="cell-num">04</p>
-      <svg class="cell-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M18 8A6 6 0 106 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-        <path d="M13.73 21a2 2 0 01-3.46 0"/>
-      </svg>
-      <h3 class="cell-title">Expiry Reminders</h3>
-      <p class="cell-desc">Smart alerts for reserve repacks and AAD service windows — well before they're due. Stay compliant, stay safe.</p>
-      <span class="cell-tag">Safety</span>
-    </div>
-
-    <!-- 05 Events -->
-    <div class="cell">
-      <p class="cell-num">05</p>
-      <svg class="cell-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="10"/>
-        <path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
-      </svg>
-      <h3 class="cell-title">Boogie &amp; Event Finder</h3>
-      <p class="cell-desc">Discover boogies, competitions, and fun jumps worldwide. From local funjumps to world-record attempts.</p>
-      <span class="cell-tag">Community</span>
-    </div>
-
-    <!-- 06 Marketplace (full width) -->
-    <div class="cell span3">
-      <p class="cell-num">06</p>
-      <svg class="cell-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
-        <line x1="3" y1="6" x2="21" y2="6"/>
-        <path d="M16 10a4 4 0 01-8 0"/>
-      </svg>
-      <h3 class="cell-title">Gear Marketplace</h3>
-      <p class="cell-desc">Buy and sell skydiving gear with confidence — verified jump counts, full gear history, and trusted community listings. Safer and smarter than any Facebook group.</p>
-      <span class="cell-tag">Marketplace</span>
-    </div>
-
-  </div>
-</section>
-
-<div class="rule"></div>
-
-<!-- ── CTA ── -->
-<section class="cta">
-  <div class="cta-inner reveal">
-    <p class="cta-kicker">Early Access</p>
-    <h2 class="cta-h2">
-      Ready to<br>
-      <em>jump in?</em>
-    </h2>
-    <p class="cta-desc">Join the waitlist. Be first in the door when Manifest launches.</p>
-
-    <div class="form-wrap" id="cw">
-      <div class="form-row" id="cr">
-        <input type="email" id="ce" name="email" class="form-input" placeholder="your@email.com" autocomplete="email">
-        <button class="form-btn" id="cb">Get Early Access</button>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Log every jump</h3>
+        <p>Auto-counted from your logbook — date, aircraft, altitude, discipline.</p>
+        <div class="shot"><img src="assets/p2-logbook.png" alt="Logbook" loading="lazy" /></div>
       </div>
-      <p class="form-note" id="cn">No spam. Unsubscribe anytime.</p>
-      <div class="form-ok" id="co">✓ You're on the list — see you at altitude.</div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Build verified history</h3>
+        <p>Reserve repacks, AAD service and ownership — signed and time-stamped.</p>
+        <div class="shot"><img src="assets/p2-locker.png" alt="Gear Locker" loading="lazy" /></div>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Trade with trust</h3>
+        <p>List with a full provenance trail. The history transfers with the rig.</p>
+        <div class="shot"><img src="assets/p2-market.png" alt="Marketplace" loading="lazy" /></div>
+      </div>
     </div>
   </div>
 </section>
 
-</main>
+<section class="block">
+  <div class="wrap">
+    <div class="kicker">Everything in the app</div>
+    <h2>One home for your jumps and your kit</h2>
 
-<!-- ── Footer ── -->
+    <div class="feature-grid">
+      <div class="feat">
+        <div class="chip"><svg viewBox="0 0 24 24"><path d="M5 4h11a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2V4z"/><path d="M9 4v14"/></svg></div>
+        <h4>Logbook</h4>
+        <p>Every jump, auto-counted with milestones and history.</p>
+      </div>
+      <div class="feat">
+        <div class="chip"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg></div>
+        <h4>Gear Locker</h4>
+        <p>Rig, reserve and service dates — and the verified record.</p>
+      </div>
+      <div class="feat">
+        <div class="chip"><svg viewBox="0 0 24 24"><path d="M4 12V5a1 1 0 0 1 1-1h7l8 8-8 8-8-8z"/><circle cx="8.5" cy="8.5" r="1.4"/></svg></div>
+        <h4>Marketplace</h4>
+        <p>Buy, sell and trade used gear you can actually trust.</p>
+      </div>
+      <div class="feat">
+        <div class="chip"><svg viewBox="0 0 24 24"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></div>
+        <h4>Dropzones</h4>
+        <p>601 dropzones worldwide, sorted by distance.</p>
+      </div>
+      <div class="feat">
+        <div class="chip"><svg viewBox="0 0 24 24"><path d="M18 9a6 6 0 1 0-12 0c0 6-2 7-2 7h16s-2-1-2-7z"/><path d="M10.5 20a2 2 0 0 0 3 0"/></svg></div>
+        <h4>Rig reminders</h4>
+        <p>Never miss a reserve repack or AAD service date.</p>
+      </div>
+      <div class="feat">
+        <div class="chip"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <h4>Provenance</h4>
+        <p>Rigger-signed records that transfer at the point of sale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="final">
+      <div class="kicker">Be first off the plane</div>
+      <h2>Join the Manifest waitlist</h2>
+      <p class="lead">We're onboarding skydivers in waves. Drop your email and we'll save your spot.</p>
+      <div class="capture">
+        <form class="cap" id="waitForm2" novalidate>
+          <input type="email" id="email2" placeholder="Enter your email" autocomplete="email" required />
+          <button type="submit" class="btn">Join waitlist</button>
+        </form>
+        <div class="err" id="errMsg2">Something went wrong. Please try again.</div>
+        <div class="ok" id="okMsg2">You're on the list — we'll email you the moment Manifest opens.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
-  <span class="foot-copy">© 2025 Manifest. Built for skydivers.</span>
-  <nav class="foot-links" aria-label="Footer">
-    <a href="mailto:hello@jumpmanifest.com" class="foot-link">Contact</a>
-    <a href="#" class="foot-link">Privacy</a>
-    <a href="#" class="foot-link">Terms</a>
-  </nav>
+  <div class="wrap foot-in">
+    <a class="foot-brand" href="#top">
+      <img src="assets/app-icon.png" alt="Manifest" />
+      <span class="nm">Manifest</span>
+    </a>
+    <span class="beta">
+      <svg class="lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="9.5" rx="2.6" fill="#a78bfa"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" fill="none" stroke="#a78bfa" stroke-width="2.4"/></svg>
+      Now in private beta
+    </span>
+    <span class="handle">@manifest.dz</span>
+  </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script>
-/* ── Theme toggle ── */
-(function () {
-  const root    = document.documentElement;
-  const btn     = document.getElementById('theme-toggle');
-  const PREF_KEY = 'mf_theme';
+  // ---- Supabase config (anon key is public by design; row-level security guards writes) ----
+  var SUPABASE_URL = "__SUPABASE_URL__";
+  var SUPABASE_ANON_KEY = "__SUPABASE_ANON_KEY__";
 
-  function applyTheme(theme, animate) {
-    if (animate) {
-      document.body.classList.add('transitioning');
-      setTimeout(() => document.body.classList.remove('transitioning'), 350);
-    }
-    root.setAttribute('data-theme', theme);
-    localStorage.setItem(PREF_KEY, theme);
+  var db = null;
+  if (window.supabase && SUPABASE_URL.indexOf("http") === 0) {
+    db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
   }
 
-  /* Load saved preference, fall back to dark */
-  applyTheme(localStorage.getItem(PREF_KEY) || 'dark', false);
+  var EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
-  btn.addEventListener('click', () => {
-    applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark', true);
-  });
-})();
+  function wire(formId, okId, errId) {
+    var form = document.getElementById(formId);
+    if (!form) return;
+    var ok = document.getElementById(okId);
+    var err = document.getElementById(errId);
+    var input = form.querySelector("input");
+    var button = form.querySelector("button");
 
-/* ── Static starfield — drawn once, no animation ── */
-(function () {
-  const cvs = document.getElementById('stars');
-  const ctx = cvs.getContext('2d');
-  const W = cvs.width  = window.innerWidth;
-  const H = cvs.height = window.innerHeight;
-
-  ctx.fillStyle = '#111111';
-  ctx.fillRect(0, 0, W, H);
-
-  const count = Math.round(W * H / 6800);
-  for (let i = 0; i < count; i++) {
-    const x  = Math.random() * W;
-    const y  = Math.random() * H;
-    const r  = Math.random() * 0.75 + 0.1;
-    const a  = Math.random() * 0.32 + 0.08;
-    ctx.beginPath();
-    ctx.arc(x, y, r, 0, 6.283);
-    ctx.fillStyle = `rgba(215,224,240,${a.toFixed(3)})`;
-    ctx.fill();
-  }
-  /* Sparse brighter stars for depth */
-  for (let i = 0; i < Math.round(count * 0.08); i++) {
-    const x = Math.random() * W;
-    const y = Math.random() * H;
-    ctx.beginPath();
-    ctx.arc(x, y, Math.random() * 0.5 + 0.6, 0, 6.283);
-    ctx.fillStyle = `rgba(235,242,255,${(Math.random() * 0.3 + 0.35).toFixed(3)})`;
-    ctx.fill();
-  }
-})();
-
-/* ── Scroll reveal ── */
-(function () {
-  const io = new IntersectionObserver(entries => {
-    entries.forEach((e, i) => {
-      if (!e.isIntersecting) return;
-      setTimeout(() => e.target.classList.add('in'), i * 55);
-      io.unobserve(e.target);
-    });
-  }, { threshold: 0.07, rootMargin: '0px 0px -24px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-})();
-
-/* ── Waitlist forms — Formspree ── */
-const FORMSPREE = 'https://formspree.io/f/meednyag';
-
-function wire(row, emailEl, btn, note, ok) {
-  function go() {
-    const v = (emailEl.value || '').trim();
-
-    /* Client-side format check */
-    if (!v || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) {
-      emailEl.style.color = '#d07070';
-      emailEl.focus();
-      setTimeout(() => { emailEl.style.color = ''; }, 1400);
-      return;
+    function showError(msg) {
+      if (err) { err.textContent = msg; err.classList.add("show"); }
+      input.focus();
+      form.style.boxShadow = "0 0 0 2px rgba(255,90,120,.6)";
+      setTimeout(function () { form.style.boxShadow = "none"; }, 900);
     }
 
-    /* Disable button and show loading state */
-    btn.disabled    = true;
-    btn.textContent = '…';
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (err) err.classList.remove("show");
 
-    fetch(FORMSPREE, {
-      method:  'POST',
-      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-      body:    JSON.stringify({ email: v }),
-    })
-      .then(res => {
-        if (res.ok) {
-          /* Success — show confirmation, hide form */
-          row.style.display  = 'none';
-          note.style.display = 'none';
-          ok.style.display   = 'block';
-        } else {
-          /* Formspree returned an error status */
-          return res.json().then(data => { throw new Error(data.error || 'Submission failed'); });
+      var val = (input.value || "").trim().toLowerCase();
+      if (!EMAIL_RE.test(val)) {
+        showError("Please enter a valid email address.");
+        return;
+      }
+
+      function succeed() {
+        form.style.display = "none";
+        if (err) err.classList.remove("show");
+        if (ok) ok.classList.add("show");
+      }
+
+      // No client configured (e.g. local preview): fail soft to the success state.
+      if (!db) { succeed(); return; }
+
+      button.disabled = true;
+      var original = button.textContent;
+      button.textContent = "Joining…";
+
+      db.from("waitlist").insert({ email: val }).then(function (res) {
+        button.disabled = false;
+        button.textContent = original;
+        // 23505 = unique_violation → already signed up, treat as success.
+        if (res.error && res.error.code !== "23505") {
+          showError("Something went wrong. Please try again.");
+          return;
         }
-      })
-      .catch(() => {
-        /* Network error or Formspree error — restore button, show inline message */
-        btn.disabled    = false;
-        btn.textContent = btn.dataset.label;
-        note.textContent = 'Something went wrong — please try again.';
-        note.style.color = '#d07070';
+        succeed();
       });
+    });
   }
 
-  /* Store original label for error recovery */
-  btn.dataset.label = btn.textContent;
-
-  btn.addEventListener('click', go);
-  emailEl.addEventListener('keydown', e => { if (e.key === 'Enter') go(); });
-}
-
-wire(
-  document.getElementById('hr'), document.getElementById('he'),
-  document.getElementById('hb'), document.getElementById('hn'),
-  document.getElementById('ho')
-);
-wire(
-  document.getElementById('cr'), document.getElementById('ce'),
-  document.getElementById('cb'), document.getElementById('cn'),
-  document.getElementById('co')
-);
+  wire("waitForm", "okMsg", "errMsg");
+  wire("waitForm2", "okMsg2", "errMsg2");
 </script>
-
 </body>
 </html>

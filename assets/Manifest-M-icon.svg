@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="mfBg" x1="512" y1="1024" x2="512" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4338CA"></stop>
+      <stop offset="1" stop-color="#6D28D9"></stop>
+    </linearGradient>
+  </defs>
+  <rect width="1024" height="1024" fill="url(#mfBg)"></rect>
+  <g fill="#2DD4BF">
+    <polygon points="300,324 386,324 386,720 300,720"></polygon>
+    <polygon points="638,324 724,324 724,720 638,720"></polygon>
+    <polygon points="300,324 386,324 512,556 426,556"></polygon>
+    <polygon points="724,324 638,324 512,556 598,556"></polygon>
+  </g>
+</svg>
