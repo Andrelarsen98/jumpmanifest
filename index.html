@@ -137,6 +137,14 @@
   form.cap input::placeholder { color: #8d86a6; }
   form.cap .btn { white-space: nowrap; }
   .note { margin-top: 14px; font-size: 13px; color: #8d86a6; font-weight: 600; }
+  .stores { margin: 22px auto 0; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .store { display: inline-flex; align-items: center; gap: 11px; padding: 9px 18px 9px 15px;
+    border-radius: 14px; background: var(--glass); border: 1px solid var(--line);
+    backdrop-filter: blur(8px); }
+  .store svg { width: 24px; height: 24px; fill: #fff; flex: 0 0 auto; }
+  .store span { display: flex; flex-direction: column; line-height: 1.15; text-align: left; }
+  .store small { font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: #8d86a6; }
+  .store b { font-size: 15px; font-weight: 800; letter-spacing: -.01em; color: #fff; }
   .err { margin-top: 12px; font-size: 13px; color: #ff8da3; font-weight: 700; display: none; }
   .err.show { display: block; }
   .ok { display: none; margin: 34px auto 0; max-width: 520px; padding: 18px 24px; border-radius: 16px;
@@ -272,6 +280,17 @@
       <div class="note">Be first in when Manifest opens. No spam — just launch news.</div>
       <div class="err" id="errMsg">Something went wrong. Please try again.</div>
       <div class="ok" id="okMsg">You're on the list — we'll email you the moment Manifest opens.</div>
+    </div>
+
+    <div class="stores" aria-label="Coming soon to mobile app stores">
+      <span class="store">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.36 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.75 2.28-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.35 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.66zM14.13 5.85c.64-.78 1.07-1.85.95-2.93-.92.04-2.04.61-2.7 1.38-.59.68-1.11 1.78-.97 2.83 1.03.08 2.08-.52 2.72-1.28z"/></svg>
+        <span><small>Coming soon to</small><b>App Store</b></span>
+      </span>
+      <span class="store">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 2.3c-.2.22-.32.55-.32.98v17.44c0 .43.12.76.33.97l.06.05L13.4 12v-.1L3.66 2.25l-.06.05zM16.7 15.3l-3.3-3.3v-.1l3.3-3.3.08.04 3.9 2.22c1.12.63 1.12 1.67 0 2.31l-3.9 2.22-.08.04zM16.05 15.95 12.66 12.55l-9.06 9.06c.37.39.98.44 1.67.05l10.78-6.71M16.05 8.05 5.27 1.34C4.58.95 3.97 1 3.6 1.39l9.06 9.06 3.39-3.4z"/></svg>
+        <span><small>Coming soon to</small><b>Google Play</b></span>
+      </span>
     </div>
 
     <div class="fan">
