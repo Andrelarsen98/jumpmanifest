@@ -43,6 +43,7 @@
   .stat .l { font-size:12px; color:var(--muted); margin-top:2px; }
   .sep { width:1px; background:var(--line); }
   .gear { padding:6px 22px 16px; border-top:1px solid var(--line); }
+  .credhead { font-size:11px; font-weight:800; letter-spacing:.8px; color:var(--muted); padding:10px 0 2px; }
   .due { display:flex; align-items:center; justify-content:space-between; padding:11px 0; }
   .due + .due { border-top:1px solid #F1F1F4; }
   .due .l { font-size:14px; font-weight:600; }
@@ -99,6 +100,23 @@
     return `<div class="due"><span class="l">${esc(label)}</span><span class="r"><span class="d">${esc(fmtDate(iso))}</span>
       <span class="chip" style="color:${color};background:${bg}">${esc(text)}</span></span></div>`;
   }
+  const CRED_LABEL = { license:'License', association:'Membership', insurance:'Insurance', rigger:'Rigger ticket', medical:'Medical', other:'Other' };
+  function credsHtml(creds) {
+    if (!Array.isArray(creds) || creds.length === 0) return '';
+    const rows = creds.map((c) => {
+      const days = daysBetween(c.expiry);
+      let st = 'none';
+      if (days != null) st = days < 0 ? 'overdue' : days <= 30 ? 'soon' : 'ok';
+      const color = st==='ok'?'#15803D':st==='soon'?'#B45309':st==='overdue'?'#B91C1C':'#6B7280';
+      const bg = st==='ok'?'#DCFCE7':st==='soon'?'#FEF3C7':st==='overdue'?'#FEE2E2':'#EEEEF2';
+      const text = st==='overdue'?'Expired':st==='soon'?('Expires in '+days+'d'):st==='ok'?'Valid':'On file';
+      const name = (c.title && c.title.trim()) ? c.title : (CRED_LABEL[c.type] || 'Credential');
+      return `<div class="due"><span class="l">${esc(name)}</span><span class="r">
+        <span class="chip" style="color:${color};background:${bg}">${esc(text)}</span></span></div>`;
+    }).join('');
+    return `<div class="gear"><div class="credhead">CREDENTIALS</div>${rows}</div>`;
+  }
+
   function showState(msg) {
     document.getElementById('root').innerHTML = `<div class="state">${msg}</div>`;
   }
@@ -139,6 +157,7 @@
           ${dueChip('Reserve repack', p.reserve_due)}
           ${dueChip('AAD service', p.aad_due)}
         </div>
+        ${credsHtml(p.credentials)}
       </div>
       <div class="foot">
         Verified jumps are signed off by licensed jumpers on Manifest.<br/>Reserve &amp; AAD dates come from the holder's gear locker.
