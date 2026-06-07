@@ -63,9 +63,6 @@
 </div>
 
 <script>
-  const SUPABASE_URL = 'https://wkefdtglgbfprvfajrrw.supabase.co';
-  const SUPABASE_KEY = 'sb_publishable_bSZ85fokRcmDjIzYr7Q9mQ_w4dQ0b3b';
-
   function getCode() {
     const q = new URLSearchParams(location.search).get('code');
     if (q) return q.trim();
@@ -153,11 +150,10 @@
     const code = getCode();
     if (!code) { showState('No pass code in this link.'); return; }
     try {
-      const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/pass_public`, {
-        method: 'POST',
-        headers: { apikey: SUPABASE_KEY, Authorization: 'Bearer ' + SUPABASE_KEY, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ code }),
-      });
+      // Goes through our rate-limited proxy (/api/pass) — the Supabase key is
+      // never exposed in the page.
+      const res = await fetch('/api/pass?code=' + encodeURIComponent(code));
+      if (res.status === 429) { showState('Too many requests. Please wait a moment and try again.'); return; }
       if (!res.ok) { showState('Couldn’t load this pass. Please try again.'); return; }
       const data = await res.json();
       if (!data) { showState('This pass could not be found.'); return; }
