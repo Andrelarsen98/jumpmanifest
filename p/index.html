@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Manifest — Check-in Pass</title>
+<meta name="description" content="Verified skydiver check-in pass — licence, jumps, currency and gear service, proven by Manifest." />
+<meta name="theme-color" content="#4C1D95" />
+<meta name="robots" content="noindex" />
+<link rel="icon" type="image/png" href="/assets/app-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root { --accent:#6D28D9; --ink:#111827; --muted:#6B7280; --line:#ECECF1; --bg:#F4F4F7; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Plus Jakarta Sans',-apple-system,sans-serif; background:var(--bg); color:var(--ink);
+    min-height:100vh; display:flex; flex-direction:column; align-items:center; padding:20px 16px 40px; }
+  .wrap { width:100%; max-width:420px; }
+  .state { text-align:center; padding:80px 20px; color:var(--muted); }
+  .spinner { width:34px; height:34px; border:3px solid #ddd; border-top-color:var(--accent); border-radius:50%;
+    margin:0 auto 16px; animation:spin .8s linear infinite; }
+  @keyframes spin { to { transform:rotate(360deg); } }
+  .card { background:#fff; border-radius:22px; overflow:hidden; box-shadow:0 12px 40px rgba(76,29,149,.14); border:1px solid var(--line); }
+  .band { background:linear-gradient(135deg,#4C1D95,#6D28D9); color:#fff; padding:22px 22px 20px; }
+  .band-top { display:flex; align-items:center; justify-content:space-between; }
+  .brand { display:flex; align-items:center; gap:9px; font-weight:800; font-size:17px; }
+  .brand .m { width:26px; height:26px; border-radius:7px; background:#fff; display:flex; align-items:center; justify-content:center; }
+  .brand .m img { width:18px; height:18px; }
+  .tag { font-size:11px; font-weight:800; letter-spacing:1.4px; opacity:.85; }
+  .name { font-size:27px; font-weight:800; letter-spacing:-.5px; margin-top:14px; display:flex; align-items:center; gap:8px; }
+  .badges { display:flex; flex-wrap:wrap; gap:8px; margin-top:11px; }
+  .pill { background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.25); color:#fff; font-size:12.5px; font-weight:700;
+    padding:5px 12px; border-radius:999px; }
+  .pill.lic { background:#fff; color:#4C1D95; border:none; }
+  .member { font-size:13px; opacity:.82; margin-top:11px; }
+  .status { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:13px 22px; }
+  .status .s { font-size:15px; font-weight:800; letter-spacing:.3px; }
+  .status .ss { font-size:12px; color:var(--muted); text-align:right; }
+  .stats { display:flex; padding:18px 22px; }
+  .stat { flex:1; text-align:center; }
+  .stat .v { font-size:27px; font-weight:800; }
+  .stat .l { font-size:12px; color:var(--muted); margin-top:2px; }
+  .sep { width:1px; background:var(--line); }
+  .gear { padding:6px 22px 16px; border-top:1px solid var(--line); }
+  .due { display:flex; align-items:center; justify-content:space-between; padding:11px 0; }
+  .due + .due { border-top:1px solid #F1F1F4; }
+  .due .l { font-size:14px; font-weight:600; }
+  .due .r { display:flex; align-items:center; gap:9px; }
+  .due .d { font-size:13px; color:var(--muted); }
+  .chip { font-size:11px; font-weight:800; padding:3px 9px; border-radius:999px; }
+  .foot { text-align:center; margin-top:18px; font-size:12px; color:var(--muted); line-height:1.5; }
+  .cta { display:inline-block; margin-top:14px; background:var(--accent); color:#fff; font-weight:700; font-size:14px;
+    text-decoration:none; padding:12px 22px; border-radius:999px; }
+  .verifiedmark { width:18px; height:18px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div id="root">
+    <div class="state"><div class="spinner"></div>Loading pass…</div>
+  </div>
+</div>
+
+<script>
+  const SUPABASE_URL = 'https://wkefdtglgbfprvfajrrw.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_bSZ85fokRcmDjIzYr7Q9mQ_w4dQ0b3b';
+
+  function getCode() {
+    const q = new URLSearchParams(location.search).get('code');
+    if (q) return q.trim();
+    // Path form: /p/<code>
+    const parts = location.pathname.split('/').filter(Boolean);
+    const last = parts[parts.length - 1];
+    if (last && last !== 'p') return last.trim();
+    return null;
+  }
+
+  const esc = (s) => String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+  function daysBetween(iso) {
+    if (!iso) return null;
+    const [y,m,d] = iso.split('-').map(Number);
+    if (!y) return null;
+    const t = new Date(y, (m||1)-1, d||1);
+    const today = new Date(); today.setHours(0,0,0,0);
+    return Math.floor((t - today) / 86400000);
+  }
+  function fmtDate(iso) {
+    if (!iso) return '—';
+    const [y,m,d] = iso.split('-').map(Number);
+    if (!y) return '—';
+    return new Date(y,(m||1)-1,d||1).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+  }
+  function dueChip(label, iso) {
+    const days = daysBetween(iso);
+    let st = 'none';
+    if (days != null) st = days < 0 ? 'overdue' : days <= 30 ? 'soon' : 'ok';
+    const color = st==='ok'?'#15803D':st==='soon'?'#B45309':st==='overdue'?'#B91C1C':'#6B7280';
+    const bg = st==='ok'?'#DCFCE7':st==='soon'?'#FEF3C7':st==='overdue'?'#FEE2E2':'#EEEEF2';
+    const text = st==='ok'?'In date':st==='soon'?('Due in '+days+'d'):st==='overdue'?'Overdue':'Not tracked';
+    return `<div class="due"><span class="l">${esc(label)}</span><span class="r"><span class="d">${esc(fmtDate(iso))}</span>
+      <span class="chip" style="color:${color};background:${bg}">${esc(text)}</span></span></div>`;
+  }
+  function showState(msg) {
+    document.getElementById('root').innerHTML = `<div class="state">${msg}</div>`;
+  }
+
+  function render(p) {
+    const since = daysBetween(p.last_jump);
+    const current = since != null && since <= (p.currency_window || 90);
+    const license = p.license_type && p.license_type !== 'none' ? p.license_type + ' Licence' : '';
+    const ratings = Array.isArray(p.ratings) ? p.ratings : [];
+    const memberLine = [p.licensing_body, p.member_number ? '#'+p.member_number : ''].filter(Boolean).join(' · ');
+    const isFounder = p.verification === 'founder';
+
+    document.getElementById('root').innerHTML = `
+      <div class="card">
+        <div class="band">
+          <div class="band-top">
+            <div class="brand"><span class="m"><img src="/assets/app-icon.png" alt=""/></span>Manifest</div>
+            <span class="tag">CHECK-IN PASS</span>
+          </div>
+          <div class="name">${esc(p.name || 'Skydiver')}</div>
+          <div class="badges">
+            ${license ? `<span class="pill lic">${esc(license)}</span>` : ''}
+            ${ratings.map(r => `<span class="pill">${esc(r)}</span>`).join('')}
+            ${isFounder ? `<span class="pill">★ Founder</span>` : ''}
+          </div>
+          ${memberLine ? `<div class="member">${esc(memberLine)}</div>` : ''}
+        </div>
+        <div class="status" style="background:${current ? '#DCFCE7' : '#FEE2E2'}">
+          <span class="s" style="color:${current ? '#15803D' : '#B91C1C'}">${current ? '✓ CURRENT' : '⚠ NOT CURRENT'}</span>
+          <span class="ss">${p.last_jump ? ('Last jump '+since+'d ago · '+(p.currency_window||90)+'d window') : 'No jumps logged'}</span>
+        </div>
+        <div class="stats">
+          <div class="stat"><div class="v">${Number(p.total_jumps||0).toLocaleString()}</div><div class="l">Total jumps</div></div>
+          <div class="sep"></div>
+          <div class="stat"><div class="v">${Number(p.verified_jumps||0).toLocaleString()}</div><div class="l">Verified</div></div>
+        </div>
+        <div class="gear">
+          ${dueChip('Reserve repack', p.reserve_due)}
+          ${dueChip('AAD service', p.aad_due)}
+        </div>
+      </div>
+      <div class="foot">
+        Verified jumps are signed off by licensed jumpers on Manifest.<br/>Reserve &amp; AAD dates come from the holder's gear locker.
+        <br/><a class="cta" href="/">Get Manifest</a>
+      </div>`;
+  }
+
+  (async () => {
+    const code = getCode();
+    if (!code) { showState('No pass code in this link.'); return; }
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/pass_public`, {
+        method: 'POST',
+        headers: { apikey: SUPABASE_KEY, Authorization: 'Bearer ' + SUPABASE_KEY, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code }),
+      });
+      if (!res.ok) { showState('Couldn’t load this pass. Please try again.'); return; }
+      const data = await res.json();
+      if (!data) { showState('This pass could not be found.'); return; }
+      render(data);
+    } catch (e) {
+      showState('Couldn’t load this pass. Check your connection and try again.');
+    }
+  })();
+</script>
+</body>
+</html>
