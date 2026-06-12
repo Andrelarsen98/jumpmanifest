@@ -50,6 +50,7 @@
   .due .r { display:flex; align-items:center; gap:9px; }
   .due .d { font-size:13px; color:var(--muted); }
   .chip { font-size:11px; font-weight:800; padding:3px 9px; border-radius:999px; }
+  .due .l .sub { display:block; font-size:12px; color:var(--muted); font-weight:400; margin-top:2px; }
   .foot { text-align:center; margin-top:18px; font-size:12px; color:var(--muted); line-height:1.5; }
   .cta { display:inline-block; margin-top:14px; background:var(--accent); color:#fff; font-weight:700; font-size:14px;
     text-decoration:none; padding:12px 22px; border-radius:999px; }
@@ -111,10 +112,27 @@
       const bg = st==='ok'?'#DCFCE7':st==='soon'?'#FEF3C7':st==='overdue'?'#FEE2E2':'#EEEEF2';
       const text = st==='overdue'?'Expired':st==='soon'?('Expires in '+days+'d'):st==='ok'?'Valid':'On file';
       const name = (c.title && c.title.trim()) ? c.title : (CRED_LABEL[c.type] || 'Credential');
-      return `<div class="due"><span class="l">${esc(name)}</span><span class="r">
+      const meta = [c.issuer, c.number ? '#'+c.number : ''].filter(Boolean).join(' · ');
+      return `<div class="due"><span class="l">${esc(name)}${meta?`<span class="sub">${esc(meta)}</span>`:''}</span><span class="r">
         <span class="chip" style="color:${color};background:${bg}">${esc(text)}</span></span></div>`;
     }).join('');
     return `<div class="gear"><div class="credhead">CREDENTIALS</div>${rows}</div>`;
+  }
+
+  // Recent jumps with their sign-off. Verified jumps (signed off by another
+  // licensed jumper) are the real proof; self-logged ones are marked as such.
+  function recentJumpsHtml(jumps) {
+    if (!Array.isArray(jumps) || jumps.length === 0) return '';
+    const rows = jumps.map((j) => {
+      const disc = Array.isArray(j.disciplines) ? j.disciplines.join(', ') : '';
+      const left = [fmtDate(j.date), j.dz].filter(Boolean).join(' · ');
+      const lic = j.signer_license && j.signer_license !== 'none' ? ' · ' + j.signer_license : '';
+      const sign = j.signed_off_by
+        ? `<span class="chip" style="color:#15803D;background:#DCFCE7">✓ ${esc(j.signed_off_by)}${esc(lic)}</span>`
+        : `<span class="chip" style="color:#6B7280;background:#EEEEF2">Self-logged</span>`;
+      return `<div class="due"><span class="l">${esc(left)}${disc?`<span class="sub">${esc(disc)}</span>`:''}</span><span class="r">${sign}</span></div>`;
+    }).join('');
+    return `<div class="gear"><div class="credhead">RECENT JUMPS</div>${rows}</div>`;
   }
 
   function showState(msg) {
@@ -158,6 +176,7 @@
           ${dueChip('AAD service', p.aad_due)}
         </div>
         ${credsHtml(p.credentials)}
+        ${recentJumpsHtml(p.recent_jumps)}
       </div>
       <div class="foot">
         Verified jumps are signed off by licensed jumpers on Manifest.<br/>Reserve &amp; AAD dates come from the holder's gear locker.
