@@ -168,16 +168,13 @@
         </div>
         <div class="stats">
           <div class="stat"><div class="v">${Number(p.total_jumps||0).toLocaleString()}</div><div class="l">Total jumps</div></div>
-          ${p.pro ? `
           <div class="sep"></div>
           <div class="stat"><div class="v">${Number(p.verified_jumps||0).toLocaleString()}</div><div class="l">Verified</div></div>
-          ` : ''}
         </div>
-        ${p.pro ? `
         <div class="gear">
           ${dueChip('Reserve repack', p.reserve_due)}
           ${dueChip('AAD service', p.aad_due)}
-        </div>` : ''}
+        </div>
         ${credsHtml(p.credentials)}
         ${recentJumpsHtml(p.recent_jumps)}
       </div>
