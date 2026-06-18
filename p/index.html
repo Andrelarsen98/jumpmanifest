@@ -149,9 +149,14 @@
     // License number is the credential a DZ verifies → primary (full); member
     // number is the masked private account ID → secondary, only when both exist;
     // one-number federations fall back to whichever they have. See FEATURES.md.
-    const primaryNum = p.license_number || p.member_number;
+    // Suppress license_number when it just repeats the class letter (redundant
+    // with the class badge — common for federations like NLF with no separate
+    // license number); fall back to the membership number.
+    const cls = p.license_type && p.license_type !== 'none' ? p.license_type : null;
+    const lic = (p.license_number && cls && p.license_number.trim().toUpperCase() === cls.trim().toUpperCase()) ? null : p.license_number;
+    const primaryNum = lic || p.member_number;
     const memberLine = [p.licensing_body, primaryNum ? '#'+primaryNum : ''].filter(Boolean).join(' · ');
-    const memberSub = (p.license_number && p.member_number) ? 'Member #'+p.member_number : '';
+    const memberSub = (lic && p.member_number) ? 'Member #'+p.member_number : '';
     const isFounder = p.verification === 'founder';
 
     document.getElementById('root').innerHTML = `
@@ -170,9 +175,9 @@
           ${memberLine ? `<div class="member">${esc(memberLine)}</div>` : ''}
           ${memberSub ? `<div class="member-sub">${esc(memberSub)}</div>` : ''}
         </div>
-        <div class="status" style="background:${current ? '#DCFCE7' : '#FEE2E2'}">
-          <span class="s" style="color:${current ? '#15803D' : '#B91C1C'}">${current ? '✓ CURRENT' : '⚠ NOT CURRENT'}</span>
-          <span class="ss">${p.last_jump ? ('Last jump '+since+'d ago · '+(p.currency_window||90)+'d window') : 'No jumps logged'}</span>
+        <div class="status" style="background:${since == null ? '#EEEEF2' : current ? '#DCFCE7' : '#FEE2E2'}">
+          <span class="s" style="color:${since == null ? '#6B7280' : current ? '#15803D' : '#B91C1C'}">${since == null ? 'NO DATA YET' : current ? '✓ CURRENT' : '⚠ NOT CURRENT'}</span>
+          <span class="ss">${p.last_jump ? ('Last jump '+since+'d ago · '+(p.currency_window||90)+'d window') : 'No jumps logged yet'}</span>
         </div>
         <div class="stats">
           <div class="stat"><div class="v">${Number(p.total_jumps||0).toLocaleString()}</div><div class="l">Total jumps</div><div class="statsub">self-logged</div></div>
