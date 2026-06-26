@@ -71,7 +71,7 @@
 <main class="doc">
   <div class="wrap">
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: 25 June 2026</p>
+    <p class="updated">Last updated: 26 June 2026</p>
 
     <p class="intro">Manifest (&ldquo;we&rdquo;, &ldquo;us&rdquo;, the &ldquo;App&rdquo;) is a logbook, gear passport, marketplace, and events platform for skydivers. This policy explains what personal data we collect, why, and your rights over it.</p>
     <p><strong>Data controller:</strong> André Larsen, Dubai, United Arab Emirates. Contact: <a href="mailto:support@jumpmanifest.com"><strong>support@jumpmanifest.com</strong></a>.</p>
@@ -89,6 +89,7 @@
       <li>Approximate device location — <strong>only</strong> when you tap &ldquo;Near me&rdquo; to sort dropzones/events by distance. Location is used in-memory to compute distance and is not stored on our servers.</li>
       <li><strong>Background location (optional)</strong> — only if you turn on automatic jump logging. Manifest then registers geofences around dropzones so iOS can prompt you to log your jumps when you leave one. This uses the &ldquo;Always&rdquo; location permission, but dropzone enter/exit detection happens on your device — we do not store your continuous location or movements on our servers. You can turn it off in the app or revoke the permission in your device settings at any time.</li>
       <li>Notification permission and local reminder scheduling (gear service and currency reminders are scheduled on your device).</li>
+      <li><strong>Usage data:</strong> in-app product-interaction events (screens viewed, features used) and crash reports, collected to keep the app reliable and improve it.</li>
       <li>Basic technical data needed to run the service (e.g. session tokens).</li>
     </ul>
 
@@ -104,6 +105,7 @@
     <ul>
       <li><strong>Supabase</strong> — database, authentication, and file storage (hosting our backend).</li>
       <li><strong>Expo</strong> — app delivery and, where enabled, push notification delivery.</li>
+      <li><strong>PostHog</strong> (EU region) — product analytics and crash reporting (in-app usage events and crashes, to keep the app reliable).</li>
     </ul>
     <p>Other users see the parts of your profile and content you choose to make public (e.g. your name, avatar, listings, public jumps, events you host). Verified-badge status is visible to other users.</p>
 
