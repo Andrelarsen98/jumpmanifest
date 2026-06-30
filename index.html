@@ -5,20 +5,20 @@
 <meta name="google-site-verification" content="LSNgKsqUgjF5U6ow4S-UaRolkd8qAiVDrORzruiayW0" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Manifest — The gear passport for skydivers</title>
-<meta name="description" content="Manifest is the gear passport for skydivers — log every jump, build a rigger-verified service history, and trade gear whose provenance transfers at the point of sale." />
+<meta name="description" content="Manifest is the gear passport for skydivers — log every jump, get it witnessed and signed off, and keep your gear’s service history current." />
 <meta property="og:site_name" content="Manifest" />
 <meta property="og:title" content="Manifest — The gear passport for skydivers" />
-<meta property="og:description" content="Log every jump, build a rigger-verified service history, and trade gear whose provenance transfers when you sell. Join the waitlist." />
+<meta property="og:description" content="Log every jump, get it witnessed and signed off by the jumpers who were there, and keep your gear’s service history current. Join the waitlist." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.jumpmanifest.com/" />
-<meta property="og:image" content="https://www.jumpmanifest.com/assets/og-image.png?v=2" />
+<meta property="og:image" content="https://www.jumpmanifest.com/assets/og-image.png?v=3" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Manifest — Log it. Verify it. Trade it." />
+<meta property="og:image:alt" content="Manifest — Log it. Verify it. Prove it." />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Manifest — The gear passport for skydivers" />
-<meta name="twitter:description" content="Log every jump, build a rigger-verified service history, and trade gear whose provenance transfers when you sell." />
-<meta name="twitter:image" content="https://www.jumpmanifest.com/assets/og-image.png?v=2" />
+<meta name="twitter:description" content="Log every jump, get it witnessed and signed off, and keep your gear’s service history current." />
+<meta name="twitter:image" content="https://www.jumpmanifest.com/assets/og-image.png?v=3" />
 <meta name="theme-color" content="#F7F6FB" />
 <link rel="canonical" href="https://www.jumpmanifest.com/" />
 <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -36,7 +36,7 @@
   "@type": "WebSite",
   "name": "Manifest",
   "url": "https://www.jumpmanifest.com/",
-  "description": "The gear passport for skydivers — log every jump, build a rigger-verified service history, and trade gear whose provenance transfers when you sell.",
+  "description": "The gear passport for skydivers — log every jump, get it witnessed and signed off, and keep your gear’s service history current.",
   "publisher": {
     "@type": "Organization",
     "name": "Manifest",
@@ -242,16 +242,16 @@
 
   /* ---------- footer ---------- */
   footer { margin-top: 70px; border-top: 1px solid var(--line); padding: 40px 0 56px; }
-  .foot-in { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: space-between; }
+  .foot-in { display: grid; grid-template-columns: 1fr auto 1fr; gap: 18px; align-items: center; }
   .beta { display: inline-flex; align-items: center; gap: 10px; background: rgba(124,58,237,.10); white-space: nowrap;
     border: 1px solid rgba(124,58,237,.32); border-radius: 100px; padding: 10px 18px; font-weight: 700; font-size: 14px; color: #6D28D9; }
   .beta .lock { width: 16px; height: 16px; }
-  .foot-brand { display: inline-flex; align-items: center; gap: 10px; opacity: .9; }
+  .foot-brand { display: inline-flex; align-items: center; gap: 10px; opacity: .9; justify-self: start; }
   .foot-brand img { width: 30px; height: 30px; border-radius: 9px; }
   .foot-brand .nm { font-weight: 800; font-size: 18px; }
   .handle { color: var(--muted); font-weight: 700; font-size: 15px; }
   .made { margin-top: 26px; text-align: center; color: #8a8399; font-weight: 700; font-size: 14px; letter-spacing: .01em; }
-  .foot-links { display: inline-flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .foot-links { display: inline-flex; align-items: center; gap: 20px; flex-wrap: wrap; justify-self: end; }
   .foot-links a { color: var(--muted); font-weight: 700; font-size: 15px; }
   .foot-links a:hover { color: var(--ink); }
 
@@ -269,6 +269,8 @@
     form.cap .btn { width: 100%; }
     .feature-grid { grid-template-columns: 1fr; }
     .phone.left { margin-right: -16px; } .phone.right { margin-left: -16px; }
+    .foot-in { grid-template-columns: 1fr; justify-items: center; gap: 14px; }
+    .foot-brand, .foot-links { justify-self: center; }
   }
 </style>
 </head>
@@ -288,9 +290,9 @@
 <header class="hero" id="top">
   <div class="wrap">
     <span class="eyebrow"><span class="dot"></span> Now in private beta</span>
-    <h1><span class="ph">Log it.</span> <span class="ph">Verify it.</span> <span class="ph accent">Trade it.</span></h1>
+    <h1><span class="ph">Log it.</span> <span class="ph">Verify it.</span> <span class="ph accent">Prove it.</span></h1>
     <p class="sub">The skydiver's logbook that <b>actually proves it</b> — witnessed jumps, verified gear, faster check-in.</p>
-    <p class="sub sub2">Every jump is signed off by the people who witnessed it. Your rig carries a service history that transfers when you sell. And your Check-in Pass shows your licence and currency at the dropzone in seconds — no more paper logbooks or trust-me-bro.</p>
+    <p class="sub sub2">Every jump is signed off by the people who witnessed it. Your rig carries its full service history — reserve repacks and AAD, always current. And your Check-in Pass shows your licence and currency at the dropzone in seconds — no more paper logbooks or trust-me-bro.</p>
 
     <div class="capture" id="waitlist">
       <form class="cap" id="waitForm" novalidate>
@@ -315,8 +317,7 @@
 
     <div class="fan">
       <div class="phone left"><img src="assets/p2-logbook.png" alt="Logbook" loading="lazy" /></div>
-      <div class="phone center"><img src="assets/p2-locker.png" alt="Check-in Pass" loading="lazy" /></div>
-      <div class="phone right"><img src="assets/p2-market.png" alt="Marketplace" loading="lazy" /></div>
+      <div class="phone right"><img src="assets/p2-locker.png" alt="Check-in Pass" loading="lazy" /></div>
     </div>
   </div>
 </header>
@@ -325,7 +326,7 @@
   <div class="wrap">
     <div class="kicker">Why Manifest</div>
     <h2>Proof, not trust-me-bro</h2>
-    <p class="lead">Skydiving still runs on paper logbooks and word of mouth. Manifest turns your jumps, your currency and your gear's service history into one verified record — witnessed, signed and time-stamped — so it holds up at the dropzone and in a sale.</p>
+    <p class="lead">Skydiving still runs on paper logbooks and word of mouth. Manifest turns your jumps, your currency and your gear's service history into one verified record — witnessed, signed and time-stamped — so it holds up at the dropzone, every time.</p>
   </div>
 </section>
 
@@ -333,7 +334,7 @@
   <div class="wrap">
     <div class="kicker">How it works</div>
     <h2>One record that proves it all</h2>
-    <p class="lead">Every jump and every service feeds a single verified history — one that follows you to the dropzone and follows the gear when you sell.</p>
+    <p class="lead">Every jump and every service feeds a single verified history — one that follows you to the dropzone and keeps your gear in date.</p>
 
     <div class="steps">
       <div class="step">
@@ -350,9 +351,9 @@
       </div>
       <div class="step">
         <div class="num">3</div>
-        <h3>Trade with trust</h3>
-        <p>Sell with the whole story attached — rigger-signed reserve and AAD history that transfers to the buyer at the point of sale.</p>
-        <div class="shot"><img src="assets/p2-market.png" alt="Marketplace" loading="lazy" /></div>
+        <h3>Keep your kit in date</h3>
+        <p>Your reserve repack and AAD service live in your Gear Locker — rigger-signed and always current, so you and any DZ can trust your rig is in date.</p>
+        <div class="shot"><img src="assets/p2-locker.png" alt="Check-in Pass showing reserve and AAD service" loading="lazy" /></div>
       </div>
     </div>
   </div>
@@ -385,14 +386,14 @@
         <p>Your rig, reserve and AAD service dates in one verified record.</p>
       </div>
       <div class="feat">
-        <div class="chip"><svg viewBox="0 0 24 24"><path d="M4 12V5a1 1 0 0 1 1-1h7l8 8-8 8-8-8z"/><circle cx="8.5" cy="8.5" r="1.4"/></svg></div>
-        <h4>Marketplace</h4>
-        <p>Buy, sell and trade used gear you can actually trust.</p>
+        <div class="chip"><svg viewBox="0 0 24 24"><path d="M4 16l4-5 4 3 5-7"/><path d="M3 20h18"/></svg></div>
+        <h4>Statistics</h4>
+        <p>Your Year in the Sky — jumps by discipline, canopy and dropzone.</p>
       </div>
       <div class="feat">
-        <div class="chip"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
-        <h4>Provenance</h4>
-        <p>Rigger-signed service history that transfers to the buyer at sale.</p>
+        <div class="chip"><svg viewBox="0 0 24 24"><path d="M12 3v11"/><path d="M8 10l4 4 4-4"/><path d="M5 21h14"/></svg></div>
+        <h4>Import</h4>
+        <p>Bring your whole history across — import from any CSV or logbook app.</p>
       </div>
       <div class="feat">
         <div class="chip"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.2 5.2L3 18l3 3 6.5-6.5a4 4 0 0 0 5.2-5.2l-2.4 2.4-2.1-.6-.6-2.1 2.4-2.4z"/></svg></div>
