@@ -1,0 +1,16 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="mfLogo" x1="512" y1="0" x2="512" y2="1024" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7E07E8"/>
+      <stop offset="0.5" stop-color="#7A25E9"/>
+      <stop offset="1" stop-color="#6956E5"/>
+    </linearGradient>
+  </defs>
+  <rect width="1024" height="1024" rx="230" fill="url(#mfLogo)"/>
+  <g fill="#76DFFC">
+    <polygon points="194,225 323,225 323,819 194,819"/>
+    <polygon points="701,225 830,225 830,819 701,819"/>
+    <polygon points="194,225 323,225 512,573 383,573"/>
+    <polygon points="830,225 701,225 512,573 641,573"/>
+  </g>
+</svg>
