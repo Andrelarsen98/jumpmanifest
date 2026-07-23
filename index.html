@@ -146,12 +146,14 @@
     display: flex; justify-content: center; align-items: flex-start; }
   /* Real Rotato iPhone mockups (frame + island + shadow baked into the PNG) —
      just place the transparent images; no CSS frame needed. */
-  .phone { position: relative; flex: 0 0 auto; width: clamp(228px, 44vw, 310px); }
-  .phone img { width: 100%; display: block; }
-  /* slight lean for the V; overlap via negative margin. tops ~level. */
-  .phone.back  { transform: rotate(-7deg) translateZ(0); z-index: 1; transform-origin: 50% 50%;
-    margin-right: clamp(-56px, -8vw, -34px); }
-  .phone.front { transform: rotate(4deg) translateZ(0); z-index: 2; transform-origin: 50% 50%; }
+  /* Shadowless phone-only mockups: PNG edges = phone edges, so sizing/overlap
+     is exact. One consistent CSS drop-shadow (follows the phone's alpha). */
+  .phone { position: relative; flex: 0 0 auto; width: clamp(240px, 46vw, 322px); }
+  .phone img { width: 100%; display: block;
+    filter: drop-shadow(0 26px 34px rgba(15,23,42,.30)) drop-shadow(0 6px 12px rgba(15,23,42,.18)); }
+  .phone.back  { transform: rotate(-9deg) translateZ(0); z-index: 1; transform-origin: 50% 50%;
+    margin-right: clamp(-78px, -11vw, -48px); }
+  .phone.front { transform: rotate(6deg) translateZ(0); z-index: 2; transform-origin: 50% 50%; }
   /* white fade so the phones melt into the page bottom like subbie — tall and
      soft enough to swallow the phone shadows too (no grey seam). */
   .fan::after { content: ""; position: absolute; left: -24%; right: -24%; bottom: -48px;
