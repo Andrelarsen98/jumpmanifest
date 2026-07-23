@@ -93,9 +93,15 @@
     /* symmetric tilts -> mirror offsets: front = 100% - back - phone width */
     .phone.back  { left: 3%; }
     .phone.front { left: 47%; }
-    /* rotated phones are ~470px tall — container must be taller or the fade
-       (anchored to its bottom) lands on the statement text */
-    .fan { height: 500px; }
+    /* Mobile fixes:
+       - width 100%: the 600px container overflowed the wrap's ~382px content
+         box, shoving the whole pair right — 100% keeps it truly centered.
+       - height 500px: rotated phones are ~476px tall.
+       - fade anchored INSIDE the container (bottom 0) so it can never hang
+         down over the statement text. */
+    .fan { height: 500px; width: 100%; }
+    .fan::after { bottom: 0; height: 42%;
+      background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #fff 72%); }
     /* cheaper + lighter shadows = smooth scroll, no grey wash */
     .phone { box-shadow: 0 14px 30px rgba(15,23,42,.20),
                          inset 0 0 0 1px rgba(110,130,170,.14); }
