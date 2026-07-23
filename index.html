@@ -87,24 +87,6 @@
   body { padding-top: 86px; }
   @media (max-width: 620px) {
     .nav-links { display: none; }
-    /* recenter the pair on small screens — offsets computed from the ROTATED
-       bounding boxes (back ±46px, front ±22px at 206px width) so the group's
-       visual center sits on the container center */
-    /* symmetric tilts -> mirror offsets: front = 100% - back - phone width */
-    .phone.back  { left: 3%; }
-    .phone.front { left: 47%; }
-    /* Mobile fixes:
-       - width 100%: the 600px container overflowed the wrap's ~382px content
-         box, shoving the whole pair right — 100% keeps it truly centered.
-       - height 500px: rotated phones are ~476px tall.
-       - fade anchored INSIDE the container (bottom 0) so it can never hang
-         down over the statement text. */
-    .fan { height: 500px; width: 100%; }
-    .fan::after { bottom: 0; height: 42%;
-      background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #fff 72%); }
-    /* cheaper + lighter shadows = smooth scroll, no grey wash */
-    .phone { box-shadow: 0 14px 30px rgba(15,23,42,.20),
-                         inset 0 0 0 1px rgba(110,130,170,.14); }
   }
   .btn {
     font-family: inherit; font-weight: 700; font-size: 15px; letter-spacing: -.01em;
@@ -252,8 +234,24 @@
     form.cap { flex-direction: column; border-radius: 22px; padding: 9px; }
     form.cap input { padding: 12px 14px; text-align: center; }
     form.cap .btn { width: 100%; }
-    .phone.left { margin-right: -18px; } .phone.right { margin-left: -18px; }
     .foot-in { flex-direction: column; gap: 16px; }
+  }
+  /* MOBILE phone-pair overrides — MUST stay at the END of the stylesheet:
+     equal specificity means later rules win, and the base .fan/.phone rules
+     above would silently cancel these if this block sat before them. */
+  @media (max-width: 620px) {
+    /* container: 100% so it can't overflow the wrap and shove the pair right;
+       500px tall = rotated phone height, fade anchored INSIDE at bottom:0 so
+       it can never wash the statement text below. */
+    .fan { height: 500px; width: 100%; }
+    .fan::after { bottom: 0; height: 42%;
+      background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #fff 72%); }
+    /* symmetric tilts -> mirror offsets: front = 100% - back - phone width */
+    .phone.back  { left: 3%; }
+    .phone.front { left: 47%; }
+    /* cheaper + lighter shadows = smooth scroll, no grey wash */
+    .phone { box-shadow: 0 14px 30px rgba(15,23,42,.20),
+                         inset 0 0 0 1px rgba(110,130,170,.14); }
   }
 </style>
 </head>
