@@ -142,7 +142,7 @@
   /* FLEX centering: the browser centers the pair itself — no hand-tuned left
      offsets. Overlap comes from the back phone's negative right margin. */
   .fan { position: relative; margin: 52px auto 0; width: min(600px, 96vw);
-    height: clamp(400px, 64vw, 620px);
+    height: clamp(400px, 64vw, 620px); overflow: hidden;
     display: flex; justify-content: center; align-items: flex-start; }
   /* Real Rotato iPhone mockups (frame + island + shadow baked into the PNG) —
      just place the transparent images; no CSS frame needed. */
@@ -156,9 +156,9 @@
   .phone.front { transform: rotate(6deg) translateZ(0); z-index: 2; transform-origin: 50% 50%; }
   /* white fade so the phones melt into the page bottom like subbie — tall and
      soft enough to swallow the phone shadows too (no grey seam). */
-  .fan::after { content: ""; position: absolute; left: -24%; right: -24%; bottom: -48px;
-    height: 52%; z-index: 3; pointer-events: none;
-    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #fff 68%); }
+  .fan::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0;
+    height: 26%; z-index: 3; pointer-events: none;
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #fff 82%); }
 
   /* ---------- pillars ---------- */
   section.block { padding: clamp(88px, 13vw, 150px) 0 0; }
