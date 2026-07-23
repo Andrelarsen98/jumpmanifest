@@ -222,9 +222,12 @@
   /* MOBILE phone-pair overrides — kept at the END of the stylesheet so they
      win the cascade over the base .fan/.phone rules. */
   @media (max-width: 620px) {
-    /* width 100% keeps the flex-centered pair truly centered on screen. No
-       fixed height, no overflow, no fade — full phones on clean white. */
-    .fan { width: 100%; }
+    /* width 100% keeps the flex-centered pair truly centered on screen. */
+    .fan { width: 100%; margin-bottom: 18px; }
+    /* the statement sits closer on mobile, so pull the bottom fade back a
+       touch (was clipping the first line's "G") and keep it well clear. */
+    .fan::after { bottom: -12px; height: 22%; }
+    section#why { padding-top: 30px; }
   }
 </style>
 </head>
