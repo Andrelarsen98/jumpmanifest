@@ -74,15 +74,15 @@
         border-radius: 100px; will-change: transform; transform: translateX(-50%) translateZ(0);
         box-shadow: 0 14px 34px rgba(15,11,28,.24), inset 0 1px 0 rgba(255,255,255,.10); }
   .nav-in { display: flex; align-items: center; justify-content: space-between;
-            height: 62px; padding: 0 9px 0 20px; }
-  .brand { display: inline-flex; align-items: center; gap: 10px; }
-  .brand img { width: 30px; height: 30px; border-radius: 9px; }
-  .brand .nm { font-weight: 800; font-size: 18px; letter-spacing: -.03em; color: #fff; }
-  .nav-links { display: inline-flex; align-items: center; gap: 28px; }
-  .nav-links a { color: rgba(255,255,255,.92); font-weight: 600; font-size: 15px; }
+            height: 54px; padding: 0 7px 0 18px; }
+  .brand { display: inline-flex; align-items: center; gap: 9px; }
+  .brand img { width: 27px; height: 27px; border-radius: 8px; }
+  .brand .nm { font-weight: 800; font-size: 17px; letter-spacing: -.03em; color: #fff; }
+  .nav-links { display: inline-flex; align-items: center; gap: 26px; }
+  .nav-links a { color: rgba(255,255,255,.92); font-weight: 600; font-size: 14.5px; }
   .nav-links a:hover { color: #fff; }
-  nav .btn { padding: 11px 20px; font-size: 14.5px; }
-  body { padding-top: 100px; }
+  nav .btn { padding: 9px 17px; font-size: 14px; }
+  body { padding-top: 86px; }
   @media (max-width: 620px) { .nav-links { display: none; } }
   .btn {
     font-family: inherit; font-weight: 700; font-size: 15px; letter-spacing: -.01em;
@@ -94,7 +94,7 @@
   .btn:disabled { opacity: .6; cursor: default; transform: none; }
 
   /* ---------- hero (subbie-style: tight, modest type, phones right under) ---------- */
-  .hero { text-align: center; padding: 44px 0 0; }
+  .hero { text-align: center; padding: 22px 0 0; }
   h1 { margin: 0 auto; font-weight: 700; letter-spacing: -.04em; line-height: 1.12;
        font-size: clamp(38px, 5.6vw, 62px); }
   h1 .l1 { color: #9a96a6; }
@@ -117,11 +117,12 @@
   .store span { display: flex; flex-direction: column; line-height: 1.15; text-align: left; }
   .store small { font-size: 9.5px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: #948da6; }
   .store b { font-size: 14px; font-weight: 800; letter-spacing: -.01em; }
-  /* subbie-style single store button */
-  .appbtn { margin: 22px auto 0; display: inline-flex; align-items: center; gap: 11px;
-    padding: 13px 26px; border-radius: 16px; background: var(--violet); color: #fff;
-    box-shadow: 0 14px 34px rgba(124,58,237,.35); transition: transform .15s ease, box-shadow .15s ease; }
-  .appbtn:hover { transform: translateY(-1px); box-shadow: 0 18px 40px rgba(124,58,237,.45); }
+  /* single store button — bright sky blue */
+  .appbtn { margin: 24px auto 0; display: inline-flex; align-items: center; gap: 11px;
+    padding: 13px 26px; border-radius: 16px; color: #fff;
+    background: linear-gradient(180deg, #4cc3ff 0%, #18a6f2 100%);
+    box-shadow: 0 14px 34px rgba(24,166,242,.4); transition: transform .15s ease, box-shadow .15s ease; }
+  .appbtn:hover { transform: translateY(-1px); box-shadow: 0 18px 40px rgba(24,166,242,.5); }
   .appbtn svg { width: 26px; height: 26px; fill: #fff; flex: 0 0 auto; }
   .appbtn span { display: flex; flex-direction: column; line-height: 1.12; text-align: left; }
   .appbtn small { font-size: 11px; font-weight: 600; opacity: .85; }
@@ -134,7 +135,7 @@
   .ok.show { display: block; }
 
   /* ---------- iPhone 17 Pro Max — dark blue titanium (subbie-style pair) ---------- */
-  .fan { position: relative; margin: 34px auto 0; width: min(680px, 98vw);
+  .fan { position: relative; margin: 26px auto 0; width: min(680px, 98vw);
     height: clamp(430px, 70vw, 690px); }
   .phone { position: absolute; top: 0; width: clamp(232px, 46vw, 330px);
     /* iPhone 17 Pro — Deep Blue: dark navy titanium */
@@ -236,16 +237,6 @@
     <h1><span class="l1">Skydiving,</span><br /><span class="l2">Verified.</span></h1>
     <p class="sub">Every jump witnessed. Every rig current. Your proof, in seconds.</p>
 
-    <div class="capture" id="waitlist">
-      <form class="cap" id="waitForm" novalidate>
-        <input type="email" id="email" placeholder="Enter your email" autocomplete="email" required />
-        <button type="submit" class="btn">Join waitlist</button>
-      </form>
-      <div class="note">Be first in when Manifest opens. No spam — just launch news.</div>
-      <div class="err" id="errMsg">Something went wrong. Please try again.</div>
-      <div class="ok" id="okMsg">You're on the list — we'll email you the moment Manifest opens.</div>
-    </div>
-
     <a class="appbtn" href="#waitlist" aria-label="Coming soon to the App Store">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.36 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.75 2.28-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.35 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.66zM14.13 5.85c.64-.78 1.07-1.85.95-2.93-.92.04-2.04.61-2.7 1.38-.59.68-1.11 1.78-.97 2.83 1.03.08 2.08-.52 2.72-1.28z"/></svg>
       <span><small>Soon on the</small><b>App Store</b></span>
@@ -295,7 +286,7 @@
   <div class="wrap">
     <div class="kicker">Be first off the plane</div>
     <h2>Join the waitlist</h2>
-    <div class="capture">
+    <div class="capture" id="waitlist">
       <form class="cap" id="waitForm2" novalidate>
         <input type="email" id="email2" placeholder="Enter your email" autocomplete="email" required />
         <button type="submit" class="btn">Join waitlist</button>
