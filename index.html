@@ -191,6 +191,9 @@
   .flag { margin-top: clamp(80px,12vw,130px); text-align: center; }
   .flag h2 { max-width: 16ch; }
   .flag p { margin: 16px auto 0; max-width: 440px; color: var(--muted); font-weight: 600; font-size: clamp(16px,2vw,18px); }
+  /* multiply makes the video's white blend perfectly into the white page */
+  .flagvid { display: block; margin: 10px auto 0; width: min(560px, 92vw); height: auto;
+    mix-blend-mode: multiply; }
 
   /* ---------- final CTA ---------- */
   .final { margin-top: clamp(88px,13vw,150px); text-align: center; }
@@ -294,6 +297,10 @@
     <div class="kicker">The flagship</div>
     <h2>Your load. Live on your lock screen.</h2>
     <p>Know the second the plane's called — with gear-up and final-call alerts, so it never leaves without you.</p>
+    <video class="flagvid" autoplay loop muted playsinline preload="metadata"
+           aria-label="Live loads on your lock screen">
+      <source src="assets/liveloads.mp4" type="video/mp4" />
+    </video>
   </div>
 </section>
 
