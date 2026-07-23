@@ -297,7 +297,7 @@
     <div class="kicker">The flagship</div>
     <h2>Your load. Live on your lock screen.</h2>
     <p>Know the second the plane's called — with gear-up and final-call alerts, so it never leaves without you.</p>
-    <video class="flagvid" autoplay loop muted playsinline preload="metadata"
+    <video class="flagvid" id="flagVid" autoplay loop muted playsinline preload="auto"
            aria-label="Live loads on your lock screen">
       <source src="assets/lockscreen.mp4" type="video/mp4" />
     </video>
@@ -400,6 +400,43 @@
 
   wire("waitForm", "okMsg", "errMsg");
   wire("waitForm2", "okMsg2", "errMsg2");
+
+  // ---- Flagship video: keep it looping. Browsers throttle/pause autoplaying
+  // video (offscreen, battery saver, tab switches) and the `loop` attribute
+  // alone doesn't recover from that — so nudge it back whenever it stalls. ----
+  (function () {
+    var v = document.getElementById("flagVid");
+    if (!v) return;
+
+    function kick() {
+      if (v.paused || v.ended) {
+        if (v.ended || v.currentTime >= v.duration - 0.05) v.currentTime = 0;
+        var p = v.play();
+        if (p && p.catch) p.catch(function () {});
+      }
+    }
+
+    v.addEventListener("ended", function () { v.currentTime = 0; kick(); });
+    v.addEventListener("pause", kick);
+    v.addEventListener("stalled", kick);
+    document.addEventListener("visibilitychange", function () {
+      if (!document.hidden) kick();
+    });
+
+    // Only run while it's actually on screen (saves battery, and resumes on return).
+    if (window.IntersectionObserver) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) kick();
+          else if (!v.paused) v.pause();
+        });
+      }, { threshold: 0.15 }).observe(v);
+    }
+
+    setInterval(function () {
+      if (!document.hidden && v.getBoundingClientRect().top < innerHeight && v.getBoundingClientRect().bottom > 0) kick();
+    }, 2000);
+  })();
 </script>
 </body>
 </html>
