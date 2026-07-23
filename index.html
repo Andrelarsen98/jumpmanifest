@@ -4,20 +4,20 @@
 <meta charset="UTF-8" />
 <meta name="google-site-verification" content="LSNgKsqUgjF5U6ow4S-UaRolkd8qAiVDrORzruiayW0" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Manifest — The gear passport for skydivers</title>
-<meta name="description" content="Manifest is the gear passport for skydivers — log every jump, get it witnessed and signed off, and keep your gear’s service history current." />
+<title>Manifest — Skydiving, Verified</title>
+<meta name="description" content="Manifest is the verified record for skydivers — every jump witnessed and signed off, every rig in date, and a Check-in Pass that proves your licence and currency in seconds." />
 <meta property="og:site_name" content="Manifest" />
-<meta property="og:title" content="Manifest — The gear passport for skydivers" />
-<meta property="og:description" content="Log every jump, get it witnessed and signed off by the jumpers who were there, and keep your gear’s service history current. Join the waitlist." />
+<meta property="og:title" content="Manifest — Skydiving, Verified" />
+<meta property="og:description" content="Every jump witnessed. Every rig current. Your proof, in seconds. Join the waitlist." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.jumpmanifest.com/" />
 <meta property="og:image" content="https://www.jumpmanifest.com/assets/og-image.png?v=3" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Manifest — Log it. Verify it. Prove it." />
+<meta property="og:image:alt" content="Manifest — Skydiving, Verified" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Manifest — The gear passport for skydivers" />
-<meta name="twitter:description" content="Log every jump, get it witnessed and signed off, and keep your gear’s service history current." />
+<meta name="twitter:title" content="Manifest — Skydiving, Verified" />
+<meta name="twitter:description" content="Every jump witnessed. Every rig current. Your proof, in seconds." />
 <meta name="twitter:image" content="https://www.jumpmanifest.com/assets/og-image.png?v=3" />
 <meta name="theme-color" content="#ffffff" />
 <link rel="canonical" href="https://www.jumpmanifest.com/" />
@@ -37,7 +37,7 @@
   "@type": "WebSite",
   "name": "Manifest",
   "url": "https://www.jumpmanifest.com/",
-  "description": "The gear passport for skydivers — log every jump, get it witnessed and signed off, and keep your gear’s service history current.",
+  "description": "Skydiving, Verified — every jump witnessed and signed off, every rig in date, and a Check-in Pass that proves licence and currency in seconds.",
   "publisher": {
     "@type": "Organization",
     "name": "Manifest",
@@ -48,229 +48,144 @@
 </script>
 <style>
   :root {
-    --ink: #140f24;
-    --purple: #6D28D9;
-    --purple2: #7C3AED;
-    --lilac: #7C3AED;
-    --teal: #0d9488;
-    --muted: #6b6480;
-    --line: rgba(20,15,36,.10);
-    --glass: #ffffff;
-    --r: 18px;
+    --ink: #0f0b1c;
+    --violet: #7C3AED;
+    --violet-d: #6D28D9;
+    --muted: #6f6982;
+    --line: rgba(15,11,28,.08);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
     font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
     color: var(--ink); background: #ffffff; -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+    overflow-x: hidden; line-height: 1.5;
   }
   a { color: inherit; text-decoration: none; }
   img { display: block; max-width: 100%; }
-  .wrap { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 22px; }
-
-  /* ---------- background field ---------- */
-  .bg {
-    position: fixed; inset: 0; z-index: -1;
-    background: #ffffff;
-  }
-  .bg::after {
-    content: ""; position: absolute; inset: 0;
-    background-image: radial-gradient(rgba(20,15,36,.05) 1.3px, transparent 1.3px);
-    background-size: 34px 34px; opacity: .6;
-  }
+  .wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
   /* ---------- nav ---------- */
-  nav {
-    position: sticky; top: 0; z-index: 50;
-    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-    background: rgba(255,255,255,.72); border-bottom: 1px solid var(--line);
-  }
-  .nav-in { display: flex; align-items: center; justify-content: space-between; height: 70px; }
-  .brand { display: inline-flex; align-items: center; gap: 12px; }
-  .brand img { width: 38px; height: 38px; border-radius: 11px; box-shadow: 0 6px 18px rgba(124,58,237,.45); }
-  .brand .nm { font-weight: 800; font-size: 22px; letter-spacing: -.02em; }
+  nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.8);
+        backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+  .nav-in { display: flex; align-items: center; justify-content: space-between; height: 74px; }
+  .brand { display: inline-flex; align-items: center; gap: 11px; }
+  .brand img { width: 34px; height: 34px; border-radius: 10px; }
+  .brand .nm { font-weight: 800; font-size: 20px; letter-spacing: -.03em; }
   .btn {
-    font-family: inherit; font-weight: 800; font-size: 15px; letter-spacing: -.01em;
+    font-family: inherit; font-weight: 700; font-size: 15px; letter-spacing: -.01em;
     border: 0; cursor: pointer; border-radius: 100px; padding: 12px 22px;
-    background: #7C3AED; color: #fff; transition: transform .15s ease, box-shadow .15s ease;
-    box-shadow: 0 8px 22px rgba(124,58,237,.4); white-space: nowrap;
+    background: var(--violet); color: #fff; transition: transform .15s ease, box-shadow .15s ease;
+    box-shadow: 0 8px 20px rgba(124,58,237,.28); white-space: nowrap;
   }
-  .btn:hover { transform: translateY(-1px); box-shadow: 0 12px 30px rgba(124,58,237,.55); }
-  .btn:disabled { opacity: .65; cursor: default; transform: none; box-shadow: 0 8px 22px rgba(124,58,237,.4); }
-  .btn.ghost { background: transparent; color: var(--ink); box-shadow: none; border: 1px solid var(--line); }
-  .btn.ghost:hover { background: rgba(20,15,36,.05); box-shadow: none; }
+  .btn:hover { transform: translateY(-1px); box-shadow: 0 12px 26px rgba(124,58,237,.4); }
+  .btn:disabled { opacity: .6; cursor: default; transform: none; }
 
   /* ---------- hero ---------- */
-  .hero { text-align: center; padding: 72px 0 0; }
-  .eyebrow {
-    display: inline-block; font-weight: 700; font-size: 13px;
-    letter-spacing: .14em; text-transform: uppercase; color: #6D28D9; white-space: nowrap;
-  }
-  .eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: #7C3AED; box-shadow: 0 0 10px #7C3AED; }
-  h1 {
-    margin: 26px auto 0; font-weight: 800; letter-spacing: -.035em; line-height: 1.02;
-    font-size: clamp(40px, 8.5vw, 78px); max-width: 16ch;
-  }
-  h1 .ph { white-space: nowrap; }
-  h1 .accent { color: var(--lilac); }
-  .sub {
-    margin: 22px auto 0; max-width: 620px; color: var(--muted);
-    font-weight: 600; font-size: clamp(16px, 2.3vw, 21px); line-height: 1.5;
-  }
-  .sub b { color: var(--ink); font-weight: 700; }
-  .sub2 { margin-top: 14px; max-width: 560px; font-size: clamp(14px, 1.9vw, 16px); color: #6b6480; }
+  .hero { text-align: center; padding: 76px 0 0; }
+  .eyebrow { display: inline-block; font-weight: 700; font-size: 13px;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--violet); }
+  h1 { margin: 22px auto 0; font-weight: 800; letter-spacing: -.045em; line-height: .98;
+       font-size: clamp(52px, 11vw, 104px); }
+  h1 .v { color: var(--violet); }
+  .sub { margin: 26px auto 0; max-width: 540px; color: var(--muted);
+    font-weight: 600; font-size: clamp(17px, 2.4vw, 21px); line-height: 1.45; }
 
   /* ---------- email capture ---------- */
-  .capture { margin: 34px auto 0; max-width: 520px; }
-  form.cap {
-    display: flex; gap: 8px; padding: 8px; border-radius: 100px;
-    background: var(--glass); border: 1px solid var(--line);
-    box-shadow: 0 14px 34px rgba(20,15,36,.08);
-  }
-  form.cap input {
-    flex: 1; min-width: 0; background: transparent; border: 0; outline: none;
-    color: var(--ink); font-family: inherit; font-size: 16px; font-weight: 600; padding: 0 18px;
-  }
+  .capture { margin: 34px auto 0; max-width: 480px; }
+  form.cap { display: flex; gap: 7px; padding: 7px; border-radius: 100px;
+    background: #fff; border: 1px solid var(--line); box-shadow: 0 12px 30px rgba(15,11,28,.07); }
+  form.cap input { flex: 1; min-width: 0; background: transparent; border: 0; outline: none;
+    color: var(--ink); font-family: inherit; font-size: 16px; font-weight: 600; padding: 0 18px; }
   form.cap input::placeholder { color: #9a93ad; }
-  form.cap .btn { white-space: nowrap; }
-  .note { margin-top: 14px; font-size: 13px; color: #8d86a6; font-weight: 600; }
-  .stores { margin: 22px auto 0; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-  .store { display: inline-flex; align-items: center; gap: 11px; padding: 9px 18px 9px 15px;
-    border-radius: 14px; background: var(--glass); border: 1px solid var(--line);
-    box-shadow: 0 8px 20px rgba(20,15,36,.06); }
-  .store svg { width: 24px; height: 24px; fill: var(--ink); flex: 0 0 auto; }
+  .note { margin-top: 14px; font-size: 13px; color: #948da6; font-weight: 600; }
+  .stores { margin: 20px auto 0; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .store { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px 8px 13px;
+    border-radius: 13px; background: #fff; border: 1px solid var(--line); }
+  .store svg { width: 22px; height: 22px; fill: var(--ink); flex: 0 0 auto; }
   .store span { display: flex; flex-direction: column; line-height: 1.15; text-align: left; }
-  .store small { font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: #8a8399; }
-  .store b { font-size: 15px; font-weight: 800; letter-spacing: -.01em; color: var(--ink); }
-  .err { margin-top: 12px; font-size: 13px; color: #ff8da3; font-weight: 700; display: none; }
+  .store small { font-size: 9.5px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: #948da6; }
+  .store b { font-size: 14px; font-weight: 800; letter-spacing: -.01em; }
+  .err { margin-top: 12px; font-size: 13px; color: #e5484d; font-weight: 700; display: none; }
   .err.show { display: block; }
-  .ok { display: none; margin: 34px auto 0; max-width: 520px; padding: 18px 24px; border-radius: 16px;
-    background: rgba(124,58,237,.10); border: 1px solid rgba(124,58,237,.35); color: #6D28D9;
-    font-weight: 700; font-size: 16px; }
+  .ok { display: none; margin: 30px auto 0; max-width: 480px; padding: 16px 22px; border-radius: 16px;
+    background: rgba(124,58,237,.08); border: 1px solid rgba(124,58,237,.3); color: var(--violet-d);
+    font-weight: 700; font-size: 15px; }
   .ok.show { display: block; }
 
-  /* ---------- fanned phones ---------- */
-  .fan {
-    margin: 6px auto 0; max-width: 940px; padding-top: 34px;
-    display: flex; justify-content: center; align-items: center;
-  }
-  .phone {
-    width: clamp(122px, 27vw, 268px); flex: 0 0 auto;
-    background: #08070c; border-radius: clamp(22px, 4vw, 42px); padding: clamp(4px,.7vw,8px);
-    border: 1px solid rgba(255,255,255,.1);
-    box-shadow: 0 40px 76px rgba(0,0,0,.55), 0 8px 22px rgba(0,0,0,.4);
-  }
-  .phone img { width: 100%; border-radius: clamp(16px,3.2vw,34px); }
-  .phone.left  { transform: rotate(-8deg) translateY(20px); margin-right: -22px; z-index: 1; }
-  .phone.center{ z-index: 3; }
-  .phone.right { transform: rotate(8deg) translateY(20px); margin-left: -22px; z-index: 1; }
-  .phone.left:hover, .phone.right:hover, .phone.center:hover { transform: rotate(0) translateY(0); transition: transform .3s ease; }
-  .phone { transition: transform .3s ease; }
-  .fan + .fan { padding-top: 0; margin-top: clamp(6px, 1.4vw, 18px); }
+  /* ---------- iPhone 17 Pro Max — dark blue titanium (subbie-style pair) ---------- */
+  .fan { position: relative; margin: 52px auto 0; width: min(640px, 96vw);
+    height: clamp(420px, 68vw, 660px); }
+  .phone { position: absolute; top: 0; width: clamp(198px, 42vw, 314px);
+    /* iPhone 17 Pro — Deep Blue titanium */
+    background: linear-gradient(150deg, #3d4863 0%, #2a3446 46%, #171d2a 100%);
+    border-radius: clamp(30px, 5vw, 48px); padding: clamp(6px,.9vw,10px);
+    box-shadow: 0 46px 92px rgba(15,23,42,.34), 0 14px 30px rgba(15,23,42,.20),
+                inset 0 0 0 1px rgba(150,172,208,.30), inset 0 -2px 6px rgba(0,0,0,.32);
+    transition: transform .35s ease; }
+  .phone .scr { position: relative; border-radius: clamp(24px,4vw,40px); overflow: hidden;
+    background: #000; box-shadow: inset 0 0 0 3px #05070c; }
+  .phone .scr img { width: 100%; display: block; }
+  .phone .island { position: absolute; top: 1.7%; left: 50%; transform: translateX(-50%);
+    width: 31%; height: 3.9%; background: #000; border-radius: 100px; z-index: 4; }
+  /* Both phones tilt the SAME way (synchronised) like subbie: home on top/higher,
+     painted Pro behind/lower, offset left↔right. */
+  .phone.back  { left: 3%;  transform: rotate(-9deg) translateY(48px); z-index: 1; }
+  .phone.front { right: 3%; transform: rotate(-9deg) translateY(0);    z-index: 2; }
+  .phone.back:hover  { transform: rotate(-9deg) translateY(40px); }
+  .phone.front:hover { transform: rotate(-9deg) translateY(-6px); }
 
-  /* ---------- section shell ---------- */
-  section.block { padding: clamp(64px, 11vw, 120px) 0 0; }
-  .kicker { color: #7C3AED; font-weight: 700; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; text-align: center; }
-  h2 { text-align: center; margin: 12px auto 0; font-weight: 800; letter-spacing: -.03em; line-height: 1.08;
-    font-size: clamp(28px, 5vw, 46px); max-width: 16ch; }
-  .lead { text-align: center; margin: 16px auto 0; max-width: 560px; color: var(--muted); font-weight: 600; font-size: clamp(15px,2vw,18px); line-height: 1.5; }
+  /* ---------- pillars ---------- */
+  section.block { padding: clamp(88px, 13vw, 150px) 0 0; }
+  .kicker { color: var(--violet); font-weight: 700; font-size: 13px; letter-spacing: .14em;
+    text-transform: uppercase; text-align: center; }
+  h2 { text-align: center; margin: 14px auto 0; font-weight: 800; letter-spacing: -.04em;
+    line-height: 1.05; font-size: clamp(32px, 6vw, 56px); max-width: 14ch; }
+  .pillars { margin-top: 64px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .pillar { text-align: center; padding: 8px 14px; }
+  .pillar .ic { width: 54px; height: 54px; margin: 0 auto; border-radius: 16px; display: grid; place-items: center;
+    background: rgba(124,58,237,.09); }
+  .pillar .ic svg { width: 26px; height: 26px; stroke: var(--violet); fill: none; stroke-width: 1.8;
+    stroke-linecap: round; stroke-linejoin: round; }
+  .pillar h3 { margin-top: 20px; font-weight: 800; font-size: 22px; letter-spacing: -.02em; }
+  .pillar p { margin-top: 8px; color: var(--muted); font-weight: 600; font-size: 15.5px; line-height: 1.5; }
 
-  /* ---------- how it works ---------- */
-  .steps { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-  .step {
-    position: relative; background: var(--glass); border: 1px solid var(--line); border-radius: 26px;
-    padding: 32px 26px 38px; text-align: center; overflow: visible;
-    display: flex; flex-direction: column; align-items: center;
-    box-shadow: 0 18px 40px rgba(20,15,36,.06);
-    transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
-  }
-  .step::before {
-    content: ""; position: absolute; top: -1px; left: 26px; right: 26px; height: 2px; border-radius: 2px;
-    background: linear-gradient(90deg, transparent, rgba(124,58,237,.85), rgba(45,212,191,.5), transparent);
-  }
-  .step:hover { transform: translateY(-4px); border-color: rgba(124,58,237,.45); box-shadow: 0 28px 56px rgba(124,58,237,.14); }
-  .step .num {
-    width: 42px; height: 42px; border-radius: 13px; display: grid; place-items: center;
-    background: linear-gradient(135deg, #7C3AED, #4338CA); color: #fff; font-weight: 800; font-size: 18px;
-    box-shadow: 0 8px 20px rgba(124,58,237,.5);
-  }
-  .step h3 { margin-top: 18px; font-weight: 800; font-size: 22px; letter-spacing: -.01em; }
-  .step p { margin-top: 10px; color: var(--muted); font-weight: 600; font-size: 15px; line-height: 1.5; }
-  .step .shot {
-    position: relative; z-index: 1; margin-top: 32px; width: 66%; padding: 7px;
-    background: #08070c; border: 1px solid rgba(255,255,255,.12); border-radius: 30px;
-    box-shadow: 0 30px 60px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4);
-  }
-  .step .shot::before {
-    content: ""; position: absolute; z-index: -1; inset: -16% -16% -6%;
-    background: radial-gradient(58% 52% at 50% 32%, rgba(124,58,237,.32), rgba(124,58,237,0) 70%);
-    filter: blur(16px);
-  }
-  .step .shot img { width: 100%; display: block; border-radius: 24px;
-    aspect-ratio: 9 / 16; object-fit: cover; object-position: top center; }
-  .arrow { display: none; }
-
-  /* ---------- features ---------- */
-  .feature-grid { margin-top: 52px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .feat {
-    background: var(--glass); border: 1px solid var(--line); border-radius: 20px; padding: 24px 22px;
-    box-shadow: 0 12px 30px rgba(20,15,36,.05);
-    transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease;
-  }
-  .feat:hover { border-color: rgba(124,58,237,.5); transform: translateY(-3px); box-shadow: 0 20px 44px rgba(124,58,237,.16); }
-  .feat .chip {
-    width: 44px; height: 44px; border-radius: 13px; display: grid; place-items: center;
-    background: rgba(124,58,237,.22); border: 1px solid rgba(124,58,237,.4);
-  }
-  .feat .chip svg { width: 22px; height: 22px; stroke: var(--lilac); fill: none; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
-  .feat h4 { margin-top: 16px; font-weight: 800; font-size: 18px; letter-spacing: -.01em; }
-  .feat p { margin-top: 6px; color: var(--muted); font-weight: 600; font-size: 14px; line-height: 1.45; }
-  .feat.soon h4::after { content: "SOON"; margin-left: 8px; font-size: 10px; font-weight: 800; letter-spacing: .08em;
-    color: var(--teal); background: rgba(45,212,191,.12); border: 1px solid rgba(45,212,191,.3); padding: 3px 7px; border-radius: 6px; vertical-align: middle; }
+  /* ---------- flagship line ---------- */
+  .flag { margin-top: clamp(80px,12vw,130px); text-align: center; }
+  .flag h2 { max-width: 16ch; }
+  .flag p { margin: 16px auto 0; max-width: 440px; color: var(--muted); font-weight: 600; font-size: clamp(16px,2vw,18px); }
 
   /* ---------- final CTA ---------- */
-  .final { margin-top: clamp(64px,11vw,120px); text-align: center;
-    background: linear-gradient(160deg, rgba(124,58,237,.12), rgba(124,58,237,.03));
-    border: 1px solid rgba(124,58,237,.18); border-radius: 32px; padding: clamp(40px,7vw,72px) 24px;
-    box-shadow: 0 24px 60px rgba(124,58,237,.10); }
-  .final h2 { max-width: 18ch; }
+  .final { margin-top: clamp(88px,13vw,150px); text-align: center; }
+  .final p.note { margin-top: 16px; }
 
   /* ---------- footer ---------- */
-  footer { margin-top: 70px; border-top: 1px solid var(--line); padding: 40px 0 56px; }
+  footer { margin-top: clamp(80px,11vw,120px); border-top: 1px solid var(--line); padding: 36px 0 48px; }
   .foot-in { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: space-between; }
-  .beta { display: inline-flex; align-items: center; gap: 10px; background: rgba(124,58,237,.10); white-space: nowrap;
-    border: 1px solid rgba(124,58,237,.32); border-radius: 100px; padding: 10px 18px; font-weight: 700; font-size: 14px; color: #6D28D9; }
-  .beta .lock { width: 16px; height: 16px; }
-  .foot-brand { display: inline-flex; align-items: center; gap: 10px; opacity: .9; }
-  .foot-brand img { width: 30px; height: 30px; border-radius: 9px; }
-  .foot-brand .nm { font-weight: 800; font-size: 18px; }
-  .handle { color: var(--muted); font-weight: 700; font-size: 15px; }
-  .made { margin-top: 26px; text-align: center; color: #8a8399; font-weight: 700; font-size: 14px; letter-spacing: .01em; }
-  .foot-links { display: inline-flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .foot-brand { display: inline-flex; align-items: center; gap: 10px; }
+  .foot-brand img { width: 28px; height: 28px; border-radius: 8px; }
+  .foot-brand .nm { font-weight: 800; font-size: 17px; letter-spacing: -.02em; }
+  .foot-links { display: inline-flex; align-items: center; gap: 22px; flex-wrap: wrap; }
   .foot-links a { color: var(--muted); font-weight: 700; font-size: 15px; }
   .foot-links a:hover { color: var(--ink); }
+  .made { margin-top: 26px; text-align: center; color: #a49db5; font-weight: 700; font-size: 14px; }
 
   /* ---------- responsive ---------- */
-  @media (max-width: 860px) {
-    .steps { grid-template-columns: 1fr; max-width: 440px; margin-left: auto; margin-right: auto; }
-    .feature-grid { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 720px) {
+    .pillars { grid-template-columns: 1fr; max-width: 360px; margin-left: auto; margin-right: auto; gap: 44px; }
   }
-  @media (max-width: 560px) {
-    .nav-in { height: 62px; }
-    .brand .nm { font-size: 19px; }
-    .btn { padding: 11px 16px; font-size: 14px; }
-    form.cap { flex-direction: column; border-radius: 22px; padding: 10px; }
+  @media (max-width: 540px) {
+    .nav-in { height: 64px; }
+    .btn { padding: 11px 17px; font-size: 14px; }
+    form.cap { flex-direction: column; border-radius: 22px; padding: 9px; }
     form.cap input { padding: 12px 14px; text-align: center; }
     form.cap .btn { width: 100%; }
-    .feature-grid { grid-template-columns: 1fr; }
-    .phone.left { margin-right: -16px; } .phone.right { margin-left: -16px; }
-    .foot-in { flex-direction: column; gap: 14px; }
+    .phone.left { margin-right: -18px; } .phone.right { margin-left: -18px; }
+    .foot-in { flex-direction: column; gap: 16px; }
   }
 </style>
 </head>
 <body>
-<div class="bg"></div>
 
 <nav>
   <div class="wrap nav-in">
@@ -285,9 +200,8 @@
 <header class="hero" id="top">
   <div class="wrap">
     <span class="eyebrow">Now in private beta</span>
-    <h1><span class="ph">Log it.</span> <span class="ph">Verify it.</span> <span class="ph accent">Prove it.</span></h1>
-    <p class="sub">The skydiver's logbook that <b>actually proves it</b> — witnessed jumps, verified gear, faster check-in.</p>
-    <p class="sub sub2">Every jump is signed off by the people who witnessed it. Your rig carries its full service history — reserve repacks and AAD, always current. And your Check-in Pass shows your licence and currency at the dropzone in seconds — no more paper logbooks or trust-me-bro.</p>
+    <h1>Skydiving,<br /><span class="v">Verified.</span></h1>
+    <p class="sub">Every jump witnessed. Every rig current. Your proof, in seconds.</p>
 
     <div class="capture" id="waitlist">
       <form class="cap" id="waitForm" novalidate>
@@ -311,9 +225,8 @@
     </div>
 
     <div class="fan">
-      <div class="phone left"><img src="assets/p2-logbook.png?v=2" alt="Logbook" loading="lazy" /></div>
-      <div class="phone center"><img src="assets/p2-home.jpg" alt="Home" loading="lazy" /></div>
-      <div class="phone right"><img src="assets/p2-locker.png?v=2" alt="Check-in Pass" loading="lazy" /></div>
+      <div class="phone back"><div class="scr"><span class="island"></span><img src="assets/hero-pro.jpg" alt="Live loads on your lock screen" /></div></div>
+      <div class="phone front"><div class="scr"><span class="island"></span><img src="assets/hero-home.jpg" alt="Manifest home" /></div></div>
     </div>
   </div>
 </header>
@@ -322,105 +235,47 @@
   <div class="wrap">
     <div class="kicker">Why Manifest</div>
     <h2>Proof, not trust-me-bro</h2>
-    <p class="lead">Skydiving still runs on paper logbooks and word of mouth. Manifest turns your jumps, your currency and your gear's service history into one verified record — witnessed, signed and time-stamped — so it holds up at the dropzone, every time.</p>
-  </div>
-</section>
 
-<section class="block">
-  <div class="wrap">
-    <div class="kicker">How it works</div>
-    <h2>One record that proves it all</h2>
-    <p class="lead">Every jump and every service feeds a single verified history — one that follows you to the dropzone and keeps your gear in date.</p>
-
-    <div class="steps">
-      <div class="step">
-        <div class="num">1</div>
-        <h3>Log every jump</h3>
-        <p>In seconds — date, aircraft, altitude and discipline, auto-counted with your currency and milestones.</p>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l7 2.5v5c0 4.6-3 7.8-7 9-4-1.2-7-4.4-7-9v-5L12 3z"/><path d="M9 11.7l2.2 2.2L15 10.2"/></svg></div>
+        <h3>Proof</h3>
+        <p>Every jump signed off by the jumpers who witnessed it — real proof, not paper.</p>
       </div>
-      <div class="step">
-        <div class="num">2</div>
-        <h3>Verify &amp; check in</h3>
-        <p>Friends sign off the jumps they witnessed by scanning your QR. Show your Check-in Pass at the dropzone to prove licence and currency — and get on the load faster.</p>
+      <div class="pillar">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="6" height="6" rx="1.2"/><rect x="14.5" y="3.5" width="6" height="6" rx="1.2"/><rect x="3.5" y="14.5" width="6" height="6" rx="1.2"/><path d="M14.5 14.5h3v3M20.5 14.5v6h-6"/></svg></div>
+        <h3>Pass</h3>
+        <p>Your licence and currency, scannable at any dropzone — check in in seconds.</p>
       </div>
-      <div class="step">
-        <div class="num">3</div>
-        <h3>Keep your kit in date</h3>
-        <p>Your reserve repack and AAD service live in your Gear Locker — rigger-signed and always current, so you and any DZ can trust your rig is in date.</p>
+      <div class="pillar">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg></div>
+        <h3>Gear</h3>
+        <p>Reserve repack and AAD service in one record — rigger-signed, always in date.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="block">
+<section class="flag">
   <div class="wrap">
-    <div class="kicker">Everything in the app</div>
-    <h2>One home for your jumps and your kit</h2>
-
-    <div class="feature-grid">
-      <div class="feat">
-        <div class="chip"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="6" height="6" rx="1.2"/><rect x="14.5" y="3.5" width="6" height="6" rx="1.2"/><rect x="3.5" y="14.5" width="6" height="6" rx="1.2"/><path d="M14.5 14.5h3v3M20.5 14.5v6h-6"/></svg></div>
-        <h4>Check-in Pass</h4>
-        <p>Show licence, currency and jump numbers at the dropzone — scan to check in fast.</p>
-      </div>
-      <div class="feat">
-        <div class="chip"><svg viewBox="0 0 24 24"><path d="M12 3l7 2.5v5c0 4.6-3 7.8-7 9-4-1.2-7-4.4-7-9v-5L12 3z"/><path d="M9 11.7l2.2 2.2L15 10.2"/></svg></div>
-        <h4>Verified jumps</h4>
-        <p>Jumps witnessed and signed off by licensed jumpers. Real proof, not paper.</p>
-      </div>
-      <div class="feat">
-        <div class="chip"><svg viewBox="0 0 24 24"><path d="M5 4h11a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2V4z"/><path d="M9 4v14"/></svg></div>
-        <h4>Logbook</h4>
-        <p>Every jump, auto-counted with currency, milestones and history.</p>
-      </div>
-      <div class="feat">
-        <div class="chip"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg></div>
-        <h4>Gear Locker</h4>
-        <p>Your rig, reserve and AAD service dates in one verified record.</p>
-      </div>
-      <div class="feat">
-        <div class="chip"><svg viewBox="0 0 24 24"><path d="M4 16l4-5 4 3 5-7"/><path d="M3 20h18"/></svg></div>
-        <h4>Statistics</h4>
-        <p>Your Year in the Sky — jumps by discipline, canopy and dropzone.</p>
-      </div>
-      <div class="feat">
-        <div class="chip"><svg viewBox="0 0 24 24"><path d="M12 3v11"/><path d="M8 10l4 4 4-4"/><path d="M5 21h14"/></svg></div>
-        <h4>Import</h4>
-        <p>Bring your whole history across — import from any CSV or logbook app.</p>
-      </div>
-      <div class="feat">
-        <div class="chip"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.2 5.2L3 18l3 3 6.5-6.5a4 4 0 0 0 5.2-5.2l-2.4 2.4-2.1-.6-.6-2.1 2.4-2.4z"/></svg></div>
-        <h4>Rig Service</h4>
-        <p>Reserve repack and AAD reminders, so you never miss a service.</p>
-      </div>
-      <div class="feat">
-        <div class="chip"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M16 5.2a3 3 0 0 1 0 5.6"/><path d="M17.5 14.4A5.5 5.5 0 0 1 20.5 19"/></svg></div>
-        <h4>Coaches</h4>
-        <p>Find coaches by discipline, licence and dropzone.</p>
-      </div>
-      <div class="feat">
-        <div class="chip"><svg viewBox="0 0 24 24"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></div>
-        <h4>Dropzones</h4>
-        <p>Dropzones worldwide, sorted by distance from you.</p>
-      </div>
-    </div>
+    <div class="kicker">The flagship</div>
+    <h2>Your load. Live on your lock screen.</h2>
+    <p>Know the second the plane's called — with gear-up and final-call alerts, so it never leaves without you.</p>
   </div>
 </section>
 
-<section class="block">
+<section class="final">
   <div class="wrap">
-    <div class="final">
-      <div class="kicker">Be first off the plane</div>
-      <h2>Join the Manifest waitlist</h2>
-      <p class="lead">We're onboarding skydivers in waves. Drop your email and we'll save your spot.</p>
-      <div class="capture">
-        <form class="cap" id="waitForm2" novalidate>
-          <input type="email" id="email2" placeholder="Enter your email" autocomplete="email" required />
-          <button type="submit" class="btn">Join waitlist</button>
-        </form>
-        <div class="err" id="errMsg2">Something went wrong. Please try again.</div>
-        <div class="ok" id="okMsg2">You're on the list — we'll email you the moment Manifest opens.</div>
-      </div>
+    <div class="kicker">Be first off the plane</div>
+    <h2>Join the waitlist</h2>
+    <div class="capture">
+      <form class="cap" id="waitForm2" novalidate>
+        <input type="email" id="email2" placeholder="Enter your email" autocomplete="email" required />
+        <button type="submit" class="btn">Join waitlist</button>
+      </form>
+      <div class="note">We're onboarding skydivers in waves. Drop your email and we'll save your spot.</div>
+      <div class="err" id="errMsg2">Something went wrong. Please try again.</div>
+      <div class="ok" id="okMsg2">You're on the list — we'll email you the moment Manifest opens.</div>
     </div>
   </div>
 </section>
@@ -435,7 +290,6 @@
       <a href="/privacy">Privacy</a>
       <a href="/terms">Terms</a>
       <a href="mailto:support@jumpmanifest.com">Contact</a>
-      <span class="handle">@manifest.dz</span>
     </span>
   </div>
   <div class="wrap made">Made for skydivers, by a skydiver. 🪂</div>
@@ -465,7 +319,7 @@
     function showError(msg) {
       if (err) { err.textContent = msg; err.classList.add("show"); }
       input.focus();
-      form.style.boxShadow = "0 0 0 2px rgba(255,90,120,.6)";
+      form.style.boxShadow = "0 0 0 2px rgba(229,72,77,.55)";
       setTimeout(function () { form.style.boxShadow = "none"; }, 900);
     }
 
@@ -485,7 +339,6 @@
         if (ok) ok.classList.add("show");
       }
 
-      // No client configured (e.g. local preview): fail soft to the success state.
       if (!db) { succeed(); return; }
 
       button.disabled = true;
