@@ -148,11 +148,21 @@
   /* Shadowless phone-only mockups: PNG edges = phone edges, so sizing/overlap
      is exact. One consistent CSS drop-shadow (follows the phone's alpha). */
   .phone { position: relative; flex: 0 0 auto; width: clamp(198px, 38vw, 268px); }
-  .phone img { width: 100%; display: block;
-    filter: drop-shadow(0 22px 30px rgba(15,23,42,.26)) drop-shadow(0 5px 11px rgba(15,23,42,.16)); }
+  .phone img { width: 100%; display: block; }
   .phone.back  { transform: rotate(-9deg) translateZ(0); z-index: 1; transform-origin: 50% 50%;
     margin-right: clamp(-64px, -9vw, -40px); }
   .phone.front { transform: rotate(6deg) translateZ(0); z-index: 2; transform-origin: 50% 50%; }
+  /* soft ground shadow (blurred ellipse) — avoids the iOS drop-shadow-on-
+     rotated-element bug that drew a rectangular "box" on mobile. */
+  .fan::before { content: ""; position: absolute; z-index: 0; pointer-events: none;
+    left: 12%; right: 12%; bottom: 4%; height: 13%;
+    background: radial-gradient(ellipse at 50% 50%, rgba(15,23,42,.26), rgba(15,23,42,0) 72%);
+    filter: blur(13px); }
+  /* slight white fade under the phones (contained inside .fan; never reaches
+     the statement below). */
+  .fan::after { content: ""; position: absolute; z-index: 3; pointer-events: none;
+    left: 0; right: 0; bottom: 0; height: 12%;
+    background: linear-gradient(180deg, rgba(255,255,255,0), #fff 90%); }
   /* white fade so the phones melt into the page bottom like subbie — tall and
      soft enough to swallow the phone shadows too (no grey seam). */
 
