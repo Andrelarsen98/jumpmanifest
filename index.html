@@ -93,6 +93,9 @@
     /* symmetric tilts -> mirror offsets: front = 100% - back - phone width */
     .phone.back  { left: 3%; }
     .phone.front { left: 47%; }
+    /* rotated phones are ~470px tall — container must be taller or the fade
+       (anchored to its bottom) lands on the statement text */
+    .fan { height: 500px; }
     /* cheaper + lighter shadows = smooth scroll, no grey wash */
     .phone { box-shadow: 0 14px 30px rgba(15,23,42,.20),
                          inset 0 0 0 1px rgba(110,130,170,.14); }
@@ -284,7 +287,7 @@
 
 <section class="block" id="why">
   <div class="wrap">
-    <p class="statement">Goodbye trust-me-bro 🤝 Manifest builds a verified record of every jump — and shows the dropzone 🪂 everything they need in one scan.</p>
+    <p class="statement">Goodbye trust-me-bro 🤝 Manifest builds a verified record of every jump and shows the dropzone 🪂 everything they need in one scan.</p>
 
     <div class="pillars">
       <div class="pillar">
