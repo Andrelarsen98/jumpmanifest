@@ -68,8 +68,7 @@
   /* ---------- floating liquid-glass pill nav (subbie-exact) ---------- */
   nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-index: 50;
         width: min(800px, 92vw);
-        background: rgba(30,30,32,.92);
-        backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+        background: rgba(30,30,32,.97);
         border: 1px solid rgba(255,255,255,.08);
         border-radius: 100px; will-change: transform; transform: translateX(-50%) translateZ(0);
         box-shadow: 0 14px 34px rgba(15,11,28,.24), inset 0 1px 0 rgba(255,255,255,.10); }
@@ -83,7 +82,15 @@
   .nav-links a:hover { color: #fff; }
   nav .btn { padding: 9px 17px; font-size: 14px; }
   body { padding-top: 86px; }
-  @media (max-width: 620px) { .nav-links { display: none; } }
+  @media (max-width: 620px) {
+    .nav-links { display: none; }
+    /* recenter the pair on small screens (rotation pushes the group left) */
+    .phone.back  { left: -1%; }
+    .phone.front { left: 43%; }
+    /* cheaper shadows = smooth mobile scroll */
+    .phone { box-shadow: 0 18px 40px rgba(15,23,42,.28),
+                         inset 0 0 0 1px rgba(110,130,170,.14); }
+  }
   .btn {
     font-family: inherit; font-weight: 700; font-size: 15px; letter-spacing: -.01em;
     border: 0; cursor: pointer; border-radius: 100px; padding: 12px 22px;
