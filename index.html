@@ -71,9 +71,11 @@
   /* ---------- floating liquid-glass pill nav (subbie-exact) ---------- */
   nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-index: 50;
         width: min(800px, 92vw);
-        background: rgba(58,58,62,.62);
-        backdrop-filter: blur(16px) saturate(170%);
-        -webkit-backdrop-filter: blur(16px) saturate(170%);
+        background: rgba(58,58,62,.72);
+        /* blur radius is the expensive part on iOS — keep it modest and skip
+           saturate() so the glass stays smooth while scrolling */
+        backdrop-filter: blur(9px);
+        -webkit-backdrop-filter: blur(9px);
         border: 1px solid rgba(255,255,255,.14);
         border-radius: 100px; will-change: transform; transform: translateX(-50%) translateZ(0);
         box-shadow: 0 14px 34px rgba(15,11,28,.24), inset 0 1px 0 rgba(255,255,255,.10); }
@@ -206,6 +208,17 @@
     font-weight: 800; font-size: 13px; color: #9a93ad; }
   .tier-pro .tier-list li::before { color: var(--violet); }
 
+  /* ---------- everything in the app ---------- */
+  .feats { margin: 52px auto 0; display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 34px 30px; max-width: 940px; text-align: left; }
+  .feat h4 { font-weight: 800; font-size: 17px; letter-spacing: -.02em; color: var(--ink);
+    padding-left: 15px; position: relative; }
+  .feat h4::before { content: ""; position: absolute; left: 0; top: 7px;
+    width: 7px; height: 7px; border-radius: 50%; background: var(--violet); }
+  .feat p { margin-top: 7px; padding-left: 15px; color: var(--muted);
+    font-weight: 600; font-size: 14.5px; line-height: 1.5; }
+  @media (max-width: 940px) { .feats { grid-template-columns: repeat(2, 1fr); max-width: 640px; } }
+
   /* ---------- flagship line ---------- */
   .flag { margin-top: clamp(80px,12vw,130px); text-align: center; }
   .flag h2 { max-width: 16ch; }
@@ -246,6 +259,7 @@
   @media (max-width: 720px) {
     .pillars { grid-template-columns: 1fr; max-width: 360px; margin-left: auto; margin-right: auto; gap: 44px; }
     .tiers { grid-template-columns: 1fr; max-width: 400px; gap: 14px; margin-top: 38px; }
+    .feats { grid-template-columns: 1fr; max-width: 420px; gap: 26px; margin-top: 40px; }
   }
   @media (max-width: 540px) {
     /* nav sits tighter on phones (this used to be 64px — bigger than desktop) */
@@ -335,7 +349,7 @@
   <div class="wrap">
     <div class="kicker">The flagship</div>
     <h2>Your load. Live on your lock screen.</h2>
-    <p>Know the second the plane's called — with gear-up and final-call alerts, so it never leaves without you.</p>
+    <p>Notifications the second the plane's called, gear-up and final call, plus a live countdown in your Dynamic Island. So it never leaves without you.</p>
     <video class="flagvid" id="flagVid" autoplay loop muted playsinline preload="auto"
            aria-label="Live loads on your lock screen">
       <source src="assets/lockscreen.mp4" type="video/mp4" />
@@ -382,12 +396,35 @@
       <div class="tier tier-pro">
         <div class="tier-name">Pro</div>
         <ul class="tier-list">
-          <li>Your load, live on your lock screen</li>
+          <li>Your load on your lock screen, with gear-up and final-call notifications</li>
+          <li>Live countdown in your Dynamic Island</li>
           <li>Branded PDF of your signed-off logbook</li>
           <li>Branded PDF of your gear's service history</li>
           <li>Your Check-in Pass in Apple Wallet</li>
         </ul>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="everything">
+  <div class="wrap">
+    <div class="kicker">Everything in the app</div>
+    <h2>Built for how you actually jump.</h2>
+
+    <div class="feats">
+      <div class="feat"><h4>Jump logging</h4><p>Seconds per jump. Works with no signal and syncs when you land.</p></div>
+      <div class="feat"><h4>Tunnel logging</h4><p>Your indoor time, tracked alongside your jumps.</p></div>
+      <div class="feat"><h4>Import your history</h4><p>Bring every jump across by CSV from any other app or spreadsheet.</p></div>
+      <div class="feat"><h4>Verified sign-offs</h4><p>Another licensed jumper scans your QR — their name and licence go on the jump.</p></div>
+      <div class="feat"><h4>Check-in Pass</h4><p>Licence, currency and jump numbers, scannable at the desk.</p></div>
+      <div class="feat"><h4>Live loads</h4><p>See your load and who's on it, straight from the DZ's board.</p></div>
+      <div class="feat"><h4>Gear locker</h4><p>Rigs, canopies, reserves and AADs, with full service history.</p></div>
+      <div class="feat"><h4>Service reminders</h4><p>Reserve repack and AAD dates before they catch you out.</p></div>
+      <div class="feat"><h4>Dropzones</h4><p>Find them near you or anywhere you're heading next.</p></div>
+      <div class="feat"><h4>Events &amp; boogies</h4><p>Discover what's on, RSVP, or host your own.</p></div>
+      <div class="feat"><h4>Coaches</h4><p>Find coaching by discipline and dropzone.</p></div>
+      <div class="feat"><h4>Year in the Sky</h4><p>Your whole season, wrapped up and worth sharing.</p></div>
     </div>
   </div>
 </section>
