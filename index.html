@@ -231,6 +231,26 @@
     font-weight: 600; font-size: 14.5px; line-height: 1.5; }
   @media (max-width: 940px) { .feats { grid-template-columns: repeat(2, 1fr); max-width: 640px; } }
 
+  /* ---------- FAQ accordions ---------- */
+  .faqs { margin: 44px auto 0; max-width: 720px; display: flex; flex-direction: column; gap: 12px; }
+  .faq { background: #fafafb; border: 1px solid var(--line); border-radius: 20px;
+    padding: 4px 8px; text-align: left; }
+  .faq summary { list-style: none; cursor: pointer; display: flex; align-items: center;
+    justify-content: space-between; gap: 18px; padding: 20px 14px;
+    font-weight: 700; font-size: 17px; letter-spacing: -.02em; color: var(--ink); }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: ""; flex: 0 0 auto; width: 34px; height: 34px; border-radius: 50%;
+    background: var(--ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E") center/16px no-repeat;
+    transition: transform .25s ease; }
+  .faq[open] summary::after { transform: rotate(45deg); }
+  .faq p { padding: 0 14px 20px; color: var(--muted); font-weight: 600;
+    font-size: 15.5px; line-height: 1.55; max-width: 60ch; }
+  @media (max-width: 540px) {
+    .faq summary { font-size: 15.5px; padding: 17px 10px; gap: 12px; }
+    .faq summary::after { width: 30px; height: 30px; background-size: 14px; }
+    .faq p { padding: 0 10px 17px; font-size: 14.5px; }
+  }
+
   /* ---------- flagship line ---------- */
   .flag { margin-top: clamp(80px,12vw,130px); text-align: center; }
   .flag h2 { max-width: 16ch; }
@@ -439,6 +459,48 @@
       <div class="feat"><h4>Community</h4><p>Follow other jumpers, see what they're jumping, and message them directly.</p></div>
       <div class="feat"><h4>Currency at a glance</h4><p>Know instantly whether you're current, before you get to the desk.</p></div>
       <div class="feat"><h4>Year in the Sky</h4><p>Your whole season, wrapped up and worth sharing.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="faq">
+  <div class="wrap">
+    <div class="kicker">FAQs</div>
+    <h2>Got questions?</h2>
+
+    <div class="faqs">
+      <details class="faq">
+        <summary>Is Manifest free?</summary>
+        <p>Yes. Logging jumps, getting them signed off, your Check-in Pass, gear service reminders, dropzones, events and community are all free, with no limit on jumps. Pro adds your load on your lock screen, PDF exports and your pass in Apple Wallet.</p>
+      </details>
+      <details class="faq">
+        <summary>Can I bring my existing jumps across?</summary>
+        <p>Yes. You can import your whole history from a CSV, whether it comes from another app or your own spreadsheet. Tunnel time and reserve repacks can be imported too.</p>
+      </details>
+      <details class="faq">
+        <summary>How does a jump get verified?</summary>
+        <p>Another licensed jumper who was there scans your QR and signs it off. Their name and licence number are recorded on that jump, so it is witnessed rather than self-reported. Your logbook shows your total jumps and your verified jumps side by side.</p>
+      </details>
+      <details class="faq">
+        <summary>Does it work at my dropzone?</summary>
+        <p>Logging, verification, your pass and your gear work anywhere in the world. Live loads currently work at 140+ dropzones, and we are adding more. If yours is not covered yet, everything else still works normally.</p>
+      </details>
+      <details class="faq">
+        <summary>Does it work without signal?</summary>
+        <p>Yes. You can log jumps with no signal at all and they sync as soon as you are back online, which matters on a dropzone with bad wifi.</p>
+      </details>
+      <details class="faq">
+        <summary>Will a dropzone accept it?</summary>
+        <p>Your Check-in Pass shows your licence, currency, jump numbers and gear service in one scannable view, pulled straight from your record so it cannot be edited by hand. The person scanning it does not need the app. Pro also gives you a branded PDF of every signed-off jump.</p>
+      </details>
+      <details class="faq">
+        <summary>Is my data private?</summary>
+        <p>Your logbook, credentials and documents are yours and are access-controlled. You choose what is public on your profile, you can go fully private, and you can delete your account and its data from inside the app at any time.</p>
+      </details>
+      <details class="faq">
+        <summary>Is Android coming?</summary>
+        <p>Manifest is launching on iPhone first so we can do it properly. Join the waitlist and we will let you know the moment Android is ready.</p>
+      </details>
     </div>
   </div>
 </section>
