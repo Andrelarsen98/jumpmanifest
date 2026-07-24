@@ -233,11 +233,11 @@
   /* ---------- cloud reveal finale ---------- */
   /* The section is tall; the stage sticks while you scroll through it, and JS
      maps scroll progress to the phone rising + clouds drifting apart. */
-  .reveal { position: relative; height: 165vh; }
+  .reveal { position: relative; height: 150vh; }
   .reveal-stage { position: sticky; top: 0; height: 100vh; overflow: hidden;
     display: flex; align-items: flex-end; justify-content: center; }
-  .reveal-phone { position: absolute; bottom: -14%; left: 50%;
-    width: min(360px, 76vw); transform: translate(-50%, 55%); will-change: transform; }
+  .reveal-phone { position: absolute; bottom: -10%; left: 50%;
+    width: min(380px, 78vw); transform: translate(-50%, 30%); will-change: transform; }
   .cloud { position: absolute; left: 50%; width: 128%; max-width: none;
     pointer-events: none; will-change: transform; }
   .c-far  { bottom: 8%;  transform: translateX(-50%); opacity: .9; }
@@ -616,9 +616,10 @@
       var r = sec.getBoundingClientRect();
       // progress 0 -> 1 across the section's scrollable travel
       var p = clamp(-r.top / (sec.offsetHeight - window.innerHeight));
-      // phone finishes rising by ~70% progress, then HOLDS (doesn't fly off)
+      // phone starts already peeking (30%) and finishes rising by ~70%
+      // progress, then HOLDS (doesn't fly off)
       var pe = ease(clamp(p / 0.72));
-      phone.style.transform = "translate(-50%," + (55 - pe * 55) + "%)";
+      phone.style.transform = "translate(-50%," + (30 - pe * 30) + "%)";
       // clouds drift gently apart + down as the phone emerges
       var e = ease(p);
       far.style.transform  = "translateX(" + (-50 - e * 6)  + "%) translateY(" + (e * 12) + "px)";
