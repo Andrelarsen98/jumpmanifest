@@ -233,16 +233,20 @@
   /* ---------- cloud reveal finale ---------- */
   /* The section is tall; the stage sticks while you scroll through it, and JS
      maps scroll progress to the phone rising + clouds drifting apart. */
-  .reveal { position: relative; height: 150vh; }
+  .reveal { position: relative; height: 130vh; }
   .reveal-stage { position: sticky; top: 0; height: 100vh; overflow: hidden;
     display: flex; align-items: flex-end; justify-content: center; }
-  .reveal-phone { position: absolute; bottom: 4%; left: 50%; z-index: 2;
-    width: min(360px, 76vw); transform: translate(-50%, 34%); will-change: transform; }
-  .cloud { position: absolute; left: 50%; width: 160%; max-width: none; bottom: 0;
+  .reveal-phone { position: absolute; bottom: -8%; left: 50%; z-index: 2;
+    width: min(340px, 74vw); transform: translate(-50%, 38%); will-change: transform; }
+  .cloud { position: absolute; left: 50%; width: 165%; max-width: none; bottom: 0;
     transform: translateX(-50%); pointer-events: none; will-change: transform;
     mix-blend-mode: multiply; }
-  .c-back  { z-index: 1; bottom: 14%; opacity: .85; }
-  .c-front { z-index: 3; bottom: -10%; }
+  .c-back  { z-index: 1; bottom: 16%; opacity: .8; }
+  .c-front { z-index: 3; bottom: -20%; }
+  /* white veil: hides the phone at first, fades out as it rises through */
+  .reveal-veil { position: absolute; left: 0; right: 0; bottom: 0; height: 62%; z-index: 4;
+    pointer-events: none; will-change: opacity;
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #fff 55%); }
   @media (prefers-reduced-motion: reduce) {
     .reveal { height: auto; }
     .reveal-stage { position: static; height: auto; padding-top: 40px; }
@@ -513,6 +517,7 @@
     <img class="cloud c-back"  src="assets/clouds.jpg" alt="" />
     <img class="reveal-phone" src="assets/hand-phone.png" alt="" />
     <img class="cloud c-front" src="assets/clouds.jpg" alt="" />
+    <div class="reveal-veil"></div>
   </div>
 </section>
 
@@ -604,7 +609,8 @@
     if (!sec || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     var phone = sec.querySelector(".reveal-phone");
     var back = sec.querySelector(".c-back"),
-        front = sec.querySelector(".c-front");
+        front = sec.querySelector(".c-front"),
+        veil = sec.querySelector(".reveal-veil");
     var ticking = false;
     function clamp(v){ return v < 0 ? 0 : v > 1 ? 1 : v; }
     function ease(t){ return 1 - Math.pow(1 - t, 3); } // easeOutCubic
@@ -620,6 +626,8 @@
       var e = ease(p);
       back.style.transform  = "translateX(-50%) translateY(" + (-e * 40) + "px)";
       front.style.transform = "translateX(-50%) translateY(" + (e * 46) + "px)";
+      // veil fades out over the first ~55% of the scroll, revealing the phone
+      veil.style.opacity = clamp(1 - p / 0.55);
     }
     function onScroll(){ if (!ticking){ ticking = true; requestAnimationFrame(update); } }
     window.addEventListener("scroll", onScroll, { passive: true });
