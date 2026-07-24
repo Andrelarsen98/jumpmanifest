@@ -163,14 +163,17 @@
     animation: settle 1.5s cubic-bezier(.22,.9,.3,1) .25s both; }
   .phone.back  { z-index: 1; margin-right: clamp(-64px, -9vw, -40px); --rot: -9deg; --slide: 22px; }
   .phone.front { z-index: 2; --rot: 6deg; --slide: -22px; }
+  /* NOTE: no translateZ(0) here. Promoting the phones to their own GPU layers
+     makes the nav's backdrop-filter sample across a moving layer boundary,
+     which draws a seam across the pill while they animate. */
   @keyframes settle {
-    from { transform: translateX(var(--slide)) rotate(0deg) translateZ(0); }
-    to   { transform: translateX(0) rotate(var(--rot)) translateZ(0); }
+    from { transform: translateX(var(--slide)) rotate(0deg); }
+    to   { transform: translateX(0) rotate(var(--rot)); }
   }
   /* respect reduced-motion: land straight on the final pose */
   @media (prefers-reduced-motion: reduce) {
     .phone.back, .phone.front { animation: none;
-      transform: rotate(var(--rot)) translateZ(0); }
+      transform: rotate(var(--rot)); }
   }
   /* soft ground shadow (blurred ellipse) — avoids the iOS drop-shadow-on-
      rotated-element bug that drew a rectangular "box" on mobile. */
@@ -210,19 +213,6 @@
     font-weight: 600; font-size: clamp(16px, 2vw, 18.5px); line-height: 1.5; }
 
   /* ---------- free vs pro ---------- */
-  .tiers { margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
-    max-width: 720px; margin-left: auto; margin-right: auto; }
-  .tier { background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 28px 26px; }
-  .tier-name { font-weight: 800; font-size: 18px; letter-spacing: -.01em; color: var(--ink); }
-  .tier-pro { border-color: rgba(124,58,237,.28);
-    background: linear-gradient(165deg, rgba(124,58,237,.05), rgba(124,58,237,.015)); }
-  .tier-pro .tier-name { color: var(--violet); }
-  .tier-list { list-style: none; margin-top: 18px; display: flex; flex-direction: column; gap: 13px; }
-  .tier-list li { position: relative; padding-left: 24px; color: var(--ink);
-    font-weight: 600; font-size: 15px; line-height: 1.4; }
-  .tier-list li::before { content: "✓"; position: absolute; left: 0; top: 0;
-    font-weight: 800; font-size: 13px; color: #9a93ad; }
-  .tier-pro .tier-list li::before { color: var(--violet); }
 
   /* ---------- everything in the app ---------- */
   .feats { margin: 52px auto 0; display: grid; grid-template-columns: repeat(3, 1fr);
@@ -306,7 +296,6 @@
   /* ---------- responsive ---------- */
   @media (max-width: 720px) {
     .pillars { grid-template-columns: 1fr; max-width: 360px; margin-left: auto; margin-right: auto; gap: 44px; }
-    .tiers { grid-template-columns: 1fr; max-width: 400px; gap: 14px; margin-top: 38px; }
     .feats { grid-template-columns: 1fr; max-width: 420px; gap: 26px; margin-top: 40px; }
   }
   @media (max-width: 540px) {
@@ -422,59 +411,21 @@
   </div>
 </section>
 
-<section class="block" id="pricing">
-  <div class="wrap">
-    <div class="kicker">Free &amp; Pro</div>
-    <h2>Free for every jumper.</h2>
-    <p class="lead">Logging, verification and gear safety cost nothing — always. Pro adds the extras that make it effortless.</p>
-
-    <div class="tiers">
-      <div class="tier">
-        <div class="tier-name">Free</div>
-        <ul class="tier-list">
-          <li>Log every jump, no limit</li>
-          <li>Jumps signed off by other jumpers</li>
-          <li>Live loads — see your load and who's on it</li>
-          <li>Check-in Pass — licence &amp; currency, scannable</li>
-          <li>Gear locker with reserve &amp; AAD reminders</li>
-          <li>Dropzones, events &amp; community</li>
-          <li>Year in the Sky — your season, wrapped</li>
-        </ul>
-      </div>
-      <div class="tier tier-pro">
-        <div class="tier-name">Pro</div>
-        <ul class="tier-list">
-          <li>Your load on your lock screen, with gear-up and final-call notifications</li>
-          <li>Live countdown in your Dynamic Island</li>
-          <li>Branded PDF of your signed-off logbook</li>
-          <li>Branded PDF of your gear's service history</li>
-          <li>Your Check-in Pass in Apple Wallet</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="block" id="everything">
   <div class="wrap">
     <div class="kicker">Everything in the app</div>
     <h2>Built for how you actually jump.</h2>
 
     <div class="feats">
-      <div class="feat"><h4>Jump logging</h4><p>Seconds per jump. Works with no signal and syncs when you land.</p></div>
-      <div class="feat"><h4>Tunnel logging</h4><p>Your indoor time, tracked alongside your jumps.</p></div>
-      <div class="feat"><h4>Import your history</h4><p>Bring every jump across by CSV from any other app or spreadsheet.</p></div>
-      <div class="feat"><h4>Verified sign-offs</h4><p>Another licensed jumper scans your QR — their name and licence go on the jump.</p></div>
-      <div class="feat"><h4>Check-in Pass</h4><p>Licence, currency and jump numbers, scannable at the desk.</p></div>
-      <div class="feat"><h4>Live loads</h4><p>See your load and who's on it, straight from the DZ's board.</p></div>
-      <div class="feat"><h4>Gear locker</h4><p>Rigs, canopies, reserves and AADs, with full service history.</p></div>
-      <div class="feat"><h4>Service reminders</h4><p>Reserve repack and AAD dates before they catch you out.</p></div>
-      <div class="feat"><h4>Dropzones</h4><p>Find them near you or anywhere you're heading next.</p></div>
-      <div class="feat"><h4>Events &amp; boogies</h4><p>Discover what's on, RSVP, or host your own.</p></div>
-      <div class="feat"><h4>Coaches</h4><p>Find coaching by discipline and dropzone.</p></div>
-      <div class="feat"><h4>Community</h4><p>Follow other jumpers, see what they're jumping, and message them directly.</p></div>
-      <div class="feat"><h4>Currency at a glance</h4><p>Know instantly whether you're current, before you get to the desk.</p></div>
-      <div class="feat"><h4>Year in the Sky</h4><p>Your whole season, wrapped up and worth sharing.</p></div>
+      <div class="feat"><h4>Jump logging</h4><p>Seconds per jump, even with no signal.</p></div>
+      <div class="feat"><h4>Tunnel logging</h4><p>Indoor time, alongside your jumps.</p></div>
+      <div class="feat"><h4>Import your history</h4><p>Every jump across by CSV, from any app.</p></div>
+      <div class="feat"><h4>Verified sign-offs</h4><p>Witnessed by the jumpers who were there.</p></div>
+      <div class="feat"><h4>Check-in Pass</h4><p>Licence and currency, scannable at the desk.</p></div>
+      <div class="feat"><h4>Gear &amp; service</h4><p>Rigs, reserves and AADs, always in date.</p></div>
+      <div class="feat"><h4>Dropzones &amp; events</h4><p>Find them worldwide, and what's on.</p></div>
+      <div class="feat"><h4>Coaches &amp; community</h4><p>Follow jumpers, book coaching, message anyone.</p></div>
+      <div class="feat"><h4>Year in the Sky</h4><p>Your whole season, worth sharing.</p></div>
     </div>
   </div>
 </section>
