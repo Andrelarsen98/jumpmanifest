@@ -186,6 +186,23 @@
     stroke-linecap: round; stroke-linejoin: round; }
   .pillar h3 { margin-top: 20px; font-weight: 800; font-size: 22px; letter-spacing: -.02em; }
   .pillar p { margin-top: 8px; color: var(--muted); font-weight: 600; font-size: 15.5px; line-height: 1.5; }
+  .lead { text-align: center; margin: 16px auto 0; max-width: 46ch; color: var(--muted);
+    font-weight: 600; font-size: clamp(16px, 2vw, 18.5px); line-height: 1.5; }
+
+  /* ---------- free vs pro ---------- */
+  .tiers { margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+    max-width: 720px; margin-left: auto; margin-right: auto; }
+  .tier { background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 28px 26px; }
+  .tier-name { font-weight: 800; font-size: 18px; letter-spacing: -.01em; color: var(--ink); }
+  .tier-pro { border-color: rgba(124,58,237,.28);
+    background: linear-gradient(165deg, rgba(124,58,237,.05), rgba(124,58,237,.015)); }
+  .tier-pro .tier-name { color: var(--violet); }
+  .tier-list { list-style: none; margin-top: 18px; display: flex; flex-direction: column; gap: 13px; }
+  .tier-list li { position: relative; padding-left: 24px; color: var(--ink);
+    font-weight: 600; font-size: 15px; line-height: 1.4; }
+  .tier-list li::before { content: "✓"; position: absolute; left: 0; top: 0;
+    font-weight: 800; font-size: 13px; color: #9a93ad; }
+  .tier-pro .tier-list li::before { color: var(--violet); }
 
   /* ---------- flagship line ---------- */
   .flag { margin-top: clamp(80px,12vw,130px); text-align: center; }
@@ -226,6 +243,7 @@
   /* ---------- responsive ---------- */
   @media (max-width: 720px) {
     .pillars { grid-template-columns: 1fr; max-width: 360px; margin-left: auto; margin-right: auto; gap: 44px; }
+    .tiers { grid-template-columns: 1fr; max-width: 400px; gap: 14px; margin-top: 38px; }
   }
   @media (max-width: 540px) {
     .nav-in { height: 64px; }
@@ -331,6 +349,37 @@
            aria-label="Dropzone finder map">
       <source src="assets/dropzones.mp4" type="video/mp4" />
     </video>
+  </div>
+</section>
+
+<section class="block" id="pricing">
+  <div class="wrap">
+    <div class="kicker">Free &amp; Pro</div>
+    <h2>Free for every jumper.</h2>
+    <p class="lead">Logging, verification and gear safety cost nothing — always. Pro adds the extras that make it effortless.</p>
+
+    <div class="tiers">
+      <div class="tier">
+        <div class="tier-name">Free</div>
+        <ul class="tier-list">
+          <li>Log every jump, no limit</li>
+          <li>Jumps signed off by other jumpers</li>
+          <li>Check-in Pass — licence &amp; currency, scannable</li>
+          <li>Gear locker with reserve &amp; AAD reminders</li>
+          <li>Dropzones, events &amp; community</li>
+          <li>Year in the Sky — your season, wrapped</li>
+        </ul>
+      </div>
+      <div class="tier tier-pro">
+        <div class="tier-name">Pro</div>
+        <ul class="tier-list">
+          <li>Your load, live on your lock screen</li>
+          <li>Branded PDF of your signed-off logbook</li>
+          <li>Branded PDF of your gear's service history</li>
+          <li>Your Check-in Pass in Apple Wallet</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
