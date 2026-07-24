@@ -230,6 +230,23 @@
   .faq-h2 .l1 { color: #9a96a6; }
   .faq-h2 .l2 { color: var(--ink); }
 
+  /* ---------- cloud reveal finale ---------- */
+  .reveal { position: relative; height: 128vh; }
+  .reveal-stage { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+  .reveal-phone { position: absolute; bottom: -4%; left: 50%; z-index: 1;
+    width: min(440px, 88vw); transform: translate(-50%, 10%); will-change: transform; }
+  /* real transparent cloud PNGs, in front, overlapping the centre then parting */
+  .cloud { position: absolute; bottom: -6%; width: 74%; max-width: none; z-index: 3;
+    pointer-events: none; will-change: transform; }
+  .c-left  { left: 0; }
+  .c-right { right: 0; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { height: auto; }
+    .reveal-stage { position: static; height: auto; }
+    .reveal-phone { position: static; transform: translateX(0); margin: 0 auto; }
+    .cloud { display: none; }
+  }
+
   /* ---------- FAQ accordions ---------- */
   .faqs { margin: 44px auto 0; max-width: 720px; display: flex; flex-direction: column; gap: 12px; }
   .faq { background: #fafafb; border: 1px solid var(--line); border-radius: 20px;
@@ -489,6 +506,14 @@
 </section>
 
 
+<section class="reveal" id="reveal" aria-hidden="true">
+  <div class="reveal-stage">
+    <img class="reveal-phone" src="assets/hand-phone.png" alt="" />
+    <img class="cloud c-left"  src="assets/cloud.png"   alt="" />
+    <img class="cloud c-right" src="assets/cloud-r.png" alt="" />
+  </div>
+</section>
+
 <footer>
   <div class="wrap foot-in">
     <a class="foot-brand" href="#top">
@@ -569,6 +594,32 @@
 
   wire("waitForm", "okMsg", "errMsg");
   wire("waitForm2", "okMsg2", "errMsg2");
+
+  // ---- Cloud reveal: transparent clouds part left/right as the section scrolls,
+  // revealing the phone behind. Transform-only, rAF-throttled. ----
+  (function () {
+    var sec = document.getElementById("reveal");
+    if (!sec || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var phone = sec.querySelector(".reveal-phone"),
+        left = sec.querySelector(".c-left"),
+        right = sec.querySelector(".c-right");
+    var ticking = false;
+    function clamp(v){ return v < 0 ? 0 : v > 1 ? 1 : v; }
+    function ease(t){ return 1 - Math.pow(1 - t, 3); }
+    function update() {
+      ticking = false;
+      var r = sec.getBoundingClientRect();
+      var p = clamp(-r.top / (sec.offsetHeight - window.innerHeight));
+      var e = ease(p);
+      phone.style.transform = "translate(-50%," + (10 - e * 10) + "%)";
+      left.style.transform  = "translateX(" + (30 - e * 55) + "%)";
+      right.style.transform = "translateX(" + (-30 + e * 55) + "%)";
+    }
+    function onScroll(){ if (!ticking){ ticking = true; requestAnimationFrame(update); } }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    update();
+  })();
 
 
   // ---- Flagship video: keep it looping. Browsers throttle/pause autoplaying
