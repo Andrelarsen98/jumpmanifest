@@ -153,9 +153,21 @@
      is exact. One consistent CSS drop-shadow (follows the phone's alpha). */
   .phone { position: relative; flex: 0 0 auto; width: clamp(198px, 38vw, 268px); }
   .phone img { width: 100%; display: block; }
-  .phone.back  { transform: rotate(-9deg) translateZ(0); z-index: 1; transform-origin: 50% 50%;
-    margin-right: clamp(-64px, -9vw, -40px); }
-  .phone.front { transform: rotate(6deg) translateZ(0); z-index: 2; transform-origin: 50% 50%; }
+  /* On load the pair sits closer and near-upright, then eases out into the V
+     — a two-second "settle" so the hero feels alive when the page opens. */
+  .phone.back, .phone.front { transform-origin: 50% 50%;
+    animation: settle 1.5s cubic-bezier(.22,.9,.3,1) .25s both; }
+  .phone.back  { z-index: 1; margin-right: clamp(-64px, -9vw, -40px); --rot: -9deg; --slide: 22px; }
+  .phone.front { z-index: 2; --rot: 6deg; --slide: -22px; }
+  @keyframes settle {
+    from { transform: translateX(var(--slide)) rotate(0deg) translateZ(0); }
+    to   { transform: translateX(0) rotate(var(--rot)) translateZ(0); }
+  }
+  /* respect reduced-motion: land straight on the final pose */
+  @media (prefers-reduced-motion: reduce) {
+    .phone.back, .phone.front { animation: none;
+      transform: rotate(var(--rot)) translateZ(0); }
+  }
   /* soft ground shadow (blurred ellipse) — avoids the iOS drop-shadow-on-
      rotated-element bug that drew a rectangular "box" on mobile. */
   .fan::before { content: ""; position: absolute; z-index: 0; pointer-events: none;
