@@ -231,6 +231,13 @@
     font-weight: 600; font-size: 14.5px; line-height: 1.5; }
   @media (max-width: 940px) { .feats { grid-template-columns: repeat(2, 1fr); max-width: 640px; } }
 
+  /* FAQ heading: quiet grey kicker + two-tone headline like the hero */
+  .faq-kicker { color: var(--muted); text-transform: none; letter-spacing: 0;
+    font-size: 15.5px; font-weight: 600; }
+  .faq-h2 { max-width: 22ch; line-height: 1.14; }
+  .faq-h2 .l1 { color: #9a96a6; }
+  .faq-h2 .l2 { color: var(--ink); }
+
   /* ---------- FAQ accordions ---------- */
   .faqs { margin: 44px auto 0; max-width: 720px; display: flex; flex-direction: column; gap: 12px; }
   .faq { background: #fafafb; border: 1px solid var(--line); border-radius: 20px;
@@ -465,8 +472,8 @@
 
 <section class="block" id="faq">
   <div class="wrap">
-    <div class="kicker">FAQs</div>
-    <h2>Got questions?</h2>
+    <div class="kicker faq-kicker">FAQs</div>
+    <h2 class="faq-h2"><span class="l1">Got questions?</span><br /><span class="l2">Here are the answers.</span></h2>
 
     <div class="faqs">
       <details class="faq">
