@@ -231,12 +231,12 @@
   .faq-h2 .l2 { color: var(--ink); }
 
   /* ---------- cloud reveal finale ---------- */
-  .reveal { position: relative; height: 128vh; }
+  .reveal { position: relative; height: 190vh; }
   .reveal-stage { position: sticky; top: 0; height: 100vh; overflow: hidden; }
-  .reveal-phone { position: absolute; bottom: -4%; left: 50%; z-index: 1;
-    width: min(440px, 88vw); transform: translate(-50%, 10%); will-change: transform; }
+  .reveal-phone { position: absolute; bottom: -11%; left: 50%; z-index: 1;
+    width: min(440px, 88vw); transform: translate(-50%, 8%); will-change: transform; }
   /* real transparent cloud PNGs, in front, overlapping the centre then parting */
-  .cloud { position: absolute; bottom: -6%; width: 74%; max-width: none; z-index: 3;
+  .cloud { position: absolute; bottom: -13%; width: 74%; max-width: none; z-index: 3;
     pointer-events: none; will-change: transform; }
   .c-left  { left: 0; }
   .c-right { right: 0; }
@@ -605,15 +605,15 @@
         right = sec.querySelector(".c-right");
     var ticking = false;
     function clamp(v){ return v < 0 ? 0 : v > 1 ? 1 : v; }
-    function ease(t){ return 1 - Math.pow(1 - t, 3); }
+    function ease(t){ return 0.5 * (1 - Math.cos(Math.PI * t)); } // easeInOutSine, smooth
     function update() {
       ticking = false;
       var r = sec.getBoundingClientRect();
       var p = clamp(-r.top / (sec.offsetHeight - window.innerHeight));
       var e = ease(p);
-      phone.style.transform = "translate(-50%," + (10 - e * 10) + "%)";
-      left.style.transform  = "translateX(" + (30 - e * 55) + "%)";
-      right.style.transform = "translateX(" + (-30 + e * 55) + "%)";
+      phone.style.transform = "translate(-50%," + (8 - e * 8) + "%)";
+      left.style.transform  = "translateX(" + (28 - e * 52) + "%)";
+      right.style.transform = "translateX(" + (-28 + e * 52) + "%)";
     }
     function onScroll(){ if (!ticking){ ticking = true; requestAnimationFrame(update); } }
     window.addEventListener("scroll", onScroll, { passive: true });
