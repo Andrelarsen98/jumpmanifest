@@ -236,13 +236,13 @@
   .reveal { position: relative; height: 150vh; }
   .reveal-stage { position: sticky; top: 0; height: 100vh; overflow: hidden;
     display: flex; align-items: flex-end; justify-content: center; }
-  .reveal-phone { position: absolute; bottom: -10%; left: 50%;
-    width: min(380px, 78vw); transform: translate(-50%, 30%); will-change: transform; }
-  .cloud { position: absolute; left: 50%; width: 128%; max-width: none;
-    pointer-events: none; will-change: transform; }
-  .c-far  { bottom: 8%;  transform: translateX(-50%); opacity: .9; }
-  .c-mid  { bottom: -2%; transform: translateX(-50%); opacity: .96; }
-  .c-near { bottom: -12%; transform: translateX(-50%); }
+  .reveal-phone { position: absolute; bottom: 4%; left: 50%; z-index: 2;
+    width: min(360px, 76vw); transform: translate(-50%, 34%); will-change: transform; }
+  .cloud { position: absolute; left: 50%; width: 160%; max-width: none; bottom: 0;
+    transform: translateX(-50%); pointer-events: none; will-change: transform;
+    mix-blend-mode: multiply; }
+  .c-back  { z-index: 1; bottom: 14%; opacity: .85; }
+  .c-front { z-index: 3; bottom: -10%; }
   @media (prefers-reduced-motion: reduce) {
     .reveal { height: auto; }
     .reveal-stage { position: static; height: auto; padding-top: 40px; }
@@ -510,10 +510,9 @@
 
 <section class="reveal" id="reveal" aria-hidden="true">
   <div class="reveal-stage">
+    <img class="cloud c-back"  src="assets/clouds.jpg" alt="" />
     <img class="reveal-phone" src="assets/hand-phone.png" alt="" />
-    <img class="cloud c-far"  src="assets/cloud-far.png"  alt="" />
-    <img class="cloud c-mid"  src="assets/cloud-mid.png"  alt="" />
-    <img class="cloud c-near" src="assets/cloud-near.png" alt="" />
+    <img class="cloud c-front" src="assets/clouds.jpg" alt="" />
   </div>
 </section>
 
@@ -604,9 +603,8 @@
     var sec = document.getElementById("reveal");
     if (!sec || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     var phone = sec.querySelector(".reveal-phone");
-    var far = sec.querySelector(".c-far"),
-        mid = sec.querySelector(".c-mid"),
-        near = sec.querySelector(".c-near");
+    var back = sec.querySelector(".c-back"),
+        front = sec.querySelector(".c-front");
     var ticking = false;
     function clamp(v){ return v < 0 ? 0 : v > 1 ? 1 : v; }
     function ease(t){ return 1 - Math.pow(1 - t, 3); } // easeOutCubic
@@ -614,17 +612,14 @@
     function update() {
       ticking = false;
       var r = sec.getBoundingClientRect();
-      // progress 0 -> 1 across the section's scrollable travel
       var p = clamp(-r.top / (sec.offsetHeight - window.innerHeight));
-      // phone starts already peeking (30%) and finishes rising by ~70%
-      // progress, then HOLDS (doesn't fly off)
+      // phone rises and holds by ~72% progress
       var pe = ease(clamp(p / 0.72));
-      phone.style.transform = "translate(-50%," + (30 - pe * 30) + "%)";
-      // clouds drift gently apart + down as the phone emerges
+      phone.style.transform = "translate(-50%," + (34 - pe * 34) + "%)";
+      // clouds part VERTICALLY only (no sideways): back lifts, front sinks
       var e = ease(p);
-      far.style.transform  = "translateX(" + (-50 - e * 6)  + "%) translateY(" + (e * 12) + "px)";
-      mid.style.transform  = "translateX(" + (-50 + e * 8)  + "%) translateY(" + (e * 20) + "px)";
-      near.style.transform = "translateX(" + (-50 - e * 5)  + "%) translateY(" + (e * 30) + "px)";
+      back.style.transform  = "translateX(-50%) translateY(" + (-e * 40) + "px)";
+      front.style.transform = "translateX(-50%) translateY(" + (e * 46) + "px)";
     }
     function onScroll(){ if (!ticking){ ticking = true; requestAnimationFrame(update); } }
     window.addEventListener("scroll", onScroll, { passive: true });
