@@ -235,15 +235,15 @@
      maps scroll progress to the phone rising + clouds drifting apart. */
   .reveal { position: relative; height: 118vh; }
   .reveal-stage { position: sticky; top: 0; height: 100vh; overflow: hidden; }
-  /* phone centered both axes; rises from below to center */
-  .reveal-phone { position: absolute; top: 50%; left: 50%; z-index: 2;
-    width: min(330px, 72vw); transform: translate(-50%, -6%); will-change: transform; }
-  /* cloud band crosses the phone's middle; edges pre-faded so no line */
+  /* phone bottom-anchored (hand runs off the bottom), rises to rest near the base */
+  .reveal-phone { position: absolute; bottom: -12%; left: 50%; z-index: 2;
+    width: min(400px, 82vw); transform: translate(-50%, 42%); will-change: transform; }
+  /* cloud bands cross the lower/middle of the phone; edges pre-faded, no line */
   .cloud { position: absolute; left: 50%; width: 170%; max-width: none;
     transform: translateX(-50%); pointer-events: none; will-change: transform;
     mix-blend-mode: multiply; }
-  .c-back  { z-index: 1; top: 30%; opacity: .82; }
-  .c-front { z-index: 3; top: 44%; }
+  .c-back  { z-index: 1; bottom: 22%; opacity: .82; }
+  .c-front { z-index: 3; bottom: -6%; }
   /* white veil: hides the phone at first, fades out as it rises through */
   .reveal-veil { position: absolute; left: 0; right: 0; bottom: 0; height: 62%; z-index: 4;
     pointer-events: none; will-change: opacity;
@@ -621,9 +621,9 @@
       var r = sec.getBoundingClientRect();
       var p = clamp(-r.top / (sec.offsetHeight - window.innerHeight));
       // phone rises and holds by ~72% progress
-      var pe = ease(clamp(p / 0.72));
-      // rise from +46% below center to -6% (resting, centered)
-      phone.style.transform = "translate(-50%," + (46 - pe * 52) + "%)";
+      // slower rise: uses ~92% of the scroll, then holds
+      var pe = ease(clamp(p / 0.92));
+      phone.style.transform = "translate(-50%," + (42 - pe * 42) + "%)";
       // clouds part VERTICALLY only (no sideways): back lifts, front sinks
       var e = ease(p);
       back.style.transform  = "translateX(-50%) translateY(" + (-e * 40) + "px)";
