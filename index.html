@@ -203,6 +203,7 @@
     font-weight: 800; font-size: 17px; letter-spacing: -.01em;
     box-shadow: 0 14px 30px rgba(15,11,28,.22); transition: transform .15s ease, box-shadow .15s ease; }
   .flagcta:hover { transform: translateY(-1px); box-shadow: 0 18px 38px rgba(15,11,28,.3); }
+  .trustline { margin: 18px auto 0; font-weight: 700; font-size: 14.5px; color: var(--muted); }
 
   /* ---------- final CTA ---------- */
   .final { margin-top: clamp(88px,13vw,150px); text-align: center; }
@@ -315,6 +316,19 @@
       <b>Just your load on your lock screen, the second it's called.</b>
     </p>
     <a class="flagcta" href="#waitlist">Join the waitlist</a>
+    <p class="trustline">⚡ Live at 140+ dropzones</p>
+  </div>
+</section>
+
+<section class="flag" id="dropzones">
+  <div class="wrap">
+    <div class="kicker">Dropzones</div>
+    <h2>Every dropzone. One map.</h2>
+    <p>Find dropzones near you or anywhere you're heading next, with conditions, loads and the details that actually matter.</p>
+    <video class="flagvid" loop muted playsinline preload="auto"
+           aria-label="Dropzone finder map">
+      <source src="assets/dropzones.mp4" type="video/mp4" />
+    </video>
   </div>
 </section>
 
@@ -418,10 +432,7 @@
   // ---- Flagship video: keep it looping. Browsers throttle/pause autoplaying
   // video (offscreen, battery saver, tab switches) and the `loop` attribute
   // alone doesn't recover from that — so nudge it back whenever it stalls. ----
-  (function () {
-    var v = document.getElementById("flagVid");
-    if (!v) return;
-
+  Array.prototype.forEach.call(document.querySelectorAll(".flagvid"), function (v) {
     function kick() {
       if (v.paused || v.ended) {
         if (v.ended || v.currentTime >= v.duration - 0.05) v.currentTime = 0;
@@ -450,7 +461,7 @@
     setInterval(function () {
       if (!document.hidden && v.getBoundingClientRect().top < innerHeight && v.getBoundingClientRect().bottom > 0) kick();
     }, 2000);
-  })();
+  });
 </script>
 </body>
 </html>
