@@ -192,10 +192,10 @@
   .flag h2 { max-width: 16ch; }
   .flag p { margin: 16px auto 0; max-width: 440px; color: var(--muted); font-weight: 600; font-size: clamp(16px,2vw,18px); }
   /* multiply makes the video's white blend perfectly into the white page */
-  .flagvid { display: block; margin: 14px auto 0; width: min(430px, 80vw); height: auto;
+  .flagvid { display: block; margin: 30px auto 0; width: min(340px, 68vw); height: auto;
     mix-blend-mode: multiply; }
   /* statement under the flagship video */
-  .flagsub { margin: -12px auto 0; max-width: 30ch; font-weight: 600; letter-spacing: -.02em;
+  .flagsub { margin: 26px auto 0; max-width: 30ch; font-weight: 600; letter-spacing: -.02em;
     line-height: 1.35; font-size: clamp(19px, 2.6vw, 28px); color: #9a96a6; }
   .flagsub b { display: block; color: var(--ink); font-weight: 700; margin-top: 2px; }
   .flagcta { margin: 26px auto 0; display: inline-flex; align-items: center; gap: 10px;
@@ -204,8 +204,6 @@
     box-shadow: 0 14px 30px rgba(15,11,28,.22); transition: transform .15s ease, box-shadow .15s ease; }
   .flagcta:hover { transform: translateY(-1px); box-shadow: 0 18px 38px rgba(15,11,28,.3); }
   .trustline { margin: 20px auto 0; font-weight: 700; font-size: 14.5px; color: var(--muted); }
-  /* dropzone clip reads bigger (map fills the screen) — size it down a touch */
-  #dropzones .flagvid { width: min(360px, 70vw); margin-top: 6px; }
 
   /* ---------- final CTA ---------- */
   .final { margin-top: clamp(88px,13vw,150px); text-align: center; }
