@@ -71,8 +71,10 @@
   /* ---------- floating liquid-glass pill nav (subbie-exact) ---------- */
   nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-index: 50;
         width: min(800px, 92vw);
-        background: rgba(58,58,62,.96);
-        border: 1px solid rgba(255,255,255,.10);
+        background: rgba(58,58,62,.62);
+        backdrop-filter: blur(16px) saturate(170%);
+        -webkit-backdrop-filter: blur(16px) saturate(170%);
+        border: 1px solid rgba(255,255,255,.14);
         border-radius: 100px; will-change: transform; transform: translateX(-50%) translateZ(0);
         box-shadow: 0 14px 34px rgba(15,11,28,.24), inset 0 1px 0 rgba(255,255,255,.10); }
   .nav-in { display: flex; align-items: center; justify-content: space-between;
@@ -246,7 +248,13 @@
     .tiers { grid-template-columns: 1fr; max-width: 400px; gap: 14px; margin-top: 38px; }
   }
   @media (max-width: 540px) {
-    .nav-in { height: 64px; }
+    /* nav sits tighter on phones (this used to be 64px — bigger than desktop) */
+    nav { top: 12px; }
+    .nav-in { height: 48px; padding: 0 6px 0 15px; }
+    .brand img { width: 25px; height: 25px; border-radius: 7px; }
+    .brand .nm { font-size: 16px; }
+    nav .btn { padding: 8px 15px; font-size: 13.5px; }
+    body { padding-top: 74px; }
     .btn { padding: 11px 17px; font-size: 14px; }
     form.cap { flex-direction: column; border-radius: 22px; padding: 9px; }
     form.cap input { padding: 12px 14px; text-align: center; }
@@ -364,6 +372,7 @@
         <ul class="tier-list">
           <li>Log every jump, no limit</li>
           <li>Jumps signed off by other jumpers</li>
+          <li>Live loads — see your load and who's on it</li>
           <li>Check-in Pass — licence &amp; currency, scannable</li>
           <li>Gear locker with reserve &amp; AAD reminders</li>
           <li>Dropzones, events &amp; community</li>
