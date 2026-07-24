@@ -71,17 +71,14 @@
   /* ---------- floating liquid-glass pill nav (subbie-exact) ---------- */
   nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-index: 50;
         width: min(800px, 92vw);
-        background: rgba(58,58,62,.72);
-        /* blur radius is the expensive part on iOS — keep it modest and skip
-           saturate() so the glass stays smooth while scrolling */
-        backdrop-filter: blur(9px);
-        -webkit-backdrop-filter: blur(9px);
-        border: 1px solid rgba(255,255,255,.14);
-        /* NO will-change here: promoting the nav to its own layer desyncs the
-           backdrop-filter sampling from the animating phones underneath and
-           leaves a visible seam across the pill on load. */
+        /* NO backdrop-filter. Blurring a fixed element forces anything moving
+           underneath onto its own GPU layer, and the blur then samples across
+           that moving boundary — which is what drew the seam across the pill
+           on load (and caused the iOS scroll lag). Translucency via alpha
+           gives the same glass read with nothing to mis-sample. */
+        background: linear-gradient(180deg, rgba(64,64,69,.88), rgba(48,48,53,.9));
+        border: 1px solid rgba(255,255,255,.13);
         border-radius: 100px; transform: translateX(-50%);
-        isolation: isolate;
         box-shadow: 0 14px 34px rgba(15,11,28,.24), inset 0 1px 0 rgba(255,255,255,.10); }
   .nav-in { display: flex; align-items: center; justify-content: space-between;
             height: 54px; padding: 0 7px 0 18px; }
