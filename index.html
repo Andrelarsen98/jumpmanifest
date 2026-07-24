@@ -230,27 +230,6 @@
   .faq-h2 .l1 { color: #9a96a6; }
   .faq-h2 .l2 { color: var(--ink); }
 
-  /* ---------- cloud reveal finale ---------- */
-  /* The section is tall; the stage sticks while you scroll through it, and JS
-     maps scroll progress to the phone rising + clouds drifting apart. */
-  .reveal { position: relative; height: 130vh; }
-  .reveal-stage { position: sticky; top: 0; height: 100vh; overflow: hidden; }
-  /* big phone, centered, anchored to the bottom, BEHIND the clouds */
-  .reveal-phone { position: absolute; bottom: -4%; left: 50%; z-index: 1;
-    width: min(440px, 88vw); transform: translate(-50%, 12%); will-change: transform; }
-  /* opaque cloud halves IN FRONT; edges pre-faded to white so no line. They
-     start overlapping the phone's centre, then part left/right on scroll. */
-  .cloud { position: absolute; bottom: 2%; width: 82%; max-width: none; z-index: 3;
-    pointer-events: none; will-change: transform; }
-  .c-left  { left: 0; }
-  .c-right { right: 0; }
-  @media (prefers-reduced-motion: reduce) {
-    .reveal { height: auto; }
-    .reveal-stage { position: static; height: auto; padding-top: 40px; }
-    .reveal-phone { position: static; transform: translateX(0); margin: 0 auto; }
-    .cloud { display: none; }
-  }
-
   /* ---------- FAQ accordions ---------- */
   .faqs { margin: 44px auto 0; max-width: 720px; display: flex; flex-direction: column; gap: 12px; }
   .faq { background: #fafafb; border: 1px solid var(--line); border-radius: 20px;
@@ -509,13 +488,6 @@
   </div>
 </section>
 
-<section class="reveal" id="reveal" aria-hidden="true">
-  <div class="reveal-stage">
-    <img class="reveal-phone" src="assets/hand-phone.png" alt="" />
-    <img class="cloud c-left"  src="assets/clouds.jpg" alt="" />
-    <img class="cloud c-right" src="assets/clouds.jpg" alt="" />
-  </div>
-</section>
 
 <footer>
   <div class="wrap foot-in">
@@ -598,34 +570,6 @@
   wire("waitForm", "okMsg", "errMsg");
   wire("waitForm2", "okMsg2", "errMsg2");
 
-  // ---- Cloud reveal: as the tall section scrolls past, the phone rises out of
-  // the clouds and the cloud banks drift apart. All transform, rAF-throttled. ----
-  (function () {
-    var sec = document.getElementById("reveal");
-    if (!sec || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    var phone = sec.querySelector(".reveal-phone");
-    var left = sec.querySelector(".c-left"),
-        right = sec.querySelector(".c-right");
-    var ticking = false;
-    function clamp(v){ return v < 0 ? 0 : v > 1 ? 1 : v; }
-    function ease(t){ return 1 - Math.pow(1 - t, 3); } // easeOutCubic
-
-    function update() {
-      ticking = false;
-      var r = sec.getBoundingClientRect();
-      var p = clamp(-r.top / (sec.offsetHeight - window.innerHeight));
-      var e = ease(p);
-      // phone rises a little as it emerges from between the clouds
-      phone.style.transform = "translate(-50%," + (12 - e * 12) + "%)";
-      // clouds start overlapping the centre (+/-32%), then part outward
-      left.style.transform  = "translateX(" + (32 - e * 52) + "%)";
-      right.style.transform = "translateX(" + (-32 + e * 52) + "%)";
-    }
-    function onScroll(){ if (!ticking){ ticking = true; requestAnimationFrame(update); } }
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    update();
-  })();
 
   // ---- Flagship video: keep it looping. Browsers throttle/pause autoplaying
   // video (offscreen, battery saver, tab switches) and the `loop` attribute
