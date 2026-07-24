@@ -613,8 +613,8 @@
       var p = clamp((window.innerHeight - r.top) / r.height);
       var e = ease(p);
       phone.style.transform = "translate(-50%," + (10 - e * 10) + "%)";
-      left.style.transform  = "translateX(" + (28 - e * 52) + "%)";
-      right.style.transform = "translateX(" + (-28 + e * 52) + "%)";
+      left.style.transform  = "translateX(" + (28 - e * 72) + "%)";
+      right.style.transform = "translateX(" + (-28 + e * 72) + "%)";
     }
     function onScroll(){ if (!ticking){ ticking = true; requestAnimationFrame(update); } }
     window.addEventListener("scroll", onScroll, { passive: true });
