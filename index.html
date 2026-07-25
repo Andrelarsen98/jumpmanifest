@@ -205,7 +205,7 @@
   /* Same silver-then-ink split as the hero h1 and the FAQ heading. Wider than
      the default 14ch so each sentence holds its own line. */
   h2 .l1 { color: #9a96a6; }
-  #trio h2 { max-width: 26ch; }
+  #trio h2, .flag h2 { max-width: 26ch; }
   /* stretch, so all three cards share a top and a bottom edge */
   .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 1.8vw, 22px);
     align-items: stretch; margin-top: clamp(38px, 5vw, 62px); }
@@ -568,7 +568,7 @@
 <section class="flag">
   <div class="wrap">
     <div class="kicker">The flagship</div>
-    <h2>Your load. Live on your lock screen.</h2>
+    <h2><span class="l1">Your load.</span><br />Live on your lock screen.</h2>
     <p>Notifications the second the plane's called, gear-up and final call, plus a live countdown in your Dynamic Island. So it never leaves without you.</p>
     <video class="flagvid" id="flagVid" autoplay loop muted playsinline preload="auto"
            aria-label="Live loads on your lock screen">
@@ -585,7 +585,7 @@
 <section class="flag" id="dropzones">
   <div class="wrap">
     <div class="kicker">Dropzones</div>
-    <h2>Every dropzone. One map.</h2>
+    <h2><span class="l1">Every dropzone.</span><br />One map.</h2>
     <p>Find dropzones near you or anywhere you're heading next, with conditions, loads and the details that actually matter.</p>
     <video class="flagvid" loop muted playsinline preload="auto"
            aria-label="Dropzone finder map">
