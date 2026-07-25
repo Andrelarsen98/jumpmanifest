@@ -199,7 +199,9 @@
   h2 { text-align: center; margin: 14px auto 0; font-weight: 800; letter-spacing: -.04em;
     line-height: 1.05; font-size: clamp(32px, 6vw, 56px); max-width: 14ch; }
   /* ---------- drifting carousel ---------- */
-  .carousel { position: relative; margin: clamp(48px, 6vw, 76px) auto 0; max-width: 1160px;
+  /* The phone overhangs the stage by ~68px at desktop, so the margin has to
+     clear the PHONE's top edge, not the stage's, or the statement crowds it. */
+  .carousel { position: relative; margin: clamp(105px, 13vw, 174px) auto 0; max-width: 1160px;
     padding: clamp(30px, 4.5vw, 52px) 24px; }
   /* The soft grey stage. overflow:hidden clips the tracks; the phone is a
      SIBLING (not a child) so it can overhang the stage top and bottom. */
