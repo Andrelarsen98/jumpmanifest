@@ -202,6 +202,10 @@
   h2 { text-align: center; margin: 14px auto 0; font-weight: 800; letter-spacing: -.04em;
     line-height: 1.05; font-size: clamp(32px, 6vw, 56px); max-width: 14ch; }
   /* ---------- three-up feature cards ---------- */
+  /* Same silver-then-ink split as the hero h1 and the FAQ heading. Wider than
+     the default 14ch so each sentence holds its own line. */
+  h2 .l1 { color: #9a96a6; }
+  #trio h2 { max-width: 26ch; }
   /* stretch, so all three cards share a top and a bottom edge */
   .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 1.8vw, 22px);
     align-items: stretch; margin-top: clamp(38px, 5vw, 62px); }
@@ -529,7 +533,7 @@
 <section class="block" id="trio">
   <div class="wrap">
     <div class="kicker">Built for the dropzone</div>
-    <h2>See what's happening. Prove what you've done.</h2>
+    <h2><span class="l1">See what's happening.</span><br />Prove what you've done.</h2>
 
     <div class="trio">
       <div class="tcard">
