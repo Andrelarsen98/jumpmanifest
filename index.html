@@ -240,18 +240,23 @@
      right, so the wrapper is offset by exactly that much and the device lands
      dead centre. Everything inside is then positioned off the device. */
   .carousel-hand { position: absolute; left: 50%; top: 50%; z-index: 2;
-    width: clamp(235px, 31vw, 385px); transform: translate(calc(-50% - 17.2%), -50%);
+    width: clamp(220px, 28vw, 350px); transform: translate(calc(-50% - 17.2%), -50%);
     pointer-events: none; }
-  .carousel-phone { display: block; width: 100%; height: auto;
+  /* The mist sits BEHIND the hand (z-index -1 inside the wrapper) and is a
+     radial-gradient, not a bitmap — a blurred PNG still has hard image bounds,
+     which read as a pale rectangle once it's scaled up. A gradient ending on a
+     transparent stop has no edge to show, at any size. */
+  .carousel-hand::after { content: ''; position: absolute; z-index: -1;
+    left: 67.2%; bottom: -4%; width: 210%; height: 42%; transform: translateX(-50%);
+    background: radial-gradient(closest-side ellipse at 50% 50%,
+      rgba(255,255,255,.92) 0%, rgba(255,255,255,.62) 45%, rgba(255,255,255,0) 100%); }
+  .carousel-phone { display: block; width: 100%; height: auto; position: relative;
     filter: drop-shadow(0 34px 64px rgba(15,11,28,.30));
-    /* dissolve the wrist's hard bottom crop so it melts into the cloud
-       instead of stopping on a straight cut */
-    -webkit-mask-image: linear-gradient(#000 68%, rgba(0,0,0,.55) 86%, transparent 99%);
-    mask-image: linear-gradient(#000 68%, rgba(0,0,0,.55) 86%, transparent 99%); }
-  /* 67.2% == the device's own centre inside the image, so the bank sits under
-     the phone rather than under the whole arm */
-  .carousel-cloud { position: absolute; left: 67.2%; bottom: -13%; width: 172%;
-    height: auto; transform: translateX(-50%); opacity: .92; }
+    /* The source photo runs out mid-forearm, leaving a straight horizontal
+       crop. Fading the last third out means the wrist dissolves instead of
+       stopping on a hard line — no overlay needed to cover it. */
+    -webkit-mask-image: linear-gradient(#000 58%, rgba(0,0,0,.45) 82%, transparent 97%);
+    mask-image: linear-gradient(#000 58%, rgba(0,0,0,.45) 82%, transparent 97%); }
 
   @media (prefers-reduced-motion: reduce) { .ctrack { animation: none; } }
   .lead { text-align: center; margin: 16px auto 0; max-width: 46ch; color: var(--muted);
@@ -491,7 +496,6 @@
 
     <div class="carousel-hand">
       <img class="carousel-phone" src="/assets/carousel/phone-hand.png" alt="Manifest showing live loads at Skydive Chicago" width="894" height="1295" decoding="async">
-      <img class="carousel-cloud" src="/assets/carousel/cloud.png" alt="" aria-hidden="true" width="1400" height="520" decoding="async">
     </div>
   </div>
 </section>
