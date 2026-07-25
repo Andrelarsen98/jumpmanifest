@@ -203,7 +203,7 @@
     padding: clamp(30px, 4.5vw, 52px) 24px; }
   /* The soft grey stage. overflow:hidden clips the tracks; the phone is a
      SIBLING (not a child) so it can overhang the stage top and bottom. */
-  .carousel-rows { background: #f3f1f7; border-radius: 30px; overflow: hidden;
+  .carousel-rows { background: #f5f5f6; border-radius: 30px; overflow: hidden;
     padding: clamp(22px, 3vw, 34px) 0; display: flex; flex-direction: column; gap: clamp(14px, 2vw, 20px);
     /* fade both ends into the page instead of a hard cut */
     -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 11%, #000 89%, transparent 100%);
@@ -243,7 +243,7 @@
      no bottom fade, no mist. The whole phone is in frame and ends on its own
      rounded edge. */
   .carousel-phone { position: absolute; left: 50%; top: 50%; z-index: 2;
-    transform: translate(-50%, -50%); width: clamp(190px, 23vw, 285px); height: auto;
+    transform: translate(-50%, -50%); width: clamp(215px, 27vw, 330px); height: auto;
     pointer-events: none; filter: drop-shadow(0 30px 58px rgba(15,11,28,.26)); }
 
   @media (prefers-reduced-motion: reduce) { .ctrack { animation: none; } }
@@ -421,7 +421,7 @@
 
 <section class="block" id="why">
   <div class="wrap">
-    <p class="statement">Goodbye trust-me-bro 🤝 Manifest turns every jump into proof 🪂 nobody has to take your word for it.</p>
+    <p class="statement">Goodbye trust-me-bro 🤝 Manifest turns every jump into proof 🪂 nobody takes your word.</p>
 
   </div>
 
