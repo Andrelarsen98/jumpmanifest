@@ -234,9 +234,24 @@
   .ctext p span { display: block; margin-top: 3px; color: var(--muted); font-weight: 600;
     font-size: clamp(12.5px, 1.3vw, 14px); line-height: 1.3; }
 
-  .carousel-phone { position: absolute; left: 50%; top: 50%; z-index: 2;
-    transform: translate(-50%, -50%); width: clamp(235px, 31vw, 385px); height: auto;
-    pointer-events: none; filter: drop-shadow(0 34px 64px rgba(15,11,28,.30)); }
+  /* The cut-out's arm trails down-LEFT, so its bounding box centre is not the
+     phone's centre — the device sits 17.2% of the image width to the right of
+     it (measured off the PNG). Centring the image would visibly push the phone
+     right, so the wrapper is offset by exactly that much and the device lands
+     dead centre. Everything inside is then positioned off the device. */
+  .carousel-hand { position: absolute; left: 50%; top: 50%; z-index: 2;
+    width: clamp(235px, 31vw, 385px); transform: translate(calc(-50% - 17.2%), -50%);
+    pointer-events: none; }
+  .carousel-phone { display: block; width: 100%; height: auto;
+    filter: drop-shadow(0 34px 64px rgba(15,11,28,.30));
+    /* dissolve the wrist's hard bottom crop so it melts into the cloud
+       instead of stopping on a straight cut */
+    -webkit-mask-image: linear-gradient(#000 68%, rgba(0,0,0,.55) 86%, transparent 99%);
+    mask-image: linear-gradient(#000 68%, rgba(0,0,0,.55) 86%, transparent 99%); }
+  /* 67.2% == the device's own centre inside the image, so the bank sits under
+     the phone rather than under the whole arm */
+  .carousel-cloud { position: absolute; left: 67.2%; bottom: -13%; width: 172%;
+    height: auto; transform: translateX(-50%); opacity: .92; }
 
   @media (prefers-reduced-motion: reduce) { .ctrack { animation: none; } }
   .lead { text-align: center; margin: 16px auto 0; max-width: 46ch; color: var(--muted);
@@ -474,7 +489,10 @@
       </div>
     </div>
 
-    <img class="carousel-phone" src="/assets/carousel/phone-hand.png" alt="Manifest showing live loads at Skydive Chicago" width="894" height="1295" decoding="async">
+    <div class="carousel-hand">
+      <img class="carousel-phone" src="/assets/carousel/phone-hand.png" alt="Manifest showing live loads at Skydive Chicago" width="894" height="1295" decoding="async">
+      <img class="carousel-cloud" src="/assets/carousel/cloud.png" alt="" aria-hidden="true" width="1400" height="520" decoding="async">
+    </div>
   </div>
 </section>
 
