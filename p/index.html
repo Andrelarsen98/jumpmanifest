@@ -28,7 +28,20 @@
   .brand .m { width:26px; height:26px; border-radius:7px; background:#fff; display:flex; align-items:center; justify-content:center; }
   .brand .m img { width:18px; height:18px; }
   .tag { font-size:11px; font-weight:800; letter-spacing:1.4px; opacity:.85; }
-  .name { font-size:27px; font-weight:800; letter-spacing:-.5px; margin-top:14px; display:flex; align-items:center; gap:8px; }
+  /* Photo + name sit on one row. Without a face this card is just a name the
+     holder typed in — the desk has no way to tell it belongs to the person
+     standing there, which is the entire job of a check-in pass. */
+  .idrow { display:flex; align-items:center; gap:14px; margin-top:14px; }
+  .idrow .who { min-width:0; }
+  .face { width:64px; height:64px; border-radius:16px; flex:none; object-fit:cover;
+          background:rgba(255,255,255,.18); border:2px solid rgba(255,255,255,.5); }
+  .face-ph { width:64px; height:64px; border-radius:16px; flex:none; display:flex; align-items:center;
+             justify-content:center; font-size:26px; font-weight:800; color:#fff;
+             background:rgba(255,255,255,.18); border:2px solid rgba(255,255,255,.35); }
+  .name { font-size:27px; font-weight:800; letter-spacing:-.5px; display:flex; align-items:center; gap:8px; }
+  /* Home DZ: free context a desk recognises ("ah, Chicago"). Already returned
+     by the RPC and previously unused. */
+  .home { font-size:13px; font-weight:600; opacity:.8; margin-top:2px; }
   .badges { display:flex; flex-wrap:wrap; gap:8px; margin-top:11px; }
   .pill { background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.25); color:#fff; font-size:12.5px; font-weight:700;
     padding:5px 12px; border-radius:999px; }
@@ -137,8 +150,24 @@
     return `<div class="gear"><div class="credhead">RECENT JUMPS</div>${rows}</div>`;
   }
 
-  function showState(msg) {
-    document.getElementById('root').innerHTML = `<div class="state">${msg}</div>`;
+  // Branded card, not bare text on white. This fires at the worst possible
+  // moment — a jumper standing at a desk while someone scans their code — and
+  // an unstyled grey sentence is indistinguishable from a broken website.
+  // Keeping the Manifest band means a failure still looks like a system.
+  function showState(msg, hint) {
+    document.getElementById('root').innerHTML = `
+      <div class="card">
+        <div class="band">
+          <div class="band-top">
+            <div class="brand"><span class="m"><img src="/assets/app-icon.png" alt=""/></span>Manifest</div>
+            <span class="tag">CHECK-IN PASS</span>
+          </div>
+        </div>
+        <div class="state">
+          <div style="font-weight:700;color:var(--ink);font-size:15px">${msg}</div>
+          ${hint ? `<div style="margin-top:8px;line-height:1.5">${hint}</div>` : ''}
+        </div>
+      </div>`;
   }
 
   function render(p) {
@@ -166,7 +195,16 @@
             <div class="brand"><span class="m"><img src="/assets/app-icon.png" alt=""/></span>Manifest</div>
             <span class="tag">CHECK-IN PASS</span>
           </div>
-          <div class="name">${esc(p.name || 'Skydiver')}</div>
+          <div class="idrow">
+            ${p.avatar_url
+              ? `<img class="face" src="${esc(p.avatar_url)}" alt="" referrerpolicy="no-referrer"
+                   onerror="this.outerHTML='<div class=\\'face-ph\\'>${esc((p.name || 'S').trim().charAt(0).toUpperCase())}</div>'"/>`
+              : `<div class="face-ph">${esc((p.name || 'S').trim().charAt(0).toUpperCase())}</div>`}
+            <div class="who">
+              <div class="name">${esc(p.name || 'Skydiver')}</div>
+              ${p.home_dz ? `<div class="home">${esc(p.home_dz)}</div>` : ''}
+            </div>
+          </div>
           <div class="badges">
             ${license ? `<span class="pill lic">${esc(license)}</span>` : ''}
             ${ratings.map(r => `<span class="pill">${esc(r)}</span>`).join('')}
@@ -192,26 +230,31 @@
         ${recentJumpsHtml(p.recent_jumps)}
       </div>
       <div class="foot">
-        <strong style="color:var(--ink)">Live verification from Manifest — updates in real time, can't be edited or faked.</strong><br/>
-        Total jumps are self-logged; Verified jumps were signed off by another licensed jumper (name &amp; license on each). Reserve &amp; AAD dates come from the holder's gear locker.
+        <!-- The old line read "updates in real time, can't be edited or faked",
+             which overstated it: licence number, total jumps and gear dates are
+             all entered by the holder. Only the signed-off count is witnessed.
+             Bold the DISTINCTION rather than an absolute claim — this is the one
+             page whose whole job is being believed. -->
+        <strong style="color:var(--ink)">Verified jumps were signed off in person by another licensed jumper — their name and licence are recorded on each, and a signed jump can't be edited afterwards.</strong><br/>
+        Everything else on this pass — licence, total jumps, reserve &amp; AAD dates — is entered by the holder. Live from Manifest, updates in real time.
         <br/><a class="cta" href="/">Get Manifest</a>
       </div>`;
   }
 
   (async () => {
     const code = getCode();
-    if (!code) { showState('No pass code in this link.'); return; }
+    if (!code) { showState('No pass code in this link.', 'The QR may have been cropped. Ask the jumper to show it again.'); return; }
     try {
       // Goes through our rate-limited proxy (/api/pass) — the Supabase key is
       // never exposed in the page.
       const res = await fetch('/api/pass?code=' + encodeURIComponent(code));
-      if (res.status === 429) { showState('Too many requests. Please wait a moment and try again.'); return; }
-      if (!res.ok) { showState('Couldn’t load this pass. Please try again.'); return; }
+      if (res.status === 429) { showState('Too many requests.', 'Please wait a moment and try again.'); return; }
+      if (!res.ok) { showState('Couldn’t load this pass.', 'Please try again in a moment.'); return; }
       const data = await res.json();
-      if (!data) { showState('This pass could not be found.'); return; }
+      if (!data) { showState('No pass matches this code.', 'Ask the jumper to reopen their Check-in Pass in the Manifest app for a fresh code.'); return; }
       render(data);
     } catch (e) {
-      showState('Couldn’t load this pass. Check your connection and try again.');
+      showState('Couldn’t load this pass.', 'Check your connection and try again.');
     }
   })();
 </script>
