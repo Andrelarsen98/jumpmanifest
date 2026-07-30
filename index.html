@@ -132,16 +132,13 @@
   .store span { display: flex; flex-direction: column; line-height: 1.15; text-align: left; }
   .store small { font-size: 9.5px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: #948da6; }
   .store b { font-size: 14px; font-weight: 800; letter-spacing: -.01em; }
-  /* single store button — bright sky blue */
-  .appbtn { margin: 24px auto 0; display: inline-flex; align-items: center; gap: 10px;
-    padding: 11px 22px; border-radius: 15px; color: #fff;
-    background: linear-gradient(180deg, #4cc3ff 0%, #18a6f2 100%);
-    box-shadow: 0 14px 34px rgba(24,166,242,.4); transition: transform .15s ease, box-shadow .15s ease; }
-  .appbtn:hover { transform: translateY(-1px); box-shadow: 0 18px 40px rgba(24,166,242,.5); }
-  .appbtn svg { width: 23px; height: 23px; fill: #fff; flex: 0 0 auto; }
-  .appbtn span { display: flex; flex-direction: column; line-height: 1.12; text-align: left; }
-  .appbtn small { font-size: 10px; font-weight: 600; opacity: .85; }
-  .appbtn b { font-size: 15px; font-weight: 800; letter-spacing: -.01em; }
+  /* Official Apple App Store badge. Apple's marketing guidelines require their
+     supplied artwork for App Store links rather than a custom-drawn button, and
+     the real badge also reads as more legitimate than a lookalike. Sized by
+     height so the native 135:40 ratio is never distorted. */
+  .appbtn { margin: 24px auto 0; display: inline-block; transition: transform .15s ease, filter .15s ease; }
+  .appbtn img { height: 54px; width: auto; display: block; }
+  .appbtn:hover { transform: translateY(-1px); filter: brightness(1.06); }
   .err { margin-top: 12px; font-size: 13px; color: #e5484d; font-weight: 700; display: none; }
   .err.show { display: block; }
   .ok { display: none; margin: 30px auto 0; max-width: 480px; padding: 16px 22px; border-radius: 16px;
@@ -517,9 +514,8 @@
     <p class="sub">Every jump witnessed. Every rig current. Your proof, in seconds.</p>
 
     <a class="appbtn" href="https://apps.apple.com/app/id6778510429" aria-label="Download Manifest on the App Store">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.36 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.75 2.28-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.35 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.66zM14.13 5.85c.64-.78 1.07-1.85.95-2.93-.92.04-2.04.61-2.7 1.38-.59.68-1.11 1.78-.97 2.83 1.03.08 2.08-.52 2.72-1.28z"/></svg>
-      <span><small>Download on the</small><b>App Store</b></span>
-    </a>
+        <img src="assets/appstore-badge.svg?v=1" alt="Download on the App Store" />
+      </a>
 
     <div class="fan">
       <div class="phone back"><img src="assets/mock-pro.png" alt="Live loads on your lock screen" /></div>
@@ -732,8 +728,7 @@
     <h2>Get Manifest</h2>
     <div class="capture">
       <a class="appbtn" href="https://apps.apple.com/app/id6778510429" aria-label="Download Manifest on the App Store">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.36 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.75 2.28-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.35 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.66zM14.13 5.85c.64-.78 1.07-1.85.95-2.93-.92.04-2.04.61-2.7 1.38-.59.68-1.11 1.78-.97 2.83 1.03.08 2.08-.52 2.72-1.28z"/></svg>
-        <span><small>Download on the</small><b>App Store</b></span>
+        <img src="assets/appstore-badge.svg?v=1" alt="Download on the App Store" />
       </a>
       <div class="note">Free to download. Log every jump, get them signed off, and carry your Check-in Pass.</div>
     </div>
