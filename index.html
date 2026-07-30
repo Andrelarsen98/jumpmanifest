@@ -8,7 +8,7 @@
 <meta name="description" content="Manifest is the verified record for skydivers — every jump witnessed and signed off, every rig in date, and a Check-in Pass that proves your licence and currency in seconds." />
 <meta property="og:site_name" content="Manifest" />
 <meta property="og:title" content="Manifest — Skydiving, Verified" />
-<meta property="og:description" content="Every jump witnessed. Every rig current. Your proof, in seconds. Join the waitlist." />
+<meta property="og:description" content="Every jump witnessed. Every rig current. Your proof, in seconds. Free on the App Store." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.jumpmanifest.com/" />
 <meta property="og:image" content="https://www.jumpmanifest.com/assets/og-image.png?v=3" />
@@ -475,7 +475,7 @@
       <a href="#why">About</a>
       <a href="mailto:andre@manifestjump.com">Contact</a>
     </span>
-    <a href="#waitlist" class="btn">Join waitlist</a>
+    <a href="https://apps.apple.com/app/id6778510429" class="btn" target="_blank" rel="noopener">Download</a>
   </div>
 </nav>
 
@@ -484,9 +484,9 @@
     <h1><span class="l1">Skydiving,</span><br /><span class="l2">Verified.</span></h1>
     <p class="sub">Every jump witnessed. Every rig current. Your proof, in seconds.</p>
 
-    <a class="appbtn" href="#waitlist" aria-label="Coming soon to the App Store">
+    <a class="appbtn" href="https://apps.apple.com/app/id6778510429" target="_blank" rel="noopener" aria-label="Download Manifest on the App Store">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.36 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.75 2.28-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.35 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.66zM14.13 5.85c.64-.78 1.07-1.85.95-2.93-.92.04-2.04.61-2.7 1.38-.59.68-1.11 1.78-.97 2.83 1.03.08 2.08-.52 2.72-1.28z"/></svg>
-      <span><small>Soon on the</small><b>App Store</b></span>
+      <span><small>Download on the</small><b>App Store</b></span>
     </a>
 
     <div class="fan">
@@ -682,7 +682,7 @@
       </details>
       <details class="faq">
         <summary>Is Android coming?</summary>
-        <p>Manifest is launching on iPhone first so we can do it properly. Join the waitlist and we will let you know the moment Android is ready.</p>
+        <p>Manifest is on iPhone first so we could do it properly. Android is on the roadmap - email me and I will let you know the moment it is ready.</p>
       </details>
     </div>
 
@@ -693,16 +693,17 @@
 
 <section class="final">
   <div class="wrap">
-    <div class="kicker">Be first off the plane</div>
-    <h2>Join the waitlist</h2>
-    <div class="capture" id="waitlist">
-      <form class="cap" id="waitForm2" novalidate>
-        <input type="email" id="email2" placeholder="Enter your email" autocomplete="email" required />
-        <button type="submit" class="btn">Join waitlist</button>
-      </form>
-      <div class="note">We're onboarding skydivers in waves. Drop your email and we'll save your spot.</div>
-      <div class="err" id="errMsg2">Something went wrong. Please try again.</div>
-      <div class="ok" id="okMsg2">You're on the list — we'll email you the moment Manifest opens.</div>
+    <!-- Was the waitlist capture. The app is live, so asking for an email
+         instead of sending people to the App Store would be throwing away the
+         intent of everyone who scrolled this far. -->
+    <div class="kicker">It's out</div>
+    <h2>Get Manifest</h2>
+    <div class="capture">
+      <a class="appbtn" href="https://apps.apple.com/app/id6778510429" target="_blank" rel="noopener" aria-label="Download Manifest on the App Store">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.36 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.75 2.28-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.35 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.66zM14.13 5.85c.64-.78 1.07-1.85.95-2.93-.92.04-2.04.61-2.7 1.38-.59.68-1.11 1.78-.97 2.83 1.03.08 2.08-.52 2.72-1.28z"/></svg>
+        <span><small>Download on the</small><b>App Store</b></span>
+      </a>
+      <div class="note">Free to download. Log every jump, get them signed off, and carry your Check-in Pass.</div>
     </div>
   </div>
 </section>
@@ -729,71 +730,11 @@
   <div class="wrap made">Made for skydivers, by a skydiver. 🪂</div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script>
-  // ---- Supabase config (anon key is public by design; row-level security guards writes) ----
-  var SUPABASE_URL = "https://wkefdtglgbfprvfajrrw.supabase.co";
-  var SUPABASE_ANON_KEY = "sb_publishable_bSZ85fokRcmDjIzYr7Q9mQ_w4dQ0b3b";
-
-  var db = null;
-  if (window.supabase && SUPABASE_URL.indexOf("http") === 0) {
-    db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-  }
-
-  var EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
-
-  function wire(formId, okId, errId) {
-    var form = document.getElementById(formId);
-    if (!form) return;
-    var ok = document.getElementById(okId);
-    var err = document.getElementById(errId);
-    var input = form.querySelector("input");
-    var button = form.querySelector("button");
-
-    function showError(msg) {
-      if (err) { err.textContent = msg; err.classList.add("show"); }
-      input.focus();
-      form.style.boxShadow = "0 0 0 2px rgba(229,72,77,.55)";
-      setTimeout(function () { form.style.boxShadow = "none"; }, 900);
-    }
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      if (err) err.classList.remove("show");
-
-      var val = (input.value || "").trim().toLowerCase();
-      if (!EMAIL_RE.test(val)) {
-        showError("Please enter a valid email address.");
-        return;
-      }
-
-      function succeed() {
-        form.style.display = "none";
-        if (err) err.classList.remove("show");
-        if (ok) ok.classList.add("show");
-      }
-
-      if (!db) { succeed(); return; }
-
-      button.disabled = true;
-      var original = button.textContent;
-      button.textContent = "Joining…";
-
-      db.from("waitlist").insert({ email: val }).then(function (res) {
-        button.disabled = false;
-        button.textContent = original;
-        // 23505 = unique_violation → already signed up, treat as success.
-        if (res.error && res.error.code !== "23505") {
-          showError("Something went wrong. Please try again.");
-          return;
-        }
-        succeed();
-      });
-    });
-  }
-
-  wire("waitForm", "okMsg", "errMsg");
-  wire("waitForm2", "okMsg2", "errMsg2");
+  // The waitlist form, its Supabase client and the CDN bundle all lived here.
+  // The app shipped, so the capture is gone — and with it a ~100KB third-party
+  // script and the anon key on every page load. Nothing else on this page
+  // talked to Supabase.
 
   // ---- Cloud reveal: transparent clouds part left/right as the section scrolls,
   // revealing the phone behind. Transform-only, rAF-throttled. ----
