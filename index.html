@@ -269,10 +269,6 @@
     .tcard > .tmedia { margin-top: 0; }
     /* and the phone sits smaller and centred rather than filling the card */
     .tmedia { width: 72%; margin-left: auto; margin-right: auto; }
-    /* Stacked, the page already shows three phones in the trio plus two in the
-       flag sections — the carousel's phone on top of that is one mockup too
-       many, and it crowds the narrow stage. Desktop keeps it. */
-    .carousel-phone { display: none; }
     .carousel { margin-bottom: 0; }
   }
 
@@ -325,6 +321,15 @@
   .carousel-phone { position: absolute; left: 50%; top: 50%; z-index: 2;
     transform: translate(-50%, -50%); width: clamp(215px, 27vw, 330px); height: auto;
     pointer-events: none; filter: drop-shadow(0 30px 58px rgba(15,11,28,.26)); }
+
+  /* Mobile keeps the carousel phone — it's the anchor that makes the drifting
+     cards read as "this is the app" rather than a bare mood board. This block
+     has to live AFTER the base rule above: the earlier max-width:980px block
+     sits higher in the file, so at equal specificity the base width would win
+     and the override would silently do nothing. */
+  @media (max-width: 980px) {
+    .carousel-phone { width: min(58vw, 250px); }
+  }
 
   @media (prefers-reduced-motion: reduce) { .ctrack { animation: none; } }
   .lead { text-align: center; margin: 16px auto 0; max-width: 46ch; color: var(--muted);
