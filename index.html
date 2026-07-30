@@ -375,6 +375,15 @@
     .reveal-phone { position: static; transform: translateX(0); margin: 0 auto; }
     .cloud { display: none; }
   }
+  /* Mobile drops the hand-and-clouds reveal entirely. It's a full-viewport
+     scroll set-piece that works on a wide screen, but on a phone it's another
+     full screen of scrolling between the download CTA and the footer — and the
+     page already shows the app on a phone twice by that point. Without it the
+     App Store badge lands directly above the footer links, which is where
+     someone who scrolled the whole page actually wants it. */
+  @media (max-width: 980px) {
+    .reveal { display: none; }
+  }
 
   /* ---------- FAQ accordions ---------- */
   .faqs { margin: 44px auto 0; max-width: 720px; display: flex; flex-direction: column; gap: 12px; }
