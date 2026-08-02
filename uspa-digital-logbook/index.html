@@ -50,7 +50,14 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
 .nav-links a { color: rgba(255,255,255,.92); font-weight: 600; font-size: 14.5px; }
 .btn { padding: 9px 17px; font-size: 14px; }
 .btn:hover { transform: translateY(-1px); box-shadow: 0 12px 26px rgba(124,58,237,.4); }
-  .btn { background: #fff; color: var(--ink); border-radius: 999px; font-weight: 800; }
+  .btn {
+    font-family: inherit; font-weight: 700; font-size: 15px; letter-spacing: -.01em;
+    border: 0; cursor: pointer; border-radius: 100px; padding: 12px 22px;
+    background: var(--violet); color: #fff; transition: transform .15s ease, box-shadow .15s ease;
+    box-shadow: 0 8px 20px rgba(124,58,237,.28); white-space: nowrap;
+  }
+  .btn:hover { transform: translateY(-1px); box-shadow: 0 12px 26px rgba(124,58,237,.4); text-decoration: none; }
+  .nav-in .btn { padding: 9px 17px; font-size: 14px; }
 
   /* clears the fixed pill */
   .doc { padding: 132px 0 90px; }

@@ -620,12 +620,12 @@
 
 <nav>
   <div class="nav-in">
-    <a class="brand" href="#top">
+    <a class="brand" href="#top" data-home>
       <img src="assets/app-icon.png" alt="Manifest" />
       <span class="nm">Manifest</span>
     </a>
     <span class="nav-links">
-      <a href="#top">Home</a>
+      <a href="#top" data-home>Home</a>
       <a href="/about">About</a>
       <a href="mailto:andre@manifestjump.com">Contact</a>
     </span>
@@ -989,6 +989,26 @@
     var copy = set.cloneNode(true);
     copy.setAttribute('aria-hidden', 'true');
     track.appendChild(copy);
+  });
+</script>
+
+<script>
+  // Home (and the brand mark) scroll to the TOP OF THE DOCUMENT, not to #top.
+  //
+  // #top sits on the hero, and the hero is not at document position 0 — there
+  // is a hidden in-app-browser banner and its style/script blocks above it. So
+  // an anchor jump landed ~100px down the page and parked the headline behind
+  // the floating nav, which reads as "Home doesn't go all the way up".
+  //
+  // scrollTo(0) has no such dependency: wherever the hero is, the top is the
+  // top. Keeps the smooth behaviour, and leaves the href as a working fallback
+  // if scripting is off.
+  document.querySelectorAll('[data-home]').forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (history.replaceState) history.replaceState(null, '', location.pathname);
+    });
   });
 </script>
 </body>
