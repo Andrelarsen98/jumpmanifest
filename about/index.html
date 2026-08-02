@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About Manifest — the skydiving logbook built by a jumper</title>
+<meta name="description" content="What Manifest does, how verified sign-offs work, and why a skydiver built a logbook app with live dropzone loads, gear service tracking and a DZ check-in pass." />
+<link rel="canonical" href="https://www.jumpmanifest.com/about/" />
+<meta property="og:title" content="About Manifest" />
+<meta property="og:description" content="A skydiving logbook where jumps are witnessed and signed off, not self-reported." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.jumpmanifest.com/about/" />
+<meta name="theme-color" content="#F7F6FB" />
+<link rel="icon" type="image/png" href="/assets/app-icon.png" />
+<link rel="apple-touch-icon" href="/assets/app-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #140f24;
+    --purple: #6D28D9;
+    --muted: #6b6480;
+    --line: rgba(20,15,36,.10);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--ink); background: #F7F6FB; -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+  }
+  a { color: var(--purple); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  img { display: block; max-width: 100%; }
+  .wrap { width: 100%; max-width: 760px; margin: 0 auto; padding: 0 22px; }
+
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    background: rgba(247,246,251,.72); border-bottom: 1px solid var(--line);
+  }
+  .nav-in { display: flex; align-items: center; justify-content: space-between; height: 70px; max-width: 1140px; margin: 0 auto; padding: 0 22px; }
+  .brand { display: inline-flex; align-items: center; gap: 12px; }
+  .brand img { width: 38px; height: 38px; border-radius: 11px; box-shadow: 0 6px 18px rgba(124,58,237,.35); }
+  .brand .nm { font-weight: 800; font-size: 22px; letter-spacing: -.02em; }
+  .back { font-weight: 700; font-size: 15px; color: var(--muted); }
+  .back:hover { color: var(--ink); text-decoration: none; }
+
+  .doc { padding: 54px 0 90px; }
+  .doc h1 { font-weight: 800; letter-spacing: -.03em; font-size: clamp(30px, 5vw, 42px); line-height: 1.1; }
+  .doc .intro { font-size: 17px; margin-top: 14px; color: #312a44; font-weight: 500; }
+  .doc h2 { font-weight: 800; letter-spacing: -.02em; font-size: 21px; margin: 40px 0 6px; }
+  .doc h3 { font-weight: 800; font-size: 16px; margin: 24px 0 4px; }
+  .doc p { margin: 12px 0; color: #312a44; font-weight: 500; }
+  .doc ul { margin: 12px 0 12px 4px; padding-left: 22px; color: #312a44; font-weight: 500; }
+  .doc li { margin: 7px 0; }
+  .doc strong { color: var(--ink); font-weight: 800; }
+
+  .card {
+    margin: 22px 0 6px; padding: 22px 24px; border-radius: 18px;
+    background: #fff; border: 1px solid var(--line);
+    box-shadow: 0 10px 30px rgba(20,15,36,.05);
+  }
+  .card .lbl { font-weight: 700; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+  .card .email { font-weight: 800; font-size: clamp(20px, 3.4vw, 26px); letter-spacing: -.02em; margin-top: 4px; }
+  .card .reply { margin-top: 8px; color: var(--muted); font-weight: 600; font-size: 14px; }
+
+  footer { border-top: 1px solid var(--line); padding: 30px 0 50px; }
+  .foot-in { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; max-width: 1140px; margin: 0 auto; padding: 0 22px; }
+  .foot-links { display: flex; gap: 20px; font-weight: 700; font-size: 14px; }
+  .foot-links a { color: var(--muted); } .foot-links a:hover { color: var(--ink); text-decoration: none; }
+  .handle { color: var(--muted); font-weight: 700; font-size: 14px; }
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-in">
+    <a class="brand" href="/"><img src="/assets/app-icon.png" alt="Manifest" /><span class="nm">Manifest</span></a>
+    <a class="back" href="/">&larr; Back to home</a>
+  </div>
+</nav>
+
+<main class="doc">
+  <div class="wrap">
+    <h1>About Manifest</h1>
+    <p class="intro">Manifest is a skydiving logbook app for iPhone. Jumps are signed off in person by another licensed jumper rather than self-reported, it shows the loads turning at 160+ dropzones live, and it keeps your gear service dates in date. It is free to download.</p>
+
+    <h2>Why it exists</h2>
+    <p>A paper logbook gets lost, soaked, and questioned. Digital ones mostly replaced the paper without replacing the problem: a number you typed in yourself is still a number you typed in yourself. Anyone can claim 500 jumps.</p>
+    <p>At the same time, every dropzone runs its own manifest board, so following loads means a different bookmark for every DZ you visit, and none of them know who you are.</p>
+    <p>Manifest was built to fix both: make a jump into something you can prove, and put every dropzone&rsquo;s board in one place.</p>
+
+    <h2>How a jump gets verified</h2>
+    <p>You log the jump. Another licensed jumper who was there scans a QR code from your phone, reviews the entry, and signs it. Their name and licence number are recorded on that jump. Once signed, the jump is locked and can no longer be edited or deleted, and if a signature is later withdrawn the record of it stays rather than being erased.</p>
+    <p>Your logbook then shows two numbers side by side: your total jumps, and the ones independently verified. The second number is the one that means something at a desk.</p>
+    <p>Manifest captures every field USPA SIM 3-1 requires for a logged jump, and a jump can only be signed off once they are filled in. There is a fuller explanation in <a href="/uspa-digital-logbook/">digital logbooks and USPA SIM 3-1</a>.</p>
+
+    <h2>Live loads from 160+ dropzones</h2>
+    <p>Manifest reads the dropzone&rsquo;s own board, so you see what is actually turning: which loads are building, who is manifested on them, how many slots are left, and how long until the plane goes. If you are on a load, your load is marked as yours.</p>
+    <p>With Manifest Pro that load appears on your lock screen with gear-up and final-call alerts, so it does not leave without you.</p>
+
+    <h2>The DZ Check-in Pass</h2>
+    <p>Your licence, ratings, currency, reserve repack and AAD dates and an emergency contact on one scannable screen, pulled straight from your record so it cannot be edited by hand. Show it at the desk instead of emptying your gear bag. Whoever scans it does not need the app.</p>
+
+    <h2>What else is in it</h2>
+    <ul>
+      <li><strong>Gear locker</strong> &mdash; every rig, canopy, reserve, AAD and helmet with its full service history, and reminders before a repack falls due.</li>
+      <li><strong>Weather for jumpers</strong> &mdash; wind at exit, under canopy and on the ground, cloud by layer in feet, and sunset for that dropzone.</li>
+      <li><strong>Dropzone finder</strong> &mdash; browse and search dropzones near you or anywhere in the world.</li>
+      <li><strong>Community</strong> &mdash; follow the jumpers you fly with, see their verified jumps and milestones, message them directly.</li>
+      <li><strong>Events and coaches</strong> &mdash; boogies, courses and meetups, and coaches for canopy, freefall and tunnel work.</li>
+      <li><strong>Import your history</strong> &mdash; bring your whole logbook across from a CSV, from another app or your own spreadsheet.</li>
+      <li><strong>Works without signal</strong> &mdash; log a jump in airplane mode and it syncs when you are back online, which matters at a dropzone.</li>
+    </ul>
+
+    <h2>Free, and what Pro adds</h2>
+    <p>Your logbook, sign-offs, QR code, currency, statistics, live loads, dropzones, events, community and cloud backup are free, with no limit on how many jumps you log. Manifest Pro adds your load on your lock screen with alerts, the full credentials vault, your pass in Apple Wallet, and branded PDF exports of your signed-off logbook and gear passport. Pro is monthly or annual and starts with a free trial.</p>
+
+    <h2>Who built it</h2>
+    <p>Manifest is built by Andr&eacute; Larsen, a skydiver. It started as the app I wanted at my own dropzone &mdash; somewhere to keep jumps that would actually count as proof, and one place to see the loads instead of a bookmark for every DZ.</p>
+    <p>It is worked on every day, and most of what gets built comes from jumpers asking for it. Sign in with Apple, better dropzone search and several fixes all came from messages from people using it. If something is missing or broken, tell me and I will look at it properly.</p>
+
+    <h2>Get in touch</h2>
+    <p>Email <a href="mailto:andre@manifestjump.com"><strong>andre@manifestjump.com</strong></a> or find Manifest on Instagram at <a href="https://instagram.com/manifestjump" rel="noopener">@manifestjump</a>. There is also a <a href="/support">support page</a>.</p>
+    <p><a href="https://apps.apple.com/app/id6778510429" rel="noopener"><strong>Download Manifest on the App Store</strong></a> &mdash; free, iPhone.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <span class="handle">&copy; 2026 Manifest</span>
+    <div class="foot-links">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/support">Support</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
