@@ -225,7 +225,12 @@
   nav .btn { padding: 9px 17px; font-size: 14px; }
   body { padding-top: 86px; }
   @media (max-width: 620px) {
-    .nav-links { display: none; }
+    .nav-links { display: inline-flex; gap: 0; }
+    /* Only About survives the narrow nav. Home is where you already are, and
+       Contact is in the footer — but About is a real page with the full
+       description on it, and on mobile it was unreachable entirely. */
+    .nav-links a { display: none; }
+    .nav-links a.nav-about { display: inline-flex; margin-right: 14px; }
   }
   .btn {
     font-family: inherit; font-weight: 700; font-size: 15px; letter-spacing: -.01em;
@@ -643,7 +648,7 @@
     </a>
     <span class="nav-links">
       <a href="#top" data-home>Home</a>
-      <a href="/about">About</a>
+      <a href="/about" class="nav-about">About</a>
       <a href="mailto:andre@manifestjump.com">Contact</a>
     </span>
     <a href="https://apps.apple.com/app/id6778510429" class="btn">Download</a>
@@ -886,11 +891,13 @@
 
 <footer>
   <div class="wrap foot-in">
-    <a class="foot-brand" href="#top">
+    <a class="foot-brand" href="#top" data-home>
       <img src="assets/app-icon.png" alt="Manifest" />
       <span class="nm">Manifest</span>
     </a>
     <span class="foot-links">
+      <a href="/about">About</a>
+      <a href="/support">Support</a>
       <a href="/privacy">Privacy</a>
       <a href="/terms">Terms</a>
       <a href="mailto:andre@manifestjump.com">Contact</a>
