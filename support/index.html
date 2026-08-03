@@ -54,6 +54,25 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
   .btn:hover { transform: translateY(-1px); box-shadow: 0 12px 26px rgba(124,58,237,.4); text-decoration: none; }
   .nav-in .btn { padding: 9px 17px; font-size: 14px; }
 
+
+  /* nav fits a phone */
+  .nav-in { gap: 10px; }
+  .brand, .nav-links, .nav-in .btn { min-width: 0; white-space: nowrap; }
+  @media (max-width: 560px) {
+    nav { width: 94vw; }
+    .nav-in { height: 50px; padding: 0 6px 0 12px; gap: 8px; }
+    .brand { gap: 7px; }
+    .brand img { width: 24px; height: 24px; }
+    .brand .nm { font-size: 15px; }
+    .nav-links { gap: 16px; }
+    .nav-links a { font-size: 13.5px; }
+    .nav-in .btn { padding: 8px 14px; font-size: 13.5px; }
+  }
+  @media (max-width: 380px) {
+    .brand .nm { display: none; }
+    .nav-links { gap: 14px; }
+  }
+
   /* clears the fixed pill */
   .doc { padding: 132px 0 90px; }
   .doc h1 { font-weight: 800; letter-spacing: -.035em; font-size: clamp(34px, 6vw, 52px); line-height: 1.05; }
@@ -83,7 +102,6 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
       <span class="nm">Manifest</span>
     </a>
     <span class="nav-links">
-      <a href="/">Home</a>
       <a href="/about">About</a>
       <a href="/support">Contact</a>
     </span>
@@ -141,7 +159,6 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
   <div class="foot-in">
     <span class="handle">&copy; 2026 Manifest</span>
     <div class="foot-links">
-      <a href="/">Home</a>
       <a href="/support">Support</a>
       <a href="/privacy">Privacy</a>
       <a href="/terms">Terms</a>

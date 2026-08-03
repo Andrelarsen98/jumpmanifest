@@ -224,13 +224,26 @@
   .nav-links a:hover { color: #fff; }
   nav .btn { padding: 9px 17px; font-size: 14px; }
   body { padding-top: 86px; }
-  @media (max-width: 620px) {
-    .nav-links { display: inline-flex; gap: 0; }
-    /* Only About survives the narrow nav. Home is where you already are, and
-       Contact is in the footer — but About is a real page with the full
-       description on it, and on mobile it was unreachable entirely. */
-    .nav-links a { display: none; }
-    .nav-links a.nav-about { display: inline-flex; margin-right: 14px; }
+  /* nav fits a phone */
+  .nav-in { gap: 10px; }
+  .brand, .nav-links, .nav-in .btn { min-width: 0; white-space: nowrap; }
+  @media (max-width: 560px) {
+    /* Both links now fit, so neither is hidden. Home is gone entirely — the
+       brand mark already goes home, and dropping it is what freed the width
+       that was making the brand run under the links and Download sit on top
+       of Contact. */
+    nav { width: 94vw; }
+    .nav-in { height: 50px; padding: 0 6px 0 12px; gap: 8px; }
+    .brand { gap: 7px; }
+    .brand img { width: 24px; height: 24px; }
+    .brand .nm { font-size: 15px; }
+    .nav-links { gap: 16px; }
+    .nav-links a { font-size: 13.5px; }
+    .nav-in .btn { padding: 8px 14px; font-size: 13.5px; }
+  }
+  @media (max-width: 380px) {
+    .brand .nm { display: none; }
+    .nav-links { gap: 14px; }
   }
   .btn {
     font-family: inherit; font-weight: 700; font-size: 15px; letter-spacing: -.01em;
@@ -647,7 +660,6 @@
       <span class="nm">Manifest</span>
     </a>
     <span class="nav-links">
-      <a href="#top" data-home>Home</a>
       <a href="/about" class="nav-about">About</a>
       <a href="/support">Contact</a>
     </span>
