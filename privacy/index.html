@@ -112,32 +112,43 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
 <main class="doc">
   <div class="wrap">
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: 26 July 2026</p>
+    <p class="updated">Last updated: 14 August 2026</p>
 
-    <p class="intro">Manifest (&ldquo;we&rdquo;, &ldquo;us&rdquo;, the &ldquo;App&rdquo;) is a logbook, gear passport, and events platform for skydivers. This policy explains what personal data we collect, why, and your rights over it.</p>
-    <p><strong>Data controller:</strong> André Larsen, Dubai, United Arab Emirates. Contact: <a href="mailto:andre@manifestjump.com"><strong>andre@manifestjump.com</strong></a>.</p>
+    <p class="intro">Manifest (&ldquo;we&rdquo;, &ldquo;us&rdquo;, the &ldquo;App&rdquo;) is a logbook, gear passport, jump recorder and events platform for skydivers. This policy explains what personal data we collect, why, and your rights over it.</p>
+    <p><strong>Data controller:</strong> André Larsen, Dubai, United Arab Emirates. Contact: <strong><a href="mailto:andre@manifestjump.com">andre@manifestjump.com</a></strong>.</p>
 
     <h2>1. Data we collect</h2>
     <h3>You provide:</h3>
     <ul>
-      <li><strong>Account:</strong> email address and password (passwords are stored hashed by our auth provider; we never see them in plain text).</li>
-      <li><strong>Profile:</strong> name, optional avatar photo, licence type and licensing body, ratings, bio, home dropzone, coaching details.</li>
-      <li><strong>Content you create:</strong> jump logs, gear items and service history, event listings and RSVPs, messages to other users, reports you file.</li>
-      <li><strong>Credential &amp; verification documents:</strong> if you choose to upload them, images of your licence, rigger ticket, insurance, medical or other credentials — for your in-app credentials wallet and, if you apply, for blue-check verification. These are stored privately and access-controlled, visible only to you and to authorised Manifest admins reviewing a verification request.</li>
+      <li>Account: email address and password (passwords are stored hashed by our auth provider; we never see them in plain text). If you sign in with Apple or Google, we receive your name and email address from them instead. If you use Apple&rsquo;s &ldquo;Hide My Email&rdquo;, we only ever receive Apple&rsquo;s relay address, never your real one.</li>
+      <li>Profile: name, optional avatar photo, license type and licensing body, ratings, bio, home dropzone, coaching details.</li>
+      <li>Content you create: jump logs, gear items and service history, event listings and RSVPs, messages to other users, reports you file.</li>
+      <li>Credential &amp; verification documents: if you choose to upload them, images of your license, rigger ticket, insurance, medical or other credentials, for your in-app credentials wallet and, if you apply, for blue-check verification. These are stored privately and access-controlled, visible only to you and to authorized Manifest admins reviewing a verification request.</li>
     </ul>
     <h3>Collected automatically / with permission:</h3>
     <ul>
-      <li>Approximate device location — <strong>only</strong> when you tap &ldquo;Near me&rdquo; to sort dropzones/events by distance. Location is used in-memory to compute distance and is not stored on our servers.</li>
+      <li><strong>Location, for finding places.</strong> When you tap &ldquo;Near me&rdquo; to sort dropzones or events by distance, we read your approximate location once. It is used in memory to compute distance and is not stored on our servers.</li>
+      <li><strong>Location, for recording a jump.</strong> 3D Jump Track records your <strong>precise</strong> location continuously while a recording is running, and it keeps recording <strong>in the background</strong>, with the screen off and the App not on screen. That is deliberate and it is the only way the feature can work: your phone is in a zipped pocket from takeoff to landing. Recording only ever runs when you start it or when you have switched on automatic start and the load you are on departs. It stops by itself once you are back on the ground.</li>
+      <li><strong>Motion and barometric pressure, for recording a jump.</strong> During a recording we read the barometer (air pressure, which is how altitude is measured) and the device&rsquo;s motion sensors at up to 100 times per second, which is how exit and canopy deployment are detected.</li>
+      <li><strong>The jump track itself:</strong> coordinates, altitudes, speeds and timestamps for the recording, together with the dropzone and aircraft it was on.</li>
+      <li><strong>Usage data:</strong> in-app product-interaction events (screens viewed, features used) and crash reports, collected to keep the App reliable and improve it.</li>
       <li>Notification permission and local reminder scheduling (gear service and currency reminders are scheduled on your device).</li>
-      <li><strong>Usage data:</strong> in-app product-interaction events (screens viewed, features used) and crash reports, collected to keep the app reliable and improve it.</li>
       <li>Basic technical data needed to run the service (e.g. session tokens).</li>
     </ul>
+    <h3>Jump tracks stay on your phone</h3>
+    <p><strong>We never upload your jump tracks.</strong> A recording, and every position, altitude and sensor sample in it, is written to storage on your own device and stays there. It is not sent to our servers, we cannot see it, and it is not part of your account.</p>
+    <p>Two consequences worth knowing:</p>
+    <ul>
+      <li>The App keeps only your most recent tracks (currently the last 25) and older ones are removed automatically to bound the space used on your phone.</li>
+      <li>Because a track is on your device rather than in your account, <strong>deleting your account does not delete tracks already recorded on that phone</strong>, and reinstalling or deleting the App removes them. You can delete any individual track in the App at any time.</li>
+    </ul>
+    <p>A track only ever leaves your device if <strong>you</strong> choose to send it: exporting it as a CSV or KML file, or sharing the replay image or video. At that point it goes wherever you send it, and that is your choice, not ours.</p>
 
     <h2>2. Why we use it (legal bases)</h2>
     <ul>
       <li><strong>To provide the service</strong> (contract): accounts, logbook, gear, events, messaging.</li>
-      <li><strong>Legitimate interests:</strong> safety/moderation (reports, suspensions), preventing fraud and abuse, product improvement, and internal aggregated statistics (for example, counting how many jumpers list a given home dropzone or country). These aggregates are only used to operate and improve Manifest and are never sold or shared.</li>
-      <li><strong>Consent:</strong> device location (&ldquo;Near me&rdquo;) and notifications — you can decline or revoke these at any time in your device settings.</li>
+      <li><strong>Legitimate interests:</strong> safety/moderation (reports, suspensions), preventing fraud and abuse, product improvement.</li>
+      <li><strong>Consent:</strong> device location, background location for jump recording, motion and pressure sensors, and notifications. You can decline any of these, and revoke them at any time in your device settings. Declining location or motion disables jump recording; everything else in the App keeps working.</li>
     </ul>
 
     <h2>3. Who we share it with</h2>
@@ -145,7 +156,10 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
     <ul>
       <li><strong>Supabase</strong> — database, authentication, and file storage (hosting our backend).</li>
       <li><strong>Expo</strong> — app delivery and, where enabled, push notification delivery.</li>
-      <li><strong>PostHog</strong> (EU region) — product analytics and crash reporting (in-app usage events and crashes, to keep the app reliable).</li>
+      <li><strong>PostHog (EU region)</strong> — product analytics and crash reporting (in-app usage events and crashes, to keep the App reliable; hosted in the EU).</li>
+      <li><strong>Mapbox</strong> — the maps, satellite imagery and 3D terrain used by the dropzone maps and the jump replay. Rendering a map necessarily tells Mapbox which part of the world you are looking at, and Mapbox collects its own telemetry as described in its privacy policy.</li>
+      <li><strong>RevenueCat</strong> — manages Manifest Pro subscription status. Payment itself is taken by Apple; we never see your card details.</li>
+      <li><strong>Apple</strong> and <strong>Google</strong> — only if you choose to sign in with them, to authenticate you and pass us your name and email address.</li>
     </ul>
     <p>Other users see the parts of your profile and content you choose to make public (e.g. your name, avatar, public jumps, events you host). Verified-badge status is visible to other users.</p>
 
@@ -153,14 +167,16 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
     <p>Our providers may process data outside your country (including the EU/EEA and the United States). Where required, transfers rely on appropriate safeguards such as the EU Standard Contractual Clauses.</p>
 
     <h2>5. Retention</h2>
-    <p>We keep your data while your account is active. When you delete your account (Profile &rarr; Delete account), your profile and associated content are deleted promptly via an automated cascade. Credential and verification documents you upload are kept only while they remain in your wallet or your account is active — removing the credential or deleting your account removes them; we may keep a minimal record that a verification check took place, without retaining the document itself. Some records may be retained where required by law or to resolve disputes.</p>
+    <p>We keep your data while your account is active. When you delete your account (Profile → Delete account), your profile and associated content are deleted promptly via an automated cascade. Credential and verification documents you upload are kept only while they remain in your wallet or your account is active; removing the credential or deleting your account removes them, and we may keep a minimal record that a verification check took place without retaining the document itself. Some records may be retained where required by law or to resolve disputes.</p>
+    <p>Jump tracks are the exception, because they are never on our servers in the first place: they live on your device until you delete them, until the App removes an old one to stay inside its limit, or until you delete the App. See &ldquo;Jump tracks stay on your phone&rdquo; above.</p>
 
     <h2>6. Your rights</h2>
     <p>Depending on your location (including the EU/EEA under the GDPR), you have the right to access, correct, delete, restrict, or port your data, and to object to certain processing. You can:</p>
     <ul>
       <li><strong>Edit</strong> your profile in-app.</li>
-      <li><strong>Delete your account</strong> in-app (Profile &rarr; Delete account) — this erases your data.</li>
-      <li><strong>Contact us</strong> at <a href="mailto:andre@manifestjump.com"><strong>andre@manifestjump.com</strong></a> for any other request.</li>
+      <li><strong>Delete your account</strong> in-app (Profile → Delete account), which erases your data.</li>
+      <li><strong>Delete a jump track</strong> in-app, at any time. Because tracks never reach us, this is entirely in your hands.</li>
+      <li><strong>Contact us</strong> at <strong><a href="mailto:andre@manifestjump.com">andre@manifestjump.com</a></strong> for any other request.</li>
     </ul>
     <p>You may also lodge a complaint with your local data protection authority.</p>
 
@@ -174,7 +190,7 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
     <p>We may update this policy. Material changes will be notified in-app or by email. The &ldquo;Last updated&rdquo; date above reflects the current version.</p>
 
     <h2>10. Contact</h2>
-    <p>André Larsen — <a href="mailto:andre@manifestjump.com"><strong>andre@manifestjump.com</strong></a> — Dubai, United Arab Emirates.</p>
+    <p>André Larsen — <strong><a href="mailto:andre@manifestjump.com">andre@manifestjump.com</a></strong> — Dubai, United Arab Emirates.</p>
   </div>
 </main>
 
