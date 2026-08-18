@@ -112,7 +112,7 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
 <main class="doc">
   <div class="wrap">
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: 14 August 2026</p>
+    <p class="updated">Last updated: 18 August 2026</p>
 
     <p class="intro">Manifest (&ldquo;we&rdquo;, &ldquo;us&rdquo;, the &ldquo;App&rdquo;) is a logbook, gear passport, jump recorder and events platform for skydivers. This policy explains what personal data we collect, why, and your rights over it.</p>
     <p><strong>Data controller:</strong> André Larsen, Dubai, United Arab Emirates. Contact: <strong><a href="mailto:andre@manifestjump.com">andre@manifestjump.com</a></strong>.</p>
@@ -128,7 +128,8 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
     <h3>Collected automatically / with permission:</h3>
     <ul>
       <li><strong>Location, for finding places.</strong> When you tap &ldquo;Near me&rdquo; to sort dropzones or events by distance, we read your approximate location once. It is used in memory to compute distance and is not stored on our servers.</li>
-      <li><strong>Location, for recording a jump.</strong> 3D Jump Track records your <strong>precise</strong> location continuously while a recording is running, and it keeps recording <strong>in the background</strong>, with the screen off and the App not on screen. That is deliberate and it is the only way the feature can work: your phone is in a zipped pocket from takeoff to landing. Recording only ever runs when you start it or when you have switched on automatic start and the load you are on departs. It stops by itself once you are back on the ground.</li>
+      <li><strong>Location, for recording a jump.</strong> 3D Jump Track records your <strong>precise</strong> location continuously while a recording is running, and it keeps recording <strong>in the background</strong>, with the screen off and the App not on screen. That is deliberate and it is the only way the feature can work: your phone is in a zipped pocket from takeoff to landing. Recording only ever runs when you start it, or when you have switched on automatic start and the load you are on is called. It stops by itself once you are back on the ground, and it stops on its own if it has been running without ever leaving the ground.</li>
+      <li><strong>Location, so a recording can start by itself.</strong> If you switch on automatic start, your phone also watches for when you arrive at or leave a dropzone, using the operating system&rsquo;s own boundary monitoring for the dropzones nearest you. This runs even when no recording is running and even when the App has been closed, because it is the only way iOS will wake the App to start recording for you. It reports a crossing and nothing else &mdash; there is no continuous tracking, we do not receive a trail of where you have been, and switching automatic start off stops it entirely.</li>
       <li><strong>Motion and barometric pressure, for recording a jump.</strong> During a recording we read the barometer (air pressure, which is how altitude is measured) and the device&rsquo;s motion sensors at up to 100 times per second, which is how exit and canopy deployment are detected.</li>
       <li><strong>The jump track itself:</strong> coordinates, altitudes, speeds and timestamps for the recording, together with the dropzone and aircraft it was on.</li>
       <li><strong>Usage data:</strong> in-app product-interaction events (screens viewed, features used) and crash reports, collected to keep the App reliable and improve it.</li>
@@ -159,6 +160,7 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
       <li><strong>PostHog (EU region)</strong> — product analytics and crash reporting (in-app usage events and crashes, to keep the App reliable; hosted in the EU).</li>
       <li><strong>Mapbox</strong> — the maps, satellite imagery and 3D terrain used by the dropzone maps and the jump replay. Rendering a map necessarily tells Mapbox which part of the world you are looking at, and Mapbox collects its own telemetry as described in its privacy policy.</li>
       <li><strong>RevenueCat</strong> — manages Manifest Pro subscription status. Payment itself is taken by Apple; we never see your card details.</li>
+      <li><strong>Dropzone manifest systems (Burble).</strong> Many dropzones publish their live load boards. To show you your own load and to alert you when it is called, the App reads the board for the dropzone you are at and matches the name on your profile against the names the dropzone has published. We store which dropzone you are tracking and the name we matched, and which loads you were manifested on, so your logbook can be pre-filled. We send nothing about you to the dropzone; we only read what it already publishes.</li>
       <li><strong>Apple</strong> and <strong>Google</strong> — only if you choose to sign in with them, to authenticate you and pass us your name and email address.</li>
     </ul>
     <p>Other users see the parts of your profile and content you choose to make public (e.g. your name, avatar, public jumps, events you host). Verified-badge status is visible to other users.</p>
