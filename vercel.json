@@ -1,6 +1,19 @@
 {
   "rewrites": [
-    { "source": "/p/:code", "destination": "/p/index.html" },
-    { "source": "/s/:code", "destination": "/s/index.html" }
+    {
+      "source": "/p/:code",
+      "destination": "/p/index.html"
+    },
+    {
+      "source": "/s/:code",
+      "destination": "/s/index.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/get",
+      "destination": "https://apps.apple.com/app/id6778510429",
+      "permanent": false
+    }
   ]
 }
