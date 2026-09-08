@@ -41,7 +41,7 @@ function page(j, code) {
     ? new Date(j.jump_date + 'T12:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
     : '';
   const img = j.preview_url || 'https://jumpmanifest.com/assets/og.jpg';
-  const url = `https://jumpmanifest.com/j/${code}`;
+  const url = `https://www.jumpmanifest.com/j/${code}`;
 
   return `<!DOCTYPE html>
 <html lang="en">
