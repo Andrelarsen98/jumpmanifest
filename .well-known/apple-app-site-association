@@ -2,11 +2,17 @@
   "applinks": {
     "details": [
       {
-        "appIDs": ["L7Q8CBXQ64.com.andrelarsen.manifest"],
+        "appIDs": [
+          "L7Q8CBXQ64.com.andrelarsen.manifest"
+        ],
         "components": [
           {
             "/": "/s/*",
             "comment": "Sign off a jumper — belongs in the app when it is installed."
+          },
+          {
+            "/": "/j/*",
+            "comment": "A shared jump — opens in the app when it is installed."
           }
         ]
       }
