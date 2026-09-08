@@ -65,40 +65,57 @@ function page(j, code) {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
 <style>
+  /* THE SITE'S OWN PALETTE, not a second one. This page is reached from a
+     WhatsApp message by someone who has never heard of Manifest, so it has to
+     look like the rest of jumpmanifest.com rather than a stray dark page. */
+  :root { --ink:#0f0b1c; --violet:#7C3AED; --muted:#6f6982; --line:rgba(15,11,28,.08); }
   *{margin:0;padding:0;box-sizing:border-box}
+  html,body{overflow-x:clip;max-width:100vw}
   body{font-family:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,sans-serif;
-       background:#0b0a10;color:#fff;-webkit-font-smoothing:antialiased;min-height:100vh}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
-  header{display:flex;align-items:center;gap:12px;padding:20px 0}
-  header img{width:34px;height:34px;border-radius:9px}
-  header b{font-size:17px;letter-spacing:-.03em}
-  .grid{display:grid;grid-template-columns:1.25fr .85fr;gap:40px;align-items:center;padding:24px 0 64px}
-  @media (max-width:880px){.grid{grid-template-columns:1fr;gap:28px;padding-bottom:40px}}
-  .shot{position:relative;border-radius:22px;overflow:hidden;background:#17151f;
-        box-shadow:0 30px 80px rgba(0,0,0,.55);aspect-ratio:4/5}
+       color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased;line-height:1.5}
+  a{color:inherit;text-decoration:none}
+  .bar{display:flex;align-items:center;gap:11px;max-width:1180px;margin:0 auto;padding:18px 22px}
+  .bar img{width:32px;height:32px;border-radius:9px}
+  .bar b{font-size:17px;font-weight:800;letter-spacing:-.03em}
+  .grid{max-width:1180px;margin:0 auto;padding:8px 22px 60px;
+        display:grid;grid-template-columns:1.15fr .85fr;gap:34px;align-items:start}
+  @media (max-width:900px){.grid{grid-template-columns:1fr;gap:22px}}
+  /* The jump, as a photo. It keeps its own dark colours because it IS a
+     picture of a map — the page around it is the site's white. */
+  .shot{position:relative;border-radius:22px;overflow:hidden;background:#17151f;aspect-ratio:4/5;
+        box-shadow:0 18px 50px rgba(15,11,28,.14);border:1px solid var(--line)}
   .shot img{width:100%;height:100%;object-fit:cover;display:block}
-  .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.82) 100%)}
-  .meta{position:absolute;left:0;right:0;bottom:0;padding:26px}
+  .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 46%,rgba(0,0,0,.84) 100%)}
+  .meta{position:absolute;left:0;right:0;bottom:0;padding:26px;color:#fff}
   .dz{font-weight:800;font-size:26px;letter-spacing:-.02em}
-  .dt{margin-top:2px;font-size:14px;font-weight:600;color:rgba(255,255,255,.62)}
+  .dt{margin-top:2px;font-size:14px;font-weight:600;color:rgba(255,255,255,.66)}
   .stats{display:flex;gap:26px;margin-top:16px}
   .stats div span{display:block;font-size:10.5px;font-weight:800;letter-spacing:.09em;
-                  text-transform:uppercase;color:rgba(255,255,255,.55)}
+                  text-transform:uppercase;color:rgba(255,255,255,.6)}
   .stats div b{font-size:23px;font-weight:800;letter-spacing:-.02em}
-  .stats div b i{font-style:normal;font-size:13px;font-weight:700;color:rgba(255,255,255,.6);margin-left:3px}
-  h1{font-size:40px;line-height:1.08;font-weight:800;letter-spacing:-.035em}
-  @media (max-width:880px){h1{font-size:31px}}
-  .lede{margin-top:14px;font-size:16.5px;line-height:1.55;font-weight:600;color:rgba(255,255,255,.66)}
-  .cta{display:inline-flex;align-items:center;gap:10px;margin-top:26px;padding:15px 24px;
-       border-radius:15px;background:#7c3aed;font-weight:800;font-size:15.5px;letter-spacing:-.01em;color:#fff}
-  .free{margin-top:12px;font-size:13px;font-weight:700;color:rgba(255,255,255,.42)}
-  footer{padding:26px 0 40px;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.32)}
-  footer a{color:rgba(255,255,255,.55)}
+  .stats div b i{font-style:normal;font-size:13px;font-weight:700;color:rgba(255,255,255,.62);margin-left:3px}
+  /* The sheet. Strava's shape, our palette. */
+  .sheet{border:1px solid var(--line);border-radius:22px;padding:38px 34px;text-align:center;
+         box-shadow:0 12px 34px rgba(15,11,28,.07);background:#fff}
+  .sheet h1{font-size:26px;line-height:1.22;font-weight:800;letter-spacing:-.03em}
+  .sheet .lede{margin-top:12px;font-size:15px;font-weight:600;color:var(--muted)}
+  .go{display:block;margin-top:22px;padding:15px 22px;border-radius:14px;background:var(--violet);
+      color:#fff;font-weight:800;font-size:15.5px;letter-spacing:-.01em}
+  .legal{margin-top:14px;font-size:12.5px;font-weight:600;color:#948da6}
+  .legal a{text-decoration:underline}
+  .or{display:flex;align-items:center;gap:12px;margin:24px 0 4px;color:#948da6;
+      font-size:12.5px;font-weight:700;text-transform:lowercase}
+  .or:before,.or:after{content:"";flex:1;height:1px;background:var(--line)}
+  .dl{font-size:15.5px;font-weight:800;letter-spacing:-.02em}
+  .appbtn{margin-top:14px;display:inline-block}
+  .appbtn img{height:52px;width:auto;display:block}
+  .free{margin-top:14px;font-size:12.5px;font-weight:700;color:#948da6}
+  footer{max-width:1180px;margin:0 auto;padding:0 22px 44px;font-size:12.5px;font-weight:600;color:#948da6}
+  footer a{margin-left:14px;text-decoration:underline}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header><img src="/assets/app-icon.png" alt="" /><b>Manifest</b></header>
+  <div class="bar"><img src="/assets/app-icon.png" alt="" /><b>Manifest</b></div>
   <div class="grid">
     <div class="shot">
       <img src="${esc(img)}" alt="${esc(title)}" />
@@ -113,15 +130,19 @@ function page(j, code) {
         </div>
       </div>
     </div>
-    <div>
+
+    <div class="sheet">
       <h1>Join ${esc(first)} and get inspired for your next jump</h1>
-      <p class="lede">Manifest records your skydive in 3D and keeps your logbook, your gear and your currency in one place. Watch this jump back, and yours.</p>
-      <a class="cta" href="${APP_STORE}">Get Manifest</a>
-      <div class="free">Free on the App Store. Recording and 3D replay are free.</div>
+      <p class="lede">Manifest records your skydive in 3D and keeps your logbook, your gear and your currency in one place.</p>
+      <a class="go" href="${APP_STORE}">Get started free</a>
+      <p class="legal">By continuing you agree to the <a href="/terms">Terms of Use</a> and the <a href="/privacy">Privacy Policy</a>.</p>
+      <div class="or">or</div>
+      <div class="dl">Download the app</div>
+      <a class="appbtn" href="${APP_STORE}"><img src="/assets/appstore-badge.svg?v=1" alt="Download on the App Store" /></a>
+      <p class="free">Free on the App Store. Recording and 3D replay are free.</p>
     </div>
   </div>
-  <footer>jumpmanifest.com · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></footer>
-</div>
+  <footer>jumpmanifest.com<a href="/privacy">Privacy</a><a href="/terms">Terms</a></footer>
 </body>
 </html>`;
 }
