@@ -26,6 +26,25 @@ const esc = (s) =>
 
 const num = (n) => Number(n || 0).toLocaleString('en-US');
 
+// THE APP'S OWN BADGE, not a glyph: the same 12-point seal and check that
+// components/verified-badge.tsx draws, same maths, same two colours.
+//   gold  -> verified licence + Pro
+//   blue  -> verified licence
+function sealPoints(outer = 22, inner = 18) {
+  const cx = 24, cy = 24, pts = 12, n = pts * 2, out = [];
+  for (let i = 0; i < n; i++) {
+    const r = i % 2 ? inner : outer;
+    const a = (Math.PI / pts) * i - Math.PI / 2;
+    out.push(`${(cx + r * Math.cos(a)).toFixed(2)},${(cy + r * Math.sin(a)).toFixed(2)}`);
+  }
+  return out.join(' ');
+}
+function badge(pro, size) {
+  const color = pro ? '#F5B301' : '#1D9BF0';
+  const label = pro ? 'Verified licence, Pro member' : 'Verified licence';
+  return `<svg width="${size}" height="${size}" viewBox="0 0 48 48" role="img" aria-label="${label}" style="vertical-align:-3px;margin-left:6px"><polygon points="${sealPoints()}" fill="${color}"/><path d="M16 24.5l5 5 11-12" fill="none" stroke="#FFFFFF" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+}
+
 function page(p, code) {
   const name = (p.full_name || '').trim() || 'A jumper';
   const first = name.split(/\s+/)[0];
@@ -94,7 +113,7 @@ function page(p, code) {
   <div class="wrap">
     <div class="card">
       <img class="face" src="${esc(img)}" alt="${esc(name)}" />
-      <h1>${esc(name)}${p.verified ? ' <span title="Verified" style="color:#F5B400">&#10004;</span>' : ''}</h1>
+      <h1>${esc(name)}${p.verified ? badge(!!p.pro, 24) : ''}</h1>
       ${p.home_dz ? `<div class="sub">${esc(p.home_dz)}</div>` : ''}
       <div class="stats">
         <div><span>Jumps</span><b>${num(p.jumps)}</b></div>
