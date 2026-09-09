@@ -8,11 +8,15 @@
         "components": [
           {
             "/": "/s/*",
-            "comment": "Sign off a jumper — belongs in the app when it is installed."
+            "comment": "Sign off a jumper \u2014 belongs in the app when it is installed."
           },
           {
             "/": "/j/*",
-            "comment": "A shared jump — opens in the app when it is installed."
+            "comment": "A shared jump \u2014 opens in the app when it is installed."
+          },
+          {
+            "/": "/u/*",
+            "comment": "A jumper's profile link \u2014 opens in the app when it is installed."
           }
         ]
       }
