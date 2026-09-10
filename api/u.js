@@ -53,7 +53,11 @@ function page(p, code) {
   if (p.home_dz) bits.push(p.home_dz);
   if (p.license_type && p.license_type !== 'none') bits.push(`${p.license_type} licence`);
   const desc = bits.join(' · ');
-  const img = p.avatar_url || 'https://jumpmanifest.com/assets/og.jpg';
+  // ONLY OUR OWN STORAGE. avatar_url is a profile column a user can write,
+  // so an arbitrary origin would make every viewer and every unfurler fetch
+  // a stranger's server.
+  const own = typeof p.avatar_url === 'string' && p.avatar_url.startsWith(SUPABASE_URL + '/storage/');
+  const img = own ? p.avatar_url : 'https://jumpmanifest.com/assets/og.jpg';
   const url = `https://www.jumpmanifest.com/u/${code}`;
   const ig = p.instagram ? `https://instagram.com/${encodeURIComponent(p.instagram)}` : null;
 
