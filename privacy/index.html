@@ -112,7 +112,7 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
 <main class="doc">
   <div class="wrap">
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: 18 August 2026</p>
+    <p class="updated">Last updated: 11 September 2026</p>
 
     <p class="intro">Manifest (&ldquo;we&rdquo;, &ldquo;us&rdquo;, the &ldquo;App&rdquo;) is a logbook, gear passport, jump recorder and events platform for skydivers. This policy explains what personal data we collect, why, and your rights over it.</p>
     <p><strong>Data controller:</strong> André Larsen, Dubai, United Arab Emirates. Contact: <strong><a href="mailto:andre@manifestjump.com">andre@manifestjump.com</a></strong>.</p>
@@ -136,14 +136,18 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
       <li>Notification permission and local reminder scheduling (gear service and currency reminders are scheduled on your device).</li>
       <li>Basic technical data needed to run the service (e.g. session tokens).</li>
     </ul>
-    <h3>Jump tracks stay on your phone</h3>
-    <p><strong>We never upload your jump tracks.</strong> A recording, and every position, altitude and sensor sample in it, is written to storage on your own device and stays there. It is not sent to our servers, we cannot see it, and it is not part of your account.</p>
+    <h3>Where your jump tracks live</h3>
+    <p>A recording, with every position, altitude and sensor sample in it, is written to storage on your own device first. From there it leaves your phone in exactly two cases, both of them your choice:</p>
+    <ul>
+      <li><strong>Backup, with Manifest Pro.</strong> If you subscribe to Manifest Pro, your tracks are backed up to our servers automatically so they can be restored on a new phone. The backup is the recorded samples, not a video. It sits in your account and is visible only to you.</li>
+      <li><strong>Posting to Community.</strong> If you post a jump, the track is uploaded and the replay becomes visible to other jumpers according to the visibility you chose (everyone, or the people who follow you). A private profile limits this to your followers.</li>
+    </ul>
+    <p>Exporting a track as a CSV or KML file, or sharing a replay image or video, sends a copy wherever you send it; that is your choice, not ours.</p>
     <p>Two consequences worth knowing:</p>
     <ul>
-      <li>The App keeps only your most recent tracks (currently the last 25) and older ones are removed automatically to bound the space used on your phone.</li>
-      <li>Because a track is on your device rather than in your account, <strong>deleting your account does not delete tracks already recorded on that phone</strong>, and reinstalling or deleting the App removes them. You can delete any individual track in the App at any time.</li>
+      <li>The App keeps only your most recent tracks on the phone (currently the last 25) and older ones are removed from the device automatically. With Pro, a removed track is still in your backup and can be restored.</li>
+      <li>Deleting a track in the App deletes it from the phone, from your backup and from Community. Deleting your account deletes your backed-up tracks and your posts. Tracks that were never backed up or posted exist only on the phone, so deleting the App removes them.</li>
     </ul>
-    <p>A track only ever leaves your device if <strong>you</strong> choose to send it: exporting it as a CSV or KML file, or sharing the replay image or video. At that point it goes wherever you send it, and that is your choice, not ours.</p>
 
     <h2>2. Why we use it (legal bases)</h2>
     <ul>
@@ -158,6 +162,7 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
       <li><strong>Supabase</strong> — database, authentication, and file storage (hosting our backend).</li>
       <li><strong>Expo</strong> — app delivery and, where enabled, push notification delivery.</li>
       <li><strong>PostHog (EU region)</strong> — product analytics and crash reporting (in-app usage events and crashes, to keep the App reliable; hosted in the EU).</li>
+      <li><strong>Meta (Facebook)</strong> — only if you tap Share to Facebook. The Facebook software in the App is used solely to open your post; automatic event logging and advertising identifiers are switched off, so Meta receives nothing unless you share.</li>
       <li><strong>Mapbox</strong> — the maps, satellite imagery and 3D terrain used by the dropzone maps and the jump replay. Rendering a map necessarily tells Mapbox which part of the world you are looking at, and Mapbox collects its own telemetry as described in its privacy policy.</li>
       <li><strong>RevenueCat</strong> — manages Manifest Pro subscription status. Payment itself is taken by Apple; we never see your card details.</li>
       <li><strong>Dropzone manifest systems (Burble).</strong> Many dropzones publish their live load boards. To show you your own load and to alert you when it is called, the App reads the board for the dropzone you are at and matches the name on your profile against the names the dropzone has published. We store which dropzone you are tracking and the name we matched, and which loads you were manifested on, so your logbook can be pre-filled. We send nothing about you to the dropzone; we only read what it already publishes.</li>
@@ -170,14 +175,14 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
 
     <h2>5. Retention</h2>
     <p>We keep your data while your account is active. When you delete your account (Profile → Delete account), your profile and associated content are deleted promptly via an automated cascade. Credential and verification documents you upload are kept only while they remain in your wallet or your account is active; removing the credential or deleting your account removes them, and we may keep a minimal record that a verification check took place without retaining the document itself. Some records may be retained where required by law or to resolve disputes.</p>
-    <p>Jump tracks are the exception, because they are never on our servers in the first place: they live on your device until you delete them, until the App removes an old one to stay inside its limit, or until you delete the App. See &ldquo;Jump tracks stay on your phone&rdquo; above.</p>
+    <p>Jump tracks on your device are yours to delete. Tracks you backed up with Pro or posted to Community are deleted with your account. See &ldquo;Where your jump tracks live&rdquo; above.</p>
 
     <h2>6. Your rights</h2>
     <p>Depending on your location (including the EU/EEA under the GDPR), you have the right to access, correct, delete, restrict, or port your data, and to object to certain processing. You can:</p>
     <ul>
       <li><strong>Edit</strong> your profile in-app.</li>
       <li><strong>Delete your account</strong> in-app (Profile → Delete account), which erases your data.</li>
-      <li><strong>Delete a jump track</strong> in-app, at any time. Because tracks never reach us, this is entirely in your hands.</li>
+      <li><strong>Delete a jump track</strong> in-app, at any time. That removes it from the phone, from your backup and from Community in one step.</li>
       <li><strong>Contact us</strong> at <strong><a href="mailto:andre@manifestjump.com">andre@manifestjump.com</a></strong> for any other request.</li>
     </ul>
     <p>You may also lodge a complaint with your local data protection authority.</p>
