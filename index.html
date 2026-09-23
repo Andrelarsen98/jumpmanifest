@@ -288,6 +288,18 @@
   .appbtn:hover { transform: translateY(-1px); filter: brightness(1.06); }
   .proof { margin: 16px auto 0; font-size: 15px; font-weight: 600; letter-spacing: 0; color: var(--muted); }
   .proof b { font-weight: 700; color: var(--ink); }
+  /* USPA listing (23 Sep 2026). A plain link pill, not USPA's logo: using
+     their mark needs their permission, and the words are what carry weight.
+     Says "listed", which is exactly what uspa.org/logbookapps does. */
+  .uspa { margin: 14px auto 0; display: inline-flex; align-items: center; gap: 8px;
+    padding: 7px 14px 7px 10px; border-radius: 100px; background: #fff;
+    border: 1px solid var(--line); color: var(--ink); text-decoration: none;
+    font-size: 13.5px; font-weight: 700; letter-spacing: -.005em;
+    transition: transform .15s ease, border-color .15s ease; }
+  .uspa:hover { transform: translateY(-1px); border-color: rgba(15,11,28,.18); }
+  .uspa svg { width: 17px; height: 17px; flex: 0 0 auto; fill: none; stroke: var(--violet);
+    stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .uspa span { color: var(--muted); font-weight: 600; }
   .err { margin-top: 12px; font-size: 13px; color: #e5484d; font-weight: 700; display: none; }
   .err.show { display: block; }
   .ok { display: none; margin: 30px auto 0; max-width: 480px; padding: 16px 22px; border-radius: 16px;
@@ -681,6 +693,10 @@
     <!-- REAL SOCIAL PROOF (15 Sep 2026): 158 dropzones in 37 countries that day,
          from jumpers' home dropzones. Rounded down so it stays true as it grows. -->
     <p class="proof">Join jumpers at <b>150+ dropzones</b> in <b>35+ countries</b></p>
+    <a class="uspa" href="https://www.uspa.org/logbookapps" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 2.5v5c0 4.6-3 7.8-7 9-4-1.2-7-4.4-7-9v-5L12 3z"/><path d="M9 11.7l2.2 2.2L15 10.2"/></svg>
+      Listed by USPA <span>&middot; Jump log apps</span>
+    </a>
 
     <div class="fan">
       <div class="phone back"><img src="assets/mock-3d.png" alt="A jump replayed in 3D over real terrain" /></div>
