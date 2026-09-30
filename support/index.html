@@ -19,7 +19,7 @@
 <link rel="apple-touch-icon" href="/assets/app-icon.png?v=3" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
 <style>
   :root { --ink: #0f0b1c; --violet: #7C3AED; --violet-d: #6D28D9; --muted: #6f6982; --line: rgba(15,11,28,.08); }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -101,22 +101,85 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
   .foot-links { display: inline-flex; align-items: center; gap: 22px; flex-wrap: wrap; font-weight: 700; font-size: 15px; }
   .foot-links a { color: var(--muted); } .foot-links a:hover { color: var(--ink); text-decoration: none; }
   .handle { color: var(--muted); font-weight: 700; font-size: 15px; }
+  /* ---------- the site header (30 Sep 2026) ----------
+     Replaces the floating dark pill. Full-width white bar with a hairline,
+     the black M and the "manifest" wordmark (Manrope Bold, tight) on the
+     left, section links in the middle, one quiet pill on the right. */
+  body { padding-top: 0 !important; }
+  section[id], header[id] { scroll-margin-top: 90px; }
+  .topbar { position: sticky; top: 0; z-index: 60; background: rgba(255,255,255,.94);
+            border-bottom: 1px solid rgba(15,11,28,.07); }
+  .topbar-in { max-width: 1200px; margin: 0 auto; height: 76px; padding: 0 32px;
+               display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .wordmark { display: inline-flex; align-items: center; gap: 10px; color: #050505; }
+  .wordmark img { width: 34px; height: auto; border-radius: 0; }
+  .wordmark img.wm { width: auto; height: 22px; }
+  .wordmark span { font-family: "Manrope", sans-serif; font-weight: 700; font-size: 29px;
+                   letter-spacing: -0.055em; line-height: 1; margin-top: -3px; }
+  .tb-links { display: flex; align-items: center; gap: 34px; }
+  .tb-links a { font-size: 15.5px; font-weight: 600; color: #0f0b1c; letter-spacing: -0.01em; }
+  .tb-links a:hover { color: #6f6982; }
+  .tb-links .soon { display: inline-flex; align-items: center; gap: 7px; }
+  .tb-links .soon em { font-style: normal; font-size: 10.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
+                       color: #6D28D9; background: rgba(124,58,237,.1); border-radius: 99px; padding: 3px 7px; }
+  .tb-cta { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 99px;
+            background: #F2F2F5; color: #050505; font-size: 15px; font-weight: 700; letter-spacing: -0.01em;
+            transition: background .15s ease; }
+  .tb-cta:hover { background: #E7E7EC; }
+  .tb-cta svg { width: 15px; height: 15px; }
+  @media (max-width: 980px) { .tb-links a:not(.soon) { display: none; } }
+  @media (max-width: 600px) {
+    .topbar-in { height: 62px; padding: 0 16px; }
+    .wordmark img { width: 28px; } .wordmark img.wm { width: auto; height: 18px; }
+    .wordmark span { font-size: 24px; }
+    .tb-links { display: none; }
+    .tb-cta { padding: 9px 15px; font-size: 14px; }
+  }
+
+  /* ---------- the big footer (1 Oct 2026) ---------- */
+  footer.site { margin-top: clamp(80px,11vw,120px); background: #F6F6F8; border-top: 1px solid rgba(15,11,28,.07); padding: 72px 0 40px; }
+  .reveal + footer.site { margin-top: 0; }
+  .ft { max-width: 1200px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: 1.5fr repeat(4, 1fr); gap: 40px; }
+  .ft-brand .wordmark { display: inline-flex; align-items: center; gap: 10px; }
+  .ft-brand .wordmark img.mk { width: 34px; height: auto; }
+  .ft-brand .wordmark img.wm { height: 22px; width: auto; }
+  .ft-brand p { color: #6f6982; font-size: 15px; line-height: 1.55; margin: 22px 0 0; max-width: 300px; }
+  .ft-brand .mail { margin-top: 18px; font-size: 15px; color: #0f0b1c; font-weight: 600; }
+  .ft-brand .mail a { color: #6f6982; font-weight: 500; }
+  .ft-brand .mail a:hover { color: #0f0b1c; }
+  .ft-social { display: flex; gap: 10px; margin-top: 18px; }
+  .ft-social a { width: 38px; height: 38px; border-radius: 10px; background: #fff; border: 1px solid rgba(15,11,28,.08); display: inline-flex; align-items: center; justify-content: center; color: #0f0b1c; transition: background .15s ease; }
+  .ft-social a:hover { background: #EDEFF7; }
+  .ft-social svg { width: 18px; height: 18px; }
+  .ft-col h4 { font-size: 15px; font-weight: 600; color: #8a869a; margin: 4px 0 18px; letter-spacing: -0.01em; }
+  .ft-col a { display: block; font-size: 15.5px; font-weight: 600; color: #0f0b1c; margin-bottom: 14px; letter-spacing: -0.01em; }
+  .ft-col a:hover { color: #6f6982; }
+  .ft-col a em { font-style: normal; font-size: 10px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: #6D28D9; background: rgba(124,58,237,.1); border-radius: 99px; padding: 2px 6px; margin-left: 6px; vertical-align: 2px; }
+  .ft-base { max-width: 1200px; margin: 56px auto 0; padding: 22px 32px 0; border-top: 1px solid rgba(15,11,28,.08); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: #8a869a; font-size: 14px; }
+  .ft-base a:hover { color: #0f0b1c; }
+  @media (max-width: 980px) { .ft { grid-template-columns: repeat(2, 1fr); } .ft-brand { grid-column: 1 / -1; } }
+  @media (max-width: 560px) { footer.site { padding: 52px 0 32px; } .ft { padding: 0 20px; gap: 32px 20px; } .ft-base { padding: 20px 20px 0; } }
 </style>
 </head>
 <body>
-<nav>
-  <div class="nav-in">
-    <a class="brand" href="/">
-      <img src="/assets/app-icon.png?v=3" alt="Manifest" />
-      <span class="nm">Manifest</span>
+<div class="topbar">
+  <div class="topbar-in">
+    <a class="wordmark" href="/" aria-label="Manifest home">
+      <img src="/assets/manifest-mark.svg" alt="" />
+      <img class="wm" src="/assets/manifest-wordmark.svg" alt="manifest" />
     </a>
-    <span class="nav-links">
-      <a href="/about">About</a>
-      <a href="/support">Contact</a>
-    </span>
-    <a href="https://apps.apple.com/app/id6778510429" class="btn">Download</a>
+    <div class="tb-links">
+      <a href="/#replay">3D Replay</a>
+      <a href="/#dropzones">Live loads</a>
+      <a href="/#everything">Features</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/dropzones/" class="soon">For dropzones <em>Soon</em></a>
+    </div>
+    <a class="tb-cta" href="https://apps.apple.com/app/id6778510429">Download
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+    </a>
   </div>
-</nav>
+</div>
 
 <main class="doc">
   <div class="wrap">
@@ -164,15 +227,27 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
   </div>
 </main>
 
-<footer>
-  <div class="foot-in">
-    <span class="handle">&copy; 2026 Manifest</span>
-    <div class="foot-links">
-      <a href="/support">Support</a>
-      <a href="/privacy">Privacy</a>
-      <a href="/terms">Terms</a>
+<footer class="site">
+  <div class="ft">
+    <div class="ft-brand">
+      <a class="wordmark" href="/" aria-label="Manifest home"><img class="mk" src="/assets/manifest-mark.svg" alt="" /><img class="wm" src="/assets/manifest-wordmark.svg" alt="manifest" /></a>
+      <p>The skydiving app for every jump: live loads, 3D replays and a logbook that proves it. Soon, the software that runs the dropzone too.</p>
+      <div class="mail">Support: <a href="mailto:andre@manifestjump.com">andre@manifestjump.com</a></div>
+      <div class="ft-social">
+        <a href="https://www.instagram.com/manifestjump/" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></a>
+        <a href="https://apps.apple.com/app/id6778510429" aria-label="App Store"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.4 2-3.5 2-3.6-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.9-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.7-.1 0-2.5-1-2.5-3.6zM14.1 5.6c.6-.8 1.1-1.9 1-3-.9 0-2.1.6-2.7 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.5 2.7-1.3z"/></svg></a>
+      </div>
     </div>
+    <div class="ft-col"><h4>App</h4>
+      <a href="/#replay">3D Replay</a><a href="/#dropzones">Live loads</a><a href="/#everything">Features</a><a href="https://apps.apple.com/app/id6778510429">Download</a></div>
+    <div class="ft-col"><h4>Dropzones</h4>
+      <a href="/dropzones/">Manifest Desk<em>Soon</em></a><a href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%20early%20access">Early access</a><a href="https://desk.jumpmanifest.com">Dropzone login</a></div>
+    <div class="ft-col"><h4>Explore</h4>
+      <a href="/uspa-digital-logbook/">USPA digital logbook</a><a href="/skydive-3d-tracking/">3D jump tracking</a><a href="/#faq">FAQ</a></div>
+    <div class="ft-col"><h4>Company</h4>
+      <a href="/about">About</a><a href="/support">Support</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Use</a></div>
   </div>
+  <div class="ft-base"><span>© Manifest 2026. All rights reserved.</span><span>Made for skydivers, by a skydiver. Listed by the United States Parachute Association.</span></div>
 </footer>
 </body>
 </html>
