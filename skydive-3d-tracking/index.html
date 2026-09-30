@@ -128,6 +128,26 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
             transition: background .15s ease; }
   .tb-cta:hover { background: #E7E7EC; }
   .tb-cta svg { width: 15px; height: 15px; }
+  /* Mobile menu, measured from softriver.co: a 50px grey circle with two
+     24x2 lines that turn into an X, and a white panel that slides down from
+     under the header in 0.4 s. Links are the desktop ones, cloned. */
+  .tb-burger { display: none; width: 50px; height: 50px; border: 0; padding: 0; border-radius: 50%;
+               background: #E4E4E7; cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+               -webkit-tap-highlight-color: transparent; }
+  .tb-burger span { display: block; width: 24px; height: 2px; background: #040815; transition: transform .4s ease; }
+  .tb-burger[aria-expanded="true"] span:first-child { transform: translateY(5px) rotate(45deg); }
+  .tb-burger[aria-expanded="true"] span:last-child { transform: translateY(-5px) rotate(-45deg); }
+  .tb-drop { position: absolute; left: 0; right: 0; top: 100%; overflow: hidden; pointer-events: none; }
+  .tb-menu { background: #fff; border-bottom: 1px solid #E4E4E7; padding: 16px 0; text-align: center;
+             transform: translateY(-101%); transition: transform .4s ease; visibility: hidden; }
+  .tb-menu a { display: block; padding: 12px 20px; font-size: 16px; line-height: 24px; font-weight: 600; color: #040815; }
+  .tb-menu a em { display: none; }
+  .topbar.open .tb-drop { pointer-events: auto; }
+  .topbar.open .tb-menu { transform: none; visibility: visible; }
+  .tb-menu { transition: transform .4s ease, visibility 0s linear .4s; }
+  .topbar.open .tb-menu { transition: transform .4s ease, visibility 0s; }
+  @media (max-width: 600px) { .tb-cta { display: none !important; } .tb-burger { display: flex; } }
+
   @media (max-width: 980px) { .tb-links a:not(.soon) { display: none; } }
   @media (max-width: 600px) {
     .topbar-in { height: 62px; padding: 0 16px; }
@@ -179,6 +199,7 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
     <a class="tb-cta" href="https://apps.apple.com/app/id6778510429">Download
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
     </a>
+    <button class="tb-burger" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
   </div>
 </div>
 
@@ -264,6 +285,21 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
   "datePublished": "2026-08-18",
   "inLanguage": "en"
 }
+</script>
+<script>
+(() => {
+  const bar = document.querySelector('.topbar'), btn = bar && bar.querySelector('.tb-burger');
+  if (!btn) return;
+  const drop = document.createElement('div'); drop.className = 'tb-drop';
+  const menu = document.createElement('nav'); menu.className = 'tb-menu';
+  bar.querySelectorAll('.tb-links a').forEach((a) => menu.appendChild(a.cloneNode(true)));
+  drop.appendChild(menu); bar.appendChild(drop);
+  const set = (open) => { bar.classList.toggle('open', open); btn.setAttribute('aria-expanded', open); };
+  btn.addEventListener('click', (e) => { e.stopPropagation(); set(!bar.classList.contains('open')); });
+  menu.addEventListener('click', (e) => { if (e.target.closest('a')) set(false); });
+  document.addEventListener('click', (e) => { if (!bar.contains(e.target)) set(false); });
+  addEventListener('resize', () => { if (innerWidth > 600) set(false); });
+})();
 </script>
 </body>
 </html>
