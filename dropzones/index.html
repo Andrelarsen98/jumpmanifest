@@ -227,7 +227,16 @@
   const menu = document.createElement('div'); menu.className = 'tb-menu';
   bar.querySelectorAll('.tb-links a').forEach((a) => menu.appendChild(a.cloneNode(true)));
   drop.appendChild(menu); bar.appendChild(drop);
-  const set = (open) => { bar.classList.toggle('open', open); btn.setAttribute('aria-expanded', open); };
+  // On the home page the panel runs down to just above the App Store badge,
+  // so its bottom edge lines up with something instead of cutting the page.
+  const fit = () => {
+    menu.style.minHeight = '';
+    const badge = document.querySelector('img[src*="appstore-badge"]');
+    if (!badge) return;
+    const gap = badge.getBoundingClientRect().top - drop.getBoundingClientRect().top - 14;
+    if (gap > menu.offsetHeight && gap < innerHeight * 0.8) menu.style.minHeight = gap + 'px';
+  };
+  const set = (open) => { if (open) fit(); bar.classList.toggle('open', open); btn.setAttribute('aria-expanded', open); };
   btn.addEventListener('click', (e) => { e.stopPropagation(); set(!bar.classList.contains('open')); });
   menu.addEventListener('click', (e) => { if (e.target.closest('a')) set(false); });
   document.addEventListener('click', (e) => { if (!bar.contains(e.target)) set(false); });
