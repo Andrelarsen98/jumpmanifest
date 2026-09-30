@@ -689,21 +689,7 @@
 </style>
 </head>
 <body>
-<!-- Shown ONLY inside sandboxed in-app browsers (Instagram, Facebook, TikTok,
-     Snapchat, LinkedIn). Those WebViews silently refuse to hand off to the App
-     Store — the Download button does nothing at all, with no error, which is
-     exactly how the first real person we sent the link to failed to install.
-     We can't force the handoff from inside the sandbox, so the honest fix is to
-     tell people the one move that works. -->
-<div id="iabHint" role="status">
-  <span>Tap <b>•••</b> above, then <b>Open in browser</b> to download</span>
-</div>
 <style>
-  #iabHint { display: none; position: sticky; top: 0; z-index: 60;
-    background: #0f0b1c; color: #fff; text-align: center;
-    font-size: 13.5px; font-weight: 600; line-height: 1.4; padding: 11px 16px; }
-  #iabHint b { font-weight: 800; }
-  body.in-app-browser #iabHint { display: block; }
 
   /* ---------- the big footer (1 Oct 2026) ---------- */
   footer.site { margin-top: clamp(80px,11vw,120px); background: #F6F6F8; border-top: 1px solid rgba(15,11,28,.07); padding: 72px 0 40px; }
@@ -729,16 +715,6 @@
   @media (max-width: 980px) { .ft { grid-template-columns: repeat(2, 1fr); } .ft-brand { grid-column: 1 / -1; } }
   @media (max-width: 560px) { footer.site { padding: 52px 0 32px; } .ft { padding: 0 20px; gap: 32px 20px; } .ft-base { padding: 20px 20px 0; } }
 </style>
-<script>
-  (function () {
-    var ua = navigator.userAgent || '';
-    // Instagram and Facebook identify themselves; TikTok/Snapchat/LinkedIn vary
-    // by version, so match loosely rather than trying to be exhaustive.
-    if (/Instagram|FBAN|FBAV|FB_IAB|TikTok|BytedanceWebview|Snapchat|LinkedInApp/i.test(ua)) {
-      document.body.classList.add('in-app-browser');
-    }
-  })();
-</script>
 
 <div class="topbar">
   <div class="topbar-in">
@@ -1190,13 +1166,8 @@
 <script>
   // Home (and the brand mark) scroll to the TOP OF THE DOCUMENT, not to #top.
   //
-  // #top sits on the hero, and the hero is not at document position 0 — there
-  // is a hidden in-app-browser banner and its style/script blocks above it. So
-  // an anchor jump landed ~100px down the page and parked the headline behind
-  // the floating nav, which reads as "Home doesn't go all the way up".
-  //
-  // scrollTo(0) has no such dependency: wherever the hero is, the top is the
-  // top. Keeps the smooth behaviour, and leaves the href as a working fallback
+  // #top sits on the hero, not at document position 0, so an anchor jump
+  // would stop short under the header. scrollTo(0) always reaches the top. Keeps the smooth behaviour, and leaves the href as a working fallback
   // if scripting is off.
   document.querySelectorAll('[data-home]').forEach(function (el) {
     el.addEventListener('click', function (e) {
