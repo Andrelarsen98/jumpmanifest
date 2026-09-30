@@ -185,7 +185,7 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
 <main class="doc">
   <div class="wrap">
     <h1>3D skydive tracking with your phone</h1>
-    <p class="intro">A modern iPhone already carries the two sensors a jump needs: a GPS receiver for where you were, and a barometer for how high. Together they are enough to record a skydive and fly it back in 3D &mdash; no logger, no audible, nothing extra on your helmet.</p>
+    <p class="intro">A modern iPhone already carries the two sensors a jump needs: a GPS receiver for where you were, and a barometer for how high. Together they are enough to record a skydive and fly it back in 3D, with no logger, no audible, nothing extra on your helmet.</p>
 
     <h2>What actually gets recorded</h2>
     <p>A jump track is a list of samples. Each one is a position, an altitude and a moment in time, taken a few times a second from climb-out until you are standing in the landing area. Replaying the jump means drawing that list as a line over terrain and moving a camera along it.</p>
@@ -193,7 +193,7 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
 
     <h2>GPS gives position, the barometer gives altitude</h2>
     <p>This is the part worth understanding, because it is where phone tracking is better than people expect.</p>
-    <p>GPS altitude is the weakest number a GPS receiver produces &mdash; the satellite geometry that fixes you well horizontally fixes you poorly vertically, and errors of tens of metres are normal. A barometer does not care about satellites. It measures air pressure, which falls predictably with height, and it updates far faster than a GPS fix.</p>
+    <p>GPS altitude is the weakest number a GPS receiver produces: the satellite geometry that fixes you well horizontally fixes you poorly vertically, and errors of tens of metres are normal. A barometer does not care about satellites. It measures air pressure, which falls predictably with height, and it updates far faster than a GPS fix.</p>
     <p>So a good phone track uses each sensor for what it is good at: <strong>GPS for the ground track</strong>, the shape of the jump run, the spot, the canopy pattern; <strong>the barometer for altitude</strong>, exit height, opening height and freefall time. It is the same division of labour a dedicated skydiving logger uses.</p>
 
     <h3>What the barometer cannot do</h3>
@@ -201,19 +201,19 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
 
     <h2>What the numbers mean</h2>
     <ul>
-      <li><strong>Exit altitude</strong> &mdash; height above the dropzone at the moment you left the aircraft, from the barometer. Usually a little under what the pilot called, because the last few hundred feet happen while people are in the door.</li>
-      <li><strong>Freefall time</strong> &mdash; from exit to the point where the descent rate drops away at line stretch. It is measured, so it will not match the count in your head.</li>
-      <li><strong>Top speed</strong> &mdash; the fastest descent rate recorded. On a belly jump this lands near terminal, and on a track or a wingsuit it says something about the flight rather than the fall.</li>
-      <li><strong>Opening altitude</strong> &mdash; where the canopy took you from falling to flying, which is the number that matters if you are checking your own habits.</li>
+      <li><strong>Exit altitude</strong>: height above the dropzone at the moment you left the aircraft, from the barometer. Usually a little under what the pilot called, because the last few hundred feet happen while people are in the door.</li>
+      <li><strong>Freefall time</strong>: from exit to the point where the descent rate drops away at line stretch. It is measured, so it will not match the count in your head.</li>
+      <li><strong>Top speed</strong>: the fastest descent rate recorded. On a belly jump this lands near terminal, and on a track or a wingsuit it says something about the flight rather than the fall.</li>
+      <li><strong>Opening altitude</strong>: where the canopy took you from falling to flying, which is the number that matters if you are checking your own habits.</li>
     </ul>
 
     <h2>Phone versus a dedicated logger</h2>
     <p>A dedicated GPS logger samples faster, is built to be mounted, and is the right tool if you are competing in speed or performance flying where the exact numbers are the point.</p>
     <p>A phone wins on the thing that decides whether a jump gets recorded at all: it is already in your pocket. There is no device to charge, mount, remember or lose, and the track arrives somewhere you can actually look at it rather than as a file to import later.</p>
-    <p>For the overwhelming majority of jumps &mdash; where you want to see the jump, check your opening altitude, and show someone what happened &mdash; the phone is enough.</p>
+    <p>For the overwhelming majority of jumps (where you want to see the jump, check your opening altitude, and show someone what happened), the phone is enough.</p>
 
     <h2>Why not just use Google Earth?</h2>
-    <p>You can export a track as KML and open it in Google Earth, and plenty of jumpers do. The catch is that the phone version of Google Earth will not animate along a path &mdash; only Earth Pro on a desktop plays a tour. So the file works, but the replay does not happen on the device you actually have at the dropzone.</p>
+    <p>You can export a track as KML and open it in Google Earth, and plenty of jumpers do. The catch is that the phone version of Google Earth will not animate along a path: only Earth Pro on a desktop plays a tour. So the file works, but the replay does not happen on the device you actually have at the dropzone.</p>
     <p>That is the gap a native 3D replay fills: the same terrain, animated, on the phone that recorded it.</p>
 
     <h2>Recording a jump safely</h2>
@@ -224,7 +224,7 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
     </ul>
 
     <h2>How Manifest does it</h2>
-    <p><a href="/">Manifest</a> records the jump with the phone&rsquo;s GPS and barometer and replays the whole flight in 3D over real terrain &mdash; exit, freefall, opening, canopy and landing &mdash; then saves the jump straight into a logbook that other jumpers can sign off. Recording and replaying are free. Pro adds a recorder that arms itself when your load takes off, and raw CSV or KML export for ParaLog and Google Earth.</p>
+    <p><a href="/">Manifest</a> records the jump with the phone&rsquo;s GPS and barometer and replays the whole flight in 3D over real terrain (exit, freefall, opening, canopy and landing), then saves the jump straight into a logbook that other jumpers can sign off. Recording and replaying are free. Pro adds a recorder that arms itself when your load takes off, and raw CSV or KML export for ParaLog and Google Earth.</p>
     <p>The track itself stays on your phone. When you save a jump, only the summary goes to your logbook. Free on iOS.</p>
   </div>
 </main>
