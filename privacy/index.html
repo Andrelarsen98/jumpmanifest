@@ -321,7 +321,7 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
   const bar = document.querySelector('.topbar'), btn = bar && bar.querySelector('.tb-burger');
   if (!btn) return;
   const drop = document.createElement('div'); drop.className = 'tb-drop';
-  const menu = document.createElement('nav'); menu.className = 'tb-menu';
+  const menu = document.createElement('div'); menu.className = 'tb-menu';
   bar.querySelectorAll('.tb-links a').forEach((a) => menu.appendChild(a.cloneNode(true)));
   drop.appendChild(menu); bar.appendChild(drop);
   const set = (open) => { bar.classList.toggle('open', open); btn.setAttribute('aria-expanded', open); };
