@@ -119,7 +119,7 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=3" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Manrope:wght@700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Manrope:wght@700..800&display=swap" rel="stylesheet" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -772,6 +772,12 @@
     .final h2 { font-size: clamp(64px, 7vw, 96px); max-width: none; }
   }
 
+  /* "Get manifest": the name is the real wordmark, sized so its x-height
+     matches the heading's. "Get" is set in the wordmark's own face (Manrope
+     780, -0.055em), x-height 0.54em; the wordmark's is 1080 of its 1520 box. */
+  .final h2 { font-family: "Manrope", sans-serif; font-weight: 780; letter-spacing: -.055em; color: #050505; }
+  .wm-inline { display: inline-block; height: .76em; width: auto; vertical-align: -.015em; margin-left: .02em; }
+
   /* ---------- the big footer (1 Oct 2026) ---------- */
   footer.site { margin-top: clamp(80px,11vw,120px); background: #F6F6F8; border-top: 1px solid rgba(15,11,28,.07); padding: 72px 0 40px; }
   .reveal + footer.site { margin-top: 0; }
@@ -1107,7 +1113,7 @@
          instead of sending people to the App Store would be throwing away the
          intent of everyone who scrolled this far. -->
     <div class="kicker">It's out</div>
-    <h2>Get Manifest</h2>
+    <h2>Get <img class="wm-inline" src="assets/manifest-wordmark.svg?v=2" alt="manifest" /></h2>
     <div class="capture">
       <a class="appbtn" href="https://apps.apple.com/app/id6778510429" aria-label="Download Manifest on the App Store">
         <img src="assets/appstore-badge.svg?v=1" alt="Download on the App Store" />
