@@ -728,6 +728,50 @@
     .hero { padding-bottom: 40px; }
   }
 
+  /* ---------- WIDE PAGE on laptops (1 Oct 2026, trial) ----------
+     Everything below the hero at Softriver's width: 1280 max, 5% sides,
+     bigger headings, feature sections side by side with their video
+     (alternating), card grids, and a two-column FAQ. Phones untouched. */
+  @media (min-width: 900px) {
+    .wrap { max-width: 1280px; padding: 0 5%; }
+    h2 { font-size: clamp(50px, 5.4vw, 74px); max-width: 20ch; }
+    #trio h2 { max-width: 24ch; }
+    .statement { max-width: 30ch; font-size: clamp(44px, 4.6vw, 64px); }
+    .carousel { max-width: 1280px; padding-left: 5%; padding-right: 5%; }
+
+    .flag { margin-top: clamp(110px, 12vw, 170px); }
+    #dropzones { margin-top: clamp(110px, 12vw, 170px); }
+    .flag .wrap { display: grid; grid-template-columns: 1.1fr 1fr; grid-template-rows: 1fr auto auto 1fr;
+                  column-gap: clamp(40px, 6vw, 96px); text-align: left; }
+    .flag .fa { grid-column: 1; grid-row: 2; }
+    .flag .fb { grid-column: 1; grid-row: 3; }
+    .flag .flagvid { grid-column: 2; grid-row: 1 / -1; align-self: center; justify-self: center;
+                     margin: 0; width: min(400px, 100%); }
+    #replay .fa, #replay .fb, #weather .fa, #weather .fb { grid-column: 2; }
+    #replay .flagvid, #weather .flagvid { grid-column: 1; }
+    #replay .wrap, #weather .wrap { grid-template-columns: 1fr 1.1fr; }
+    .flag .kicker { text-align: left; }
+    .flag h2 { margin: 14px 0 0; max-width: none; font-size: clamp(44px, 4.6vw, 66px); text-align: left; text-wrap: balance; }
+    .flag h2 .l1 { display: inline-block; }
+    .flag p { margin: 22px 0 0; max-width: 480px; font-size: clamp(18px, 1.5vw, 20px); line-height: 1.5; }
+    .flagsub { margin: 34px 0 0; max-width: 24ch; font-size: clamp(24px, 2.3vw, 32px); }
+    .trustline { margin: 22px 0 0; font-size: 15.5px; }
+
+    .feats { max-width: none; margin-top: 64px; gap: 16px; grid-template-columns: repeat(3, 1fr); }
+    #everything .feats { grid-template-columns: repeat(5, 1fr); }
+    .feat { background: #f5f5f6; border-radius: clamp(20px, 2.4vw, 28px); padding: 26px 24px 28px; }
+    .feat h4 { font-size: 19px; }
+    .feat p { font-size: 15.5px; }
+
+    #faq .wrap { display: grid; grid-template-columns: 1fr 1.35fr; column-gap: clamp(40px, 6vw, 96px); align-items: start; }
+    #faq .faq-kicker, #faq .faq-h2, #faq .faq-help { grid-column: 1; text-align: left; margin-left: 0; }
+    #faq .faq-h2 { font-size: clamp(44px, 4.4vw, 60px); max-width: 12ch; text-align: left; margin-top: 12px; }
+    #faq .faqs { grid-column: 2; grid-row: 1 / span 4; margin: 0; max-width: none; }
+    #faq .faq-help { margin-top: 28px; max-width: 30ch; }
+
+    .final h2 { font-size: clamp(64px, 7vw, 96px); max-width: none; }
+  }
+
   /* ---------- the big footer (1 Oct 2026) ---------- */
   footer.site { margin-top: clamp(80px,11vw,120px); background: #F6F6F8; border-top: 1px solid rgba(15,11,28,.07); padding: 72px 0 40px; }
   .reveal + footer.site { margin-top: 0; }
@@ -900,63 +944,75 @@
 
 <section class="flag">
   <div class="wrap">
+    <div class="ftext fa">
     <div class="kicker">The flagship</div>
     <h2><span class="l1">Your load.</span><br />Live on your lock screen.</h2>
     <p>Notifications the second the plane's called, gear-up and final call, plus a live countdown in your Dynamic Island. So it never leaves without you.</p>
+    </div>
     <video class="flagvid" id="flagVid" autoplay loop muted playsinline preload="auto"
            aria-label="Live loads on your lock screen">
       <source src="assets/lockscreen.mp4" type="video/mp4" />
     </video>
-
+    <div class="ftext fb">
     <p class="flagsub">No shouting across the hangar. No missed calls. No sprinting for the plane.
       <b>Just your load on your lock screen, the second it's called.</b>
     </p>
     <p class="trustline">⚡ Live at 150+ dropzones</p>
+    </div>
   </div>
 </section>
 
 <section class="flag" id="replay">
   <div class="wrap">
+    <div class="ftext fa">
     <div class="kicker">3D Jump Track</div>
     <h2><span class="l1">Your jump.</span><br />Flown back in 3D.</h2>
     <p>Put your phone in your pocket and jump. Manifest measures the whole flight and replays it over the real terrain you fell through, so you can finally see the jump instead of describing it.</p>
+    </div>
     <video class="flagvid" loop muted playsinline preload="metadata"
            aria-label="A skydive replayed in 3D over real terrain, from exit to landing">
       <source src="assets/jumptrack.mp4" type="video/mp4" />
     </video>
-
+    <div class="ftext fb">
     <p class="flagsub">Exit, freefall, the moment you pulled, the canopy ride, the spot you landed.
       <b>Measured by your own phone, down to the altitude.</b>
     </p>
     <p class="trustline">🪂 Free to record and replay</p>
+    </div>
   </div>
 </section>
 
 <section class="flag" id="dropzones">
   <div class="wrap">
+    <div class="ftext fa">
     <div class="kicker">Dropzones</div>
     <h2><span class="l1">Every dropzone.</span><br />One map.</h2>
     <p>Find dropzones near you or anywhere you're heading next, with conditions, loads and the details that actually matter.</p>
+    </div>
     <video class="flagvid" loop muted playsinline preload="auto"
            aria-label="Dropzone finder map">
       <source src="assets/dropzones.mp4" type="video/mp4" />
     </video>
+    <div class="ftext fb"></div>
   </div>
 </section>
 
 <section class="flag" id="weather">
   <div class="wrap">
+    <div class="ftext fa">
     <div class="kicker">Weather</div>
     <h2><span class="l1">Not the forecast.</span><br />The one you jump in.</h2>
     <p>Wind at every stage of the jump: up where you get out, under canopy and on the ground, with how far it turns and how much it drops in between. Cloud by layer in feet, so you know what is between you and the ground.</p>
+    </div>
     <video class="flagvid" loop muted playsinline preload="metadata"
            aria-label="Jump weather for a dropzone: wind at exit, under canopy and on the ground, with cloud by layer">
       <source src="assets/weather.mp4" type="video/mp4" />
     </video>
-
+    <div class="ftext fb">
     <p class="flagsub">A phone weather app tells you it is 21&deg; and partly cloudy.
       <b>This one tells you the calmest window to jump in.</b>
     </p>
+    </div>
   </div>
 </section>
 
