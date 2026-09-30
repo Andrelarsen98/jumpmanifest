@@ -57,7 +57,7 @@ function page(p, code) {
   // so an arbitrary origin would make every viewer and every unfurler fetch
   // a stranger's server.
   const own = typeof p.avatar_url === 'string' && p.avatar_url.startsWith(SUPABASE_URL + '/storage/');
-  const img = own ? p.avatar_url : 'https://jumpmanifest.com/assets/og.jpg';
+  const img = own ? p.avatar_url : 'https://www.jumpmanifest.com/assets/og-image.png?v=8';
   const url = `https://www.jumpmanifest.com/u/${code}`;
   const ig = p.instagram ? `https://instagram.com/${encodeURIComponent(p.instagram)}` : null;
 

@@ -40,7 +40,7 @@ function page(j, code) {
   const date = j.jump_date
     ? new Date(j.jump_date + 'T12:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
     : '';
-  const img = j.preview_url || 'https://jumpmanifest.com/assets/og.jpg';
+  const img = j.preview_url || 'https://www.jumpmanifest.com/assets/og-image.png?v=8';
   const url = `https://www.jumpmanifest.com/j/${code}`;
 
   return `<!DOCTYPE html>
