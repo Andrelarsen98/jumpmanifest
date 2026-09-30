@@ -119,7 +119,7 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=3" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Manrope:wght@700;800&display=swap" rel="stylesheet" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -649,6 +649,42 @@
     .fan::after { bottom: -12px; height: 22%; }
     section#why { padding-top: 30px; }
   }
+
+  /* ---------- the site header (30 Sep 2026) ----------
+     Replaces the floating dark pill. Full-width white bar with a hairline,
+     the black M and the "manifest" wordmark (Manrope Bold, tight) on the
+     left, section links in the middle, one quiet pill on the right. */
+  body { padding-top: 0 !important; }
+  section[id], header[id] { scroll-margin-top: 90px; }
+  .hero { padding-top: 64px !important; }
+  @media (max-width: 600px) { .hero { padding-top: 36px !important; } }
+  .topbar { position: sticky; top: 0; z-index: 60; background: rgba(255,255,255,.94);
+            border-bottom: 1px solid rgba(15,11,28,.07); }
+  .topbar-in { max-width: 1200px; margin: 0 auto; height: 76px; padding: 0 32px;
+               display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .wordmark { display: inline-flex; align-items: center; gap: 10px; color: #050505; }
+  .wordmark img { width: 34px; height: auto; border-radius: 0; }
+  .wordmark span { font-family: "Manrope", sans-serif; font-weight: 700; font-size: 29px;
+                   letter-spacing: -0.055em; line-height: 1; margin-top: -3px; }
+  .tb-links { display: flex; align-items: center; gap: 34px; }
+  .tb-links a { font-size: 15.5px; font-weight: 600; color: #0f0b1c; letter-spacing: -0.01em; }
+  .tb-links a:hover { color: #6f6982; }
+  .tb-links .soon { display: inline-flex; align-items: center; gap: 7px; }
+  .tb-links .soon em { font-style: normal; font-size: 10.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
+                       color: #6D28D9; background: rgba(124,58,237,.1); border-radius: 99px; padding: 3px 7px; }
+  .tb-cta { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 99px;
+            background: #F2F2F5; color: #050505; font-size: 15px; font-weight: 700; letter-spacing: -0.01em;
+            transition: background .15s ease; }
+  .tb-cta:hover { background: #E7E7EC; }
+  .tb-cta svg { width: 15px; height: 15px; }
+  @media (max-width: 980px) { .tb-links a:not(.soon) { display: none; } }
+  @media (max-width: 600px) {
+    .topbar-in { height: 62px; padding: 0 16px; }
+    .wordmark img { width: 28px; }
+    .wordmark span { font-size: 24px; }
+    .tb-links { display: none; }
+    .tb-cta { padding: 9px 15px; font-size: 14px; }
+  }
 </style>
 </head>
 <body>
@@ -679,19 +715,24 @@
   })();
 </script>
 
-<nav>
-  <div class="nav-in">
-    <a class="brand" href="#top" data-home>
-      <img src="assets/app-icon.png?v=3" alt="Manifest" />
-      <span class="nm">Manifest</span>
+<div class="topbar">
+  <div class="topbar-in">
+    <a class="wordmark" href="#top" data-home aria-label="Manifest home">
+      <img src="assets/manifest-mark.svg" alt="" />
+      <span>manifest</span>
     </a>
-    <span class="nav-links">
-      <a href="/about" class="nav-about">About</a>
-      <a href="/support">Contact</a>
-    </span>
-    <a href="https://apps.apple.com/app/id6778510429" class="btn">Download</a>
+    <div class="tb-links">
+      <a href="#replay">3D Replay</a>
+      <a href="#dropzones">Live loads</a>
+      <a href="#everything">Features</a>
+      <a href="#faq">FAQ</a>
+      <a href="/dropzones/" class="soon">For dropzones <em>Soon</em></a>
+    </div>
+    <a class="tb-cta" href="https://apps.apple.com/app/id6778510429">Download
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+    </a>
   </div>
-</nav>
+</div>
 
 <header class="hero" id="top">
   <div class="wrap">
