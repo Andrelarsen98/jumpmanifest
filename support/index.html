@@ -160,7 +160,7 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
   /* ---------- the big footer (1 Oct 2026) ---------- */
   footer.site { margin-top: clamp(80px,11vw,120px); background: #F6F6F8; border-top: 1px solid rgba(15,11,28,.07); padding: 72px 0 40px; }
   .reveal + footer.site { margin-top: 0; }
-  .ft { max-width: 1200px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: 1.5fr repeat(4, 1fr); gap: 40px; }
+  .ft { max-width: calc(1280px + 10vw); margin: 0 auto; padding: 0 5vw; display: grid; grid-template-columns: 1.5fr repeat(4, 1fr); gap: 40px; }
   .ft-brand .wordmark { display: inline-flex; align-items: center; gap: 10px; }
   .ft-brand .wordmark img.mk { width: 34px; height: auto; }
   .ft-brand .wordmark img.wm { height: 22px; width: auto; }
@@ -176,10 +176,10 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
   .ft-col a { display: block; font-size: 15.5px; font-weight: 600; color: #0f0b1c; margin-bottom: 14px; letter-spacing: -0.01em; }
   .ft-col a:hover { color: #6f6982; }
   .ft-col a em { font-style: normal; font-size: 10px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: #6D42F5; background: rgba(109,66,245,.1); border-radius: 99px; padding: 2px 6px; margin-left: 6px; vertical-align: 2px; }
-  .ft-base { max-width: 1200px; margin: 56px auto 0; padding: 22px 32px 0; border-top: 1px solid rgba(15,11,28,.08); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: #8a869a; font-size: 14px; }
+  .ft-base { max-width: 1280px; width: calc(100% - 10vw); margin: 56px auto 0; padding: 22px 0 0; border-top: 1px solid rgba(15,11,28,.08); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: #8a869a; font-size: 14px; }
   .ft-base a:hover { color: #0f0b1c; }
   @media (max-width: 980px) { .ft { grid-template-columns: repeat(2, 1fr); } .ft-brand { grid-column: 1 / -1; } }
-  @media (max-width: 560px) { footer.site { padding: 52px 0 32px; } .ft { padding: 0 20px; gap: 32px 20px; } .ft-base { padding: 20px 20px 0; } }
+  @media (max-width: 560px) { footer.site { padding: 52px 0 32px; } .ft { padding: 0 20px; gap: 32px 20px; } .ft-base { width: calc(100% - 40px); padding: 20px 0 0; } }
 
   /* Same type as the home and dropzones pages (1 Oct 2026): body in Manrope,
      headings in General Sans 550, purple #6D42F5; header and footer as on
@@ -187,6 +187,14 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
   body { font-family: "Manrope", -apple-system, sans-serif; }
   .topbar, footer.site { font-family: "Plus Jakarta Sans", -apple-system, sans-serif; }
   h1, h2 { font-family: "General Sans", "Manrope", sans-serif; font-weight: 550 !important; letter-spacing: -.028em; text-wrap: balance; }
+  /* Wide like the home and dropzones pages (1 Oct 2026): same 1280 box with
+     5vw outside it, so the text starts on the same edge; paragraphs keep a
+     760px reading width. */
+  @media (min-width: 900px) {
+    .wrap { max-width: calc(1280px + 10vw); padding: 0 5vw; }
+    .doc > .wrap > *:not(h1) { max-width: 760px; }
+    .doc h1 { font-size: clamp(52px, 5vw, 72px); line-height: 1.02; max-width: 16ch; }
+  }
 </style>
 </head>
 <body>

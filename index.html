@@ -716,7 +716,7 @@
      Softriver-sized: 1280 max, 5% sides, headline left and big, the phones
      fill the right half. Phones below 900px keep the centred stack. */
   @media (min-width: 900px) {
-    .hero .wrap { max-width: 1280px; padding: 0 5%; display: grid; grid-template-columns: 1.08fr 1fr;
+    .hero .wrap { max-width: calc(1280px + 10vw); padding: 0 5vw; display: grid; grid-template-columns: 1.08fr 1fr;
                   column-gap: 40px; align-content: center; text-align: left; }
     /* Text block centred against the phones: empty 1fr rows above and below
        soak up the extra height, so the text never sticks to the top. */
@@ -739,11 +739,11 @@
      bigger headings, feature sections side by side with their video
      (alternating), card grids, and a two-column FAQ. Phones untouched. */
   @media (min-width: 900px) {
-    .wrap { max-width: 1280px; padding: 0 5%; }
+    .wrap { max-width: calc(1280px + 10vw); padding: 0 5vw; }
     h2 { font-size: clamp(50px, 5.4vw, 74px); max-width: 20ch; }
     #trio h2 { max-width: 24ch; }
     .statement { max-width: 30ch; font-size: clamp(44px, 4.6vw, 64px); }
-    .carousel { max-width: 1280px; padding-left: 5%; padding-right: 5%; }
+    .carousel { max-width: calc(1280px + 10vw); padding-left: 5vw; padding-right: 5vw; }
 
     .flag { margin-top: clamp(110px, 12vw, 170px); }
     #dropzones { margin-top: clamp(110px, 12vw, 170px); }
@@ -815,7 +815,7 @@
   /* ---------- the big footer (1 Oct 2026) ---------- */
   footer.site { margin-top: clamp(80px,11vw,120px); background: #F6F6F8; border-top: 1px solid rgba(15,11,28,.07); padding: 72px 0 40px; }
   .reveal + footer.site { margin-top: 0; }
-  .ft { max-width: 1200px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: 1.5fr repeat(4, 1fr); gap: 40px; }
+  .ft { max-width: calc(1280px + 10vw); margin: 0 auto; padding: 0 5vw; display: grid; grid-template-columns: 1.5fr repeat(4, 1fr); gap: 40px; }
   .ft-brand .wordmark { display: inline-flex; align-items: center; gap: 10px; }
   .ft-brand .wordmark img.mk { width: 34px; height: auto; }
   .ft-brand .wordmark img.wm { height: 22px; width: auto; }
@@ -831,10 +831,10 @@
   .ft-col a { display: block; font-size: 15.5px; font-weight: 600; color: #0f0b1c; margin-bottom: 14px; letter-spacing: -0.01em; }
   .ft-col a:hover { color: #6f6982; }
   .ft-col a em { font-style: normal; font-size: 10px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: #6D28D9; background: rgba(109,66,245,.1); border-radius: 99px; padding: 2px 6px; margin-left: 6px; vertical-align: 2px; }
-  .ft-base { max-width: 1200px; margin: 56px auto 0; padding: 22px 32px 0; border-top: 1px solid rgba(15,11,28,.08); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: #8a869a; font-size: 14px; }
+  .ft-base { max-width: 1280px; width: calc(100% - 10vw); margin: 56px auto 0; padding: 22px 0 0; border-top: 1px solid rgba(15,11,28,.08); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: #8a869a; font-size: 14px; }
   .ft-base a:hover { color: #0f0b1c; }
   @media (max-width: 980px) { .ft { grid-template-columns: repeat(2, 1fr); } .ft-brand { grid-column: 1 / -1; } }
-  @media (max-width: 560px) { footer.site { padding: 52px 0 32px; } .ft { padding: 0 20px; gap: 32px 20px; } .ft-base { padding: 20px 20px 0; } }
+  @media (max-width: 560px) { footer.site { padding: 52px 0 32px; } .ft { padding: 0 20px; gap: 32px 20px; } .ft-base { width: calc(100% - 40px); padding: 20px 0 0; } }
 </style>
 
 <div class="topbar">
