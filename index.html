@@ -718,8 +718,13 @@
   @media (min-width: 900px) {
     .hero .wrap { max-width: 1280px; padding: 0 5%; display: grid; grid-template-columns: 1.08fr 1fr;
                   column-gap: 40px; align-content: center; text-align: left; }
+    /* Text block centred against the phones: empty 1fr rows above and below
+       soak up the extra height, so the text never sticks to the top. */
+    .hero .wrap { grid-template-rows: 1fr auto auto auto auto 1fr; }
     .hero .wrap > :not(.fan) { grid-column: 1; justify-self: start; }
-    .hero .wrap > .fan { grid-column: 2; grid-row: 1 / span 6; align-self: center; margin: 0; width: 100%; }
+    .hero .wrap > h1 { grid-row: 2; } .hero .wrap > .sub { grid-row: 3; }
+    .hero .wrap > .appbtn { grid-row: 4; } .hero .wrap > .proofrow { grid-row: 5; }
+    .hero .wrap > .fan { grid-column: 2; grid-row: 1 / -1; align-self: center; margin: 0; width: 100%; }
     .hero h1 { margin: 0; font-size: clamp(64px, 7.2vw, 96px); line-height: 1; letter-spacing: -.045em; }
     .hero .sub { margin: 24px 0 0; max-width: 500px; font-size: clamp(18px, 1.7vw, 21px); }
     .hero .appbtn { margin: 32px 0 0; }
