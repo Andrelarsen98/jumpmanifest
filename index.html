@@ -812,6 +812,9 @@
   .hero .sub b { font-weight: 600; color: #000; }
   @media (max-width: 600px) { .hero .sub { font-size: 17px; line-height: 27px; } }
 
+  .billboard { margin-top: clamp(90px, 11vw, 150px); }
+  .billboard img { display: block; width: 100%; height: auto; border-radius: clamp(22px, 2.6vw, 36px); }
+
   /* ---------- the big footer (1 Oct 2026) ---------- */
   footer.site { margin-top: clamp(80px,11vw,120px); background: #F6F6F8; border-top: 1px solid rgba(15,11,28,.07); padding: 72px 0 40px; }
   .reveal + footer.site { margin-top: 0; }
@@ -1056,6 +1059,17 @@
       <b>This one tells you the calmest window to jump in.</b>
     </p>
     </div>
+  </div>
+</section>
+
+<!-- Billboard (1 Oct 2026): the brand line on a real-looking billboard.
+     Wide crop on laptops, the full tall photo on phones. -->
+<section class="billboard">
+  <div class="wrap">
+    <picture>
+      <source media="(max-width: 700px)" srcset="/assets/billboard-tall.jpg" />
+      <img src="/assets/billboard-wide.jpg" alt="A Manifest billboard against a blue sky: Every jump. Every load. Now on iPhone." loading="lazy" decoding="async" width="1199" height="800" />
+    </picture>
   </div>
 </section>
 
