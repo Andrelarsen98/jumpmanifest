@@ -222,8 +222,13 @@
      glass as the card tilts (no spotlight circle), plus a gentle brighten. */
   .only-grid > div::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0;
     background: linear-gradient(115deg, rgba(255,255,255,0) 30%, rgba(255,255,255,.16) 45%, rgba(255,255,255,.05) 55%, rgba(255,255,255,0) 70%);
-    background-size: 260% 100%; background-position: calc(100% - var(--mx)) 0;
+    background-size: 300% 300%; background-position: calc(100% - var(--mx)) calc(100% - var(--my));
     transition: opacity .35s ease; }
+  /* Rim light: the edge tilted toward the viewer catches a thin line of light. */
+  .only-grid > div::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0;
+    box-shadow: inset calc(var(--tx, 0) * -10px) calc(var(--ty, 0) * -10px) 14px -8px rgba(255,255,255,.55);
+    transition: opacity .35s ease; }
+  .only-grid > div.tilting::before { opacity: 1; }
   .only-grid > div.tilting { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.24); }
   .only-grid > div.tilting { transition: transform .08s linear, box-shadow .3s ease; box-shadow: 0 30px 70px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.16); }
   .only-grid > div.tilting::after { opacity: 1; }
@@ -396,6 +401,7 @@
       const r = card.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
       card.classList.add('tilting');
       card.style.setProperty('--mx', (x * 100) + '%'); card.style.setProperty('--my', (y * 100) + '%');
+      card.style.setProperty('--tx', ((x - 0.5) * 2).toFixed(3)); card.style.setProperty('--ty', ((y - 0.5) * 2).toFixed(3));
       card.style.transform = `rotateX(${(0.5 - y) * 14}deg) rotateY(${(x - 0.5) * 14}deg) translateZ(18px) scale(1.03)`;
     });
     card.addEventListener('pointerleave', () => { card.classList.remove('tilting'); card.style.transform = ''; });
