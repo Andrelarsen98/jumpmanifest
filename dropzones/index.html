@@ -233,6 +233,25 @@
   .only-grid > div.tilting::after { opacity: 1; }
   .only-grid > div p { color: rgba(255,255,255,.72); }
   .only-foot { border-top-color: rgba(255,255,255,.18); color: rgba(255,255,255,.7); }
+  /* ---------- PRICING (1 Oct 2026) ----------
+     Same card language as the rest of the page: #F7F7F9, rounded, two
+     columns; grey dots for what sets the price, the M in purple for what
+     every dropzone gets. */
+  .pricing { padding: clamp(110px, 12vw, 160px) 0 0; text-align: center; }
+  .pricing h2 { font-size: clamp(36px, 5.4vw, 74px); letter-spacing: -.028em; line-height: 1.05; }
+  .pricing .lead { color: var(--muted); font-size: 20px; line-height: 31px; margin: 16px auto 0; max-width: 760px; text-wrap: balance; }
+  .pr-card { margin: 56px auto 0; max-width: 1000px; background: #F7F7F9; border-radius: clamp(24px, 2.6vw, 36px);
+             padding: clamp(28px, 4vw, 56px); display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 72px); text-align: left; }
+  .pr-col h3 { font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: clamp(24px, 2.4vw, 32px); letter-spacing: -1px; line-height: 1.3;
+               padding-bottom: 16px; border-bottom: 1px solid rgba(4,8,21,.1); }
+  .pr-col ul { list-style: none; margin: 0; padding: 0; }
+  .pr-col li { display: flex; align-items: center; gap: 14px; min-height: 58px; border-bottom: 1px solid rgba(4,8,21,.1); font-size: 17px; line-height: 24px; color: #040815; }
+  .pr-col:first-child li { color: #71717B; }
+  .pr-dot { width: 8px; height: 8px; border-radius: 50%; background: #A1A1AA; flex: 0 0 auto; margin: 0 10px 0 10px; }
+  .pr-yes { width: 28px; height: 28px; border-radius: 50%; background: #6D42F5; flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; }
+  .pr-yes img { width: 15px; height: auto; display: block; }
+  .pricing .ctas { margin-top: 40px; }
+  @media (max-width: 760px) { .pr-card { grid-template-columns: 1fr; } .pricing .lead { font-size: 17px; line-height: 27px; } .pr-col li { font-size: 16px; } }
   @media (max-width: 980px) { .tb-links a:not(.soon) { display: none; } .grid { grid-template-columns: repeat(2, 1fr); } .only-grid { grid-template-columns: 1fr; } }
   @media (max-width: 600px) {
     .topbar-in { height: 62px; padding: 0 16px; } .wordmark img { width: 28px; } .wordmark img.wm { width: auto; height: 18px; } .wordmark span { font-size: 24px; }
@@ -336,6 +355,26 @@
     </div>
   </section>
 
+  <!-- PRICING (1 Oct 2026): no numbers on purpose. Every dropzone is priced
+       with André; nothing here promises terms that are not decided yet. -->
+  <section class="pricing" id="pricing">
+    <h2>Priced for your dropzone.</h2>
+    <p class="lead">No fixed plans. Every dropzone is different, so we set the price with you.</p>
+    <div class="pr-card">
+      <div class="pr-col">
+        <h3>Your price depends on</h3>
+        <ul><li><span class="pr-dot"></span>Aircraft on the field</li><li><span class="pr-dot"></span>Loads on a busy day</li><li><span class="pr-dot"></span>Staff using the desk</li><li><span class="pr-dot"></span>Payments in the app, or not</li></ul>
+      </div>
+      <div class="pr-col">
+        <h3>Every dropzone gets</h3>
+        <ul><li><span class="pr-yes"><img src="/assets/manifest-mark-white.svg" alt="" /></span>The desk: loads, jumpers, accounts</li><li><span class="pr-yes"><img src="/assets/manifest-mark-white.svg" alt="" /></span>The hangar board for your TVs</li><li><span class="pr-yes"><img src="/assets/manifest-mark-white.svg" alt="" /></span>Load calls on every jumper's phone</li><li><span class="pr-yes"><img src="/assets/manifest-mark-white.svg" alt="" /></span>The safety check at manifest</li><li><span class="pr-yes"><img src="/assets/manifest-mark-white.svg" alt="" /></span>Reports and exports</li><li><span class="pr-yes"><img src="/assets/manifest-mark-white.svg" alt="" /></span>Set up with you, directly</li></ul>
+      </div>
+    </div>
+    <div class="ctas">
+      <a class="btn primary" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20get%20a%20price&body=Dropzone%3A%20%0AAircraft%3A%20%0ALoads%20on%20a%20busy%20day%3A%20%0AStaff%20using%20the%20desk%3A%20%0APayments%20in%20the%20app%20(yes%2Fno)%3A%20%0AName%20and%20phone%3A%20">Get a price<span class="bi"><svg viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></span></a>
+      <a class="btn ghost" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20call&body=Dropzone%3A%20%0AName%3A%20%0APhone%3A%20%0ABest%20time%20to%20call%3A%20">Book a call</a>
+    </div>
+  </section>
   <section class="final">
     <h2>Be one of the first dropzones on Manifest.</h2>
     <p>We are onboarding a small group of dropzones first. Tell us about yours and we will set it up with you.</p>
