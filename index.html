@@ -722,9 +722,9 @@
        soak up the extra height, so the text never sticks to the top. */
     .hero .wrap { grid-template-rows: 1fr auto auto auto auto auto 1fr; }
     .hero .wrap > :not(.fan) { grid-column: 1; justify-self: start; }
-    .hero .wrap > .toppill { grid-row: 2; margin: 0 0 26px; }
+    .hero .wrap > .toppills { grid-row: 2; margin: 0 0 26px; justify-content: flex-start; }
     .hero .wrap > h1 { grid-row: 3; } .hero .wrap > .sub { grid-row: 4; }
-    .hero .wrap > .appbtn { grid-row: 5; } .hero .wrap > .proofrow { grid-row: 6; }
+    .hero .wrap > .appbtn { grid-row: 5; }
     .hero .wrap > .fan { grid-column: 2; grid-row: 1 / -1; align-self: center; margin: 0; width: 100%; }
     .hero h1 { margin: 0; font-size: clamp(64px, 7.2vw, 96px); line-height: 1; letter-spacing: -.045em; }
     .hero .sub { margin: 24px 0 0; max-width: 500px; font-size: clamp(18px, 1.7vw, 21px); }
@@ -815,11 +815,14 @@
   .hero h1 .l1 { color: var(--ink); }
   .toppill { display: inline-flex; align-items: center; gap: 9px; margin: 0 auto 22px; padding: 9px 18px 9px 10px; border-radius: 999px;
              background: #F4F4F5; color: #18181B; font-family: "Manrope", sans-serif; font-size: 15px; line-height: 20px; font-weight: 500; }
+  .toppills { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 0 auto 22px; }
+  .toppills .toppill { margin: 0; }
+  .toppill svg { width: 17px; height: 17px; color: #18181B; flex: 0 0 auto; }
   .toppill img { width: 22px; height: 22px; object-fit: contain; }
   .toppill span { white-space: nowrap; }
   .toppill b { font-weight: 700; }
   .toppill i { width: 4px; height: 4px; border-radius: 50%; background: #A1A1AA; margin: 0 3px; }
-  .toppill:hover { background: #EDEDF0; }
+  a.toppill:hover { background: #EDEDF0; }
   @media (max-width: 600px) { .toppill { font-size: 13px; padding: 7px 13px 7px 7px; gap: 6px; } .toppill img { width: 20px; height: 20px; } }
   .hero .sub b { font-weight: 600; color: #000; }
   @media (max-width: 600px) { .hero .sub { font-size: 17px; line-height: 27px; } }
@@ -893,7 +896,10 @@
 
 <header class="hero" id="top">
   <div class="wrap">
-    <a class="toppill" href="https://www.uspa.org/logbookapps" target="_blank" rel="noopener"><img src="assets/uspa-seal.png?v=1" alt="" width="22" height="22" /><span>Listed by <b>USPA</b></span><i></i><span>Jumpers at <b>220+</b> dropzones</span></a>
+    <div class="toppills">
+      <a class="toppill" href="https://www.uspa.org/logbookapps" target="_blank" rel="noopener"><img src="assets/uspa-seal.png?v=1" alt="" width="22" height="22" /><span>Listed by <b>USPA</b></span><i></i><span>Jumpers at <b>220+</b> dropzones</span></a>
+      <span class="toppill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><span><b>38</b> countries</span><i></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20a6 6 0 0 1 12 0M17 11a3 3 0 1 0 0-6M21 20a6 6 0 0 0-4-5.6"/></svg><span>Built by professionals</span></span>
+    </div>
     <h1><span class="l1">Skydive, Play,</span><br /><span class="l2">Share.</span></h1>
     <p class="sub">Jumpers record, replay and log every jump. Dropzones call loads that land on every phone.
       <b>One app, both sides of the hangar.</b></p>
@@ -904,10 +910,6 @@
     <!-- PROOF ROW (1 Oct 2026), Softriver-style, every item true: 158 home
          dropzones in 37 countries on 15 Sep (rounded down so it stays true),
          the USPA listing at uspa.org/logbookapps, and who built it. -->
-    <div class="proofrow">
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><b>38</b>countries</span>
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20a6 6 0 0 1 12 0M17 11a3 3 0 1 0 0-6M21 20a6 6 0 0 0-4-5.6"/></svg>Built by skydivers</span>
-    </div>
 
     <div class="fan">
       <div class="phone back"><img src="assets/mock-3d.png" alt="A jump replayed in 3D over real terrain" /></div>
@@ -1234,7 +1236,7 @@
     <div class="ft-col"><h4>Company</h4>
       <a href="/about">About</a><a href="/support">Support</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Use</a></div>
   </div>
-  <div class="ft-base"><span>© Manifest 2026. All rights reserved.</span><span>Made for skydivers, by skydivers. Listed by the United States Parachute Association.</span></div>
+  <div class="ft-base"><span>© Manifest 2026. All rights reserved.</span><span>Made for skydivers. Listed by the United States Parachute Association.</span></div>
 </footer>
 
 <script>
