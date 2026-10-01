@@ -119,7 +119,8 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=3" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Manrope:wght@700..800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@500&display=swap" />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Manrope:wght@400..800&display=swap" rel="stylesheet" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -192,8 +193,8 @@
 <style>
   :root {
     --ink: #0f0b1c;
-    --violet: #7C3AED;
-    --violet-d: #6D28D9;
+    --violet: #6D42F5;
+    --violet-d: #6D42F5;
     --muted: #6f6982;
     --line: rgba(15,11,28,.08);
   }
@@ -258,9 +259,9 @@
     font-family: inherit; font-weight: 700; font-size: 15px; letter-spacing: -.01em;
     border: 0; cursor: pointer; border-radius: 100px; padding: 12px 22px;
     background: var(--violet); color: #fff; transition: transform .15s ease, box-shadow .15s ease;
-    box-shadow: 0 8px 20px rgba(124,58,237,.28); white-space: nowrap;
+    box-shadow: 0 8px 20px rgba(109,66,245,.28); white-space: nowrap;
   }
-  .btn:hover { transform: translateY(-1px); box-shadow: 0 12px 26px rgba(124,58,237,.4); }
+  .btn:hover { transform: translateY(-1px); box-shadow: 0 12px 26px rgba(109,66,245,.4); }
   .btn:disabled { opacity: .6; cursor: default; transform: none; }
 
   /* ---------- hero (subbie-style: tight, modest type, phones right under) ---------- */
@@ -313,7 +314,7 @@
   .err { margin-top: 12px; font-size: 13px; color: #e5484d; font-weight: 700; display: none; }
   .err.show { display: block; }
   .ok { display: none; margin: 30px auto 0; max-width: 480px; padding: 16px 22px; border-radius: 16px;
-    background: rgba(124,58,237,.08); border: 1px solid rgba(124,58,237,.3); color: var(--violet-d);
+    background: rgba(109,66,245,.08); border: 1px solid rgba(109,66,245,.3); color: var(--violet-d);
     font-weight: 700; font-size: 15px; }
   .ok.show { display: block; }
 
@@ -672,7 +673,7 @@
   .tb-links a:hover { color: #6f6982; }
   .tb-links .soon { display: inline-flex; align-items: center; gap: 7px; }
   .tb-links .soon em { font-style: normal; font-size: 10.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
-                       color: #6D28D9; background: rgba(124,58,237,.1); border-radius: 99px; padding: 3px 7px; }
+                       color: #6D28D9; background: rgba(109,66,245,.1); border-radius: 99px; padding: 3px 7px; }
   .tb-cta { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 99px;
             background: #F2F2F5; color: #050505; font-size: 15px; font-weight: 700; letter-spacing: -0.01em;
             transition: background .15s ease; }
@@ -792,6 +793,20 @@
   @media (min-width: 900px) { .hero .proofrow { margin: 26px 0 0 -14px; } }
   @media (max-width: 600px) { .proofrow { font-size: 13.5px; } .proofrow > * { padding: 0 11px; } }
 
+  /* ---------- SOFTRIVER TYPE (1 Oct 2026) ----------
+     Same as the dropzones page: purple #6D42F5, body in Manrope, headings in
+     General Sans 500 (free match for Softriver's paid Neue Montreal) at
+     -0.028em, the hero subline 20px/31px #71717B with the claim in 600
+     black. Header and footer stay as on every page; "Get manifest" keeps
+     the wordmark face. */
+  body { font-family: "Manrope", -apple-system, sans-serif; }
+  .topbar, footer.site { font-family: "Plus Jakarta Sans", -apple-system, sans-serif; }
+  h1, h2:not(.final h2), .statement { font-family: "General Sans", "Manrope", sans-serif; font-weight: 500; letter-spacing: -.028em; }
+  h2 { text-wrap: balance; }
+  .hero .sub { font-size: 20px; font-weight: 400; line-height: 31px; color: #71717B; }
+  .hero .sub b { font-weight: 600; color: #000; }
+  @media (max-width: 600px) { .hero .sub { font-size: 17px; line-height: 27px; } }
+
   /* ---------- the big footer (1 Oct 2026) ---------- */
   footer.site { margin-top: clamp(80px,11vw,120px); background: #F6F6F8; border-top: 1px solid rgba(15,11,28,.07); padding: 72px 0 40px; }
   .reveal + footer.site { margin-top: 0; }
@@ -810,7 +825,7 @@
   .ft-col h4 { font-size: 15px; font-weight: 600; color: #8a869a; margin: 4px 0 18px; letter-spacing: -0.01em; }
   .ft-col a { display: block; font-size: 15.5px; font-weight: 600; color: #0f0b1c; margin-bottom: 14px; letter-spacing: -0.01em; }
   .ft-col a:hover { color: #6f6982; }
-  .ft-col a em { font-style: normal; font-size: 10px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: #6D28D9; background: rgba(124,58,237,.1); border-radius: 99px; padding: 2px 6px; margin-left: 6px; vertical-align: 2px; }
+  .ft-col a em { font-style: normal; font-size: 10px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: #6D28D9; background: rgba(109,66,245,.1); border-radius: 99px; padding: 2px 6px; margin-left: 6px; vertical-align: 2px; }
   .ft-base { max-width: 1200px; margin: 56px auto 0; padding: 22px 32px 0; border-top: 1px solid rgba(15,11,28,.08); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: #8a869a; font-size: 14px; }
   .ft-base a:hover { color: #0f0b1c; }
   @media (max-width: 980px) { .ft { grid-template-columns: repeat(2, 1fr); } .ft-brand { grid-column: 1 / -1; } }
