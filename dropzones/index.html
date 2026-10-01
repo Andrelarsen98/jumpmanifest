@@ -206,12 +206,11 @@
      The black section sits on a photo; the three points are frosted glass
      cards that tilt toward the cursor with a soft light where it hovers.
      Only on devices that can hover; reduced-motion keeps them still.
-     NOTE: dz-only-bg.jpg is a 517px Pinterest image with someone else's
-     mark on it: preview only, replace with our own before going live. */
+     Background: André's 3023px purple light-trail image. */
   .only { position: relative; overflow: hidden; isolation: isolate;
-          background: #050505 url(/assets/dz-only-bg.jpg) center 30% / cover no-repeat; }
+          background: #050505 url(/assets/dz-only-bg-v2.jpg) center / cover no-repeat; }
   .only::before { content: ""; position: absolute; inset: 0; z-index: -1;
-                  background: linear-gradient(180deg, rgba(5,5,5,.55) 0%, rgba(5,5,5,.2) 45%, rgba(5,5,5,.7) 100%); }
+                  background: linear-gradient(180deg, rgba(5,5,5,.35) 0%, rgba(5,5,5,0) 45%, rgba(5,5,5,.45) 100%); }
   .only-grid { perspective: 900px; }
   .only-grid > div { position: relative; border-radius: 24px; padding: 30px 28px 32px;
     background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16);
