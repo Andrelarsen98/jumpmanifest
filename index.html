@@ -720,10 +720,11 @@
                   column-gap: 40px; align-content: center; text-align: left; }
     /* Text block centred against the phones: empty 1fr rows above and below
        soak up the extra height, so the text never sticks to the top. */
-    .hero .wrap { grid-template-rows: 1fr auto auto auto auto 1fr; }
+    .hero .wrap { grid-template-rows: 1fr auto auto auto auto auto 1fr; }
     .hero .wrap > :not(.fan) { grid-column: 1; justify-self: start; }
-    .hero .wrap > h1 { grid-row: 2; } .hero .wrap > .sub { grid-row: 3; }
-    .hero .wrap > .appbtn { grid-row: 4; } .hero .wrap > .proofrow { grid-row: 5; }
+    .hero .wrap > .toppill { grid-row: 2; margin: 0 0 26px; }
+    .hero .wrap > h1 { grid-row: 3; } .hero .wrap > .sub { grid-row: 4; }
+    .hero .wrap > .appbtn { grid-row: 5; } .hero .wrap > .proofrow { grid-row: 6; }
     .hero .wrap > .fan { grid-column: 2; grid-row: 1 / -1; align-self: center; margin: 0; width: 100%; }
     .hero h1 { margin: 0; font-size: clamp(64px, 7.2vw, 96px); line-height: 1; letter-spacing: -.045em; }
     .hero .sub { margin: 24px 0 0; max-width: 500px; font-size: clamp(18px, 1.7vw, 21px); }
@@ -807,7 +808,19 @@
   body { font-family: "Manrope", -apple-system, sans-serif; }
   h1, h2:not(.final h2), .statement { font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; letter-spacing: -.028em; }
   h2 { text-wrap: balance; }
-  .hero .sub { font-size: 20px; font-weight: 400; line-height: 31px; color: #71717B; }
+  .hero .sub { font-size: 20px; font-weight: 400; line-height: 31px; color: #3F3F46; }
+  /* Hero, 1 Oct 2026 (Softriver comparison): the headline is one solid ink,
+     not grey + black, and the proof leads in a pill above it. Grey pill, not
+     pale purple: no soft colours (BRAND.md). */
+  .hero h1 .l1 { color: var(--ink); }
+  .toppill { display: inline-flex; align-items: center; gap: 9px; margin: 0 auto 22px; padding: 9px 18px 9px 10px; border-radius: 999px;
+             background: #F4F4F5; color: #18181B; font-family: "Manrope", sans-serif; font-size: 15px; line-height: 20px; font-weight: 500; }
+  .toppill img { width: 22px; height: 22px; object-fit: contain; }
+  .toppill span { white-space: nowrap; }
+  .toppill b { font-weight: 700; }
+  .toppill i { width: 4px; height: 4px; border-radius: 50%; background: #A1A1AA; margin: 0 3px; }
+  .toppill:hover { background: #EDEDF0; }
+  @media (max-width: 600px) { .toppill { font-size: 13px; padding: 7px 13px 7px 7px; gap: 6px; } .toppill img { width: 20px; height: 20px; } }
   .hero .sub b { font-weight: 600; color: #000; }
   @media (max-width: 600px) { .hero .sub { font-size: 17px; line-height: 27px; } }
 
@@ -880,6 +893,7 @@
 
 <header class="hero" id="top">
   <div class="wrap">
+    <a class="toppill" href="https://www.uspa.org/logbookapps" target="_blank" rel="noopener"><img src="assets/uspa-seal.png?v=1" alt="" width="22" height="22" /><span>Listed by <b>USPA</b></span><i></i><span>Jumpers at <b>220+</b> dropzones</span></a>
     <h1><span class="l1">Skydive, Play,</span><br /><span class="l2">Share.</span></h1>
     <p class="sub">Jumpers record, replay and log every jump. Dropzones call loads that land on every phone.
       <b>One app, both sides of the hangar.</b></p>
