@@ -195,6 +195,19 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
     .doc h1 { font-size: clamp(52px, 5vw, 72px); line-height: 1.02; max-width: 16ch; }
   }
 </style>
+<style id="ft-dark">
+/* Dark footer, Nike's (2 Oct 2026): #111 with white text and the white logo. */
+footer.site { background: #111111 !important; border-top: 0 !important; }
+footer.site .ft-brand p, footer.site .ft-brand .mail a, footer.site .ft-base { color: #A1A1AA !important; }
+footer.site .ft-brand .mail, footer.site .ft-col a { color: #FFFFFF !important; }
+footer.site .ft-col h4 { color: #8E8E93 !important; }
+footer.site .ft-col a:hover, footer.site .ft-brand .mail a:hover, footer.site .ft-base a:hover { color: #D1D1D6 !important; }
+footer.site .ft-base { border-top-color: rgba(255,255,255,.12) !important; }
+footer.site .ft-base a { color: inherit; }
+footer.site .ft-social a { background: #2A2A2E !important; border-color: transparent !important; color: #FFFFFF !important; }
+footer.site .ft-social a:hover { background: #3A3A40 !important; }
+footer.site .ft-col a em { color: #FFFFFF !important; background: rgba(255,255,255,.14) !important; }
+</style>
 </head>
 <body>
 <div class="topbar">
@@ -312,7 +325,7 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
 <footer class="site">
   <div class="ft">
     <div class="ft-brand">
-      <a class="wordmark" href="/" aria-label="Manifest home"><img class="mk" src="/assets/manifest-mark.svg" alt="" /><img class="wm" src="/assets/manifest-wordmark.svg?v=2" alt="manifest" /></a>
+      <a class="wordmark" href="/" aria-label="Manifest home"><img class="mk" src="/assets/manifest-mark-white.svg" alt="" /><img class="wm" src="/assets/manifest-wordmark-white.svg?v=2" alt="manifest" /></a>
       <p>The skydiving app for every jump: live loads, 3D replays and a logbook that proves it. Soon, the software that runs the dropzone too.</p>
       <div class="mail">Support: <a href="mailto:andre@manifestjump.com">andre@manifestjump.com</a></div>
       <div class="ft-social">
