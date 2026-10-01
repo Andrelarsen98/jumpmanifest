@@ -20,9 +20,10 @@
 <link rel="apple-touch-icon" href="/assets/app-icon.png?v=3" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
 <style>
-  :root { --ink: #0f0b1c; --violet: #7C3AED; --violet-d: #6D28D9; --muted: #6f6982; --line: rgba(15,11,28,.08); }
+  :root { --ink: #0f0b1c; --violet: #6D42F5; --violet-d: #6D42F5; --muted: #6f6982; --line: rgba(15,11,28,.08); }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   html, body { overflow-x: clip; max-width: 100vw; }
@@ -54,14 +55,14 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
 .nav-links { display: inline-flex; align-items: center; gap: 26px; }
 .nav-links a { color: rgba(255,255,255,.92); font-weight: 600; font-size: 14.5px; }
 .btn { padding: 9px 17px; font-size: 14px; }
-.btn:hover { transform: translateY(-1px); box-shadow: 0 12px 26px rgba(124,58,237,.4); }
+.btn:hover { transform: translateY(-1px); box-shadow: 0 12px 26px rgba(109,66,245,.4); }
   .btn {
     font-family: inherit; font-weight: 700; font-size: 15px; letter-spacing: -.01em;
     border: 0; cursor: pointer; border-radius: 100px; padding: 12px 22px;
     background: var(--violet); color: #fff; transition: transform .15s ease, box-shadow .15s ease;
-    box-shadow: 0 8px 20px rgba(124,58,237,.28); white-space: nowrap;
+    box-shadow: 0 8px 20px rgba(109,66,245,.28); white-space: nowrap;
   }
-  .btn:hover { transform: translateY(-1px); box-shadow: 0 12px 26px rgba(124,58,237,.4); text-decoration: none; }
+  .btn:hover { transform: translateY(-1px); box-shadow: 0 12px 26px rgba(109,66,245,.4); text-decoration: none; }
   .nav-in .btn { padding: 9px 17px; font-size: 14px; }
 
 
@@ -122,7 +123,7 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
   .tb-links a:hover { color: #6f6982; }
   .tb-links .soon { display: inline-flex; align-items: center; gap: 7px; }
   .tb-links .soon em { font-style: normal; font-size: 10.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
-                       color: #6D28D9; background: rgba(124,58,237,.1); border-radius: 99px; padding: 3px 7px; }
+                       color: #6D42F5; background: rgba(109,66,245,.1); border-radius: 99px; padding: 3px 7px; }
   .tb-cta { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 99px;
             background: #F2F2F5; color: #050505; font-size: 15px; font-weight: 700; letter-spacing: -0.01em;
             transition: background .15s ease; }
@@ -175,11 +176,18 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
   .ft-col h4 { font-size: 15px; font-weight: 600; color: #8a869a; margin: 4px 0 18px; letter-spacing: -0.01em; }
   .ft-col a { display: block; font-size: 15.5px; font-weight: 600; color: #0f0b1c; margin-bottom: 14px; letter-spacing: -0.01em; }
   .ft-col a:hover { color: #6f6982; }
-  .ft-col a em { font-style: normal; font-size: 10px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: #6D28D9; background: rgba(124,58,237,.1); border-radius: 99px; padding: 2px 6px; margin-left: 6px; vertical-align: 2px; }
+  .ft-col a em { font-style: normal; font-size: 10px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: #6D42F5; background: rgba(109,66,245,.1); border-radius: 99px; padding: 2px 6px; margin-left: 6px; vertical-align: 2px; }
   .ft-base { max-width: 1200px; margin: 56px auto 0; padding: 22px 32px 0; border-top: 1px solid rgba(15,11,28,.08); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: #8a869a; font-size: 14px; }
   .ft-base a:hover { color: #0f0b1c; }
   @media (max-width: 980px) { .ft { grid-template-columns: repeat(2, 1fr); } .ft-brand { grid-column: 1 / -1; } }
   @media (max-width: 560px) { footer.site { padding: 52px 0 32px; } .ft { padding: 0 20px; gap: 32px 20px; } .ft-base { padding: 20px 20px 0; } }
+
+  /* Same type as the home and dropzones pages (1 Oct 2026): body in Manrope,
+     headings in General Sans 550, purple #6D42F5; header and footer as on
+     every page. */
+  body { font-family: "Manrope", -apple-system, sans-serif; }
+  .topbar, footer.site { font-family: "Plus Jakarta Sans", -apple-system, sans-serif; }
+  h1, h2 { font-family: "General Sans", "Manrope", sans-serif; font-weight: 550 !important; letter-spacing: -.028em; text-wrap: balance; }
 </style>
 </head>
 <body>
