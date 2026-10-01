@@ -294,6 +294,19 @@
      height so the native 135:40 ratio is never distorted. */
   .appbtn { margin: 24px auto 0; display: inline-block; transition: transform .15s ease, filter .15s ease; }
   .appbtn img { height: 54px; width: auto; display: block; }
+  /* Store badges side by side. Google Play is the official badge, greyed,
+     with an "In the making" tag: Android is being built (2 Oct 2026). */
+  .storebtns { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin: 24px auto 0; }
+  .storebtns .appbtn { margin: 0; }
+  .playbtn { position: relative; display: inline-block; cursor: default; }
+  .playbtn img { height: 54px; width: auto; display: block; border-radius: 9px; opacity: .45; filter: grayscale(.4); }
+  .playbtn em { position: absolute; top: -9px; right: -8px; font-style: normal; font-family: "Manrope", sans-serif; font-size: 10.5px; font-weight: 800;
+                letter-spacing: .04em; text-transform: uppercase; color: #fff; background: #111; border-radius: 99px; padding: 4px 8px; white-space: nowrap; }
+  @media (max-width: 600px) {
+    .storebtns { flex-wrap: nowrap; gap: 10px; }
+    .storebtns .appbtn img, .playbtn img { height: 46px; }
+    .playbtn em { top: -10px; right: -6px; font-size: 9.5px; padding: 3px 7px; }
+  }
   .appbtn:hover { transform: translateY(-1px); filter: brightness(1.06); }
   .proof { margin: 16px auto 0; font-size: 15px; font-weight: 600; letter-spacing: 0; color: var(--muted); }
   .proof b { font-weight: 700; color: var(--ink); }
@@ -737,7 +750,9 @@ footer.site .ft-col a em { color: #FFFFFF !important; background: rgba(255,255,2
     .hero .wrap > :not(.fan) { grid-column: 1; justify-self: start; }
     .hero .wrap > .toppills { grid-row: 2; margin: 0 0 26px; justify-content: flex-start; }
     .hero .wrap > h1 { grid-row: 3; } .hero .wrap > .sub { grid-row: 4; }
-    .hero .wrap > .appbtn { grid-row: 5; }
+    .hero .wrap > .appbtn, .hero .wrap > .storebtns { grid-row: 5; }
+    .hero .storebtns { margin: 32px 0 0; justify-content: flex-start; }
+    .hero .storebtns .appbtn { margin: 0; }
     .hero .wrap > .fan { grid-column: 2; grid-row: 1 / -1; align-self: center; margin: 0; width: 100%; }
     .hero h1 { margin: 0; font-size: clamp(40px, 3.9vw, 58px); line-height: 1.08; letter-spacing: -.035em; }
     .hero h1 .l1, .hero h1 .l2 { white-space: nowrap; }
@@ -919,9 +934,15 @@ footer.site .ft-col a em { color: #FFFFFF !important; background: rgba(255,255,2
     <h1><span class="l1">The app for skydivers.</span><br /><span class="l2">The system for dropzones.</span></h1>
     <p class="sub">Jumpers log and replay every jump. Dropzones run loads, payments and manifest, all connected in one real-time system.</p>
 
-    <a class="appbtn" href="https://apps.apple.com/app/id6778510429" aria-label="Download Manifest on the App Store">
+    <div class="storebtns">
+      <a class="appbtn" href="https://apps.apple.com/app/id6778510429" aria-label="Download Manifest on the App Store">
         <img src="assets/appstore-badge.svg?v=1" alt="Download on the App Store" />
       </a>
+      <span class="playbtn" aria-label="Google Play: Android app in the making">
+        <img src="assets/googleplay-badge.png?v=1" alt="Get it on Google Play" />
+        <em>In the making</em>
+      </span>
+    </div>
     <!-- PROOF ROW (1 Oct 2026), Softriver-style, every item true: 158 home
          dropzones in 37 countries on 15 Sep (rounded down so it stays true),
          the USPA listing at uspa.org/logbookapps, and who built it. -->
