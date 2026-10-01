@@ -812,6 +812,28 @@
   .hero .sub b { font-weight: 600; color: #000; }
   @media (max-width: 600px) { .hero .sub { font-size: 17px; line-height: 27px; } }
 
+  /* ---------- The usual way vs Manifest (1 Oct 2026) ----------
+     Measured from softriver.co at 1440: 50px heading, 20/31 grey subline,
+     two 450px columns 48px apart, 32px column titles, 48px rows on thin
+     dividers, a grey cross on the left, the brand mark in purple on the right. */
+  .vs { margin-top: clamp(90px, 10vw, 140px); text-align: center; }
+  .vs-proof { display: inline-flex; align-items: center; gap: 10px; font-family: "Manrope", sans-serif; font-size: 16px; line-height: 24px; color: #040815; }
+  .vs-proof img { width: 22px; height: 22px; object-fit: contain; }
+  .vs h2 { margin: 14px auto 0; max-width: none; font-size: clamp(32px, 4.4vw, 50px); line-height: 1; }
+  .vs-sub { margin: 24px auto 0; font-family: "Manrope", sans-serif; font-size: 20px; line-height: 31px; color: #71717B; }
+  .vs-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 450px)); justify-content: center; gap: 0 48px; margin-top: 56px; text-align: left; }
+  .vs-col h3 { font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: 32px; line-height: 44.8px; letter-spacing: -1px;
+               padding-bottom: 16px; border-bottom: 1px solid rgba(4,8,21,.1); color: #040815; }
+  .vs-col ul { list-style: none; margin: 0; padding: 0; }
+  .vs-col li { display: flex; align-items: center; gap: 14px; min-height: 64px; border-bottom: 1px solid rgba(4,8,21,.1);
+               font-family: "Manrope", sans-serif; font-size: 18px; line-height: 24px; color: #040815; }
+  .vs-col:first-child li { color: #71717B; }
+  .vs-ic { width: 28px; height: 28px; border-radius: 50%; flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; }
+  .vs-ic.no { background: #EDEDEF; } .vs-ic.no svg { width: 11px; height: 11px; }
+  .vs-ic.yes { background: #6D42F5; } .vs-ic.yes img { width: 15px; height: auto; display: block; }
+  @media (max-width: 760px) { .vs-more { display: none; } .vs-cols { grid-template-columns: 1fr; gap: 40px; max-width: 460px; margin-left: auto; margin-right: auto; }
+    .vs-col h3 { font-size: 26px; line-height: 36px; } .vs-col li { font-size: 16px; min-height: 56px; } .vs-sub { font-size: 17px; line-height: 27px; } }
+
   /* ---------- the big footer (1 Oct 2026) ---------- */
   footer.site { margin-top: clamp(80px,11vw,120px); background: #F6F6F8; border-top: 1px solid rgba(15,11,28,.07); padding: 72px 0 40px; }
   .reveal + footer.site { margin-top: 0; }
@@ -947,6 +969,20 @@
     </div>
 
     <img class="carousel-phone" src="/assets/carousel/phone-liveloads.png" alt="Manifest showing dropzones with live loads right now - Bay Area, Boston, Calgary, Chicagoland and more" width="820" height="1705" decoding="async">
+  </div>
+</section>
+
+<!-- The usual way vs Manifest (1 Oct 2026), laid out like Softriver's
+     "Traditional Agency vs Softriver": every line true, no named competitor. -->
+<section class="vs">
+  <div class="wrap">
+    <p class="vs-proof"><img src="/assets/uspa-seal.png?v=1" alt="" width="22" height="22" />Listed by USPA<span class="vs-more">&nbsp;· Jumpers at 150+ dropzones</span></p>
+    <h2>From the load call to the logbook, in one app.</h2>
+    <p class="vs-sub">You jump the whole day. Your app should cover the whole day.</p>
+    <div class="vs-cols">
+      <div class="vs-col"><h3>The usual way</h3><ul><li><span class="vs-ic no"><svg viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M1.27 9.27l8-8M1.27 1.27l8 8" stroke="#171717" stroke-opacity=".5" stroke-width="1.8" stroke-linecap="square"/></svg></span>Refresh the manifest board to find your load</li><li><span class="vs-ic no"><svg viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M1.27 9.27l8-8M1.27 1.27l8 8" stroke="#171717" stroke-opacity=".5" stroke-width="1.8" stroke-linecap="square"/></svg></span>Jumps you typed in yourself</li><li><span class="vs-ic no"><svg viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M1.27 9.27l8-8M1.27 1.27l8 8" stroke="#171717" stroke-opacity=".5" stroke-width="1.8" stroke-linecap="square"/></svg></span>Describe the jump afterwards</li></ul></div>
+      <div class="vs-col"><h3>Manifest</h3><ul><li><span class="vs-ic yes"><img src="/assets/manifest-mark-white.svg" alt="" /></span>Your load on your Lock Screen, live</li><li><span class="vs-ic yes"><img src="/assets/manifest-mark-white.svg" alt="" /></span>Jumps signed off by the jumper who was there</li><li><span class="vs-ic yes"><img src="/assets/manifest-mark-white.svg" alt="" /></span>Watch every jump back in 3D</li></ul></div>
+    </div>
   </div>
 </section>
 
