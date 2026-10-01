@@ -202,6 +202,30 @@
   .ownerbar a { color: #fff; font-weight: 600; white-space: nowrap; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(255,255,255,.4); }
   .ownerbar a:hover { text-decoration-color: #fff; }
   @media (max-width: 600px) { .ownerbar { font-size: 13.5px; line-height: 20px; padding: 11px 16px; } }
+  /* ---------- FROSTED TILT CARDS (1 Oct 2026, preview) ----------
+     The black section sits on a photo; the three points are frosted glass
+     cards that tilt toward the cursor with a soft light where it hovers.
+     Only on devices that can hover; reduced-motion keeps them still.
+     NOTE: dz-only-bg.jpg is a 517px Pinterest image with someone else's
+     mark on it: preview only, replace with our own before going live. */
+  .only { position: relative; overflow: hidden; isolation: isolate;
+          background: #050505 url(/assets/dz-only-bg.jpg) center 30% / cover no-repeat; }
+  .only::before { content: ""; position: absolute; inset: 0; z-index: -1;
+                  background: linear-gradient(180deg, rgba(5,5,5,.55) 0%, rgba(5,5,5,.2) 45%, rgba(5,5,5,.7) 100%); }
+  .only-grid { perspective: 900px; }
+  .only-grid > div { position: relative; border-radius: 24px; padding: 30px 28px 32px;
+    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16);
+    -webkit-backdrop-filter: blur(22px) saturate(150%); backdrop-filter: blur(22px) saturate(150%);
+    box-shadow: 0 20px 50px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.12);
+    transform-style: preserve-3d; transition: transform .5s cubic-bezier(.22,.9,.3,1), box-shadow .5s ease;
+    --mx: 50%; --my: 50%; overflow: hidden; }
+  .only-grid > div::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0;
+    background: radial-gradient(420px circle at var(--mx) var(--my), rgba(255,255,255,.18), transparent 45%);
+    transition: opacity .3s ease; }
+  .only-grid > div.tilting { transition: transform .08s linear, box-shadow .3s ease; box-shadow: 0 30px 70px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.16); }
+  .only-grid > div.tilting::after { opacity: 1; }
+  .only-grid > div p { color: rgba(255,255,255,.72); }
+  .only-foot { border-top-color: rgba(255,255,255,.18); color: rgba(255,255,255,.7); }
   @media (max-width: 980px) { .tb-links a:not(.soon) { display: none; } .grid { grid-template-columns: repeat(2, 1fr); } .only-grid { grid-template-columns: 1fr; } }
   @media (max-width: 600px) {
     .topbar-in { height: 62px; padding: 0 16px; } .wordmark img { width: 28px; } .wordmark img.wm { width: auto; height: 18px; } .wordmark span { font-size: 24px; }
@@ -358,6 +382,21 @@
   menu.addEventListener('click', (e) => { if (e.target.closest('a')) set(false); });
   document.addEventListener('click', (e) => { if (!bar.contains(e.target)) set(false); });
   addEventListener('resize', () => { if (innerWidth > 600) set(false); });
+})();
+</script>
+<script>
+// Frosted cards tilt toward the cursor (max 7deg) and lift; light follows it.
+(() => {
+  if (!matchMedia('(hover: hover) and (pointer: fine)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.only-grid > div').forEach((card) => {
+    card.addEventListener('pointermove', (e) => {
+      const r = card.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      card.classList.add('tilting');
+      card.style.setProperty('--mx', (x * 100) + '%'); card.style.setProperty('--my', (y * 100) + '%');
+      card.style.transform = `rotateX(${(0.5 - y) * 14}deg) rotateY(${(x - 0.5) * 14}deg) translateZ(18px) scale(1.03)`;
+    });
+    card.addEventListener('pointerleave', () => { card.classList.remove('tilting'); card.style.transform = ''; });
+  });
 })();
 </script>
 </body>
