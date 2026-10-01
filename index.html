@@ -1369,13 +1369,14 @@
   const menu = document.createElement('div'); menu.className = 'tb-menu';
   bar.querySelectorAll('.tb-links a').forEach((a) => menu.appendChild(a.cloneNode(true)));
   drop.appendChild(menu); bar.appendChild(drop);
-  // On the home page the panel runs down past the App Store badge and ends
-  // just under it, so its edge sits in a clean gap instead of cutting the badge.
+  // On the home page the panel ends just ABOVE the App Store badge, so the
+  // download button stays visible and tappable with the menu open (André,
+  // 1 Oct 2026; it used to run past the badge and cover it).
   const fit = () => {
     menu.style.minHeight = '';
     const badge = document.querySelector('img[src*="appstore-badge"]');
     if (!badge) return;
-    const gap = badge.getBoundingClientRect().bottom - drop.getBoundingClientRect().top + 18;
+    const gap = badge.getBoundingClientRect().top - drop.getBoundingClientRect().top - 18;
     if (gap > menu.offsetHeight && gap < innerHeight * 0.8) menu.style.minHeight = gap + 'px';
   };
   const set = (open) => { if (open) fit(); bar.classList.toggle('open', open); btn.setAttribute('aria-expanded', open); };
