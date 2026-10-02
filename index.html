@@ -735,6 +735,19 @@ footer.site .ft-social a:hover { background: #3A3A40 !important; }
 footer.site .ft-col a em { color: #FFFFFF !important; background: rgba(255,255,255,.14) !important; }
 </style>
 <style id="lockup-css">/* One logo file: the M centred on the lowercase letters, reaching above and below (2 Oct 2026). */ img.lockup{height:32px!important;width:auto!important;border-radius:0!important;display:block;max-width:none!important} @media (max-width:600px){img.lockup{height:29px!important}} .brand img.lockup{height:21px!important} .hub-wordmark img.lockup{height:22px!important}</style>
+<style id="loadin">
+/* LOAD-IN, Softriver's (measured from André's screen recording, 2 Oct 2026):
+   each hero line fades in from ~40px lower and rises into place over 0.7s,
+   one after another ~0.15s apart; the top bar slides down from above last. */
+@keyframes rise { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
+@keyframes dropin { from { opacity: 0; transform: translateY(-100%); } to { opacity: 1; transform: none; } }
+.li { animation: rise .7s cubic-bezier(.2,.75,.25,1) both; animation-delay: calc(var(--i, 0) * .15s + .1s); }
+.li-bar { animation: dropin .6s cubic-bezier(.2,.75,.25,1) .95s both; }
+/* the phones come in with the rest, like Softriver's work images, then settle into the V */
+.hero .fan { animation: rise .8s cubic-bezier(.2,.75,.25,1) .55s both; }
+.hero .phone.back, .hero .phone.front { animation-delay: .7s; }
+@media (prefers-reduced-motion: reduce) { .li, .li-bar { animation: none !important; } }
+</style>
 </head>
 <body>
 <style>
@@ -906,7 +919,7 @@ footer.site .ft-col a em { color: #FFFFFF !important; background: rgba(255,255,2
   @media (max-width: 560px) { footer.site { padding: 52px 0 32px; } .ft { padding: 0 20px; gap: 32px 20px; } .ft-base { width: calc(100% - 40px); padding: 20px 0 0; } }
 </style>
 
-<div class="topbar">
+<div class="topbar li-bar">
   <div class="topbar-in">
     <a class="wordmark" href="#top" data-home aria-label="Manifest home">
       <img class="lockup" src="assets/manifest-lockup.svg?v=1" alt="Manifest" />
@@ -927,14 +940,14 @@ footer.site .ft-col a em { color: #FFFFFF !important; background: rgba(255,255,2
 
 <header class="hero" id="top">
   <div class="wrap">
-    <div class="toppills">
+    <div class="li toppills" style="--i:0">
       <a class="toppill" href="https://www.uspa.org/logbookapps" target="_blank" rel="noopener"><img src="assets/uspa-seal.png?v=1" alt="" width="22" height="22" /><span>Listed by <b>USPA</b></span><i></i><span>Jumpers at <b>220+</b> dropzones</span></a>
       <span class="toppill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><span><b>38</b> countries</span><i></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20a6 6 0 0 1 12 0M17 11a3 3 0 1 0 0-6M21 20a6 6 0 0 0-4-5.6"/></svg><span>Built by professionals</span></span>
     </div>
-    <h1><span class="l1">The app for skydivers.</span><br /><span class="l2">The system for dropzones.</span></h1>
-    <p class="sub">Jumpers log and replay every jump. Dropzones run loads, payments and manifest, all connected in one real-time system.</p>
+    <h1 class="li" style="--i:1"><span class="l1">The app for skydivers.</span><br /><span class="l2">The system for dropzones.</span></h1>
+    <p class="li sub" style="--i:2">Jumpers log and replay every jump. Dropzones run loads, payments and manifest, all connected in one real-time system.</p>
 
-    <div class="storebtns">
+    <div class="li storebtns" style="--i:3">
       <a class="appbtn" href="https://apps.apple.com/app/id6778510429" aria-label="Download Manifest on the App Store">
         <img src="assets/appstore-badge.svg?v=1" alt="Download on the App Store" />
       </a>

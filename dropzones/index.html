@@ -385,11 +385,21 @@ footer.site .ft-social a:hover { background: #3A3A40 !important; }
 footer.site .ft-col a em { color: #FFFFFF !important; background: rgba(255,255,255,.14) !important; }
 </style>
 <style id="lockup-css">/* One logo file: the M centred on the lowercase letters, reaching above and below (2 Oct 2026). */ img.lockup{height:32px!important;width:auto!important;border-radius:0!important;display:block;max-width:none!important} @media (max-width:600px){img.lockup{height:29px!important}} .brand img.lockup{height:21px!important} .hub-wordmark img.lockup{height:22px!important}</style>
+<style id="loadin">
+/* LOAD-IN, Softriver's (measured from André's screen recording, 2 Oct 2026):
+   each hero line fades in from ~40px lower and rises into place over 0.7s,
+   one after another ~0.15s apart; the top bar slides down from above last. */
+@keyframes rise { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
+@keyframes dropin { from { opacity: 0; transform: translateY(-100%); } to { opacity: 1; transform: none; } }
+.li { animation: rise .7s cubic-bezier(.2,.75,.25,1) both; animation-delay: calc(var(--i, 0) * .15s + .1s); }
+.li-bar { animation: dropin .6s cubic-bezier(.2,.75,.25,1) .95s both; }
+@media (prefers-reduced-motion: reduce) { .li, .li-bar { animation: none !important; } }
+</style>
 </head>
 <body>
 
 <div class="ownerbar">This page is for dropzone owners and managers. Looking for the jumper app? <a href="https://apps.apple.com/app/id6778510429">Download Manifest&nbsp;&rarr;</a></div>
-<div class="topbar">
+<div class="topbar li-bar">
   <div class="topbar-in">
     <a class="wordmark" href="/" aria-label="Manifest home"><img class="lockup" src="/assets/manifest-lockup.svg?v=1" alt="Manifest" /></a>
     <div class="tb-links">
@@ -407,20 +417,20 @@ footer.site .ft-col a em { color: #FFFFFF !important; background: rgba(255,255,2
 
 <header class="hero">
   <div class="wrap">
-    <div class="toprow">
+    <div class="li toprow" style="--i:0">
       <span class="live"><i></i>Onboarding the first dropzones now</span>
     </div>
-    <h1><span class="dim">Every dropzone has a manifest.</span> <span class="l2"><span class="dim">Make yours</span> <img class="wm-h1" src="/assets/manifest-wordmark.svg?v=3" alt="manifest" />.</span></h1>
-    <p class="sub"><b>Your jumpers already use Manifest.</b><br />
+    <h1 class="li" style="--i:1"><span class="dim">Every dropzone has a manifest.</span> <span class="l2"><span class="dim">Make yours</span> <img class="wm-h1" src="/assets/manifest-wordmark.svg?v=3" alt="manifest" />.</span></h1>
+    <p class="li sub" style="--i:2"><b>Your jumpers already use Manifest.</b><br />
       Jumpers from 220+ dropzones in 38 countries check their loads, log their jumps and replay them in 3D on it.</p>
     <div class="herorow">
-      <div class="ctas">
+      <div class="li ctas" style="--i:3">
         <a class="btn primary" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%20early%20access&body=Dropzone%3A%20%0AName%3A%20%0APhone%3A%20">Get early access<span class="bi"><svg viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></span></a>
         <a class="btn ghost" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20call&body=Dropzone%3A%20%0AName%3A%20%0APhone%3A%20%0ABest%20time%20to%20call%3A%20">Book a call</a>
       </div>
       <!-- Every item true: jumpers' home dropzones (158 on 15 Sep, rounded down),
            37 countries, the USPA listing, and where Manifest is made. -->
-      <div class="trust">
+      <div class="li trust" style="--i:4">
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20a6 6 0 0 1 12 0M17 11a3 3 0 1 0 0-6M21 20a6 6 0 0 0-4-5.6"/></svg>Jumpers at 220+ dropzones</span>
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg>38 countries</span>
         <a href="https://www.uspa.org/logbookapps" target="_blank" rel="noopener"><img src="/assets/uspa-seal.png?v=1" alt="" width="22" height="22" />Listed by USPA</a>
