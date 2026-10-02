@@ -1419,16 +1419,9 @@ footer.site .ft-col a em { color: #FFFFFF !important; background: rgba(255,255,2
   const menu = document.createElement('div'); menu.className = 'tb-menu';
   bar.querySelectorAll('.tb-links a').forEach((a) => menu.appendChild(a.cloneNode(true)));
   drop.appendChild(menu); bar.appendChild(drop);
-  // On the home page the panel ends just ABOVE the App Store badge, so the
-  // download button stays visible and tappable with the menu open (André,
-  // 1 Oct 2026; it used to run past the badge and cover it).
-  const fit = () => {
-    menu.style.minHeight = '';
-    const badge = document.querySelector('img[src*="appstore-badge"]');
-    if (!badge) return;
-    const gap = badge.getBoundingClientRect().top - drop.getBoundingClientRect().top - 18;
-    if (gap > menu.offsetHeight && gap < innerHeight * 0.8) menu.style.minHeight = gap + 'px';
-  };
+  // The panel is as tall as its links, ending just under "For dropzones" (André,
+  // 2 Oct 2026). It used to stretch down to the App Store badge.
+  const fit = () => { menu.style.minHeight = ''; };
   const set = (open) => { if (open) fit(); bar.classList.toggle('open', open); btn.setAttribute('aria-expanded', open); };
   btn.addEventListener('click', (e) => { e.stopPropagation(); set(!bar.classList.contains('open')); });
   menu.addEventListener('click', (e) => { if (e.target.closest('a')) set(false); });
