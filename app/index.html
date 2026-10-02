@@ -27,6 +27,8 @@
       border: 1px solid var(--accent-dim2);
       display: grid; place-items: center;
     }
+    /* new logo (2 Oct 2026): white files, flipped to black on the light theme */
+    [data-theme="light"] .hub-wordmark img { filter: invert(1); }
     .hub-name { font-size: 0.9375rem; font-weight: 700; letter-spacing: -0.02em; }
     .beta-chip {
       display: inline-block;
@@ -136,13 +138,7 @@
   <!-- Header -->
   <header class="hub-header">
     <div class="hub-wordmark">
-      <div class="hub-mark">
-        <svg width="15" height="13" viewBox="0 0 15 13" fill="none">
-          <path d="M7.5 0.5C4.46 0.5 2 2.96 2 6h11C13 2.96 10.54 0.5 7.5 0.5z" fill="rgba(243,167,63,0.9)"/>
-          <path d="M7.5 6L5 11.5M7.5 6l2.5 5.5M5 11.5h5" stroke="rgba(243,167,63,0.45)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <span class="hub-name">Manifest</span>
+      <img src="/assets/manifest-mark-white.svg" alt="" style="height:20px;width:auto;display:block" /><img src="/assets/manifest-wordmark-white.svg?v=3" alt="Manifest" style="height:17px;width:auto;display:block" />
       <span class="beta-chip">Beta</span>
     </div>
     <button class="theme-toggle" aria-label="Toggle theme">
