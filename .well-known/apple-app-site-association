@@ -17,6 +17,10 @@
           {
             "/": "/u/*",
             "comment": "A jumper's profile link \u2014 opens in the app when it is installed."
+          },
+          {
+            "/": "/join/*",
+            "comment": "Join a Manifest Desk dropzone: opens the app's join screen when installed."
           }
         ]
       }

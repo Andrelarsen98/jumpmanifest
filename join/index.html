@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Join your dropzone on Manifest</title>
+<meta name="description" content="Join your dropzone in the Manifest app: see today's loads and book your jumps from your phone." />
+<meta name="robots" content="noindex" />
+<link rel="icon" type="image/png" href="/assets/app-icon.png?v=3" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root { --ink:#050505; --muted:#71717B; --line:#ECECF1; --cloud:#EDEFF7; --purple:#6D42F5; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:Manrope,-apple-system,sans-serif; background:var(--cloud); color:var(--ink); min-height:100vh;
+    display:flex; align-items:center; justify-content:center; padding:24px 16px 40px; }
+  .card { width:100%; max-width:420px; background:#fff; border-radius:28px; border:1px solid var(--line); padding:28px 24px; text-align:center; }
+  .lockup { height:28px; width:auto; display:block; margin:0 auto 26px; }
+  .logo { width:64px; height:64px; border-radius:16px; object-fit:cover; border:1px solid var(--line); margin:0 auto 14px; display:none; }
+  h1 { font-size:26px; font-weight:700; letter-spacing:-.5px; line-height:1.2; }
+  .lead { font-size:16px; line-height:1.55; color:var(--muted); margin-top:10px; }
+  .code { font-size:36px; font-weight:700; letter-spacing:8px; margin:22px 0 4px; }
+  .hint { font-size:13px; color:var(--muted); }
+  .steps { text-align:left; list-style:none; margin:22px 0 4px; }
+  .steps li { display:flex; gap:12px; padding:8px 0; font-size:15px; line-height:1.45; }
+  .steps .n { flex:none; width:24px; height:24px; border-radius:999px; background:#F0ECFE; color:var(--ink); font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+  .btn { display:block; background:var(--purple); color:#fff; font-weight:600; font-size:16px; padding:16px; border-radius:999px; text-decoration:none; margin-top:20px; }
+  .btn.alt { background:#F6F6F6; color:var(--ink); margin-top:10px; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <img class="lockup" src="/assets/manifest-lockup.svg?v=5" alt="Manifest" />
+    <img class="logo" id="logo" alt="" />
+    <h1 id="title">Join your dropzone</h1>
+    <p class="lead" id="lead">See today's loads and book your jumps from your phone.</p>
+    <div class="code" id="code"></div>
+    <div class="hint">Your join code</div>
+    <ul class="steps">
+      <li><span class="n">1</span><span>Get <strong>Manifest</strong> from the App Store. It's free.</span></li>
+      <li><span class="n">2</span><span>Open it and tap <strong>Book a load</strong>.</span></li>
+      <li><span class="n">3</span><span>Type the code above.</span></li>
+    </ul>
+    <a class="btn" href="/get">Get Manifest</a>
+    <a class="btn alt" id="open" href="manifestapp://">I have the app</a>
+  </div>
+<script>
+  var code = (location.pathname.split('/')[2] || new URLSearchParams(location.search).get('c') || '').toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 12);
+  document.getElementById('code').textContent = code || '------';
+  if (code) document.getElementById('open').href = 'manifestapp://join/' + code;
+  if (code) fetch('https://wkefdtglgbfprvfajrrw.supabase.co/rest/v1/rpc/desk_join_preview', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', apikey: 'sb_publishable_bSZ85fokRcmDjIzYr7Q9mQ_w4dQ0b3b' },
+    body: JSON.stringify({ p_code: code })
+  }).then(function (r) { return r.json(); }).then(function (d) {
+    if (!d || !d.name) { document.getElementById('lead').textContent = 'We could not find this code. Check it with the desk.'; return; }
+    document.getElementById('title').textContent = 'Join ' + d.name;
+    document.title = 'Join ' + d.name + ' on Manifest';
+    if (d.logo_url) { var l = document.getElementById('logo'); l.src = d.logo_url; l.style.display = 'block'; }
+    if (d.open === false) document.getElementById('lead').textContent = d.name + ' is not taking new members in the app right now. Ask the desk.';
+  }).catch(function () {});
+</script>
+</body>
+</html>
