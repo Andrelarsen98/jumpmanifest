@@ -83,6 +83,20 @@
   .only-grid p { color: rgba(255,255,255,.62); font-size: 15px; }
   .only-grid .n { font-family: "Manrope", sans-serif; font-weight: 800; font-size: 13px; color: #B9A4FF; margin-bottom: 14px; letter-spacing: .04em; }
 
+  /* SEE THE DESK (8 Oct 2026): the real desk in a browser frame, and the
+     ask: a 20-minute walkthrough on video, not a self-serve demo (yet). */
+  .peek { padding: 96px 0 0; text-align: center; }
+  .peek h2 { font-size: clamp(30px, 4vw, 44px); letter-spacing: -0.035em; line-height: 1.1; }
+  .peek .lead { color: var(--muted); font-size: 18px; margin: 12px auto 0; max-width: 600px; }
+  .frame { margin: 40px auto 0; max-width: 1080px; border-radius: 16px; background: #fff; overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(112,115,147,.16), 0 30px 80px rgba(30,30,42,.14); }
+  .frame-bar { height: 36px; display: flex; align-items: center; gap: 7px; padding: 0 14px; background: #F6F7F9; border-bottom: 1px solid rgba(112,115,147,.12); }
+  .frame-bar i { width: 11px; height: 11px; border-radius: 50%; background: #DCDDE3; }
+  .frame-bar span { margin-left: 12px; font-size: 13px; color: #70707D; }
+  .frame img { display: block; width: 100%; height: auto; }
+  .peek-points { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; margin: 28px auto 0; color: var(--muted); font-size: 15px; }
+  .peek-points b { color: var(--ink); font-weight: 600; }
+  .peek .ctas { margin-top: 32px; }
   .sec { padding: 96px 0 0; }
   .sec h2 { font-size: clamp(30px, 4vw, 44px); letter-spacing: -0.035em; line-height: 1.1; text-align: center; }
   .sec .lead { text-align: center; color: var(--muted); font-size: 18px; margin: 12px auto 0; max-width: 560px; }
@@ -426,7 +440,7 @@ footer.site .ft-col a em { color: #FFFFFF !important; background: rgba(255,255,2
     <div class="herorow">
       <div class="li ctas" style="--i:3">
         <a class="btn primary" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%20early%20access&body=Dropzone%3A%20%0AName%3A%20%0APhone%3A%20">Get early access<span class="bi"><svg viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></span></a>
-        <a class="btn ghost" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20call&body=Dropzone%3A%20%0AName%3A%20%0APhone%3A%20%0ABest%20time%20to%20call%3A%20">Book a call</a>
+        <a class="btn ghost" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo&body=Dropzone%3A%20%0AName%3A%20%0APhone%3A%20%0ABest%20time%20for%20a%2020-minute%20video%20call%3A%20">Book a demo</a>
       </div>
       <!-- Every item true: jumpers' home dropzones (158 on 15 Sep, rounded down),
            37 countries, the USPA listing, and where Manifest is made. -->
@@ -449,6 +463,19 @@ footer.site .ft-col a em { color: #FFFFFF !important; background: rgba(255,255,2
       <div><div class="n">03</div><b>Every call on their Lock Screen</b><p>Called, 10 minutes, 5 minutes, boarding and holds, pushed from your board to every jumper on the load, with a live countdown on their Lock Screen.</p></div>
     </div>
     <p class="only-foot">Less time in line at manifest. <b>More time in the air.</b></p>
+  </section>
+
+  <section class="peek" id="demo">
+    <h2>See the desk.</h2>
+    <p class="lead">Today's loads, money and winds on one screen. Drag jumpers between loads, call a load, and every phone on it knows.</p>
+    <div class="frame">
+      <div class="frame-bar"><i></i><i></i><i></i><span>desk.jumpmanifest.com</span></div>
+      <img src="/assets/desk-today.jpg?v=1" alt="Manifest Desk: the Today page of a demo dropzone, with today's takings, open loads, the next load countdown, standby and accounts" width="1440" height="900" loading="lazy" />
+    </div>
+    <div class="peek-points"><span><b>Drag and drop</b> loads</span><span><b>Standby</b> list</span><span><b>Hangar board</b> for every TV</span><span><b>Reports</b> for the accountant</span></div>
+    <div class="ctas">
+      <a class="btn primary" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo&body=Dropzone%3A%20%0AName%3A%20%0APhone%3A%20%0ABest%20time%20for%20a%2020-minute%20video%20call%3A%20">Book a 20-minute demo<span class="bi"><svg viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></span></a>
+    </div>
   </section>
 
   <section class="sec">
@@ -546,7 +573,7 @@ footer.site .ft-col a em { color: #FFFFFF !important; background: rgba(255,255,2
       <div class="cm-r"><div class="cm-l">Online tandem booking and waivers <em class="soon-tag">Soon</em></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div></div>
       <div class="cm-r"><div class="cm-l">Gift vouchers <em class="soon-tag">Soon</em></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div></div>
     </div>
-    <a class="pc-call" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20call&body=Dropzone%3A%20%0AName%3A%20%0APhone%3A%20%0ABest%20time%20to%20call%3A%20">Book a call <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    <a class="pc-call" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo&body=Dropzone%3A%20%0AName%3A%20%0APhone%3A%20%0ABest%20time%20for%20a%2020-minute%20video%20call%3A%20">Book a demo <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
   </section>
   <section class="final">
     <h2>Be one of the first dropzones on Manifest.</h2>
