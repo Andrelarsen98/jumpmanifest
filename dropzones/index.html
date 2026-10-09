@@ -111,6 +111,8 @@
     .safety .txt, .app-foot { font-size: 17px; line-height: 27px; } .frame { margin-top: 40px; border-radius: 12px; } .frame-bar { height: 28px; }
     .frame-bar i { width: 8px; height: 8px; } .frame-cap { font-size: 16px; line-height: 25px; } .peek-points { font-size: 14px; } }
   .sec { padding: 96px 0 0; }
+  #app { padding-top: 64px; }
+  header.hero { padding-bottom: 16px; }
   .sec h2 { font-size: clamp(30px, 4vw, 44px); letter-spacing: -0.035em; line-height: 1.1; text-align: center; }
   .sec .lead { text-align: center; color: var(--muted); font-size: 18px; margin: 12px auto 0; max-width: 560px; }
   .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 44px; }
@@ -135,7 +137,10 @@
     .hero h1 { margin: 26px 0 0; max-width: 13ch; font-size: clamp(64px, 7.2vw, 96px); line-height: 1; letter-spacing: -.045em; }
     .hero .sub { margin: 26px 0 0; max-width: 620px; font-size: clamp(18px, 1.7vw, 21px); }
     .hero .ctas { justify-content: flex-start; margin-top: 38px; }
-    .sec { padding-top: clamp(110px, 12vw, 160px); }
+    .sec { padding-top: clamp(96px, 9vw, 128px); }
+    /* Right after the desk screenshot: less dead space (André, 9 Oct). */
+    #app { padding-top: clamp(64px, 6vw, 88px); }
+    header.hero { padding-bottom: 24px; }
     .sec h2 { font-size: clamp(50px, 5.4vw, 74px); }
     .sec .lead { font-size: 20px; max-width: 620px; }
     .grid { margin-top: 56px; }
