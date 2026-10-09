@@ -176,6 +176,11 @@
 <script>
 (function () {
   var API = 'https://wkefdtglgbfprvfajrrw.supabase.co/functions/v1/desk-billing';
+  // PAYMENTS_LIVE (9 Oct 2026): false until Manifest Jump LLC has its live
+  // Stripe account. Until then the last step reserves the founding price as a
+  // lead (desk-lead, push to André) instead of opening Stripe Checkout.
+  var PAYMENTS_LIVE = false;
+  var LEAD = 'https://wkefdtglgbfprvfajrrw.supabase.co/functions/v1/desk-lead';
   var PLANS = {
     weekend: { name: 'Weekend dropzone', desc: 'One aircraft and busy weekends, run by a small manifest team.', month: 249, year: 2490, support: 'Email support' },
     fulltime: { name: 'Full-time dropzone', desc: 'Jumping most days, with a team on the desk and staff to pay every week.', month: 399, year: 3990, support: 'Priority support' },
@@ -228,7 +233,30 @@
   $('pkgChange').onclick = function () { if (st.info || $('f1').reportValidity()) { st.info = st.info || null; } show(st.info ? 2 : 1); if (!st.info) $('f1').dropzone.focus(); };
   $('back1').onclick = function (e) { e.preventDefault(); show(1); };
   document.querySelectorAll('.toggle button').forEach(function (b) { b.onclick = function () { st.interval = b.dataset.int; render(); }; });
+  if (!PAYMENTS_LIVE) {
+    $('pay').textContent = 'Reserve my founding price';
+    document.querySelector('.paym .l b').textContent = 'Nothing to pay today';
+    document.querySelector('.paym .l span').textContent = 'You pay when your desk goes live, with card or Apple Pay via Stripe.';
+    $('st3').querySelector('.t').textContent = 'Reserve';
+  }
+  function reserve() {
+    var btn = $('pay'); btn.disabled = true; btn.textContent = 'Reserving...'; $('e2').hidden = true;
+    var p = PLANS[st.plan];
+    fetch(LEAD, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(Object.assign({ kind: 'reserve', plan: p.name + ', ' + (st.interval === 'year' ? 'yearly' : 'monthly') }, st.info)) })
+      .then(function (r) { return r.json().then(function (j) { if (!r.ok) throw new Error(j.error || 'Could not reserve'); }); })
+      .then(function () {
+        try { sessionStorage.removeItem('desk.start'); } catch (e) {}
+        steps(4);
+        document.getElementById('v2').innerHTML = '<div class="one"><div class="card"><span class="chip" style="margin-bottom:14px">RESERVED</span><h1>Your founding price is <em>reserved</em></h1>' +
+          '<p class="sub">' + p.name + ' at ' + money(half(st.interval === 'year' ? p.year : p.month)) + (st.interval === 'year' ? ' for your first year' : ' a month for your first 12 months') + '. Nothing to pay today.</p>' +
+          '<p class="sub">André will call you to set up your desk with you. You pay when it goes live.</p>' +
+          '<a class="go" href="/dropzones/" style="text-decoration:none">Back to Manifest for dropzones</a></div></div>';
+        window.scrollTo(0, 0);
+      })
+      .catch(function (e) { $('e2').textContent = e.message; $('e2').hidden = false; btn.disabled = false; btn.textContent = 'Reserve my founding price'; });
+  }
   $('pay').onclick = function () {
+    if (!PAYMENTS_LIVE) { reserve(); return; }
     var btn = $('pay'); btn.disabled = true; btn.textContent = 'Opening secure payment...'; $('e2').hidden = true; steps(3);
     var tz = ''; try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch (e) {}
     fetch(API, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(Object.assign({ action: 'checkout', plan: st.plan, interval: st.interval, timezone: tz }, st.info)) })
