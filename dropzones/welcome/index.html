@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Welcome to Manifest Desk</title>
+<meta name="robots" content="noindex" />
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg?v=4" />
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&display=swap" rel="stylesheet" />
+<!-- STEP 4, SET UP (9 Oct 2026): Stripe sends them here after paying. We ask
+     desk-billing to confirm the payment, which creates their dropzone and an
+     owner invite for their email, then point them at the desk. -->
+<style>
+  :root { --ink: #050505; --muted: #71717B; --line: #E7E7EC; --purple: #6D42F5; --pale: #F0ECFE; --green: #15803D; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Manrope", -apple-system, sans-serif; color: var(--ink); background: #F6F6F9; line-height: 1.5; }
+  .top { background: #fff; border-bottom: 1px solid var(--line); }
+  .top .in { max-width: 1120px; margin: 0 auto; padding: 18px 20px; }
+  .top img { height: 28px; display: block; }
+  main { max-width: 560px; margin: 0 auto; padding: 48px 20px 80px; }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: 28px; padding: 36px; }
+  h1 { font-family: "General Sans", sans-serif; font-weight: 550; letter-spacing: -0.028em; font-size: clamp(30px, 4vw, 42px); line-height: 1.1; margin: 0; }
+  h1 em { font-style: normal; color: var(--purple); }
+  p { color: var(--muted); font-size: 17px; }
+  ol { padding-left: 20px; margin: 18px 0 0; }
+  ol li { margin: 10px 0; font-size: 16px; }
+  ol li b { color: var(--ink); }
+  .go { display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 26px; padding: 18px 24px; border-radius: 99px; background: var(--purple); color: #fff; font-size: 17px; font-weight: 700; text-decoration: none; box-shadow: 0 10px 30px rgba(109,66,245,.28); }
+  .ok { display: inline-flex; align-items: center; gap: 8px; color: var(--green); background: #DCFCE7; border-radius: 99px; padding: 6px 12px; font-size: 14px; font-weight: 700; margin-bottom: 16px; }
+  .err { color: #DC2626; }
+</style>
+</head>
+<body>
+<header class="top"><div class="in"><a href="/dropzones/"><img src="/assets/manifest-lockup.svg?v=5" alt="manifest" /></a></div></header>
+<main>
+  <div class="card" id="box">
+    <h1>Finishing your set-up…</h1>
+    <p>Confirming your payment with Stripe.</p>
+  </div>
+</main>
+<script>
+(function () {
+  var s = new URLSearchParams(location.search).get('s'), box = document.getElementById('box');
+  function fail(msg) { box.innerHTML = '<h1>Almost there</h1><p class="err">' + msg + '</p><p>If you paid, nothing is lost: email <a href="mailto:andre@manifestjump.com">andre@manifestjump.com</a> and we finish it with you.</p>'; }
+  if (!s) { fail('We could not find your payment.'); return; }
+  var tries = 0;
+  (function confirm() {
+    fetch('https://wkefdtglgbfprvfajrrw.supabase.co/functions/v1/desk-billing', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ action: 'confirm', session_id: s }) })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, status: r.status, j: j }; }); })
+      .then(function (x) {
+        if (!x.ok) { if (x.status === 409 && tries++ < 6) return setTimeout(confirm, 2000); throw new Error(x.j.error || 'Something went wrong'); }
+        try { sessionStorage.removeItem('desk.start'); } catch (e) {}
+        var dz = x.j.dropzone, em = x.j.email;
+        box.innerHTML = '<span class="ok">✓ Payment received</span><h1>Welcome, <em></em></h1>' +
+          '<p>Your desk is ready. Here is what happens next:</p><ol>' +
+          '<li><b>Sign in at desk.jumpmanifest.com</b> with <b class="em"></b>. You are the owner.</li>' +
+          '<li><b>Add your aircraft and jump prices</b> under Settings.</li>' +
+          '<li><b>Print your join poster</b> so your jumpers find you in the app.</li>' +
+          '<li><b>We call you</b> to set up the rest together before your first load.</li></ol>' +
+          '<a class="go" href="https://desk.jumpmanifest.com">Open the desk →</a>';
+        box.querySelector('h1 em').textContent = dz;
+        box.querySelector('.em').textContent = em;
+      })
+      .catch(function (e) { fail(e.message); });
+  })();
+})();
+</script>
+</body>
+</html>

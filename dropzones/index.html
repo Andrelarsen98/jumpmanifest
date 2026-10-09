@@ -695,6 +695,10 @@ footer.site .ft-col a em { color: #FFFFFF !important; background: rgba(255,255,2
       e.preventDefault();
       var card = a.closest('.pc'); var plan = card && card.querySelector('h3') ? card.querySelector('h3').textContent.trim() : '';
       var demo = /demo/i.test(decodeURIComponent(a.getAttribute('href')));
+      // A plan's Get started goes to the real sign-up (info, plan, payment).
+      var label = (plan || (a.closest('.cm-c, .cm-h, th, td') || {}).textContent || a.parentElement.textContent || '').toLowerCase();
+      var key = /weekend/.test(label) ? 'weekend' : /full/.test(label) ? 'fulltime' : /big/.test(label) ? 'big' : '';
+      if (!demo && key && /get started/i.test(a.textContent)) { location.href = '/dropzones/start/?plan=' + key; return; }
       open(demo ? 'demo' : 'start', plan);
     });
   });

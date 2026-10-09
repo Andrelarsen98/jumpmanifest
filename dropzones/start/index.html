@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Get started · Manifest Desk</title>
+<meta name="description" content="Set up Manifest Desk for your dropzone: pick your plan and pay securely with Stripe." />
+<meta name="robots" content="noindex" />
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg?v=4" />
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&display=swap" rel="stylesheet" />
+<!-- GET STARTED (9 Oct 2026, after Softriver's checkout): 1 your info,
+     2 your plan with an order summary, 3 Stripe Checkout, 4 set up
+     (/dropzones/welcome). Backend: supabase function desk-billing. -->
+<style>
+  :root { --ink: #050505; --muted: #71717B; --line: #E7E7EC; --cloud: #EDEFF7; --purple: #6D42F5; --pale: #F0ECFE; --green: #15803D; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Manrope", -apple-system, sans-serif; color: var(--ink); background: #F6F6F9; line-height: 1.5; }
+  a { color: inherit; }
+  .top { background: #fff; border-bottom: 1px solid var(--line); }
+  .top .in { max-width: 1120px; margin: 0 auto; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .top img { height: 28px; display: block; }
+  .steps { display: flex; align-items: center; gap: 10px; font-size: 15px; color: var(--muted); }
+  .steps .s { display: flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 99px; }
+  .steps .s b { width: 24px; height: 24px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; background: #EDEDF1; color: var(--muted); }
+  .steps .s.on { background: var(--pale); color: var(--ink); font-weight: 600; }
+  .steps .s.on b { background: var(--purple); color: #fff; }
+  .steps .s.done b { background: var(--ink); color: #fff; }
+  .steps .sep { width: 22px; height: 1px; background: var(--line); }
+  main { max-width: 1120px; margin: 0 auto; padding: 40px 20px 80px; }
+  h1, h2, h3 { font-family: "General Sans", sans-serif; font-weight: 550; letter-spacing: -0.028em; margin: 0; }
+  h1 { font-size: clamp(30px, 4vw, 44px); line-height: 1.1; }
+  h1 em { font-style: normal; color: var(--purple); }
+  .sub { color: var(--muted); font-size: 17px; margin: 10px 0 0; }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: 28px; padding: 32px; }
+  .one { max-width: 520px; margin: 0 auto; }
+  .pkg { display: flex; justify-content: space-between; align-items: center; gap: 12px; background: var(--pale); border-radius: 16px; padding: 14px 16px; margin-bottom: 22px; }
+  .pkg small { display: block; color: var(--muted); font-size: 13px; }
+  .pkg b { font-size: 16px; }
+  .pkg b em { font-style: normal; color: var(--purple); }
+  .pkg button { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 8px 14px; font: inherit; font-weight: 600; color: var(--purple); cursor: pointer; }
+  label { display: block; font-size: 14px; font-weight: 600; margin-top: 16px; }
+  label span { color: var(--muted); font-weight: 400; }
+  input { display: block; width: 100%; margin-top: 6px; padding: 14px 16px; border-radius: 14px; border: 1px solid var(--line); font: inherit; font-size: 16px; background: #fff; color: var(--ink); }
+  input:focus { outline: none; border-color: var(--purple); }
+  .go { display: flex; width: 100%; justify-content: center; align-items: center; gap: 10px; margin-top: 24px; padding: 18px 24px; border: 0; border-radius: 99px; background: var(--purple); color: #fff; font: inherit; font-size: 17px; font-weight: 700; cursor: pointer; box-shadow: 0 10px 30px rgba(109,66,245,.28); }
+  .go[disabled] { opacity: .6; cursor: default; }
+  .fine { text-align: center; color: var(--muted); font-size: 13px; margin: 14px 0 0; }
+  .err { color: #DC2626; font-size: 14px; margin: 12px 0 0; }
+  .grid2 { display: grid; grid-template-columns: 1.35fr 1fr; gap: 28px; align-items: start; margin-top: 28px; }
+  .row { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .toggle { display: inline-flex; background: #fff; border: 1px solid var(--line); border-radius: 99px; padding: 4px; }
+  .toggle button { border: 0; background: transparent; padding: 9px 16px; border-radius: 99px; font: inherit; font-weight: 600; font-size: 14px; cursor: pointer; color: var(--muted); }
+  .toggle button.on { background: var(--ink); color: #fff; }
+  .toggle .save { color: var(--green); font-weight: 700; }
+  .toggle button.on .save { color: #86EFAC; }
+  .plan { display: block; position: relative; background: #fff; border: 1.5px solid var(--line); border-radius: 24px; padding: 24px 24px 24px 64px; margin-top: 14px; cursor: pointer; }
+  .plan.on { border-color: var(--purple); background: linear-gradient(180deg, #F7F4FF, #fff); }
+  .plan .dot { position: absolute; left: 24px; top: 28px; width: 22px; height: 22px; border-radius: 11px; border: 2px solid #C9C9D2; }
+  .plan.on .dot { border-color: var(--purple); box-shadow: inset 0 0 0 4px #fff; background: var(--purple); }
+  .plan h3 { font-size: 22px; }
+  .plan .desc { color: var(--muted); font-size: 15px; margin: 4px 0 0; }
+  .price { display: flex; align-items: baseline; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+  .price .now { font-family: "General Sans", sans-serif; font-weight: 550; font-size: 36px; letter-spacing: -0.03em; color: var(--purple); }
+  .price .was { color: var(--muted); text-decoration: line-through; font-size: 17px; }
+  .price .per { color: var(--muted); font-size: 15px; }
+  .chip { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .06em; color: var(--green); background: #DCFCE7; border-radius: 8px; padding: 4px 8px; }
+  .tag { position: absolute; right: 20px; top: 22px; font-size: 12px; font-weight: 800; letter-spacing: .08em; color: var(--purple); background: #fff; border: 1px solid #DCD3FD; border-radius: 99px; padding: 5px 12px; }
+  .sum h2 { font-size: 26px; }
+  .sum .pname { font-size: 13px; font-weight: 800; letter-spacing: .08em; color: var(--purple); text-transform: uppercase; margin: 16px 0 10px; }
+  .sum ul { list-style: none; margin: 0; padding: 0; }
+  .sum li { display: flex; gap: 10px; padding: 6px 0; font-size: 15.5px; }
+  .sum li svg { flex: none; margin-top: 4px; color: var(--green); }
+  .line { display: flex; justify-content: space-between; color: var(--muted); font-size: 15px; padding: 6px 0; }
+  .hr { border-top: 1px dashed var(--line); margin: 18px 0; }
+  .total { display: flex; justify-content: space-between; align-items: baseline; }
+  .total b { font-size: 17px; }
+  .total .amt { font-family: "General Sans", sans-serif; font-weight: 550; font-size: 34px; letter-spacing: -0.03em; }
+  .after { color: var(--muted); font-size: 14px; margin: 6px 0 0; }
+  .guar { margin: 22px -32px -32px; padding: 20px 32px; background: #F0FDF4; border-radius: 0 0 28px 28px; color: #166534; font-size: 14.5px; }
+  .guar b { color: var(--green); }
+  .trust { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 28px; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 15px; color: var(--muted); }
+  .trust b { color: var(--ink); font-weight: 600; }
+  .paym { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 18px; background: #fff; border: 1.5px solid var(--purple); border-radius: 20px; padding: 18px 20px; }
+  .paym .l b { display: block; }
+  .paym .l span { color: var(--muted); font-size: 14px; }
+  .paym .logos { display: flex; gap: 8px; }
+  .paym .logos img { height: 30px; }
+  .lab { font-size: 13px; font-weight: 800; letter-spacing: .08em; color: var(--muted); text-transform: uppercase; margin-top: 34px; }
+  [hidden] { display: none !important; }
+  @media (max-width: 860px) { .grid2 { grid-template-columns: 1fr; } .steps .t { display: none; } .trust { grid-template-columns: 1fr; } }
+  @media (max-width: 520px) { .card { padding: 24px; } .guar { margin: 20px -24px -24px; padding: 18px 24px; } .plan { padding: 20px 20px 20px 56px; } .plan .dot { left: 20px; } .tag { position: static; display: inline-block; margin-bottom: 8px; } }
+</style>
+</head>
+<body>
+<header class="top"><div class="in">
+  <a href="/dropzones/"><img src="/assets/manifest-lockup.svg?v=5" alt="manifest" /></a>
+  <nav class="steps" aria-label="Steps">
+    <span class="s" id="st1"><b>1</b><span class="t">Your info</span></span><i class="sep"></i>
+    <span class="s" id="st2"><b>2</b><span class="t">Your plan</span></span><i class="sep"></i>
+    <span class="s" id="st3"><b>3</b><span class="t">Payment</span></span><i class="sep"></i>
+    <span class="s" id="st4"><b>4</b><span class="t">Set up</span></span>
+  </nav>
+</div></header>
+
+<main>
+  <!-- STEP 1 -->
+  <section id="v1" class="one">
+    <div class="card">
+      <div class="pkg"><div><small>Your plan</small><b id="pkgName">Full-time dropzone <em id="pkgFrom">from $200</em></b></div><button type="button" id="pkgChange">Change</button></div>
+      <h1>Your dropzone, <em>running on Manifest</em></h1>
+      <p class="sub">Tell us where to set it up. Nothing to pay on this step.</p>
+      <form id="f1" novalidate>
+        <label>Dropzone name<input name="dropzone" autocomplete="organization" placeholder="Skydive Example" required /></label>
+        <label>Your name<input name="name" autocomplete="name" required /></label>
+        <label>Email <span>· you sign in to the desk with this</span><input name="email" type="email" autocomplete="email" required /></label>
+        <label>Phone <span>· so we can help you set up</span><input name="phone" type="tel" autocomplete="tel" /></label>
+        <p class="err" id="e1" hidden></p>
+        <button class="go" type="submit">See your plan <span aria-hidden="true">→</span></button>
+        <p class="fine">By continuing you agree to our <a href="/terms/">terms</a> and <a href="/privacy/">privacy policy</a>. No spam, ever.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- STEP 2 -->
+  <section id="v2" hidden>
+    <div class="row">
+      <h1>Your plan</h1>
+      <div class="toggle" role="tablist" aria-label="Billing">
+        <button type="button" data-int="month" class="on">Monthly</button>
+        <button type="button" data-int="year">Yearly <span class="save">2 months free</span></button>
+      </div>
+    </div>
+    <div class="grid2">
+      <div>
+        <div id="plans"></div>
+        <p class="lab">Payment</p>
+        <div class="paym">
+          <div class="l"><b>Card or Apple Pay</b><span>Charged securely via Stripe. Card details never touch our servers.</span></div>
+          <div class="logos"><img src="/assets/pay/apple_pay.svg?v=1" alt="Apple Pay" /><img src="/assets/pay/visa.svg?v=1" alt="Visa" /><img src="/assets/pay/master.svg?v=1" alt="Mastercard" /><img src="/assets/pay/american_express.svg?v=1" alt="American Express" /></div>
+        </div>
+        <div class="trust">
+          <div><b>Every feature included.</b> Loads, money, staff, safety and the jumper app, on every plan.</div>
+          <div><b>Month to month.</b> No contract. Cancel any time.</div>
+          <div><b>Set up with you, directly.</b> We get your desk ready with you before your first load.</div>
+          <div><b>Jumpers from 220+ dropzones</b> already use the Manifest app.</div>
+        </div>
+      </div>
+      <aside class="card sum">
+        <div class="row"><h2>Order summary</h2><a href="#" id="back1" style="color:var(--purple);font-weight:600;font-size:15px;text-decoration:none">Edit info</a></div>
+        <p class="pname" id="sName"></p>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Loads, standby, check-in and the hangar board</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Jumper accounts, tickets and vouchers</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Top-ups with Apple Pay in the jumper app</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Self-manifest and load calls on every phone</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Landout safety map and currency checks</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Staff pay, aircraft and reports</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span id="sSupport"></span></li>
+        </ul>
+        <div class="hr"></div>
+        <div class="line"><span id="sLine"></span><span id="sList"></span></div>
+        <div class="line" style="color:var(--green)"><span>Founding dropzone, half price in year one</span><span id="sOff"></span></div>
+        <div class="hr"></div>
+        <div class="total"><b>Total due today</b><span class="amt" id="sTotal"></span></div>
+        <p class="after" id="sAfter"></p>
+        <p class="err" id="e2" hidden></p>
+        <button class="go" type="button" id="pay">Continue to payment</button>
+        <div class="guar"><b>Cancel any time.</b> Month to month, no contract. Your jumpers' data is yours, and you can export it whenever you want.</div>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  var API = 'https://wkefdtglgbfprvfajrrw.supabase.co/functions/v1/desk-billing';
+  var PLANS = {
+    weekend: { name: 'Weekend dropzone', desc: 'One aircraft and busy weekends, run by a small manifest team.', month: 249, year: 2490, support: 'Email support' },
+    fulltime: { name: 'Full-time dropzone', desc: 'Jumping most days, with a team on the desk and staff to pay every week.', month: 399, year: 3990, support: 'Priority support' },
+    big: { name: 'Big operations', desc: 'Several aircraft, big days and boogies, with more people on the desk.', month: 699, year: 6990, support: 'Setup help and a direct line', from: true }
+  };
+  var q = new URLSearchParams(location.search);
+  var st = { plan: PLANS[q.get('plan')] ? q.get('plan') : 'fulltime', interval: q.get('interval') === 'year' ? 'year' : 'month', info: null };
+  var $ = function (id) { return document.getElementById(id); };
+  var half = function (n) { return Math.round(n / 2); }; // founding price, whole dollars
+  var money = function (n) { return '$' + n.toLocaleString('en-US', { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 }); };
+  try { var saved = JSON.parse(sessionStorage.getItem('desk.start') || 'null'); if (saved) { st.info = saved; ['dropzone','name','email','phone'].forEach(function (k) { if (saved[k]) $('f1')[k].value = saved[k]; }); } } catch (e) {}
+
+  function steps(n) { [1,2,3,4].forEach(function (i) { var el = $('st' + i); el.className = 's' + (i === n ? ' on' : i < n ? ' done' : ''); }); }
+  function pkg() { var p = PLANS[st.plan]; $('pkgName').firstChild.nodeValue = p.name + ' '; $('pkgFrom').textContent = (p.from ? 'from ' : '') + money(half(p.month)) + ' a month in year one'; }
+  function show(n) { $('v1').hidden = n !== 1; $('v2').hidden = n !== 2; steps(n); window.scrollTo(0, 0); if (n === 2) render(); }
+
+  function render() {
+    var box = $('plans'); box.innerHTML = '';
+    Object.keys(PLANS).forEach(function (k) {
+      var p = PLANS[k], full = st.interval === 'year' ? p.year : p.month, now = half(full);
+      var el = document.createElement('label'); el.className = 'plan' + (k === st.plan ? ' on' : '');
+      el.innerHTML = '<span class="dot"></span>' + (p.tag ? '<span class="tag">' + p.tag.toUpperCase() + '</span>' : '') +
+        '<h3>' + p.name + '</h3><p class="desc">' + p.desc + '</p>' +
+        '<div class="price">' + (p.from ? '<span class="per">From</span>' : '') + '<span class="now">' + money(now) + '</span><span class="was">' + money(full) + '</span><span class="per">/' + (st.interval === 'year' ? 'year' : 'month') + ' in year one</span><span class="chip">FOUNDING PRICE</span></div>';
+      el.onclick = function () { st.plan = k; render(); };
+      box.appendChild(el);
+    });
+    var p = PLANS[st.plan], full = st.interval === 'year' ? p.year : p.month;
+    $('sName').textContent = 'Manifest Desk · ' + p.name;
+    $('sSupport').textContent = p.support;
+    $('sLine').textContent = p.name + (st.interval === 'year' ? ', yearly' : ', monthly');
+    $('sList').textContent = money(full);
+    $('sOff').textContent = '-' + money(full - half(full));
+    $('sTotal').textContent = money(half(full));
+    $('sAfter').textContent = st.interval === 'year'
+      ? 'Then ' + money(full) + ' a year from year two. 1% on jumper top-ups in the app.'
+      : money(half(full)) + ' a month for your first 12 months, then ' + money(full) + '. 1% on jumper top-ups in the app.';
+    document.querySelectorAll('.toggle button').forEach(function (b) { b.className = b.dataset.int === st.interval ? 'on' : ''; });
+    if (p.from) $('sAfter').textContent += ' Bigger operations: we agree the final price and fee with you.';
+  }
+
+  $('f1').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = e.target, info = { dropzone: f.dropzone.value.trim(), name: f.name.value.trim(), email: f.email.value.trim(), phone: f.phone.value.trim() };
+    if (!info.dropzone || !info.name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(info.email)) { $('e1').textContent = 'Add your dropzone, your name and a valid email.'; $('e1').hidden = false; return; }
+    $('e1').hidden = true; st.info = info;
+    try { sessionStorage.setItem('desk.start', JSON.stringify(info)); } catch (e2) {}
+    show(2);
+  });
+  $('pkgChange').onclick = function () { if (st.info || $('f1').reportValidity()) { st.info = st.info || null; } show(st.info ? 2 : 1); if (!st.info) $('f1').dropzone.focus(); };
+  $('back1').onclick = function (e) { e.preventDefault(); show(1); };
+  document.querySelectorAll('.toggle button').forEach(function (b) { b.onclick = function () { st.interval = b.dataset.int; render(); }; });
+  $('pay').onclick = function () {
+    var btn = $('pay'); btn.disabled = true; btn.textContent = 'Opening secure payment...'; $('e2').hidden = true; steps(3);
+    var tz = ''; try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch (e) {}
+    fetch(API, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(Object.assign({ action: 'checkout', plan: st.plan, interval: st.interval, timezone: tz }, st.info)) })
+      .then(function (r) { return r.json(); })
+      .then(function (j) { if (!j.url) throw new Error(j.error || 'Could not open payment'); location.href = j.url; })
+      .catch(function (e) { $('e2').textContent = e.message; $('e2').hidden = false; btn.disabled = false; btn.textContent = 'Continue to payment'; steps(2); });
+  };
+  pkg(); show(st.info && q.get('step') === 'plan' ? 2 : 1);
+})();
+</script>
+</body>
+</html>
