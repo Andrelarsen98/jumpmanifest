@@ -144,7 +144,7 @@ place-items:center;min-height:100vh;text-align:center;padding:24px}
 a{color:#a78bfa}</style></head><body><div>
 <h1 style="font-size:22px">This profile isn't available</h1>
 <p style="margin-top:10px;opacity:.6">The jumper may have made it private.</p>
-<p style="margin-top:18px"><a href="https://jumpmanifest.com">jumpmanifest.com</a></p>
+<p style="margin-top:18px"><a href="https://www.jumpmanifest.com">jumpmanifest.com</a></p>
 </div></body></html>`;
 }
 

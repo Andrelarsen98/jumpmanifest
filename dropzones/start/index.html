@@ -245,8 +245,8 @@
           <div class="logos"><img src="/assets/pay/apple_pay.svg?v=1" alt="Apple Pay" /><img src="/assets/pay/visa.svg?v=1" alt="Visa" /><img src="/assets/pay/master.svg?v=1" alt="Mastercard" /><img src="/assets/pay/american_express.svg?v=1" alt="American Express" /></div>
         </div>
         <div class="trust">
-          <div><b>Every feature included.</b> Loads, money, staff, safety and the jumper app, on every plan.</div>
-          <div><b>12 months at the founding price,</b> then month to month. Cancel any time after that.</div>
+          <div><b>Every plan runs a full jump day.</b> Bigger plans add aircraft, back office and lower fees.</div>
+          <div><b>12 months at the founding price,</b> then the full price, monthly or yearly. Cancel any time after that.</div>
           <div><b>Set up with you, directly.</b> We get your desk ready with you before your first load.</div>
           <div><b>Jumpers from 220+ dropzones</b> already use the Manifest app.</div>
         </div>
@@ -263,7 +263,7 @@
         <p class="after" id="sAfter"></p>
         <p class="err" id="e2" hidden></p>
         <button class="go" type="button" id="pay">Continue to payment</button>
-        <div class="guar"><b>Founding price: half price for 12 months,</b> as a 12-month commitment. After that it is month to month. Your jumpers' data is always yours.</div>
+        <div class="guar"><b>Founding price: half price for 12 months,</b> as a 12-month commitment. After that it renews at the full price, monthly or yearly. Your jumpers' data is always yours.</div>
       </aside>
     </div>
   </section>
@@ -315,9 +315,16 @@
 
   function steps(n) { [1,2,3,4].forEach(function (i) { var el = $('st' + i); el.className = 's' + (i === n ? ' on' : i < n ? ' done' : ''); }); }
   function pkg() { var p = PLANS[st.plan]; $('pkgName').firstChild.nodeValue = p.name + ' '; $('pkgFrom').textContent = (p.from ? 'from ' : '') + money(half(p.month)) + '/mo'; }
-  function show(n) { $('v1').hidden = n !== 1; $('v2').hidden = n !== 2; document.body.classList.toggle('s1', n === 1); steps(n); window.scrollTo(0, 0); if (n === 2) render(); }
+  // Step 2 gets its own history entry, so the browser Back button returns to step 1.
+  function show(n, fromPop) {
+    $('v1').hidden = n !== 1; $('v2').hidden = n !== 2; document.body.classList.toggle('s1', n === 1); steps(n); window.scrollTo(0, 0);
+    if (n === 2) { if (!fromPop && (history.state || {}).step !== 2) history.pushState({ step: 2 }, ''); render(); }
+  }
+  window.addEventListener('popstate', function (e) { show(e.state && e.state.step === 2 && st.info ? 2 : 1, true); });
 
   function render() {
+    // keep step 1's plan box and dropdown on the same plan as step 2
+    pkg(); $('pkgSelect').value = st.plan;
     var box = $('plans'); box.innerHTML = '';
     Object.keys(PLANS).forEach(function (k) {
       var p = PLANS[k], full = st.interval === 'year' ? p.year : p.month, now = half(full);
@@ -354,7 +361,7 @@
   });
   $('pkgSelect').value = st.plan;
   $('pkgSelect').onchange = function () { st.plan = this.value; pkg(); };
-  $('back1').onclick = function (e) { e.preventDefault(); show(1); };
+  $('back1').onclick = function (e) { e.preventDefault(); if ((history.state || {}).step === 2) history.back(); else show(1); };
   document.querySelectorAll('.toggle button').forEach(function (b) { b.onclick = function () { st.interval = b.dataset.int; render(); }; });
   if (!PAYMENTS_LIVE) {
     $('pay').textContent = 'Reserve my founding price';

@@ -157,7 +157,7 @@ place-items:center;min-height:100vh;text-align:center;padding:24px}
 a{color:#a78bfa}</style></head><body><div>
 <h1 style="font-size:22px">This jump link isn't available</h1>
 <p style="margin-top:10px;opacity:.6">It may have been turned off by the jumper.</p>
-<p style="margin-top:18px"><a href="https://jumpmanifest.com">jumpmanifest.com</a></p>
+<p style="margin-top:18px"><a href="https://www.jumpmanifest.com">jumpmanifest.com</a></p>
 </div></body></html>`;
 }
 
