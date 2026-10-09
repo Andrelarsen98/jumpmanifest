@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>About Manifest: the skydiving logbook built by jumpers</title>
+<title>About Manifest: the skydiving app and the manifest software for dropzones</title>
 <meta property="og:image" content="https://www.jumpmanifest.com/assets/og-image.png?v=10" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://www.jumpmanifest.com/assets/og-image.png?v=10" />
-<meta name="description" content="What Manifest does: jumps replayed in 3D from your own phone, verified sign-offs, live dropzone loads, gear service tracking and a DZ check-in pass." />
+<meta name="description" content="Manifest is the skydiving app jumpers use on every jump day, and Manifest Desk is the manifest software for dropzones, connected live. Built by Andr&eacute; Larsen, a skydiver." />
 <link rel="canonical" href="https://www.jumpmanifest.com/about/" />
 <meta property="og:title" content="About Manifest" />
-<meta property="og:description" content="A skydiving logbook where jumps are witnessed and signed off, not self-reported." />
+<meta property="og:description" content="One app, both sides of the hangar. The skydiving app for jumpers and the manifest software for dropzones, built by a skydiver." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.jumpmanifest.com/about/" />
 <meta name="theme-color" content="#ffffff" />
@@ -40,7 +40,7 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
         width: min(800px, 92vw);
         /* NO backdrop-filter. Blurring a fixed element forces anything moving
            underneath onto its own GPU layer, and the blur then samples across
-           that moving boundary — which is what drew the seam across the pill
+           that moving boundary, which is what drew the seam across the pill
            on load (and caused the iOS scroll lag). Translucency via alpha
            gives the same glass read with nothing to mis-sample. */
         background: linear-gradient(180deg, rgba(64,64,69,.88), rgba(48,48,53,.9));
@@ -356,6 +356,111 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   .sh-sheet { animation: none; }
 }
 </style>
+<style id="about-sections">
+/* ABOUT SECTIONS (9 Oct 2026): copied from the dropzones page (eyebrow, 50px
+   centred H2, 20px grey lead, cards, versus, dark band, how-grid, final CTA),
+   scoped to .ab so the old .card and .btn rules on this page stay out. */
+.trust { display: flex; flex-wrap: wrap; justify-content: flex-start; align-items: center; gap: 12px 0; margin-top: 32px;
+         font-family: "Manrope", sans-serif; font-size: 16px; font-weight: 400; color: #040815; }
+.trust > * { display: inline-flex; align-items: center; gap: 8px; padding: 0 16px; line-height: 24px; color: inherit; }
+.trust > :first-child { padding-left: 0; }
+.trust > * + * { border-left: 1px solid rgba(15,11,28,.12); }
+.trust svg { width: 20px; height: 20px; flex: 0 0 auto; }
+.trust img { width: 22px; height: 22px; object-fit: contain; }
+.doc > .wrap > .trust { max-width: none; }
+a.trust-a:hover { color: var(--g); text-decoration: none; }
+@media (max-width: 600px) { .trust { font-size: 14px; gap: 12px 18px; } .trust > * { padding: 0; border-left: 0 !important; } }
+
+.ab .sec { padding-top: var(--gap); }
+.ab .sec h2, .ab .final h2, .ab .band h2 { font-size: 50px; line-height: 50px; font-weight: 500; letter-spacing: -.5px;
+  max-width: 1024px; margin: 0 auto; text-align: center; text-wrap: balance; }
+.ab .lead, .ab .final p, .ab .band-sub, .ab .jfoot { font-size: 20px; line-height: 31px; font-weight: 400; color: var(--g);
+  margin: 20px auto 0; max-width: 740px; text-align: center; }
+.ab .jfoot { margin-top: 32px; }
+.ab .jfoot b, .ab .lead b { color: var(--t); font-weight: 600; }
+.ab .eyebrow { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 0 0 20px;
+  font-size: 16px; line-height: 24px; font-weight: 500; color: var(--t); }
+.ab .eyebrow svg, .ab .eyebrow img { width: 20px; height: 20px; flex: 0 0 auto; }
+.ab .eb-mark { width: 22px; height: 16px; flex: 0 0 auto; background: #050505;
+  -webkit-mask: url(/assets/manifest-mark.svg) center / contain no-repeat; mask: url(/assets/manifest-mark.svg) center / contain no-repeat; }
+
+/* cards */
+.ab .jgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 56px; }
+.ab .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 56px; }
+.ab .card { margin: 0; background: #F7F7F9; border: 0; border-radius: 22px; padding: 30px 26px 32px; }
+.ab .ico { width: 44px; height: 44px; border-radius: 12px; background: #fff; box-shadow: 0 2px 6px rgba(15,11,28,.06);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+.ab .ico svg { width: 22px; height: 22px; stroke: #6D42F5; }
+.ab .card b, .ab .how-grid b { display: block; font-family: "General Sans", "Manrope", sans-serif; font-size: 24px; line-height: 33.6px;
+  font-weight: 500; letter-spacing: normal; color: var(--t); margin-bottom: 8px; }
+.ab .card p, .ab .how-grid p { margin: 0; font-size: 16px; line-height: 20.8px; font-weight: 500; letter-spacing: -.5px; color: var(--g); }
+
+/* versus */
+.ab .vs { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1024px; margin: 56px auto 0; text-align: left; }
+.ab .vs-col { border-radius: 22px; padding: 36px 36px 16px; }
+.ab .vs-old { background: #F9F9F9; }
+.ab .vs-new { background: #fff; border: 1px solid #6D42F5; }
+.ab .vs-col h3 { display: flex; align-items: center; gap: 12px; font-family: "General Sans", "Manrope", sans-serif; font-size: 32px; line-height: 44.8px;
+  font-weight: 500; letter-spacing: -1px; color: var(--t); }
+.ab .vs-col h3 .eb-mark { width: 32px; height: 24px; }
+.ab .vs ul { list-style: none; margin: 20px 0 0; padding: 0; }
+.ab .vs li { display: flex; align-items: center; gap: 14px; min-height: 84px; padding: 14px 0; border-top: 1px solid #E4E4E7;
+  font-size: 18px; line-height: 26px; font-weight: 500; letter-spacing: -.3px; color: var(--t); }
+.ab .vs-old li { color: var(--g); }
+.ab .vs-no, .ab .vs-yes { width: 28px; height: 28px; border-radius: 50%; flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; }
+.ab .vs-no { background: #E4E4E7; color: var(--g); }
+.ab .vs-yes { background: #6D42F5; color: #fff; }
+.ab .vs-no svg, .ab .vs-yes svg { width: 14px; height: 14px; }
+
+/* dark band */
+.ab .band { position: relative; isolation: isolate; margin-top: var(--gap); padding: var(--gap) 0; text-align: center; }
+.ab .band::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%); background: #050505; z-index: -1; }
+.ab .band h2 { color: #fff; }
+.ab .band .band-sub { color: #D1D1D6; }
+
+/* how we work */
+.ab .how-grid { list-style: none; margin: 56px auto 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 1024px; }
+.ab .how-grid li { background: #fff; border: 1px solid #E4E4E7; border-radius: 22px; padding: 30px 28px 32px; }
+.ab .how-grid .n { display: inline-flex; width: 36px; height: 36px; border-radius: 50%; align-items: center; justify-content: center;
+  background: #F0ECFE; color: #050505; font-weight: 700; font-size: 15px; margin-bottom: 20px; }
+
+/* buttons and final */
+.ab .ctas { display: flex; gap: 12px; justify-content: center; margin-top: 34px; flex-wrap: wrap; }
+.ab .btn { display: inline-flex; align-items: center; gap: 10px; font-family: "Manrope", sans-serif; font-size: 20px; font-weight: 600; line-height: 30px;
+  border-radius: 28px; box-shadow: none; transform: none; letter-spacing: normal; }
+.ab .btn:hover { transform: none; text-decoration: none; }
+.ab .btn.primary { background: #6D42F5; color: #fff; height: 64px; padding: 8px 8px 8px 28px; gap: 12px; justify-content: space-between;
+  box-shadow: rgba(109,66,245,.08) 0 4px 4px, rgba(109,66,245,.04) 0 8px 8px, rgba(109,66,245,.02) 0 16px 5px,
+              inset 0 0 2px rgba(255,255,255,.12), inset 0 0 20px rgba(255,255,255,.08); }
+.ab .btn.primary:hover { filter: brightness(1.06); box-shadow: rgba(109,66,245,.08) 0 4px 4px, rgba(109,66,245,.04) 0 8px 8px; }
+.ab .btn .bi { width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.08);
+  display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+.ab .btn .bi svg { width: 8px; height: 14px; }
+.ab .btn.ghost { background: #F6F6F6; color: #040815; height: 64px; padding: 0 28px; justify-content: center; }
+.ab .btn.ghost:hover { background: #EDEDEF; }
+.ab .final { padding-top: var(--gap); text-align: center; }
+.ab .final p a { color: var(--t); font-weight: 600; }
+
+@media (max-width: 980px) { .ab .grid { grid-template-columns: repeat(2, 1fr); } .ab .jgrid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 900px) { .ab .vs, .ab .how-grid { grid-template-columns: 1fr; } }
+@media (max-width: 600px) {
+  .ab .sec h2, .ab .final h2, .ab .band h2 { font-size: 34px; line-height: 36px; }
+  .ab .lead, .ab .final p, .ab .band-sub, .ab .jfoot { font-size: 18px; line-height: 28px; }
+  .ab .jgrid, .ab .grid, .ab .vs, .ab .how-grid { margin-top: 40px; }
+  .ab .jgrid, .ab .grid { grid-template-columns: 1fr; gap: 10px; }
+  .ab .card { padding: 22px 20px 24px; border-radius: 18px; }
+  .ab .ico { width: 40px; height: 40px; margin-bottom: 14px; }
+  .ab .card b, .ab .how-grid b { font-size: 22px; line-height: 30px; }
+  .ab .eyebrow { font-size: 15px; gap: 8px; margin-bottom: 16px; }
+  .ab .vs-col { padding: 26px 22px 10px; }
+  .ab .vs-col h3 { font-size: 26px; line-height: 34px; letter-spacing: -.6px; }
+  .ab .vs li { min-height: 0; font-size: 16px; line-height: 23px; padding: 16px 0; }
+  .ab .how-grid li { padding: 24px 22px 26px; }
+  .ab .btn { font-size: 17px; } .ab .btn.primary { height: 56px; padding: 6px 6px 6px 22px; }
+  .ab .btn .bi { width: 44px; height: 44px; } .ab .btn.ghost { height: 56px; padding: 0 22px; }
+  .ab .ctas { flex-direction: column; align-items: stretch; } 
+}
+</style>
 </head>
 <body>
 <!-- SITE HEADER (9 Oct 2026): one header on every page. Mega dropdowns on
@@ -386,59 +491,109 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   </div>
 </div>
 
-<main class="doc">
+<!-- ABOUT (9 Oct 2026): the whole story, not just the logbook. Jumpers
+     first, dropzones second. Every line is true today; reach numbers from
+     BRAND.md, never raw counts. Lock Screen loads are Pro, said as such. -->
+<main>
+<section class="doc">
   <div class="wrap">
-    <h1>About Manifest</h1>
-    <p class="intro">Manifest is a skydiving logbook app for iPhone. Jumps are signed off in person by another licensed jumper rather than self-reported, it shows the loads turning at 150+ dropzones live, and it keeps your gear service dates in date. It is free to download.</p>
-
-    <h2>Why it exists</h2>
-    <p>A paper logbook gets lost, soaked, and questioned. Digital ones mostly replaced the paper without replacing the problem: a number you typed in yourself is still a number you typed in yourself. Anyone can claim 500 jumps.</p>
-    <p>At the same time, every dropzone runs its own manifest board, so following loads means a different bookmark for every DZ you visit, and none of them know who you are.</p>
-    <p>Manifest was built to fix both: make a jump into something you can prove, and put every dropzone&rsquo;s board in one place.</p>
-
-    <h2>How a jump gets verified</h2>
-    <p>You log the jump. Another licensed jumper who was there scans a QR code from your phone, reviews the entry, and signs it. Their name and licence number are recorded on that jump. Once signed, the jump is locked and can no longer be edited or deleted, and if a signature is later withdrawn the record of it stays rather than being erased.</p>
-    <p>Your logbook then shows two numbers side by side: your total jumps, and the ones independently verified. The second number is the one that means something at a desk.</p>
-    <p>Manifest captures every field USPA SIM 3-1 requires for a logged jump, and a jump can only be signed off once they are filled in. There is a fuller explanation in <a href="/uspa-digital-logbook/">digital logbooks and USPA SIM 3-1</a>.</p>
-
-    <h2>Your jump, replayed in 3D</h2>
-    <p>Start the recorder, put your phone in a zipped pocket and jump. Manifest samples the whole flight with the phone&rsquo;s GPS and barometer (climb-out, exit, freefall, the moment you pulled, the canopy ride and the spot you landed), then flies it back in 3D over the real terrain you fell through.</p>
-    <p>The numbers come off your own sensors rather than an estimate: exit altitude, freefall time and top speed, with the barometer doing the altitude. No extra hardware, no audible, no GPS logger strapped to a helmet. The phone that is already in your pocket does it.</p>
-    <p>Recording a jump and watching it back is free. Manifest Pro adds a recorder that arms itself when your load takes off, and raw track exports as CSV or KML for ParaLog and Google Earth. The track itself stays on your phone; when you save the jump to your logbook, only the summary goes with it.</p>
-
-    <h2>Live loads from 150+ dropzones</h2>
-    <p>Manifest reads the dropzone&rsquo;s own board, so you see what is actually turning: which loads are building, who is manifested on them, how many slots are left, and how long until the plane goes. If you are on a load, your load is marked as yours.</p>
-    <p>With Manifest Pro that load appears on your lock screen with gear-up and final-call alerts, so it does not leave without you.</p>
-
-    <h2>Jumps that log themselves</h2>
-    <p>Manifest watches the dropzone&rsquo;s board. When you are manifested on a load, that jump is recorded with the dropzone, aircraft, load and discipline already filled in, and it is waiting for you to confirm at the end of the day.</p>
-    <p>It keeps recording after the aircraft has departed, so a jump is not lost just because you were still in the air when the load came off the board. You confirm what you actually jumped; nothing is logged on your behalf without you saying so.</p>
-
-    <h2>The DZ Check-in Pass</h2>
-    <p>Your licence, ratings, currency, reserve repack and AAD dates and an emergency contact on one scannable screen, pulled straight from your record so it cannot be edited by hand. Show it at the desk instead of emptying your gear bag. Whoever scans it does not need the app.</p>
-
-    <h2>What else is in it</h2>
-    <ul>
-      <li><strong>Gear locker</strong>: every rig, canopy, reserve, AAD and helmet with its full service history, and reminders before a repack falls due.</li>
-      <li><strong>Weather for jumpers</strong>: wind at exit, under canopy and on the ground, cloud by layer in feet, and sunset for that dropzone.</li>
-      <li><strong>Dropzone finder</strong>: browse and search dropzones near you or anywhere in the world.</li>
-      <li><strong>Community</strong>: follow the jumpers you fly with, see their verified jumps and milestones, message them directly.</li>
-      <li><strong>Events and coaches</strong>: boogies, courses and meetups, and coaches for canopy, freefall and tunnel work.</li>
-      <li><strong>Import your history</strong>: bring your whole logbook across from a CSV, from another app or your own spreadsheet.</li>
-      <li><strong>Works without signal</strong>: log a jump in airplane mode and it syncs when you are back online, which matters at a dropzone.</li>
-    </ul>
-
-    <h2>Free, and what Pro adds</h2>
-    <p>Your logbook, sign-offs, QR code, currency, statistics, live loads, dropzones, events, community and cloud backup are free, with no limit on how many jumps you log. Manifest Pro puts your load on your lock screen. It appears the moment the load is called, with gear-up and final-call notifications and a live countdown in the Dynamic Island, so the plane does not leave without you. Pro also adds the full credentials vault, your pass in Apple Wallet, and branded PDF exports of your signed-off logbook and gear passport. Monthly or annual.</p>
-
-    <h2>Who built it</h2>
-    <p>Manifest is built by Andr&eacute; Larsen, a skydiver, and shaped by the people using it. Sign in with Apple, the dropzone search, the way jumps get captured after a load: all of it came from jumpers sending messages about what was missing or broken.</p>
-    <p>It is worked on every day. If something is missing or wrong, say so and it gets looked at properly.</p>
-
-    <h2>Get in touch</h2>
-    <p>Email <a href="mailto:andre@manifestjump.com"><strong>andre@manifestjump.com</strong></a> or find Manifest on Instagram at <a href="https://instagram.com/manifestjump" rel="noopener">@manifestjump</a>. There is also a <a href="/support">support page</a>.</p>
-    <p><a href="https://apps.apple.com/app/id6778510429" rel="noopener"><strong>Download Manifest on the App Store</strong></a>. Free, on iPhone.</p>
+    <h1>Built by a skydiver, for both sides of the hangar.</h1>
+    <p class="intro">Manifest is the skydiving app jumpers use for everything on a jump day. Manifest Desk is the manifest software that runs the dropzone. They are connected live, so a load called at the desk lands on every jumper's phone.</p>
+    <div class="trust">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20a6 6 0 0 1 12 0M17 11a3 3 0 1 0 0-6M21 20a6 6 0 0 0-4-5.6"/></svg>Jumpers from 220+ dropzones in 38 countries</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><path d="M8.5 15.5a5 5 0 0 1 0-7M15.5 8.5a5 5 0 0 1 0 7M5.6 18.4a9 9 0 0 1 0-12.8M18.4 5.6a9 9 0 0 1 0 12.8"/></svg>Live loads at 150+ dropzones</span>
+      <a class="trust-a" href="https://www.uspa.org/logbookapps" target="_blank" rel="noopener"><img src="/assets/uspa-seal.png?v=1" alt="" width="22" height="22" />Listed by USPA</a>
+    </div>
   </div>
+</section>
+
+<div class="wrap ab">
+  <!-- WHY: the problem and the idea, in the versus pattern from /dropzones/. -->
+  <section class="sec" id="why">
+    <p class="eyebrow"><span class="eb-mark" aria-hidden="true"></span>Why Manifest exists</p>
+    <h2>A jump day shouldn't live on a whiteboard.</h2>
+    <p class="lead">Loads go up on a board and get called over the PA. Logbooks are paper nobody can check. The desk runs software jumpers never see. <b>Manifest puts the jumper and the dropzone on one system.</b></p>
+    <div class="vs">
+      <div class="vs-col vs-old">
+        <h3>The old way</h3>
+        <ul>
+          <li><span class="vs-no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Loads on a whiteboard, calls over the PA</span></li>
+          <li><span class="vs-no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>A paper logbook nobody can check</span></li>
+          <li><span class="vs-no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Repack dates you find out about at the desk</span></li>
+          <li><span class="vs-no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>A queue at the card terminal</span></li>
+          <li><span class="vs-no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>A desk your jumpers never see</span></li>
+        </ul>
+      </div>
+      <div class="vs-col vs-new">
+        <h3><span class="eb-mark" aria-hidden="true"></span>Manifest</h3>
+        <ul>
+          <li><span class="vs-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span><span>Your load and every call on your phone</span></li>
+          <li><span class="vs-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span><span>Jumps signed off by coaches and instructors</span></li>
+          <li><span class="vs-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span><span>A reminder before your reserve or AAD falls due</span></li>
+          <li><span class="vs-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span><span>Apple Pay top-ups in the app</span></li>
+          <li><span class="vs-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span><span>A desk connected to the app jumpers carry</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOR JUMPERS: six things the app does today. -->
+  <section class="sec" id="jumpers">
+    <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M11 18.5h2"/></svg>For jumpers</p>
+    <h2>Everything on a jump day, in one app.</h2>
+    <p class="lead">Check your load, jump, watch it back, get it signed off. Manifest is free to download for iPhone.</p>
+    <div class="jgrid">
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M12 8v3.5l2 1.5M11 18.5h2"/></svg></div><b>Live loads</b><p>Loads at 150+ dropzones, live. With Manifest Pro, your load and countdown sit on your Lock Screen.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l8.5 4.75v9.5L12 21.5l-8.5-4.75v-9.5z"/><path d="M3.5 7.25L12 12l8.5-4.75M12 12v9.5"/></svg></div><b>3D replays</b><p>Every jump flown back in 3D from your phone's GPS. No extra hardware.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h12a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3zM4 17a3 3 0 0 1 3-3h12M9 8h6"/></svg></div><b>Verified logbook</b><p>Every jump logged and signed off by coaches and instructors. Listed by USPA.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="7" width="14" height="14" rx="3"/><path d="M9 7V5.5a3 3 0 0 1 6 0V7M9 13h6"/></svg></div><b>Gear locker</b><p>Rigs, reserves and AADs, with a reminder before a repack or service falls due.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4"/></svg></div><b>Currency and weather</b><p>Know you're current, and see the winds on the ground and aloft at your dropzone.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20a6 6 0 0 1 12 0M17 11a3 3 0 1 0 0-6M21 20a6 6 0 0 0-4-5.6"/></svg></div><b>Coaches, people and events</b><p>Find a coach, message the jumpers you fly with, see what is on at the dropzone.</p></div>
+    </div>
+    <p class="jfoot">Jumpers from <b>220+ dropzones in 38 countries</b> use Manifest.</p>
+  </section>
+
+  <!-- DARK BAND: the core idea, lines from BRAND.md. -->
+  <section class="band" id="connected">
+    <h2>One app, both sides of the hangar.</h2>
+    <p class="band-sub">A load called at the desk lands on every jumper's phone. When it departs, the jump writes itself into their logbook.</p>
+  </section>
+
+  <!-- FOR DROPZONES: Manifest Desk in four cards, then the dropzones page. -->
+  <section class="sec" id="dropzones">
+    <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>For dropzones</p>
+    <h2>Manifest Desk runs the dropzone.</h2>
+    <p class="lead">Manifest software for the whole day, from the first load to the last, connected to the app your jumpers already carry.</p>
+    <div class="grid">
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></div><b>Loads and calls</b><p>Build loads and call them. Every call reaches every phone on the load, and the hangar board shows the rest.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18v12H3zM3 10h18M7 15h3"/></svg></div><b>Self-manifest and top-ups</b><p>Jumpers book themselves and top up with Apple Pay. The money goes to your dropzone's own Stripe.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4"/></svg></div><b>Safety</b><p>Currency, reserve and AAD checked at manifest. A landout shows up on your map.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20a6 6 0 0 1 12 0M17 11a3 3 0 1 0 0-6M21 20a6 6 0 0 0-4-5.6"/></svg></div><b>Staff and pay</b><p>Roles, jobs and pay per jump or per load, worked out from what actually flew.</p></div>
+    </div>
+    <div class="ctas"><a class="btn ghost" href="/dropzones/">See Manifest Desk</a></div>
+  </section>
+
+  <!-- HOW WE WORK: four true values. -->
+  <section class="sec" id="how">
+    <h2>How we work.</h2>
+    <ol class="how-grid">
+      <li><span class="n">1</span><b>Built with the people who use it</b><p>Sign in with Apple, the dropzone search and the way jumps get captured after a load all came from jumpers telling us what was missing.</p></li>
+      <li><span class="n">2</span><b>Shipped fast</b><p>New features ship constantly. Tell us what is missing or broken and it gets looked at properly.</p></li>
+      <li><span class="n">3</span><b>Your data stays yours</b><p>We do not sell your personal data. Delete a jump or your whole account in the app, any time. Dropzone money goes straight to the dropzone's own Stripe.</p></li>
+      <li><span class="n">4</span><b>Set up with you, directly</b><p>Every dropzone is set up with us directly, and we are there on its first jump day. Jumpers write to André, not a ticket queue.</p></li>
+    </ol>
+  </section>
+
+  <!-- CLOSING: who builds it, and the two ways in. -->
+  <section class="final">
+    <h2>Every jump. Every load.</h2>
+    <p>Manifest is built by Andr&eacute; Larsen, a skydiver. Questions, ideas or something broken: <a href="mailto:andre@manifestjump.com">andre@manifestjump.com</a>, or <a href="https://instagram.com/manifestjump" rel="noopener">@manifestjump</a> on Instagram.</p>
+    <div class="ctas">
+      <a class="btn primary" href="https://apps.apple.com/app/id6778510429">Download the app<span class="bi"><svg viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></span></a>
+      <a class="btn ghost" href="/dropzones/">For dropzones</a>
+    </div>
+  </section>
+</div>
 </main>
 
 <footer class="site">
