@@ -500,14 +500,14 @@
     .jfoot { font-size: 18px; line-height: 28px; } }
 
   /* HERO WITH THE DESK (9 Oct 2026): text left, the Today page right,
-     bleeding off the right edge on laptops; stacked on phones. */
+     shown whole on laptops; stacked on phones. */
   .hero-media .frame { margin-top: 48px; }
   @media (min-width: 900px) {
-    .hero-grid { display: grid; grid-template-columns: 45fr 55fr; gap: 56px; align-items: center; }
+    .hero-grid { display: grid; grid-template-columns: 42fr 58fr; gap: 48px; align-items: center; }
     .hero-txt { min-width: 0; }
     .hero .herorow { flex-direction: column; align-items: flex-start; gap: 24px; }
     .hero-media { min-width: 0; }
-    .hero-media .frame { margin-top: 0; width: calc(100% + 5vw + 64px); border-radius: 16px 0 0 16px; }
+    .hero-media .frame { margin-top: 0; width: 100%; }
   }
   /* VISUAL SECTIONS (9 Oct 2026): media in a cloud panel, text beside it,
      sides swapping each row; each row fits one laptop screen. */
