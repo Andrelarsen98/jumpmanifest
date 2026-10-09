@@ -40,6 +40,25 @@
     <p>Confirming your payment with Stripe.</p>
   </div>
 </main>
+
+<!-- LEGAL FOOTER (André, 9 Oct: "have our terms always under"), like
+     Softriver's: always at the bottom of the sign-up pages. No company name
+     until Manifest Jump LLC exists. -->
+<footer class="legal-foot">
+  <div class="in">
+    <span>© 2026 Manifest</span>
+    <nav><a href="/terms/">Terms of service</a><a href="/privacy/">Privacy policy</a><a href="/support/">Support</a><a href="mailto:andre@manifestjump.com">Contact</a></nav>
+  </div>
+</footer>
+<style>
+  .legal-foot { background: #fff; border-top: 1px solid #E7E7EC; margin-top: 48px; }
+  .legal-foot .in { max-width: 1120px; margin: 0 auto; padding: 22px 20px; display: flex; justify-content: space-between; align-items: center; gap: 12px 24px; flex-wrap: wrap; font-size: 14px; color: #71717B; }
+  .legal-foot nav { display: flex; gap: 22px; flex-wrap: wrap; }
+  .legal-foot a { color: #71717B; text-decoration: none; }
+  .legal-foot a:hover { color: #050505; }
+  body { display: flex; flex-direction: column; min-height: 100vh; }
+  body > main { flex: 1 0 auto; width: 100%; }
+</style>
 <script>
 (function () {
   var s = new URLSearchParams(location.search).get('s'), box = document.getElementById('box');
