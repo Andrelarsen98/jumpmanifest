@@ -791,9 +791,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 .sh-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
 .sh-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px; border-radius: 14px; transition: background .15s ease; }
 .sh-item:hover, .sh-item[aria-current="page"] { background: var(--sh-hover); }
-.sh-ic { flex: none; width: 36px; height: 36px; border-radius: 10px; background: var(--sh-pale); color: var(--sh-purple);
-      display: inline-flex; align-items: center; justify-content: center; }
-.sh-ic svg { width: 20px; height: 20px; }
+.sh-ic { display: none; } /* text only, no icons (9 Oct 2026) */
 .sh-tx { display: flex; flex-direction: column; gap: 3px; min-width: 0; padding-top: 1px; }
 .sh-tx b { font-size: 15px; line-height: 20px; font-weight: 600; color: var(--sh-ink); letter-spacing: -0.01em; }
 .sh-tx small { font-size: 13.5px; line-height: 19px; font-weight: 400; color: var(--sh-muted); }
