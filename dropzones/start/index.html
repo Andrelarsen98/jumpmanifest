@@ -39,7 +39,7 @@
   .pkg small { display: block; color: var(--muted); font-size: 13px; }
   .pkg b { font-size: 16px; }
   .pkg b em { font-style: normal; color: var(--purple); }
-  .pkg button { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 8px 14px; font: inherit; font-weight: 600; color: var(--purple); cursor: pointer; }
+  .pkg-change { position: relative; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 8px 14px; font-weight: 600; color: var(--purple); cursor: pointer; margin: 0 !important; }
   label { display: block; font-size: 14px; font-weight: 600; margin-top: 16px; }
   label span { color: var(--muted); font-weight: 400; }
   input { display: block; width: 100%; margin-top: 6px; padding: 14px 16px; border-radius: 14px; border: 1px solid var(--line); font: inherit; font-size: 16px; background: #fff; color: var(--ink); }
@@ -105,8 +105,29 @@
   body.s1 .one .card { border: 0; border-radius: 24px; padding: 38px 36px 30px;
     background: linear-gradient(#fff, #FDFDFF);
     box-shadow: 0 1px 2px rgba(21,22,28,.06), 0 12px 28px -12px rgba(99,85,238,.14), 0 32px 80px -24px rgba(21,22,28,.25); }
-  .card-logo { display: none; height: 26px; margin-bottom: 22px; }
+  .card-logo { display: none; height: 20px; margin-bottom: 22px; }
   body.s1 .card-logo { display: block; }
+  /* Softriver's prescreen card, measured 9 Oct (1050 px wide window): card
+     430 px, padding 38/36/30, radius 20; plan box labels 11.5 / 13.5 px;
+     headline 30 px; sub 14 px; labels 12.5 px; inputs 52 px tall, radius 12;
+     button 55 px, radius 12; legal 11.5 px. Everything on one screen. */
+  body.s1 main { padding-top: 64px; }
+  body.s1 .one { max-width: 430px; }
+  body.s1 .one .card { border-radius: 20px; padding: 38px 36px 30px; border: 1px solid rgba(255,255,255,.9); }
+  body.s1 .pkg { position: relative; border-radius: 12px; padding: 10px 12px 10px 14px; margin-bottom: 24px; }
+  body.s1 .pkg small { font-size: 11.5px; font-weight: 500; color: #8A8D99; }
+  body.s1 .pkg b { font-size: 13.5px; font-weight: 700; }
+  body.s1 .pkg b em { font-weight: 600; }
+  body.s1 .pkg-change { position: relative; flex: none; background: #fff; border: 1px solid #DCD7FB; border-radius: 9px; padding: 8px 12px; font-size: 13px; font-weight: 600; color: var(--purple); cursor: pointer; }
+  .pkg-change select { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; font-size: 16px; }
+  body.s1 h1 { font-size: 30px; font-weight: 600; line-height: 1.22; letter-spacing: -0.6px; margin-bottom: 10px; }
+  body.s1 .sub { font-size: 14px; line-height: 21px; color: #5B5E6B; margin: 0 0 26px; }
+  body.s1 #f1 label { font-size: 12.5px; font-weight: 600; color: #5B5E6B; margin-top: 14px; }
+  body.s1 #f1 label:first-of-type { margin-top: 0; }
+  body.s1 #f1 label span { font-weight: 400; color: #8A8D99; }
+  body.s1 #f1 input { height: 52px; padding: 13px 15px; border-radius: 12px; background: #FCFCFD; border: 1px solid #E6E7EC; margin-top: 6px; }
+  body.s1 #f1 .go { margin-top: 20px; height: 55px; padding: 16px; border-radius: 12px; font-size: 15.5px; }
+  body.s1 #f1 .fine { font-size: 11.5px; line-height: 17.25px; color: #8A8D99; margin-top: 16px; }
   @media (max-width: 860px) { .grid2 { grid-template-columns: 1fr; } .steps .t { display: none; } .trust { grid-template-columns: 1fr; } }
   @media (max-width: 520px) { .card { padding: 24px; } .guar { margin: 20px -24px -24px; padding: 18px 24px; } .plan { padding: 20px 20px 20px 56px; } .plan .dot { left: 20px; } .tag { position: static; display: inline-block; margin-bottom: 8px; } }
 </style>
@@ -127,17 +148,16 @@
   <section id="v1" class="one">
     <div class="card">
       <img class="card-logo" src="/assets/manifest-lockup.svg?v=5" alt="manifest" />
-      <div class="pkg"><div><small>Your plan</small><b id="pkgName">Full-time dropzone <em id="pkgFrom">from $200</em></b></div><button type="button" id="pkgChange">Change</button></div>
+      <div class="pkg"><div><small>Your plan · founding price, year one</small><b id="pkgName">Full-time dropzone <em id="pkgFrom">from $200/mo</em></b></div><label class="pkg-change">Change<select id="pkgSelect" aria-label="Change plan"><option value="weekend">Weekend dropzone, $125 a month in year one</option><option value="fulltime">Full-time dropzone, $200 a month in year one</option><option value="big">Big operations, from $350 a month in year one</option></select></label></div>
       <h1>Your dropzone, <em>running on Manifest</em></h1>
       <p class="sub">Tell us where to set it up. Nothing to pay on this step.</p>
       <form id="f1" novalidate>
         <label>Dropzone name<input name="dropzone" autocomplete="organization" placeholder="Skydive Example" required /></label>
-        <label>Your name<input name="name" autocomplete="name" required /></label>
         <label>Email <span>· you sign in to the desk with this</span><input name="email" type="email" autocomplete="email" required /></label>
         <label>Phone <span>· so we can help you set up</span><input name="phone" type="tel" autocomplete="tel" /></label>
         <p class="err" id="e1" hidden></p>
         <button class="go" type="submit">See my options <span aria-hidden="true">→</span></button>
-        <p class="fine">By continuing you agree to our <a href="/terms/">terms</a> and <a href="/privacy/">privacy policy</a>. No spam, ever.</p>
+        <p class="fine">By continuing, you agree to our<br /><a href="/terms/">terms of service</a> and <a href="/privacy/">privacy policy</a>. No spam, ever.</p>
       </form>
     </div>
   </section>
@@ -210,10 +230,10 @@
   var $ = function (id) { return document.getElementById(id); };
   var half = function (n) { return Math.round(n / 2); }; // founding price, whole dollars
   var money = function (n) { return '$' + n.toLocaleString('en-US', { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 }); };
-  try { var saved = JSON.parse(sessionStorage.getItem('desk.start') || 'null'); if (saved) { st.info = saved; ['dropzone','name','email','phone'].forEach(function (k) { if (saved[k]) $('f1')[k].value = saved[k]; }); } } catch (e) {}
+  try { var saved = JSON.parse(sessionStorage.getItem('desk.start') || 'null'); if (saved) { st.info = saved; ['dropzone','email','phone'].forEach(function (k) { if (saved[k]) $('f1')[k].value = saved[k]; }); } } catch (e) {}
 
   function steps(n) { [1,2,3,4].forEach(function (i) { var el = $('st' + i); el.className = 's' + (i === n ? ' on' : i < n ? ' done' : ''); }); }
-  function pkg() { var p = PLANS[st.plan]; $('pkgName').firstChild.nodeValue = p.name + ' '; $('pkgFrom').textContent = (p.from ? 'from ' : '') + money(half(p.month)) + ' a month in year one'; }
+  function pkg() { var p = PLANS[st.plan]; $('pkgName').firstChild.nodeValue = p.name + ' '; $('pkgFrom').textContent = (p.from ? 'from ' : '') + money(half(p.month)) + '/mo'; }
   function show(n) { $('v1').hidden = n !== 1; $('v2').hidden = n !== 2; document.body.classList.toggle('s1', n === 1); steps(n); window.scrollTo(0, 0); if (n === 2) render(); }
 
   function render() {
@@ -243,13 +263,14 @@
 
   $('f1').addEventListener('submit', function (e) {
     e.preventDefault();
-    var f = e.target, info = { dropzone: f.dropzone.value.trim(), name: f.name.value.trim(), email: f.email.value.trim(), phone: f.phone.value.trim() };
-    if (!info.dropzone || !info.name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(info.email)) { $('e1').textContent = 'Add your dropzone, your name and a valid email.'; $('e1').hidden = false; return; }
+    var f = e.target, info = { dropzone: f.dropzone.value.trim(), name: '', email: f.email.value.trim(), phone: f.phone.value.trim() };
+    if (!info.dropzone || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(info.email)) { $('e1').textContent = 'Add your dropzone and a valid email.'; $('e1').hidden = false; return; }
     $('e1').hidden = true; st.info = info;
     try { sessionStorage.setItem('desk.start', JSON.stringify(info)); } catch (e2) {}
     show(2);
   });
-  $('pkgChange').onclick = function () { if (st.info || $('f1').reportValidity()) { st.info = st.info || null; } show(st.info ? 2 : 1); if (!st.info) $('f1').dropzone.focus(); };
+  $('pkgSelect').value = st.plan;
+  $('pkgSelect').onchange = function () { st.plan = this.value; pkg(); };
   $('back1').onclick = function (e) { e.preventDefault(); show(1); };
   document.querySelectorAll('.toggle button').forEach(function (b) { b.onclick = function () { st.interval = b.dataset.int; render(); }; });
   if (!PAYMENTS_LIVE) {
