@@ -480,6 +480,24 @@
     .vs-col h3 { font-size: 26px; line-height: 34px; letter-spacing: -.6px; }
     .vs li { min-height: 0; font-size: 16px; line-height: 23px; padding: 16px 0; }
   }
+  /* JUMPER APP, EVERY DAY (9 Oct 2026): eight compact tiles of what jumpers
+     use the app for today, then real database numbers, rounded down. */
+  .jgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 56px; }
+  .jgrid .card { padding: 26px 24px 28px; }
+  .jgrid .ico { margin-bottom: 16px; }
+  .jstats { list-style: none; margin: 16px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); background: #F7F7F9; border-radius: 22px; }
+  .jstats li { padding: 28px 24px; font-size: 16px; line-height: 20.8px; font-weight: 500; color: var(--g); text-align: center; }
+  .jstats li + li { border-left: 1px solid #E4E4E7; }
+  .jstats b { display: block; margin-bottom: 6px; font-family: "General Sans", "Manrope", sans-serif; font-size: 34px; line-height: 40px; font-weight: 500; letter-spacing: -.5px; color: var(--t); }
+  .jfoot { text-align: center; margin-top: 32px; font-size: 20px; line-height: 31px; color: #71717B; }
+  .jfoot b { color: #040815; font-weight: 600; }
+  @media (max-width: 980px) { .jgrid { grid-template-columns: repeat(2, 1fr); } .jstats { grid-template-columns: repeat(2, 1fr); }
+    .jstats li:nth-child(3) { border-left: 0; } .jstats li:nth-child(n+3) { border-top: 1px solid #E4E4E7; } }
+  @media (max-width: 600px) { .jgrid { gap: 10px; margin-top: 40px; } .jgrid .card { padding: 20px 16px 22px; border-radius: 18px; }
+    .jgrid .ico { width: 40px; height: 40px; margin-bottom: 14px; } .jgrid .card b { font-size: 19px; line-height: 25px; margin-bottom: 6px; }
+    .jgrid .card p { font-size: 14.5px; line-height: 19px; letter-spacing: -.3px; }
+    .jstats { margin-top: 10px; border-radius: 18px; } .jstats li { padding: 20px 12px; font-size: 14.5px; line-height: 19px; } .jstats b { font-size: 28px; line-height: 34px; }
+    .jfoot { font-size: 18px; line-height: 28px; } }
 </style>
 <style id="ft-dark">
 /* Dark footer, Nike's (2 Oct 2026): #111 with white text and the white logo. */
@@ -619,6 +637,31 @@ footer.site .ft-col a em { color: #FFFFFF !important; background: rgba(255,255,2
   <section class="band" id="connected">
     <h2>Your jumpers already carry the app.<br class="dk" /> Now it runs your dropzone.</h2>
     <p class="band-sub">Jumpers from 220+ dropzones in 38 countries already use Manifest.</p>
+  </section>
+
+  <!-- THE APP THEY JUMP WITH (9 Oct 2026): everything below exists in the
+       app today; numbers from the database on 9 Oct 2026, rounded down. -->
+  <section class="sec" id="jumper-app">
+    <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M11 18.5h2"/></svg>The app they jump with</p>
+    <h2>Not a top-up app. The app they jump with.</h2>
+    <p class="lead">Jumpers open Manifest for everything on a jump day, so your desk lives where their attention already is.</p>
+    <div class="jgrid">
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h12a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3zM4 17a3 3 0 0 1 3-3h12M9 8h6"/></svg></div><b>Logbook</b><p>Every jump logged, with signatures from coaches and instructors.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l8.5 4.75v9.5L12 21.5l-8.5-4.75v-9.5z"/><path d="M3.5 7.25L12 12l8.5-4.75M12 12v9.5"/></svg></div><b>3D replays</b><p>Each jump replayed in 3D from the phone's GPS, shared with friends.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="7" width="14" height="14" rx="3"/><path d="M9 7V5.5a3 3 0 0 1 6 0V7M9 13h6"/></svg></div><b>Gear locker</b><p>Reserve repacks and AAD service dates, with a reminder before they run out.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4"/></svg></div><b>Safety</b><p>Currency, reserve and AAD checked before they get on a load.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M12 8v3.5l2 1.5M11 18.5h2"/></svg></div><b>Live loads</b><p>Their load and call time on the Lock Screen, without opening the app.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8.5" r="5"/><path d="M8.6 12.2L7.5 21.5l4.5-2.6 4.5 2.6-1.1-9.3"/></svg></div><b>Coaches and sign-offs</b><p>Find a coach, get skills signed off, keep the record.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10a3 3 0 1 0-3-3M3 12h15a3 3 0 1 1-3 3M3 16h7"/></svg></div><b>Weather</b><p>Winds on the ground and aloft at your dropzone.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20a6 6 0 0 1 12 0M17 11a3 3 0 1 0 0-6M21 20a6 6 0 0 0-4-5.6"/></svg></div><b>People and events</b><p>Find jumpers, message them, see what is on at the dropzone.</p></div>
+    </div>
+    <ul class="jstats">
+      <li><b>7,400+</b>jumps logged</li>
+      <li><b>440+</b>jumpers</li>
+      <li><b>220+</b>home dropzones in 38 countries</li>
+      <li><b>900+</b>jumps logged in the last 30 days</li>
+    </ul>
+    <p class="jfoot"><b>New features every week.</b> Built by a skydiver, shipped fast, and shaped by the dropzones that run on it.</p>
   </section>
 
   <section class="sec" id="features">
