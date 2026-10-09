@@ -238,6 +238,7 @@
     document.querySelector('.paym .l b').textContent = 'Nothing to pay today';
     document.querySelector('.paym .l span').textContent = 'You pay when your desk goes live, with card or Apple Pay via Stripe.';
     $('st3').querySelector('.t').textContent = 'Reserve';
+    document.querySelector('.total b').textContent = 'Due when you go live';
   }
   function reserve() {
     var btn = $('pay'); btn.disabled = true; btn.textContent = 'Reserving...'; $('e2').hidden = true;
