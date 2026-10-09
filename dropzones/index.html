@@ -285,6 +285,10 @@
   .pr-founder { margin-top: 32px; font-size: 18px; line-height: 28px; color: #71717B; }
   .pr-founder b { color: #050505; font-weight: 600; }
   .pr-founder.pr-plain { margin-top: 6px; }
+  .pay-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 14px 18px; margin: 40px auto 0; padding-top: 32px; border-top: 1px solid #ECECEE; max-width: 720px; }
+  .pay-row img { height: 40px; width: auto; display: block; }
+  .pay-note { text-align: center; color: #71717B; font-size: 15px; margin-top: 14px; }
+  @media (max-width: 600px) { .pay-row { gap: 10px 12px; } .pay-row img { height: 32px; } }
   .pc-desc { margin-top: 14px; font-size: 16px; line-height: 22.4px; font-weight: 500; color: rgba(23,23,23,.6); min-height: 45px; }
   .pc-out { margin-top: 24px; height: 67px; border-width: 1px; border-radius: 20px; }
   .pc .pc-btn { margin-top: 24px; height: 67px; border-radius: 20px; }
@@ -523,6 +527,18 @@ footer.site .ft-col a em { color: #FFFFFF !important; background: rgba(255,255,2
     </div>
     <p class="pr-founder"><b>Founding dropzones: 50% off your first year,</b> and we set everything up with you.</p>
     <p class="pr-founder pr-plain">No modules. No fee per booking. Month to month. Prices on the page, not on request.</p>
+    <!-- PAYMENTS ACCEPTED (9 Oct 2026, after Softriver's row): what jumpers can
+         pay with in the app today. Official icon files from Shopify's
+         payment_icons (activemerchant/payment_icons), never redrawn. -->
+    <div class="pay-row" aria-label="Payment methods jumpers can use in the app">
+      <img src="/assets/pay/apple_pay.svg?v=1" alt="Apple Pay" height="40" />
+      <img src="/assets/pay/visa.svg?v=1" alt="Visa" height="40" />
+      <img src="/assets/pay/master.svg?v=1" alt="Mastercard" height="40" />
+      <img src="/assets/pay/american_express.svg?v=1" alt="American Express" height="40" />
+      <img src="/assets/pay/cashapppay.svg?v=1" alt="Cash App Pay" height="40" />
+      <img src="/assets/pay/stripe.svg?v=1" alt="Stripe" height="40" />
+    </div>
+    <p class="pay-note">Jumpers pay in the app with these. The money goes straight to your dropzone's own Stripe account.</p>
     <div class="cm" id="compare">
       <h2 class="cm-title">Compare what's included</h2>
       <div class="cm-head"><div class="cm-l"></div>
