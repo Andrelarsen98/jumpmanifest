@@ -267,24 +267,141 @@ footer.site .ft-social a:hover { background: #3A3A40 !important; }
 footer.site .ft-col a em { color: #FFFFFF !important; background: rgba(255,255,255,.14) !important; }
 </style>
 <style id="lockup-css">/* One logo file: the M centred on the lowercase letters, reaching above and below (2 Oct 2026). */ img.lockup{height:32px!important;width:auto!important;border-radius:0!important;display:block;max-width:none!important} @media (max-width:600px){img.lockup{height:29px!important}} .brand img.lockup{height:21px!important} .hub-wordmark img.lockup{height:22px!important}</style>
+<style id="site-header">
+/* SITE HEADER (9 Oct 2026). Sticky white bar with a hairline; mega dropdowns
+   (white 20px cards, two columns) on laptops; a full-height sheet under 900px.
+   overflow-x must be clip, not hidden, on body or sticky stops working. */
+html, body { overflow-x: clip !important; }
+section[id], header[id], div[id] { scroll-margin-top: 96px; }
+.sh, .sh-sheet { --sh-ink: #050505; --sh-muted: #71717B; --sh-purple: #6D42F5; --sh-pale: #F0ECFE; --sh-hover: #F6F6F8;
+      font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif; color: var(--sh-ink); }
+.sh { position: sticky; top: 0; z-index: 60; background: #fff; border-bottom: 1px solid rgba(5,5,5,.08); }
+.sh a, .sh-sheet a { color: inherit; text-decoration: none; }
+.sh-in { height: 76px; padding: 0 5vw; display: flex; align-items: center; gap: 40px; }
+.sh-logo { display: inline-flex; align-items: center; flex: none; }
+/* the pages still carry the old floating-pill rules for a bare `nav`; undo them here */
+.sh nav.sh-nav { position: static; top: auto; left: auto; transform: none; width: auto; z-index: auto;
+      background: none; border: 0; border-radius: 0; box-shadow: none; }
+.sh-nav { display: flex; align-items: center; gap: 30px; height: 100%; flex: 1; min-width: 0; }
+.sh-right { display: flex; align-items: center; gap: 24px; margin-left: auto; flex: none; }
+.sh-trig, .sh-link, .sh-login { font: 600 15.5px/1 "Manrope", sans-serif; letter-spacing: -0.01em; color: var(--sh-ink);
+      background: none; border: 0; padding: 8px 0; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;
+      white-space: nowrap; transition: color .15s ease; }
+.sh-trig:hover, .sh-link:hover, .sh-login:hover, .sh-dd.open .sh-trig { color: var(--sh-muted); }
+.sh-login { font-weight: 500; }
+.sh-t { position: relative; }
+.is-current > .sh-t::after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; height: 2px; border-radius: 2px; background: var(--sh-purple); }
+.sh-chev { width: 12px; height: 12px; transition: transform .15s ease; }
+.sh-dd.open .sh-chev, .sh-macc[aria-expanded="true"] .sh-chev { transform: rotate(180deg); }
+.sh-trig:focus-visible, .sh-link:focus-visible, .sh-login:focus-visible, .sh-item:focus-visible, .sh-cta:focus-visible,
+.sh-burger:focus-visible, .sh-macc:focus-visible, .sh-mitem:focus-visible, .sh-mlink:focus-visible, .sh-logo:focus-visible {
+      outline: 2px solid var(--sh-purple); outline-offset: 3px; border-radius: 8px; }
+
+/* the dropdown: hangs from the full header height, so the pointer never crosses a gap */
+.sh-dd { position: relative; height: 100%; display: flex; align-items: center; }
+.sh-panel { position: absolute; top: 100%; left: -24px; padding-top: 10px; width: 800px; max-width: calc(100vw - 32px);
+      opacity: 0; visibility: hidden; transform: translateY(-6px); pointer-events: none;
+      transition: opacity .15s ease, transform .15s ease, visibility 0s linear .15s; }
+.sh-dd.open .sh-panel { opacity: 1; visibility: visible; transform: none; pointer-events: auto;
+      transition: opacity .15s ease, transform .15s ease, visibility 0s; }
+.sh-card { background: #fff; border-radius: 20px; padding: 10px;
+      box-shadow: 0 24px 60px -16px rgba(5,5,5,.20), 0 2px 8px rgba(5,5,5,.04), 0 0 0 1px rgba(5,5,5,.06); }
+.sh-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.sh-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px; border-radius: 14px; transition: background .15s ease; }
+.sh-item:hover, .sh-item[aria-current="page"] { background: var(--sh-hover); }
+.sh-ic { flex: none; width: 36px; height: 36px; border-radius: 10px; background: var(--sh-pale); color: var(--sh-purple);
+      display: inline-flex; align-items: center; justify-content: center; }
+.sh-ic svg { width: 20px; height: 20px; }
+.sh-tx { display: flex; flex-direction: column; gap: 3px; min-width: 0; padding-top: 1px; }
+.sh-tx b { font-size: 15px; line-height: 20px; font-weight: 600; color: var(--sh-ink); letter-spacing: -0.01em; }
+.sh-tx small { font-size: 13.5px; line-height: 19px; font-weight: 400; color: var(--sh-muted); }
+.sh-foot { margin-top: 6px; align-items: center; background: var(--sh-hover); }
+.sh-foot:hover { background: #EEEEF2; }
+.sh-go { margin-left: auto; width: 32px; height: 32px; border-radius: 50%; background: #fff; display: inline-flex;
+      align-items: center; justify-content: center; flex: none; }
+.sh-go svg { width: 14px; height: 14px; }
+
+/* buttons: Download keeps the grey pill; Get started is the purple pill */
+.sh-cta { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 99px;
+      background: #F2F2F5; color: var(--sh-ink) !important; font: 700 15px/1.2 "Manrope", sans-serif; letter-spacing: -0.01em;
+      white-space: nowrap; transition: background .15s ease; }
+.sh-cta:hover { background: #E7E7EC; }
+.sh-cta svg { width: 15px; height: 15px; }
+.sh-cta-p { background: var(--sh-purple); color: #fff !important; }
+.sh-cta-p:hover { background: #5B32E0; }
+
+/* burger, as before: a 50px grey circle whose two lines turn into an X */
+.sh-burger { display: none; width: 46px; height: 46px; border: 0; padding: 0; border-radius: 50%; background: #E4E4E7;
+      cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 8px; -webkit-tap-highlight-color: transparent; }
+.sh-burger span { display: block; width: 22px; height: 2px; background: #040815; transition: transform .3s ease; }
+.sh-burger[aria-expanded="true"] span:first-child { transform: translateY(5px) rotate(45deg); }
+.sh-burger[aria-expanded="true"] span:last-child { transform: translateY(-5px) rotate(-45deg); }
+
+/* phone sheet */
+.sh-sheet { position: fixed; left: 0; right: 0; top: var(--sh-top, 62px); bottom: 0; background: #fff; overflow-y: auto;
+      overscroll-behavior: contain; padding: 8px 16px 32px; z-index: 59; animation: sh-in .15s ease both; }
+@keyframes sh-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+.sh-macc, .sh-mlink { width: 100%; display: flex; align-items: center; justify-content: space-between; min-height: 58px;
+      padding: 0 4px; background: none; border: 0; cursor: pointer; color: var(--sh-ink);
+      font: 600 17px/1.2 "Manrope", sans-serif; letter-spacing: -0.01em; text-align: left; }
+.sh-macc .sh-chev { width: 14px; height: 14px; }
+.sh-mgroup, .sh-mlink { border-bottom: 1px solid rgba(5,5,5,.08) !important; }
+.sh-macc.is-current > span, .sh-mlink.is-current .sh-t { color: var(--sh-purple); }
+.sh-sheet .sh-t::after { display: none; }
+.sh-mlist { padding: 0 0 12px; }
+.sh-mitem { display: flex; align-items: center; gap: 12px; padding: 10px 4px; border-radius: 12px; }
+.sh-mitem[aria-current="page"] { background: var(--sh-hover); }
+.sh-mitem .sh-ic { width: 34px; height: 34px; }
+.sh-mcta { margin-top: 24px; width: 100%; justify-content: center; padding: 16px 20px; font-size: 16px; }
+@media (min-width: 900px) { .sh-sheet { display: none !important; } }
+
+@media (max-width: 1120px) {
+  .sh-in { gap: 28px; } .sh-nav { gap: 22px; } .sh-right { gap: 18px; }
+}
+@media (max-width: 999px) {
+  .sh-in { padding: 0 24px; } .sh-trig, .sh-link, .sh-login { font-size: 15px; }
+}
+@media (max-width: 899px) {
+  .sh-nav, .sh-login { display: none; }
+  .sh-burger { display: flex; }
+  .sh-right { gap: 10px; }
+}
+@media (max-width: 600px) {
+  .sh-in { height: 62px; padding: 0 16px; }
+  .sh-right > .sh-cta { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sh-panel, .sh-chev, .sh-burger span { transition: none !important; }
+  .sh-sheet { animation: none; }
+}
+</style>
 </head>
 <body>
-<div class="topbar">
-  <div class="topbar-in">
-    <a class="wordmark" href="/" aria-label="Manifest home">
-      <img class="lockup" src="/assets/manifest-lockup.svg?v=5" alt="Manifest" />
-    </a>
-    <div class="tb-links">
-      <a href="/#replay">3D Replay</a>
-      <a href="/#dropzones">Live loads</a>
-      <a href="/#everything">Features</a>
-      <a href="/#faq">FAQ</a>
-      <a href="/dropzones/">For dropzones</a>
+<!-- SITE HEADER (9 Oct 2026): one header on every page. Mega dropdowns on
+     laptops, a full-height sheet on phones. Same markup, CSS and JS on each
+     page; only the current section and the right-hand button differ. -->
+<div class="sh" data-sh>
+  <div class="sh-in">
+    <a class="sh-logo" href="/" aria-label="Manifest home"><img class="lockup" src="/assets/manifest-lockup.svg?v=5" alt="Manifest" /></a>
+    <nav class="sh-nav" aria-label="Main">
+      <div class="sh-dd" data-dd><button class="sh-trig is-current" type="button" aria-expanded="false" aria-controls="sh-p-jumpers"><span class="sh-t">For jumpers</span><svg class="sh-chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="sh-panel" id="sh-p-jumpers"><div class="sh-card"><div class="sh-grid"><a class="sh-item" href="/skydive-3d-tracking/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg></span><span class="sh-tx"><b>3D replays</b><small>Every jump in 3D from your phone's GPS.</small></span></a><a class="sh-item" href="/#live"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M8.5 15.5a5 5 0 0 1 0-7M15.5 8.5a5 5 0 0 1 0 7M5.6 18.4a9 9 0 0 1 0-12.8M18.4 5.6a9 9 0 0 1 0 12.8"/></svg></span><span class="sh-tx"><b>Live loads</b><small>Your load and calls, live at 150+ dropzones.</small></span></a><a class="sh-item" href="/uspa-digital-logbook/" aria-current="page"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19.5v-15A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5zm0 0A1.5 1.5 0 0 0 6.5 21H19v-3"/><path d="M9 10.5l2 2 4-4"/></svg></span><span class="sh-tx"><b>Logbook and sign-offs</b><small>Every jump logged, signed off by coaches.</small></span></a><a class="sh-item" href="/#locker"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6V4.5A1.5 1.5 0 0 1 10.5 3h3A1.5 1.5 0 0 1 15 4.5V6"/><rect x="5" y="6" width="14" height="15" rx="3.5"/><path d="M9 13.5h6V17H9z"/></svg></span><span class="sh-tx"><b>Gear locker</b><small>Repacks and AAD service, reminded in time.</small></span></a></div><a class="sh-item sh-foot" href="https://apps.apple.com/app/id6778510429"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M12 7.5v6M9.5 11L12 13.5 14.5 11M10.5 18h3"/></svg></span><span class="sh-tx"><b>Download the app</b><small>Free on the App Store for iPhone.</small></span><span class="sh-go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a></div></div></div>
+      <div class="sh-dd" data-dd><button class="sh-trig" type="button" aria-expanded="false" aria-controls="sh-p-dropzones"><span class="sh-t">For dropzones</span><svg class="sh-chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="sh-panel" id="sh-p-dropzones"><div class="sh-card"><div class="sh-grid"><a class="sh-item" href="/dropzones/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><span class="sh-tx"><b>Manifest Desk</b><small>Loads, money, staff and safety on one screen.</small></span></a><a class="sh-item" href="/dropzones/#app"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3 10h18M7 14.5h3"/></svg></span><span class="sh-tx"><b>Payments and top-ups</b><small>Apple Pay top-ups, straight to your Stripe.</small></span></a><a class="sh-item" href="/dropzones/#safety"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="sh-tx"><b>Safety</b><small>Landouts on a live map, plus gear checks.</small></span></a><a class="sh-item" href="/dropzones/#features"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M7 8.5h6M7 12.5h10M9 21h6"/></svg></span><span class="sh-tx"><b>Hangar board</b><small>A live board for every TV in the hangar.</small></span></a><a class="sh-item" href="/dropzones/#pricing"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4.5A1.5 1.5 0 0 1 4.5 3H12l9 9-9 9-9-9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><span class="sh-tx"><b>Pricing</b><small>Prices on the page, month to month.</small></span></a><a class="sh-item" href="/dropzones/#how"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M11 6h9M11 18h9M6 8.5v7"/></svg></span><span class="sh-tx"><b>How it works</b><small>From sign-up to your first jump day.</small></span></a></div><a class="sh-item sh-foot" href="/dropzones/start/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M13 8.5l3.5 3.5-3.5 3.5"/></svg></span><span class="sh-tx"><b>Get started</b><small>Pick a plan and set up your dropzone.</small></span><span class="sh-go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a></div></div></div>
+      <a class="sh-link" href="/about/"><span class="sh-t">About</span></a>
+      <a class="sh-link" href="/support/"><span class="sh-t">Support</span></a>
+    </nav>
+    <div class="sh-right">
+      <a class="sh-login" href="https://desk.jumpmanifest.com">Dropzone login</a>
+      <a class="sh-cta" href="https://apps.apple.com/app/id6778510429">Download<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      <button class="sh-burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="sh-sheet"><span></span><span></span></button>
     </div>
-    <a class="tb-cta" href="https://apps.apple.com/app/id6778510429">Download
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-    </a>
-    <button class="tb-burger" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+  </div>
+  <div class="sh-sheet" id="sh-sheet" hidden>
+    <div class="sh-mgroup"><button class="sh-macc is-current" type="button" aria-expanded="false" aria-controls="sh-m-jumpers"><span>For jumpers</span><svg class="sh-chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="sh-mlist" id="sh-m-jumpers" hidden><a class="sh-mitem" href="/skydive-3d-tracking/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg></span><span class="sh-tx"><b>3D replays</b><small>Every jump in 3D from your phone's GPS.</small></span></a><a class="sh-mitem" href="/#live"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M8.5 15.5a5 5 0 0 1 0-7M15.5 8.5a5 5 0 0 1 0 7M5.6 18.4a9 9 0 0 1 0-12.8M18.4 5.6a9 9 0 0 1 0 12.8"/></svg></span><span class="sh-tx"><b>Live loads</b><small>Your load and calls, live at 150+ dropzones.</small></span></a><a class="sh-mitem" href="/uspa-digital-logbook/" aria-current="page"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19.5v-15A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5zm0 0A1.5 1.5 0 0 0 6.5 21H19v-3"/><path d="M9 10.5l2 2 4-4"/></svg></span><span class="sh-tx"><b>Logbook and sign-offs</b><small>Every jump logged, signed off by coaches.</small></span></a><a class="sh-mitem" href="/#locker"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6V4.5A1.5 1.5 0 0 1 10.5 3h3A1.5 1.5 0 0 1 15 4.5V6"/><rect x="5" y="6" width="14" height="15" rx="3.5"/><path d="M9 13.5h6V17H9z"/></svg></span><span class="sh-tx"><b>Gear locker</b><small>Repacks and AAD service, reminded in time.</small></span></a><a class="sh-mitem" href="https://apps.apple.com/app/id6778510429"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M12 7.5v6M9.5 11L12 13.5 14.5 11M10.5 18h3"/></svg></span><span class="sh-tx"><b>Download the app</b><small>Free on the App Store for iPhone.</small></span></a></div></div>
+    <div class="sh-mgroup"><button class="sh-macc" type="button" aria-expanded="false" aria-controls="sh-m-dropzones"><span>For dropzones</span><svg class="sh-chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="sh-mlist" id="sh-m-dropzones" hidden><a class="sh-mitem" href="/dropzones/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><span class="sh-tx"><b>Manifest Desk</b><small>Loads, money, staff and safety on one screen.</small></span></a><a class="sh-mitem" href="/dropzones/#app"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3 10h18M7 14.5h3"/></svg></span><span class="sh-tx"><b>Payments and top-ups</b><small>Apple Pay top-ups, straight to your Stripe.</small></span></a><a class="sh-mitem" href="/dropzones/#safety"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="sh-tx"><b>Safety</b><small>Landouts on a live map, plus gear checks.</small></span></a><a class="sh-mitem" href="/dropzones/#features"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M7 8.5h6M7 12.5h10M9 21h6"/></svg></span><span class="sh-tx"><b>Hangar board</b><small>A live board for every TV in the hangar.</small></span></a><a class="sh-mitem" href="/dropzones/#pricing"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4.5A1.5 1.5 0 0 1 4.5 3H12l9 9-9 9-9-9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><span class="sh-tx"><b>Pricing</b><small>Prices on the page, month to month.</small></span></a><a class="sh-mitem" href="/dropzones/#how"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M11 6h9M11 18h9M6 8.5v7"/></svg></span><span class="sh-tx"><b>How it works</b><small>From sign-up to your first jump day.</small></span></a><a class="sh-mitem" href="/dropzones/start/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M13 8.5l3.5 3.5-3.5 3.5"/></svg></span><span class="sh-tx"><b>Get started</b><small>Pick a plan and set up your dropzone.</small></span></a></div></div>
+    <a class="sh-mlink" href="/about/"><span class="sh-t">About</span></a>
+    <a class="sh-mlink" href="/support/"><span class="sh-t">Support</span></a>
+    <a class="sh-mlink" href="https://desk.jumpmanifest.com"><span class="sh-t">Dropzone login</span></a>
+    <a class="sh-cta sh-mcta" href="https://apps.apple.com/app/id6778510429">Download<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
   </div>
 </div>
 
@@ -382,28 +499,74 @@ footer.site .ft-col a em { color: #FFFFFF !important; background: rgba(255,255,2
   </div>
   <div class="ft-base"><span>© Manifest 2026. All rights reserved.</span><span>Listed by the United States Parachute Association.</span></div>
 </footer>
-<script>
+<script id="site-header-js">
 (() => {
-  const bar = document.querySelector('.topbar'), btn = bar && bar.querySelector('.tb-burger');
-  if (!btn) return;
-  const drop = document.createElement('div'); drop.className = 'tb-drop';
-  const menu = document.createElement('div'); menu.className = 'tb-menu';
-  bar.querySelectorAll('.tb-links a').forEach((a) => menu.appendChild(a.cloneNode(true)));
-  drop.appendChild(menu); bar.appendChild(drop);
-  // On the home page the panel runs down past the App Store badge and ends
-  // just under it, so its edge sits in a clean gap instead of cutting the badge.
-  const fit = () => {
-    menu.style.minHeight = '';
-    const badge = document.querySelector('img[src*="appstore-badge"]');
-    if (!badge) return;
-    const gap = badge.getBoundingClientRect().bottom - drop.getBoundingClientRect().top + 18;
-    if (gap > menu.offsetHeight && gap < innerHeight * 0.8) menu.style.minHeight = gap + 'px';
+  const bar = document.querySelector('[data-sh]');
+  if (!bar) return;
+  const dds = [...bar.querySelectorAll('[data-dd]')];
+  const canHover = matchMedia('(hover: hover) and (pointer: fine)');
+  let timer = 0;
+
+  const place = (dd) => {
+    const p = dd.querySelector('.sh-panel');
+    p.style.left = '';
+    const r = p.getBoundingClientRect(), over = r.right - (innerWidth - 16);
+    if (over > 0) p.style.left = (parseFloat(getComputedStyle(p).left) - over) + 'px';
   };
-  const set = (open) => { if (open) fit(); bar.classList.toggle('open', open); btn.setAttribute('aria-expanded', open); };
-  btn.addEventListener('click', (e) => { e.stopPropagation(); set(!bar.classList.contains('open')); });
-  menu.addEventListener('click', (e) => { if (e.target.closest('a')) set(false); });
-  document.addEventListener('click', (e) => { if (!bar.contains(e.target)) set(false); });
-  addEventListener('resize', () => { if (innerWidth > 600) set(false); });
+  const set = (dd, open) => {
+    dd.classList.toggle('open', open);
+    dd.querySelector('.sh-trig').setAttribute('aria-expanded', open);
+    if (open) { dd.openedAt = Date.now(); place(dd); }
+  };
+  const closeAll = (except) => dds.forEach((d) => { if (d !== except && d.classList.contains('open')) set(d, false); });
+  const open = (dd) => { clearTimeout(timer); closeAll(dd); if (!dd.classList.contains('open')) set(dd, true); };
+
+  dds.forEach((dd) => {
+    const trig = dd.querySelector('.sh-trig');
+    dd.addEventListener('mouseenter', () => { if (canHover.matches) { dd.viaHover = true; open(dd); } });
+    dd.addEventListener('mouseleave', () => {
+      if (!canHover.matches) return;
+      clearTimeout(timer); timer = setTimeout(() => set(dd, false), 140);
+    });
+    trig.addEventListener('click', () => {
+      const isOpen = dd.classList.contains('open');
+      // a click right after hover opened it should not slam it shut again
+      if (isOpen && dd.viaHover && Date.now() - dd.openedAt < 400) return;
+      dd.viaHover = false;
+      isOpen ? set(dd, false) : open(dd);
+    });
+    trig.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') { e.preventDefault(); open(dd); const f = dd.querySelector('.sh-item'); f && f.focus(); }
+    });
+    dd.addEventListener('focusout', (e) => { if (!dd.contains(e.relatedTarget)) set(dd, false); });
+    dd.querySelectorAll('.sh-panel a').forEach((a) => a.addEventListener('click', () => set(dd, false)));
+  });
+
+  // phone sheet
+  const burger = bar.querySelector('.sh-burger'), sheet = bar.querySelector('.sh-sheet');
+  // the bar's load-in animation makes it the containing block for fixed children, so the sheet lives on body
+  document.body.appendChild(sheet);
+  const setSheet = (show) => {
+    if (show) sheet.style.setProperty('--sh-top', (Math.max(0, bar.offsetTop - scrollY) + bar.offsetHeight) + 'px'); // layout, not the load-in transform
+    sheet.hidden = !show;
+    burger.setAttribute('aria-expanded', show);
+    document.documentElement.style.overflow = show ? 'hidden' : '';
+  };
+  burger.addEventListener('click', () => setSheet(sheet.hidden));
+  sheet.querySelectorAll('.sh-macc').forEach((b) => b.addEventListener('click', () => {
+    const list = document.getElementById(b.getAttribute('aria-controls')), show = list.hidden;
+    list.hidden = !show; b.setAttribute('aria-expanded', show);
+  }));
+  sheet.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setSheet(false)));
+
+  document.addEventListener('click', (e) => { if (!e.target.closest('[data-dd]')) closeAll(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    const o = dds.find((d) => d.classList.contains('open'));
+    if (o) { set(o, false); o.querySelector('.sh-trig').focus(); }
+    if (!sheet.hidden) { setSheet(false); burger.focus(); }
+  });
+  addEventListener('resize', () => { if (innerWidth >= 900 && !sheet.hidden) setSheet(false); closeAll(); });
 })();
 </script>
 </body>
