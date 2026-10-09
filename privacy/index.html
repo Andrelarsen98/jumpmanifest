@@ -195,6 +195,50 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
     .doc > .wrap > *:not(h1) { max-width: 760px; }
     .doc h1 { font-size: clamp(52px, 5vw, 72px); line-height: 1.02; max-width: 16ch; }
   }
+
+  /* ---------- ONE TYPE AND SPACING SYSTEM (9 Oct 2026) ----------
+     The same values as the dropzones page, measured from softriver.co at
+     1440: General Sans 500 for headings, Manrope for the rest, ink #040815,
+     grey #71717B. 120px of rhythm on laptops, 80px on phones. */
+  :root { --gap: 120px; --t: #040815; --g: #71717B; }
+  @media (max-width: 600px) { :root { --gap: 80px; } }
+  body { font-family: "Manrope", -apple-system, sans-serif; font-size: 16px; line-height: 24px; color: var(--t); }
+  .doc { padding: var(--gap) 0 0; }
+  footer.site { margin-top: var(--gap); }
+  .doc h1, .doc h2, .doc h3 { font-family: "General Sans", "Manrope", sans-serif; font-weight: 500 !important; color: var(--t); }
+  /* Page title: 72 / 72, -2px. */
+  .doc h1 { font-size: 72px; line-height: 72px; letter-spacing: -2px; max-width: 20ch; text-wrap: balance; }
+  /* Lead line under the title: 20 / 31 grey, 24px below. */
+  .doc .intro { font-size: 20px; line-height: 31px; font-weight: 400; color: var(--g); margin: 24px 0 0; }
+  /* Headings inside the page: the sub-heading size, 34 / 47.6. */
+  .doc h2 { font-size: 34px; line-height: 47.6px; letter-spacing: -.5px; margin: 80px 0 12px; }
+  .doc h3 { font-size: 24px; line-height: 33.6px; letter-spacing: normal; margin: 40px 0 8px; }
+  .doc p { font-size: 16px; line-height: 24px; font-weight: 400; color: var(--t); margin: 16px 0; }
+  .doc h2 + p, .doc h3 + p, .doc h2 + ul, .doc h3 + ul { margin-top: 0; }
+  .doc ul { font-size: 16px; line-height: 24px; font-weight: 400; color: var(--t); margin: 16px 0; }
+  .doc li { margin: 8px 0; }
+  .doc strong { color: var(--t); font-weight: 600; }
+  /* Cards: card text 16 / 20.8 weight 500 grey. */
+  .card { margin: 24px 0; }
+  .card p, .card .reply { font-size: 16px; line-height: 20.8px; font-weight: 500; letter-spacing: -.5px; color: var(--g); }
+  .card .lbl { font-size: 16px; line-height: 24px; font-weight: 500; color: var(--t); }
+  .card .email { margin: 4px 0 8px; font-family: "General Sans", "Manrope", sans-serif; font-size: 24px; line-height: 33.6px; font-weight: 500; }
+  @media (min-width: 900px) {
+    .doc > .wrap > *:not(h1) { max-width: 760px; }
+    .doc h1 { font-size: 72px; line-height: 72px; max-width: 20ch; }
+  }
+  @media (max-width: 600px) {
+    .doc h1 { font-size: 42px; line-height: 44px; letter-spacing: -1.2px; }
+    .doc .intro { font-size: 18px; line-height: 28px; }
+    .doc h2 { font-size: 28px; line-height: 36px; margin-top: 56px; }
+    .doc h3 { font-size: 22px; line-height: 30px; margin-top: 32px; }
+  }
+  /* Legal documents: a 50 / 50 title and long-form body at 16 / 26. */
+  .doc h1 { font-size: 50px !important; line-height: 50px !important; letter-spacing: -.5px; }
+  .doc .updated { margin: 16px 0 0; font-size: 16px; line-height: 24px; color: var(--g); }
+  .doc .updated + .intro { margin-top: 24px; }
+  .doc p, .doc ul { line-height: 26px; }
+  @media (max-width: 600px) { .doc h1 { font-size: 34px !important; line-height: 36px !important; } }
 </style>
 <style id="ft-dark">
 /* Dark footer, Nike's (2 Oct 2026): #111 with white text and the white logo. */
