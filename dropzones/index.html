@@ -4,10 +4,10 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Manifest for dropzones: manifest, payments and load calls on every phone</title>
-<meta name="description" content="Manifest Desk is dropzone software built around the app your jumpers already use: loads and manifest, load calls on every jumper's phone, a safety check at manifest, jumper accounts, the hangar board, staff pay and reports. Coming soon." />
+<meta name="description" content="Manifest Desk is manifest software for dropzones, connected live to the Manifest app your jumpers already use: loads, money, staff and safety on one screen, with every load call on every jumper's phone." />
 <link rel="canonical" href="https://www.jumpmanifest.com/dropzones/" />
 <meta property="og:title" content="Manifest for dropzones" />
-<meta property="og:description" content="Manifest, payments and the hangar board, with every load call pushed to your jumpers' phones. Coming soon." />
+<meta property="og:description" content="Manifest software for dropzones, connected live to the jumper app: loads, money, staff and safety on one screen." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Manifest" />
 <meta property="og:image" content="https://www.jumpmanifest.com/assets/og-image.png?v=10" />
@@ -75,28 +75,41 @@
   .btn.ghost { background: #F2F2F5; color: var(--ink); }
   .btn svg { width: 16px; height: 16px; }
 
-  .only { background: var(--ink); color: #fff; border-radius: 28px; padding: 56px; margin-top: 8px; }
-  .only h2 { font-size: clamp(28px, 3.6vw, 40px); letter-spacing: -0.035em; line-height: 1.1; max-width: 640px; }
-  .only h2 em { font-style: normal; color: #B9A4FF; }
-  .only-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 40px; }
-  .only-grid b { display: block; font-size: 18px; margin-bottom: 6px; }
-  .only-grid p { color: rgba(255,255,255,.62); font-size: 15px; }
-  .only-grid .n { font-family: "Manrope", sans-serif; font-weight: 800; font-size: 13px; color: #B9A4FF; margin-bottom: 14px; letter-spacing: .04em; }
-
-  /* SEE THE DESK (8 Oct 2026): the real desk in a browser frame, and the
-     ask: a 20-minute walkthrough on video, not a self-serve demo (yet). */
-  .peek { padding: 96px 0 0; text-align: center; }
-  .peek h2 { font-size: clamp(30px, 4vw, 44px); letter-spacing: -0.035em; line-height: 1.1; }
-  .peek .lead { color: var(--muted); font-size: 18px; margin: 12px auto 0; max-width: 600px; }
-  .frame { margin: 40px auto 0; max-width: 1080px; border-radius: 16px; background: #fff; overflow: hidden;
+  /* THE DESK FIRST (9 Oct 2026): the real desk in a browser frame, full
+     width straight under the hero text, with a one-line caption and points. */
+  .frame { margin: 56px 0 0; border-radius: 16px; background: #fff; overflow: hidden;
     box-shadow: 0 0 0 1px rgba(112,115,147,.16), 0 30px 80px rgba(30,30,42,.14); }
   .frame-bar { height: 36px; display: flex; align-items: center; gap: 7px; padding: 0 14px; background: #F6F7F9; border-bottom: 1px solid rgba(112,115,147,.12); }
   .frame-bar i { width: 11px; height: 11px; border-radius: 50%; background: #DCDDE3; }
   .frame-bar span { margin-left: 12px; font-size: 13px; color: #70707D; }
   .frame img { display: block; width: 100%; height: auto; }
-  .peek-points { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; margin: 28px auto 0; color: var(--muted); font-size: 15px; }
+  .frame-cap { margin-top: 28px; font-size: 18px; line-height: 28px; color: #71717B; }
+  .peek-points { display: flex; justify-content: center; gap: 10px 28px; flex-wrap: wrap; margin: 14px 0 0; color: #71717B; font-size: 15px; }
   .peek-points b { color: var(--ink); font-weight: 600; }
-  .peek .ctas { margin-top: 32px; }
+
+  /* JUMPER APP (9 Oct 2026): plain cloud panel, three white cards, no
+     photo and no hover effects. */
+  .app-panel { margin-top: 44px; background: #EDEFF7; border-radius: 28px; padding: 16px; }
+  .app-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .app-card { background: #fff; border-radius: 22px; padding: 30px 28px 32px; }
+  .app-card .n { display: inline-block; font-size: 13px; font-weight: 700; line-height: 18px; color: #050505; background: #F0ECFE; border-radius: 99px; padding: 5px 11px; }
+  .app-card b { display: block; margin-top: 22px; font-size: 20px; line-height: 27px; letter-spacing: -0.01em; font-weight: 600; }
+  .app-card p { margin-top: 8px; color: #71717B; font-size: 16px; line-height: 25px; }
+  .app-foot { text-align: center; margin-top: 32px; font-size: 20px; line-height: 31px; color: #71717B; }
+  .app-foot b { color: #050505; font-weight: 600; }
+
+  /* SAFETY (9 Oct 2026): text on the left, three points on the right. */
+  .safety { display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center; }
+  .safety h2 { text-align: left !important; }
+  .safety .txt { margin-top: 20px; color: #71717B; font-size: 20px; line-height: 31px; max-width: 600px; }
+  .s-points { list-style: none; display: grid; gap: 12px; }
+  .s-points li { display: flex; align-items: center; gap: 14px; background: #fff; border: 1px solid #E4E4E7; border-radius: 22px; padding: 20px 22px; font-size: 17px; line-height: 24px; font-weight: 600; color: #050505; }
+  .s-points .dot { width: 28px; height: 28px; border-radius: 50%; background: #6D42F5; color: #fff; flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; }
+  .s-points .dot svg { width: 14px; height: 14px; }
+  @media (max-width: 900px) { .safety { grid-template-columns: 1fr; gap: 32px; } .app-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 600px) { .app-panel { border-radius: 22px; padding: 10px; } .app-grid { gap: 10px; } .app-card { padding: 24px 22px 26px; }
+    .safety .txt, .app-foot { font-size: 17px; line-height: 27px; } .frame { margin-top: 40px; border-radius: 12px; } .frame-bar { height: 28px; }
+    .frame-bar i { width: 8px; height: 8px; } .frame-cap { font-size: 16px; line-height: 25px; } .peek-points { font-size: 14px; } }
   .sec { padding: 96px 0 0; }
   .sec h2 { font-size: clamp(30px, 4vw, 44px); letter-spacing: -0.035em; line-height: 1.1; text-align: center; }
   .sec .lead { text-align: center; color: var(--muted); font-size: 18px; margin: 12px auto 0; max-width: 560px; }
@@ -122,11 +135,6 @@
     .hero h1 { margin: 26px 0 0; max-width: 13ch; font-size: clamp(64px, 7.2vw, 96px); line-height: 1; letter-spacing: -.045em; }
     .hero .sub { margin: 26px 0 0; max-width: 620px; font-size: clamp(18px, 1.7vw, 21px); }
     .hero .ctas { justify-content: flex-start; margin-top: 38px; }
-    .only { padding: clamp(56px, 6vw, 88px); border-radius: clamp(28px, 2.6vw, 36px); }
-    .only h2 { font-size: clamp(40px, 4.2vw, 58px); max-width: 22ch; }
-    .only-grid { gap: clamp(28px, 4vw, 56px); margin-top: 56px; }
-    .only-grid b { font-size: 21px; }
-    .only-grid p { font-size: 16px; }
     .sec { padding-top: clamp(110px, 12vw, 160px); }
     .sec h2 { font-size: clamp(50px, 5.4vw, 74px); }
     .sec .lead { font-size: 20px; max-width: 620px; }
@@ -200,6 +208,8 @@
     .herorow { flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px 28px; margin-top: 40px; }
     .trust { justify-content: flex-start; }
     .trust > :first-child { padding-left: 0; }
+    .peek-points { justify-content: flex-start; }
+    .hero h1 { text-wrap: balance; max-width: 20ch; }
   }
   @media (max-width: 600px) { .trust { font-size: 14px; gap: 12px 18px; } .trust > * { padding: 0; border-left: 0 !important; }
     .hero .sub br { display: none; } }
@@ -207,8 +217,6 @@
   /* "manifest" in the headline is the real wordmark in the purple: its
      x-height (1080 of the 1520 box) matched to General Sans' 0.53em. */
   .wm-h1 { display: inline-block; height: .746em; width: auto; vertical-align: -.015em; margin-left: .02em; }
-  .only-foot { margin-top: 48px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,.12); font-size: 20px; color: rgba(255,255,255,.62); }
-  .only-foot b { color: #fff; font-weight: 600; }
   /* Owner bar, measured from softriver.co/white-label: #2D0896, 56px tall,
      16/24 Manrope white at -0.32px. Says who the page is for and sends
      jumpers who land here to the App Store. */
@@ -217,38 +225,6 @@
   .ownerbar a { color: #fff; font-weight: 600; white-space: nowrap; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(255,255,255,.4); }
   .ownerbar a:hover { text-decoration-color: #fff; }
   @media (max-width: 600px) { .ownerbar { font-size: 13.5px; line-height: 20px; padding: 11px 16px; } }
-  /* ---------- FROSTED TILT CARDS (1 Oct 2026, preview) ----------
-     The black section sits on a photo; the three points are frosted glass
-     cards that tilt toward the cursor with a soft light where it hovers.
-     Only on devices that can hover; reduced-motion keeps them still.
-     Background: André's own 3023px purple light-trail image (his, cleared to use). */
-  .only { position: relative; overflow: hidden; isolation: isolate;
-          background: #050505 url(/assets/dz-only-bg-v2.jpg) center / cover no-repeat; }
-  .only::before { content: ""; position: absolute; inset: 0; z-index: -1;
-                  background: linear-gradient(180deg, rgba(5,5,5,.35) 0%, rgba(5,5,5,0) 45%, rgba(5,5,5,.45) 100%); }
-  .only-grid { perspective: 900px; }
-  .only-grid > div { position: relative; border-radius: 24px; padding: 30px 28px 32px;
-    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16);
-    -webkit-backdrop-filter: blur(22px) saturate(150%); backdrop-filter: blur(22px) saturate(150%);
-    box-shadow: 0 20px 50px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.12);
-    transform-style: preserve-3d; transition: transform .5s cubic-bezier(.22,.9,.3,1), box-shadow .5s ease;
-    --mx: 50%; --my: 50%; overflow: hidden; }
-  /* Whole-card sheen: a wide diagonal band of light that slides across the
-     glass as the card tilts (no spotlight circle), plus a gentle brighten. */
-  .only-grid > div::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0;
-    background: linear-gradient(115deg, rgba(255,255,255,0) 30%, rgba(255,255,255,.16) 45%, rgba(255,255,255,.05) 55%, rgba(255,255,255,0) 70%);
-    background-size: 300% 300%; background-position: calc(100% - var(--mx)) calc(100% - var(--my));
-    transition: opacity .35s ease; }
-  /* Rim light: the edge tilted toward the viewer catches a thin line of light. */
-  .only-grid > div::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0;
-    box-shadow: inset calc(var(--tx, 0) * -10px) calc(var(--ty, 0) * -10px) 14px -8px rgba(255,255,255,.55);
-    transition: opacity .35s ease; }
-  .only-grid > div.tilting::before { opacity: 1; }
-  .only-grid > div.tilting { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.24); }
-  .only-grid > div.tilting { transition: transform .08s linear, box-shadow .3s ease; box-shadow: 0 30px 70px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.16); }
-  .only-grid > div.tilting::after { opacity: 1; }
-  .only-grid > div p { color: rgba(255,255,255,.72); }
-  .only-foot { border-top-color: rgba(255,255,255,.18); color: rgba(255,255,255,.7); }
   /* ---------- PRICING (1 Oct 2026) ----------
      Softriver's plan cards, our content: white cards with a hairline, the
      middle one outlined in purple under a purple band, "Custom" where they
@@ -304,6 +280,11 @@
   .pc-in { padding: 32px; }
   .pc h3 { font-family: "Manrope", sans-serif; font-weight: 500; font-size: 20px; line-height: 28px; letter-spacing: -1px; }
   .pc-price { margin-top: 14px; font-weight: 550; font-size: 38px; letter-spacing: -1px; }
+  .pc-price small { font-family: "Manrope", sans-serif; font-size: 16px; font-weight: 500; letter-spacing: 0; color: #71717B; margin-left: 4px; }
+  .pc-price .from { font-family: "Manrope", sans-serif; font-size: 16px; font-weight: 500; letter-spacing: 0; color: #71717B; margin-right: 6px; }
+  .pr-founder { margin-top: 32px; font-size: 18px; line-height: 28px; color: #71717B; }
+  .pr-founder b { color: #050505; font-weight: 600; }
+  .pr-founder.pr-plain { margin-top: 6px; }
   .pc-desc { margin-top: 14px; font-size: 16px; line-height: 22.4px; font-weight: 500; color: rgba(23,23,23,.6); min-height: 45px; }
   .pc-out { margin-top: 24px; height: 67px; border-width: 1px; border-radius: 20px; }
   .pc .pc-btn { margin-top: 24px; height: 67px; border-radius: 20px; }
@@ -353,11 +334,11 @@
   }
   @media (max-width: 980px) { .pc-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; } .pr-all ul { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 600px) { .pricing .lead { font-size: 17px; line-height: 27px; } .pr-all ul { grid-template-columns: 1fr; } .pc-in { padding: 28px 24px 30px; } }
-  @media (max-width: 980px) { .tb-links a:not(.soon) { display: none; } .grid { grid-template-columns: repeat(2, 1fr); } .only-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 980px) { .tb-links a:not(.soon) { display: none; } .grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 600px) {
     .topbar-in { height: 62px; padding: 0 16px; } .wordmark img { width: 28px; } .wordmark img.wm { width: auto; height: 18px; } .wordmark span { font-size: 24px; }
     .tb-links { display: none; } .tb-cta { padding: 9px 15px; font-size: 14px; }
-    .wrap { padding: 0 18px; } .hero { padding: 56px 0 48px; } .only { padding: 34px 24px; border-radius: 22px; }
+    .wrap { padding: 0 18px; } .hero { padding: 56px 0 48px; }
     .grid { grid-template-columns: 1fr; } .sec { padding-top: 72px; }
   }
 
@@ -421,7 +402,7 @@ footer.site .ft-col a em { color: #FFFFFF !important; background: rgba(255,255,2
       <a href="/#dropzones">Live loads</a>
       <a href="/#everything">Features</a>
       <a href="/#faq">FAQ</a>
-      <a href="/dropzones/" class="soon on">For dropzones <em>Soon</em></a>
+      <a href="/dropzones/" class="soon on">For dropzones</a>
     </div>
     <a class="tb-cta" href="https://apps.apple.com/app/id6778510429">Download
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
@@ -432,121 +413,126 @@ footer.site .ft-col a em { color: #FFFFFF !important; background: rgba(255,255,2
 <header class="hero">
   <div class="wrap">
     <div class="li toprow" style="--i:0">
-      <span class="live"><i></i>Onboarding the first dropzones now</span>
+      <span class="kicker">Now onboarding dropzones</span>
     </div>
-    <h1 class="li" style="--i:1"><span class="dim">Every dropzone has a manifest.</span> <span class="l2"><span class="dim">Make yours</span> <img class="wm-h1" src="/assets/manifest-wordmark.svg?v=4" alt="manifest" />.</span></h1>
-    <p class="li sub" style="--i:2"><b>Your jumpers already use Manifest.</b><br />
-      Jumpers from 220+ dropzones in 38 countries check their loads, log their jumps and replay them in 3D on it.</p>
+    <h1 class="li" style="--i:1">Manifest software for your dropzone.</h1>
+    <p class="li sub" style="--i:2"><b>Loads, money, staff and safety on one screen,</b> connected live to the Manifest app jumpers from 220+ dropzones already use.</p>
     <div class="herorow">
       <div class="li ctas" style="--i:3">
-        <a class="btn primary" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%20early%20access&body=Dropzone%3A%20%0AName%3A%20%0APhone%3A%20">Get early access<span class="bi"><svg viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></span></a>
-        <a class="btn ghost" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo&body=Dropzone%3A%20%0AName%3A%20%0APhone%3A%20%0ABest%20time%20for%20a%2020-minute%20video%20call%3A%20">Book a demo</a>
+        <a class="btn primary" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo&body=Dropzone%3A%20%0AName%3A%20%0APhone%3A%20%0ABest%20time%20for%20a%2020-minute%20video%20call%3A%20">Book a 20-minute demo<span class="bi"><svg viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></span></a>
+        <a class="btn ghost" href="#pricing">See pricing</a>
       </div>
-      <!-- Every item true: jumpers' home dropzones (158 on 15 Sep, rounded down),
-           37 countries, the USPA listing, and where Manifest is made. -->
+      <!-- Every item true (brand file, 1 Oct 2026): jumpers from 220+ home
+           dropzones in 38 countries, the USPA listing, set up with André. -->
       <div class="li trust" style="--i:4">
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20a6 6 0 0 1 12 0M17 11a3 3 0 1 0 0-6M21 20a6 6 0 0 0-4-5.6"/></svg>Jumpers at 220+ dropzones</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20a6 6 0 0 1 12 0M17 11a3 3 0 1 0 0-6M21 20a6 6 0 0 0-4-5.6"/></svg>Jumpers from 220+ dropzones</span>
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg>38 countries</span>
         <a href="https://www.uspa.org/logbookapps" target="_blank" rel="noopener"><img src="/assets/uspa-seal.png?v=1" alt="" width="22" height="22" />Listed by USPA</a>
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 11l3-3 3 3 4-4"/><path d="M3 12l4 4a2 2 0 0 0 3 0l1-1"/><path d="M21 12l-4 4a2 2 0 0 1-3 0l-3-3"/></svg>Set up with us, directly</span>
       </div>
     </div>
+    <div class="li" id="demo" style="--i:5">
+      <div class="frame">
+        <div class="frame-bar"><i></i><i></i><i></i><span>desk.jumpmanifest.com</span></div>
+        <img src="/assets/desk-today.jpg?v=1" alt="Manifest Desk: the Today page of a demo dropzone, with today's takings, open loads, the next load countdown, standby and accounts" width="1440" height="900" fetchpriority="high" />
+      </div>
+      <p class="frame-cap">Drag jumpers between loads, call a load, and every phone on it knows.</p>
+      <div class="peek-points"><span><b>Drag and drop</b> loads</span><span><b>Standby</b> list</span><span><b>Hangar board</b> for every TV</span><span><b>Reports</b> for the accountant</span></div>
+    </div>
   </div>
 </header>
 
 <main class="wrap">
-  <section class="only">
-    <h2>Your jumpers already carry the app. <em>Now it runs your dropzone.</em></h2>
-    <div class="only-grid">
-      <div><div class="n">01</div><b>Top up with Apple Pay <em class="soon-tag">Soon</em></b><p>Jumpers will add money in the app with Apple Pay or card. It goes to your dropzone's account and shows on your desk the moment they pay. No queue at manifest before the first load.</p></div>
-      <div><div class="n">02</div><b>Self-manifest from the phone <em class="soon-tag">Soon</em></b><p>Jumpers will put themselves on a load with their jump type and slot. It appears on your board live, and your desk still has the final say.</p></div>
-      <div><div class="n">03</div><b>Every call on their phone</b><p>Called, 10 minutes, 5 minutes, boarding and holds, pushed from your desk to every jumper on the load the moment you press the button.</p></div>
+  <section class="sec" id="app">
+    <h2>Your jumpers do the queueing on their phone.</h2>
+    <div class="app-panel">
+      <div class="app-grid">
+        <div class="app-card"><span class="n">01</span><b>Top up with Apple Pay</b><p>Jumpers add money in the app with Apple Pay, card or Cash App. It lands in your dropzone's own Stripe account and shows on your desk the moment they pay.</p></div>
+        <div class="app-card"><span class="n">02</span><b>Self-manifest from the phone</b><p>Jumpers book themselves and their friends onto a load, or join standby and get moved up automatically. You set the limits, and the desk always has the final say.</p></div>
+        <div class="app-card"><span class="n">03</span><b>Every call on their phone</b><p>Called, 10 minutes, 5 minutes, boarding and holds reach every jumper on the load the moment you press the button, with a live card on their Lock Screen.</p></div>
+      </div>
     </div>
-    <p class="only-foot">Less time in line at manifest. <b>More time in the air.</b></p>
+    <p class="app-foot">Less time in line at manifest. <b>More time in the air.</b></p>
   </section>
 
-  <section class="peek" id="demo">
-    <h2>See the desk.</h2>
-    <p class="lead">Today's loads, money and winds on one screen. Drag jumpers between loads, call a load, and every phone on it knows.</p>
-    <div class="frame">
-      <div class="frame-bar"><i></i><i></i><i></i><span>desk.jumpmanifest.com</span></div>
-      <img src="/assets/desk-today.jpg?v=1" alt="Manifest Desk: the Today page of a demo dropzone, with today's takings, open loads, the next load countdown, standby and accounts" width="1440" height="900" loading="lazy" />
-    </div>
-    <div class="peek-points"><span><b>Drag and drop</b> loads</span><span><b>Standby</b> list</span><span><b>Hangar board</b> for every TV</span><span><b>Reports</b> for the accountant</span></div>
-    <div class="ctas">
-      <a class="btn primary" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo&body=Dropzone%3A%20%0AName%3A%20%0APhone%3A%20%0ABest%20time%20for%20a%2020-minute%20video%20call%3A%20">Book a 20-minute demo<span class="bi"><svg viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></span></a>
+  <section class="sec" id="safety">
+    <div class="safety">
+      <div>
+        <h2>If someone lands out, you see where.</h2>
+        <p class="txt">One tap in the app sends their GPS and how they are: injured, needs a ride, or walking back. Your desk shows them on a live map with the distance and direction from the dropzone, and a button to call their emergency contact.</p>
+      </div>
+      <ul class="s-points">
+        <li><span class="dot"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span>Live map that follows them</li>
+        <li><span class="dot"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span>Distance and direction from the DZ</li>
+        <li><span class="dot"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span>Currency, reserve and AAD checks before every load</li>
+      </ul>
     </div>
   </section>
 
-  <section class="sec">
+  <section class="sec" id="features">
     <h2>Everything the desk needs.</h2>
     <p class="lead">One place for the day, from the first load to the beer light.</p>
     <div class="grid">
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18M3 12h18M3 17h12"/></svg></div><b>Loads and manifest</b><p>Build loads, add jumpers, tandems with instructor and camera in one booking, call and depart.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18v11H3zM8 20h8M12 16v4"/></svg></div><b>Hangar board</b><p>A live board for every TV, with countdowns, holds, landing direction and one-tap alerts.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18v12H3zM3 10h18M7 15h3"/></svg></div><b>Jumper accounts</b><p>Balances, top-ups and a clean ledger. Charged when the load departs, never before.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4"/></svg></div><b>Safety overview</b><p>Who is blocked, who is due soon, and a reminder that opens their gear screen.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20a6 6 0 0 1 12 0M17 11a3 3 0 1 0 0-6M21 20a6 6 0 0 0-4-5.6"/></svg></div><b>Staff and pay</b><p>Roles, jobs and pay per jump or per load, worked out from what actually flew.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 13l8-2 4-7 2 1-2 7 6 1 2-3 1 1-1 4 1 4-1 1-2-3-6 1 2 7-2 1-4-7-8-2z"/></svg></div><b>Aircraft</b><p>Hours flown, a countdown to the 100-hour inspection and the annual, per plane.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><b>Reports</b><p>Takings, jumps by type, aircraft use and who owes you, with exports for the accountant.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13h4l3-8 4 14 3-6h4"/></svg></div><b>Today</b><p>The day at a glance: jumps, money in, the next load and the winds on the ground and aloft.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h12"/></svg></div><b>Loads and manifest</b><p>Build loads, drag groups between them, standby and daily check-in, call and depart. Weight against your aircraft's payload.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v11H3zM8 20h8M12 16v4"/></svg></div><b>Hangar board</b><p>A live board for every TV, with countdowns, holds, landing direction and one-tap alerts.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18v12H3zM3 10h18M7 15h3"/></svg></div><b>Jumper accounts</b><p>Balances, top-ups, jump-ticket bundles and vouchers. Charged when the load departs, never before.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4"/></svg></div><b>Safety overview</b><p>Who is blocked, who is due soon, and a reminder that opens their gear screen.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20a6 6 0 0 1 12 0M17 11a3 3 0 1 0 0-6M21 20a6 6 0 0 0-4-5.6"/></svg></div><b>Staff and pay</b><p>Roles, jobs and pay per jump or per load, worked out from what actually flew.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 13l8-2 4-7 2 1-2 7 6 1 2-3 1 1-1 4 1 4-1 1-2-3-6 1 2 7-2 1-4-7-8-2z"/></svg></div><b>Aircraft</b><p>Hours flown, a countdown to the 100-hour inspection and the annual, per plane.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><b>Reports</b><p>Takings, jumps by type, the cash drawer and sales tax, with exports for the accountant.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h12a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3zM4 17a3 3 0 0 1 3-3h12M9 8h6"/></svg></div><b>Jumps log themselves</b><p>When a load departs, the jump writes itself into every jumper's Manifest logbook.</p></div>
     </div>
   </section>
 
-  <!-- PRICING (1 Oct 2026): laid out like Softriver's three plans, with no
-       numbers and no "Most popular" (no customers yet). Every size gets the
-       whole desk; the price follows the size and is set with André. -->
+  <!-- PRICING (9 Oct 2026): real monthly prices. Every size gets every
+       feature; no aircraft or desk limits are enforced, so none are claimed. -->
   <section class="pricing" id="pricing">
-    <p class="pr-top"><i></i>Onboarding the first dropzones now</p>
     <h2>One manifest desk. Sized to your dropzone.</h2>
-    <p class="lead">Every dropzone gets the whole desk. The price follows the size of your operation, and we set it with you.</p>
-    <p class="pr-basis">Every size includes every feature. The sizes differ by aircraft, desks at once, your payment fee and support.</p>
+    <p class="lead">Every size gets every feature. Pay monthly, or yearly and get two months free.</p>
     <div class="pc-grid">
       <div class="pc">
         <div class="pc-in">
           <h3>Weekend dropzone</h3>
-          <div class="pc-price">Custom</div>
+          <div class="pc-price">$149<small>/month</small></div>
           <p class="pc-desc">One aircraft and busy weekends, run by a small manifest team.</p>
-          <a class="pc-out" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20get%20a%20price&body=Dropzone%3A%20%0AAircraft%3A%20%0ALoads%20on%20a%20busy%20day%3A%20%0AStaff%20using%20the%20desk%3A%20%0APayments%20in%20the%20app%20(yes%2Fno)%3A%20%0AName%20and%20phone%3A%20">Get a price <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          <a class="pc-out" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20get%20a%20price&body=Dropzone%3A%20%0AAircraft%3A%20%0ALoads%20on%20a%20busy%20day%3A%20%0AStaff%20using%20the%20desk%3A%20%0APayments%20in%20the%20app%20(yes%2Fno)%3A%20%0AName%20and%20phone%3A%20">Get started <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
           <p class="pc-note"><span class="pc-mark" aria-hidden="true"></span>Set up with you, directly</p>
-          <ul class="pc-size"><li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>1 aircraft</span></li><li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>2 desks at once</span></li><li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Standard payment fee</span></li><li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Email support</span></li></ul>
-          <div class="pc-fits">Every feature included</div>
+          <ul class="pc-size"><li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Every feature included</span></li><li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>1% on jumper top-ups in the app</span></li><li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Email support</span></li></ul>
         </div>
       </div>
       <div class="pc hl"><div class="pc-band">Onboarding now</div>
         <div class="pc-in">
           <h3>Full-time dropzone</h3>
-          <div class="pc-price">Custom</div>
+          <div class="pc-price">$299<small>/month</small></div>
           <p class="pc-desc">Jumping most days, with a team on the desk and staff to pay every week.</p>
-          <a class="btn primary pc-btn" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20get%20a%20price&body=Dropzone%3A%20%0AAircraft%3A%20%0ALoads%20on%20a%20busy%20day%3A%20%0AStaff%20using%20the%20desk%3A%20%0APayments%20in%20the%20app%20(yes%2Fno)%3A%20%0AName%20and%20phone%3A%20">Get a price<span class="bi"><svg viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></span></a>
+          <a class="btn primary pc-btn" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20get%20a%20price&body=Dropzone%3A%20%0AAircraft%3A%20%0ALoads%20on%20a%20busy%20day%3A%20%0AStaff%20using%20the%20desk%3A%20%0APayments%20in%20the%20app%20(yes%2Fno)%3A%20%0AName%20and%20phone%3A%20">Get started<span class="bi"><svg viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></span></a>
           <p class="pc-note"><span class="pc-mark" aria-hidden="true"></span>Set up with you, directly</p>
-          <ul class="pc-size"><li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Up to 3 aircraft</span></li><li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>4 desks at once</span></li><li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>A lower payment fee</span></li><li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Priority support</span></li></ul>
-          <div class="pc-fits">Every feature included</div>
+          <ul class="pc-size"><li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Every feature included</span></li><li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>1% on jumper top-ups in the app</span></li><li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Priority support</span></li></ul>
         </div>
       </div>
       <div class="pc">
         <div class="pc-in">
           <h3>Big operations</h3>
-          <div class="pc-price">Custom</div>
+          <div class="pc-price"><span class="from">From</span>$599<small>/month</small></div>
           <p class="pc-desc">Several aircraft, big days and boogies, with more people on the desk.</p>
-          <a class="pc-out" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20get%20a%20price&body=Dropzone%3A%20%0AAircraft%3A%20%0ALoads%20on%20a%20busy%20day%3A%20%0AStaff%20using%20the%20desk%3A%20%0APayments%20in%20the%20app%20(yes%2Fno)%3A%20%0AName%20and%20phone%3A%20">Get a price <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          <a class="pc-out" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20get%20a%20price&body=Dropzone%3A%20%0AAircraft%3A%20%0ALoads%20on%20a%20busy%20day%3A%20%0AStaff%20using%20the%20desk%3A%20%0APayments%20in%20the%20app%20(yes%2Fno)%3A%20%0AName%20and%20phone%3A%20">Get started <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
           <p class="pc-note"><span class="pc-mark" aria-hidden="true"></span>Set up with you, directly</p>
-          <ul class="pc-size"><li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Unlimited aircraft</span></li><li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Unlimited desks at once</span></li><li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>The lowest fee, agreed with you</span></li><li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Setup help and a direct line</span></li></ul>
-          <div class="pc-fits">Every feature included</div>
+          <ul class="pc-size"><li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Every feature included</span></li><li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Payment fee agreed with you</span></li><li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Setup help and a direct line</span></li></ul>
         </div>
       </div>
     </div>
+    <p class="pr-founder"><b>Founding dropzones: 50% off your first year,</b> and we set everything up with you.</p>
+    <p class="pr-founder pr-plain">No modules. No fee per booking. Month to month. Prices on the page, not on request.</p>
     <div class="cm" id="compare">
       <h2 class="cm-title">Compare what's included</h2>
       <div class="cm-head"><div class="cm-l"></div>
-        <div class="cm-c"><b>Weekend</b><a href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20get%20a%20price&body=Dropzone%3A%20%0AAircraft%3A%20%0ALoads%20on%20a%20busy%20day%3A%20%0AStaff%20using%20the%20desk%3A%20%0APayments%20in%20the%20app%20(yes%2Fno)%3A%20%0AName%20and%20phone%3A%20">Get a price</a></div>
-        <div class="cm-c"><b>Full-time</b><a href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20get%20a%20price&body=Dropzone%3A%20%0AAircraft%3A%20%0ALoads%20on%20a%20busy%20day%3A%20%0AStaff%20using%20the%20desk%3A%20%0APayments%20in%20the%20app%20(yes%2Fno)%3A%20%0AName%20and%20phone%3A%20">Get a price</a></div>
-        <div class="cm-c"><b>Big operations</b><a href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20get%20a%20price&body=Dropzone%3A%20%0AAircraft%3A%20%0ALoads%20on%20a%20busy%20day%3A%20%0AStaff%20using%20the%20desk%3A%20%0APayments%20in%20the%20app%20(yes%2Fno)%3A%20%0AName%20and%20phone%3A%20">Get a price</a></div>
+        <div class="cm-c"><b>Weekend</b><a href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20get%20a%20price&body=Dropzone%3A%20%0AAircraft%3A%20%0ALoads%20on%20a%20busy%20day%3A%20%0AStaff%20using%20the%20desk%3A%20%0APayments%20in%20the%20app%20(yes%2Fno)%3A%20%0AName%20and%20phone%3A%20">Get started</a></div>
+        <div class="cm-c"><b>Full-time</b><a href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20get%20a%20price&body=Dropzone%3A%20%0AAircraft%3A%20%0ALoads%20on%20a%20busy%20day%3A%20%0AStaff%20using%20the%20desk%3A%20%0APayments%20in%20the%20app%20(yes%2Fno)%3A%20%0AName%20and%20phone%3A%20">Get started</a></div>
+        <div class="cm-c"><b>Big operations</b><a href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20get%20a%20price&body=Dropzone%3A%20%0AAircraft%3A%20%0ALoads%20on%20a%20busy%20day%3A%20%0AStaff%20using%20the%20desk%3A%20%0APayments%20in%20the%20app%20(yes%2Fno)%3A%20%0AName%20and%20phone%3A%20">Get started</a></div>
       </div>
       <h3 class="cm-g">Your size</h3>
-      <div class="cm-r"><div class="cm-l">Aircraft</div><div class="cm-c cm-t">1</div><div class="cm-c cm-t">Up to 3</div><div class="cm-c cm-t">Unlimited</div></div>
-      <div class="cm-r"><div class="cm-l">Desks at once</div><div class="cm-c cm-t">2</div><div class="cm-c cm-t">4</div><div class="cm-c cm-t">Unlimited</div></div>
-      <div class="cm-r"><div class="cm-l">Payment fee</div><div class="cm-c cm-t">Standard</div><div class="cm-c cm-t">Lower</div><div class="cm-c cm-t">Lowest, agreed with you</div></div>
+      <div class="cm-r"><div class="cm-l">Price</div><div class="cm-c cm-t">$149 /month</div><div class="cm-c cm-t">$299 /month</div><div class="cm-c cm-t">From $599 /month</div></div>
+      <div class="cm-r"><div class="cm-l">Fee on jumper top-ups in the app</div><div class="cm-c cm-t">1%</div><div class="cm-c cm-t">1%</div><div class="cm-c cm-t">Agreed with you</div></div>
       <div class="cm-r"><div class="cm-l">Support</div><div class="cm-c cm-t">Email</div><div class="cm-c cm-t">Priority</div><div class="cm-c cm-t">Setup help and a direct line</div></div>
       <h3 class="cm-g">Loads and calls</h3>
       <div class="cm-r"><div class="cm-l">Loads: build, call and depart</div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div></div>
@@ -559,7 +545,7 @@ footer.site .ft-col a em { color: #FFFFFF !important; background: rgba(255,255,2
       <div class="cm-r"><div class="cm-l">Jumper balances, charged on departure</div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div></div>
       <div class="cm-r"><div class="cm-l">Jumps that log themselves</div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div></div>
       <div class="cm-r"><div class="cm-l">Safety checks at manifest</div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div></div>
-      <div class="cm-r"><div class="cm-l">Currency, repack and AAD reminders</div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div></div>
+      <div class="cm-r"><div class="cm-l">Currency, reserve and AAD checks</div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div></div>
       <div class="cm-r"><div class="cm-l">Today overview with winds</div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div></div>
       <h3 class="cm-g">Staff and aircraft</h3>
       <div class="cm-r"><div class="cm-l">Staff roles and email invites</div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div></div>
@@ -567,11 +553,10 @@ footer.site .ft-col a em { color: #FFFFFF !important; background: rgba(255,255,2
       <div class="cm-r"><div class="cm-l">Staff pay per jump or per load</div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div></div>
       <div class="cm-r"><div class="cm-l">Aircraft log and inspection countdowns</div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div></div>
       <div class="cm-r"><div class="cm-l">Reports and exports, owners only</div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div></div>
-      <h3 class="cm-g">Payments and booking</h3>
-      <div class="cm-r"><div class="cm-l">Apple Pay and card top-ups <em class="soon-tag">Soon</em></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div></div>
-      <div class="cm-r"><div class="cm-l">Self-manifest from the app <em class="soon-tag">Soon</em></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div></div>
-      <div class="cm-r"><div class="cm-l">Online tandem booking and waivers <em class="soon-tag">Soon</em></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div></div>
-      <div class="cm-r"><div class="cm-l">Gift vouchers <em class="soon-tag">Soon</em></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div></div>
+      <h3 class="cm-g">Payments and the jumper app</h3>
+      <div class="cm-r"><div class="cm-l">Apple Pay and card top-ups</div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div></div>
+      <div class="cm-r"><div class="cm-l">Self-manifest from the app</div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div></div>
+      <div class="cm-r"><div class="cm-l">Gift vouchers</div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div></div>
     </div>
     <a class="pc-call" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo&body=Dropzone%3A%20%0AName%3A%20%0APhone%3A%20%0ABest%20time%20for%20a%2020-minute%20video%20call%3A%20">Book a demo <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
   </section>
@@ -598,7 +583,7 @@ footer.site .ft-col a em { color: #FFFFFF !important; background: rgba(255,255,2
     <div class="ft-col"><h4>App</h4>
       <a href="/#replay">3D Replay</a><a href="/#dropzones">Live loads</a><a href="/#everything">Features</a><a href="https://apps.apple.com/app/id6778510429">Download</a></div>
     <div class="ft-col"><h4>Dropzones</h4>
-      <a href="/dropzones/">Manifest Desk<em>Soon</em></a><a href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%20early%20access">Early access</a><a href="https://desk.jumpmanifest.com">Dropzone login</a></div>
+      <a href="/dropzones/">Manifest Desk</a><a href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%20early%20access">Early access</a><a href="https://desk.jumpmanifest.com">Dropzone login</a></div>
     <div class="ft-col"><h4>Explore</h4>
       <a href="/uspa-digital-logbook/">USPA digital logbook</a><a href="/skydive-3d-tracking/">3D jump tracking</a><a href="/#faq">FAQ</a></div>
     <div class="ft-col"><h4>Company</h4>
@@ -628,22 +613,6 @@ footer.site .ft-col a em { color: #FFFFFF !important; background: rgba(255,255,2
   menu.addEventListener('click', (e) => { if (e.target.closest('a')) set(false); });
   document.addEventListener('click', (e) => { if (!bar.contains(e.target)) set(false); });
   addEventListener('resize', () => { if (innerWidth > 600) set(false); });
-})();
-</script>
-<script>
-// Frosted cards tilt toward the cursor (max 7deg) and lift; light follows it.
-(() => {
-  if (!matchMedia('(hover: hover) and (pointer: fine)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  document.querySelectorAll('.only-grid > div').forEach((card) => {
-    card.addEventListener('pointermove', (e) => {
-      const r = card.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
-      card.classList.add('tilting');
-      card.style.setProperty('--mx', (x * 100) + '%'); card.style.setProperty('--my', (y * 100) + '%');
-      card.style.setProperty('--tx', ((x - 0.5) * 2).toFixed(3)); card.style.setProperty('--ty', ((y - 0.5) * 2).toFixed(3));
-      card.style.transform = `rotateX(${(0.5 - y) * 14}deg) rotateY(${(x - 0.5) * 14}deg) translateZ(18px) scale(1.03)`;
-    });
-    card.addEventListener('pointerleave', () => { card.classList.remove('tilting'); card.style.transform = ''; });
-  });
 })();
 </script>
 </body>
