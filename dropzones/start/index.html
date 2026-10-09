@@ -254,15 +254,7 @@
       <aside class="card sum">
         <div class="row"><h2>Order summary</h2><a href="#" id="back1" style="color:var(--purple);font-weight:600;font-size:15px;text-decoration:none">Edit info</a></div>
         <p class="pname" id="sName"></p>
-        <ul>
-          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Loads, standby, check-in and the hangar board</li>
-          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Jumper accounts, tickets and vouchers</li>
-          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Top-ups with Apple Pay in the jumper app</li>
-          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Self-manifest and load calls on every phone</li>
-          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Landout safety map and currency checks</li>
-          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Staff pay, aircraft and reports</li>
-          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span id="sSupport"></span></li>
-        </ul>
+        <ul id="sItems"></ul>
         <div class="hr"></div>
         <div class="line"><span id="sLine"></span><span id="sList"></span></div>
         <div class="line" style="color:var(--green)"><span>Founding dropzone, half price in year one</span><span id="sOff"></span></div>
@@ -309,6 +301,11 @@
     fulltime: { fee: '1.5%', name: 'Full-time dropzone', desc: 'Jumping most days, with a team on the desk and staff to pay every week.', month: 399, year: 3990, support: 'Priority support' },
     big: { fee: '1%', name: 'Big operations', desc: 'Several aircraft, big days and boogies, with more people on the desk.', month: 699, year: 6990, support: 'Setup help and a direct line', from: true }
   };
+  var INCLUDES = {
+    weekend: ['Loads, standby, check-in and the hangar board', 'Jumper accounts, top-ups and jump bundles', 'Self-manifest and load calls on every phone', 'Landout safety map and currency checks', '1 aircraft and 3 desk logins (crew free)', 'Email support'],
+    fulltime: ['Everything in Weekend', 'Up to 3 aircraft and 10 desk logins', 'Staff pay with payroll export', 'Gift vouchers', 'CSV exports for the accountant', 'Priority support, same day'],
+    big: ['Everything in Full-time', 'Unlimited aircraft and desk logins', 'Several dropzones on one login', 'A direct line to André', 'Setup call with your whole manifest team']
+  };
   var q = new URLSearchParams(location.search);
   var st = { plan: PLANS[q.get('plan')] ? q.get('plan') : 'fulltime', interval: q.get('interval') === 'year' ? 'year' : 'month', info: null };
   var $ = function (id) { return document.getElementById(id); };
@@ -333,7 +330,9 @@
     });
     var p = PLANS[st.plan], full = st.interval === 'year' ? p.year : p.month;
     $('sName').textContent = 'Manifest Desk · ' + p.name;
-    $('sSupport').textContent = p.support;
+    // What this plan includes (the same split as the pricing page).
+    var tick = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg>';
+    $('sItems').innerHTML = (INCLUDES[st.plan] || []).map(function (t) { return '<li>' + tick + '<span>' + t + '</span></li>'; }).join('');
     $('sLine').textContent = p.name + (st.interval === 'year' ? ', yearly' : ', monthly');
     $('sList').textContent = money(full);
     $('sOff').textContent = '-' + money(full - half(full));
