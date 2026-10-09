@@ -89,6 +89,24 @@
   .paym .logos img { height: 30px; }
   .lab { font-size: 13px; font-weight: 800; letter-spacing: .08em; color: var(--muted); text-transform: uppercase; margin-top: 34px; }
   [hidden] { display: none !important; }
+  /* STEP 1 LOOK (André, 9 Oct: "same gradient and layout, no photos"):
+     Softriver's prescreen, measured: #F2F2F4 with soft purple glows top-left
+     and bottom-right, one centred card with its own logo, no header. Their
+     two peach glows are purple here (no orange anywhere, BRAND.md). */
+  body.s1 { background-color: #F2F2F4;
+    background-image: radial-gradient(820px 580px at 10% 4%, rgba(99,85,238,.24), transparent 64%),
+                      radial-gradient(920px 660px at 94% 96%, rgba(99,85,238,.22), transparent 64%),
+                      radial-gradient(680px 520px at 90% 6%, rgba(160,140,255,.16), transparent 62%),
+                      radial-gradient(640px 500px at 4% 94%, rgba(160,140,255,.12), transparent 62%);
+    background-attachment: fixed; min-height: 100vh; }
+  body.s1 .top { display: none; }
+  body.s1 main { padding-top: clamp(32px, 8vh, 90px); }
+  body.s1 .one { max-width: 520px; }
+  body.s1 .one .card { border: 0; border-radius: 24px; padding: 38px 36px 30px;
+    background: linear-gradient(#fff, #FDFDFF);
+    box-shadow: 0 1px 2px rgba(21,22,28,.06), 0 12px 28px -12px rgba(99,85,238,.14), 0 32px 80px -24px rgba(21,22,28,.25); }
+  .card-logo { display: none; height: 26px; margin-bottom: 22px; }
+  body.s1 .card-logo { display: block; }
   @media (max-width: 860px) { .grid2 { grid-template-columns: 1fr; } .steps .t { display: none; } .trust { grid-template-columns: 1fr; } }
   @media (max-width: 520px) { .card { padding: 24px; } .guar { margin: 20px -24px -24px; padding: 18px 24px; } .plan { padding: 20px 20px 20px 56px; } .plan .dot { left: 20px; } .tag { position: static; display: inline-block; margin-bottom: 8px; } }
 </style>
@@ -108,6 +126,7 @@
   <!-- STEP 1 -->
   <section id="v1" class="one">
     <div class="card">
+      <img class="card-logo" src="/assets/manifest-lockup.svg?v=5" alt="manifest" />
       <div class="pkg"><div><small>Your plan</small><b id="pkgName">Full-time dropzone <em id="pkgFrom">from $200</em></b></div><button type="button" id="pkgChange">Change</button></div>
       <h1>Your dropzone, <em>running on Manifest</em></h1>
       <p class="sub">Tell us where to set it up. Nothing to pay on this step.</p>
@@ -117,7 +136,7 @@
         <label>Email <span>· you sign in to the desk with this</span><input name="email" type="email" autocomplete="email" required /></label>
         <label>Phone <span>· so we can help you set up</span><input name="phone" type="tel" autocomplete="tel" /></label>
         <p class="err" id="e1" hidden></p>
-        <button class="go" type="submit">See your plan <span aria-hidden="true">→</span></button>
+        <button class="go" type="submit">See my options <span aria-hidden="true">→</span></button>
         <p class="fine">By continuing you agree to our <a href="/terms/">terms</a> and <a href="/privacy/">privacy policy</a>. No spam, ever.</p>
       </form>
     </div>
@@ -195,7 +214,7 @@
 
   function steps(n) { [1,2,3,4].forEach(function (i) { var el = $('st' + i); el.className = 's' + (i === n ? ' on' : i < n ? ' done' : ''); }); }
   function pkg() { var p = PLANS[st.plan]; $('pkgName').firstChild.nodeValue = p.name + ' '; $('pkgFrom').textContent = (p.from ? 'from ' : '') + money(half(p.month)) + ' a month in year one'; }
-  function show(n) { $('v1').hidden = n !== 1; $('v2').hidden = n !== 2; steps(n); window.scrollTo(0, 0); if (n === 2) render(); }
+  function show(n) { $('v1').hidden = n !== 1; $('v2').hidden = n !== 2; document.body.classList.toggle('s1', n === 1); steps(n); window.scrollTo(0, 0); if (n === 2) render(); }
 
   function render() {
     var box = $('plans'); box.innerHTML = '';
