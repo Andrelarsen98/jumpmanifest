@@ -305,9 +305,9 @@
   var PAYMENTS_LIVE = false;
   var LEAD = 'https://wkefdtglgbfprvfajrrw.supabase.co/functions/v1/desk-lead';
   var PLANS = {
-    weekend: { name: 'Weekend dropzone', desc: 'One aircraft and busy weekends, run by a small manifest team.', month: 249, year: 2490, support: 'Email support' },
-    fulltime: { name: 'Full-time dropzone', desc: 'Jumping most days, with a team on the desk and staff to pay every week.', month: 399, year: 3990, support: 'Priority support' },
-    big: { name: 'Big operations', desc: 'Several aircraft, big days and boogies, with more people on the desk.', month: 699, year: 6990, support: 'Setup help and a direct line', from: true }
+    weekend: { fee: '2%', name: 'Weekend dropzone', desc: 'One aircraft and busy weekends, run by a small manifest team.', month: 249, year: 2490, support: 'Email support' },
+    fulltime: { fee: '1.5%', name: 'Full-time dropzone', desc: 'Jumping most days, with a team on the desk and staff to pay every week.', month: 399, year: 3990, support: 'Priority support' },
+    big: { fee: '1%', name: 'Big operations', desc: 'Several aircraft, big days and boogies, with more people on the desk.', month: 699, year: 6990, support: 'Setup help and a direct line', from: true }
   };
   var q = new URLSearchParams(location.search);
   var st = { plan: PLANS[q.get('plan')] ? q.get('plan') : 'fulltime', interval: q.get('interval') === 'year' ? 'year' : 'month', info: null };
@@ -339,8 +339,8 @@
     $('sOff').textContent = '-' + money(full - half(full));
     $('sTotal').textContent = money(half(full));
     $('sAfter').textContent = st.interval === 'year'
-      ? 'Then ' + money(full) + ' a year from year two. 1% on jumper top-ups in the app.'
-      : money(half(full)) + ' a month for your first 12 months, then ' + money(full) + '. 1% on jumper top-ups in the app.';
+      ? 'Then ' + money(full) + ' a year from year two. ' + p.fee + ' on jumper top-ups in the app.'
+      : money(half(full)) + ' a month for your first 12 months, then ' + money(full) + '. ' + p.fee + ' on jumper top-ups in the app.';
     document.querySelectorAll('.toggle button').forEach(function (b) { b.className = b.dataset.int === st.interval ? 'on' : ''; });
     if (p.from) $('sAfter').textContent += ' Bigger operations: we agree the final price and fee with you.';
   }
