@@ -213,7 +213,7 @@
   <section id="v1" class="one">
     <div class="card">
       <img class="card-logo" src="/assets/manifest-lockup.svg?v=5" alt="manifest" />
-      <div class="pkg"><div><small>Your plan · founding price, year one</small><b id="pkgName">Full-time dropzone <em id="pkgFrom">from $199/mo</em></b></div><label class="pkg-change">Change<select id="pkgSelect" aria-label="Change plan"><option value="weekend">Weekend dropzone, $124 a month in year one</option><option value="fulltime">Full-time dropzone, $199 a month in year one</option><option value="big">Big operations, from $349 a month in year one</option></select></label></div>
+      <div class="pkg"><div><small>Your plan · founding price, year one</small><b id="pkgName">Full-time dropzone <em id="pkgFrom">from $279/mo</em></b></div><label class="pkg-change">Change<select id="pkgSelect" aria-label="Change plan"><option value="weekend">Weekend dropzone, $174 a month in year one</option><option value="fulltime">Full-time dropzone, $279 a month in year one</option><option value="big">Big operations, from $489 a month in year one</option></select></label></div>
       <h1>Your dropzone, <em>running on Manifest</em></h1>
       <p class="sub">Tell us where to set it up. Nothing to pay on this step.</p>
       <form id="f1" novalidate>
@@ -257,13 +257,13 @@
         <ul id="sItems"></ul>
         <div class="hr"></div>
         <div class="line"><span id="sLine"></span><span id="sList"></span></div>
-        <div class="line" style="color:var(--green)"><span>Founding dropzone, half price in year one</span><span id="sOff"></span></div>
+        <div class="line" style="color:var(--green)"><span>Founding dropzone, 30% off year one</span><span id="sOff"></span></div>
         <div class="hr"></div>
         <div class="total"><b>Total due today</b><span class="amt" id="sTotal"></span></div>
         <p class="after" id="sAfter"></p>
         <p class="err" id="e2" hidden></p>
         <button class="go" type="button" id="pay">Continue to payment</button>
-        <div class="guar"><b>Founding price: half price for 12 months,</b> as a 12-month commitment. After that it renews at the full price, monthly or yearly. Your jumpers' data is always yours.</div>
+        <div class="guar"><b>Founding price: 30% off for 12 months,</b> as a 12-month commitment. After that it renews at the full price, monthly or yearly. Your jumpers' data is always yours.</div>
       </aside>
     </div>
   </section>
@@ -309,7 +309,7 @@
   var q = new URLSearchParams(location.search);
   var st = { plan: PLANS[q.get('plan')] ? q.get('plan') : 'fulltime', interval: q.get('interval') === 'year' ? 'year' : 'month', info: null };
   var $ = function (id) { return document.getElementById(id); };
-  var half = function (n) { return Math.floor(n / 2); }; // founding price: half, rounded down to whole dollars
+  var half = function (n) { return Math.floor(n * 0.7); }; // founding price: 30% off, rounded down to whole dollars (12 Oct; matches desk-billing)
   var money = function (n) { return '$' + n.toLocaleString('en-US', { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 }); };
   try { var saved = JSON.parse(sessionStorage.getItem('desk.start') || 'null'); if (saved) { st.info = saved; ['dropzone','email','phone'].forEach(function (k) { if (saved[k]) $('f1')[k].value = saved[k]; }); } } catch (e) {}
 

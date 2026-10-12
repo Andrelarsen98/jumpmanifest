@@ -286,6 +286,9 @@
   .pr-founder.pr-plain { margin-top: 6px; }
   .cm-note { display: block; font-size: 13px; font-weight: 400; color: #71717B; margin-top: 2px; }
   .pc-was { margin-left: 10px; font-size: 20px; font-weight: 500; color: #71717B; letter-spacing: 0; }
+  .pr-promise { max-width: 760px; margin: 18px auto 0; text-align: center; font-size: 22px; line-height: 1.35; font-weight: 700; color: #050505; letter-spacing: -.01em; }
+  .pr-why { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 28px; margin: 16px auto 28px; padding: 0; font-size: 15px; color: #3F3F46; }
+  .pr-why b { color: #050505; }
   .pc-found { display: inline-block; margin: 8px 0 4px; font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #15803D; background: #DCFCE7; border-radius: 8px; padding: 4px 8px; }
   .pay-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 14px 18px; margin: 40px auto 0; padding-top: 32px; border-top: 1px solid #ECECEE; max-width: 720px; }
   .pay-row img { height: 40px; width: auto; display: block; }
@@ -908,14 +911,22 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
        a full jump day; bigger plans add aircraft, back office and lower fees.
        The Desk enforces these limits in code. -->
   <section class="pricing" id="pricing">
-    <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="8" cy="8" r="1.5"/></svg>First 10 dropzones: half price for year one</p>
+    <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="8" cy="8" r="1.5"/></svg>First 10 dropzones: 30% off year one · <span id="foundLeft">10 of 10 places left</span></p>
     <h2>One manifest desk. Sized to your dropzone.</h2>
     <p class="lead">Every plan runs a full jump day. Bigger plans add aircraft, back office and lower fees. Pay monthly, or yearly and get two months free.</p>
+    <!-- THE ONE PROMISE (André, 12 Oct): of 25 dropzone sites checked, none let
+         jumpers both book and pay from their phone. That is what we are best at. -->
+    <p class="pr-promise">Your jumpers book their slot and pay with Apple Pay from their phone. No queue at the window.</p>
+    <ul class="pr-why">
+      <li><b>Free switching.</b> We move your jumpers and balances over for you.</li>
+      <li><b>Their load on the Lock Screen,</b> live, free for your jumpers.</li>
+      <li><b>Safety built in.</b> Season check, papers, reserve, AAD and currency.</li>
+    </ul>
     <div class="pc-grid">
       <div class="pc">
         <div class="pc-in">
           <h3>Weekend dropzone</h3>
-          <div class="pc-price">$124<small>/month</small><s class="pc-was">$249</s></div><p class="pc-found">Founding price, year one</p>
+          <div class="pc-price">$174<small>/month</small><s class="pc-was">$249</s></div><p class="pc-found">30% off year one</p>
           <p class="pc-desc">One aircraft and busy weekends, run by a small manifest team.</p>
           <a class="pc-out" href="/dropzones/start/?plan=weekend">Get started <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
           <p class="pc-note"><span class="pc-mark" aria-hidden="true"></span>Set up with you, directly</p>
@@ -939,7 +950,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       <div class="pc hl"><div class="pc-band">Recommended</div>
         <div class="pc-in">
           <h3>Full-time dropzone</h3>
-          <div class="pc-price">$199<small>/month</small><s class="pc-was">$399</s></div><p class="pc-found">Founding price, year one</p>
+          <div class="pc-price">$279<small>/month</small><s class="pc-was">$399</s></div><p class="pc-found">30% off year one</p>
           <p class="pc-desc">Jumping most days, with a team on the desk and staff to pay every week.</p>
           <a class="btn primary pc-btn" href="/dropzones/start/?plan=fulltime">Get started<span class="bi"><svg viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></span></a>
           <p class="pc-note"><span class="pc-mark" aria-hidden="true"></span>Set up with you, directly</p>
@@ -961,7 +972,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       <div class="pc">
         <div class="pc-in">
           <h3>Big operations</h3>
-          <div class="pc-price"><span class="from">From</span>$349<small>/month</small><s class="pc-was">$699</s></div><p class="pc-found">Founding price, year one</p>
+          <div class="pc-price"><span class="from">From</span>$489<small>/month</small><s class="pc-was">$699</s></div><p class="pc-found">30% off year one</p>
           <p class="pc-desc">Several aircraft, big days and boogies, with more people on the desk.</p>
           <a class="pc-out" href="/dropzones/start/?plan=big">Get started <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
           <p class="pc-note"><span class="pc-mark" aria-hidden="true"></span>Set up with you, directly</p>
@@ -977,7 +988,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
         </div>
       </div>
     </div>
-    <p class="pr-founder"><b>First 10 dropzones: half price for your whole first year,</b> with a 12-month commitment. We move your jumpers over, you run it next to your current system until you trust it, and we're with you on your first Saturday.</p>
+    <p class="pr-founder"><b>First 10 dropzones: 30% off your whole first year,</b> with a 12-month commitment. We move your jumpers over, you run it next to your current system until you trust it, and we're with you on your first Saturday.</p>
     <p class="pr-founder pr-plain">No fee per booking. 2% or less on in-app top-ups, nothing else. Standard plans are month to month. Prices on the page, not on request.</p>
     <!-- PAYMENTS ACCEPTED (9 Oct 2026, after Softriver's row): what jumpers can
          pay with in the app today. Official icon files from Shopify's
@@ -999,7 +1010,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
         <div class="cm-c"><b>Big operations</b><a href="/dropzones/start/?plan=big">Get started</a></div>
       </div>
       <h3 class="cm-g">Price</h3>
-      <div class="cm-r"><div class="cm-l">Price per month</div><div class="cm-c cm-t">$124 <s class="cm-was">$249</s><em class="cm-found">Year one</em></div><div class="cm-c cm-t">$199 <s class="cm-was">$399</s><em class="cm-found">Year one</em></div><div class="cm-c cm-t">From $349 <s class="cm-was">$699</s><em class="cm-found">Year one</em></div></div>
+      <div class="cm-r"><div class="cm-l">Price per month</div><div class="cm-c cm-t">$174 <s class="cm-was">$249</s><em class="cm-found">Year one</em></div><div class="cm-c cm-t">$279 <s class="cm-was">$399</s><em class="cm-found">Year one</em></div><div class="cm-c cm-t">From $489 <s class="cm-was">$699</s><em class="cm-found">Year one</em></div></div>
       <h3 class="cm-g">Manifest and loads</h3>
       <div class="cm-r"><div class="cm-l">Aircraft</div><div class="cm-c cm-t">1</div><div class="cm-c cm-t">Up to 3</div><div class="cm-c cm-t">Unlimited</div></div>
       <div class="cm-r"><div class="cm-l">Loads: build, call and depart</div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div><div class="cm-c"><span class="cm-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Included"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span></div></div>
@@ -1035,7 +1046,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       <div class="faq-list">
         <details class="faq-i"><summary>Can we run it next to Burble while we switch?<span class="faq-plus" aria-hidden="true"></span></summary><p>Yes. Run both side by side for as long as you like, until you trust it.</p></details>
         <details class="faq-i"><summary>Who moves our jumpers and balances?<span class="faq-plus" aria-hidden="true"></span></summary><p>We do, during setup.</p></details>
-        <details class="faq-i"><summary>Is there a contract?<span class="faq-plus" aria-hidden="true"></span></summary><p>Not on standard plans: they are month to month, and paying yearly saves two months. The founding deal is the exception: half price for your first year, with a 12-month commitment.</p></details>
+        <details class="faq-i"><summary>Is there a contract?<span class="faq-plus" aria-hidden="true"></span></summary><p>Not on standard plans: they are month to month, and paying yearly saves two months. The founding deal is the exception: 30% off your first year, with a 12-month commitment.</p></details>
         <details class="faq-i"><summary>What hardware do we need?<span class="faq-plus" aria-hidden="true"></span></summary><p>Any laptop or tablet with a browser runs the desk. Any TV with a browser shows the hangar board.</p></details>
         <details class="faq-i"><summary>Do jumpers pay for the app?<span class="faq-plus" aria-hidden="true"></span></summary><p>No. The Manifest app is free to download. At your dropzone, jumpers book, top up and get load calls in it.</p></details>
         <details class="faq-i"><summary>When are we charged?<span class="faq-plus" aria-hidden="true"></span></summary><p>Nothing until your desk goes live. The first 10 dropzones pay half for their first year.</p></details>
@@ -1240,6 +1251,16 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     if (!sheet.hidden) { setSheet(false); burger.focus(); }
   });
   addEventListener('resize', () => { if (innerWidth >= 900 && !sheet.hidden) setSheet(false); closeAll(); });
+})();
+</script>
+<script>
+// FOUNDING PLACES LEFT, from the server (desk-billing action "founding"): never a made-up number.
+(function () {
+  var el = document.getElementById('foundLeft'); if (!el) return;
+  fetch('https://wkefdtglgbfprvfajrrw.supabase.co/functions/v1/desk-billing', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ action: 'founding' }) })
+    .then(function (r) { return r.json(); })
+    .then(function (d) { if (typeof d.left === 'number') el.textContent = d.left > 0 ? d.left + ' of ' + d.cap + ' places left' : 'all places taken'; })
+    .catch(function () {});
 })();
 </script>
 </body>
