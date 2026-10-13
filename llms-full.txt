@@ -56,10 +56,57 @@ Most dropzone software only runs the desk, and most skydiving apps only record j
 - [For dropzones](https://www.jumpmanifest.com/dropzones/): Manifest Desk features, pricing and dropzone FAQ
 - [3D skydive tracking](https://www.jumpmanifest.com/skydive-3d-tracking/): how a phone records and replays a skydive in 3D
 - [Digital logbooks and USPA](https://www.jumpmanifest.com/uspa-digital-logbook/): what USPA SIM 3-1 requires from a digital logbook
+- [Skydiving manifest software](https://www.jumpmanifest.com/skydiving-manifest-software/): Manifest Desk for dropzones: loads board, standby, accounts, staff pay, aircraft and safety checks in the browser
+- [How Manifest works](https://www.jumpmanifest.com/how-manifest-works/): how the Manifest app for jumpers and Manifest Desk for dropzones connect
+- [Skydiving app for iPhone](https://www.jumpmanifest.com/skydiving-app/): what the free Manifest app does for jumpers: live loads, 3D replay, logbook, weather and gear
+- [Live skydiving loads](https://www.jumpmanifest.com/live-skydiving-loads/): see loads, minutes to call and who is on each load at 150+ dropzones
+- [Landout safety for dropzones](https://www.jumpmanifest.com/skydive-landout-safety/): how Manifest Desk finds a jumper who landed out, after landing, on a live map
+- [Dropzone payments](https://www.jumpmanifest.com/dropzone-payments/): Apple Pay and card top-ups in the app, paid straight into the dropzone's own Stripe account
+- [Skydiving load calls](https://www.jumpmanifest.com/skydiving-load-calls/): one button at the desk sends called, 10 minutes, 5 minutes, boarding and holds to every jumper on the load
+- [Self-manifest skydiving](https://www.jumpmanifest.com/self-manifest-skydiving/): jumpers book themselves and friends onto a load or join standby from the app
+- [Skydiving weather](https://www.jumpmanifest.com/skydiving-weather/): winds aloft, cloud and the calmest window for any dropzone, free in the app
 - [About](https://www.jumpmanifest.com/about/): what Manifest is and how it works for jumpers and dropzones
 - [Support](https://www.jumpmanifest.com/support/): help, Manifest Pro, subscriptions and account deletion
 - [Privacy Policy](https://www.jumpmanifest.com/privacy/)
 - [Terms of Service](https://www.jumpmanifest.com/terms/)
+
+## The pages in more detail
+
+### Skydiving manifest software
+https://www.jumpmanifest.com/skydiving-manifest-software/
+Manifest Desk is manifest software for dropzones that runs in any browser at desk.jumpmanifest.com: loads board, standby, teams, jumper accounts and balances, staff and staff pay, aircraft hours, holds and alerts, reports, safety check and the hangar TV board. Every load is connected to the Manifest app your jumpers carry. Weekend $249/month, Full-time $399/month, Big operations from $699/month, no lock-in.
+
+### How Manifest works
+https://www.jumpmanifest.com/how-manifest-works/
+The Manifest app is for jumpers on iPhone: live loads, self-manifest, top-ups, load calls, recording, the 3D replay and the logbook. Manifest Desk is for dropzone owners and manifest staff in the browser. At a Manifest Desk dropzone the two update each other live, from booking a slot to the load call to checking who is back after landing.
+
+### Skydiving app for iPhone
+https://www.jumpmanifest.com/skydiving-app/
+Manifest is a free skydiving app for iPhone: loads turning live at 150+ dropzones, recording a jump with the phone's GPS and replaying it in 3D over real terrain (free), a logbook with in-person sign-offs, the Check-in Pass and Apple Wallet pass, weather and winds aloft, gear and reserve repack reminders. Manifest Pro adds your load on the Lock Screen, auto-start recording, track backup, replay stats and exports. Android is in the making.
+
+### Live skydiving loads
+https://www.jumpmanifest.com/live-skydiving-loads/
+Manifest shows loads turning live at 150+ dropzones, pulled from each dropzone's own manifest board: minutes to call and who is on each load. Seeing loads is free. Manifest Pro puts your load on the Lock Screen and in the Dynamic Island with gear-up, 10 minute and final call notifications; at Manifest Desk dropzones that is free.
+
+### Landout safety for dropzones
+https://www.jumpmanifest.com/skydive-landout-safety/
+Nothing is tracked during the jump. After landing, a jumper taps Landed out and picks injured, need a ride or walking back. Their position updates on a live satellite map at the desk with the distance from the dropzone until resolved. Staff can send a driver a pickup pin, call the jumper, notify chosen staff and hold every load with one tap. A Who's back list shows who has returned after each load. It supports the dropzone's own emergency procedures and is not a guaranteed rescue tracker.
+
+### Dropzone payments
+https://www.jumpmanifest.com/dropzone-payments/
+Jumpers top up their dropzone account in the Manifest app with Apple Pay or card (Cash App Pay in the US). The money goes straight to the dropzone's own Stripe account through Stripe Connect, with the dropzone as the merchant, and the balance shows on the desk immediately. Fee on in-app top-ups: Weekend 2%, Full-time 1.5%, Big operations 1%. No fee per booking and no fee on payments taken at the desk.
+
+### Skydiving load calls
+https://www.jumpmanifest.com/skydiving-load-calls/
+At Manifest Desk dropzones, staff press one button and the call (called, 10 minutes, 5 minutes, boarding or hold) reaches every jumper on that load on their phone and Lock Screen. Only the jumpers on that load are notified.
+
+### Self-manifest skydiving
+https://www.jumpmanifest.com/self-manifest-skydiving/
+At Manifest Desk dropzones, jumpers book themselves and their friends onto a load or join standby from the Manifest app. The dropzone sets who can self-manifest and which loads are open, and the desk always has the final say.
+
+### Skydiving weather
+https://www.jumpmanifest.com/skydiving-weather/
+The Manifest app shows skydiving weather for any dropzone: wind at exit altitude, under canopy and on the ground with gusts, the winds aloft profile, cloud, rain, the calmest window and sunset. It is a forecast, not a jumpable verdict; the dropzone decides whether loads fly. Weather is free.
 
 ## Contact
 - Manifest Jump LLC, Wyoming, USA. andre@manifestjump.com

@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dropzone payments: Apple Pay top-ups | Manifest</title>
+<meta property="og:image" content="https://www.jumpmanifest.com/assets/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://www.jumpmanifest.com/assets/og-image.png" />
+<meta name="description" content="Jumpers top up with Apple Pay or card in the Manifest app. Money goes straight to your dropzone's own Stripe account and balances show on the desk instantly." />
+<link rel="canonical" href="https://www.jumpmanifest.com/dropzone-payments/" />
+<meta property="og:title" content="Dropzone payments with Apple Pay top-ups" />
+<meta property="og:description" content="Jumpers top up in the app, the money lands in your own Stripe account, balances update on the desk instantly. 2% or less on in-app top-ups." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.jumpmanifest.com/dropzone-payments/" />
+<meta property="og:site_name" content="Manifest" />
+<meta name="twitter:title" content="Dropzone payments with Apple Pay top-ups" />
+<meta name="twitter:description" content="Jumpers top up in the app, the money lands in your own Stripe account, balances update on the desk instantly. 2% or less on in-app top-ups." />
+<meta name="theme-color" content="#ffffff" />
+<link rel="icon" type="image/png" href="/assets/app-icon.png?v=3" />
+<link rel="apple-touch-icon" href="/assets/app-icon.png?v=3" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root { --ink: #0f0b1c; --violet: #6D42F5; --violet-d: #6D42F5; --muted: #6f6982; --line: rgba(15,11,28,.08); }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { overflow-x: clip; max-width: 100vw; }
+  body {
+    font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--ink); background: #ffffff; -webkit-font-smoothing: auto; line-height: 1.6;
+  }
+  a { color: var(--violet-d); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  img { display: block; max-width: 100%; }
+  .wrap { width: 100%; max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-index: 50;
+        width: min(800px, 92vw);
+        /* NO backdrop-filter. Blurring a fixed element forces anything moving
+           underneath onto its own GPU layer, and the blur then samples across
+           that moving boundary, which is what drew the seam across the pill
+           on load (and caused the iOS scroll lag). Translucency via alpha
+           gives the same glass read with nothing to mis-sample. */
+        background: linear-gradient(180deg, rgba(64,64,69,.88), rgba(48,48,53,.9));
+        border: 1px solid rgba(255,255,255,.13);
+        border-radius: 100px; transform: translateX(-50%);
+        box-shadow: 0 14px 34px rgba(15,11,28,.24), inset 0 1px 0 rgba(255,255,255,.10); }
+.nav-in { display: flex; align-items: center; justify-content: space-between;
+            height: 54px; padding: 0 7px 0 18px; }
+.brand { display: inline-flex; align-items: center; gap: 9px; }
+.brand img { width: 27px; height: 27px; border-radius: 8px; }
+.brand .nm { font-weight: 800; font-size: 17px; letter-spacing: -.03em; color: #fff; }
+.nav-links { display: inline-flex; align-items: center; gap: 26px; }
+.nav-links a { color: rgba(255,255,255,.92); font-weight: 600; font-size: 14.5px; }
+.btn { padding: 9px 17px; font-size: 14px; }
+.btn:hover { transform: translateY(-1px); box-shadow: 0 12px 26px rgba(109,66,245,.4); }
+  .btn {
+    font-family: inherit; font-weight: 700; font-size: 15px; letter-spacing: -.01em;
+    border: 0; cursor: pointer; border-radius: 100px; padding: 12px 22px;
+    background: var(--violet); color: #fff; transition: transform .15s ease, box-shadow .15s ease;
+    box-shadow: 0 8px 20px rgba(109,66,245,.28); white-space: nowrap;
+  }
+  .btn:hover { transform: translateY(-1px); box-shadow: 0 12px 26px rgba(109,66,245,.4); text-decoration: none; }
+  .nav-in .btn { padding: 9px 17px; font-size: 14px; }
+
+
+  /* nav fits a phone */
+  .nav-in { gap: 10px; }
+  .brand, .nav-links, .nav-in .btn { min-width: 0; white-space: nowrap; }
+  @media (max-width: 560px) {
+    nav { width: 94vw; }
+    .nav-in { height: 50px; padding: 0 6px 0 12px; gap: 8px; }
+    .brand { gap: 7px; }
+    .brand img { width: 24px; height: 24px; }
+    .brand .nm { font-size: 15px; }
+    .nav-links { gap: 16px; }
+    .nav-links a { font-size: 13.5px; }
+    .nav-in .btn { padding: 8px 14px; font-size: 13.5px; }
+  }
+  @media (max-width: 380px) {
+    .brand .nm { display: none; }
+    .nav-links { gap: 14px; }
+  }
+
+  /* clears the fixed pill */
+  .doc { padding: 132px 0 90px; }
+  .doc h1 { font-weight: 800; letter-spacing: -.035em; font-size: clamp(34px, 6vw, 52px); line-height: 1.05; }
+  .doc .intro { font-size: 18.5px; margin-top: 18px; color: #312a44; font-weight: 500; }
+  .doc h2 { font-weight: 800; letter-spacing: -.025em; font-size: clamp(22px, 3vw, 27px); margin: 46px 0 6px; }
+  .doc h3 { font-weight: 800; font-size: 17px; margin: 26px 0 4px; }
+  .doc p { margin: 13px 0; color: #312a44; font-weight: 500; }
+  .doc ul { margin: 14px 0 14px 4px; padding-left: 22px; color: #312a44; font-weight: 500; }
+  .doc li { margin: 8px 0; }
+  .doc strong { color: var(--ink); font-weight: 800; }
+  .card { margin: 22px 0 6px; padding: 22px 24px; border-radius: 18px; background: #faf9fd;
+          border: 1px solid var(--line); }
+  .card p { margin: 0; }
+  footer { border-top: 1px solid var(--line); padding: 34px 0 56px; margin-top: 70px; }
+  .foot-in { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: space-between;
+             max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  .foot-links { display: inline-flex; align-items: center; gap: 22px; flex-wrap: wrap; font-weight: 700; font-size: 15px; }
+  .foot-links a { color: var(--muted); } .foot-links a:hover { color: var(--ink); text-decoration: none; }
+  .handle { color: var(--muted); font-weight: 700; font-size: 15px; }
+  /* ---------- the site header (30 Sep 2026) ----------
+     Replaces the floating dark pill. Full-width white bar with a hairline,
+     the black M and the "manifest" wordmark (Manrope Bold, tight) on the
+     left, section links in the middle, one quiet pill on the right. */
+  body { padding-top: 0 !important; }
+  section[id], header[id] { scroll-margin-top: 24px; }
+  .topbar { position: relative; top: 0; z-index: 60; background: rgba(255,255,255,.94);
+            border-bottom: 1px solid rgba(15,11,28,.07); }
+  .topbar-in { max-width: none; margin: 0; height: 76px; padding: 0 5%;
+               display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .wordmark { display: inline-flex; align-items: center; gap: 10px; color: #050505; }
+  .wordmark img { width: 34px; height: auto; border-radius: 0; }
+  .wordmark img.wm { width: auto; height: 22px; }
+  .wordmark span { font-family: "Manrope", sans-serif; font-weight: 700; font-size: 29px;
+                   letter-spacing: -0.055em; line-height: 1; margin-top: -3px; }
+  .tb-links { display: flex; align-items: center; gap: 34px; }
+  .tb-links a { font-size: 15.5px; font-weight: 600; color: #0f0b1c; letter-spacing: -0.01em; }
+  .tb-links a:hover { color: #6f6982; }
+  .tb-links .soon { display: inline-flex; align-items: center; gap: 7px; }
+  .tb-links .soon em { font-style: normal; font-size: 10.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
+                       color: #6D42F5; background: rgba(109,66,245,.1); border-radius: 99px; padding: 3px 7px; }
+  .tb-cta { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 99px;
+            background: #F2F2F5; color: #050505; font-size: 15px; font-weight: 700; letter-spacing: -0.01em;
+            transition: background .15s ease; }
+  .tb-cta:hover { background: #E7E7EC; }
+  .tb-cta svg { width: 15px; height: 15px; }
+  /* Mobile menu, measured from softriver.co: a 50px grey circle with two
+     24x2 lines that turn into an X, and a white panel that slides down from
+     under the header in 0.4 s. Links are the desktop ones, cloned. */
+  .tb-burger { display: none; width: 50px; height: 50px; border: 0; padding: 0; border-radius: 50%;
+               background: #E4E4E7; cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+               -webkit-tap-highlight-color: transparent; }
+  .tb-burger span { display: block; width: 24px; height: 2px; background: #040815; transition: transform .4s ease; }
+  .tb-burger[aria-expanded="true"] span:first-child { transform: translateY(5px) rotate(45deg); }
+  .tb-burger[aria-expanded="true"] span:last-child { transform: translateY(-5px) rotate(-45deg); }
+  .tb-drop { position: absolute; left: 0; right: 0; top: 100%; overflow: hidden; pointer-events: none; }
+  .tb-menu { background: #fff; border-bottom: 1px solid #E4E4E7; padding: 16px 0; text-align: center;
+             transform: translateY(-101%); transition: transform .4s ease; visibility: hidden; }
+  .tb-menu a { display: block; padding: 12px 20px; font-size: 16px; line-height: 24px; font-weight: 600; color: #040815; }
+  .tb-menu a em { display: none; }
+  .topbar.open .tb-drop { pointer-events: auto; }
+  .topbar.open .tb-menu { transform: none; visibility: visible; }
+  .tb-menu { transition: transform .4s ease, visibility 0s linear .4s; }
+  .topbar.open .tb-menu { transition: transform .4s ease, visibility 0s; }
+  @media (max-width: 600px) { .tb-cta { display: none !important; } .tb-burger { display: flex; } }
+
+  @media (max-width: 980px) { .tb-links a:not(.soon) { display: none; } }
+  @media (max-width: 600px) {
+    .topbar-in { height: 62px; padding: 0 16px; }
+    .wordmark img { width: 28px; } .wordmark img.wm { width: auto; height: 18px; }
+    .wordmark span { font-size: 24px; }
+    .tb-links { display: none; }
+    .tb-cta { padding: 9px 15px; font-size: 14px; }
+  }
+
+  /* ---------- the big footer (1 Oct 2026) ---------- */
+  footer.site { margin-top: clamp(80px,11vw,120px); background: #F6F6F8; border-top: 1px solid rgba(15,11,28,.07); padding: 72px 0 40px; }
+  .reveal + footer.site { margin-top: 0; }
+  .ft { max-width: calc(1280px + 10vw); margin: 0 auto; padding: 0 5vw; display: grid; grid-template-columns: 1.5fr repeat(4, 1fr); gap: 40px; }
+  .ft-brand .wordmark { display: inline-flex; align-items: center; gap: 10px; }
+  .ft-brand .wordmark img.mk { width: 34px; height: auto; }
+  .ft-brand .wordmark img.wm { height: 22px; width: auto; }
+  .ft-brand p { color: #6f6982; font-size: 15px; line-height: 1.55; margin: 22px 0 0; max-width: 300px; }
+  .ft-brand .mail { margin-top: 18px; font-size: 15px; color: #0f0b1c; font-weight: 600; }
+  .ft-brand .mail a { color: #6f6982; font-weight: 500; }
+  .ft-brand .mail a:hover { color: #0f0b1c; }
+  .ft-social { display: flex; gap: 10px; margin-top: 18px; }
+  .ft-social a { width: 38px; height: 38px; border-radius: 10px; background: #fff; border: 1px solid rgba(15,11,28,.08); display: inline-flex; align-items: center; justify-content: center; color: #0f0b1c; transition: background .15s ease; }
+  .ft-social a:hover { background: #EDEFF7; }
+  .ft-social svg { width: 18px; height: 18px; }
+  .ft-col h4 { font-size: 15px; font-weight: 600; color: #8a869a; margin: 4px 0 18px; letter-spacing: -0.01em; }
+  .ft-col a { display: block; font-size: 15.5px; font-weight: 600; color: #0f0b1c; margin-bottom: 4px; padding: 10px 0; letter-spacing: -0.01em; }
+  .ft-col a:hover { color: #6f6982; }
+  .ft-col a em { font-style: normal; font-size: 10px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: #6D42F5; background: rgba(109,66,245,.1); border-radius: 99px; padding: 2px 6px; margin-left: 6px; vertical-align: 2px; }
+  .ft-base { max-width: 1280px; width: calc(100% - 10vw); margin: 56px auto 0; padding: 22px 0 0; border-top: 1px solid rgba(15,11,28,.08); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: #8a869a; font-size: 14px; }
+  .ft-base a:hover { color: #0f0b1c; }
+  @media (max-width: 980px) { .ft { grid-template-columns: repeat(2, 1fr); } .ft-brand { grid-column: 1 / -1; } }
+  @media (max-width: 560px) { footer.site { padding: 52px 0 32px; } .ft { padding: 0 20px; gap: 32px 20px; } .ft-base { width: calc(100% - 40px); padding: 20px 0 0; } }
+
+  /* Same type as the home and dropzones pages (1 Oct 2026): body in Manrope,
+     headings in General Sans 550, purple #6D42F5; header and footer as on
+     every page. */
+  body { font-family: "Manrope", -apple-system, sans-serif; }
+  h1, h2 { font-family: "General Sans", "Manrope", sans-serif; font-weight: 550 !important; letter-spacing: -.028em; text-wrap: balance; }
+  /* Wide like the home and dropzones pages (1 Oct 2026): same 1280 box with
+     5vw outside it, so the text starts on the same edge; paragraphs keep a
+     760px reading width. */
+  @media (min-width: 900px) {
+    .wrap { max-width: calc(1280px + 10vw); padding: 0 5vw; }
+    .doc > .wrap > *:not(h1) { max-width: 760px; }
+    .doc h1 { font-size: clamp(52px, 5vw, 72px); line-height: 1.02; max-width: 16ch; }
+  }
+
+  /* ---------- ONE TYPE AND SPACING SYSTEM (9 Oct 2026) ----------
+     The same values as the dropzones page, measured from softriver.co at
+     1440: General Sans 500 for headings, Manrope for the rest, ink #040815,
+     grey #71717B. 120px of rhythm on laptops, 80px on phones. */
+  :root { --gap: 120px; --t: #040815; --g: #71717B; }
+  @media (max-width: 600px) { :root { --gap: 80px; } }
+  body { font-family: "Manrope", -apple-system, sans-serif; font-size: 16px; line-height: 24px; color: var(--t); }
+  .doc { padding: var(--gap) 0 0; }
+  footer.site { margin-top: var(--gap); }
+  .doc h1, .doc h2, .doc h3 { font-family: "General Sans", "Manrope", sans-serif; font-weight: 500 !important; color: var(--t); }
+  /* Page title: 72 / 72, -2px. */
+  .doc h1 { font-size: 72px; line-height: 72px; letter-spacing: -2px; max-width: 20ch; text-wrap: balance; }
+  /* Lead line under the title: 20 / 31 grey, 24px below. */
+  .doc .intro { font-size: 20px; line-height: 31px; font-weight: 400; color: var(--g); margin: 24px 0 0; }
+  /* Headings inside the page: the sub-heading size, 34 / 47.6. */
+  .doc h2 { font-size: 34px; line-height: 47.6px; letter-spacing: -.5px; margin: 80px 0 12px; }
+  .doc h3 { font-size: 24px; line-height: 33.6px; letter-spacing: normal; margin: 40px 0 8px; }
+  .doc p { font-size: 16px; line-height: 24px; font-weight: 400; color: var(--t); margin: 16px 0; }
+  .doc h2 + p, .doc h3 + p, .doc h2 + ul, .doc h3 + ul { margin-top: 0; }
+  .doc ul { font-size: 16px; line-height: 24px; font-weight: 400; color: var(--t); margin: 16px 0; }
+  .doc li { margin: 8px 0; }
+  .doc strong { color: var(--t); font-weight: 600; }
+  /* Cards: card text 16 / 20.8 weight 500 grey. */
+  .card { margin: 24px 0; }
+  .card p, .card .reply { font-size: 16px; line-height: 20.8px; font-weight: 500; letter-spacing: -.5px; color: var(--g); }
+  .card .lbl { font-size: 16px; line-height: 24px; font-weight: 500; color: var(--t); }
+  .card .email { margin: 4px 0 8px; font-family: "General Sans", "Manrope", sans-serif; font-size: 24px; line-height: 33.6px; font-weight: 500; }
+  @media (min-width: 900px) {
+    .doc > .wrap > *:not(h1) { max-width: 760px; }
+    .doc h1 { font-size: 72px; line-height: 72px; max-width: 20ch; }
+  }
+  @media (max-width: 600px) {
+    .doc h1 { font-size: 42px; line-height: 44px; letter-spacing: -1.2px; }
+    .doc .intro { font-size: 18px; line-height: 28px; }
+    .doc h2 { font-size: 28px; line-height: 36px; margin-top: 56px; }
+    .doc h3 { font-size: 22px; line-height: 30px; margin-top: 32px; }
+  }
+</style>
+<style id="ft-dark">
+/* Dark footer, Nike's (2 Oct 2026): #111 with white text and the white logo. */
+footer.site { background: #111111 !important; border-top: 0 !important; }
+footer.site .ft-brand p, footer.site .ft-brand .mail a, footer.site .ft-base { color: #A1A1AA !important; }
+footer.site .ft-brand .mail, footer.site .ft-col a { color: #FFFFFF !important; }
+footer.site .ft-col h4 { color: #8E8E93 !important; }
+footer.site .ft-col a:hover, footer.site .ft-brand .mail a:hover, footer.site .ft-base a:hover { color: #D1D1D6 !important; }
+footer.site .ft-base { border-top-color: rgba(255,255,255,.12) !important; }
+footer.site .ft-base a { color: inherit; }
+footer.site .ft-social a { background: #2A2A2E !important; border-color: transparent !important; color: #FFFFFF !important; }
+footer.site .ft-social a:hover { background: #3A3A40 !important; }
+footer.site .ft-col a em { color: #FFFFFF !important; background: rgba(255,255,255,.14) !important; }
+</style>
+<style id="lockup-css">/* One logo file: the M centred on the lowercase letters, reaching above and below (2 Oct 2026). */ img.lockup{height:32px!important;width:auto!important;border-radius:0!important;display:block;max-width:none!important} @media (max-width:600px){img.lockup{height:29px!important}} .brand img.lockup{height:21px!important} .hub-wordmark img.lockup{height:22px!important} /* sh-logo-size: header logo a touch smaller (André, 14 Oct) */ .sh-logo img.lockup{height:28px!important} @media (max-width:600px){.sh-logo img.lockup{height:26px!important}} /* ft-logo-size */ footer.site .wordmark img.lockup{height:28px!important} @media (max-width:600px){footer.site .wordmark img.lockup{height:26px!important}}</style>
+<style id="site-header">
+/* SITE HEADER (9 Oct 2026). Sticky white bar with a hairline; mega dropdowns
+   (white 20px cards, two columns) on laptops; a full-height sheet under 900px.
+   overflow-x must be clip, not hidden, on body or sticky stops working. */
+html, body { overflow-x: clip !important; }
+section[id], header[id], div[id] { scroll-margin-top: 96px; }
+.sh, .sh-sheet { --sh-ink: #050505; --sh-muted: #71717B; --sh-purple: #6D42F5; --sh-pale: #F0ECFE; --sh-hover: #F6F6F8;
+      font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif; color: var(--sh-ink); }
+.sh { position: sticky; top: 0; z-index: 60; background: #fff; border-bottom: 1px solid rgba(5,5,5,.08); }
+.sh a, .sh-sheet a { color: inherit; text-decoration: none; }
+.sh-in { height: 76px; padding: 0 5vw; display: flex; align-items: center; gap: 40px; }
+.sh-logo { display: inline-flex; align-items: center; flex: none; }
+/* the pages still carry the old floating-pill rules for a bare `nav`; undo them here */
+.sh nav.sh-nav { position: static; top: auto; left: auto; transform: none; width: auto; z-index: auto;
+      background: none; border: 0; border-radius: 0; box-shadow: none; }
+.sh-nav { display: flex; align-items: center; gap: 30px; height: 100%; flex: 1; min-width: 0; }
+.sh-right { display: flex; align-items: center; gap: 24px; margin-left: auto; flex: none; }
+.sh-trig, .sh-link, .sh-login { font: 600 15.5px/1 "Manrope", sans-serif; letter-spacing: -0.01em; color: var(--sh-ink);
+      background: none; border: 0; padding: 8px 0; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;
+      white-space: nowrap; transition: color .15s ease; }
+.sh-trig:hover, .sh-link:hover, .sh-login:hover, .sh-dd.open .sh-trig { color: var(--sh-muted); }
+.sh-login { font-weight: 500; }
+.sh-t { position: relative; }
+.is-current > .sh-t::after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; height: 2px; border-radius: 2px; background: var(--sh-purple); }
+.sh-chev { width: 12px; height: 12px; transition: transform .15s ease; }
+.sh-dd.open .sh-chev, .sh-macc[aria-expanded="true"] .sh-chev { transform: rotate(180deg); }
+.sh-trig:focus-visible, .sh-link:focus-visible, .sh-login:focus-visible, .sh-item:focus-visible, .sh-cta:focus-visible,
+.sh-burger:focus-visible, .sh-macc:focus-visible, .sh-mitem:focus-visible, .sh-mlink:focus-visible, .sh-logo:focus-visible {
+      outline: 2px solid var(--sh-purple); outline-offset: 3px; border-radius: 8px; }
+
+/* the dropdown: hangs from the full header height, so the pointer never crosses a gap */
+.sh-dd { position: relative; height: 100%; display: flex; align-items: center; }
+.sh-panel { position: absolute; top: 100%; left: -24px; padding-top: 10px; width: 800px; max-width: calc(100vw - 32px);
+      opacity: 0; visibility: hidden; transform: translateY(-6px); pointer-events: none;
+      transition: opacity .15s ease, transform .15s ease, visibility 0s linear .15s; }
+.sh-dd.open .sh-panel { opacity: 1; visibility: visible; transform: none; pointer-events: auto;
+      transition: opacity .15s ease, transform .15s ease, visibility 0s; }
+.sh-card { background: #fff; border-radius: 20px; padding: 10px;
+      box-shadow: 0 24px 60px -16px rgba(5,5,5,.20), 0 2px 8px rgba(5,5,5,.04), 0 0 0 1px rgba(5,5,5,.06); }
+.sh-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.sh-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px; border-radius: 14px; transition: background .15s ease; }
+.sh-item:hover, .sh-item[aria-current="page"] { background: var(--sh-hover); }
+.sh-ic { display: none; } /* text only, no icons (9 Oct 2026) */
+.sh-tx { display: flex; flex-direction: column; gap: 3px; min-width: 0; padding-top: 1px; }
+.sh-tx b { font-size: 15px; line-height: 20px; font-weight: 600; color: var(--sh-ink); letter-spacing: -0.01em; }
+.sh-tx small { font-size: 13.5px; line-height: 19px; font-weight: 400; color: var(--sh-muted); }
+.sh-foot { margin-top: 6px; align-items: center; background: var(--sh-hover); }
+.sh-foot:hover { background: #EEEEF2; }
+.sh-go { margin-left: auto; width: 32px; height: 32px; border-radius: 50%; background: #fff; display: inline-flex;
+      align-items: center; justify-content: center; flex: none; }
+.sh-go svg { width: 14px; height: 14px; }
+
+/* buttons: Download keeps the grey pill; Get started is the purple pill */
+.sh-cta { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 99px;
+      background: #F2F2F5; color: var(--sh-ink) !important; font: 700 15px/1.2 "Manrope", sans-serif; letter-spacing: -0.01em;
+      white-space: nowrap; transition: background .15s ease; }
+.sh-cta:hover { background: #E7E7EC; }
+.sh-cta svg { width: 15px; height: 15px; }
+.sh-cta-p { background: var(--sh-purple); color: #fff !important; }
+.sh-cta-p:hover { background: #5B32E0; }
+
+/* burger, as before: a 50px grey circle whose two lines turn into an X */
+.sh-burger { display: none; width: 46px; height: 46px; border: 0; padding: 0; border-radius: 50%; background: #E4E4E7;
+      cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 8px; -webkit-tap-highlight-color: transparent; }
+.sh-burger span { display: block; width: 22px; height: 2px; background: #040815; transition: transform .3s ease; }
+.sh-burger[aria-expanded="true"] span:first-child { transform: translateY(5px) rotate(45deg); }
+.sh-burger[aria-expanded="true"] span:last-child { transform: translateY(-5px) rotate(-45deg); }
+
+/* phone sheet */
+.sh-sheet { position: fixed; left: 0; right: 0; top: var(--sh-top, 62px); bottom: 0; background: #fff; overflow-y: auto;
+      overscroll-behavior: contain; padding: 8px 16px 32px; z-index: 59; animation: sh-in .15s ease both; }
+@keyframes sh-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+.sh-macc, .sh-mlink { width: 100%; display: flex; align-items: center; justify-content: space-between; min-height: 58px;
+      padding: 0 4px; background: none; border: 0; cursor: pointer; color: var(--sh-ink);
+      font: 600 17px/1.2 "Manrope", sans-serif; letter-spacing: -0.01em; text-align: left; }
+.sh-macc .sh-chev { width: 14px; height: 14px; }
+.sh-mgroup, .sh-mlink { border-bottom: 1px solid rgba(5,5,5,.08) !important; }
+.sh-macc.is-current > span, .sh-mlink.is-current .sh-t { color: var(--sh-purple); }
+.sh-sheet .sh-t::after { display: none; }
+.sh-mlist { padding: 0 0 12px; }
+.sh-mitem { display: flex; align-items: center; gap: 12px; padding: 10px 4px; border-radius: 12px; }
+.sh-mitem[aria-current="page"] { background: var(--sh-hover); }
+.sh-mitem .sh-ic { width: 34px; height: 34px; }
+.sh-mcta { margin-top: 24px; width: 100%; justify-content: center; padding: 16px 20px; font-size: 16px; }
+@media (min-width: 900px) { .sh-sheet { display: none !important; } }
+
+@media (max-width: 1120px) {
+  .sh-in { gap: 28px; } .sh-nav { gap: 22px; } .sh-right { gap: 18px; }
+}
+@media (max-width: 999px) {
+  .sh-in { padding: 0 24px; } .sh-trig, .sh-link, .sh-login { font-size: 15px; }
+}
+@media (max-width: 899px) {
+  .sh-nav, .sh-login { display: none; }
+  .sh-burger { display: flex; }
+  .sh-right { gap: 10px; }
+}
+@media (max-width: 600px) {
+  .sh-in { height: 62px; padding: 0 16px; }
+  .sh-right > .sh-cta { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sh-panel, .sh-chev, .sh-burger span { transition: none !important; }
+  .sh-sheet { animation: none; }
+}
+</style>
+<style id="ft-pay-css">.ft-base{flex-wrap:wrap;gap:12px 24px;align-items:center}.ft-pay{display:flex;flex-wrap:wrap;gap:8px;margin:0}.ft-pay img{height:24px;width:auto;display:block;border-radius:4px}@media (max-width:899px){.ft-base{flex-direction:column;align-items:center !important;justify-content:center;text-align:center}.ft-pay{justify-content:center}}</style>
+<style id="overscroll-css">html{background-color:#111111}body{background-color:#ffffff}footer.site{box-shadow:0 100vh 0 100vh #111111}</style>
+<style id="faq-css">
+  /* FAQ: same markup and values as the /dropzones/ page */
+  .faq-list { max-width: 820px; margin: 24px 0 0; border-top: 1px solid #E4E4E7; }
+  .faq-i { border-bottom: 1px solid #E4E4E7; }
+  .faq-i summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 4px; font-size: 18px; line-height: 26px; font-weight: 600; color: #050505; }
+  .faq-i summary::-webkit-details-marker { display: none; }
+  .faq-plus { position: relative; width: 28px; height: 28px; border-radius: 50%; background: #fff; border: 1px solid #E4E4E7; flex: 0 0 auto; }
+  .faq-plus::before, .faq-plus::after { content: ""; position: absolute; left: 50%; top: 50%; width: 12px; height: 1.6px; background: #050505; transform: translate(-50%, -50%); transition: transform .2s ease; }
+  .faq-plus::after { transform: translate(-50%, -50%) rotate(90deg); }
+  .faq-i[open] .faq-plus::after { transform: translate(-50%, -50%) rotate(0deg); }
+  .doc .faq-i p { padding: 0 48px 22px 4px; margin: -6px 0 0; color: #71717B; font-size: 17px; line-height: 27px; font-weight: 400; }
+  @media (max-width: 600px) { .faq-i summary { font-size: 16px; line-height: 23px; padding: 18px 2px; } .doc .faq-i p { font-size: 15.5px; line-height: 24px; padding-right: 8px; } }
+</style>
+<style id="page-dropzone-payments">
+  /* Payment row: copied from /dropzones/. */
+  .pay-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px; margin: 16px 0 0; }
+  .pay-row img { height: 40px; width: auto; display: block; }
+  .doc .pay-note { color: #71717B; font-size: 15px; margin-top: 14px; }
+  @media (max-width: 600px) { .pay-row { gap: 10px 12px; } .pay-row img { height: 32px; } }
+  /* Screenshot and steps */
+  .dp-shot { margin: 48px 0 0; }
+  .doc > .wrap > .dp-shot { max-width: 1100px; }
+  .dp-shot img { width: 100%; height: auto; border-radius: 16px; border: 1px solid #E4E4E7; box-shadow: 0 24px 60px rgba(4,8,21,.10); }
+  .dp-shot figcaption { color: var(--g); font-size: 14px; line-height: 20px; margin-top: 12px; }
+  .doc ol.dp-steps { list-style: none; counter-reset: dp; margin: 16px 0; padding: 0; }
+  .dp-steps li { counter-increment: dp; position: relative; padding: 0 0 0 48px; margin: 0 0 20px; font-size: 16px; line-height: 24px; color: var(--t); }
+  .dp-steps li::before { content: counter(dp); position: absolute; left: 0; top: -2px; width: 30px; height: 30px; border-radius: 50%; background: #040815; color: #fff; font-size: 14px; font-weight: 600; display: flex; align-items: center; justify-content: center; }
+  /* Closing call to action */
+  .dp-cta { margin: 80px 0 0; padding: 40px; border-radius: 24px; background: #F4F4F5; }
+  .doc .dp-cta h2 { margin-top: 0; }
+  .dp-btns { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0 0; }
+  .dp-btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 24px; border-radius: 100px; background: #040815; color: #fff; font-weight: 600; font-size: 16px; }
+  .dp-btn:hover { text-decoration: none; background: #6D42F5; }
+  .dp-ghost { background: #fff; color: #040815; border: 1px solid #E4E4E7; }
+  .dp-ghost:hover { background: #fff; color: #6D42F5; }
+  .doc .dp-small { color: var(--g); font-size: 14px; margin: 20px 0 0; }
+  @media (max-width: 600px) { .dp-cta { padding: 28px 20px; } .dp-btn { width: 100%; } }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Dropzone payments: jumpers top up in the app, the money lands in your Stripe",
+  "description": "Jumpers top up with Apple Pay or card in the Manifest app. Money goes straight to your dropzone's own Stripe account and balances show on the desk instantly.",
+  "image": "https://www.jumpmanifest.com/assets/og-image.png",
+  "author": {
+    "@type": "Organization",
+    "@id": "https://www.jumpmanifest.com/#organization",
+    "name": "Manifest Jump LLC",
+    "url": "https://www.jumpmanifest.com/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.jumpmanifest.com/assets/app-icon.png?v=3",
+      "width": 1024,
+      "height": 1024
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://www.jumpmanifest.com/#organization",
+    "name": "Manifest Jump LLC",
+    "url": "https://www.jumpmanifest.com/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.jumpmanifest.com/assets/app-icon.png?v=3",
+      "width": 1024,
+      "height": 1024
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.jumpmanifest.com/dropzone-payments/"
+  },
+  "datePublished": "2026-10-14",
+  "dateModified": "2026-10-14",
+  "inLanguage": "en",
+  "about": [
+    "Dropzone payments",
+    "Skydiving jump tickets",
+    "Jumper account balance",
+    "Apple Pay top-ups for skydiving"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.jumpmanifest.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Dropzone payments",
+      "item": "https://www.jumpmanifest.com/dropzone-payments/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Who holds the money when a jumper tops up?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You do. Top-ups are paid into your dropzone's own Stripe account through Stripe Connect, and your dropzone is the merchant. Manifest never holds the money."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How fast do we get paid out?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Payouts follow Stripe's normal payout schedule for your account. The balance shows on the desk instantly, and Stripe moves the money to your bank on its usual schedule."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which payment methods can jumpers use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Apple Pay and cards in the Manifest app. In the US, jumpers can also pay with Cash App Pay."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the fee?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "2% on in-app top-ups on the Weekend plan, 1.5% on Full-time and 1% on Big operations. There is no fee per booking and no fee on cash or your card terminal at the desk."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can we still take cash and cards at the desk?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Anything you take at the desk is yours with no fee from us. In-app top-ups are an extra way for jumpers to pay, not a replacement."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do jumpers have to pay for the app?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The Manifest app is free to download on iPhone. Jumpers top up, book and get load calls in it."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Manifest Desk",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web browser",
+  "url": "https://www.jumpmanifest.com/dropzones/",
+  "description": "Manifest Desk is browser software for dropzones: loads, standby, jumper accounts and balances, staff and staff pay, with Apple Pay and card top-ups from the Manifest app paid straight into the dropzone's own Stripe account.",
+  "publisher": {
+    "@id": "https://www.jumpmanifest.com/#organization"
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Weekend dropzone",
+      "price": "249",
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Offer",
+      "name": "Full-time",
+      "price": "399",
+      "priceCurrency": "USD"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<!-- SITE HEADER (9 Oct 2026): one header on every page. Mega dropdowns on
+     laptops, a full-height sheet on phones. Same markup, CSS and JS on each
+     page; only the current section and the right-hand button differ. -->
+<div class="sh" data-sh>
+  <div class="sh-in">
+    <a class="sh-logo" href="/" aria-label="Manifest home"><img class="lockup" src="/assets/manifest-lockup.svg?v=5" alt="Manifest" /></a>
+    <nav class="sh-nav" aria-label="Main">
+      <div class="sh-dd" data-dd><button class="sh-trig" type="button" aria-expanded="false" aria-controls="sh-p-jumpers"><span class="sh-t">For jumpers</span><svg class="sh-chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="sh-panel" id="sh-p-jumpers"><div class="sh-card"><div class="sh-grid"><a class="sh-item" href="/skydive-3d-tracking/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg></span><span class="sh-tx"><b>3D replays</b><small>Every jump in 3D from your phone's GPS.</small></span></a><a class="sh-item" href="/#live"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M8.5 15.5a5 5 0 0 1 0-7M15.5 8.5a5 5 0 0 1 0 7M5.6 18.4a9 9 0 0 1 0-12.8M18.4 5.6a9 9 0 0 1 0 12.8"/></svg></span><span class="sh-tx"><b>Live loads</b><small>Your load and calls, live at 150+ dropzones.</small></span></a><a class="sh-item" href="/uspa-digital-logbook/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19.5v-15A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5zm0 0A1.5 1.5 0 0 0 6.5 21H19v-3"/><path d="M9 10.5l2 2 4-4"/></svg></span><span class="sh-tx"><b>Logbook and sign-offs</b><small>Every jump logged, signed off by the jumpers who were there.</small></span></a><a class="sh-item" href="/#locker"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6V4.5A1.5 1.5 0 0 1 10.5 3h3A1.5 1.5 0 0 1 15 4.5V6"/><rect x="5" y="6" width="14" height="15" rx="3.5"/><path d="M9 13.5h6V17H9z"/></svg></span><span class="sh-tx"><b>Gear locker</b><small>Repacks and AAD service, reminded in time.</small></span></a></div><a class="sh-item sh-foot" href="https://apps.apple.com/app/id6778510429"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M12 7.5v6M9.5 11L12 13.5 14.5 11M10.5 18h3"/></svg></span><span class="sh-tx"><b>Download the app</b><small>Free on the App Store for iPhone.</small></span><span class="sh-go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a></div></div></div>
+      <div class="sh-dd" data-dd><button class="sh-trig is-current" type="button" aria-expanded="false" aria-controls="sh-p-dropzones"><span class="sh-t">For dropzones</span><svg class="sh-chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="sh-panel" id="sh-p-dropzones"><div class="sh-card"><div class="sh-grid"><a class="sh-item" href="/dropzones/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><span class="sh-tx"><b>Manifest Desk</b><small>Loads, money, staff and safety on one screen.</small></span></a><a class="sh-item" href="/dropzones/#app"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3 10h18M7 14.5h3"/></svg></span><span class="sh-tx"><b>Payments and top-ups</b><small>Apple Pay top-ups, straight to your Stripe.</small></span></a><a class="sh-item" href="/dropzones/#safety"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="sh-tx"><b>Safety</b><small>Landouts on a live map, plus gear checks.</small></span></a><a class="sh-item" href="/dropzones/#hangar-board"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M7 8.5h6M7 12.5h10M9 21h6"/></svg></span><span class="sh-tx"><b>Hangar board</b><small>A live board for every TV in the hangar.</small></span></a><a class="sh-item" href="/dropzones/#pricing"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4.5A1.5 1.5 0 0 1 4.5 3H12l9 9-9 9-9-9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><span class="sh-tx"><b>Pricing</b><small>Prices on the page, no lock-in.</small></span></a><a class="sh-item" href="/dropzones/#how"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M11 6h9M11 18h9M6 8.5v7"/></svg></span><span class="sh-tx"><b>How it works</b><small>From sign-up to your first jump day.</small></span></a></div><a class="sh-item sh-foot" href="/dropzones/start/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M13 8.5l3.5 3.5-3.5 3.5"/></svg></span><span class="sh-tx"><b>Get started</b><small>Pick a plan and set up your dropzone.</small></span><span class="sh-go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a></div></div></div>
+      <a class="sh-link" href="/about/"><span class="sh-t">About</span></a>
+      <a class="sh-link" href="/support/"><span class="sh-t">Support</span></a>
+      <a class="sh-link" href="/#faq"><span class="sh-t">FAQ</span></a>
+    </nav>
+    <div class="sh-right">
+      <a class="sh-login" href="https://desk.jumpmanifest.com">Dropzone login</a>
+      <a class="sh-cta" href="https://apps.apple.com/app/id6778510429">Download<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      <button class="sh-burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="sh-sheet"><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="sh-sheet" id="sh-sheet" hidden>
+    <div class="sh-mgroup"><button class="sh-macc" type="button" aria-expanded="false" aria-controls="sh-m-jumpers"><span>For jumpers</span><svg class="sh-chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="sh-mlist" id="sh-m-jumpers" hidden><a class="sh-mitem" href="/skydive-3d-tracking/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg></span><span class="sh-tx"><b>3D replays</b><small>Every jump in 3D from your phone's GPS.</small></span></a><a class="sh-mitem" href="/#live"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M8.5 15.5a5 5 0 0 1 0-7M15.5 8.5a5 5 0 0 1 0 7M5.6 18.4a9 9 0 0 1 0-12.8M18.4 5.6a9 9 0 0 1 0 12.8"/></svg></span><span class="sh-tx"><b>Live loads</b><small>Your load and calls, live at 150+ dropzones.</small></span></a><a class="sh-mitem" href="/uspa-digital-logbook/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19.5v-15A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5zm0 0A1.5 1.5 0 0 0 6.5 21H19v-3"/><path d="M9 10.5l2 2 4-4"/></svg></span><span class="sh-tx"><b>Logbook and sign-offs</b><small>Every jump logged, signed off by the jumpers who were there.</small></span></a><a class="sh-mitem" href="/#locker"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6V4.5A1.5 1.5 0 0 1 10.5 3h3A1.5 1.5 0 0 1 15 4.5V6"/><rect x="5" y="6" width="14" height="15" rx="3.5"/><path d="M9 13.5h6V17H9z"/></svg></span><span class="sh-tx"><b>Gear locker</b><small>Repacks and AAD service, reminded in time.</small></span></a><a class="sh-mitem" href="https://apps.apple.com/app/id6778510429"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M12 7.5v6M9.5 11L12 13.5 14.5 11M10.5 18h3"/></svg></span><span class="sh-tx"><b>Download the app</b><small>Free on the App Store for iPhone.</small></span></a></div></div>
+    <div class="sh-mgroup"><button class="sh-macc is-current" type="button" aria-expanded="false" aria-controls="sh-m-dropzones"><span>For dropzones</span><svg class="sh-chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="sh-mlist" id="sh-m-dropzones" hidden><a class="sh-mitem" href="/dropzones/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><span class="sh-tx"><b>Manifest Desk</b><small>Loads, money, staff and safety on one screen.</small></span></a><a class="sh-mitem" href="/dropzones/#app"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3 10h18M7 14.5h3"/></svg></span><span class="sh-tx"><b>Payments and top-ups</b><small>Apple Pay top-ups, straight to your Stripe.</small></span></a><a class="sh-mitem" href="/dropzones/#safety"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="sh-tx"><b>Safety</b><small>Landouts on a live map, plus gear checks.</small></span></a><a class="sh-mitem" href="/dropzones/#hangar-board"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M7 8.5h6M7 12.5h10M9 21h6"/></svg></span><span class="sh-tx"><b>Hangar board</b><small>A live board for every TV in the hangar.</small></span></a><a class="sh-mitem" href="/dropzones/#pricing"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4.5A1.5 1.5 0 0 1 4.5 3H12l9 9-9 9-9-9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><span class="sh-tx"><b>Pricing</b><small>Prices on the page, no lock-in.</small></span></a><a class="sh-mitem" href="/dropzones/#how"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M11 6h9M11 18h9M6 8.5v7"/></svg></span><span class="sh-tx"><b>How it works</b><small>From sign-up to your first jump day.</small></span></a><a class="sh-mitem" href="/dropzones/start/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M13 8.5l3.5 3.5-3.5 3.5"/></svg></span><span class="sh-tx"><b>Get started</b><small>Pick a plan and set up your dropzone.</small></span></a></div></div>
+    <a class="sh-mlink" href="/about/"><span class="sh-t">About</span></a>
+    <a class="sh-mlink" href="/support/"><span class="sh-t">Support</span></a>
+    <a class="sh-mlink" href="/#faq"><span class="sh-t">FAQ</span></a>
+    <a class="sh-mlink" href="https://desk.jumpmanifest.com"><span class="sh-t">Dropzone login</span></a>
+    <a class="sh-cta sh-mcta" href="https://apps.apple.com/app/id6778510429">Download<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+  </div>
+</div>
+
+<main class="doc">
+  <div class="wrap">
+    <h1>Dropzone payments: jumpers top up in the app, the money lands in your Stripe</h1>
+    <p class="intro">Your jumpers already have their phone in hand at the dropzone. With Manifest they top up their jump account with Apple Pay or a card in a few taps, the money goes straight into your dropzone's own Stripe account, and the new balance is on your desk before they reach the counter.</p>
+
+    <figure class="dp-shot">
+      <img src="/assets/desk-today.jpg?v=1" alt="Manifest Desk Today page for a demo dropzone: charged for jumps today, a Top up button, open loads, next load, standby, and an Accounts card showing money owed to the dropzone and balances held" width="1440" height="900" loading="lazy" decoding="async" />
+      <figcaption>The Today page on Manifest Desk: what was charged for jumps today, a Top up button, and every account balance in one card.</figcaption>
+    </figure>
+
+    <h2>Why dropzone payments still hurt</h2>
+    <p>Most dropzones run money the same way they did twenty years ago. A line at the counter on a busy Saturday morning. Jump tickets on paper or in old manifest software. Someone chasing negative balances at the end of the day. Cash in a drawer that has to match a spreadsheet.</p>
+    <p>None of that is jumping. Every minute a jumper spends in the payment line is a minute your manifest staff are not building loads.</p>
+
+    <h2>How it works</h2>
+    <ol class="dp-steps">
+      <li><strong>Connect your Stripe account.</strong> During setup you connect your dropzone's own Stripe account through Stripe Connect. Your dropzone is the merchant. We set it up with you directly.</li>
+      <li><strong>Jumpers top up in the app.</strong> In the free Manifest app, a jumper picks your dropzone and tops up their account with Apple Pay or a card. In the US they can also pay with Cash App Pay.</li>
+      <li><strong>The money goes to you, not to us.</strong> The payment is made to your Stripe account. Manifest never holds your money.</li>
+      <li><strong>The balance shows on the desk instantly.</strong> The jumper's account updates on Manifest Desk the moment the payment goes through. Staff see it on the jumper's account and on the Today page.</li>
+      <li><strong>Jumps are charged from the balance.</strong> When the jumper is on a load, the jump comes off their account. No ticket to print, no card to swipe again.</li>
+      <li><strong>Stripe pays out to your bank.</strong> Payouts follow Stripe's normal payout schedule for your account, exactly as with any other Stripe business.</li>
+    </ol>
+
+    <h2>Apple Pay for skydiving, done properly</h2>
+    <p>Apple Pay is the fastest way to pay on an iPhone: Face ID and done. For a jumper standing on the landing area deciding whether to go again, that matters. The top-up happens where they already check their load, so topping up and getting back on a load is one flow, not two queues.</p>
+    <p>Jumpers can pay with:</p>
+    <div class="pay-row" aria-label="Payment methods jumpers can use in the Manifest app">
+      <img src="/assets/pay/apple_pay.svg?v=1" alt="Apple Pay" height="40" />
+      <img src="/assets/pay/visa.svg?v=1" alt="Visa" height="40" />
+      <img src="/assets/pay/master.svg?v=1" alt="Mastercard" height="40" />
+      <img src="/assets/pay/american_express.svg?v=1" alt="American Express" height="40" />
+      <img src="/assets/pay/cashapppay.svg?v=1" alt="Cash App Pay" height="40" />
+      <img src="/assets/pay/stripe.svg?v=1" alt="Stripe" height="40" />
+    </div>
+    <p class="pay-note">Apple Pay, cards and Cash App Pay (US), processed by Stripe into your dropzone's own account.</p>
+
+    <h2>Jumper accounts and balances on the desk</h2>
+    <p>Manifest Desk is the browser screen your manifest staff work from. Money is part of the same system as your loads, not a separate tool:</p>
+    <ul>
+      <li><strong>Jumper accounts:</strong> every jumper has an account with a balance. Staff can look anyone up and see their balance at a glance.</li>
+      <li><strong>Balances in real time:</strong> top-ups from the app appear the moment they are paid. The Accounts card on the Today page shows what is owed to you and what is held.</li>
+      <li><strong>Holds and blocks:</strong> hold or block an account from the desk when something needs sorting first.</li>
+      <li><strong>Desk payments stay yours:</strong> cash, your card terminal and anything else you take at the desk can still be added to an account, with no fee from us.</li>
+      <li><strong>Staff pay:</strong> staff and staff pay live on the same desk, so the money coming in and the money going out to your instructors and packers sit side by side.</li>
+      <li><strong>Reports:</strong> see what was charged for jumps today against last week, without exporting anything.</li>
+    </ul>
+    <p>See the full desk on the <a href="/dropzones/">Manifest Desk page</a>, or read how it compares to <a href="/skydiving-manifest-software/">other skydiving manifest software</a>.</p>
+
+    <h2>Top-ups work best with self-manifest</h2>
+    <p>Payments get faster again when jumpers can also book themselves. With <a href="/self-manifest-skydiving/">self-manifest</a>, a jumper tops up, books themselves and their friends onto a load or joins standby, all from the app. You set the limits and the desk always has the final say. For the whole picture, from the desk to the jumper's Lock Screen, see <a href="/how-manifest-works/">how Manifest works</a>.</p>
+
+    <h2>What it costs</h2>
+    <p>There is one fee on payments, and only on top-ups jumpers make in the app:</p>
+    <ul>
+      <li><strong>Weekend dropzone:</strong> 2% on in-app top-ups.</li>
+      <li><strong>Full-time:</strong> 1.5% on in-app top-ups.</li>
+      <li><strong>Big operations:</strong> 1% on in-app top-ups.</li>
+    </ul>
+    <p>No fee per booking. No fee on cash or your own card terminal. On the Weekend plan, $1,000 of in-app top-ups costs $20 in Manifest fees. Plan prices are on the <a href="/dropzones/#pricing">pricing section</a>, with no lock-in and nothing to pay until your desk goes live.</p>
+
+    <h2>Questions dropzone owners ask</h2>
+    <div class="faq-list">
+      <details class="faq-i"><summary>Who holds the money when a jumper tops up?<span class="faq-plus" aria-hidden="true"></span></summary><p>You do. Top-ups are paid into your dropzone's own Stripe account through Stripe Connect, and your dropzone is the merchant. Manifest never holds the money.</p></details>
+      <details class="faq-i"><summary>How fast do we get paid out?<span class="faq-plus" aria-hidden="true"></span></summary><p>Payouts follow Stripe's normal payout schedule for your account. The balance shows on the desk instantly, and Stripe moves the money to your bank on its usual schedule.</p></details>
+      <details class="faq-i"><summary>Which payment methods can jumpers use?<span class="faq-plus" aria-hidden="true"></span></summary><p>Apple Pay and cards in the Manifest app. In the US, jumpers can also pay with Cash App Pay.</p></details>
+      <details class="faq-i"><summary>What is the fee?<span class="faq-plus" aria-hidden="true"></span></summary><p>2% on in-app top-ups on the Weekend plan, 1.5% on Full-time and 1% on Big operations. There is no fee per booking and no fee on cash or your card terminal at the desk.</p></details>
+      <details class="faq-i"><summary>Can we still take cash and cards at the desk?<span class="faq-plus" aria-hidden="true"></span></summary><p>Yes. Anything you take at the desk is yours with no fee from us. In-app top-ups are an extra way for jumpers to pay, not a replacement.</p></details>
+      <details class="faq-i"><summary>Do jumpers have to pay for the app?<span class="faq-plus" aria-hidden="true"></span></summary><p>No. The Manifest app is free to download on iPhone. Jumpers top up, book and get load calls in it.</p></details>
+    </div>
+
+    <div class="dp-cta">
+      <h2>See it on your own dropzone</h2>
+      <p>A 20-minute video call: we show the desk, a top-up landing in real time, and how we move your jumpers and balances over.</p>
+      <div class="dp-btns">
+        <a class="dp-btn" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo">Book a 20-minute demo</a>
+        <a class="dp-btn dp-ghost" href="/dropzones/#pricing">See pricing</a>
+      </div>
+      <p class="dp-small">Or go back to the <a href="/">Manifest home page</a>.</p>
+    </div>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="ft">
+    <div class="ft-brand">
+      <a class="wordmark" href="/" aria-label="Manifest home"><img class="lockup" src="/assets/manifest-lockup-white.svg?v=5" alt="Manifest" /></a>
+      <p>The app for skydivers and the system for dropzones. Live loads, 3D replays and a logbook that proves every jump, on one system.</p>
+      <div class="mail">Support: <a href="mailto:andre@manifestjump.com">andre@manifestjump.com</a></div>
+      <div class="ft-social">
+        <a href="https://www.instagram.com/manifestjump/" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></a>
+        <a href="https://apps.apple.com/app/id6778510429" aria-label="App Store"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.4 2-3.5 2-3.6-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.9-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.7-.1 0-2.5-1-2.5-3.6zM14.1 5.6c.6-.8 1.1-1.9 1-3-.9 0-2.1.6-2.7 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.5 2.7-1.3z"/></svg></a>
+      </div>
+    </div>
+    <div class="ft-col"><h4>App</h4>
+      <a href="/#replay">3D Replay</a><a href="/#live">Live loads</a><a href="/#everything">Features</a><a href="https://apps.apple.com/app/id6778510429">Download</a></div>
+    <div class="ft-col"><h4>Dropzones</h4>
+      <a href="/dropzones/">Manifest Desk</a><a href="/dropzones/start/">Get started</a><a href="https://desk.jumpmanifest.com">Dropzone login</a></div>
+    <div class="ft-col"><h4>Explore</h4>
+      <a href="/uspa-digital-logbook/">USPA digital logbook</a><a href="/skydive-3d-tracking/">3D jump tracking</a><a href="/#faq">FAQ</a></div>
+    <div class="ft-col"><h4>Company</h4>
+      <a href="/about/">About</a><a href="/support/">Support</a><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a></div>
+  </div>
+  <div class="ft-base"><span>© 2026 Manifest Jump LLC · Wyoming, USA · Dubai, UAE</span><div class="ft-pay" aria-label="Payment methods accepted"><img src="/assets/pay/apple_pay.svg?v=1" alt="Apple Pay" height="24" /><img src="/assets/pay/visa.svg?v=1" alt="Visa" height="24" /><img src="/assets/pay/master.svg?v=1" alt="Mastercard" height="24" /><img src="/assets/pay/american_express.svg?v=1" alt="American Express" height="24" /><img src="/assets/pay/cashapppay.svg?v=1" alt="Cash App Pay" height="24" /><img src="/assets/pay/stripe.svg?v=1" alt="Stripe" height="24" /></div><span>Listed by the United States Parachute Association.</span></div>
+</footer>
+
+<script id="site-header-js">
+(() => {
+  const bar = document.querySelector('[data-sh]');
+  if (!bar) return;
+  const dds = [...bar.querySelectorAll('[data-dd]')];
+  const canHover = matchMedia('(hover: hover) and (pointer: fine)');
+  let timer = 0;
+
+  const place = (dd) => {
+    const p = dd.querySelector('.sh-panel');
+    p.style.left = '';
+    const r = p.getBoundingClientRect(), over = r.right - (innerWidth - 16);
+    if (over > 0) p.style.left = (parseFloat(getComputedStyle(p).left) - over) + 'px';
+  };
+  const set = (dd, open) => {
+    dd.classList.toggle('open', open);
+    dd.querySelector('.sh-trig').setAttribute('aria-expanded', open);
+    if (open) { dd.openedAt = Date.now(); place(dd); }
+  };
+  const closeAll = (except) => dds.forEach((d) => { if (d !== except && d.classList.contains('open')) set(d, false); });
+  const open = (dd) => { clearTimeout(timer); closeAll(dd); if (!dd.classList.contains('open')) set(dd, true); };
+
+  dds.forEach((dd) => {
+    const trig = dd.querySelector('.sh-trig');
+    dd.addEventListener('mouseenter', () => { if (canHover.matches) { dd.viaHover = true; open(dd); } });
+    dd.addEventListener('mouseleave', () => {
+      if (!canHover.matches) return;
+      clearTimeout(timer); timer = setTimeout(() => set(dd, false), 140);
+    });
+    trig.addEventListener('click', (e) => {
+      // with a mouse, the menu opens on hover and a click goes to the page's top;
+      // Enter or Space (e.detail === 0) opens the menu instead of navigating
+      if (canHover.matches && e.detail !== 0) {
+        const href = trig.getAttribute('aria-controls') === 'sh-p-dropzones' ? '/dropzones/' : '/';
+        if (location.pathname === href) { set(dd, false); history.replaceState(null, '', href); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+        else location.href = href;
+        return;
+      }
+      const isOpen = dd.classList.contains('open');
+      // a click right after hover opened it should not slam it shut again
+      if (isOpen && dd.viaHover && Date.now() - dd.openedAt < 400) return;
+      dd.viaHover = false;
+      isOpen ? set(dd, false) : open(dd);
+    });
+    trig.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') { e.preventDefault(); open(dd); const f = dd.querySelector('.sh-item'); f && f.focus(); }
+    });
+    dd.addEventListener('focusout', (e) => { if (!dd.contains(e.relatedTarget)) set(dd, false); });
+    dd.querySelectorAll('.sh-panel a').forEach((a) => a.addEventListener('click', () => set(dd, false)));
+  });
+
+  // phone sheet
+  const burger = bar.querySelector('.sh-burger'), sheet = bar.querySelector('.sh-sheet');
+  // the bar's load-in animation makes it the containing block for fixed children, so the sheet lives on body
+  document.body.appendChild(sheet);
+  const setSheet = (show) => {
+    if (show) sheet.style.setProperty('--sh-top', (Math.max(0, bar.offsetTop - scrollY) + bar.offsetHeight) + 'px'); // layout, not the load-in transform
+    sheet.hidden = !show;
+    burger.setAttribute('aria-expanded', show);
+    document.documentElement.style.overflow = show ? 'hidden' : '';
+  };
+  burger.addEventListener('click', () => setSheet(sheet.hidden));
+  sheet.querySelectorAll('.sh-macc').forEach((b) => b.addEventListener('click', () => {
+    const list = document.getElementById(b.getAttribute('aria-controls')), show = list.hidden;
+    list.hidden = !show; b.setAttribute('aria-expanded', show);
+  }));
+  sheet.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setSheet(false)));
+
+  document.addEventListener('click', (e) => { if (!e.target.closest('[data-dd]')) closeAll(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    const o = dds.find((d) => d.classList.contains('open'));
+    if (o) { set(o, false); o.querySelector('.sh-trig').focus(); }
+    if (!sheet.hidden) { setSheet(false); burger.focus(); }
+  });
+  addEventListener('resize', () => { if (innerWidth >= 900 && !sheet.hidden) setSheet(false); closeAll(); });
+})();
+</script>
+<script id="anchor-fix">
+  // IN-PAGE LINKS ALWAYS ARRIVE (13 Oct): the browser's smooth anchor scroll
+  // stopped partway (FAQ landed on Weather) because sections further down
+  // grow while it runs. Scroll ourselves, then correct once it settles.
+  (function () {
+    var HDR = 90;
+    function go(id, smooth) {
+      var el = document.getElementById(id);
+      if (!el) return false;
+      var to = function (b) { window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - HDR, behavior: b }); };
+      to(smooth ? 'smooth' : 'instant');
+      var n = 0, t = setInterval(function () {
+        var off = Math.abs(el.getBoundingClientRect().top - HDR);
+        if (off < 4 || ++n > 12) { clearInterval(t); if (off >= 4) to('instant'); }
+        else if (n % 3 === 0) to('smooth');
+      }, 250);
+      return true;
+    }
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href*="#"]');
+      if (!a || e.metaKey || e.ctrlKey) return;
+      var u = new URL(a.getAttribute('href'), location.href);
+      if (u.pathname !== location.pathname || !u.hash || u.hash === '#') return;
+      if (go(decodeURIComponent(u.hash.slice(1)), true)) { e.preventDefault(); history.pushState(null, '', u.hash); }
+    });
+    if (location.hash.length > 1) window.addEventListener('load', function () { go(decodeURIComponent(location.hash.slice(1)), false); });
+  })();
+</script>
+</body>
+</html>
