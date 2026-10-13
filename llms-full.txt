@@ -1,0 +1,156 @@
+# Manifest
+
+> Manifest is the app for skydivers and the system for dropzones. The iPhone app shows live loads from 220+ dropzones in 38 countries, records a jump from your pocket and replays the whole flight in 3D over real terrain, and covers weather, gear reminders, a logbook with in-person sign-offs, dropzones and community. Manifest Desk is browser-based manifest software for dropzones, connected live to the app. The app is free to download. Made by Manifest Jump LLC (Wyoming, USA).
+
+## Who it is for
+- Skydivers (fun jumpers): anyone who jumps at a dropzone and wants live loads, 3D replays of their jumps and their jump records on their phone.
+- Dropzone owners and manifest staff: Manifest Desk runs loads, money, staff and safety, and puts every load call on every jumper's phone.
+
+## What the app does (iPhone, free to download)
+- Live loads: the loads turning right now at 220+ dropzones in 38 countries, who is on them and the minutes to call, read from each dropzone's own manifest.
+- 3D jump replay (free): record a jump with the phone in your pocket and replay the whole flight in 3D over real terrain, from the climb to the landing, using the phone's GPS and barometer. No extra hardware.
+- Logbook with sign-offs: another licensed jumper who was there scans your QR and signs the jump off in person; their name and licence number go on the entry. Records the fields USPA SIM 3-1 requires. Import past jumps from CSV.
+- Check-in Pass and Apple Wallet pass: licence, currency, jump numbers and gear service in one scannable view.
+- Weather and winds for jumping, gear and reserve repack reminders, dropzone finder, events, coaches, messaging and community.
+- Works offline: log with no signal, it syncs later.
+
+## Manifest Pro (optional, paid in the app)
+- Your load on the Lock Screen and in the Dynamic Island, with gear-up and final-call notifications. Free at Manifest Desk dropzones.
+- A recorder that arms itself when your load takes off, cloud backup of tracks, replay stats, jump receipt, track and PDF exports.
+- Yearly subscription or a one-time Lifetime purchase.
+
+## Manifest Desk (for dropzones)
+- Manifest software in the browser at https://desk.jumpmanifest.com: loads, standby, jumper accounts and balances, staff, aircraft and a hangar TV board.
+- Load calls pushed to every jumper's Lock Screen with one button.
+- Landouts on a live map with a pickup pin for the driver, and one tap to put every load on hold.
+- Jumpers self-manifest and top up with Apple Pay; the money goes straight to the dropzone's own Stripe account.
+
+## Pricing (Manifest Desk)
+- Weekend dropzone: $249/month (1 aircraft, 3 desk logins, 2% on in-app top-ups only).
+- Full-time dropzone: $399/month (up to 3 aircraft, 10 desk logins, staff pay and payroll export, 1.5% on in-app top-ups only).
+- Big operations: from $699/month (unlimited aircraft and logins, several dropzones on one login, 1% on in-app top-ups only).
+- Pay yearly and get two months free. No lock-in, cancel anytime. The first 10 founding dropzones get 30% off year one.
+- No fee on cash or card payments taken at the desk.
+
+## How to get it
+- Jumpers: download Manifest free on the App Store: https://apps.apple.com/app/id6778510429 (iPhone). Android is in the making.
+- Dropzones: see https://www.jumpmanifest.com/dropzones/ or email andre@manifestjump.com to book a demo.
+
+## Pages
+- [Home](https://www.jumpmanifest.com/): the app for skydivers and the system for dropzones, with the full FAQ
+- [For dropzones](https://www.jumpmanifest.com/dropzones/): Manifest Desk features, pricing and dropzone FAQ
+- [3D skydive tracking](https://www.jumpmanifest.com/skydive-3d-tracking/): how a phone records and replays a skydive in 3D
+- [Digital logbooks and USPA](https://www.jumpmanifest.com/uspa-digital-logbook/): what USPA SIM 3-1 requires from a digital logbook
+- [About](https://www.jumpmanifest.com/about/): what Manifest is and how it works for jumpers and dropzones
+- [Support](https://www.jumpmanifest.com/support/): help, Manifest Pro, subscriptions and account deletion
+- [Privacy Policy](https://www.jumpmanifest.com/privacy/)
+- [Terms of Service](https://www.jumpmanifest.com/terms/)
+
+## Contact
+- Manifest Jump LLC, Wyoming, USA. andre@manifestjump.com
+- Instagram: https://www.instagram.com/manifestjump/
+
+## How 3D jump replay works
+- The phone records a sample about once a second, each one a position, an altitude and a moment in time, from climb-out until you are standing in the landing area.
+- GPS gives the position and the phone's barometer gives the altitude. The phases (climb, exit, freefall, opening, canopy) come out of the data rather than being typed in.
+- The replay draws the track as a line over real terrain and flies a camera along it. More: https://www.jumpmanifest.com/skydive-3d-tracking/
+
+## Logbook and USPA
+- USPA SIM 3-1 allows digital logbooks if each jump records jump number, date, location, exit altitude, freefall time, type of jump, landing distance from the target, equipment used and a verifying signature with an identifying number.
+- Manifest records those fields, sign-off is in person by another licensed jumper whose licence number goes on the entry, and a signed entry locks. Manifest is on USPA's jump log apps page (https://www.uspa.org/logbookapps). More: https://www.jumpmanifest.com/uspa-digital-logbook/
+
+## FAQ: the Manifest app
+
+### What does the Manifest skydiving app do?
+Manifest is the app for skydivers, on iPhone. It shows the loads turning live at 220+ dropzones in 38 countries, records your jump from your pocket and replays the whole flight in 3D over real terrain, and keeps your logbook with jumps signed off in person by licensed jumpers. It also has weather and winds for jumping, gear and reserve repack reminders, your Check-in Pass, dropzones, events, coaches and community.
+
+### Is Manifest free?
+Manifest is free to download, with no limit on how many jumps you log. Logging, getting jumps signed off, your Check-in Pass, live loads, gear service reminders, dropzones, events and community are all free, and so is recording a jump and watching it replayed in 3D. Manifest Pro adds your load on your Lock Screen with gear-up and final-call notifications and a live countdown in your Dynamic Island, a recorder that arms itself when your load takes off, cloud backup of your tracks, replay stats, your jump receipt, raw track exports for ParaLog or Google Earth, branded PDF exports of your logbook and gear, and your credentials on your Check-in Pass. At Manifest Desk dropzones the Lock Screen card is free. Pro is a yearly subscription or a one-time Lifetime purchase.
+
+### Can I replay my skydive in 3D?
+Yes, and it is free. Record your jump with your phone in your pocket and Manifest replays the whole flight in 3D over real terrain, from the climb to the landing, using the phone's own GPS and barometer. No extra hardware is needed.
+
+### Can I bring my existing jumps across?
+Yes. You can import your whole history from a CSV, whether it comes from another app or your own spreadsheet. Tunnel time and reserve repacks can be imported too.
+
+### How does a jump get verified?
+Another licensed jumper who was there scans your QR and signs it off. Their name and licence number are recorded on that jump, so it is witnessed rather than self-reported. Your logbook shows your total jumps and your verified jumps side by side.
+
+### Does it work at my dropzone?
+Logging, verification, your pass and your gear work anywhere in the world. Live loads currently work at 220+ dropzones, and we are adding more. If yours is not covered yet, everything else still works normally.
+
+### Which dropzones does Manifest show live loads for?
+Manifest shows live loads from 220+ dropzones in 38 countries: what's on call, who's on it and the minutes to call, straight off each dropzone's own manifest. At dropzones that run Manifest Desk, every load call also goes straight to your Lock Screen.
+
+### Does it work without signal?
+Yes. You can log jumps with no signal at all and they sync as soon as you are back online, which matters on a dropzone with bad wifi.
+
+### Is Manifest listed by USPA?
+Yes. Manifest is on the United States Parachute Association's jump log apps page, which lists the digital logbooks that meet USPA's criteria. Every jump records the fields USPA SIM 3-1 requires, and sign-off is in person by another licensed jumper whose licence number goes on the entry.
+
+### Will a dropzone accept it?
+Your Check-in Pass shows your licence, currency, jump numbers and gear service in one scannable view, pulled straight from your record so it cannot be edited by hand. The person scanning it does not need the app. Pro also gives you a branded PDF of every signed-off jump.
+
+### Is my data private?
+Your logbook, credentials and documents are yours and are access-controlled. You choose what is public on your profile, you can go fully private, and you can delete your account and its data from inside the app at any time.
+
+### What is Manifest Desk?
+Manifest Desk is manifest software for dropzones, running in the browser. It handles loads, standby, jumper accounts and balances, staff, aircraft and a hangar TV board, and pushes every load call to jumpers' Lock Screens. Jumpers top up with Apple Pay, straight into the dropzone's own Stripe account. Plans start at $249 a month with no lock-in. See Manifest Desk.
+
+### Is Android coming?
+Yes. Android is being built right now. Email me and I will let you know the day it is out.
+
+## FAQ: Manifest Desk for dropzones
+
+### Is it easy to switch from our current system?
+Yes. We move your jumpers and prices over for you, and you can run both side by side for as long as you like, until you trust it.
+
+### Who moves our jumpers and balances?
+We do, during setup.
+
+### Is there a contract?
+A simple service agreement, with no lock-in. Cancel anytime, on any plan, including the founding deal. Paying yearly saves two months.
+
+### What hardware do we need?
+Any laptop or tablet with a browser runs the desk. Any TV with a browser shows the hangar board.
+
+### Do jumpers pay for the app?
+No. The Manifest app is free to download. At your dropzone, jumpers book, top up and get load calls in it.
+
+### When are we charged?
+Nothing until your desk goes live. The first 10 dropzones get 30% off their first year.
+
+### Do you take a fee on payments at our desk?
+No. Cash, your card terminal and anything you take at the desk is yours, with no fee from us. The fee is only on top-ups jumpers make themselves in the Manifest app.
+
+### Who owns the data?
+You do. Export it any time on Full-time and up.
+
+## FAQ: support
+
+### How do I log a jump, and does it work without signal?
+Tap the log button on your logbook, fill in the details, and save. Logging works fully offline: a jump you save in airplane mode is stored on your device and syncs automatically the next time you have a connection.
+
+### What is the Check-in Pass?
+It’s a live, scannable QR that opens a web page showing your licence type, currency, jump numbers and gear service status, pulled straight from Manifest so it can’t be edited or faked. Whoever scans it needs no app.
+
+### How does jump sign-off and verification work?
+Another licensed jumper can sign off your jumps; their name and licence are recorded on each one. Your profile shows your total jumps and your independently verified jumps side by side. Sign-offs are frozen once made.
+
+### How do gear service reminders work?
+Add your rig, canopy, reserve and AAD with their service dates, and Manifest reminds you before your reserve repack and AAD service fall due. You set the dates; Manifest never overrides them with assumptions.
+
+### What does Manifest Pro include?
+Pro is the Lock Screen. Your load appears there the moment it is called, with gear-up and final-call notifications and a live countdown in the Dynamic Island, so the plane does not leave without you. At Manifest Desk dropzones the Lock Screen card is free. It also adds cloud backup of your tracks, replay stats, your jump receipt, your credentials on your Check-in Pass, and branded PDF exports of your logbook and gear passport. It’s a yearly subscription or a one-time Lifetime purchase. Logging, currency, sign-offs, live loads, dropzones, events and community stay free.
+
+### How do I manage or cancel my subscription?
+Subscriptions are billed through your Apple ID, so you manage them in iOS: Settings → [your name] → Subscriptions → Manifest, where you can change plan or cancel. Cancelling stops the next renewal; you keep Pro until the current period ends.
+
+### How do I delete my account?
+In the app, go to Profile → Settings (gear) → Delete account. This permanently erases your profile, logbook, gear, listings and events via an automated cascade. It can’t be undone. See our Privacy Policy for what is retained.
+
+### How do I report or block someone?
+Open the person’s profile or a conversation and use Report or Block. Reports are reviewed, and content is removed or accounts suspended where they break the Terms. To report something urgently, email andre@manifestjump.com.
+
+### How do I get the blue verification check?
+Verification is free. Upload a credential in your in-app credentials wallet and apply. An authorised admin reviews it. Verification reflects account status; it is not a guarantee of anyone’s skill or certification.
