@@ -1,0 +1,28 @@
+# Manifest
+
+> Manifest is the skydiving app for jumpers and the manifest system for dropzones. Jumpers get live loads from 220+ dropzones in 38 countries, every jump replayed in 3D over real terrain from their phone's GPS, a digital logbook with in-person sign-offs, weather, gear service reminders and dropzone discovery. Dropzones run loads, payments, staff and safety on Manifest Desk, connected live to the app. Free to download on iPhone. Made by Manifest Jump LLC.
+
+## For skydivers (iPhone app, free to download)
+- Live loads: see the loads turning right now at 220+ dropzones worldwide, with minutes to call.
+- 3D jump replay: record a jump from your pocket and replay the whole flight in 3D, climb to landing.
+- Your load on the Lock Screen and in the Dynamic Island, with gear-up and final-call notifications (Manifest Pro, or free at Manifest Desk dropzones).
+- Auto-start recording when your load is two minutes from takeoff (Manifest Pro).
+- Logbook with sign-offs by licensed jumpers, Check-in Pass and Apple Wallet pass.
+- Weather and winds for jumping, gear and reserve repack reminders, dropzones, events, coaches and community.
+- App Store: https://apps.apple.com/app/id6778510429
+
+## For dropzones (Manifest Desk)
+- Manifest software in the browser: loads, standby, jumper accounts, staff, aircraft and a hangar TV board.
+- Load calls pushed to every jumper's Lock Screen with one button.
+- Landouts on a live map with a pickup pin for the driver, and one tap to put every load on hold.
+- Jumpers top up with Apple Pay; the money goes straight to the dropzone's own Stripe account.
+- Pricing on the page, no lock-in: Weekend $249/month, Full-time $399/month, Big operations from $699/month. Pay yearly, get two months free.
+- https://www.jumpmanifest.com/dropzones/
+
+## Pages
+- [Home](https://www.jumpmanifest.com/): the app for skydivers and the system for dropzones
+- [For dropzones](https://www.jumpmanifest.com/dropzones/): Manifest Desk, features and pricing
+- [3D skydive tracking](https://www.jumpmanifest.com/skydive-3d-tracking/): how phone GPS 3D replays work
+- [Digital logbooks and USPA](https://www.jumpmanifest.com/uspa-digital-logbook/): do digital logbooks count
+- [About](https://www.jumpmanifest.com/about/)
+- [Support](https://www.jumpmanifest.com/support/)
