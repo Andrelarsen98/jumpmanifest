@@ -856,13 +856,6 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 }
 </style>
 <style id="ft-pay-css">.ft-base{flex-wrap:wrap;gap:12px 24px;align-items:center}.ft-pay{display:flex;flex-wrap:wrap;gap:8px;margin:0}.ft-pay img{height:24px;width:auto;display:block;border-radius:4px}@media (max-width:899px){.ft-base{flex-direction:column;align-items:center !important;justify-content:center;text-align:center}.ft-pay{justify-content:center}}</style>
-<style id="flagvid-wide-css">
-/* The 3D replay video is 1.5x wider than the others (its phone tilts in and
-   out of frame), so it is drawn 1.5x wide and centred: the phone itself lands
-   at the same size as every other flag phone. */
-.flagvid.wide{width:min(510px,102vw);margin-left:calc(50% - min(255px,51vw));margin-right:0}
-@media (min-width:900px){.flag .flagvid.wide{width:min(600px,150%);justify-self:start;margin-left:calc((100% - min(600px,150%)) / 2)}}
-</style>
 <style id="overscroll-css">html{background-color:#111111}body{background-color:#ffffff}footer.site{box-shadow:0 100vh 0 100vh #111111}</style>
 </head>
 <body>
@@ -1302,9 +1295,9 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     <h2><span class="l1">Your jump.</span><br />Flown back in 3D.</h2>
     <p>Put your phone in your pocket and jump. Manifest measures the whole flight and replays it over the real terrain you fell through, so you can finally see the jump instead of describing it.</p>
     </div>
-    <video class="flagvid wide" loop muted playsinline preload="metadata"
+    <video class="flagvid" loop muted playsinline preload="metadata"
            aria-label="A skydive replayed in 3D over real terrain, from exit to landing">
-      <source src="assets/jumptrack2.mp4?v=3" type="video/mp4" />
+      <source src="assets/jumptrack3.mp4" type="video/mp4" />
     </video>
     <div class="ftext fb">
     <p class="flagsub">Exit, freefall, the moment you pulled, the canopy ride, the spot you landed.
