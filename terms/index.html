@@ -551,5 +551,33 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   addEventListener('resize', () => { if (innerWidth >= 900 && !sheet.hidden) setSheet(false); closeAll(); });
 })();
 </script>
+<script id="anchor-fix">
+  // IN-PAGE LINKS ALWAYS ARRIVE (13 Oct): the browser's smooth anchor scroll
+  // stopped partway (FAQ landed on Weather) because sections further down
+  // grow while it runs. Scroll ourselves, then correct once it settles.
+  (function () {
+    var HDR = 90;
+    function go(id, smooth) {
+      var el = document.getElementById(id);
+      if (!el) return false;
+      var to = function (b) { window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - HDR, behavior: b }); };
+      to(smooth ? 'smooth' : 'instant');
+      var n = 0, t = setInterval(function () {
+        var off = Math.abs(el.getBoundingClientRect().top - HDR);
+        if (off < 4 || ++n > 12) { clearInterval(t); if (off >= 4) to('instant'); }
+        else if (n % 3 === 0) to('smooth');
+      }, 250);
+      return true;
+    }
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href*="#"]');
+      if (!a || e.metaKey || e.ctrlKey) return;
+      var u = new URL(a.getAttribute('href'), location.href);
+      if (u.pathname !== location.pathname || !u.hash || u.hash === '#') return;
+      if (go(decodeURIComponent(u.hash.slice(1)), true)) { e.preventDefault(); history.pushState(null, '', u.hash); }
+    });
+    if (location.hash.length > 1) window.addEventListener('load', function () { go(decodeURIComponent(location.hash.slice(1)), false); });
+  })();
+</script>
 </body>
 </html>
