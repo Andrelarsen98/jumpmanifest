@@ -53,11 +53,27 @@
           <li><span class="n">2</span><span>Tap <strong>Scan Jumps</strong> on the home screen.</span></li>
           <li><span class="n">3</span><span>Scan their logbook QR and pick the jumps you witnessed.</span></li>
         </ul>
-        <a class="btn" href="manifestapp://">Open Manifest</a>
-        <p class="note">Don't have Manifest yet? It's the verified logbook for skydivers. <a href="/get">Get it on the App Store</a>.</p>
+        <a class="btn" id="openApp" href="/get">Open in Manifest</a>
+        <p class="note">Don't have Manifest yet? It's the verified logbook for skydivers. <a href="/get">Get it on the App Store</a>, sign in, then scan the QR again.</p>
       </div>
     </div>
     <div class="foot">Only a licensed jumper can sign off: every sign-off carries the signer's name &amp; licence.<br />jumpmanifest.com</div>
   </div>
+<script>
+// NO DEAD BUTTON (USPA test, 13 Oct): "manifestapp://" on a phone without
+// the app is Safari's "address is invalid". Try the app straight to this
+// sign-off; if the page is still showing a moment later, go to the App Store.
+(function () {
+  var b = document.getElementById('openApp');
+  var code = (location.pathname.split('/s/')[1] || '').split(/[/?#]/)[0];
+  b.addEventListener('click', function (e) {
+    e.preventDefault();
+    var left = false;
+    document.addEventListener('visibilitychange', function () { if (document.hidden) left = true; });
+    setTimeout(function () { if (!left && !document.hidden) location.href = '/get'; }, 1600);
+    location.href = 'manifestapp://' + (code ? 's/' + encodeURIComponent(code) : '');
+  });
+})();
+</script>
 </body>
 </html>
