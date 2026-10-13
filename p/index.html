@@ -233,6 +233,7 @@
         ${recentJumpsHtml(p.recent_jumps)}
       </div>
       <div class="foot">
+        <div style="margin-bottom:12px">Pass code <strong style="letter-spacing:2px">${esc(String(getCode() || '').toUpperCase())}</strong></div>
         <!-- The old line read "updates in real time, can't be edited or faked",
              which overstated it: licence number, total jumps and gear dates are
              all entered by the holder. Only the signed-off count is witnessed.
