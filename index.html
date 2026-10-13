@@ -1042,6 +1042,8 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   :root body .final h2 { font-family: "Manrope", sans-serif; font-weight: 780; letter-spacing: -.055em; max-width: none; margin-top: 0; }
   /* Smaller sub-heading (the FAQ, as on /dropzones/): 34 / 47.6. */
   .faq-h2, #faq .faq-h2 { font-size: 34px; line-height: 47.6px; font-weight: 500; letter-spacing: -.5px; max-width: 14ch; }
+  /* Bigger on desktop only (13 Oct); phones keep the 28px rule below. */
+  @media (min-width: 901px) { .faq-h2, #faq .faq-h2 { font-size: 56px; line-height: 60px; letter-spacing: -1.6px; max-width: 12ch; } }
 
   /* Lead under a heading: 20 / 31 grey, 20px below. */
   .statement-sub, .flag p, .flagsub { font-size: 20px; line-height: 31px; font-weight: 400; letter-spacing: normal; color: var(--g); margin-top: 20px; }
@@ -1353,7 +1355,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       <div class="feat"><h4>Jump weather</h4><p>Wind at exit, under canopy and on the ground.</p></div>
       <div class="feat"><h4>Dropzones &amp; events</h4><p>Find them worldwide, and what's on.</p></div>
       <div class="feat"><h4>Coaches &amp; community</h4><p>Follow jumpers, message coaches, message anyone.</p></div>
-      <div class="feat"><h4>Year in the Sky (Pro)</h4><p>Your whole season, worth sharing.</p></div>
+      <div class="feat"><h4>Year in the Sky</h4><p>Your whole season, worth sharing.</p></div>
     </div>
   </div>
 </section>
