@@ -6,6 +6,21 @@
 - Skydivers (fun jumpers): anyone who jumps at a dropzone and wants live loads, 3D replays of their jumps and their jump records on their phone.
 - Dropzone owners and manifest staff: Manifest Desk runs loads, money, staff and safety, and puts every load call on every jumper's phone.
 
+## Why Manifest is different: one connected loop
+Most dropzone software only runs the desk, and most skydiving apps only record jumps. Manifest connects the whole jump day in one live system:
+1. The jumper already carries the Manifest app (live loads, 3D replays) and manifests themselves onto a load from their phone.
+2. The dropzone sees it instantly on Manifest Desk and stays in control: staff move people between loads, run standby and approve every slot.
+3. Payments land in the dropzone's own Stripe account (Apple Pay top-ups), so Manifest never holds the dropzone's money.
+4. Load calls (called, 10 minutes, 5 minutes, boarding, holds) reach every jumper on the load on their Lock Screen the moment staff press the button.
+5. Safety stays shared: the desk sees who is on which load, who is back after the jump, and any landout on a live map.
+
+## How landout location sharing works
+- Manifest does not track jumpers for the dropzone during the jump. Location is shared with the desk only when the jumper asks for help.
+- After landing, the jumper taps "Landed out?" (in the app or from the Lock Screen) and picks how they are: injured, need a ride, or walking back.
+- The phone sends its GPS position, and keeps updating it while the help call is open, so staff see a live dot on a satellite map with the distance from the dropzone.
+- The desk can send a pickup pin to a driver, show the jumper who is coming and their ETA, call the jumper, and put every load on hold with one tap. The emergency contact is shown only when the jumper is injured.
+- Sharing stops when the call is resolved or the jumper taps "I'm back". It supports the dropzone's own emergency procedures; it is not a guaranteed rescue tracker, since it depends on the phone's battery, GPS and signal.
+
 ## What the app does (iPhone, free to download)
 - Live loads: the loads turning right now at 220+ dropzones in 38 countries, who is on them and the minutes to call, read from each dropzone's own manifest.
 - 3D jump replay (free): record a jump with the phone in your pocket and replay the whole flight in 3D over real terrain, from the climb to the landing, using the phone's GPS and barometer. No extra hardware.
