@@ -304,7 +304,7 @@
   var INCLUDES = {
     weekend: ['Loads, standby, check-in and the hangar board', 'Jumper accounts, top-ups and jump bundles', 'Self-manifest and load calls on every phone', 'Landout safety map and currency checks', '1 aircraft and 3 desk logins (crew free)', 'Email support'],
     fulltime: ['Everything in Weekend', 'Up to 3 aircraft and 10 desk logins', 'Staff pay with payroll export', 'Gift vouchers', 'CSV exports for the accountant', 'Priority support, same day'],
-    big: ['Everything in Full-time', 'Unlimited aircraft and desk logins', 'Several dropzones on one login', 'A direct line to André', 'Setup call with your whole manifest team']
+    big: ['Everything in Full-time', 'Unlimited aircraft and desk logins', 'Several dropzones on one login', 'A direct line to the founder', 'Setup call with your whole manifest team']
   };
   var q = new URLSearchParams(location.search);
   var st = { plan: PLANS[q.get('plan')] ? q.get('plan') : 'fulltime', interval: q.get('interval') === 'year' ? 'year' : 'month', info: null };
@@ -380,7 +380,7 @@
         steps(4);
         document.getElementById('v2').innerHTML = '<div class="one"><div class="card"><span class="chip" style="margin-bottom:14px">RESERVED</span><h1>Your founding price is <em>reserved</em></h1>' +
           '<p class="sub">' + p.name + ' at ' + money(half(st.interval === 'year' ? p.year : p.month)) + (st.interval === 'year' ? ' for your first year' : ' a month for your first 12 months') + '. Nothing to pay today.</p>' +
-          '<p class="sub">André will call you to set up your desk with you. You pay when it goes live.</p>' +
+          '<p class="sub">We will call you to set up your desk with you. You pay when it goes live.</p>' +
           '<a class="go" href="/dropzones/" style="text-decoration:none">Back to Manifest for dropzones</a></div></div>';
         window.scrollTo(0, 0);
       })

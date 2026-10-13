@@ -982,7 +982,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
             <li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Unlimited desk logins</span></li>
             <li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Several dropzones on one login</span></li>
             <li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>1% on in-app top-ups only</span></li>
-            <li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>A direct line to André</span></li>
+            <li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>A direct line to the founder</span></li>
             <li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>A setup call with your whole manifest team</span></li>
           </ul>
         </div>
@@ -1096,7 +1096,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   <form class="lead-box" id="leadForm" novalidate>
     <button type="button" class="lead-x" id="leadClose" aria-label="Close">&times;</button>
     <h3 id="leadTitle">Get started with Manifest Desk</h3>
-    <p class="lead-sub" id="leadSub">Tell us about your dropzone. André gets back to you the same day.</p>
+    <p class="lead-sub" id="leadSub">Tell us about your dropzone. We get back to you the same day.</p>
     <label>Dropzone<input name="dropzone" required autocomplete="organization" placeholder="Skydive Example" /></label>
     <label>Your name<input name="name" required autocomplete="name" /></label>
     <label>Email<input name="email" type="email" required autocomplete="email" /></label>
@@ -1109,7 +1109,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   </form>
   <div class="lead-box lead-done" id="leadDone" hidden>
     <h3>Thanks. We'll be in touch today.</h3>
-    <p class="lead-sub">André will reach out to set up your dropzone with you.</p>
+    <p class="lead-sub">We will reach out to set up your dropzone with you.</p>
     <button class="btn primary" type="button" id="leadOk">Done</button>
   </div>
 </div>
@@ -1141,7 +1141,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   function open(kind, plan) {
     ctx = { kind: kind, plan: plan || '' };
     document.getElementById('leadTitle').textContent = kind === 'demo' ? 'Book a 20-minute demo' : (plan ? 'Get started: ' + plan : 'Get started with Manifest Desk');
-    document.getElementById('leadSub').textContent = kind === 'demo' ? 'We show you the desk on a video call, with your own loads and prices.' : 'Tell us about your dropzone. André gets back to you the same day.';
+    document.getElementById('leadSub').textContent = kind === 'demo' ? 'We show you the desk on a video call, with your own loads and prices.' : 'Tell us about your dropzone. We get back to you the same day.';
     err.hidden = true; form.hidden = false; done.hidden = true; scrim.hidden = false;
     setTimeout(function () { form.dropzone.focus(); }, 30);
   }
