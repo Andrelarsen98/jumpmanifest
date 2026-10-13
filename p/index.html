@@ -28,7 +28,8 @@
     margin:0 auto 16px; animation:spin .8s linear infinite; }
   @keyframes spin { to { transform:rotate(360deg); } }
   .card { background:var(--card); border-radius:24px; overflow:hidden; }
-  .band { position:relative; color:#fff; padding:22px 22px 20px; background:var(--page) url('/assets/hero-glow.jpg') center/100% 100% no-repeat; }
+  /* The in-app pass band exactly: brandMix(0.3) to brandMix(0.55), corner to corner (André, 13 Oct). */
+  .band { position:relative; color:#fff; padding:22px 22px 20px; background:linear-gradient(to bottom right, #403C57, #696191); }
   .band-top { display:flex; align-items:center; justify-content:space-between; }
   .brand { display:flex; align-items:center; gap:8px; }
   .tag { font-size:11px; font-weight:800; letter-spacing:1.4px; color:#fff; }
