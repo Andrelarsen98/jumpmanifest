@@ -856,6 +856,12 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 }
 </style>
 <style id="ft-pay-css">.ft-base{flex-wrap:wrap;gap:12px 24px;align-items:center}.ft-pay{display:flex;flex-wrap:wrap;gap:8px;margin:0}.ft-pay img{height:24px;width:auto;display:block;border-radius:4px}@media (max-width:899px){.ft-base{flex-direction:column;align-items:center !important;justify-content:center;text-align:center}.ft-pay{justify-content:center}}</style>
+<style id="outro-css">
+/* The closing image sits on the footer's own black and runs straight into it. */
+.outro{background:#111111;padding-top:72px;line-height:0;overflow:hidden}
+.outro img{display:block;width:min(1100px,100%);height:auto;margin:0 auto}
+.outro + footer.site{margin-top:0 !important}
+</style>
 <style id="overscroll-css">html{background-color:#111111}body{background-color:#ffffff}footer.site{box-shadow:0 100vh 0 100vh #111111}</style>
 </head>
 <body>
@@ -1427,10 +1433,8 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 </section>
 
 
-<section class="reveal" id="reveal" aria-hidden="true">
-  <img class="reveal-phone" src="assets/hand-phone.png" alt="" loading="lazy" decoding="async" />
-  <img class="cloud c-left"  src="assets/cloud.png"   alt="" loading="lazy" decoding="async" />
-  <img class="cloud c-right" src="assets/cloud-r.png" alt="" loading="lazy" decoding="async" />
+<section class="outro" aria-hidden="true">
+  <img src="assets/outro-phone.jpg" alt="" width="1600" height="1133" loading="lazy" decoding="async" />
 </section>
 
 <footer class="site">
