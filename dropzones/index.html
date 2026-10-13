@@ -3,16 +3,21 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Manifest for dropzones: manifest, payments and load calls on every phone</title>
-<meta name="description" content="Manifest Desk is manifest software for dropzones, connected live to the Manifest app your jumpers already use: loads, money, staff and safety on one screen, with every load call on every jumper's phone." />
+<title>Manifest Desk: manifest software for dropzones</title>
+<meta name="description" content="Manifest Desk is manifest software for dropzones: loads, standby, jumper accounts, staff, aircraft, Apple Pay top-ups and load calls on every jumper's phone." />
 <link rel="canonical" href="https://www.jumpmanifest.com/dropzones/" />
 <meta property="og:url" content="https://www.jumpmanifest.com/dropzones/" />
-<meta property="og:title" content="Manifest for dropzones" />
-<meta property="og:description" content="Manifest software for dropzones, connected live to the jumper app: loads, money, staff and safety on one screen." />
+<meta property="og:title" content="Manifest Desk: manifest software for dropzones" />
+<meta property="og:description" content="Loads, money, staff and safety on one screen, with every load call on every jumper's Lock Screen. From $249 a month, no lock-in." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Manifest" />
 <meta property="og:image" content="https://www.jumpmanifest.com/assets/og-image.png?v=10" />
 <meta name="twitter:card" content="summary_large_image" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:title" content="Manifest Desk: manifest software for dropzones" />
+<meta name="twitter:description" content="Loads, money, staff and safety on one screen, with every load call on every jumper's Lock Screen. From $249 a month, no lock-in." />
+<meta name="twitter:image" content="https://www.jumpmanifest.com/assets/og-image.png?v=10" />
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg?v=4" />
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=4" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -675,6 +680,204 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 </style>
 <style id="ft-pay-css">.ft-base{flex-wrap:wrap;gap:12px 24px;align-items:center}.ft-pay{display:flex;flex-wrap:wrap;gap:8px;margin:0}.ft-pay img{height:24px;width:auto;display:block;border-radius:4px}@media (max-width:899px){.ft-base{flex-direction:column;align-items:center !important;justify-content:center;text-align:center}.ft-pay{justify-content:center}}</style>
 <style id="overscroll-css">html{background-color:#111111}body{background-color:#ffffff}footer.site{box-shadow:0 100vh 0 100vh #111111}</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "@id": "https://www.jumpmanifest.com/dropzones/#desk",
+  "name": "Manifest Desk",
+  "description": "Manifest Desk is manifest software for dropzones that runs in the browser. It handles loads, standby, jumper accounts and balances, staff, aircraft and a hangar TV board, pushes every load call to jumpers' Lock Screens through the Manifest app, shows landouts on a live map with a pickup pin for the driver and one tap to hold all loads, and takes Apple Pay top-ups straight into the dropzone's own Stripe account.",
+  "url": "https://www.jumpmanifest.com/dropzones/",
+  "applicationCategory": "BusinessApplication",
+  "applicationSubCategory": "Dropzone manifest software",
+  "operatingSystem": "Any (web browser)",
+  "browserRequirements": "Any laptop or tablet with a browser runs the desk. Any TV with a browser shows the hangar board.",
+  "image": "https://www.jumpmanifest.com/assets/og-image.png?v=10",
+  "featureList": [
+    "Loads: build, call and depart",
+    "Load calls on every jumper's phone and Lock Screen",
+    "Holds: weather, dust devil, refuel",
+    "Hangar board on every TV",
+    "Standby and daily check-in",
+    "Jumper accounts, charged when the load departs",
+    "Jump bundles as tickets",
+    "Apple Pay and card top-ups straight into the dropzone's own Stripe account",
+    "Self-manifest from the Manifest app",
+    "Currency, reserve and AAD checks",
+    "Landout alert with live position on a map, a pickup pin for the driver and one tap to hold all loads",
+    "Aircraft hours and inspection countdowns",
+    "Staff pay per jump or per load and payroll export",
+    "Reports, gift vouchers and CSV exports"
+  ],
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Weekend dropzone",
+      "price": 249,
+      "priceCurrency": "USD",
+      "description": "One aircraft, busy weekends. 3 desk logins, crew free. 2% on in-app top-ups only.",
+      "url": "https://www.jumpmanifest.com/dropzones/#pricing",
+      "availability": "https://schema.org/InStock",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "priceCurrency": "USD",
+        "unitCode": "MON",
+        "unitText": "month",
+        "referenceQuantity": {
+          "@type": "QuantitativeValue",
+          "value": 1,
+          "unitCode": "MON"
+        },
+        "price": 249
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Full-time dropzone",
+      "price": 399,
+      "priceCurrency": "USD",
+      "description": "Jumping most days, staff to pay. Up to 3 aircraft, 10 desk logins, staff pay and payroll export. 1.5% on in-app top-ups only.",
+      "url": "https://www.jumpmanifest.com/dropzones/#pricing",
+      "availability": "https://schema.org/InStock",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "priceCurrency": "USD",
+        "unitCode": "MON",
+        "unitText": "month",
+        "referenceQuantity": {
+          "@type": "QuantitativeValue",
+          "value": 1,
+          "unitCode": "MON"
+        },
+        "price": 399
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Big operations",
+      "price": 699,
+      "priceCurrency": "USD",
+      "description": "Several aircraft, boogies, a bigger desk. Unlimited aircraft and desk logins, several dropzones on one login. 1% on in-app top-ups only. From $699 a month.",
+      "url": "https://www.jumpmanifest.com/dropzones/#pricing",
+      "availability": "https://schema.org/InStock",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "priceCurrency": "USD",
+        "unitCode": "MON",
+        "unitText": "month",
+        "referenceQuantity": {
+          "@type": "QuantitativeValue",
+          "value": 1,
+          "unitCode": "MON"
+        },
+        "minPrice": 699
+      }
+    }
+  ],
+  "isRelatedTo": {
+    "@id": "https://www.jumpmanifest.com/#app"
+  },
+  "provider": {
+    "@id": "https://www.jumpmanifest.com/#organization"
+  },
+  "publisher": {
+    "@id": "https://www.jumpmanifest.com/#organization"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://www.jumpmanifest.com/dropzones/#faq",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is it easy to switch from our current system?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We move your jumpers and prices over for you, and you can run both side by side for as long as you like, until you trust it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who moves our jumpers and balances?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We do, during setup."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a contract?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A simple service agreement, with no lock-in. Cancel anytime, on any plan, including the founding deal. Paying yearly saves two months."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What hardware do we need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Any laptop or tablet with a browser runs the desk. Any TV with a browser shows the hangar board."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do jumpers pay for the app?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The Manifest app is free to download. At your dropzone, jumpers book, top up and get load calls in it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When are we charged?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nothing until your desk goes live. The first 10 dropzones get 30% off their first year."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you take a fee on payments at our desk?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Cash, your card terminal and anything you take at the desk is yours, with no fee from us. The fee is only on top-ups jumpers make themselves in the Manifest app."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who owns the data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You do. Export it any time on Full-time and up."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.jumpmanifest.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "For dropzones",
+      "item": "https://www.jumpmanifest.com/dropzones/"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
