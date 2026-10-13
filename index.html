@@ -549,7 +549,7 @@
   /* translateX(-38%) not -50%: the phone sits at 38% of the image (hand on the
      right), so this centers the actual PHONE, not the whole image. */
   .reveal-phone { position: absolute; bottom: -4%; left: 50%; z-index: 1;
-    width: min(440px, 88vw); transform: translate(-38%, 0); will-change: transform; }
+    width: min(980px, 92vw); transform: translate(-50%, 0); will-change: transform; }
   .cloud { position: absolute; bottom: -6%; width: 74%; max-width: none; z-index: 3;
     pointer-events: none; will-change: transform; }
   .c-left  { left: 0; }
@@ -856,12 +856,6 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 }
 </style>
 <style id="ft-pay-css">.ft-base{flex-wrap:wrap;gap:12px 24px;align-items:center}.ft-pay{display:flex;flex-wrap:wrap;gap:8px;margin:0}.ft-pay img{height:24px;width:auto;display:block;border-radius:4px}@media (max-width:899px){.ft-base{flex-direction:column;align-items:center !important;justify-content:center;text-align:center}.ft-pay{justify-content:center}}</style>
-<style id="outro-css">
-/* The closing image sits on the footer's own black and runs straight into it. */
-.outro{background:#111111;padding-top:72px;line-height:0;overflow:hidden}
-.outro img{display:block;width:min(1100px,100%);height:auto;margin:0 auto;-webkit-mask-image:linear-gradient(to bottom,#000 72%,transparent 100%);mask-image:linear-gradient(to bottom,#000 72%,transparent 100%)}
-.outro + footer.site{margin-top:0 !important}
-</style>
 <style id="overscroll-css">html{background-color:#111111}body{background-color:#ffffff}footer.site{box-shadow:0 100vh 0 100vh #111111}</style>
 </head>
 <body>
@@ -1433,8 +1427,10 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 </section>
 
 
-<section class="outro" aria-hidden="true">
-  <img src="assets/outro-phone.jpg" alt="" width="1600" height="1133" loading="lazy" decoding="async" />
+<section class="reveal" id="reveal" aria-hidden="true">
+  <img class="reveal-phone" src="assets/reveal-man.png" alt="" loading="lazy" decoding="async" />
+  <img class="cloud c-left"  src="assets/cloud.png"   alt="" loading="lazy" decoding="async" />
+  <img class="cloud c-right" src="assets/cloud-r.png" alt="" loading="lazy" decoding="async" />
 </section>
 
 <footer class="site">
@@ -1484,7 +1480,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       // bottom aligns with the viewport bottom (phone resting above the footer).
       var p = clamp((window.innerHeight - r.top) / r.height);
       var e = ease(p);
-      phone.style.transform = "translate(-38%," + (10 - e * 10) + "%)";
+      phone.style.transform = "translate(-50%," + (10 - e * 10) + "%)";
       left.style.transform  = "translateX(" + (28 - e * 72) + "%)";
       right.style.transform = "translateX(" + (-28 + e * 72) + "%)";
     }
