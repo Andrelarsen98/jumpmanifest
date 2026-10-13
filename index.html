@@ -4,20 +4,20 @@
 <meta charset="UTF-8" />
 <meta name="google-site-verification" content="LSNgKsqUgjF5U6ow4S-UaRolkd8qAiVDrORzruiayW0" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Manifest: Skydive, Play, Share. The skydiving app with 3D jump replays</title>
-<meta name="description" content="The skydiving app: live loads from 220+ dropzones, every jump replayed in 3D, logbook with sign-offs, weather and dropzones. Plus Manifest Desk for dropzones. Free on iPhone." />
+<title>Manifest: the skydiving app with live loads and 3D replays</title>
+<meta name="description" content="Skydiving app for iPhone: live loads from 220+ dropzones, jumps replayed in 3D, logbook sign-offs, weather and gear. Free. Plus Manifest Desk for dropzones." />
 <meta property="og:site_name" content="Manifest" />
-<meta property="og:title" content="Manifest: Skydive, Play, Share" />
-<meta property="og:description" content="Record your jump, watch it fly back in 3D, and log it as proof. Free on the App Store." />
+<meta property="og:title" content="Manifest: the app for skydivers, the system for dropzones" />
+<meta property="og:description" content="Live loads from 220+ dropzones, every jump replayed in 3D over real terrain, and Manifest Desk for dropzones. Free on iPhone." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.jumpmanifest.com/" />
 <meta property="og:image" content="https://www.jumpmanifest.com/assets/og-image.png?v=10" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Manifest: Skydive, Play, Share" />
+<meta property="og:image:alt" content="Manifest, the app for skydivers and the system for dropzones" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Manifest: Skydive, Play, Share" />
-<meta name="twitter:description" content="Record your jump, watch it fly back in 3D, and log it as proof." />
+<meta name="twitter:title" content="Manifest: the app for skydivers, the system for dropzones" />
+<meta name="twitter:description" content="Live loads from 220+ dropzones, every jump replayed in 3D over real terrain, and Manifest Desk for dropzones. Free on iPhone." />
 <meta name="twitter:image" content="https://www.jumpmanifest.com/assets/og-image.png?v=10" />
 <meta name="theme-color" content="#ffffff" />
 <!-- Apple Smart App Banner. iOS renders this itself, above the page, and the
@@ -33,13 +33,30 @@
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
+  "@id": "https://www.jumpmanifest.com/#faq",
   "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does the Manifest skydiving app do?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Manifest is the app for skydivers, on iPhone. It shows the loads turning live at 220+ dropzones in 38 countries, records your jump from your pocket and replays the whole flight in 3D over real terrain, and keeps your logbook with jumps signed off in person by licensed jumpers. It also has weather and winds for jumping, gear and reserve repack reminders, your Check-in Pass, dropzones, events, coaches and community."
+      }
+    },
     {
       "@type": "Question",
       "name": "Is Manifest free?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Manifest is free to download, with no limit on how many jumps you log. Logging, getting jumps signed off, your Check-in Pass, live loads, gear service reminders, dropzones, events and community are all free, and so is recording a jump and watching it replayed in 3D. Manifest Pro adds your load on your Lock Screen with gear-up and final-call notifications and a live countdown in your Dynamic Island, a recorder that arms itself when your load takes off, cloud backup of your tracks, replay stats, your jump receipt, raw track exports for ParaLog or Google Earth, branded PDF exports of your logbook and gear, and your credentials on your Check-in Pass. At Manifest Desk dropzones the Lock Screen card is free. Pro is a yearly subscription or a one-time Lifetime purchase."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I replay my skydive in 3D?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, and it is free. Record your jump with your phone in your pocket and Manifest replays the whole flight in 3D over real terrain, from the climb to the landing, using the phone's own GPS and barometer. No extra hardware is needed."
       }
     },
     {
@@ -64,6 +81,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Logging, verification, your pass and your gear work anywhere in the world. Live loads currently work at 220+ dropzones, and we are adding more. If yours is not covered yet, everything else still works normally."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which dropzones does Manifest show live loads for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Manifest shows live loads from 220+ dropzones in 38 countries: what's on call, who's on it and the minutes to call, straight off each dropzone's own manifest. At dropzones that run Manifest Desk, every load call also goes straight to your Lock Screen."
       }
     },
     {
@@ -100,6 +125,14 @@
     },
     {
       "@type": "Question",
+      "name": "What is Manifest Desk?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Manifest Desk is manifest software for dropzones, running in the browser. It handles loads, standby, jumper accounts and balances, staff, aircraft and a hangar TV board, and pushes every load call to jumpers' Lock Screens. Jumpers top up with Apple Pay, straight into the dropzone's own Stripe account. Plans start at $249 a month with no lock-in. See Manifest Desk."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "Is Android coming?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -124,69 +157,105 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://www.jumpmanifest.com/#organization",
+  "name": "Manifest Jump LLC",
+  "alternateName": "Manifest",
+  "url": "https://www.jumpmanifest.com/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://www.jumpmanifest.com/assets/app-icon.png?v=3",
+    "width": 1024,
+    "height": 1024
+  },
+  "email": "andre@manifestjump.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "WY",
+    "addressCountry": "US"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer support",
+    "email": "andre@manifestjump.com",
+    "availableLanguage": "en"
+  },
+  "sameAs": [
+    "https://apps.apple.com/app/id6778510429",
+    "https://www.instagram.com/manifestjump/"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": "https://www.jumpmanifest.com/#website",
   "name": "Manifest",
   "url": "https://www.jumpmanifest.com/",
-  "description": "Skydive, play, share: jumps replayed in 3D over real terrain, every jump witnessed and signed off, every rig in date, and a Check-in Pass that proves licence and currency in seconds.",
+  "description": "Manifest is the app for skydivers and the system for dropzones: live loads from 220+ dropzones, jumps replayed in 3D over real terrain, and Manifest Desk manifest software for dropzones.",
+  "inLanguage": "en",
   "publisher": {
-    "@type": "Organization",
-    "name": "Manifest Jump LLC",
-    "url": "https://www.jumpmanifest.com/",
-    "logo": "https://www.jumpmanifest.com/assets/app-icon.png?v=3"
+    "@id": "https://www.jumpmanifest.com/#organization"
   }
 }
 </script>
 <!-- The app itself, as a thing rather than a webpage. WebSite/Organization above
      describe the SITE; without this, Google and the AI answer engines have
      nothing telling them jumpmanifest.com is about an iOS app they could
-     recommend when someone asks for a skydiving logbook. -->
+     recommend when someone asks for a skydiving app. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "MobileApplication",
-  "name": "Manifest: Skydive, Play, Share",
+  "@id": "https://www.jumpmanifest.com/#app",
+  "name": "Manifest",
   "alternateName": [
-    "Manifest Skydive",
-    "Manifest skydiving app"
+    "Manifest: Skydive, Play, Share",
+    "Manifest skydiving app",
+    "Manifest Skydive"
   ],
-  "operatingSystem": "iOS 17.0 or later",
+  "description": "Manifest is the skydiving app for iPhone. It shows the loads turning live at 220+ dropzones in 38 countries, records your jump from your pocket and replays the whole flight in 3D over real terrain, and keeps your logbook, with each jump signed off in person by a licensed jumper. It also covers weather, gear reminders, dropzones and community, and connects to Manifest Desk, the manifest system for dropzones. Free to download.",
+  "operatingSystem": "iOS",
   "applicationCategory": "SportsApplication",
   "applicationSubCategory": "Skydiving",
   "url": "https://www.jumpmanifest.com/",
   "downloadUrl": "https://apps.apple.com/app/id6778510429",
   "installUrl": "https://apps.apple.com/app/id6778510429",
+  "sameAs": [
+    "https://apps.apple.com/app/id6778510429"
+  ],
   "inLanguage": "en",
   "datePublished": "2026-07-29",
-  "description": "Manifest is the skydiving app for iPhone. It shows the loads turning live at 220+ dropzones in 38 countries, records your jump from your pocket and replays the whole flight in 3D over real terrain, and keeps your logbook, with each jump signed off in person by a licensed jumper. It also covers weather, gear reminders, dropzones and community, and connects to Manifest Desk, the manifest system for dropzones. Free to download.",
+  "image": "https://www.jumpmanifest.com/assets/app-icon.png?v=3",
   "featureList": [
-    "3D Jump Track: record a jump with your phone in your pocket and watch the whole flight replayed in 3D over real terrain, exit, freefall, opening, canopy and landing, with exit altitude, freefall time and top speed measured by the phone's own GPS and barometer",
-    "Live dropzone loads: which loads are turning at 220+ dropzones right now, who is manifested, slots left and minutes to takeoff, read from the dropzone's own board",
-    "Jumps that log themselves: Manifest watches the dropzone's board and records every load you were manifested on, so your jumps are waiting to confirm at the end of the day instead of being remembered later",
-    "Verified jumps: another licensed jumper scans a QR code and signs off the jump in person, and their name and licence number are recorded on it, so experience is witnessed rather than self-reported",
-    "Digital logbook capturing every field USPA SIM 3-1 requires, including jump number, exit altitude, freefall time, discipline, landing distance and equipment used",
-    "DZ Check-in Pass: licence, ratings, currency, reserve and AAD dates and an emergency contact on one scannable screen, addable to Apple Wallet",
-    "Gear locker with full service history for every rig, canopy, reserve and AAD, and reminders before a repack falls due",
-    "Your load on the Lock Screen with gear-up and final-call alerts",
-    "Weather for jumpers: wind at exit, under canopy and on the ground, cloud by layer in feet, and sunset per dropzone",
+    "Live dropzone loads: which loads are turning at 220+ dropzones in 38 countries right now, who is manifested and minutes to call, read from the dropzone's own board",
+    "3D jump replay: record a jump with your phone in your pocket and watch the whole flight replayed in 3D over real terrain, from the climb to the landing, using the phone's GPS and barometer (free)",
+    "Your load on the Lock Screen and in the Dynamic Island with gear-up and final-call notifications (Manifest Pro, free at Manifest Desk dropzones)",
+    "Jumps that log themselves: Manifest watches the dropzone's board and records every load you were manifested on, so your jumps are waiting to confirm at the end of the day",
+    "Verified jumps: another licensed jumper scans a QR code and signs off the jump in person, and their name and licence number are recorded on it",
+    "Logbook capturing every field USPA SIM 3-1 requires, including jump number, exit altitude, freefall time, discipline, landing distance and equipment used",
+    "Check-in Pass: licence, currency, jump numbers and gear service on one scannable screen, addable to Apple Wallet",
+    "Gear locker with service history for every rig, canopy, reserve and AAD, and reminders before a repack falls due",
+    "Weather for jumpers: wind at exit, under canopy and on the ground, cloud by layer, and sunset per dropzone",
     "Works offline: log a jump with no signal and it syncs when you are back online",
-    "Import an existing logbook from CSV, including tunnel time and reserve repacks",
-    "Dropzone finder, events, coaches and direct messaging"
+    "Import existing jumps from CSV, including tunnel time and reserve repacks",
+    "Dropzone finder, events, coaches, community and direct messaging",
+    "Manifest Pro adds cloud backup of your tracks, replay stats, your jump receipt and track and PDF exports"
   ],
   "offers": {
     "@type": "Offer",
     "price": "0",
     "priceCurrency": "USD",
-    "description": "Free to download. Manifest Pro is an optional auto-renewing subscription."
+    "availability": "https://schema.org/InStock",
+    "url": "https://apps.apple.com/app/id6778510429",
+    "description": "Free to download. Manifest Pro is optional: a yearly subscription or a one-time Lifetime purchase."
   },
   "author": {
-    "@type": "Organization",
-    "name": "Manifest Jump LLC",
-    "url": "https://www.jumpmanifest.com/"
+    "@id": "https://www.jumpmanifest.com/#organization"
   },
   "publisher": {
-    "@type": "Organization",
-    "name": "Manifest Jump LLC",
-    "url": "https://www.jumpmanifest.com/"
+    "@id": "https://www.jumpmanifest.com/#organization"
   }
 }
 </script>
@@ -1371,8 +1440,16 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 
     <div class="faqs">
       <details class="faq">
+        <summary>What does the Manifest skydiving app do?</summary>
+        <p>Manifest is the app for skydivers, on iPhone. It shows the loads turning live at 220+ dropzones in 38 countries, records your jump from your pocket and replays the whole flight in 3D over real terrain, and keeps your logbook with jumps signed off in person by licensed jumpers. It also has weather and winds for jumping, gear and reserve repack reminders, your Check-in Pass, dropzones, events, coaches and community.</p>
+      </details>
+      <details class="faq">
         <summary>Is Manifest free?</summary>
         <p>Manifest is free to download, with no limit on how many jumps you log. Logging, getting jumps signed off, your Check-in Pass, live loads, gear service reminders, dropzones, events and community are all free, and so is recording a jump and watching it replayed in 3D. Manifest Pro adds your load on your Lock Screen with gear-up and final-call notifications and a live countdown in your Dynamic Island, a recorder that arms itself when your load takes off, cloud backup of your tracks, replay stats, your jump receipt, raw track exports for ParaLog or Google Earth, branded PDF exports of your logbook and gear, and your credentials on your Check-in Pass. At Manifest Desk dropzones the Lock Screen card is free. Pro is a yearly subscription or a one-time Lifetime purchase.</p>
+      </details>
+      <details class="faq">
+        <summary>Can I replay my skydive in 3D?</summary>
+        <p>Yes, and it is free. Record your jump with your phone in your pocket and Manifest replays the whole flight in 3D over real terrain, from the climb to the landing, using the phone's own GPS and barometer. No extra hardware is needed.</p>
       </details>
       <details class="faq">
         <summary>Can I bring my existing jumps across?</summary>
@@ -1385,6 +1462,10 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       <details class="faq">
         <summary>Does it work at my dropzone?</summary>
         <p>Logging, verification, your pass and your gear work anywhere in the world. Live loads currently work at 220+ dropzones, and we are adding more. If yours is not covered yet, everything else still works normally.</p>
+      </details>
+      <details class="faq">
+        <summary>Which dropzones does Manifest show live loads for?</summary>
+        <p>Manifest shows live loads from 220+ dropzones in 38 countries: what's on call, who's on it and the minutes to call, straight off each dropzone's own manifest. At dropzones that run Manifest Desk, every load call also goes straight to your Lock Screen.</p>
       </details>
       <details class="faq">
         <summary>Does it work without signal?</summary>
@@ -1401,6 +1482,10 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       <details class="faq">
         <summary>Is my data private?</summary>
         <p>Your logbook, credentials and documents are yours and are access-controlled. You choose what is public on your profile, you can go fully private, and you can delete your account and its data from inside the app at any time.</p>
+      </details>
+      <details class="faq">
+        <summary>What is Manifest Desk?</summary>
+        <p>Manifest Desk is manifest software for dropzones, running in the browser. It handles loads, standby, jumper accounts and balances, staff, aircraft and a hangar TV board, and pushes every load call to jumpers' Lock Screens. Jumpers top up with Apple Pay, straight into the dropzone's own Stripe account. Plans start at $249 a month with no lock-in. <a href="/dropzones/">See Manifest Desk</a>.</p>
       </details>
       <details class="faq">
         <summary>Is Android coming?</summary>
