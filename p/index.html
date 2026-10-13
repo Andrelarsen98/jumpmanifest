@@ -5,72 +5,71 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Manifest | Check-in Pass</title>
 <meta name="description" content="Verified skydiver check-in pass: license, jumps, currency and gear service, proven by Manifest." />
-<meta name="theme-color" content="#4C1D95" />
+<meta name="theme-color" content="#0F0F12" />
 <meta name="robots" content="noindex" />
 <link rel="icon" type="image/png" href="/assets/app-icon.png?v=3" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
-  :root { --accent:#6D28D9; --ink:#111827; --muted:#6B7280; --line:#ECECF1; --bg:#F4F4F7; }
+  /* THE APP'S DARK LOOK (13 Oct 2026, André: "dark and same purple, match it").
+     Page #0F0F12, cards #1A1B1F, the hero is the app's own glow image (the one
+     brand purple #B2A4F9 into the page), white and light grey text only,
+     status in Apple's green, yellow and red as a dot on a neutral chip. */
+  :root { --page:#0F0F12; --card:#1A1B1F; --raised:#2A2B31; --line:#2A2B31; --ink:#FFFFFF; --muted:#D1D1D6;
+          --green:#30D158; --yellow:#FFD60A; --red:#FF453A; --grey:#8E8E93; }
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Plus Jakarta Sans',-apple-system,sans-serif; background:var(--bg); color:var(--ink);
+  html { background:var(--page); color-scheme:dark; }
+  body { font-family:'Manrope',-apple-system,sans-serif; background:var(--page); color:var(--ink);
     min-height:100vh; display:flex; flex-direction:column; align-items:center; padding:20px 16px 40px; }
   .wrap { width:100%; max-width:420px; }
-  .state { text-align:center; padding:80px 20px; color:var(--muted); }
-  .spinner { width:34px; height:34px; border:3px solid #ddd; border-top-color:var(--accent); border-radius:50%;
+  .state { text-align:center; padding:60px 20px; color:var(--muted); }
+  .spinner { width:34px; height:34px; border:3px solid var(--raised); border-top-color:#B2A4F9; border-radius:50%;
     margin:0 auto 16px; animation:spin .8s linear infinite; }
   @keyframes spin { to { transform:rotate(360deg); } }
-  .card { background:#fff; border-radius:22px; overflow:hidden; box-shadow:0 12px 40px rgba(76,29,149,.14); border:1px solid var(--line); }
-  .band { background:linear-gradient(135deg,#4C1D95,#6D28D9); color:#fff; padding:22px 22px 20px; }
+  .card { background:var(--card); border-radius:24px; overflow:hidden; }
+  .band { position:relative; color:#fff; padding:22px 22px 20px; background:var(--page) url('/assets/hero-glow.jpg') center/100% 100% no-repeat; }
   .band-top { display:flex; align-items:center; justify-content:space-between; }
-  .brand { display:flex; align-items:center; gap:9px; font-weight:800; font-size:17px; }
-  .brand .m { width:26px; height:26px; border-radius:7px; background:#fff; display:flex; align-items:center; justify-content:center; }
-  .brand .lk-mk { height:18px; width:auto; display:block; } .brand .lk-wm { height:16px; width:auto; display:block; } .brand { gap:8px !important; }
-  .brand .m img { width:18px; height:18px; }
-  .tag { font-size:11px; font-weight:800; letter-spacing:1.4px; opacity:.85; }
-  /* Photo + name sit on one row. Without a face this card is just a name the
-     holder typed in — the desk has no way to tell it belongs to the person
-     standing there, which is the entire job of a check-in pass. */
-  .idrow { display:flex; align-items:center; gap:14px; margin-top:14px; }
+  .brand { display:flex; align-items:center; gap:8px; }
+  .tag { font-size:11px; font-weight:800; letter-spacing:1.4px; color:#fff; }
+  /* Photo + name on one row: the desk checks the face against the person. */
+  .idrow { display:flex; align-items:center; gap:14px; margin-top:16px; }
   .idrow .who { min-width:0; }
-  .face { width:64px; height:64px; border-radius:16px; flex:none; object-fit:cover;
-          background:rgba(255,255,255,.18); border:2px solid rgba(255,255,255,.5); }
+  .face { width:64px; height:64px; border-radius:16px; flex:none; object-fit:cover; background:var(--raised); }
   .face-ph { width:64px; height:64px; border-radius:16px; flex:none; display:flex; align-items:center;
-             justify-content:center; font-size:26px; font-weight:800; color:#fff;
-             background:rgba(255,255,255,.18); border:2px solid rgba(255,255,255,.35); }
+             justify-content:center; font-size:26px; font-weight:800; color:#fff; background:var(--raised); }
   .name { font-size:27px; font-weight:800; letter-spacing:-.5px; display:flex; align-items:center; gap:8px; }
-  /* Home DZ: free context a desk recognises ("ah, Chicago"). Already returned
-     by the RPC and previously unused. */
-  .home { font-size:13px; font-weight:600; opacity:.8; margin-top:2px; }
-  .badges { display:flex; flex-wrap:wrap; gap:8px; margin-top:11px; }
-  .pill { background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.25); color:#fff; font-size:12.5px; font-weight:700;
-    padding:5px 12px; border-radius:999px; }
-  .pill.lic { background:#fff; color:#4C1D95; border:none; }
-  .member { font-size:13px; opacity:.82; margin-top:11px; }
-  .member-sub { font-size:11.5px; opacity:.55; margin-top:3px; }
-  .status { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:13px 22px; }
-  .status .s { font-size:15px; font-weight:800; letter-spacing:.3px; }
-  .status .ss { font-size:12px; color:var(--muted); text-align:right; }
+  .home { font-size:13.5px; font-weight:600; color:var(--muted); margin-top:2px; }
+  .badges { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+  .pill { background:rgba(255,255,255,.14); color:#fff; font-size:12.5px; font-weight:700; padding:5px 12px; border-radius:999px; }
+  .pill.lic { background:#fff; color:#050505; }
+  .member { font-size:13.5px; color:var(--muted); margin-top:12px; }
+  .member-sub { font-size:12px; color:var(--muted); margin-top:3px; }
+  .status { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:14px 22px; border-bottom:1px solid var(--line); }
+  .status .s { display:flex; align-items:center; gap:8px; font-size:15px; font-weight:800; letter-spacing:.3px; color:#fff; }
+  .status .s .dot { width:9px; height:9px; }
+  .status .ss { font-size:12.5px; color:var(--muted); text-align:right; }
   .stats { display:flex; padding:18px 22px; }
   .stat { flex:1; text-align:center; }
-  .stat .v { font-size:27px; font-weight:800; }
-  .stat .l { font-size:12px; color:var(--muted); margin-top:2px; }
-  .statsub { font-size:10px; color:#9CA3AF; margin-top:1px; letter-spacing:.2px; }
+  .stat .v { font-size:28px; font-weight:800; color:#fff; }
+  .stat .l { font-size:12.5px; color:var(--muted); margin-top:2px; }
+  .statsub { font-size:11px; color:var(--muted); margin-top:1px; letter-spacing:.2px; }
   .sep { width:1px; background:var(--line); }
-  .gear { padding:6px 22px 16px; border-top:1px solid var(--line); }
-  .credhead { font-size:11px; font-weight:800; letter-spacing:.8px; color:var(--muted); padding:10px 0 2px; }
-  .due { display:flex; align-items:center; justify-content:space-between; padding:11px 0; }
-  .due + .due { border-top:1px solid #F1F1F4; }
-  .due .l { font-size:14px; font-weight:600; }
-  .due .r { display:flex; align-items:center; gap:9px; }
+  .gear { padding:6px 22px 14px; border-top:1px solid var(--line); }
+  .credhead { font-size:11px; font-weight:800; letter-spacing:1.2px; color:var(--muted); padding:12px 0 2px; }
+  .due { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 0; }
+  .due + .due { border-top:1px solid var(--line); }
+  .due .l { font-size:14.5px; font-weight:600; color:#fff; min-width:0; }
+  .due .r { display:flex; align-items:center; gap:9px; flex:none; }
   .due .d { font-size:13px; color:var(--muted); }
-  .chip { font-size:11px; font-weight:800; padding:3px 9px; border-radius:999px; }
-  .due .l .sub { display:block; font-size:12px; color:var(--muted); font-weight:400; margin-top:2px; }
-  .foot { text-align:center; margin-top:18px; font-size:12px; color:var(--muted); line-height:1.5; }
-  .cta { display:inline-block; margin-top:14px; background:var(--accent); color:#fff; font-weight:700; font-size:14px;
-    text-decoration:none; padding:12px 22px; border-radius:999px; }
-  .verifiedmark { width:18px; height:18px; }
+  .chip { display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700; color:#fff;
+          background:var(--raised); padding:4px 10px; border-radius:999px; white-space:nowrap; }
+  .dot { width:7px; height:7px; border-radius:50%; flex:none; }
+  .due .l .sub { display:block; font-size:12px; color:var(--muted); font-weight:500; margin-top:2px; }
+  .foot { text-align:center; margin-top:18px; font-size:12.5px; color:var(--muted); line-height:1.55; }
+  .foot strong { color:#fff; }
+  .cta { display:inline-block; margin-top:16px; background:#fff; color:#050505; font-weight:700; font-size:14.5px;
+    text-decoration:none; padding:13px 24px; border-radius:999px; }
 </style>
 <style id="lockup-css">/* One logo file: the M centred on the lowercase letters, reaching above and below (2 Oct 2026). */ img.lockup{height:32px!important;width:auto!important;border-radius:0!important;display:block;max-width:none!important} @media (max-width:600px){img.lockup{height:29px!important}} .brand img.lockup{height:21px!important} .hub-wordmark img.lockup{height:22px!important}</style>
 </head>
@@ -103,21 +102,22 @@
     return Math.floor((t - today) / 86400000);
   }
   function fmtDate(iso) {
-    if (!iso) return '—';
+    if (!iso) return '';
     const [y,m,d] = iso.split('-').map(Number);
-    if (!y) return '—';
+    if (!y) return '';
     return new Date(y,(m||1)-1,d||1).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
   }
   function dueChip(label, iso) {
     const days = daysBetween(iso);
     let st = 'none';
     if (days != null) st = days < 0 ? 'overdue' : days <= 30 ? 'soon' : 'ok';
-    const color = st==='ok'?'#15803D':st==='soon'?'#B45309':st==='overdue'?'#B91C1C':'#6B7280';
-    const bg = st==='ok'?'#DCFCE7':st==='soon'?'#FEF3C7':st==='overdue'?'#FEE2E2':'#EEEEF2';
     const text = st==='ok'?'In date':st==='soon'?('Due in '+days+'d'):st==='overdue'?'Overdue':'Not tracked';
     return `<div class="due"><span class="l">${esc(label)}</span><span class="r"><span class="d">${esc(fmtDate(iso))}</span>
-      <span class="chip" style="color:${color};background:${bg}">${esc(text)}</span></span></div>`;
+      ${chip(st, text)}</span></div>`;
   }
+  // Neutral chip, status as a dot (the app's convention).
+  const DOT = { ok:'var(--green)', soon:'var(--yellow)', overdue:'var(--red)', none:'var(--grey)' };
+  const chip = (st, text) => `<span class="chip"><span class="dot" style="background:${DOT[st]}"></span>${esc(text)}</span>`;
   const CRED_LABEL = { license:'License', association:'Membership', insurance:'Insurance', rigger:'Rigger ticket', medical:'Medical', other:'Other' };
   function credsHtml(creds) {
     if (!Array.isArray(creds) || creds.length === 0) return '';
@@ -125,13 +125,11 @@
       const days = daysBetween(c.expiry);
       let st = 'none';
       if (days != null) st = days < 0 ? 'overdue' : days <= 30 ? 'soon' : 'ok';
-      const color = st==='ok'?'#15803D':st==='soon'?'#B45309':st==='overdue'?'#B91C1C':'#6B7280';
-      const bg = st==='ok'?'#DCFCE7':st==='soon'?'#FEF3C7':st==='overdue'?'#FEE2E2':'#EEEEF2';
       const text = st==='overdue'?'Expired':st==='soon'?('Expires in '+days+'d'):st==='ok'?'Valid':'On file';
       const name = (c.title && c.title.trim()) ? c.title : (CRED_LABEL[c.type] || 'Credential');
       const meta = [c.issuer, c.number ? '#'+c.number : ''].filter(Boolean).join(' · ');
       return `<div class="due"><span class="l">${esc(name)}${meta?`<span class="sub">${esc(meta)}</span>`:''}</span><span class="r">
-        <span class="chip" style="color:${color};background:${bg}">${esc(text)}</span></span></div>`;
+        ${chip(st, text)}</span></div>`;
     }).join('');
     return `<div class="gear"><div class="credhead">CREDENTIALS</div>${rows}</div>`;
   }
@@ -145,8 +143,8 @@
       const left = [fmtDate(j.date), j.dz].filter(Boolean).join(' · ');
       const lic = j.signer_license && j.signer_license !== 'none' ? ' · ' + j.signer_license : '';
       const sign = j.signed_off_by
-        ? `<span class="chip" style="color:#15803D;background:#DCFCE7">✓ ${esc(j.signed_off_by)}${esc(lic)}</span>`
-        : `<span class="chip" style="color:#6B7280;background:#EEEEF2">Self-logged</span>`;
+        ? chip('ok', j.signed_off_by + lic)
+        : chip('none', 'Self-logged');
       return `<div class="due"><span class="l">${esc(left)}${disc?`<span class="sub">${esc(disc)}</span>`:''}</span><span class="r">${sign}</span></div>`;
     }).join('');
     return `<div class="gear"><div class="credhead">RECENT JUMPS</div>${rows}</div>`;
@@ -166,14 +164,16 @@
           </div>
         </div>
         <div class="state">
-          <div style="font-weight:700;color:var(--ink);font-size:15px">${msg}</div>
+          <div style="font-weight:700;color:#fff;font-size:15px">${msg}</div>
           ${hint ? `<div style="margin-top:8px;line-height:1.5">${hint}</div>` : ''}
         </div>
       </div>`;
   }
 
   function render(p) {
-    const since = daysBetween(p.last_jump);
+    // Days SINCE the last jump: daysBetween counts forward, so flip it (it read "-5d ago").
+    const ahead = daysBetween(p.last_jump);
+    const since = ahead == null ? null : Math.max(0, -ahead);
     const current = since != null && since <= (p.currency_window || 90);
     const license = p.license_type && p.license_type !== 'none' ? p.license_type + ' License' : '';
     const ratings = Array.isArray(p.ratings) ? p.ratings : [];
@@ -215,9 +215,9 @@
           ${memberLine ? `<div class="member">${esc(memberLine)}</div>` : ''}
           ${memberSub ? `<div class="member-sub">${esc(memberSub)}</div>` : ''}
         </div>
-        <div class="status" style="background:${since == null ? '#EEEEF2' : current ? '#DCFCE7' : '#FEE2E2'}">
-          <span class="s" style="color:${since == null ? '#6B7280' : current ? '#15803D' : '#B91C1C'}">${since == null ? 'NO DATA YET' : current ? '✓ CURRENT' : '⚠ NOT CURRENT'}</span>
-          <span class="ss">${p.last_jump ? ('Last jump '+since+'d ago · '+(p.currency_window||90)+'d window') : 'No jumps logged yet'}</span>
+        <div class="status">
+          <span class="s"><span class="dot" style="background:${since == null ? 'var(--grey)' : current ? 'var(--green)' : 'var(--red)'}"></span>${since == null ? 'NO DATA YET' : current ? 'CURRENT' : 'NOT CURRENT'}</span>
+          <span class="ss">${p.last_jump ? ('Last jump ' + (since === 0 ? 'today' : since + 'd ago') + ' · ' + (p.currency_window||90) + 'd window') : 'No jumps logged yet'}</span>
         </div>
         <div class="stats">
           <div class="stat"><div class="v">${Number(p.total_jumps||0).toLocaleString()}</div><div class="l">Total jumps</div><div class="statsub">self-logged</div></div>
@@ -237,8 +237,8 @@
              all entered by the holder. Only the signed-off count is witnessed.
              Bold the DISTINCTION rather than an absolute claim — this is the one
              page whose whole job is being believed. -->
-        <strong style="color:var(--ink)">Verified jumps were signed off in person by another licensed jumper — their name and licence are recorded on each, and a signed jump can't be edited afterwards.</strong><br/>
-        Everything else on this pass — licence, total jumps, reserve &amp; AAD dates — is entered by the holder. Live from Manifest, updates in real time.
+        <strong>Verified jumps were signed off in person by another licensed jumper. Their name and licence are recorded on each, and a signed jump can't be edited afterwards.</strong><br/>
+        Everything else on this pass (licence, total jumps, reserve and AAD dates) is entered by the holder. Live from Manifest, updates in real time.
         <br/><a class="cta" href="/get">Get Manifest</a>
       </div>`;
   }
