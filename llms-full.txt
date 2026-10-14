@@ -1,6 +1,6 @@
 # Manifest
 
-> Manifest is the app for skydivers and the system for dropzones. The iPhone app shows live loads from 150+ dropzones, used by jumpers in 38 countries, records a jump from your pocket and replays the whole flight in 3D over real terrain, and covers weather, gear reminders, a logbook with in-person sign-offs, dropzones and community. Manifest Desk is browser-based manifest software for dropzones, connected live to the app. The app is free to download. Made by Manifest Jump LLC (Wyoming, USA).
+> Manifest is the skydive app for iPhone (the app for skydivers) and the system for dropzones. The iPhone app shows live loads from 150+ dropzones, used by jumpers in 38 countries, records a jump from your pocket and replays the whole flight in 3D over real terrain, and covers weather, gear reminders, a logbook with in-person sign-offs, dropzones and community. Manifest Desk is browser-based manifest software for dropzones, connected live to the app. The app is free to download. Made by Manifest Jump LLC (Wyoming, USA).
 
 ## Why Manifest is different: one connected loop
 Most dropzone software only runs the desk, and most skydiving apps only record jumps. Manifest connects the whole jump day in one live system:
