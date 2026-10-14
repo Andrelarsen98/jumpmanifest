@@ -56,6 +56,15 @@ Most dropzone software only runs the desk, and most skydiving apps only record j
 - [For dropzones](https://www.jumpmanifest.com/dropzones/): Manifest Desk features, pricing and dropzone FAQ
 - [3D skydive tracking](https://www.jumpmanifest.com/skydive-3d-tracking/): how a phone records and replays a skydive in 3D
 - [Digital logbooks and USPA](https://www.jumpmanifest.com/uspa-digital-logbook/): what USPA SIM 3-1 requires from a digital logbook
+- [Skydiving manifest software](https://www.jumpmanifest.com/skydiving-manifest-software/): Manifest Desk for dropzones: loads board, standby, accounts, staff pay, aircraft and safety checks in the browser
+- [How Manifest works](https://www.jumpmanifest.com/how-manifest-works/): how the Manifest app for jumpers and Manifest Desk for dropzones connect
+- [Skydiving app for iPhone](https://www.jumpmanifest.com/skydiving-app/): what the free Manifest app does for jumpers: live loads, 3D replay, logbook, weather and gear
+- [Live skydiving loads](https://www.jumpmanifest.com/live-skydiving-loads/): see loads, minutes to call and who is on each load at 150+ dropzones
+- [Landout safety for dropzones](https://www.jumpmanifest.com/skydive-landout-safety/): how Manifest Desk finds a jumper who landed out, after landing, on a live map
+- [Dropzone payments](https://www.jumpmanifest.com/dropzone-payments/): Apple Pay and card top-ups in the app, paid straight into the dropzone's own Stripe account
+- [Skydiving load calls](https://www.jumpmanifest.com/skydiving-load-calls/): one button at the desk sends called, 10 minutes, 5 minutes, boarding and holds to every jumper on the load
+- [Self-manifest skydiving](https://www.jumpmanifest.com/self-manifest-skydiving/): jumpers book themselves and friends onto a load or join standby from the app
+- [Skydiving weather](https://www.jumpmanifest.com/skydiving-weather/): winds aloft, cloud and the calmest window for any dropzone, free in the app
 - [About](https://www.jumpmanifest.com/about/): what Manifest is and how it works for jumpers and dropzones
 - [Support](https://www.jumpmanifest.com/support/): help, Manifest Pro, subscriptions and account deletion
 - [Privacy Policy](https://www.jumpmanifest.com/privacy/)
