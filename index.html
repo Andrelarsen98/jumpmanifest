@@ -8,7 +8,7 @@
 <meta name="description" content="The skydive app for iPhone: live loads from 150+ dropzones, jumps replayed in 3D, logbook sign-offs, weather and gear. Free. Plus Manifest Desk for dropzones." />
 <meta property="og:site_name" content="Manifest" />
 <meta property="og:title" content="Manifest: the app for skydivers, the system for dropzones" />
-<meta property="og:description" content="Live loads from 220+ dropzones, every jump replayed in 3D over real terrain, and Manifest Desk for dropzones. Free on iPhone." />
+<meta property="og:description" content="Live loads from 150+ dropzones, every jump replayed in 3D over real terrain, and Manifest Desk for dropzones. Free on iPhone." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.jumpmanifest.com/" />
 <meta property="og:image" content="https://www.jumpmanifest.com/assets/og-image.png?v=10" />
@@ -17,7 +17,7 @@
 <meta property="og:image:alt" content="Manifest, the app for skydivers and the system for dropzones" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Manifest: the app for skydivers, the system for dropzones" />
-<meta name="twitter:description" content="Live loads from 220+ dropzones, every jump replayed in 3D over real terrain, and Manifest Desk for dropzones. Free on iPhone." />
+<meta name="twitter:description" content="Live loads from 150+ dropzones, every jump replayed in 3D over real terrain, and Manifest Desk for dropzones. Free on iPhone." />
 <meta name="twitter:image" content="https://www.jumpmanifest.com/assets/og-image.png?v=10" />
 <meta name="theme-color" content="#ffffff" />
 <!-- Apple Smart App Banner. iOS renders this itself, above the page, and the
@@ -48,7 +48,7 @@
       "name": "Is Manifest free?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Manifest is free to download, with no limit on how many jumps you log. Logging, getting jumps signed off, your Check-in Pass, live loads, gear service reminders, dropzones, events and community are all free, and so is recording a jump and watching it replayed in 3D. Manifest Pro adds your load on your Lock Screen with gear-up and final-call notifications and a live countdown in your Dynamic Island, a recorder that arms itself when your load takes off, cloud backup of your tracks, replay stats, your jump receipt, raw track exports for ParaLog or Google Earth, branded PDF exports of your logbook and gear, and your credentials on your Check-in Pass. At Manifest Desk dropzones the Lock Screen card is free. Pro is a yearly subscription or a one-time Lifetime purchase."
+        "text": "Manifest is free to download, with no limit on how many jumps you log. Logging, getting jumps signed off, your Check-in Pass, live loads, gear service reminders, dropzones, events and community are all free, and so is recording a jump and watching it replayed in 3D. Manifest Pro adds: your load on your Lock Screen with gear-up and final-call notifications and a live countdown in your Dynamic Island; a recorder that arms itself when your load takes off; cloud backup of your tracks; replay stats; your jump receipt; raw track exports for ParaLog or Google Earth; branded PDF exports of your logbook and gear; your credentials on your Check-in Pass. At Manifest Desk dropzones the Lock Screen card is free. Pro is a yearly subscription or a one-time Lifetime purchase, billed by Apple."
       }
     },
     {
@@ -230,7 +230,7 @@
   "datePublished": "2026-07-29",
   "image": "https://www.jumpmanifest.com/assets/app-icon.png?v=3",
   "featureList": [
-    "Live dropzone loads: which loads are turning at 220+ dropzones in 46 countries right now, who is manifested and minutes to call, read from the dropzone's own board",
+    "Live dropzone loads: which loads are turning at 150+ dropzones right now, who is manifested and minutes to call, read from the dropzone's own board",
     "3D jump replay: record a jump with your phone in your pocket and watch the whole flight replayed in 3D over real terrain, from the climb to the landing, using the phone's GPS and barometer (free)",
     "Your load on the Lock Screen and in the Dynamic Island with gear-up and final-call notifications (Manifest Pro, free at Manifest Desk dropzones)",
     "Jumps that log themselves: Manifest watches the dropzone's board and records every load you were manifested on, so your jumps are waiting to confirm at the end of the day",
@@ -363,18 +363,13 @@
      height so the native 135:40 ratio is never distorted. */
   .appbtn { margin: 24px auto 0; display: inline-block; transition: transform .15s ease, filter .15s ease; }
   .appbtn img { height: 54px; width: auto; display: block; }
-  /* Store badges side by side. Google Play is the official badge, greyed,
-     with an "In the making" tag: Android is being built (2 Oct 2026). */
+  /* Store badge row. The greyed Google Play badge was removed (16 Oct 2026,
+     design review F03); Android visitors get the .hero-note line instead. */
   .storebtns { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin: 24px auto 0; }
   .storebtns .appbtn { margin: 0; }
-  .playbtn { position: relative; display: inline-block; cursor: default; }
-  .playbtn img { height: 54px; width: auto; display: block; border-radius: 9px; opacity: .45; filter: grayscale(.4); }
-  .playbtn em { position: absolute; top: -9px; right: -8px; font-style: normal; font-family: "Manrope", sans-serif; font-size: 10.5px; font-weight: 800;
-                letter-spacing: .04em; text-transform: uppercase; color: #fff; background: #111; border-radius: 99px; padding: 4px 8px; white-space: nowrap; }
   @media (max-width: 600px) {
     .storebtns { flex-wrap: nowrap; gap: 10px; }
-    .storebtns .appbtn img, .playbtn img { height: 46px; }
-    .playbtn em { top: -10px; right: -6px; font-size: 9.5px; padding: 3px 7px; }
+    .storebtns .appbtn img { height: 46px; }
   }
   .appbtn:hover { transform: translateY(-1px); filter: brightness(1.06); }
   .proof { margin: 16px auto 0; font-size: 15px; font-weight: 600; letter-spacing: 0; color: var(--muted); }
@@ -597,9 +592,9 @@
   /* ---------- everything in the app ---------- */
   .feats { margin: 52px auto 0; display: grid; grid-template-columns: repeat(3, 1fr);
     gap: 34px 30px; max-width: 940px; text-align: left; }
-  .feat h4 { font-weight: 800; font-size: 17px; letter-spacing: -.02em; color: var(--ink);
+  .feat h3 { font-weight: 800; font-size: 17px; letter-spacing: -.02em; color: var(--ink);
     padding-left: 15px; position: relative; }
-  .feat h4::before { content: ""; position: absolute; left: 0; top: 7px;
+  .feat h3::before { content: ""; position: absolute; left: 0; top: 7px;
     width: 7px; height: 7px; border-radius: 50%; background: var(--violet); }
   .feat p { margin-top: 7px; padding-left: 15px; color: var(--muted);
     font-weight: 600; font-size: 14.5px; line-height: 1.5; }
@@ -625,7 +620,7 @@
   .c-left  { left: 0; }
   .c-right { right: 0; }
   /* the footer's own margin-top was the gap under the phone — remove it here */
-  .reveal + footer { margin-top: 0; }
+  main#main + footer { margin-top: 0; }
   @media (prefers-reduced-motion: reduce) {
     .reveal { height: auto; padding: 40px 0; }
     .reveal-phone { position: static; transform: translateX(0); margin: 0 auto; }
@@ -994,6 +989,16 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; }
 #desk .btn .bi svg { width: 8px; height: 14px; }
 #desk .btn.ghost { background: #F6F6F6; color: #040815; padding: 17.6px 22px; }
+/* Demo first (16 Oct 2026, design review F05): white pill, black text, 1.5px black
+   outline; "See Manifest Desk" is the underlined secondary link beside it. */
+#desk .desk-ctas { align-items: center; column-gap: 28px; row-gap: 16px; }
+#desk .btn.demo { height: 64px; padding: 0 30px; gap: 12px; background: #fff; color: #050505; border: 1.5px solid #050505; }
+#desk .btn.demo svg { width: 16px; height: 16px; flex: 0 0 auto; }
+#desk .btn.demo:hover { background: #F6F6F8; }
+#desk .desk-link { display: inline-block; padding: 10px 0; font-family: "Manrope", sans-serif; font-size: 20px; line-height: 30px; font-weight: 600; color: #050505;
+  text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1.5px; }
+#desk .desk-link:hover { color: var(--violet); }
+#desk .btn:focus-visible, #desk .desk-link:focus-visible { outline: 2px solid #6D42F5; outline-offset: 3px; }
 /* The Desk window with the jumper's phone in front (as .seo-art.desk). */
 #desk .desk-art { position: relative; margin: 0; min-width: 0; padding: 0 0 40px; }
 #desk .desk-art .win { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid #E4E4E7; box-shadow: 0 24px 60px -24px rgba(15,23,42,.28), 0 2px 8px rgba(15,23,42,.06); }
@@ -1024,6 +1029,9 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   #desk .btn.primary { height: 56px; padding: 6px 6px 6px 22px; }
   #desk .btn .bi { width: 44px; height: 44px; }
   #desk .btn.ghost { padding: 13px 20px; }
+  #desk .btn.demo { height: 56px; padding: 0 26px; }
+  #desk .desk-ctas { flex-direction: column; }
+  #desk .desk-link { font-size: 17px; }
   #desk .desk-pairs { margin-top: 40px; }
   #desk .desk-art .win-phone { width: 30%; right: 0; }
   #desk .dp h3 { font-size: 22px; line-height: 30px; }
@@ -1086,13 +1094,14 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
                   column-gap: 40px; align-content: center; text-align: left; }
     /* Text block centred against the phones: empty 1fr rows above and below
        soak up the extra height, so the text never sticks to the top. */
-    .hero .wrap { grid-template-rows: 1fr auto auto auto auto auto 1fr; }
+    .hero .wrap { grid-template-rows: 1fr auto auto auto auto auto auto 1fr; }
     .hero .wrap > :not(.fan) { grid-column: 1; justify-self: start; }
     .hero .wrap > h1 { grid-row: 2; } .hero .wrap > .sub { grid-row: 3; }
     .hero .wrap > .appbtn, .hero .wrap > .storebtns { grid-row: 4; }
     /* proof under the store badges (André, 2 Oct 2026) */
-    .hero .wrap > .hero-dz { grid-row: 5; margin: 18px 0 0; text-align: left; }
-    .hero .wrap > .toppills { grid-row: 6; margin: 26px 0 0; justify-content: flex-start; }
+    .hero .wrap > .hero-note { grid-row: 5; margin: 14px 0 0; text-align: left; }
+    .hero .wrap > .hero-dz { grid-row: 6; margin: 10px 0 0; text-align: left; }
+    .hero .wrap > .toppills { grid-row: 7; margin: 20px 0 0; justify-content: flex-start; }
     .hero .storebtns { margin: 32px 0 0; justify-content: flex-start; }
     .hero .storebtns .appbtn { margin: 0; }
     .hero .wrap > .fan { grid-column: 2; grid-row: 1 / -1; align-self: center; margin: 0; width: 100%; }
@@ -1196,8 +1205,12 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   .hero h1 .l1 { color: var(--ink); }
   .toppill { display: inline-flex; align-items: center; gap: 9px; margin: 0 auto 22px; padding: 4px 0; border-radius: 999px;
              background: transparent; color: #18181B; font-family: "Manrope", sans-serif; font-size: 15px; line-height: 20px; font-weight: 500; }
-  .hero-dz { margin: 16px auto 0; text-align: center; font-size: 15.5px; }
-  .hero-dz a { color: var(--ink); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+  /* Free + Android line under the badge (F04, F03) and the dropzone link (F05). */
+  .hero-note { margin: 12px auto 0; text-align: center; font-size: 15px; line-height: 22px; font-weight: 500; color: #050505; }
+  .hero-note a { display: inline-block; padding: 11px 0; margin: -11px 0; color: #050505; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+  .hero-note a:hover { color: var(--violet); }
+  .hero-dz { margin: 8px auto 0; text-align: center; font-size: 15px; }
+  .hero-dz a { display: inline-block; padding: 11px 0; color: #050505; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
   .hero-dz a:hover { color: var(--violet); }
   .toppills { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 8px; margin: 24px auto 0; }
   .toppills .toppill { margin: 0; }
@@ -1237,7 +1250,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 
   /* ---------- the big footer (1 Oct 2026) ---------- */
   footer.site { margin-top: clamp(80px,11vw,120px); background: #F6F6F8; border-top: 1px solid rgba(15,11,28,.07); padding: 72px 0 40px; }
-  .reveal + footer.site { margin-top: 0; }
+  main#main + footer.site { margin-top: 0; }
   .ft { max-width: calc(1280px + 10vw); margin: 0 auto; padding: 0 5vw; display: grid; grid-template-columns: 1.5fr repeat(4, 1fr); gap: 40px; }
   .ft-brand .wordmark { display: inline-flex; align-items: center; gap: 10px; }
   .ft-brand .wordmark img.mk { width: 34px; height: auto; }
@@ -1297,8 +1310,8 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   .flag p.trustline { font-size: 16px; line-height: 24px; font-weight: 600; }
 
   /* Card titles 24 / 33.6 weight 500; card text 16 / 20.8 weight 500 grey. */
-  .tcard h3, .feat h4 { font-family: "General Sans", "Manrope", sans-serif; font-size: 24px; line-height: 33.6px; font-weight: 500; letter-spacing: normal; color: var(--t); }
-  .feat h4::before { top: 13px; }
+  .tcard h3, .feat h3 { font-family: "General Sans", "Manrope", sans-serif; font-size: 24px; line-height: 33.6px; font-weight: 500; letter-spacing: normal; color: var(--t); }
+  .feat h3::before { top: 13px; }
   .tcard p, .feat p { margin-top: 8px; font-size: 16px; line-height: 20.8px; font-weight: 500; letter-spacing: -.5px; color: var(--g); }
 
   /* FAQ rows, as /dropzones/. */
@@ -1312,8 +1325,8 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   section.block { padding-top: var(--gap); }
   .vs, .flag, #dropzones, .final { margin-top: var(--gap); }
   footer.site { margin-top: var(--gap); }
-  .reveal + footer.site { margin-top: 0; }
-  @media (max-width: 980px) { .reveal + footer.site { margin-top: var(--gap); } } /* the reveal is hidden there */
+  main#main + footer.site { margin-top: 0; }
+  @media (max-width: 980px) { main#main + footer.site { margin-top: var(--gap); } } /* the reveal is hidden there */
   /* The carousel phone overhangs its stage (~69px at 1440, ~35px at 375):
      the margin clears the PHONE, 56px (40 on phones) under the sub line, and
      the section's bottom padding covers the overhang below. */
@@ -1326,13 +1339,115 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     :root body h2, :root body .statement { font-size: 34px; line-height: 36px; }
     .faq-h2, #faq .faq-h2 { font-size: 28px; line-height: 36px; }
     .hero .sub, .statement-sub, .flag p, .flagsub { font-size: 18px; line-height: 28px; }
-    .tcard h3, .feat h4 { font-size: 22px; line-height: 30px; }
-    .feat h4::before { top: 11.5px; }
+    .tcard h3, .feat h3 { font-size: 22px; line-height: 30px; }
+    .feat h3::before { top: 11.5px; }
     .trio, .feats, .vs-cols, .faqs { margin-top: 40px; }
     .flagvid { margin-top: 40px; }
     .faq summary { font-size: 16px; line-height: 23px; }
     .faq p { font-size: 15.5px; line-height: 24px; }
   }
+
+  /* ---------- DESIGN REVIEW FIXES (16 Oct 2026) ---------- */
+  .sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  /* F08: card copy on the #f5f5f6 fills was #71717B (4.43:1); #52525B is about 7.1:1. */
+  .tcard p, .feat p, #desk .dp p { color: #52525B; }
+  .final .note, .final p.note { color: #18181B; font-size: 16px; line-height: 24px; font-weight: 500; margin-top: 18px; }
+  /* A14: the two trio stills are transparent PNG cut-outs; the white fill showed round their corners. */
+  img.tmedia { background: transparent; }
+  /* A13: one line icon per feature tile, the /dropzones/ icon style (24 grid, 2px stroke). */
+  .feat-ic { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%;
+    background: #fff; color: var(--t); margin-bottom: 16px; box-shadow: 0 0 0 1px rgba(5,5,5,.06); }
+  .feat-ic svg { width: 22px; height: 22px; }
+  .feat h3 { padding-left: 0; } .feat h3::before { display: none; } .feat p { padding-left: 0; }
+  @media (max-width: 899px) {
+    .feat { display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 16px; align-items: start; }
+    .feat-ic { grid-row: 1 / span 2; margin: 0; background: #f5f5f6; box-shadow: none; }
+    .feat h3 { grid-column: 2; } .feat p { grid-column: 2; }
+  }
+  /* A01: the eyebrow sits inside its h2, so the heading names the feature. */
+  :root body h2.hk, :root body .flag h2.hk { margin-top: 0; }
+  h2.hk .kicker { display: block; margin: 0 0 20px; font-family: "Manrope", sans-serif; font-size: 13px; line-height: 24px; font-weight: 700;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--violet); }
+  @media (min-width: 900px) { .flag h2.hk .kicker { text-align: left; } }
+  /* A01: FAQ questions are h3s inside their summary, looking exactly as before. */
+  .faq-q { font: inherit; letter-spacing: inherit; color: inherit; margin: 0; }
+  /* F09: the Pro list in the cost answer. */
+  .faq p.faq-lh { padding-bottom: 6px; color: var(--t); font-weight: 600; }
+  .faq-list { margin: 0; padding: 0 14px 16px 36px; color: #52525B; font-size: 17px; line-height: 27px; max-width: 60ch; }
+  .faq-list li { margin: 2px 0; }
+  @media (max-width: 600px) { .faq-list { font-size: 15.5px; line-height: 24px; padding: 0 10px 14px 30px; } }
+  /* A15: a normal word space between "Get" and the wordmark. */
+  .wm-inline { margin-left: .25em; }
+  /* A17: on the smallest phones the first proof chip wraps onto two lines instead of touching the edges. */
+  @media (max-width: 359px) {
+    .toppills .toppill:first-child { flex-wrap: wrap; justify-content: center; row-gap: 2px; padding-left: 12px; padding-right: 12px; }
+    .toppills .toppill:first-child i { display: none; }
+  }
+  /* F06: an App Store badge at the end of the 3D replay section. */
+  .replay-badge { margin-top: 32px; }
+  @media (min-width: 900px) { .flag .replay-badge { margin: 28px 0 0; } }
+  /* F18: the globe copy says what the dots are and where live loads work. */
+  #globe .statement-sub + .statement-sub { margin-top: 12px; }
+  #globe .dzg-more a { color: #050505; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+  #globe .dzg-more a:hover { color: var(--violet); }
+  #globe .statement-sub { color: #52525B; }
+  /* A08: privacy facts next to the final download. */
+  .privacy-row { list-style: none; margin: 28px auto 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 24px;
+    font-family: "Manrope", sans-serif; font-size: 15px; line-height: 22px; font-weight: 500; color: #18181B; }
+  .privacy-row li { display: inline-flex; align-items: center; gap: 8px; }
+  .privacy-row svg { width: 16px; height: 16px; color: #050505; flex: 0 0 auto; }
+  .privacy-row a { color: #050505; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; display: inline-block; padding: 11px 0; margin: -11px 0; }
+  @media (max-width: 600px) { .hero .storebtns { margin-top: 20px; } }
+  @media (max-width: 599px) { .privacy-row { flex-direction: column; align-items: center; gap: 10px; } }
+  /* A09: QR handoff beside (never on) the badge, 1024px and wider only. */
+  .get-row { display: flex; align-items: center; justify-content: center; gap: 28px; margin-top: 24px; }
+  .get-row .appbtn { margin: 0; }
+  .get-qr { display: none; margin: 0; align-items: center; gap: 14px; text-align: left; }
+  .get-qr img { width: 120px; height: 120px; border-radius: 10px; box-shadow: 0 0 0 1px rgba(5,5,5,.1); }
+  .get-qr figcaption { max-width: 190px; font-family: "Manrope", sans-serif; font-size: 14px; line-height: 20px; font-weight: 500; color: #52525B; }
+  @media (min-width: 1024px) { .get-qr { display: inline-flex; } }
+  .final-dz { margin: 18px 0 0; font-size: 15px; }
+  .final-dz a { display: inline-block; padding: 11px 0; color: #050505; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+  .final-dz a:hover { color: var(--violet); }
+  /* A03: the cloud reveal was a 100vh band, mostly blank; now at most 620px. */
+  @media (min-width: 981px) { .reveal { height: min(100vh, 620px); } }
+  /* F21: on phones the centred phone is smaller and the edge fade narrower, so more tiles read. */
+  @media (max-width: 599px) {
+    .carousel-phone { width: min(51vw, 200px); }
+    .carousel-rows { -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
+      mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%); }
+  }
+  /* F15: a pause/play button on every looping video and one for the moving cards.
+     The videos' own attributes and loading are unchanged; the wrapper only
+     carries the button (no z-index, so the multiply blend still sees the page). */
+  .vbox { position: relative; }
+  .flag .vbox { width: min(340px, 68vw); margin: 30px auto 0; }
+  .flag .vbox > .flagvid { width: 100%; margin: 0; }
+  @media (max-width: 600px) { .flag .vbox { margin-top: 40px; } }
+  @media (min-width: 900px) {
+    .flag .vbox { grid-column: 2; grid-row: 1 / -1; align-self: center; justify-self: center; margin: 0; width: min(400px, 100%); }
+    #replay .vbox, #weather .vbox { grid-column: 1; }
+  }
+  .tcard.mid > .tvbox { margin-top: 0; }
+  .tvbox > .tmedia { width: 100%; margin: 0; }
+  @media (min-width: 981px) { .tvbox { width: fit-content; max-width: 100%; margin: 0 auto; } .tvbox > .tmedia { width: auto; } }
+  @media (max-width: 980px) { .tcard.mid > .tvbox { order: 2; width: 72%; margin: 0 auto; } }
+  .vpause, .mq-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer;
+    background: #fff; color: #050505; border: 1.5px solid #050505; border-radius: 999px;
+    box-shadow: 0 6px 16px rgba(5,5,5,.14); -webkit-tap-highlight-color: transparent; }
+  .vpause { position: absolute; right: -14px; bottom: -14px; z-index: 2; width: 44px; height: 44px; padding: 0; }
+  /* the Lock Screen clip has more white round the phone: centre the button on the phone's corner */
+  #live .vpause { right: calc(15.5% - 22px); bottom: calc(11.5% - 22px); }
+  .vpause svg, .mq-btn svg { width: 16px; height: 16px; fill: currentColor; }
+  .vpause .i-play, .mq-btn .i-play { display: none; }
+  .vpause[aria-pressed="true"] .i-play, .mq-btn[aria-pressed="true"] .i-play { display: block; }
+  .vpause[aria-pressed="true"] .i-pause, .mq-btn[aria-pressed="true"] .i-pause { display: none; }
+  .vpause:hover, .mq-btn:hover { background: #F6F6F8; }
+  .vpause:focus-visible, .mq-btn:focus-visible { outline: 2px solid #6D42F5; outline-offset: 3px; }
+  .mq-ctl { display: flex; justify-content: flex-end; margin-top: clamp(48px, 6vw, 84px); }
+  .mq-btn { height: 44px; padding: 0 18px 0 16px; font: 600 15px/1 "Manrope", sans-serif; box-shadow: none; }
+  .carousel-rows.paused .ctrack { animation-play-state: paused; }
+  @media (prefers-reduced-motion: reduce) { .mq-ctl { display: none; } }
 </style>
 
 <!-- SITE HEADER (9 Oct 2026): one header on every page. Mega dropdowns on
@@ -1365,37 +1480,42 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   </div>
 </div>
 
+<main id="main">
 <header class="hero" id="top">
   <div class="wrap">
     <h1 class="li" style="--i:0"><span class="l1">The app for skydivers.</span><br /><span class="l2">The system for dropzones.</span></h1>
-    <p class="li sub" style="--i:1">Jumpers log and replay every jump. Dropzones run loads, payments and manifest, <b class="sub-em">all in one real-time system.</b></p>
+    <p class="li sub" style="--i:1">Manifest is the iPhone app for <b class="sub-em">live dropzone loads and 3D jump replay.</b> Dropzones run loads, payments and manifest on Manifest Desk.</p>
 
     <div class="li storebtns" style="--i:2">
       <a class="appbtn" href="https://apps.apple.com/app/id6778510429" aria-label="Download Manifest on the App Store">
         <img src="assets/appstore-badge.svg?v=1" alt="Download on the App Store" />
       </a>
-      <span class="playbtn" aria-label="Google Play: Android app in the making">
-        <img src="/assets/opt/googleplay-badge.5eeccbe1.webp" alt="Get it on Google Play" />
-        <em>In the making</em>
-      </span>
     </div>
-    <p class="li hero-dz" style="--i:3"><a href="/dropzones/">Run a dropzone? Explore Manifest Desk &rarr;</a></p>
+    <p class="li hero-note" style="--i:2">Free to download on iPhone.<br />Android is on the way. <a data-mail href="mailto:andre@manifestjump.com?subject=Android%3A%20tell%20me%20when%20it%20is%20out">Tell me the day it is out.</a></p>
+    <p class="li hero-dz" style="--i:3"><a href="/dropzones/">Run a dropzone? See Manifest Desk</a></p>
     <div class="li toppills" style="--i:3">
       <span class="toppill"><span>Jumpers at <b>220+</b> dropzones</span><i></i><span>Live loads at <b>150+</b></span></span>
       <span class="toppill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><span><b>46</b> countries</span></span>
     </div>
     <!-- PROOF ROW (1 Oct 2026), Softriver-style, every item true: 158 home
          dropzones in 46 countries on 15 Oct (rounded down so it stays true),
-         the USPA listing at uspa.org/logbookapps, and who built it. -->
+         the USPA listing at uspa.org/logbookapps, and who built it.
+         PROOF NUMBERS, one rule for the whole page (16 Oct 2026). Change them together:
+           "Jumpers at 220+ dropzones" / "46 countries"  where Manifest jumpers come from
+           "Live loads at 150+ dropzones"                  the only number ever next to "live"
+         TODO owner: confirm the jumper count (220+ dropzones, 46 countries), the live-loads count (150+) and a date to show. The PROOF ROW comment says 158 home dropzones on 15 Oct, which does not match 220+. -->
 
     <div class="fan">
       <div class="phone back"><img src="/assets/opt/mock-3d.5f7a460f.webp" alt="A jump replayed in 3D over real terrain" /></div>
-      <div class="phone front"><img src="/assets/opt/mock-home3.a2e7757f.webp" alt="Manifest home" /></div>
+      <div class="phone front"><img src="/assets/opt/mock-home3.a2e7757f.webp" alt="Manifest app home screen with the next load and minutes to call" /></div>
     </div>
   </div>
 </header>
 
 <section class="block" id="why">
+  <!-- TODO owner (16 Oct 2026, design review A15/F14): keep or drop the handshake emoji in this statement.
+       TODO owner (F22): the eight painterly card images (art-1 to art-8) are decorative; supply real jump-day photos (own or licensed, people consenting) if you want them replaced. Each photo then needs a short alt text.
+       Tiles reworded 16 Oct: "Checked in in 4 seconds" (unsourced) is now "Checked in with one scan"; "Jump #1,000" is now "Milestone jump". -->
   <div class="wrap">
     <p class="statement">No more trust-me-bro logs 🤝</p>
     <p class="statement-sub">Every jump, backed by real data</p>
@@ -1425,7 +1545,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
             <figure class="ccard"><img src="/assets/opt/art-4.da6c6815.webp" alt="" loading="lazy" decoding="async" width="640" height="640"></figure>
             <div class="ccard ctext">
               <span class="cic cic-violet"><svg viewBox="0 0 24 24"><path d="M20.5 10.5c0 5.2-8.5 10-8.5 10s-8.5-4.8-8.5-10a8.5 8.5 0 0 1 17 0z"/><circle cx="12" cy="10.2" r="2.8"/></svg></span>
-              <p><b>220+ dropzones</b><span>live right now</span></p>
+              <p><b>Live loads</b><span>at 150+ dropzones</span></p>
             </div>
           </div>
         </div>
@@ -1446,12 +1566,12 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
             <figure class="ccard"><img src="/assets/opt/art-6.8d2a90b9.webp" alt="" loading="lazy" decoding="async" width="640" height="640"></figure>
             <div class="ccard ctext">
               <span class="cic cic-violet"><svg viewBox="0 0 24 24"><path d="M8.5 12.5l2.5 2.5 5-5.5"/><circle cx="12" cy="12" r="8.5"/></svg></span>
-              <p><b>Jump #1,000</b><span>signed &amp; sealed</span></p>
+              <p><b>Milestone jump</b><span>signed &amp; sealed</span></p>
             </div>
             <figure class="ccard"><img src="/assets/opt/art-7.d31def20.webp" alt="" loading="lazy" decoding="async" width="640" height="640"></figure>
             <div class="ccard ctext">
               <span class="cic cic-violet"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="6" height="6" rx="1.2"/><rect x="14.5" y="3.5" width="6" height="6" rx="1.2"/><rect x="3.5" y="14.5" width="6" height="6" rx="1.2"/><path d="M14.5 14.5h3v3M20.5 14.5v6h-6"/></svg></span>
-              <p><b>Checked in</b><span>in 4 seconds</span></p>
+              <p><b>Checked in</b><span>with one scan</span></p>
             </div>
             <figure class="ccard"><img src="/assets/opt/art-8.af453a0f.webp" alt="" loading="lazy" decoding="async" width="640" height="640"></figure>
           </div>
@@ -1461,6 +1581,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 
     <img class="carousel-phone" src="/assets/opt/phone-liveloads.3fc578b1.webp" alt="Manifest showing dropzones with live loads right now - Calgary, Los Angeles, Z-Hills, Perris and more" width="821" height="1705" decoding="async">
   </div>
+  <div class="wrap mq-ctl"><button class="mq-btn" type="button" aria-pressed="false"><svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="3.5" y="2.5" width="3" height="11" rx="1"/><rect x="9.5" y="2.5" width="3" height="11" rx="1"/></svg><svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 2.8v10.4a.8.8 0 0 0 1.2.7l8.3-5.2a.8.8 0 0 0 0-1.4L5.7 2.1a.8.8 0 0 0-1.2.7z"/></svg><span>Pause animations</span></button></div>
 </section>
 
 <!-- The usual way vs Manifest (1 Oct 2026), laid out like Softriver's
@@ -1468,7 +1589,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 <section class="vs">
   <div class="wrap">
     <p class="vs-proof">46 countries</p>
-    <h2>Jumpers at 220+ dropzones log their jumps with Manifest.</h2>
+    <h2>Your load, live on your phone.</h2>
     <div class="vs-cols">
       <div class="vs-col"><h3>The usual way</h3><ul><li><span class="vs-ic no"><svg viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M1.27 9.27l8-8M1.27 1.27l8 8" stroke="#171717" stroke-opacity=".5" stroke-width="1.8" stroke-linecap="square"/></svg></span>Refresh the manifest board to find your load</li><li><span class="vs-ic no"><svg viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M1.27 9.27l8-8M1.27 1.27l8 8" stroke="#171717" stroke-opacity=".5" stroke-width="1.8" stroke-linecap="square"/></svg></span>Jumps you typed in yourself</li><li><span class="vs-ic no"><svg viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M1.27 9.27l8-8M1.27 1.27l8 8" stroke="#171717" stroke-opacity=".5" stroke-width="1.8" stroke-linecap="square"/></svg></span>Describe the jump afterwards</li></ul></div>
       <div class="vs-col"><h3>Manifest</h3><ul><li><span class="vs-ic yes"><img src="/assets/manifest-mark-white.svg" alt="" /></span>Your load on your Lock Screen, live</li><li><span class="vs-ic yes"><img src="/assets/manifest-mark-white.svg" alt="" /></span>Jumps signed off by the jumper who was there</li><li><span class="vs-ic yes"><img src="/assets/manifest-mark-white.svg" alt="" /></span>Watch every jump back in 3D</li></ul></div>
@@ -1491,12 +1612,12 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       </div>
 
       <div class="tcard mid">
-        <video class="tmedia" src="/assets/opt/liveloads.91e6219d.mp4" poster="/assets/opt/liveloads-poster.344e7011.webp"
+        <div class="vbox tvbox"><video class="tmedia" src="/assets/opt/liveloads.91e6219d.mp4" poster="/assets/opt/liveloads-poster.344e7011.webp"
                autoplay muted loop playsinline preload="metadata"
-               aria-label="Live loads at Skydive Elsinore, with jumper names hidden"></video>
+               aria-label="Live loads at Skydive Elsinore, with jumper names hidden"></video><button class="vpause" type="button" aria-label="Pause video" aria-pressed="false"><svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="3.5" y="2.5" width="3" height="11" rx="1"/><rect x="9.5" y="2.5" width="3" height="11" rx="1"/></svg><svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 2.8v10.4a.8.8 0 0 0 1.2.7l8.3-5.2a.8.8 0 0 0 0-1.4L5.7 2.1a.8.8 0 0 0-1.2.7z"/></svg></button></div>
         <div>
           <h3>Every load, live</h3>
-          <p>What's on call, who's on it and how long you've got, straight off the dropzone's own manifest, at 220+ dropzones worldwide.</p>
+          <p>What's on call, who's on it and how long you've got, straight off the dropzone's own manifest, at 150+ dropzones.</p>
         </div>
       </div>
 
@@ -1517,15 +1638,16 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     <h2 style="margin-top:0"><span class="l1">Your load.</span><br />Live on your Lock Screen.</h2>
     <p>Notifications the second the plane's called, gear-up and final call, plus a live countdown in your Dynamic Island. So it never leaves without you.</p>
     </div>
-    <video class="flagvid" id="flagVid" autoplay loop muted playsinline preload="metadata"
+    <div class="vbox"><video class="flagvid" id="flagVid" autoplay loop muted playsinline preload="metadata"
            aria-label="Live loads on your Lock Screen">
       <source src="/assets/opt/lockscreen.704735fc.mp4" type="video/mp4" />
-    </video>
+    </video><button class="vpause" type="button" aria-label="Pause video" aria-pressed="false"><svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="3.5" y="2.5" width="3" height="11" rx="1"/><rect x="9.5" y="2.5" width="3" height="11" rx="1"/></svg><svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 2.8v10.4a.8.8 0 0 0 1.2.7l8.3-5.2a.8.8 0 0 0 0-1.4L5.7 2.1a.8.8 0 0 0-1.2.7z"/></svg></button></div>
     <div class="ftext fb">
     <p class="flagsub">No shouting across the hangar. No missed calls. No sprinting for the plane.
       <b>Just your load on your Lock Screen, the second it's called.</b>
     </p>
-    <p class="trustline">Live at 220+ dropzones. With Manifest Pro, or free at Manifest Desk dropzones.</p>
+    <!-- TODO owner: "free at Manifest Desk dropzones" calls the Lock Screen card free there. Confirm this is live and still intended (the copy rule says Lock Screen live loads are Pro). -->
+    <p class="trustline">Live at 150+ dropzones. With Manifest Pro, or free at Manifest Desk dropzones.</p>
     </div>
   </div>
 </section>
@@ -1537,15 +1659,18 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     <h2><span class="l1">Your jump.</span><br />Flown back in 3D.</h2>
     <p>Put your phone in your pocket and jump. Manifest measures the whole flight and replays it over the real terrain you fell through, so you can finally see the jump instead of describing it.</p>
     </div>
-    <video class="flagvid" loop muted playsinline preload="metadata"
+    <div class="vbox"><video class="flagvid" loop muted playsinline preload="metadata"
            aria-label="A skydive replayed in 3D over real terrain, from exit to landing">
       <source src="/assets/opt/jumptrack3.210f3465.mp4" type="video/mp4" />
-    </video>
+    </video><button class="vpause" type="button" aria-label="Pause video" aria-pressed="false"><svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="3.5" y="2.5" width="3" height="11" rx="1"/><rect x="9.5" y="2.5" width="3" height="11" rx="1"/></svg><svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 2.8v10.4a.8.8 0 0 0 1.2.7l8.3-5.2a.8.8 0 0 0 0-1.4L5.7 2.1a.8.8 0 0 0-1.2.7z"/></svg></button></div>
     <div class="ftext fb">
     <p class="flagsub">Exit, freefall, the moment you pulled, the canopy ride, the spot you landed.
-      <b>Measured by your own phone, down to the altitude.</b>
+      <b>Measured by your phone's GPS and barometer, to within metres.</b>
     </p>
     <p class="trustline">Free to record and replay</p>
+    <a class="appbtn replay-badge" href="https://apps.apple.com/app/id6778510429" aria-label="Download Manifest on the App Store">
+      <img src="assets/appstore-badge.svg?v=1" alt="Download on the App Store" />
+    </a>
     </div>
   </div>
 </section>
@@ -1553,14 +1678,13 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 <section class="flag" id="dropzones">
   <div class="wrap">
     <div class="ftext fa">
-    <div class="kicker">Dropzones</div>
-    <h2><span class="l1">Every dropzone.</span><br />One map.</h2>
+    <h2 class="hk"><span class="kicker">Dropzone map<span class="sr-only">: </span></span><span class="l1">Every dropzone.</span><br />One map.</h2>
     <p>Find dropzones near you or anywhere you're heading next, with conditions, loads and the details that actually matter.</p>
     </div>
-    <video class="flagvid" loop muted playsinline preload="metadata"
+    <div class="vbox"><video class="flagvid" loop muted playsinline preload="metadata"
            aria-label="Dropzone finder map">
       <source src="/assets/opt/dropzones.23e0a3fc.mp4" type="video/mp4" />
-    </video>
+    </video><button class="vpause" type="button" aria-label="Pause video" aria-pressed="false"><svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="3.5" y="2.5" width="3" height="11" rx="1"/><rect x="9.5" y="2.5" width="3" height="11" rx="1"/></svg><svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 2.8v10.4a.8.8 0 0 0 1.2.7l8.3-5.2a.8.8 0 0 0 0-1.4L5.7 2.1a.8.8 0 0 0-1.2.7z"/></svg></button></div>
     <div class="ftext fb"></div>
   </div>
 </section>
@@ -1568,14 +1692,13 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 <section class="flag" id="weather">
   <div class="wrap">
     <div class="ftext fa">
-    <div class="kicker">Weather</div>
-    <h2><span class="l1">Not the forecast.</span><br />The one you jump in.</h2>
+    <h2 class="hk"><span class="kicker">Jump weather<span class="sr-only">: </span></span><span class="l1">Not the forecast.</span><br />The one you jump in.</h2>
     <p>Wind at every stage of the jump: up where you get out, under canopy and on the ground, with how far it turns and how much it drops in between. Cloud by layer in feet, so you know what is between you and the ground.</p>
     </div>
-    <video class="flagvid" loop muted playsinline preload="metadata"
+    <div class="vbox"><video class="flagvid" loop muted playsinline preload="metadata"
            aria-label="Jump weather for a dropzone: wind at exit, under canopy and on the ground, with cloud by layer">
       <source src="/assets/opt/weather.6052ec54.mp4" type="video/mp4" />
-    </video>
+    </video><button class="vpause" type="button" aria-label="Pause video" aria-pressed="false"><svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="3.5" y="2.5" width="3" height="11" rx="1"/><rect x="9.5" y="2.5" width="3" height="11" rx="1"/></svg><svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 2.8v10.4a.8.8 0 0 0 1.2.7l8.3-5.2a.8.8 0 0 0 0-1.4L5.7 2.1a.8.8 0 0 0-1.2.7z"/></svg></button></div>
     <div class="ftext fb">
     <p class="flagsub">A phone weather app tells you it is 21&deg; and partly cloudy.
       <b>This one tells you the calmest window to jump in.</b>
@@ -1586,20 +1709,19 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 
 <section class="block" id="everything">
   <div class="wrap">
-    <div class="kicker">Everything in the app</div>
-    <h2>Built for how you actually jump.</h2>
+    <h2 class="hk"><span class="kicker">Everything in the app<span class="sr-only">: </span></span>Built for how you actually jump.</h2>
 
     <div class="feats">
-      <div class="feat"><h4>Jump logging</h4><p>Seconds per jump, even with no signal.</p></div>
-      <div class="feat"><h4>Tunnel logging</h4><p>Indoor time, alongside your jumps.</p></div>
-      <div class="feat"><h4>Import your history</h4><p>Every jump across by CSV, from any app.</p></div>
-      <div class="feat"><h4>Verified sign-offs</h4><p>Witnessed by the jumpers who were there.</p></div>
-      <div class="feat"><h4>Check-in Pass</h4><p>Licence and currency, scannable at the desk.</p></div>
-      <div class="feat"><h4>Gear &amp; service</h4><p>Rigs, reserves and AADs, always in date.</p></div>
-      <div class="feat"><h4>Jump weather</h4><p>Wind at exit, under canopy and on the ground.</p></div>
-      <div class="feat"><h4>Dropzones &amp; events</h4><p>Find them worldwide, and what's on.</p></div>
-      <div class="feat"><h4>Coaches &amp; community</h4><p>Follow jumpers, message coaches, message anyone.</p></div>
-      <div class="feat"><h4>Year in the Sky</h4><p>Your whole season, worth sharing.</p></div>
+      <div class="feat"><span class="feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19.5v-15A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5zm0 0A1.5 1.5 0 0 0 6.5 21H19v-3"/><path d="M9 10.5l2 2 4-4"/></svg></span><h3>Jump logging</h3><p>Log a jump in seconds, even with no signal.</p></div>
+      <div class="feat"><span class="feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="7" ry="2.5"/><path d="M5 5.5v13c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-13"/><path d="M9.5 12.5h5M10.5 16h3"/></svg></span><h3>Tunnel logging</h3><p>Indoor time, alongside your jumps.</p></div>
+      <div class="feat"><span class="feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v11.5M7.5 10L12 14.5 16.5 10"/><path d="M4 14.5v4A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5v-4"/></svg></span><h3>Import your history</h3><p>Bring your whole history over from a CSV, from any app.</p></div>
+      <div class="feat"><span class="feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span><h3>Verified sign-offs</h3><p>Witnessed by the jumpers who were there.</p></div>
+      <div class="feat"><span class="feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="6" height="6" rx="1.2"/><rect x="14.5" y="3.5" width="6" height="6" rx="1.2"/><rect x="3.5" y="14.5" width="6" height="6" rx="1.2"/><path d="M14.5 14.5h3v3M20.5 14.5v6h-6"/></svg></span><h3>Check-in Pass</h3><p>Licence and currency, scannable at the desk.</p></div>
+      <div class="feat"><span class="feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6V4.5A1.5 1.5 0 0 1 10.5 3h3A1.5 1.5 0 0 1 15 4.5V6"/><rect x="5" y="6" width="14" height="15" rx="3.5"/><path d="M9 13.5h6V17H9z"/></svg></span><h3>Gear &amp; service</h3><p>Rigs, reserves and AADs, always in date.</p></div>
+      <div class="feat"><span class="feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h11a3 3 0 1 0-3-3"/><path d="M3 13h15a3 3 0 1 1-3 3"/><path d="M3 17h7"/></svg></span><h3>Jump weather</h3><p>Wind at exit, under canopy and on the ground.</p></div>
+      <div class="feat"><span class="feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 10.5c0 5.2-8.5 10-8.5 10s-8.5-4.8-8.5-10a8.5 8.5 0 0 1 17 0z"/><circle cx="12" cy="10.2" r="2.8"/></svg></span><h3>Dropzones &amp; events</h3><p>Find them worldwide, and what's on.</p></div>
+      <div class="feat"><span class="feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 19.5v-1.8a3.6 3.6 0 0 0-3.6-3.6H6.6A3.6 3.6 0 0 0 3 17.7v1.8"/><circle cx="9.5" cy="7.5" r="3.4"/><path d="M21 19.5v-1.8a3.6 3.6 0 0 0-2.7-3.5M15.8 4.3a3.6 3.6 0 0 1 0 6.9"/></svg></span><h3>Coaches &amp; community</h3><p>Follow jumpers, message coaches, message anyone.</p></div>
+      <div class="feat"><span class="feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span><h3>Year in the Sky</h3><p>A shareable recap of your year of jumping.</p></div>
     </div>
   </div>
 </section>
@@ -1611,8 +1733,11 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   <div class="wrap dzg-grid">
     <div class="dzg-copy">
     <div class="kicker">Worldwide</div>
-    <h2>Jumpers at 222 dropzones in 46 countries</h2>
-    <p class="statement-sub">Find your dropzone. Your friends are probably already on it.</p>
+    <h2>Jumpers at 220+ dropzones in 46 countries</h2>
+    <p class="statement-sub">Each dot is a home dropzone of Manifest jumpers.</p>
+    <p class="statement-sub dzg-more">Live loads work at 150+ dropzones. Everywhere else you still get 3D replay, sign-offs and your Check-in Pass. <a href="/live-skydiving-loads/#not-covered">Is my dropzone covered?</a></p>
+    <!-- TODO owner: supply a verified list of dropzones with live loads if you want a Check your dropzone search; do not use globe-dropzones.json for it.
+         The link above needs id="not-covered" on the "When your dropzone is not covered yet" heading of /live-skydiving-loads/ (another agent's file). -->
     <div class="gl-cta">
       <a class="appbtn" href="https://apps.apple.com/app/id6778510429" aria-label="Download Manifest on the App Store">
         <img src="assets/appstore-badge.svg?v=1" alt="Download on the App Store" />
@@ -1791,7 +1916,20 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       }
       host.addEventListener('pointerdown', function (e) { if (!e.target.closest('.dzg-hit')) hide(); });
 
-      if (window.ResizeObserver) new ResizeObserver(function () { var s = size(); if (s) g.width(s).height(s); }).observe(host);
+      // F11 (16 Oct 2026): on phones a vertical swipe that starts on the globe
+      // scrolls the page; a sideways drag still spins it. globe.gl (OrbitControls)
+      // sets touch-action:none inline, so it is put back after init and on resize.
+      function panY() {
+        var v = window.innerWidth < 768 ? 'pan-y' : '';
+        [host].concat([].slice.call(host.querySelectorAll('*'))).forEach(function (el) {
+          if (el === host || el.style.touchAction === 'none' || el.tagName === 'CANVAS' || el.dataset.panY) {
+            if (v) { el.style.touchAction = v; el.dataset.panY = '1'; }
+            else if (el.dataset.panY && el !== host) { el.style.touchAction = 'none'; }
+          }
+        });
+      }
+      panY();
+      if (window.ResizeObserver) new ResizeObserver(function () { var s = size(); if (s) g.width(s).height(s); panY(); }).observe(host);
 
       // Stop drawing while the section is off screen.
       if ('IntersectionObserver' in window) {
@@ -1857,8 +1995,8 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
         <h2><span class="l1">One system.</span><br />Both sides of the hangar.</h2>
         <p class="desk-lead">The dropzone runs its loads on Manifest Desk, in the browser. Jumpers see the same loads live on their iPhone, and the hangar TV shows them too. <b>Change it once at the desk and every screen follows.</b></p>
         <div class="desk-ctas">
-          <a class="btn primary" href="/dropzones/">See Manifest Desk<span class="bi"><svg viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></span></a>
-          <a class="btn ghost" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo&amp;body=Dropzone%3A%20%0AName%3A%20%0APhone%3A%20%0ABest%20time%20for%20a%2020-minute%20video%20call%3A%20">Book a demo</a>
+          <a class="btn demo" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo&amp;body=Dropzone%3A%20%0AName%3A%20%0APhone%3A%20%0ABest%20time%20for%20a%2020-minute%20video%20call%3A%20">Book a 20-minute demo<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          <a class="desk-link" href="/dropzones/">See Manifest Desk</a>
         </div>
       </div>
       <figure class="desk-art"><div style="position:relative"><img class="win" src="/assets/desk-today.jpg?v=1" alt="Manifest Desk Today page for a demo dropzone, showing money charged for jumps today, open loads, the next load countdown, standby and jumper accounts" width="1440" height="900" loading="lazy" decoding="async" /><img class="win-phone" src="/assets/opt/mock-home3.a2e7757f.webp" width="640" height="1330" alt="" loading="lazy" decoding="async" /></div></figure>
@@ -1879,56 +2017,70 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 
     <div class="faqs">
       <details class="faq">
-        <summary>What does the Manifest skydiving app do?</summary>
+        <summary><h3 class="faq-q">What does the Manifest skydiving app do?</h3></summary>
         <p>Manifest is the app for skydivers, on iPhone. It shows the loads turning live at 150+ dropzones, records your jump from your pocket and replays the whole flight in 3D over real terrain, and keeps your logbook with jumps signed off in person by licensed jumpers. It also has weather and winds for jumping, gear and reserve repack reminders, your Check-in Pass, dropzones, events, coaches and community.</p>
       </details>
       <details class="faq">
-        <summary>Is Manifest free?</summary>
-        <p>Manifest is free to download, with no limit on how many jumps you log. Logging, getting jumps signed off, your Check-in Pass, live loads, gear service reminders, dropzones, events and community are all free, and so is recording a jump and watching it replayed in 3D. Manifest Pro adds your load on your Lock Screen with gear-up and final-call notifications and a live countdown in your Dynamic Island, a recorder that arms itself when your load takes off, cloud backup of your tracks, replay stats, your jump receipt, raw track exports for ParaLog or Google Earth, branded PDF exports of your logbook and gear, and your credentials on your Check-in Pass. At Manifest Desk dropzones the Lock Screen card is free. Pro is a yearly subscription or a one-time Lifetime purchase.</p>
+        <summary><h3 class="faq-q">Is Manifest free?</h3></summary>
+        <!-- TODO owner: confirm current yearly and Lifetime Pro prices as shown in the App Store, and confirm the Desk Lock Screen sentence is still intended.
+             The FAQPage JSON-LD in <head> must stay word for word the same as this answer (list items joined with "; "). -->
+        <p>Manifest is free to download, with no limit on how many jumps you log. Logging, getting jumps signed off, your Check-in Pass, live loads, gear service reminders, dropzones, events and community are all free, and so is recording a jump and watching it replayed in 3D.</p>
+        <p class="faq-lh">Manifest Pro adds:</p>
+        <ul class="faq-list">
+          <li>your load on your Lock Screen with gear-up and final-call notifications and a live countdown in your Dynamic Island</li>
+          <li>a recorder that arms itself when your load takes off</li>
+          <li>cloud backup of your tracks</li>
+          <li>replay stats</li>
+          <li>your jump receipt</li>
+          <li>raw track exports for ParaLog or Google Earth</li>
+          <li>branded PDF exports of your logbook and gear</li>
+          <li>your credentials on your Check-in Pass</li>
+        </ul>
+        <p>At Manifest Desk dropzones the Lock Screen card is free. Pro is a yearly subscription or a one-time Lifetime purchase, billed by Apple.</p>
       </details>
       <details class="faq">
-        <summary>Can I replay my skydive in 3D?</summary>
+        <summary><h3 class="faq-q">Can I replay my skydive in 3D?</h3></summary>
         <p>Yes, and it is free. Record your jump with your phone in your pocket and Manifest replays the whole flight in 3D over real terrain, from the climb to the landing, using the phone's own GPS and barometer. No extra hardware is needed.</p>
       </details>
       <details class="faq">
-        <summary>Can I bring my existing jumps across?</summary>
+        <summary><h3 class="faq-q">Can I bring my existing jumps across?</h3></summary>
         <p>Yes. You can import your whole history from a CSV, whether it comes from another app or your own spreadsheet. Tunnel time and reserve repacks can be imported too.</p>
       </details>
       <details class="faq">
-        <summary>How does a jump get verified?</summary>
+        <summary><h3 class="faq-q">How does a jump get verified?</h3></summary>
         <p>Another licensed jumper who was there scans your QR and signs it off. Their name and licence number are recorded on that jump, so it is witnessed rather than self-reported. Your logbook shows your total jumps and your verified jumps side by side.</p>
       </details>
       <details class="faq">
-        <summary>Does it work at my dropzone?</summary>
+        <summary><h3 class="faq-q">Does it work at my dropzone?</h3></summary>
         <p>Logging, verification, your pass and your gear work anywhere in the world. Live loads currently work at 150+ dropzones, and we are adding more. If yours is not covered yet, everything else still works normally.</p>
       </details>
       <details class="faq">
-        <summary>Which dropzones does Manifest show live loads for?</summary>
+        <summary><h3 class="faq-q">Which dropzones does Manifest show live loads for?</h3></summary>
         <p>Manifest shows live loads from 150+ dropzones, used by jumpers in 46 countries: what's on call, who's on it and the minutes to call, straight off each dropzone's own manifest. At dropzones that run Manifest Desk, every load call also goes straight to your Lock Screen.</p>
       </details>
       <details class="faq">
-        <summary>Does it work without signal?</summary>
+        <summary><h3 class="faq-q">Does it work without signal?</h3></summary>
         <p>Yes. You can log jumps with no signal at all and they sync as soon as you are back online, which matters on a dropzone with bad wifi.</p>
       </details>
       <details class="faq">
-        <summary>Is Manifest listed by USPA?</summary>
+        <summary><h3 class="faq-q">Is Manifest listed by USPA?</h3></summary>
         <p>Yes. Manifest is on the United States Parachute Association's <a href="https://www.uspa.org/logbookapps" target="_blank" rel="noopener">jump log apps page</a>, which lists the digital logbooks that meet USPA's criteria. Every jump records the fields <a href="/uspa-digital-logbook/">USPA SIM 3-1 requires</a>, and sign-off is in person by another licensed jumper whose licence number goes on the entry.</p>
       </details>
       <details class="faq">
-        <summary>Will a dropzone accept it?</summary>
+        <summary><h3 class="faq-q">Will a dropzone accept it?</h3></summary>
         <p>Your Check-in Pass shows your licence, currency, jump numbers and gear service in one scannable view, pulled straight from your record so it cannot be edited by hand. The person scanning it does not need the app. Pro also gives you a branded PDF of every signed-off jump.</p>
       </details>
       <details class="faq">
-        <summary>Is my data private?</summary>
+        <summary><h3 class="faq-q">Is my data private?</h3></summary>
         <p>Your logbook, credentials and documents are yours and are access-controlled. You choose what is public on your profile, you can go fully private, and you can delete your account and its data from inside the app at any time.</p>
       </details>
       <details class="faq">
-        <summary>What is Manifest Desk?</summary>
+        <summary><h3 class="faq-q">What is Manifest Desk?</h3></summary>
         <p>Manifest Desk is skydiving software for dropzones, running in the browser. It handles loads and exit order, standby, jumper accounts and payments, waivers, staff, aircraft, safety checks and a hangar TV board, and pushes every load call to jumpers' Lock Screens. Jumpers top up with Apple Pay, straight into the dropzone's own Stripe account. Every plan is a monthly subscription with no lock-in, and founding prices are set with each dropzone. <a href="/dropzones/">See Manifest Desk</a> or read <a href="/skydiving-manifest-software/">what our dropzone software does</a>.</p>
       </details>
       <details class="faq">
-        <summary>Is Android coming?</summary>
-        <p>Yes. Android is being built right now. Email me and I will let you know the day it is out.</p>
+        <summary><h3 class="faq-q">Is Android coming?</h3></summary>
+        <p>Yes. Android is being built right now. <a data-mail href="mailto:andre@manifestjump.com?subject=Android%3A%20tell%20me%20when%20it%20is%20out">Email me</a> and I will let you know the day it is out.</p>
       </details>
     </div>
 
@@ -1943,12 +2095,27 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     <!-- Was the waitlist capture. The app is live, so asking for an email
          instead of sending people to the App Store would be throwing away the
          intent of everyone who scrolled this far. -->
-    <h2>Get <img class="wm-inline" src="assets/manifest-wordmark.svg?v=4" alt="manifest" /></h2>
+    <h2>Get <img class="wm-inline" src="assets/manifest-wordmark.svg?v=4" alt="Manifest" /></h2>
+    <!-- Privacy facts next to the download (16 Oct 2026, design review A08): only statements already on the site (About, FAQ). -->
+    <ul class="privacy-row">
+      <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>We do not sell your personal data</li>
+      <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>You choose what is public</li>
+      <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Delete your account and data in the app</li>
+      <li><a href="/privacy/">Privacy policy</a></li>
+    </ul>
     <div class="capture">
-      <a class="appbtn" href="https://apps.apple.com/app/id6778510429" aria-label="Download Manifest on the App Store">
-        <img src="assets/appstore-badge.svg?v=1" alt="Download on the App Store" />
-      </a>
-      <div class="note">Free to download. Log every jump, get them signed off, and carry your Check-in Pass.</div>
+      <div class="get-row">
+        <a class="appbtn" href="https://apps.apple.com/app/id6778510429" aria-label="Download Manifest on the App Store">
+          <img src="assets/appstore-badge.svg?v=1" alt="Download on the App Store" />
+        </a>
+        <!-- Desktop to phone handoff (A09): QR of the App Store link, shown at 1024px and wider only. -->
+        <figure class="get-qr">
+          <img src="/assets/appstore-qr.svg" width="120" height="120" alt="Scan with your iPhone camera to open Manifest in the App Store." loading="lazy" decoding="async" />
+          <figcaption aria-hidden="true">Scan with your iPhone camera to open Manifest in the App Store.</figcaption>
+        </figure>
+      </div>
+      <div class="note">Free to download. See your load, replay your jump, carry your Check-in Pass.</div>
+      <p class="final-dz"><a href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo&amp;body=Dropzone%3A%20%0AName%3A%20%0APhone%3A%20%0ABest%20time%20for%20a%2020-minute%20video%20call%3A%20">Run a dropzone? Book a demo</a></p>
     </div>
   </div>
 </section>
@@ -1959,6 +2126,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   <img class="cloud c-left"  src="/assets/opt/cloud.852c5bc0.webp"   alt="" loading="lazy" decoding="async" />
   <img class="cloud c-right" src="/assets/opt/cloud-r.8c2fd097.webp" alt="" loading="lazy" decoding="async" />
 </section>
+</main>
 
 <footer class="site">
   <div class="ft">
@@ -2023,6 +2191,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   // alone doesn't recover from that — so nudge it back whenever it stalls. ----
   Array.prototype.forEach.call(document.querySelectorAll(".flagvid"), function (v) {
     function kick() {
+      if (v.dataset.userPaused) return; // F15: never undo a pause the visitor chose
       if (v.paused || v.ended) {
         if (v.ended || v.currentTime >= v.duration - 0.05) v.currentTime = 0;
         var p = v.play();
@@ -2050,6 +2219,44 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     setInterval(function () {
       if (!document.hidden && v.getBoundingClientRect().top < innerHeight && v.getBoundingClientRect().bottom > 0) kick();
     }, 2000);
+  });
+
+  // ---- F15 pause controls (16 Oct 2026): one button per looping video, one for
+  // the moving cards. Only play()/pause() on request; autoplay and loading are
+  // untouched. A user pause sets data-user-paused, which kick() above respects.
+  var calm = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  Array.prototype.forEach.call(document.querySelectorAll(".vpause"), function (b) {
+    var v = b.parentNode.querySelector("video");
+    if (!v) return;
+    // Reduced motion: nothing plays until its play button is pressed. Only for
+    // these visitors; everyone else gets exactly the autoplay they had before.
+    if (calm) {
+      v.dataset.userPaused = "1"; v.pause();
+      v.addEventListener("play", function () { if (v.dataset.userPaused) v.pause(); });
+      b.setAttribute("aria-pressed", "true"); b.setAttribute("aria-label", "Play video");
+    }
+    b.addEventListener("click", function () {
+      var pause = !v.dataset.userPaused;
+      if (pause) { v.dataset.userPaused = "1"; v.pause(); }
+      else { delete v.dataset.userPaused; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+      b.setAttribute("aria-pressed", pause ? "true" : "false");
+      b.setAttribute("aria-label", pause ? "Play video" : "Pause video");
+    });
+  });
+  (function () {
+    var b = document.querySelector(".mq-btn"), rows = document.querySelector(".carousel-rows");
+    if (!b || !rows) return;
+    b.addEventListener("click", function () {
+      var pause = !rows.classList.contains("paused");
+      rows.classList.toggle("paused", pause);
+      b.setAttribute("aria-pressed", pause ? "true" : "false");
+      b.querySelector("span").textContent = pause ? "Play animations" : "Pause animations";
+    });
+  })();
+  // Mail links that must open the mail app, not the demo form (the form script
+  // below catches every mailto:andre@...? link; this listener runs first).
+  Array.prototype.forEach.call(document.querySelectorAll("a[data-mail]"), function (a) {
+    a.addEventListener("click", function (e) { e.stopImmediatePropagation(); });
   });
 
   // ---- Reveal on scroll: screens lift in as they enter the viewport. ----
@@ -2110,24 +2317,30 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 <!-- GET STARTED FORM (9 Oct 2026): every "Get started", "Book a demo" and
      early-access button opens this instead of a mailto (which does nothing in
      a browser without a mail app). Posts to the desk-lead function: saved,
-     and André's phone gets a push. The mailto stays as the fallback link. -->
+     and André's phone gets a push. The mailto stays as the fallback link.
+     REVIEW F05 F16 A10 (16 Oct 2026): one title for every entry point; a real
+     dialog (role, name, focus kept inside, page behind inert, focus back to
+     the button that opened it); errors announced and the first empty field
+     focused; field borders at 3:1; an optional best time sent as best_time. -->
 <div class="lead-scrim" id="leadScrim" hidden>
-  <form class="lead-box" id="leadForm" novalidate>
+  <form class="lead-box" id="leadForm" role="dialog" aria-modal="true" aria-labelledby="leadTitle" novalidate>
     <button type="button" class="lead-x" id="leadClose" aria-label="Close">&times;</button>
-    <h3 id="leadTitle">Get started with Manifest Desk</h3>
-    <p class="lead-sub" id="leadSub">Tell us about your dropzone. We get back to you the same day.</p>
+    <h3 id="leadTitle">Book a 20-minute demo</h3>
+    <p class="lead-sub" id="leadSub">We show you the desk on a video call and set your founding price with you. We reply the same day.</p>
     <label>Dropzone<input name="dropzone" required autocomplete="organization" placeholder="Skydive Example" /></label>
     <label>Your name<input name="name" required autocomplete="name" /></label>
     <label>Email<input name="email" type="email" required autocomplete="email" /></label>
     <label>Phone <span>(optional)</span><input name="phone" type="tel" autocomplete="tel" /></label>
+    <label>Best time and time zone <span>(optional)</span><input name="best_time" type="text" autocomplete="off" /></label>
     <label>Anything we should know? <span>(optional)</span><textarea name="message" rows="3" placeholder="Aircraft, loads on a busy day, what you use today"></textarea></label>
     <input name="website" class="lead-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
-    <p class="lead-err" id="leadErr" hidden></p>
+    <p class="lead-err" id="leadErr" role="alert" hidden></p>
     <button class="btn primary lead-go" type="submit" id="leadGo">Send</button>
+    <!-- TODO owner: confirm one reply-time sentence for the whole site (Support says 1 to 2 days, the plan table says Priority, same day on Full-time). Until then no reply-time line under Send. -->
     <p class="lead-alt">Or email <a href="mailto:andre@manifestjump.com">andre@manifestjump.com</a></p>
   </form>
-  <div class="lead-box lead-done" id="leadDone" hidden>
-    <h3>Thanks. We'll be in touch today.</h3>
+  <div class="lead-box lead-done" id="leadDone" role="dialog" aria-modal="true" aria-labelledby="leadDoneTitle" hidden>
+    <h3 id="leadDoneTitle">Thanks. We'll be in touch today.</h3>
     <p class="lead-sub">We will reach out to set up your dropzone with you.</p>
     <button class="btn primary" type="button" id="leadOk">Done</button>
   </div>
@@ -2135,60 +2348,109 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 <style>
   .lead-scrim { position: fixed; inset: 0; z-index: 100; background: rgba(5,5,5,.45); display: flex; align-items: center; justify-content: center; padding: 16px; }
   .lead-scrim[hidden] { display: none; }
-  .lead-box { position: relative; width: 100%; max-width: 460px; max-height: calc(100vh - 32px); overflow: auto; background: #fff; border-radius: 28px; padding: 32px; box-shadow: 0 30px 80px rgba(5,5,5,.25); }
+  .lead-box { position: relative; width: 100%; max-width: 460px; max-height: calc(100vh - 32px); max-height: calc(100dvh - 32px); overflow: auto; background: #fff; border-radius: 28px; padding: 32px; box-shadow: 0 30px 80px rgba(5,5,5,.25); }
   .lead-box h3 { font-family: "General Sans", sans-serif; font-weight: 550; font-size: 28px; letter-spacing: -0.028em; color: #050505; margin: 0 32px 6px 0; }
-  .lead-sub { color: #71717B; font-size: 16px; margin: 0 0 18px; }
+  .lead-sub { color: #52525B; font-size: 16px; margin: 0 0 18px; }
   .lead-box label { display: block; font-size: 14px; font-weight: 600; color: #050505; margin-top: 12px; }
-  .lead-box label span { color: #71717B; font-weight: 400; }
-  .lead-box input, .lead-box textarea { display: block; width: 100%; box-sizing: border-box; margin-top: 6px; padding: 13px 14px; border-radius: 14px; border: 1px solid #E4E4E7; font: inherit; font-size: 16px; color: #050505; background: #fff; }
-  .lead-box input:focus, .lead-box textarea:focus { outline: none; border-color: #6D42F5; }
+  .lead-box label span { color: #52525B; font-weight: 400; }
+  .lead-box input, .lead-box textarea { display: block; width: 100%; box-sizing: border-box; margin-top: 6px; padding: 13px 14px; border-radius: 14px; border: 1px solid #8A8A93; font: inherit; font-size: 16px; color: #050505; background: #fff; }
+  .lead-box input:focus, .lead-box textarea:focus { outline: none; border-color: #050505; box-shadow: 0 0 0 1px #050505; }
+  .lead-box input[aria-invalid="true"] { border-color: #DC2626; }
   .lead-hp { position: absolute; left: -9999px; width: 1px; height: 1px; }
   .lead-x { position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; border-radius: 18px; border: 0; background: #F6F6F6; font-size: 22px; line-height: 1; cursor: pointer; color: #050505; }
   .lead-go { width: 100%; justify-content: center; margin-top: 20px; border: 0; cursor: pointer; }
   .lead-go[disabled] { opacity: .6; cursor: default; }
   .lead-err { color: #DC2626; font-size: 14px; margin: 12px 0 0; }
-  .lead-alt { text-align: center; color: #71717B; font-size: 14px; margin: 14px 0 0; }
+  .lead-alt { text-align: center; color: #52525B; font-size: 14px; margin: 14px 0 0; }
   .lead-alt a { color: #6D42F5; }
   .lead-done .btn { margin-top: 8px; border: 0; cursor: pointer; }
+  @media (max-width: 600px), (max-height: 940px) {
+    .lead-box { padding: 24px 22px; border-radius: 24px; }
+    .lead-box h3 { font-size: 25px; }
+    .lead-sub { font-size: 15px; line-height: 22px; margin-bottom: 8px; }
+    .lead-box label { margin-top: 9px; }
+    .lead-box input, .lead-box textarea { padding: 10px 12px; }
+    .lead-go { margin-top: 16px; }
+    .lead-alt { margin-top: 10px; }
+  }
 </style>
 <script>
 (function () {
   var URL_ = 'https://wkefdtglgbfprvfajrrw.supabase.co/functions/v1/desk-lead';
   var scrim = document.getElementById('leadScrim'), form = document.getElementById('leadForm'), done = document.getElementById('leadDone');
   var err = document.getElementById('leadErr'), go = document.getElementById('leadGo');
-  var ctx = { kind: 'start', plan: '' };
-  function open(kind, plan) {
+  var ctx = { kind: 'start', plan: '' }, opener = null, inerted = [];
+  function setInert(on) {
+    if (on) {
+      inerted = [];
+      Array.prototype.forEach.call(document.body.children, function (el) {
+        if (el === scrim || /^(SCRIPT|STYLE|LINK|NOSCRIPT)$/.test(el.tagName) || el.hasAttribute('inert')) return;
+        el.setAttribute('inert', ''); inerted.push(el);
+      });
+    } else { inerted.forEach(function (el) { el.removeAttribute('inert'); }); inerted = []; }
+  }
+  function open(kind, plan, from) {
     ctx = { kind: kind, plan: plan || '' };
-    document.getElementById('leadTitle').textContent = kind === 'demo' ? 'Book a 20-minute demo' : (plan ? 'Get started: ' + plan : 'Get started with Manifest Desk');
-    document.getElementById('leadSub').textContent = kind === 'demo' ? 'We show you the desk on a video call, with your own loads and prices.' : 'Tell us about your dropzone. We get back to you the same day.';
+    opener = from || (document.activeElement !== document.body ? document.activeElement : null);
     err.hidden = true; form.hidden = false; done.hidden = true; scrim.hidden = false;
+    setInert(true);
     setTimeout(function () { form.dropzone.focus(); }, 30);
   }
-  function close() { scrim.hidden = true; }
+  function close() {
+    if (scrim.hidden) return;
+    scrim.hidden = true; setInert(false);
+    if (opener && document.contains(opener) && opener.focus) opener.focus();
+    opener = null;
+  }
   document.querySelectorAll('a[href^="mailto:andre@manifestjump.com?"]').forEach(function (a) {
     a.addEventListener('click', function (e) {
       e.preventDefault();
       var card = a.closest('.pc'); var plan = card && card.querySelector('h3') ? card.querySelector('h3').textContent.trim() : '';
       var demo = /demo/i.test(decodeURIComponent(a.getAttribute('href')));
-      // A plan's Get started goes to the real sign-up (info, plan, payment).
+      // PRICES HIDDEN (15 Oct 2026): every plan's "Get your price" opens this
+      // form (kind 'start') instead of the paid sign-up at /dropzones/start/.
+      // To restore: send plan buttons back to '/dropzones/start/?plan=' + key.
       var label = (plan || (a.closest('.cm-c, .cm-h, th, td') || {}).textContent || a.parentElement.textContent || '').toLowerCase();
       var key = /weekend/.test(label) ? 'weekend' : /full/.test(label) ? 'fulltime' : /big/.test(label) ? 'big' : '';
-      if (!demo && key && /get started/i.test(a.textContent)) { location.href = '/dropzones/start/?plan=' + key; return; }
-      open(demo ? 'demo' : 'start', plan);
+      if (!plan && key) plan = { weekend: 'Weekend dropzone', fulltime: 'Full-time dropzone', big: 'Big operations' }[key];
+      open(demo ? 'demo' : 'start', plan, a);
     });
   });
+  // F05: every "Get started" opens this form directly; /dropzones/start/ stays live for old links.
+  document.querySelectorAll('a[href="/dropzones/start/"], a[href^="/dropzones/start/?"]').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); open('start', '', a); });
+  });
+  // /dropzones/#get-price (the hidden sign-up page links here) opens the form.
+  if (location.hash === '#get-price') open('start', '');
   document.getElementById('leadClose').onclick = close;
   document.getElementById('leadOk').onclick = close;
   scrim.addEventListener('mousedown', function (e) { if (e.target === scrim) close(); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !scrim.hidden) close(); });
+  document.addEventListener('keydown', function (e) {
+    if (scrim.hidden) return;
+    if (e.key === 'Escape') { close(); return; }
+    if (e.key !== 'Tab') return;
+    var box = form.hidden ? done : form;
+    var f = Array.prototype.filter.call(box.querySelectorAll('a[href], button, input, textarea, select'), function (el) { return !el.disabled && el.tabIndex !== -1 && el.offsetParent !== null; });
+    if (!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    if (!box.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+    else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+  form.addEventListener('input', function (e) { if (e.target.getAttribute('aria-invalid')) e.target.removeAttribute('aria-invalid'); });
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var f = form, body = { kind: ctx.kind, plan: ctx.plan, dropzone: f.dropzone.value, name: f.name.value, email: f.email.value, phone: f.phone.value, message: f.message.value, website: f.website.value };
-    if (!body.dropzone.trim() || !body.name.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email.trim())) { err.textContent = 'Add your dropzone, your name and a valid email.'; err.hidden = false; return; }
+    var f = form, body = { kind: ctx.kind, plan: ctx.plan, dropzone: f.dropzone.value, name: f.name.value, email: f.email.value, phone: f.phone.value, best_time: f.best_time.value, message: f.message.value, website: f.website.value };
+    var bad = [];
+    if (!body.dropzone.trim()) bad.push(f.dropzone);
+    if (!body.name.trim()) bad.push(f.name);
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email.trim())) bad.push(f.email);
+    [f.dropzone, f.name, f.email].forEach(function (el) { if (bad.indexOf(el) < 0) el.removeAttribute('aria-invalid'); else el.setAttribute('aria-invalid', 'true'); });
+    if (bad.length) { err.textContent = 'Add your dropzone, your name and a valid email.'; err.hidden = false; bad[0].focus(); return; }
     go.disabled = true; go.textContent = 'Sending...'; err.hidden = true;
     fetch(URL_, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) })
       .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
-      .then(function (x) { if (!x.ok) throw new Error(x.j && x.j.error || 'Could not send'); form.reset(); form.hidden = true; done.hidden = false; })
+      .then(function (x) { if (!x.ok) throw new Error(x.j && x.j.error || 'Could not send'); form.reset(); form.hidden = true; done.hidden = false; document.getElementById('leadOk').focus(); })
       .catch(function (e2) { err.textContent = (e2 && e2.message) || 'Could not send. Email andre@manifestjump.com instead.'; err.hidden = false; })
       .then(function () { go.disabled = false; go.textContent = 'Send'; });
   });
