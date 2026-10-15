@@ -940,7 +940,6 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     <input name="website" class="lead-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
     <p class="lead-err" id="leadErr" role="alert" hidden></p>
     <button class="btn primary lead-go" type="submit" id="leadGo">Send</button>
-    <!-- TODO owner: confirm one reply-time sentence for the whole site (Support says 1 to 2 days, the plan table says Priority, same day on Full-time). Until then no reply-time line under Send. -->
     <p class="lead-alt">Or email <a href="mailto:andre@manifestjump.com">andre@manifestjump.com</a></p>
   </form>
   <div class="lead-box lead-done" id="leadDone" role="dialog" aria-modal="true" aria-labelledby="leadDoneTitle" hidden>
@@ -965,6 +964,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   .lead-go { width: 100%; justify-content: center; margin-top: 20px; border: 0; cursor: pointer; }
   .lead-go[disabled] { opacity: .6; cursor: default; }
   .lead-err { color: #DC2626; font-size: 14px; margin: 12px 0 0; }
+  .lead-reply { text-align: center; color: #050505; font-size: 14px; margin: 12px 0 0; }
   .lead-alt { text-align: center; color: #52525B; font-size: 14px; margin: 14px 0 0; }
   .lead-alt a { color: #6D42F5; }
   .lead-done .btn { margin-top: 8px; border: 0; cursor: pointer; }
