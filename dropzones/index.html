@@ -539,6 +539,9 @@
   .vis-media { min-width: 0; background: #EDEFF7; border-radius: 28px; padding: 40px; display: flex; align-items: center; justify-content: center; }
   .vis:not(.flip) .vis-media { order: -1; }
   .vis-media .frame { margin: 0; width: 100%; border-radius: 14px; }
+  /* The sample-data caption sits under the screenshot, never beside it (16 Oct). */
+  .vis-media { flex-direction: column; gap: 16px; }
+  .vis-media .desk-cap, .vis-media figcaption { margin: 0; text-align: center; font-size: 14px; line-height: 20px; color: #52525B; }
   .vis-phone { display: block; height: min(560px, calc(100vh - 300px)); min-height: 420px; width: auto; max-width: 100%; mix-blend-mode: multiply; }
   .vis-ls { aspect-ratio: 738 / 1180; }
   .vis-trio { aspect-ratio: 560 / 1175; object-fit: cover; border-radius: 12.5% / 5.96%; }
