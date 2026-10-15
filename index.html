@@ -1680,7 +1680,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       controls.enablePan = false;
       controls.enableZoom = false;
       controls.minDistance = controls.maxDistance = 100 * (1 + HOME_ALTITUDE);
-      g.pointOfView({ lat: 28, lng: -60, altitude: HOME_ALTITUDE }, 0);
+      g.pointOfView({ lat: 36, lng: -38, altitude: HOME_ALTITUDE }, 0) /* US and Europe in one view (André, 15 Oct) */;
 
       // Always day, as in the admin: even ambient light and a whisper of sun.
       var old = g.lights();
