@@ -11,7 +11,7 @@ Most dropzone software only runs the desk, and most skydiving apps only record j
 1. The jumper already carries the Manifest app (live loads, 3D replays) and manifests themselves onto a load from their phone.
 2. The dropzone sees it instantly on Manifest Desk and stays in control: staff move people between loads, run standby and approve every slot.
 3. Payments land in the dropzone's own Stripe account (Apple Pay top-ups), so Manifest never holds the dropzone's money.
-4. Load calls (called, 10 minutes, 5 minutes, boarding, holds) reach every jumper on the load on their Lock Screen the moment staff press the button.
+4. Load calls (called, gear-up at 15 minutes, 10 minutes, 5 minutes, boarding, holds) reach every jumper on the load on their Lock Screen the moment staff press the button.
 5. Safety stays shared: the desk sees who is on which load, who is back after the jump, and any landout on a live map.
 
 ## How landout location sharing works
@@ -75,7 +75,7 @@ Manifest Desk is skydiving software and dropzone management software (a skydive 
 - [Live skydiving loads](https://www.jumpmanifest.com/live-skydiving-loads/): see loads, minutes to call and who is on each load at 150+ dropzones
 - [Landout safety for dropzones](https://www.jumpmanifest.com/skydive-landout-safety/): how Manifest Desk finds a jumper who landed out, after landing, on a live map
 - [Dropzone payments](https://www.jumpmanifest.com/dropzone-payments/): Apple Pay and card top-ups in the app, paid straight into the dropzone's own Stripe account
-- [Skydiving load calls](https://www.jumpmanifest.com/skydiving-load-calls/): one button at the desk sends called, 10 minutes, 5 minutes, boarding and holds to every jumper on the load
+- [Skydiving load calls](https://www.jumpmanifest.com/skydiving-load-calls/): one button at the desk sends called, gear-up at 15 minutes, 10 minutes, 5 minutes, boarding and holds to every jumper on the load
 - [Self-manifest skydiving](https://www.jumpmanifest.com/self-manifest-skydiving/): jumpers book themselves and friends onto a load or join standby from the app
 - [Skydiving weather](https://www.jumpmanifest.com/skydiving-weather/): winds aloft, cloud and the calmest window for any dropzone, free in the app
 - [About](https://www.jumpmanifest.com/about/): what Manifest is and how it works for jumpers and dropzones
