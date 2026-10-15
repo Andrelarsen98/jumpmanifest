@@ -368,9 +368,9 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 
 /* REVIEW FIXES (16 Oct 2026, design review A02 A12 A18 F05 F06 F19).
    Skip link first in <body>; one focus ring sitewide; the header row on the
-   same 1280 grid as the content; one header button style (white pill, black
-   text, black outline) that stays in the phone header as "Get the app", or
-   "Book a demo" on Desk pages; Download and Book a demo side by side at the
+   same 1280 grid as the content; one header button system in the site's own
+   colours (black Download / Get the app for jumpers, purple Book a demo for
+   dropzones) that stays in the phone header; Download and Book a demo side by side at the
    bottom of the phone menu. */
 .skip { position: fixed; left: 16px; top: -120px; z-index: 100; display: inline-flex; align-items: center; height: 44px;
       padding: 0 20px; border-radius: 999px; background: #fff; color: #050505 !important; border: 1.5px solid #050505;
@@ -380,8 +380,10 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       outline: 2px solid #050505 !important; outline-offset: 3px !important; box-shadow: 0 0 0 3px #fff; }
 :where(a, button, summary, input, select, textarea, [tabindex]):focus { scroll-margin-top: 96px; scroll-margin-bottom: 24px; }
 .sh-in { max-width: calc(1280px + 10vw); margin: 0 auto; box-sizing: border-box; }
-.sh-cta, .sh-cta-p { background: #fff; color: #050505 !important; border: 1.5px solid #050505; }
-.sh-cta:hover, .sh-cta-p:hover { background: #F4F4F5; }
+.sh-cta { background: #050505; color: #fff !important; border: 0; }
+.sh-cta:hover { background: #2A2A2E; }
+.sh-cta-p, .sh-cta-demo { background: var(--sh-purple); color: #fff !important; }
+.sh-cta-p:hover, .sh-cta-demo:hover { background: #5B32E0; }
 .sh-l2, .sh-l4 { display: none; }
 .sh-mctas { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 24px; }
 .sh-mctas .sh-mcta { margin-top: 0; min-height: 52px; padding: 0 12px; }
@@ -655,7 +657,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     </nav>
     <div class="sh-right">
       <a class="sh-login" href="https://desk.jumpmanifest.com">Dropzone login</a>
-      <a class="sh-cta" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo" aria-label="Book a demo"><span class="sh-l1">Book a demo</span><span class="sh-l2">Book a demo</span><span class="sh-l4">Demo</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      <a class="sh-cta sh-cta-demo" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo" aria-label="Book a demo"><span class="sh-l1">Book a demo</span><span class="sh-l2">Book a demo</span><span class="sh-l4">Demo</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
       <button class="sh-burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="sh-sheet"><span></span><span></span></button>
     </div>
   </div>
@@ -666,7 +668,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     <a class="sh-mlink" href="/support/"><span class="sh-t">Support</span></a>
     <a class="sh-mlink" href="/#faq"><span class="sh-t">FAQ</span></a>
     <a class="sh-mlink" href="https://desk.jumpmanifest.com"><span class="sh-t">Dropzone login</span></a>
-    <div class="sh-mctas"><a class="sh-cta sh-mcta" href="https://apps.apple.com/app/id6778510429">Download</a><a class="sh-cta sh-mcta" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo">Book a demo</a></div>
+    <div class="sh-mctas"><a class="sh-cta sh-mcta" href="https://apps.apple.com/app/id6778510429">Download</a><a class="sh-cta sh-mcta sh-cta-demo" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo">Book a demo</a></div>
   </div>
 </div>
 
