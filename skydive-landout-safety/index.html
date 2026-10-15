@@ -830,24 +830,30 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 <!-- GET STARTED FORM (9 Oct 2026): every "Get started", "Book a demo" and
      early-access button opens this instead of a mailto (which does nothing in
      a browser without a mail app). Posts to the desk-lead function: saved,
-     and André's phone gets a push. The mailto stays as the fallback link. -->
+     and André's phone gets a push. The mailto stays as the fallback link.
+     REVIEW F05 F16 A10 (16 Oct 2026): one title for every entry point; a real
+     dialog (role, name, focus kept inside, page behind inert, focus back to
+     the button that opened it); errors announced and the first empty field
+     focused; field borders at 3:1; an optional best time sent as best_time. -->
 <div class="lead-scrim" id="leadScrim" hidden>
-  <form class="lead-box" id="leadForm" novalidate>
+  <form class="lead-box" id="leadForm" role="dialog" aria-modal="true" aria-labelledby="leadTitle" novalidate>
     <button type="button" class="lead-x" id="leadClose" aria-label="Close">&times;</button>
-    <h3 id="leadTitle">Get started with Manifest Desk</h3>
-    <p class="lead-sub" id="leadSub">Tell us about your dropzone. We get back to you the same day.</p>
+    <h3 id="leadTitle">Book a 20-minute demo</h3>
+    <p class="lead-sub" id="leadSub">We show you the desk on a video call and set your founding price with you. We reply the same day.</p>
     <label>Dropzone<input name="dropzone" required autocomplete="organization" placeholder="Skydive Example" /></label>
     <label>Your name<input name="name" required autocomplete="name" /></label>
     <label>Email<input name="email" type="email" required autocomplete="email" /></label>
     <label>Phone <span>(optional)</span><input name="phone" type="tel" autocomplete="tel" /></label>
+    <label>Best time and time zone <span>(optional)</span><input name="best_time" type="text" autocomplete="off" /></label>
     <label>Anything we should know? <span>(optional)</span><textarea name="message" rows="3" placeholder="Aircraft, loads on a busy day, what you use today"></textarea></label>
     <input name="website" class="lead-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
-    <p class="lead-err" id="leadErr" hidden></p>
+    <p class="lead-err" id="leadErr" role="alert" hidden></p>
     <button class="btn primary lead-go" type="submit" id="leadGo">Send</button>
+    <!-- TODO owner: confirm one reply-time sentence for the whole site (Support says 1 to 2 days, the plan table says Priority, same day on Full-time). Until then no reply-time line under Send. -->
     <p class="lead-alt">Or email <a href="mailto:andre@manifestjump.com">andre@manifestjump.com</a></p>
   </form>
-  <div class="lead-box lead-done" id="leadDone" hidden>
-    <h3>Thanks. We'll be in touch today.</h3>
+  <div class="lead-box lead-done" id="leadDone" role="dialog" aria-modal="true" aria-labelledby="leadDoneTitle" hidden>
+    <h3 id="leadDoneTitle">Thanks. We'll be in touch today.</h3>
     <p class="lead-sub">We will reach out to set up your dropzone with you.</p>
     <button class="btn primary" type="button" id="leadOk">Done</button>
   </div>
@@ -855,36 +861,60 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 <style>
   .lead-scrim { position: fixed; inset: 0; z-index: 100; background: rgba(5,5,5,.45); display: flex; align-items: center; justify-content: center; padding: 16px; }
   .lead-scrim[hidden] { display: none; }
-  .lead-box { position: relative; width: 100%; max-width: 460px; max-height: calc(100vh - 32px); overflow: auto; background: #fff; border-radius: 28px; padding: 32px; box-shadow: 0 30px 80px rgba(5,5,5,.25); }
+  .lead-box { position: relative; width: 100%; max-width: 460px; max-height: calc(100vh - 32px); max-height: calc(100dvh - 32px); overflow: auto; background: #fff; border-radius: 28px; padding: 32px; box-shadow: 0 30px 80px rgba(5,5,5,.25); }
   .lead-box h3 { font-family: "General Sans", sans-serif; font-weight: 550; font-size: 28px; letter-spacing: -0.028em; color: #050505; margin: 0 32px 6px 0; }
-  .lead-sub { color: #71717B; font-size: 16px; margin: 0 0 18px; }
+  .lead-sub { color: #52525B; font-size: 16px; margin: 0 0 18px; }
   .lead-box label { display: block; font-size: 14px; font-weight: 600; color: #050505; margin-top: 12px; }
-  .lead-box label span { color: #71717B; font-weight: 400; }
-  .lead-box input, .lead-box textarea { display: block; width: 100%; box-sizing: border-box; margin-top: 6px; padding: 13px 14px; border-radius: 14px; border: 1px solid #E4E4E7; font: inherit; font-size: 16px; color: #050505; background: #fff; }
-  .lead-box input:focus, .lead-box textarea:focus { outline: none; border-color: #6D42F5; }
+  .lead-box label span { color: #52525B; font-weight: 400; }
+  .lead-box input, .lead-box textarea { display: block; width: 100%; box-sizing: border-box; margin-top: 6px; padding: 13px 14px; border-radius: 14px; border: 1px solid #8A8A93; font: inherit; font-size: 16px; color: #050505; background: #fff; }
+  .lead-box input:focus, .lead-box textarea:focus { outline: none; border-color: #050505; box-shadow: 0 0 0 1px #050505; }
+  .lead-box input[aria-invalid="true"] { border-color: #DC2626; }
   .lead-hp { position: absolute; left: -9999px; width: 1px; height: 1px; }
   .lead-x { position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; border-radius: 18px; border: 0; background: #F6F6F6; font-size: 22px; line-height: 1; cursor: pointer; color: #050505; }
   .lead-go { width: 100%; justify-content: center; margin-top: 20px; border: 0; cursor: pointer; }
   .lead-go[disabled] { opacity: .6; cursor: default; }
   .lead-err { color: #DC2626; font-size: 14px; margin: 12px 0 0; }
-  .lead-alt { text-align: center; color: #71717B; font-size: 14px; margin: 14px 0 0; }
+  .lead-alt { text-align: center; color: #52525B; font-size: 14px; margin: 14px 0 0; }
   .lead-alt a { color: #6D42F5; }
   .lead-done .btn { margin-top: 8px; border: 0; cursor: pointer; }
+  @media (max-width: 600px), (max-height: 940px) {
+    .lead-box { padding: 24px 22px; border-radius: 24px; }
+    .lead-box h3 { font-size: 25px; }
+    .lead-sub { font-size: 15px; line-height: 22px; margin-bottom: 8px; }
+    .lead-box label { margin-top: 9px; }
+    .lead-box input, .lead-box textarea { padding: 10px 12px; }
+    .lead-go { margin-top: 16px; }
+    .lead-alt { margin-top: 10px; }
+  }
 </style>
 <script>
 (function () {
   var URL_ = 'https://wkefdtglgbfprvfajrrw.supabase.co/functions/v1/desk-lead';
   var scrim = document.getElementById('leadScrim'), form = document.getElementById('leadForm'), done = document.getElementById('leadDone');
   var err = document.getElementById('leadErr'), go = document.getElementById('leadGo');
-  var ctx = { kind: 'start', plan: '' };
-  function open(kind, plan) {
+  var ctx = { kind: 'start', plan: '' }, opener = null, inerted = [];
+  function setInert(on) {
+    if (on) {
+      inerted = [];
+      Array.prototype.forEach.call(document.body.children, function (el) {
+        if (el === scrim || /^(SCRIPT|STYLE|LINK|NOSCRIPT)$/.test(el.tagName) || el.hasAttribute('inert')) return;
+        el.setAttribute('inert', ''); inerted.push(el);
+      });
+    } else { inerted.forEach(function (el) { el.removeAttribute('inert'); }); inerted = []; }
+  }
+  function open(kind, plan, from) {
     ctx = { kind: kind, plan: plan || '' };
-    document.getElementById('leadTitle').textContent = kind === 'demo' ? 'Book a 20-minute demo' : (plan ? 'Get your price: ' + plan : 'Get your price for Manifest Desk');
-    document.getElementById('leadSub').textContent = kind === 'demo' ? 'We show you the desk on a video call, with your own loads and prices.' : 'Tell us about your dropzone and we set your founding price with you. We get back to you the same day.';
+    opener = from || (document.activeElement !== document.body ? document.activeElement : null);
     err.hidden = true; form.hidden = false; done.hidden = true; scrim.hidden = false;
+    setInert(true);
     setTimeout(function () { form.dropzone.focus(); }, 30);
   }
-  function close() { scrim.hidden = true; }
+  function close() {
+    if (scrim.hidden) return;
+    scrim.hidden = true; setInert(false);
+    if (opener && document.contains(opener) && opener.focus) opener.focus();
+    opener = null;
+  }
   document.querySelectorAll('a[href^="mailto:andre@manifestjump.com?"]').forEach(function (a) {
     a.addEventListener('click', function (e) {
       e.preventDefault();
@@ -896,23 +926,44 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       var label = (plan || (a.closest('.cm-c, .cm-h, th, td') || {}).textContent || a.parentElement.textContent || '').toLowerCase();
       var key = /weekend/.test(label) ? 'weekend' : /full/.test(label) ? 'fulltime' : /big/.test(label) ? 'big' : '';
       if (!plan && key) plan = { weekend: 'Weekend dropzone', fulltime: 'Full-time dropzone', big: 'Big operations' }[key];
-      open(demo ? 'demo' : 'start', plan);
+      open(demo ? 'demo' : 'start', plan, a);
     });
+  });
+  // F05: every "Get started" opens this form directly; /dropzones/start/ stays live for old links.
+  document.querySelectorAll('a[href="/dropzones/start/"], a[href^="/dropzones/start/?"]').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); open('start', '', a); });
   });
   // /dropzones/#get-price (the hidden sign-up page links here) opens the form.
   if (location.hash === '#get-price') open('start', '');
   document.getElementById('leadClose').onclick = close;
   document.getElementById('leadOk').onclick = close;
   scrim.addEventListener('mousedown', function (e) { if (e.target === scrim) close(); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !scrim.hidden) close(); });
+  document.addEventListener('keydown', function (e) {
+    if (scrim.hidden) return;
+    if (e.key === 'Escape') { close(); return; }
+    if (e.key !== 'Tab') return;
+    var box = form.hidden ? done : form;
+    var f = Array.prototype.filter.call(box.querySelectorAll('a[href], button, input, textarea, select'), function (el) { return !el.disabled && el.tabIndex !== -1 && el.offsetParent !== null; });
+    if (!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    if (!box.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+    else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+  form.addEventListener('input', function (e) { if (e.target.getAttribute('aria-invalid')) e.target.removeAttribute('aria-invalid'); });
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var f = form, body = { kind: ctx.kind, plan: ctx.plan, dropzone: f.dropzone.value, name: f.name.value, email: f.email.value, phone: f.phone.value, message: f.message.value, website: f.website.value };
-    if (!body.dropzone.trim() || !body.name.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email.trim())) { err.textContent = 'Add your dropzone, your name and a valid email.'; err.hidden = false; return; }
+    var f = form, body = { kind: ctx.kind, plan: ctx.plan, dropzone: f.dropzone.value, name: f.name.value, email: f.email.value, phone: f.phone.value, best_time: f.best_time.value, message: f.message.value, website: f.website.value };
+    var bad = [];
+    if (!body.dropzone.trim()) bad.push(f.dropzone);
+    if (!body.name.trim()) bad.push(f.name);
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email.trim())) bad.push(f.email);
+    [f.dropzone, f.name, f.email].forEach(function (el) { if (bad.indexOf(el) < 0) el.removeAttribute('aria-invalid'); else el.setAttribute('aria-invalid', 'true'); });
+    if (bad.length) { err.textContent = 'Add your dropzone, your name and a valid email.'; err.hidden = false; bad[0].focus(); return; }
     go.disabled = true; go.textContent = 'Sending...'; err.hidden = true;
     fetch(URL_, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) })
       .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
-      .then(function (x) { if (!x.ok) throw new Error(x.j && x.j.error || 'Could not send'); form.reset(); form.hidden = true; done.hidden = false; })
+      .then(function (x) { if (!x.ok) throw new Error(x.j && x.j.error || 'Could not send'); form.reset(); form.hidden = true; done.hidden = false; document.getElementById('leadOk').focus(); })
       .catch(function (e2) { err.textContent = (e2 && e2.message) || 'Could not send. Email andre@manifestjump.com instead.'; err.hidden = false; })
       .then(function () { go.disabled = false; go.textContent = 'Send'; });
   });
