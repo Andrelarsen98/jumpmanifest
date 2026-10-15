@@ -21,11 +21,9 @@
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg?v=4" />
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=4" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://api.fontshare.com" />
-<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
-<link rel="preload" as="style" href="https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap" /></noscript>
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Manrope:wght@400..800&display=swap" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Manrope:wght@400..800&display=swap" /></noscript>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Manrope:wght@400..800&display=swap" rel="stylesheet" />
 <style>
   :root { --ink: #050505; --ink2: #3a3448; --muted: #6f6982; --line: rgba(15,11,28,.08); --cloud: #EDEFF7; --violet: #7C3AED; --violet-d: #6D28D9; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -414,7 +412,7 @@
   .ft-social a { width: 38px; height: 38px; border-radius: 10px; background: #fff; border: 1px solid rgba(15,11,28,.08); display: inline-flex; align-items: center; justify-content: center; color: #0f0b1c; transition: background .15s ease; }
   .ft-social a:hover { background: #EDEFF7; }
   .ft-social svg { width: 18px; height: 18px; }
-  .ft-col h3 { font-size: 15px; font-weight: 600; color: #8a869a; margin: 4px 0 18px; letter-spacing: -0.01em; }
+  .ft-col h4 { font-size: 15px; font-weight: 600; color: #8a869a; margin: 4px 0 18px; letter-spacing: -0.01em; }
   .ft-col a { display: block; font-size: 15.5px; font-weight: 600; color: #0f0b1c; margin-bottom: 4px; padding: 10px 0; letter-spacing: -0.01em; }
   .ft-col a:hover { color: #6f6982; }
   .ft-col a em { font-style: normal; font-size: 10px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: #6D28D9; background: rgba(124,58,237,.1); border-radius: 99px; padding: 2px 6px; margin-left: 6px; vertical-align: 2px; }
@@ -560,7 +558,7 @@
 footer.site { background: #111111 !important; border-top: 0 !important; }
 footer.site .ft-brand p, footer.site .ft-brand .mail a, footer.site .ft-base { color: #A1A1AA !important; }
 footer.site .ft-brand .mail, footer.site .ft-col a { color: #FFFFFF !important; }
-footer.site .ft-col h3 { color: #8E8E93 !important; }
+footer.site .ft-col h4 { color: #8E8E93 !important; }
 footer.site .ft-col a:hover, footer.site .ft-brand .mail a:hover, footer.site .ft-base a:hover { color: #D1D1D6 !important; }
 footer.site .ft-base { border-top-color: rgba(255,255,255,.12) !important; }
 footer.site .ft-base a { color: inherit; }
@@ -926,7 +924,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   <div class="li hero-media" id="demo" style="--i:5">
     <div class="frame">
       <div class="frame-bar"><i></i><i></i><i></i><span>desk.jumpmanifest.com</span></div>
-      <img src="/assets/opt/desk-today.68a82734.webp" alt="Manifest Desk: the Today page of a demo dropzone, with today's takings, open loads, the next load countdown, standby and accounts" width="1440" height="900" fetchpriority="high" decoding="async" />
+      <img src="/assets/desk-today.jpg?v=1" alt="Manifest Desk: the Today page of a demo dropzone, with today's takings, open loads, the next load countdown, standby and accounts" width="1440" height="900" fetchpriority="high" />
     </div>
   </div>
   </div>
@@ -1008,7 +1006,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     <div class="vis-media">
       <div class="frame">
         <div class="frame-bar"><i></i><i></i><i></i><span>desk.jumpmanifest.com</span></div>
-        <img src="/assets/opt/desk-today.68a82734.webp" alt="The Today page of Manifest Desk: charged for jumps today against last week, open loads, next load, standby and accounts" width="1440" height="900" loading="lazy" decoding="async" />
+        <img src="/assets/desk-today.jpg?v=1" alt="The Today page of Manifest Desk: charged for jumps today against last week, open loads, next load, standby and accounts" width="1440" height="900" loading="lazy" decoding="async" />
       </div>
     </div>
   </section>
@@ -1025,9 +1023,8 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       </ul>
     </div>
     <div class="vis-media">
-      <video autoplay class="vis-phone vis-ls" muted loop playsinline preload="metadata" width="720" height="1152" aria-label="An iPhone Lock Screen with the Manifest load card counting down to the jumper's load" poster="/assets/opt/lockscreen-poster.6252405d.webp" data-lazyplay>
+      <video class="vis-phone vis-ls" autoplay muted loop playsinline preload="metadata" width="738" height="1180" aria-label="An iPhone Lock Screen with the Manifest load card counting down to the jumper's load">
         <source src="/assets/opt/lockscreen.704735fc.mp4" type="video/mp4" />
-        <track kind="captions" src="/assets/opt/no-audio.e7a2b47f.vtt" srclang="en" label="No audio" />
       </video>
     </div>
   </section>
@@ -1044,9 +1041,8 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       </ul>
     </div>
     <div class="vis-media">
-      <video autoplay class="vis-phone vis-trio" muted loop playsinline preload="metadata" poster="/assets/opt/liveloads-poster.344e7011.webp" width="560" height="1176" aria-label="The live loads screen in the Manifest app, with the next load and the loads later today" data-lazyplay>
+      <video class="vis-phone vis-trio" autoplay muted loop playsinline preload="metadata" poster="/assets/opt/liveloads-poster.344e7011.webp" width="560" height="1176" aria-label="The live loads screen in the Manifest app, with the next load and the loads later today">
         <source src="/assets/opt/liveloads.91e6219d.mp4" type="video/mp4" />
-        <track kind="captions" src="/assets/opt/no-audio.e7a2b47f.vtt" srclang="en" label="No audio" />
       </video>
     </div>
   </section>
@@ -1283,13 +1279,13 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
         <a href="https://apps.apple.com/app/id6778510429" aria-label="App Store"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.4 2-3.5 2-3.6-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.9-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.7-.1 0-2.5-1-2.5-3.6zM14.1 5.6c.6-.8 1.1-1.9 1-3-.9 0-2.1.6-2.7 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.5 2.7-1.3z"/></svg></a>
       </div>
     </div>
-    <div class="ft-col"><h3>App</h3>
+    <div class="ft-col"><h4>App</h4>
       <a href="/#replay">3D Replay</a><a href="/#live">Live loads</a><a href="/#everything">Features</a><a href="https://apps.apple.com/app/id6778510429">Download</a></div>
-    <div class="ft-col"><h3>Dropzones</h3>
+    <div class="ft-col"><h4>Dropzones</h4>
       <a href="/dropzones/">Manifest Desk</a><a href="/skydiving-manifest-software/">Dropzone software</a><a href="/dropzones/start/">Get started</a><a href="https://desk.jumpmanifest.com">Dropzone login</a></div>
-    <div class="ft-col"><h3>Explore</h3>
+    <div class="ft-col"><h4>Explore</h4>
       <a href="/uspa-digital-logbook/">USPA digital logbook</a><a href="/skydive-3d-tracking/">3D jump tracking</a><a href="/#faq">FAQ</a></div>
-    <div class="ft-col"><h3>Company</h3>
+    <div class="ft-col"><h4>Company</h4>
       <a href="/about/">About</a><a href="/support/">Support</a><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a></div>
   </div>
   <div class="ft-base"><span>© 2026 Manifest Jump LLC · Wyoming, USA · Dubai, UAE</span><div class="ft-pay" aria-label="Payment methods accepted"><img src="/assets/pay/apple_pay.svg?v=1" alt="Apple Pay" height="24" /><img src="/assets/pay/visa.svg?v=1" alt="Visa" height="24" /><img src="/assets/pay/master.svg?v=1" alt="Mastercard" height="24" /><img src="/assets/pay/american_express.svg?v=1" alt="American Express" height="24" /><img src="/assets/pay/cashapppay.svg?v=1" alt="Cash App Pay" height="24" /><img src="/assets/pay/stripe.svg?v=1" alt="Stripe" height="24" /></div></div>
@@ -1506,33 +1502,6 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       if (go(decodeURIComponent(u.hash.slice(1)), true)) { e.preventDefault(); history.pushState(null, '', u.hash); }
     });
     if (location.hash.length > 1) window.addEventListener('load', function () { go(decodeURIComponent(location.hash.slice(1)), false); });
-  })();
-</script>
-<script id="lazy-video">
-  // Videos below the fold load nothing until they come near the screen, then
-  // play muted and loop as before; off screen they pause.
-  (function () {
-    var vs = document.querySelectorAll("video[data-lazyplay]");
-    if (!vs.length) return;
-    function play(v) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
-    if (!("IntersectionObserver" in window)) { vs.forEach(play); return; }
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) play(e.target); else if (!e.target.paused) e.target.pause(); });
-    }, { rootMargin: "200px 0px" });
-    vs.forEach(function (v) { io.observe(v); });
-  })();
-</script>
-<script id="lazy-poster">
-  // Still frames for the videos further down are fetched only when the video
-  // gets within a screen or two, so they never compete with the top of the page.
-  (function () {
-    var vs = document.querySelectorAll("video[data-poster]");
-    function show(v) { if (v.dataset.poster) { v.poster = v.dataset.poster; v.removeAttribute("data-poster"); } }
-    if (!("IntersectionObserver" in window)) { vs.forEach(show); return; }
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
-    }, { rootMargin: "1200px 0px" });
-    vs.forEach(function (v) { io.observe(v); });
   })();
 </script>
 </body>

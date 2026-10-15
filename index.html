@@ -151,11 +151,9 @@
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png?v=4" />
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=4" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://api.fontshare.com" />
-<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preload" as="style" href="https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap" /></noscript>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Manrope:wght@400..800&display=swap" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Manrope:wght@400..800&display=swap" /></noscript>
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap" />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Manrope:wght@400..800&display=swap" rel="stylesheet" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -351,7 +349,7 @@
   form.cap input { flex: 1; min-width: 0; background: transparent; border: 0; outline: none;
     color: var(--ink); font-family: inherit; font-size: 16px; font-weight: 600; padding: 0 18px; }
   form.cap input::placeholder { color: #9a93ad; }
-  .note { margin-top: 14px; font-size: 13px; color: #797387; font-weight: 600; }
+  .note { margin-top: 14px; font-size: 13px; color: #948da6; font-weight: 600; }
   .stores { margin: 20px auto 0; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
   .store { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px 8px 13px;
     border-radius: 13px; background: #fff; border: 1px solid var(--line); }
@@ -412,7 +410,7 @@
   /* Shadowless phone-only mockups: PNG edges = phone edges, so sizing/overlap
      is exact. One consistent CSS drop-shadow (follows the phone's alpha). */
   .phone { position: relative; flex: 0 0 auto; width: clamp(198px, 38vw, 268px); }
-  .phone img { width: 100%; height: auto; display: block; }
+  .phone img { width: 100%; display: block; }
   /* On load the pair sits closer and near-upright, then eases out into the V
      — a two-second "settle" so the hero feels alive when the page opens. */
   .phone.back, .phone.front { transform-origin: 50% 50%;
@@ -599,9 +597,9 @@
   /* ---------- everything in the app ---------- */
   .feats { margin: 52px auto 0; display: grid; grid-template-columns: repeat(3, 1fr);
     gap: 34px 30px; max-width: 940px; text-align: left; }
-  .feat h3 { font-weight: 800; font-size: 17px; letter-spacing: -.02em; color: var(--ink);
+  .feat h4 { font-weight: 800; font-size: 17px; letter-spacing: -.02em; color: var(--ink);
     padding-left: 15px; position: relative; }
-  .feat h3::before { content: ""; position: absolute; left: 0; top: 7px;
+  .feat h4::before { content: ""; position: absolute; left: 0; top: 7px;
     width: 7px; height: 7px; border-radius: 50%; background: var(--violet); }
   .feat p { margin-top: 7px; padding-left: 15px; color: var(--muted);
     font-weight: 600; font-size: 14.5px; line-height: 1.5; }
@@ -621,8 +619,8 @@
   /* translateX(-38%) not -50%: the phone sits at 38% of the image (hand on the
      right), so this centers the actual PHONE, not the whole image. */
   .reveal-phone { position: absolute; bottom: -4%; left: 50%; z-index: 1;
-    width: min(440px, 88vw); height: auto; transform: translate(-38%, 0); will-change: transform; }
-  .cloud { position: absolute; bottom: -6%; width: 74%; height: auto; max-width: none; z-index: 3;
+    width: min(440px, 88vw); transform: translate(-38%, 0); will-change: transform; }
+  .cloud { position: absolute; bottom: -6%; width: 74%; max-width: none; z-index: 3;
     pointer-events: none; will-change: transform; }
   .c-left  { left: 0; }
   .c-right { right: 0; }
@@ -799,7 +797,7 @@
 footer.site { background: #111111 !important; border-top: 0 !important; }
 footer.site .ft-brand p, footer.site .ft-brand .mail a, footer.site .ft-base { color: #A1A1AA !important; }
 footer.site .ft-brand .mail, footer.site .ft-col a { color: #FFFFFF !important; }
-footer.site .ft-col h3 { color: #8E8E93 !important; }
+footer.site .ft-col h4 { color: #8E8E93 !important; }
 footer.site .ft-col a:hover, footer.site .ft-brand .mail a:hover, footer.site .ft-base a:hover { color: #D1D1D6 !important; }
 footer.site .ft-base { border-top-color: rgba(255,255,255,.12) !important; }
 footer.site .ft-base a { color: inherit; }
@@ -813,12 +811,11 @@ footer.site .ft-col a em { color: #FFFFFF !important; background: rgba(255,255,2
    each hero line fades in from ~40px lower and rises into place over 0.7s,
    one after another ~0.15s apart; the top bar slides down from above last. */
 @keyframes rise { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
-@keyframes rise-hero { from { transform: translateY(40px); } to { transform: none; } }
 @keyframes dropin { from { opacity: 0; transform: translateY(-100%); } to { opacity: 1; transform: none; } }
-.li { animation: rise-hero .7s cubic-bezier(.2,.75,.25,1) both; animation-delay: calc(var(--i, 0) * .15s + .1s); }
+.li { animation: rise .7s cubic-bezier(.2,.75,.25,1) both; animation-delay: calc(var(--i, 0) * .15s + .1s); }
 .li-bar { animation: dropin .6s cubic-bezier(.2,.75,.25,1) .95s both; }
 /* the phones come in with the rest, like Softriver's work images, then settle into the V */
-.hero .fan { animation: rise-hero .8s cubic-bezier(.2,.75,.25,1) .55s both; }
+.hero .fan { animation: rise .8s cubic-bezier(.2,.75,.25,1) .55s both; }
 .hero .phone.back, .hero .phone.front { animation-delay: .7s; }
 @media (prefers-reduced-motion: reduce) { .li, .li-bar { animation: none !important; } }
 </style>
@@ -963,7 +960,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 #desk .dp-dir span { background: #fff; border-radius: 99px; padding: 5px 11px; }
 #desk .dp-dir svg { width: 16px; height: 16px; color: var(--g); flex: 0 0 auto; }
 #desk .dp h3 { margin-top: 18px; font-family: "General Sans", "Manrope", sans-serif; font-size: 24px; line-height: 33.6px; font-weight: 500; letter-spacing: normal; color: var(--t); }
-#desk .dp p { margin-top: 8px; font-size: 16px; line-height: 20.8px; font-weight: 500; letter-spacing: -.5px; color: #6f6f79; }
+#desk .dp p { margin-top: 8px; font-size: 16px; line-height: 20.8px; font-weight: 500; letter-spacing: -.5px; color: var(--g); }
 @media (min-width: 600px) and (max-width: 899px) { #desk .desk-pairs { grid-template-columns: repeat(2, 1fr); max-width: 640px; } }
 @media (max-width: 899px) { #desk .desk-art { max-width: 560px; margin: 0 auto; width: 100%; } }
 @media (min-width: 900px) {
@@ -1185,7 +1182,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   .ft-social a { width: 38px; height: 38px; border-radius: 10px; background: #fff; border: 1px solid rgba(15,11,28,.08); display: inline-flex; align-items: center; justify-content: center; color: #0f0b1c; transition: background .15s ease; }
   .ft-social a:hover { background: #EDEFF7; }
   .ft-social svg { width: 18px; height: 18px; }
-  .ft-col h3 { font-size: 15px; font-weight: 600; color: #8a869a; margin: 4px 0 18px; letter-spacing: -0.01em; }
+  .ft-col h4 { font-size: 15px; font-weight: 600; color: #8a869a; margin: 4px 0 18px; letter-spacing: -0.01em; }
   .ft-col a { display: block; font-size: 15.5px; font-weight: 600; color: #0f0b1c; margin-bottom: 4px; padding: 10px 0; letter-spacing: -0.01em; }
   .ft-col a:hover { color: #6f6982; }
   .ft-col a em { font-style: normal; font-size: 10px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: #6D28D9; background: rgba(109,66,245,.1); border-radius: 99px; padding: 2px 6px; margin-left: 6px; vertical-align: 2px; }
@@ -1232,8 +1229,8 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   .flag p.trustline { font-size: 16px; line-height: 24px; font-weight: 600; }
 
   /* Card titles 24 / 33.6 weight 500; card text 16 / 20.8 weight 500 grey. */
-  .tcard h3, .feat h3 { font-family: "General Sans", "Manrope", sans-serif; font-size: 24px; line-height: 33.6px; font-weight: 500; letter-spacing: normal; color: var(--t); }
-  .feat h3::before { top: 13px; }
+  .tcard h3, .feat h4 { font-family: "General Sans", "Manrope", sans-serif; font-size: 24px; line-height: 33.6px; font-weight: 500; letter-spacing: normal; color: var(--t); }
+  .feat h4::before { top: 13px; }
   .tcard p, .feat p { margin-top: 8px; font-size: 16px; line-height: 20.8px; font-weight: 500; letter-spacing: -.5px; color: var(--g); }
 
   /* FAQ rows, as /dropzones/. */
@@ -1261,8 +1258,8 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     :root body h2, :root body .statement { font-size: 34px; line-height: 36px; }
     .faq-h2, #faq .faq-h2 { font-size: 28px; line-height: 36px; }
     .hero .sub, .statement-sub, .flag p, .flagsub { font-size: 18px; line-height: 28px; }
-    .tcard h3, .feat h3 { font-size: 22px; line-height: 30px; }
-    .feat h3::before { top: 11.5px; }
+    .tcard h3, .feat h4 { font-size: 22px; line-height: 30px; }
+    .feat h4::before { top: 11.5px; }
     .trio, .feats, .vs-cols, .faqs { margin-top: 40px; }
     .flagvid { margin-top: 40px; }
     .faq summary { font-size: 16px; line-height: 23px; }
@@ -1300,7 +1297,6 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   </div>
 </div>
 
-<main>
 <header class="hero" id="top">
   <div class="wrap">
     <h1 class="li" style="--i:0"><span class="l1">The app for skydivers.</span><br /><span class="l2">The system for dropzones.</span></h1>
@@ -1311,7 +1307,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
         <img src="assets/appstore-badge.svg?v=1" alt="Download on the App Store" />
       </a>
       <span class="playbtn" aria-label="Google Play: Android app in the making">
-        <img src="/assets/opt/googleplay-badge.5eeccbe1.webp" alt="Get it on Google Play" width="564" height="168" decoding="async" />
+        <img src="/assets/opt/googleplay-badge.5eeccbe1.webp" alt="Get it on Google Play" />
         <em>In the making</em>
       </span>
     </div>
@@ -1324,8 +1320,8 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
          the USPA listing at uspa.org/logbookapps, and who built it. -->
 
     <div class="fan">
-      <div class="phone back"><img src="/assets/opt/mock-3d.5f7a460f.webp" alt="A jump replayed in 3D over real terrain" width="640" height="1328" decoding="async" /></div>
-      <div class="phone front"><img src="/assets/opt/mock-home3.a2e7757f.webp" alt="Manifest home" width="640" height="1330" fetchpriority="high" decoding="async" /></div>
+      <div class="phone back"><img src="/assets/opt/mock-3d.5f7a460f.webp" alt="A jump replayed in 3D over real terrain" /></div>
+      <div class="phone front"><img src="/assets/opt/mock-home3.a2e7757f.webp" alt="Manifest home" /></div>
     </div>
   </div>
 </header>
@@ -1342,22 +1338,22 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       <div class="crow crow-a">
         <div class="ctrack">
           <div class="cset">
-            <figure class="ccard"><img src="/assets/opt/art-1.2b1aadd3.webp" alt="" loading="lazy" decoding="async" width="400" height="400"></figure>
+            <figure class="ccard"><img src="/assets/opt/art-1.2b1aadd3.webp" alt="" loading="lazy" decoding="async" width="640" height="640"></figure>
             <div class="ccard ctext">
               <span class="cic cic-violet"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-9 9h4.5L12 21l4.5-9H21a9 9 0 0 0-9-9z"/></svg></span>
               <p><b>You're on Load 7</b><span>in 12 minutes</span></p>
             </div>
-            <figure class="ccard"><img src="/assets/opt/art-2.b1f509c9.webp" alt="" loading="lazy" decoding="async" width="400" height="400"></figure>
+            <figure class="ccard"><img src="/assets/opt/art-2.b1f509c9.webp" alt="" loading="lazy" decoding="async" width="640" height="640"></figure>
             <div class="ccard ctext">
               <span class="cic cic-violet"><svg viewBox="0 0 24 24"><path d="M12 3l7 2.5v5c0 4.6-3 7.8-7 9-4-1.2-7-4.4-7-9v-5L12 3z"/><path d="M9 11.7l2.2 2.2L15 10.2"/></svg></span>
               <p><b>Signed off by</b><span>a licensed jumper</span></p>
             </div>
-            <figure class="ccard"><img src="/assets/opt/art-3.de1e0d84.webp" alt="" loading="lazy" decoding="async" width="400" height="400"></figure>
+            <figure class="ccard"><img src="/assets/opt/art-3.de1e0d84.webp" alt="" loading="lazy" decoding="async" width="640" height="640"></figure>
             <div class="ccard ctext">
               <span class="cic cic-red"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></span>
               <p><b>Reserve due</b><span>in 12 days</span></p>
             </div>
-            <figure class="ccard"><img src="/assets/opt/art-4.da6c6815.webp" alt="" loading="lazy" decoding="async" width="400" height="400"></figure>
+            <figure class="ccard"><img src="/assets/opt/art-4.da6c6815.webp" alt="" loading="lazy" decoding="async" width="640" height="640"></figure>
             <div class="ccard ctext">
               <span class="cic cic-violet"><svg viewBox="0 0 24 24"><path d="M20.5 10.5c0 5.2-8.5 10-8.5 10s-8.5-4.8-8.5-10a8.5 8.5 0 0 1 17 0z"/><circle cx="12" cy="10.2" r="2.8"/></svg></span>
               <p><b>220+ dropzones</b><span>live right now</span></p>
@@ -1373,28 +1369,28 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
               <span class="cic cic-violet"><svg viewBox="0 0 24 24"><path d="M16 19.5v-1.8a3.6 3.6 0 0 0-3.6-3.6H6.6A3.6 3.6 0 0 0 3 17.7v1.8"/><circle cx="9.5" cy="7.5" r="3.4"/><path d="M21 19.5v-1.8a3.6 3.6 0 0 0-2.7-3.5M15.8 4.3a3.6 3.6 0 0 1 0 6.9"/></svg></span>
               <p><b>3 friends</b><span>at Voss today</span></p>
             </div>
-            <figure class="ccard"><img src="/assets/opt/art-5.7e53834e.webp" alt="" loading="lazy" decoding="async" width="400" height="400"></figure>
+            <figure class="ccard"><img src="/assets/opt/art-5.7e53834e.webp" alt="" loading="lazy" decoding="async" width="640" height="640"></figure>
             <div class="ccard ctext">
               <span class="cic cic-violet"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg></span>
               <p><b>Repack logged</b><span>reminder set</span></p>
             </div>
-            <figure class="ccard"><img src="/assets/opt/art-6.8d2a90b9.webp" alt="" loading="lazy" decoding="async" width="400" height="400"></figure>
+            <figure class="ccard"><img src="/assets/opt/art-6.8d2a90b9.webp" alt="" loading="lazy" decoding="async" width="640" height="640"></figure>
             <div class="ccard ctext">
               <span class="cic cic-violet"><svg viewBox="0 0 24 24"><path d="M8.5 12.5l2.5 2.5 5-5.5"/><circle cx="12" cy="12" r="8.5"/></svg></span>
               <p><b>Jump #1,000</b><span>signed &amp; sealed</span></p>
             </div>
-            <figure class="ccard"><img src="/assets/opt/art-7.d31def20.webp" alt="" loading="lazy" decoding="async" width="400" height="400"></figure>
+            <figure class="ccard"><img src="/assets/opt/art-7.d31def20.webp" alt="" loading="lazy" decoding="async" width="640" height="640"></figure>
             <div class="ccard ctext">
               <span class="cic cic-violet"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="6" height="6" rx="1.2"/><rect x="14.5" y="3.5" width="6" height="6" rx="1.2"/><rect x="3.5" y="14.5" width="6" height="6" rx="1.2"/><path d="M14.5 14.5h3v3M20.5 14.5v6h-6"/></svg></span>
               <p><b>Checked in</b><span>in 4 seconds</span></p>
             </div>
-            <figure class="ccard"><img src="/assets/opt/art-8.af453a0f.webp" alt="" loading="lazy" decoding="async" width="400" height="400"></figure>
+            <figure class="ccard"><img src="/assets/opt/art-8.af453a0f.webp" alt="" loading="lazy" decoding="async" width="640" height="640"></figure>
           </div>
         </div>
       </div>
     </div>
 
-    <img class="carousel-phone" src="/assets/opt/phone-liveloads.3fc578b1.webp" alt="Manifest showing dropzones with live loads right now - Calgary, Los Angeles, Z-Hills, Perris and more" width="821" height="1705" decoding="async" loading="lazy">
+    <img class="carousel-phone" src="/assets/opt/phone-liveloads.3fc578b1.webp" alt="Manifest showing dropzones with live loads right now - Calgary, Los Angeles, Z-Hills, Perris and more" width="821" height="1705" decoding="async">
   </div>
 </section>
 
@@ -1426,9 +1422,9 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       </div>
 
       <div class="tcard mid">
-        <video autoplay class="tmedia" src="/assets/opt/liveloads.91e6219d.mp4" poster="/assets/opt/liveloads-poster.344e7011.webp"
-               muted loop playsinline preload="metadata"
-               aria-label="Live loads at Skydive Elsinore, with jumper names hidden" width="560" height="1176" data-lazyplay><track kind="captions" src="/assets/opt/no-audio.e7a2b47f.vtt" srclang="en" label="No audio" /></video>
+        <video class="tmedia" src="/assets/opt/liveloads.91e6219d.mp4" poster="/assets/opt/liveloads-poster.344e7011.webp"
+               autoplay muted loop playsinline preload="metadata"
+               aria-label="Live loads at Skydive Elsinore, with jumper names hidden"></video>
         <div>
           <h3>Every load, live</h3>
           <p>What's on call, who's on it and how long you've got, straight off the dropzone's own manifest, at 220+ dropzones worldwide.</p>
@@ -1452,10 +1448,9 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     <h2 style="margin-top:0"><span class="l1">Your load.</span><br />Live on your Lock Screen.</h2>
     <p>Notifications the second the plane's called, gear-up and final call, plus a live countdown in your Dynamic Island. So it never leaves without you.</p>
     </div>
-    <video autoplay class="flagvid" id="flagVid" loop muted playsinline preload="metadata"
-           aria-label="Live loads on your Lock Screen" poster="/assets/opt/lockscreen-poster.6252405d.webp" width="720" height="1152">
+    <video class="flagvid" id="flagVid" autoplay loop muted playsinline preload="metadata"
+           aria-label="Live loads on your Lock Screen">
       <source src="/assets/opt/lockscreen.704735fc.mp4" type="video/mp4" />
-      <track kind="captions" src="/assets/opt/no-audio.e7a2b47f.vtt" srclang="en" label="No audio" />
     </video>
     <div class="ftext fb">
     <p class="flagsub">No shouting across the hangar. No missed calls. No sprinting for the plane.
@@ -1474,9 +1469,8 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     <p>Put your phone in your pocket and jump. Manifest measures the whole flight and replays it over the real terrain you fell through, so you can finally see the jump instead of describing it.</p>
     </div>
     <video class="flagvid" loop muted playsinline preload="metadata"
-           aria-label="A skydive replayed in 3D over real terrain, from exit to landing" poster="/assets/opt/jumptrack3-poster.bcbd71bb.webp" width="720" height="1280">
+           aria-label="A skydive replayed in 3D over real terrain, from exit to landing">
       <source src="/assets/opt/jumptrack3.210f3465.mp4" type="video/mp4" />
-      <track kind="captions" src="/assets/opt/no-audio.e7a2b47f.vtt" srclang="en" label="No audio" />
     </video>
     <div class="ftext fb">
     <p class="flagsub">Exit, freefall, the moment you pulled, the canopy ride, the spot you landed.
@@ -1495,9 +1489,8 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     <p>Find dropzones near you or anywhere you're heading next, with conditions, loads and the details that actually matter.</p>
     </div>
     <video class="flagvid" loop muted playsinline preload="metadata"
-           aria-label="Dropzone finder map" poster="/assets/opt/dropzones-poster.c817cbbd.webp" width="720" height="1280">
+           aria-label="Dropzone finder map">
       <source src="/assets/opt/dropzones.23e0a3fc.mp4" type="video/mp4" />
-      <track kind="captions" src="/assets/opt/no-audio.e7a2b47f.vtt" srclang="en" label="No audio" />
     </video>
     <div class="ftext fb"></div>
   </div>
@@ -1511,9 +1504,8 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     <p>Wind at every stage of the jump: up where you get out, under canopy and on the ground, with how far it turns and how much it drops in between. Cloud by layer in feet, so you know what is between you and the ground.</p>
     </div>
     <video class="flagvid" loop muted playsinline preload="metadata"
-           aria-label="Jump weather for a dropzone: wind at exit, under canopy and on the ground, with cloud by layer" poster="/assets/opt/weather-poster.feba04c5.webp" width="720" height="1280">
+           aria-label="Jump weather for a dropzone: wind at exit, under canopy and on the ground, with cloud by layer">
       <source src="/assets/opt/weather.6052ec54.mp4" type="video/mp4" />
-      <track kind="captions" src="/assets/opt/no-audio.e7a2b47f.vtt" srclang="en" label="No audio" />
     </video>
     <div class="ftext fb">
     <p class="flagsub">A phone weather app tells you it is 21&deg; and partly cloudy.
@@ -1529,16 +1521,16 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     <h2>Built for how you actually jump.</h2>
 
     <div class="feats">
-      <div class="feat"><h3>Jump logging</h3><p>Seconds per jump, even with no signal.</p></div>
-      <div class="feat"><h3>Tunnel logging</h3><p>Indoor time, alongside your jumps.</p></div>
-      <div class="feat"><h3>Import your history</h3><p>Every jump across by CSV, from any app.</p></div>
-      <div class="feat"><h3>Verified sign-offs</h3><p>Witnessed by the jumpers who were there.</p></div>
-      <div class="feat"><h3>Check-in Pass</h3><p>Licence and currency, scannable at the desk.</p></div>
-      <div class="feat"><h3>Gear &amp; service</h3><p>Rigs, reserves and AADs, always in date.</p></div>
-      <div class="feat"><h3>Jump weather</h3><p>Wind at exit, under canopy and on the ground.</p></div>
-      <div class="feat"><h3>Dropzones &amp; events</h3><p>Find them worldwide, and what's on.</p></div>
-      <div class="feat"><h3>Coaches &amp; community</h3><p>Follow jumpers, message coaches, message anyone.</p></div>
-      <div class="feat"><h3>Year in the Sky</h3><p>Your whole season, worth sharing.</p></div>
+      <div class="feat"><h4>Jump logging</h4><p>Seconds per jump, even with no signal.</p></div>
+      <div class="feat"><h4>Tunnel logging</h4><p>Indoor time, alongside your jumps.</p></div>
+      <div class="feat"><h4>Import your history</h4><p>Every jump across by CSV, from any app.</p></div>
+      <div class="feat"><h4>Verified sign-offs</h4><p>Witnessed by the jumpers who were there.</p></div>
+      <div class="feat"><h4>Check-in Pass</h4><p>Licence and currency, scannable at the desk.</p></div>
+      <div class="feat"><h4>Gear &amp; service</h4><p>Rigs, reserves and AADs, always in date.</p></div>
+      <div class="feat"><h4>Jump weather</h4><p>Wind at exit, under canopy and on the ground.</p></div>
+      <div class="feat"><h4>Dropzones &amp; events</h4><p>Find them worldwide, and what's on.</p></div>
+      <div class="feat"><h4>Coaches &amp; community</h4><p>Follow jumpers, message coaches, message anyone.</p></div>
+      <div class="feat"><h4>Year in the Sky</h4><p>Your whole season, worth sharing.</p></div>
     </div>
   </div>
 </section>
@@ -1774,7 +1766,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
           <a class="btn ghost" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo&amp;body=Dropzone%3A%20%0AName%3A%20%0APhone%3A%20%0ABest%20time%20for%20a%2020-minute%20video%20call%3A%20">Book a demo</a>
         </div>
       </div>
-      <figure class="desk-art"><div style="position:relative"><img class="win" src="/assets/opt/desk-today.68a82734.webp" alt="Manifest Desk Today page for a demo dropzone, showing money charged for jumps today, open loads, the next load countdown, standby and jumper accounts" width="1440" height="900" loading="lazy" decoding="async" /><img class="win-phone" src="/assets/opt/mock-home3.a2e7757f.webp" width="640" height="1330" alt="" loading="lazy" decoding="async" /></div></figure>
+      <figure class="desk-art"><div style="position:relative"><img class="win" src="/assets/desk-today.jpg?v=1" alt="Manifest Desk Today page for a demo dropzone, showing money charged for jumps today, open loads, the next load countdown, standby and jumper accounts" width="1440" height="900" loading="lazy" decoding="async" /><img class="win-phone" src="/assets/opt/mock-home3.a2e7757f.webp" width="640" height="1330" alt="" loading="lazy" decoding="async" /></div></figure>
     </div>
     <ol class="desk-pairs">
       <li class="dp"><div class="dp-dir"><span>Desk</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg><span>App</span></div><h3>You call a load.</h3><p>Everyone on it gets the call, then 15, 10 and 5 minutes and boarding, with a live countdown on the Lock Screen.</p></li>
@@ -1865,12 +1857,12 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     </div>
   </div>
 </section>
-</main>
+
 
 <section class="reveal" id="reveal" aria-hidden="true">
-  <img class="reveal-phone" src="/assets/opt/hand-phone.c1c25f9a.webp" alt="" loading="lazy" decoding="async" width="631" height="841" />
-  <img class="cloud c-left"  src="/assets/opt/cloud.852c5bc0.webp"   alt="" loading="lazy" decoding="async" width="1150" height="646" />
-  <img class="cloud c-right" src="/assets/opt/cloud-r.8c2fd097.webp" alt="" loading="lazy" decoding="async" width="1150" height="646" />
+  <img class="reveal-phone" src="/assets/opt/hand-phone.c1c25f9a.webp" alt="" loading="lazy" decoding="async" />
+  <img class="cloud c-left"  src="/assets/opt/cloud.852c5bc0.webp"   alt="" loading="lazy" decoding="async" />
+  <img class="cloud c-right" src="/assets/opt/cloud-r.8c2fd097.webp" alt="" loading="lazy" decoding="async" />
 </section>
 
 <footer class="site">
@@ -1884,13 +1876,13 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
         <a href="https://apps.apple.com/app/id6778510429" aria-label="App Store"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.4 2-3.5 2-3.6-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.9-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.7-.1 0-2.5-1-2.5-3.6zM14.1 5.6c.6-.8 1.1-1.9 1-3-.9 0-2.1.6-2.7 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.5 2.7-1.3z"/></svg></a>
       </div>
     </div>
-    <div class="ft-col"><h3>App</h3>
+    <div class="ft-col"><h4>App</h4>
       <a href="/#replay">3D Replay</a><a href="/#live">Live loads</a><a href="/#everything">Features</a><a href="https://apps.apple.com/app/id6778510429">Download</a></div>
-    <div class="ft-col"><h3>Dropzones</h3>
+    <div class="ft-col"><h4>Dropzones</h4>
       <a href="/dropzones/">Manifest Desk</a><a href="/skydiving-manifest-software/">Dropzone software</a><a href="/dropzones/start/">Get started</a><a href="https://desk.jumpmanifest.com">Dropzone login</a></div>
-    <div class="ft-col"><h3>Explore</h3>
+    <div class="ft-col"><h4>Explore</h4>
       <a href="/uspa-digital-logbook/">USPA digital logbook</a><a href="/skydive-3d-tracking/">3D jump tracking</a><a href="/#faq">FAQ</a></div>
-    <div class="ft-col"><h3>Company</h3>
+    <div class="ft-col"><h4>Company</h4>
       <a href="/about/">About</a><a href="/support/">Support</a><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a></div>
   </div>
   <div class="ft-base"><span>© 2026 Manifest Jump LLC · Wyoming, USA · Dubai, UAE</span><div class="ft-pay" aria-label="Payment methods accepted"><img src="/assets/pay/apple_pay.svg?v=1" alt="Apple Pay" height="24" /><img src="/assets/pay/visa.svg?v=1" alt="Visa" height="24" /><img src="/assets/pay/master.svg?v=1" alt="Mastercard" height="24" /><img src="/assets/pay/american_express.svg?v=1" alt="American Express" height="24" /><img src="/assets/pay/cashapppay.svg?v=1" alt="Cash App Pay" height="24" /><img src="/assets/pay/stripe.svg?v=1" alt="Stripe" height="24" /></div></div>
@@ -2211,33 +2203,6 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       if (go(decodeURIComponent(u.hash.slice(1)), true)) { e.preventDefault(); history.pushState(null, '', u.hash); }
     });
     if (location.hash.length > 1) window.addEventListener('load', function () { go(decodeURIComponent(location.hash.slice(1)), false); });
-  })();
-</script>
-<script id="lazy-video">
-  // Videos below the fold load nothing until they come near the screen, then
-  // play muted and loop as before; off screen they pause.
-  (function () {
-    var vs = document.querySelectorAll("video[data-lazyplay]");
-    if (!vs.length) return;
-    function play(v) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
-    if (!("IntersectionObserver" in window)) { vs.forEach(play); return; }
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) play(e.target); else if (!e.target.paused) e.target.pause(); });
-    }, { rootMargin: "200px 0px" });
-    vs.forEach(function (v) { io.observe(v); });
-  })();
-</script>
-<script id="lazy-poster">
-  // Still frames for the videos further down are fetched only when the video
-  // gets within a screen or two, so they never compete with the top of the page.
-  (function () {
-    var vs = document.querySelectorAll("video[data-poster]");
-    function show(v) { if (v.dataset.poster) { v.poster = v.dataset.poster; v.removeAttribute("data-poster"); } }
-    if (!("IntersectionObserver" in window)) { vs.forEach(show); return; }
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
-    }, { rootMargin: "1200px 0px" });
-    vs.forEach(function (v) { io.observe(v); });
   })();
 </script>
 </body>

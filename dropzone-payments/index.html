@@ -22,11 +22,9 @@
 <link rel="icon" type="image/png" href="/assets/app-icon.png?v=3" />
 <link rel="apple-touch-icon" href="/assets/app-icon.png?v=3" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://api.fontshare.com" />
-<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preload" as="style" href="https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap" /></noscript>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" /></noscript>
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
 <style>
   :root { --ink: #0f0b1c; --violet: #6D42F5; --violet-d: #6D42F5; --muted: #6f6982; --line: rgba(15,11,28,.08); }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -178,7 +176,7 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
   .ft-social a { width: 38px; height: 38px; border-radius: 10px; background: #fff; border: 1px solid rgba(15,11,28,.08); display: inline-flex; align-items: center; justify-content: center; color: #0f0b1c; transition: background .15s ease; }
   .ft-social a:hover { background: #EDEFF7; }
   .ft-social svg { width: 18px; height: 18px; }
-  .ft-col h3 { font-size: 15px; font-weight: 600; color: #8a869a; margin: 4px 0 18px; letter-spacing: -0.01em; }
+  .ft-col h4 { font-size: 15px; font-weight: 600; color: #8a869a; margin: 4px 0 18px; letter-spacing: -0.01em; }
   .ft-col a { display: block; font-size: 15.5px; font-weight: 600; color: #0f0b1c; margin-bottom: 4px; padding: 10px 0; letter-spacing: -0.01em; }
   .ft-col a:hover { color: #6f6982; }
   .ft-col a em { font-style: normal; font-size: 10px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: #6D42F5; background: rgba(109,66,245,.1); border-radius: 99px; padding: 2px 6px; margin-left: 6px; vertical-align: 2px; }
@@ -244,7 +242,7 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
 footer.site { background: #111111 !important; border-top: 0 !important; }
 footer.site .ft-brand p, footer.site .ft-brand .mail a, footer.site .ft-base { color: #A1A1AA !important; }
 footer.site .ft-brand .mail, footer.site .ft-col a { color: #FFFFFF !important; }
-footer.site .ft-col h3 { color: #8E8E93 !important; }
+footer.site .ft-col h4 { color: #8E8E93 !important; }
 footer.site .ft-col a:hover, footer.site .ft-brand .mail a:hover, footer.site .ft-base a:hover { color: #D1D1D6 !important; }
 footer.site .ft-base { border-top-color: rgba(255,255,255,.12) !important; }
 footer.site .ft-base a { color: inherit; }
@@ -396,8 +394,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   .dp-btn:hover { text-decoration: none; background: #6D42F5; }
   .dp-ghost { background: #fff; color: #040815; border: 1px solid #E4E4E7; }
   .dp-ghost:hover { background: #fff; color: #6D42F5; }
-  .doc .dp-small { color: #6f6f79; font-size: 14px; margin: 20px 0 0; }
-  .doc .dp-small a { text-decoration: underline; text-underline-offset: 2px; }
+  .doc .dp-small { color: var(--g); font-size: 14px; margin: 20px 0 0; }
   @media (max-width: 600px) { .dp-cta { padding: 28px 20px; } .dp-btn { width: 100%; } }
 </style>
 <script type="application/ld+json">
@@ -667,7 +664,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
         <p class="intro">Your jumpers already have their phone in hand at the dropzone. With Manifest they top up their jump account with Apple Pay or a card in a few taps, the money goes straight into your dropzone's own Stripe account, and the new balance is on your desk before they reach the counter.</p>
         <p class="seo-cta"><a class="btn" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo">Book a 20-minute demo</a> <a class="seo-link" href="/dropzones/#pricing">See pricing</a></p>
       </div>
-      <figure class="seo-art desk"><div style="position:relative"><img class="win" src="/assets/opt/desk-today.68a82734.webp" alt="Manifest Desk Today page for a demo dropzone: charged for jumps today, a Top up button, open loads, next load, standby, and an Accounts card showing money owed to the dropzone and balances held" width="1440" height="900" decoding="async" fetchpriority="high" /><img class="win-phone" src="/assets/opt/mock-home3.a2e7757f.webp" width="640" height="1330" alt="" decoding="async" /></div><figcaption>The Today page on Manifest Desk: what was charged for jumps today, a Top up button, and every account balance in one card.</figcaption></figure>
+      <figure class="seo-art desk"><div style="position:relative"><img class="win" src="/assets/desk-today.jpg?v=1" alt="Manifest Desk Today page for a demo dropzone: charged for jumps today, a Top up button, open loads, next load, standby, and an Accounts card showing money owed to the dropzone and balances held" width="1440" height="900" loading="lazy" decoding="async" /><img class="win-phone" src="/assets/opt/mock-home3.a2e7757f.webp" width="640" height="1330" alt="" /></div><figcaption>The Today page on Manifest Desk: what was charged for jumps today, a Top up button, and every account balance in one card.</figcaption></figure>
     </div>
 
     <h2>Why dropzone payments still hurt</h2>
@@ -749,13 +746,13 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
         <a href="https://apps.apple.com/app/id6778510429" aria-label="App Store"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.4 2-3.5 2-3.6-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.9-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.7-.1 0-2.5-1-2.5-3.6zM14.1 5.6c.6-.8 1.1-1.9 1-3-.9 0-2.1.6-2.7 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.5 2.7-1.3z"/></svg></a>
       </div>
     </div>
-    <div class="ft-col"><h3>App</h3>
+    <div class="ft-col"><h4>App</h4>
       <a href="/#replay">3D Replay</a><a href="/#live">Live loads</a><a href="/#everything">Features</a><a href="https://apps.apple.com/app/id6778510429">Download</a></div>
-    <div class="ft-col"><h3>Dropzones</h3>
+    <div class="ft-col"><h4>Dropzones</h4>
       <a href="/dropzones/">Manifest Desk</a><a href="/dropzones/start/">Get started</a><a href="https://desk.jumpmanifest.com">Dropzone login</a></div>
-    <div class="ft-col"><h3>Explore</h3>
+    <div class="ft-col"><h4>Explore</h4>
       <a href="/uspa-digital-logbook/">USPA digital logbook</a><a href="/skydive-3d-tracking/">3D jump tracking</a><a href="/#faq">FAQ</a></div>
-    <div class="ft-col"><h3>Company</h3>
+    <div class="ft-col"><h4>Company</h4>
       <a href="/about/">About</a><a href="/support/">Support</a><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a></div>
   </div>
   <div class="ft-base"><span>© 2026 Manifest Jump LLC · Wyoming, USA · Dubai, UAE</span><div class="ft-pay" aria-label="Payment methods accepted"><img src="/assets/pay/apple_pay.svg?v=1" alt="Apple Pay" height="24" /><img src="/assets/pay/visa.svg?v=1" alt="Visa" height="24" /><img src="/assets/pay/master.svg?v=1" alt="Mastercard" height="24" /><img src="/assets/pay/american_express.svg?v=1" alt="American Express" height="24" /><img src="/assets/pay/cashapppay.svg?v=1" alt="Cash App Pay" height="24" /><img src="/assets/pay/stripe.svg?v=1" alt="Stripe" height="24" /></div></div>
