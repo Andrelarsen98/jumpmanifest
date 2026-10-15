@@ -1313,7 +1313,11 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     background: #fff; color: var(--t); margin-bottom: 16px; box-shadow: 0 0 0 1px rgba(5,5,5,.06); }
   .feat-ic svg { width: 22px; height: 22px; }
   .feat h3 { padding-left: 0; } .feat h3::before { display: none; } .feat p { padding-left: 0; }
-  @media (max-width: 899px) { .feat-ic { background: #f5f5f6; box-shadow: none; } }
+  @media (max-width: 899px) {
+    .feat { display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 16px; align-items: start; }
+    .feat-ic { grid-row: 1 / span 2; margin: 0; background: #f5f5f6; box-shadow: none; }
+    .feat h3 { grid-column: 2; } .feat p { grid-column: 2; }
+  }
   /* A01: the eyebrow sits inside its h2, so the heading names the feature. */
   :root body h2.hk, :root body .flag h2.hk { margin-top: 0; }
   h2.hk .kicker { display: block; margin: 0 0 20px; font-family: "Manrope", sans-serif; font-size: 13px; line-height: 24px; font-weight: 700;
@@ -1347,6 +1351,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   .privacy-row li { display: inline-flex; align-items: center; gap: 8px; }
   .privacy-row svg { width: 16px; height: 16px; color: #050505; flex: 0 0 auto; }
   .privacy-row a { color: #050505; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; display: inline-block; padding: 11px 0; margin: -11px 0; }
+  @media (max-width: 600px) { .hero .storebtns { margin-top: 20px; } }
   @media (max-width: 599px) { .privacy-row { flex-direction: column; align-items: center; gap: 10px; } }
   /* A09: QR handoff beside (never on) the badge, 1024px and wider only. */
   .get-row { display: flex; align-items: center; justify-content: center; gap: 28px; margin-top: 24px; }
@@ -2173,9 +2178,17 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   // ---- F15 pause controls (16 Oct 2026): one button per looping video, one for
   // the moving cards. Only play()/pause() on request; autoplay and loading are
   // untouched. A user pause sets data-user-paused, which kick() above respects.
+  var calm = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
   Array.prototype.forEach.call(document.querySelectorAll(".vpause"), function (b) {
     var v = b.parentNode.querySelector("video");
     if (!v) return;
+    // Reduced motion: nothing plays until its play button is pressed. Only for
+    // these visitors; everyone else gets exactly the autoplay they had before.
+    if (calm) {
+      v.dataset.userPaused = "1"; v.pause();
+      v.addEventListener("play", function () { if (v.dataset.userPaused) v.pause(); });
+      b.setAttribute("aria-pressed", "true"); b.setAttribute("aria-label", "Play video");
+    }
     b.addEventListener("click", function () {
       var pause = !v.dataset.userPaused;
       if (pause) { v.dataset.userPaused = "1"; v.pause(); }
