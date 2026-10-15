@@ -927,6 +927,63 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 </style>
 <style id="ft-pay-css">.ft-base{flex-wrap:wrap;gap:12px 24px;align-items:center}.ft-pay{display:flex;flex-wrap:wrap;gap:8px;margin:0}.ft-pay img{height:24px;width:auto;display:block;border-radius:4px}@media (max-width:899px){.ft-base{flex-direction:column;align-items:center !important;justify-content:center;text-align:center}.ft-pay{justify-content:center}}@media (min-width:900px){.ft-base{display:grid!important;grid-template-columns:1fr auto 1fr;align-items:center}.ft-base>.ft-pay{justify-self:center}}</style>
 <style id="overscroll-css">html{background-color:#111111}body{background-color:#ffffff}footer.site{box-shadow:0 100vh 0 100vh #111111}</style>
+<style id="home-desk-css">
+/* MANIFEST DESK ON THE HOME PAGE (15 Oct 2026): the hero says "the system for
+   dropzones"; this section shows it. Copy left, the Desk window with the
+   jumper's phone in front on the right (copied from the SEO pages' .seo-art.desk:
+   same .win / .win-phone numbers), then four desk and app pairs as .feat cards. */
+#desk .desk-top { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
+#desk .desk-copy { text-align: center; }
+#desk .desk-lead { margin: 20px auto 0; max-width: 560px; font-size: 20px; line-height: 31px; color: var(--g); }
+#desk .desk-lead b { font-weight: 600; color: var(--t); }
+#desk .desk-ctas { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 32px; }
+/* Buttons as /dropzones/ (.btn.primary / .btn.ghost), scoped so the home .btn is untouched. */
+#desk .btn { display: inline-flex; align-items: center; gap: 10px; box-shadow: none; white-space: nowrap;
+  font-family: "Manrope", sans-serif; font-size: 20px; font-weight: 600; line-height: 30px; letter-spacing: normal; border-radius: 28px; }
+#desk .btn:hover { transform: none; }
+#desk .btn.primary { background: #6D42F5; color: #fff; height: 64px; padding: 8px 8px 8px 28px; gap: 12px; justify-content: space-between;
+  box-shadow: rgba(109,66,245,.08) 0 4px 4px, rgba(109,66,245,.04) 0 8px 8px, rgba(109,66,245,.02) 0 16px 5px,
+              inset 0 0 2px rgba(255,255,255,.12), inset 0 0 20px rgba(255,255,255,.08); }
+#desk .btn.primary:hover { filter: brightness(1.06); }
+#desk .btn .bi { width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.08);
+  display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+#desk .btn .bi svg { width: 8px; height: 14px; }
+#desk .btn.ghost { background: #F6F6F6; color: #040815; padding: 17.6px 22px; }
+/* The Desk window with the jumper's phone in front (as .seo-art.desk). */
+#desk .desk-art { position: relative; margin: 0; min-width: 0; padding: 0 0 40px; }
+#desk .desk-art .win { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid #E4E4E7; box-shadow: 0 24px 60px -24px rgba(15,23,42,.28), 0 2px 8px rgba(15,23,42,.06); }
+#desk .desk-art .win-phone { position: absolute; right: -2%; bottom: 0; width: 27%; max-width: 170px; height: auto; filter: drop-shadow(0 18px 28px rgba(15,23,42,.28)); }
+/* The pairs: one .feat card each (#f5f5f6, same radius, padding and type). */
+#desk .desk-pairs { list-style: none; display: grid; grid-template-columns: 1fr; gap: 16px; margin: 56px auto 0; max-width: 420px; }
+#desk .dp { background: #f5f5f6; border-radius: clamp(20px, 2.4vw, 28px); padding: 26px 24px 28px; text-align: left; }
+#desk .dp-dir { display: flex; align-items: center; gap: 8px; font-size: 13px; line-height: 18px; font-weight: 700; color: var(--t); }
+#desk .dp-dir span { background: #fff; border-radius: 99px; padding: 5px 11px; }
+#desk .dp-dir svg { width: 16px; height: 16px; color: var(--g); flex: 0 0 auto; }
+#desk .dp h3 { margin-top: 18px; font-family: "General Sans", "Manrope", sans-serif; font-size: 24px; line-height: 33.6px; font-weight: 500; letter-spacing: normal; color: var(--t); }
+#desk .dp p { margin-top: 8px; font-size: 16px; line-height: 20.8px; font-weight: 500; letter-spacing: -.5px; color: var(--g); }
+@media (min-width: 600px) and (max-width: 899px) { #desk .desk-pairs { grid-template-columns: repeat(2, 1fr); max-width: 640px; } }
+@media (max-width: 899px) { #desk .desk-art { max-width: 560px; margin: 0 auto; width: 100%; } }
+@media (min-width: 900px) {
+  #desk .desk-top { grid-template-columns: 1fr 1.15fr; column-gap: 56px; }
+  #desk .desk-copy { text-align: left; }
+  #desk .kicker { text-align: left; }
+  #desk h2 { text-align: left; margin-left: 0; }
+  #desk .desk-lead { margin-left: 0; max-width: 480px; }
+  #desk .desk-ctas { justify-content: flex-start; }
+  #desk .desk-pairs { grid-template-columns: repeat(2, 1fr); max-width: none; }
+}
+@media (min-width: 1200px) { #desk .desk-pairs { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 600px) {
+  #desk .desk-lead { font-size: 18px; line-height: 28px; }
+  #desk .btn { font-size: 17px; }
+  #desk .btn.primary { height: 56px; padding: 6px 6px 6px 22px; }
+  #desk .btn .bi { width: 44px; height: 44px; }
+  #desk .btn.ghost { padding: 13px 20px; }
+  #desk .desk-pairs { margin-top: 40px; }
+  #desk .desk-art .win-phone { width: 30%; right: 0; }
+  #desk .dp h3 { font-size: 22px; line-height: 30px; }
+}
+</style>
 </head>
 <body>
 <style>
@@ -1431,6 +1488,33 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       <div class="feat"><h4>Coaches &amp; community</h4><p>Follow jumpers, message coaches, message anyone.</p></div>
       <div class="feat"><h4>Year in the Sky</h4><p>Your whole season, worth sharing.</p></div>
     </div>
+  </div>
+</section>
+
+<!-- MANIFEST DESK (15 Oct 2026): the hero's "system for dropzones", shown.
+     Every pair checked in code: desk-call pushes (called, 15/10/5, boarding,
+     holds) + the Lock Screen card; book-load.tsx (desk_self_book, standby);
+     top-up-sheet.tsx (Apple Pay via desk-stripe); sos.tsx to the desk map + chat. -->
+<section class="block" id="desk">
+  <div class="wrap">
+    <div class="desk-top">
+      <div class="desk-copy">
+        <div class="kicker">Manifest Desk</div>
+        <h2><span class="l1">One system.</span><br />Both sides of the hangar.</h2>
+        <p class="desk-lead">The dropzone runs its loads on Manifest Desk, in the browser. Jumpers see the same loads live on their iPhone, and the hangar TV shows them too. <b>Change it once at the desk and every screen follows.</b></p>
+        <div class="desk-ctas">
+          <a class="btn primary" href="/dropzones/">See Manifest Desk<span class="bi"><svg viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></span></a>
+          <a class="btn ghost" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo&amp;body=Dropzone%3A%20%0AName%3A%20%0APhone%3A%20%0ABest%20time%20for%20a%2020-minute%20video%20call%3A%20">Book a demo</a>
+        </div>
+      </div>
+      <figure class="desk-art"><div style="position:relative"><img class="win" src="/assets/desk-today.jpg?v=1" alt="Manifest Desk Today page for a demo dropzone, showing money charged for jumps today, open loads, the next load countdown, standby and jumper accounts" width="1440" height="900" loading="lazy" decoding="async" /><img class="win-phone" src="/assets/mock-home3.png" width="640" height="1330" alt="" loading="lazy" decoding="async" /></div></figure>
+    </div>
+    <ol class="desk-pairs">
+      <li class="dp"><div class="dp-dir"><span>Desk</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg><span>App</span></div><h3>You call a load.</h3><p>Everyone on it gets the call, then 15, 10 and 5 minutes and boarding, with a live countdown on the Lock Screen.</p></li>
+      <li class="dp"><div class="dp-dir"><span>App</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg><span>Desk</span></div><h3>A jumper books a load.</h3><p>Their name lands on that load at the desk. Standby fills itself the same way.</p></li>
+      <li class="dp"><div class="dp-dir"><span>App</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg><span>Desk</span></div><h3>A jumper tops up.</h3><p>One tap with Apple Pay, and the new balance is on their account at the desk.</p></li>
+      <li class="dp"><div class="dp-dir"><span>App</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg><span>Desk</span></div><h3>A jumper lands out.</h3><p>They show up on the live map at the desk, with a chat to the jumper.</p></li>
+    </ol>
   </div>
 </section>
 
