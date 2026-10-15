@@ -14,7 +14,7 @@
      2 your plan with an order summary, 3 Stripe Checkout, 4 set up
      (/dropzones/welcome). Backend: supabase function desk-billing. -->
 <style>
-  :root { --ink: #050505; --muted: #71717B; --line: #E7E7EC; --cloud: #EDEFF7; --purple: #6D42F5; --pale: #F0ECFE; --green: #15803D; }
+  :root { --ink: #050505; --muted: #71717B; --line: #E7E7EC; --cloud: #EDEFF7; --purple: #6D42F5; --pale: #F0ECFE; --green: #34C759; /* the app's green (André, 15 Oct) */ }
   * { box-sizing: border-box; }
   body { margin: 0; font-family: "Manrope", -apple-system, sans-serif; color: var(--ink); background: #F6F6F9; line-height: 1.5; }
   a { color: inherit; }
@@ -65,7 +65,7 @@
   .price .now { font-family: "General Sans", sans-serif; font-weight: 550; font-size: 36px; letter-spacing: -0.03em; color: var(--purple); }
   .price .was { color: var(--muted); text-decoration: line-through; font-size: 17px; }
   .price .per { color: var(--muted); font-size: 15px; }
-  .chip { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .06em; color: var(--green); background: #DCFCE7; border-radius: 8px; padding: 4px 8px; }
+  .chip { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .06em; color: #fff; background: var(--green); border-radius: 8px; padding: 4px 8px; }
   .tag { position: absolute; right: 20px; top: 22px; font-size: 12px; font-weight: 800; letter-spacing: .08em; color: var(--purple); background: #fff; border: 1px solid #DCD3FD; border-radius: 99px; padding: 5px 12px; }
   .sum h2 { font-size: 26px; }
   .sum .pname { font-size: 13px; font-weight: 800; letter-spacing: .08em; color: var(--purple); text-transform: uppercase; margin: 16px 0 10px; }
@@ -78,7 +78,7 @@
   .total b { font-size: 17px; }
   .total .amt { font-family: "General Sans", sans-serif; font-weight: 550; font-size: 34px; letter-spacing: -0.03em; }
   .after { color: var(--muted); font-size: 14px; margin: 6px 0 0; }
-  .guar { margin: 22px -32px -32px; padding: 20px 32px; background: #F0FDF4; border-radius: 0 0 28px 28px; color: #166534; font-size: 14.5px; }
+  .guar { margin: 22px -32px -32px; padding: 20px 32px; background: #F6F6F8; border-radius: 0 0 28px 28px; color: #3F3F46; font-size: 14.5px; }
   .guar b { color: var(--green); }
   .trust { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 28px; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 15px; color: var(--muted); }
   .trust b { color: var(--ink); font-weight: 600; }
@@ -191,7 +191,7 @@
   #v2 aside.sum .total .amt { font-family: "Plus Jakarta Sans", sans-serif; font-size: 26px; font-weight: 700; line-height: 39px; letter-spacing: -0.52px; }
   #v2 aside.sum .after { font-size: 13px; line-height: 19.5px; }
   #v2 aside.sum .go { width: calc(100% - 44px); margin: 4px 22px 16px; padding: 15px; height: 53px; border-radius: 12px; font-size: 15.5px; font-weight: 700; letter-spacing: .155px; box-shadow: none; }
-  #v2 aside.sum .guar { margin: 0; padding: 13px 22px 15px; border-radius: 0; font-size: 12.5px; line-height: 18.75px; color: #1E5C43; background: #ECF7F1; }
+  #v2 aside.sum .guar { margin: 0; padding: 13px 22px 15px; border-radius: 0; font-size: 12.5px; line-height: 18.75px; color: #3F3F46; background: #F6F6F8; }
   @media (max-width: 860px) { #v2 .grid2 { grid-template-columns: 1fr; } }
   @media (max-width: 860px) { .grid2 { grid-template-columns: 1fr; } .steps .t { display: none; } .trust { grid-template-columns: 1fr; } }
   @media (max-width: 520px) { .card { padding: 24px; } .guar { margin: 20px -24px -24px; padding: 18px 24px; } .plan { padding: 20px 20px 20px 56px; } .plan .dot { left: 20px; } .tag { position: static; display: inline-block; margin-bottom: 8px; } }
