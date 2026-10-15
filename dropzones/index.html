@@ -1416,6 +1416,22 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   });
 })();
 </script>
+<script>
+// LAND EXACTLY ON THE ANCHOR (15 Oct): arriving at /dropzones/#pricing from
+// another page, the browser jumps before fonts, images and the founding-seat
+// count are in, and the page settles about 6 px off. Land again as each one
+// arrives, for the first 2.5 s, unless the visitor has started scrolling.
+(function () {
+  if (!location.hash) return;
+  var t = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  if (!t) return;
+  var stop = false, quit = function () { stop = true; };
+  ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (e) { addEventListener(e, quit, { once: true, passive: true }); });
+  var land = function () { if (!stop) t.scrollIntoView({ block: 'start' }); };
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(land);
+  addEventListener('load', function () { land(); [300, 800, 1500, 2500].forEach(function (ms) { setTimeout(land, ms); }); }, { once: true });
+})();
+</script>
 <script id="site-header-js">
 (() => {
   const bar = document.querySelector('[data-sh]');
