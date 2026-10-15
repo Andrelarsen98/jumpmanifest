@@ -1051,12 +1051,23 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   @media (max-width: 600px) { .faq-g { font-size: 21px; line-height: 28px; } .band-btn { font-size: 17px; width: 100%; } }
   </style>
   <!-- ONLY-US CARDS (14 Oct 2026): what a dropzone gets that it can't get elsewhere. -->
+  <!-- LIVE IN IT (André, 16 Oct 2026): the jumper side as a reason for the owner.
+       No competitor names, every feature is in the app today. -->
+  <section class="lv" aria-labelledby="lv-h">
+    <h2 id="lv-h">Skydivers deserve better than a ticket app.</h2>
+    <p>Give them their whole skydiving life in their pocket, and they&rsquo;ll book, top up and come back more.</p>
+  </section>
   <section class="pain3" aria-label="What only Manifest does">
     <div class="pain"><b>&ldquo;Load 4, 10 minutes!&rdquo;</b><p>One button at the desk. Every jumper on the load gets the call on their Lock Screen, wherever they are on the dropzone.</p></div>
     <div class="pain"><b>&ldquo;Where&rsquo;s the jumper who landed out?&rdquo;</b><p>A live map shows them, with a pickup pin for the driver and one tap to put every load on hold.</p></div>
     <div class="pain"><b>&ldquo;Did you see my jump?&rdquo;</b><p>Every jumper can replay their jump in 3D and share it, with your dropzone&rsquo;s name on it. Free advertising, every jump day.</p></div>
   </section>
   <style>
+  /* LIVE IN IT line (16 Oct 2026): one headline and one sentence, centred. */
+  .lv{margin:96px auto 0;max-width:820px;text-align:center}
+  .lv h2{margin:0;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.028em;font-size:clamp(34px,4vw,56px);line-height:1.05;color:#050505;text-wrap:balance}
+  .lv p{margin:20px auto 0;font-size:20px;line-height:31px;color:#52525B;max-width:620px;text-wrap:balance}
+  @media (max-width:899px){.lv{margin-top:64px}.lv p{font-size:17px;line-height:27px}}
   .pain3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:56px 0 0}
   .pain{background:#f5f5f6;border-radius:24px;padding:28px 26px}
   .pain b{display:block;font-family:"Manrope",sans-serif;font-size:21px;line-height:27px;font-weight:700;color:#0f0b1c;letter-spacing:-.01em}
