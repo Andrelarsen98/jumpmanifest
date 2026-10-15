@@ -34,11 +34,24 @@ Most dropzone software only runs the desk, and most skydiving apps only record j
 - A recorder that arms itself when your load takes off, cloud backup of tracks, replay stats, jump receipt, track and PDF exports.
 - Yearly subscription or a one-time Lifetime purchase.
 
-## Manifest Desk (for dropzones)
-- Manifest software in the browser at https://desk.jumpmanifest.com: loads, standby, jumper accounts and balances, staff, aircraft and a hangar TV board.
-- Load calls pushed to every jumper's Lock Screen with one button.
-- Landouts on a live map with a pickup pin for the driver, and one tap to put every load on hold.
-- Jumpers self-manifest and top up with Apple Pay; the money goes straight to the dropzone's own Stripe account.
+## Manifest Desk: skydiving software for dropzones
+Manifest Desk is skydiving software and dropzone management software (a skydive manifest system) that runs in any browser at https://desk.jumpmanifest.com, connected live to the Manifest app jumpers carry. Details: https://www.jumpmanifest.com/skydiving-manifest-software/
+- Loads board with exit order, reserved seats, teams, required crew and double-manifest rules.
+- Standby by jumper type, with teams kept together; jumpers can self-manifest and join standby from the app.
+- Load calls pushed to every jumper's phone and Lock Screen at 15, 10 and 5 minutes and boarding, plus holds for one load or all loads.
+- Weight and balance against the aircraft.
+- Jumper accounts and balances, jump tickets, vouchers and gift vouchers.
+- Apple Pay and card top-ups through Stripe Connect, straight into the dropzone's own Stripe account; guest payments, card on file and receipts.
+- Cash drawer and end of day.
+- Waivers and check-in rules per licence type; safety checks for currency, reserve repack and AAD service.
+- Staff pay per jump type; roles for Owner, Manifest and Crew.
+- Aircraft fuel, hours and maintenance, and a pilot view.
+- Reports: day log, liabilities (credit held, tickets and vouchers outstanding) and accounting export.
+- CSV import of jumpers and balances from the dropzone's current system.
+- Rental gear.
+- Landout SOS with a live map and chat, a pickup pin for the driver, and Who's back after each load.
+- Hangar TV board on any TV with a browser.
+- Prices: Weekend dropzone $249/month, Full-time $399/month, Big operations from $699/month. No fee per jump or per booking, no lock-in.
 
 ## Pricing (Manifest Desk)
 - Weekend dropzone: $249/month (1 aircraft, 3 desk logins, 2% on in-app top-ups only).
@@ -56,7 +69,7 @@ Most dropzone software only runs the desk, and most skydiving apps only record j
 - [For dropzones](https://www.jumpmanifest.com/dropzones/): Manifest Desk features, pricing and dropzone FAQ
 - [3D skydive tracking](https://www.jumpmanifest.com/skydive-3d-tracking/): how a phone records and replays a skydive in 3D
 - [Digital logbooks and USPA](https://www.jumpmanifest.com/uspa-digital-logbook/): what USPA SIM 3-1 requires from a digital logbook
-- [Skydiving manifest software](https://www.jumpmanifest.com/skydiving-manifest-software/): Manifest Desk for dropzones: loads board, standby, accounts, staff pay, aircraft and safety checks in the browser
+- [Skydiving software for dropzones](https://www.jumpmanifest.com/skydiving-manifest-software/): Manifest Desk, dropzone management software: loads and exit order, standby, load calls, accounts, payments, waivers, staff pay, aircraft and safety checks in the browser, with the dropzone software FAQ
 - [How Manifest works](https://www.jumpmanifest.com/how-manifest-works/): how the Manifest app for jumpers and Manifest Desk for dropzones connect
 - [Skydiving app for iPhone](https://www.jumpmanifest.com/skydiving-app/): what the free Manifest app does for jumpers: live loads, 3D replay, logbook, weather and gear
 - [Live skydiving loads](https://www.jumpmanifest.com/live-skydiving-loads/): see loads, minutes to call and who is on each load at 150+ dropzones
