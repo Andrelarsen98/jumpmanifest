@@ -22,9 +22,11 @@
 <link rel="icon" type="image/png" href="/assets/app-icon.png?v=3" />
 <link rel="apple-touch-icon" href="/assets/app-icon.png?v=3" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://api.fontshare.com" />
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap" />
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="preload" as="style" href="https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap" /></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" /></noscript>
 <style>
   :root { --ink: #0f0b1c; --violet: #6D42F5; --violet-d: #6D42F5; --muted: #6f6982; --line: rgba(15,11,28,.08); }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -176,7 +178,7 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
   .ft-social a { width: 38px; height: 38px; border-radius: 10px; background: #fff; border: 1px solid rgba(15,11,28,.08); display: inline-flex; align-items: center; justify-content: center; color: #0f0b1c; transition: background .15s ease; }
   .ft-social a:hover { background: #EDEFF7; }
   .ft-social svg { width: 18px; height: 18px; }
-  .ft-col h4 { font-size: 15px; font-weight: 600; color: #8a869a; margin: 4px 0 18px; letter-spacing: -0.01em; }
+  .ft-col h3 { font-size: 15px; font-weight: 600; color: #8a869a; margin: 4px 0 18px; letter-spacing: -0.01em; }
   .ft-col a { display: block; font-size: 15.5px; font-weight: 600; color: #0f0b1c; margin-bottom: 4px; padding: 10px 0; letter-spacing: -0.01em; }
   .ft-col a:hover { color: #6f6982; }
   .ft-col a em { font-style: normal; font-size: 10px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: #6D42F5; background: rgba(109,66,245,.1); border-radius: 99px; padding: 2px 6px; margin-left: 6px; vertical-align: 2px; }
@@ -242,7 +244,7 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
 footer.site { background: #111111 !important; border-top: 0 !important; }
 footer.site .ft-brand p, footer.site .ft-brand .mail a, footer.site .ft-base { color: #A1A1AA !important; }
 footer.site .ft-brand .mail, footer.site .ft-col a { color: #FFFFFF !important; }
-footer.site .ft-col h4 { color: #8E8E93 !important; }
+footer.site .ft-col h3 { color: #8E8E93 !important; }
 footer.site .ft-col a:hover, footer.site .ft-brand .mail a:hover, footer.site .ft-base a:hover { color: #D1D1D6 !important; }
 footer.site .ft-base { border-top-color: rgba(255,255,255,.12) !important; }
 footer.site .ft-base a { color: inherit; }
@@ -655,8 +657,9 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       <a class="btn btn-q" href="https://apps.apple.com/app/id6778510429">Get the app for iPhone</a>
     </div>
       </div>
-      <figure class="seo-art"><video class="vid" autoplay loop muted playsinline preload="metadata" aria-label="An iPhone Lock Screen showing a load card with a 7 minute countdown, a gear-up notification and a you have been manifested notification, then the live loads screen with the next load and minutes to call">
-        <source src="/assets/lockscreen.mp4" type="video/mp4" />
+      <figure class="seo-art"><video class="vid" autoplay loop muted playsinline preload="auto" aria-label="An iPhone Lock Screen showing a load card with a 7 minute countdown, a gear-up notification and a you have been manifested notification, then the live loads screen with the next load and minutes to call" poster="/assets/opt/lockscreen-poster.6252405d.webp" width="720" height="1152">
+        <source src="/assets/opt/lockscreen.704735fc.mp4" type="video/mp4" />
+        <track kind="captions" src="/assets/opt/no-audio.e7a2b47f.vtt" srclang="en" label="No audio" />
       </video><figcaption>Your load on the Lock Screen with a live countdown, the gear-up call, and the live loads list for the dropzone.</figcaption></figure>
     </div>
 
@@ -745,13 +748,13 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
         <a href="https://apps.apple.com/app/id6778510429" aria-label="App Store"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.4 2-3.5 2-3.6-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.9-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.7-.1 0-2.5-1-2.5-3.6zM14.1 5.6c.6-.8 1.1-1.9 1-3-.9 0-2.1.6-2.7 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.5 2.7-1.3z"/></svg></a>
       </div>
     </div>
-    <div class="ft-col"><h4>App</h4>
+    <div class="ft-col"><h3>App</h3>
       <a href="/#replay">3D Replay</a><a href="/#live">Live loads</a><a href="/#everything">Features</a><a href="https://apps.apple.com/app/id6778510429">Download</a></div>
-    <div class="ft-col"><h4>Dropzones</h4>
+    <div class="ft-col"><h3>Dropzones</h3>
       <a href="/dropzones/">Manifest Desk</a><a href="/dropzones/start/">Get started</a><a href="https://desk.jumpmanifest.com">Dropzone login</a></div>
-    <div class="ft-col"><h4>Explore</h4>
+    <div class="ft-col"><h3>Explore</h3>
       <a href="/uspa-digital-logbook/">USPA digital logbook</a><a href="/skydive-3d-tracking/">3D jump tracking</a><a href="/#faq">FAQ</a></div>
-    <div class="ft-col"><h4>Company</h4>
+    <div class="ft-col"><h3>Company</h3>
       <a href="/about/">About</a><a href="/support/">Support</a><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a></div>
   </div>
   <div class="ft-base"><span>© 2026 Manifest Jump LLC · Wyoming, USA · Dubai, UAE</span><div class="ft-pay" aria-label="Payment methods accepted"><img src="/assets/pay/apple_pay.svg?v=1" alt="Apple Pay" height="24" /><img src="/assets/pay/visa.svg?v=1" alt="Visa" height="24" /><img src="/assets/pay/master.svg?v=1" alt="Mastercard" height="24" /><img src="/assets/pay/american_express.svg?v=1" alt="American Express" height="24" /><img src="/assets/pay/cashapppay.svg?v=1" alt="Cash App Pay" height="24" /><img src="/assets/pay/stripe.svg?v=1" alt="Stripe" height="24" /></div></div>
