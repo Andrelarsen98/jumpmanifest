@@ -21,7 +21,8 @@
      TO RESTORE: git show 7b355ad:dropzones/start/index.html, or put the
      numbers back in PLANS and the copy below, set PRICES_HIDDEN = false,
      remove the #hidden section, un-hide #v1 and nav.steps, and drop the
-     "s1" class from <body>.
+     "s1" class from <body>
+<a class="skip" href="#main">Skip to main content</a>.
      GET STARTED (9 Oct 2026, after Softriver's checkout): 1 your info,
      2 your plan with an order summary, 3 Stripe Checkout, 4 set up
      (/dropzones/welcome). Backend: supabase function desk-billing. -->
@@ -209,6 +210,12 @@
   @media (max-width: 860px) { .grid2 { grid-template-columns: 1fr; } .steps .t { display: none; } .trust { grid-template-columns: 1fr; } }
   @media (max-width: 520px) { .card { padding: 24px; } .guar { margin: 20px -24px -24px; padding: 18px 24px; } .plan { padding: 20px 20px 20px 56px; } .plan .dot { left: 20px; } .tag { position: static; display: inline-block; margin-bottom: 8px; } }
 </style>
+<style id="skip-css">/* REVIEW FIXES (16 Oct 2026, A02 A18 A19): skip link, one focus ring, 44 px footer links on phones. */
+.skip { position: fixed; left: 16px; top: -120px; z-index: 100; display: inline-flex; align-items: center; height: 44px; padding: 0 20px; border-radius: 999px; background: #fff; color: #050505 !important; border: 1.5px solid #050505; font: 700 15px/1 "Manrope", -apple-system, BlinkMacSystemFont, sans-serif; text-decoration: none !important; }
+.skip:focus { top: 16px; }
+:where(a, button, summary, input, select, textarea, [tabindex]):focus-visible { outline: 2px solid #050505 !important; outline-offset: 3px !important; box-shadow: 0 0 0 3px #fff; }
+@media (max-width: 767px) { footer.legal-foot nav a { display: inline-flex; align-items: center; min-height: 44px; } }
+</style>
 </head>
 <body class="s1">
 <header class="top"><div class="in">
@@ -221,7 +228,7 @@
   </nav>
 </div></header>
 
-<main>
+<main id="main">
   <!-- PRICES HIDDEN (15 Oct 2026): the only thing this page shows for now. -->
   <section id="hidden" class="one">
     <div class="card">

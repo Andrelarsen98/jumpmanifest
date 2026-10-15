@@ -31,10 +31,17 @@
   .ok { display: inline-flex; align-items: center; gap: 8px; color: var(--green); background: #DCFCE7; border-radius: 99px; padding: 6px 12px; font-size: 14px; font-weight: 700; margin-bottom: 16px; }
   .err { color: #DC2626; }
 </style>
+<style id="skip-css">/* REVIEW FIXES (16 Oct 2026, A02 A18 A19): skip link, one focus ring, 44 px footer links on phones. */
+.skip { position: fixed; left: 16px; top: -120px; z-index: 100; display: inline-flex; align-items: center; height: 44px; padding: 0 20px; border-radius: 999px; background: #fff; color: #050505 !important; border: 1.5px solid #050505; font: 700 15px/1 "Manrope", -apple-system, BlinkMacSystemFont, sans-serif; text-decoration: none !important; }
+.skip:focus { top: 16px; }
+:where(a, button, summary, input, select, textarea, [tabindex]):focus-visible { outline: 2px solid #050505 !important; outline-offset: 3px !important; box-shadow: 0 0 0 3px #fff; }
+@media (max-width: 767px) { footer.legal-foot nav a { display: inline-flex; align-items: center; min-height: 44px; } }
+</style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to main content</a>
 <header class="top"><div class="in"><a href="/dropzones/"><img src="/assets/manifest-lockup.svg?v=5" alt="manifest" /></a></div></header>
-<main>
+<main id="main">
   <div class="card" id="box">
     <h1>Finishing your set-up…</h1>
     <p>Confirming your payment with Stripe.</p>
