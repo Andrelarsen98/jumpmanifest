@@ -4,18 +4,31 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Get started · Manifest Desk</title>
-<meta name="description" content="Set up Manifest Desk for your dropzone: pick your plan and pay securely with Stripe." />
-<meta name="robots" content="noindex" />
+<meta name="description" content="Set up Manifest Desk for your dropzone. Founding prices are set with each dropzone on a short call." />
+<!-- noindex while Desk prices are hidden (15 Oct 2026). It was already noindex. -->
+<meta name="robots" content="noindex, nofollow" />
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg?v=4" />
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-<!-- GET STARTED (9 Oct 2026, after Softriver's checkout): 1 your info,
+<!-- PRICES HIDDEN (15 Oct 2026): André is not sure the Desk prices are right,
+     so this page shows only the #hidden message, which links to the lead
+     form on /dropzones/ (#get-price). Steps 1-2, the plan picker, the order
+     summary and the Stripe checkout code are all still here, but hidden and
+     unreachable (PRICES_HIDDEN in the script returns before any of it runs).
+     The price numbers were taken out of this file; they are in
+     PRICES-HIDDEN.md in the repo root (not deployed), and in git at 7b355ad.
+     TO RESTORE: git show 7b355ad:dropzones/start/index.html, or put the
+     numbers back in PLANS and the copy below, set PRICES_HIDDEN = false,
+     remove the #hidden section, un-hide #v1 and nav.steps, and drop the
+     "s1" class from <body>.
+     GET STARTED (9 Oct 2026, after Softriver's checkout): 1 your info,
      2 your plan with an order summary, 3 Stripe Checkout, 4 set up
      (/dropzones/welcome). Backend: supabase function desk-billing. -->
 <style>
   :root { --ink: #050505; --muted: #71717B; --line: #E7E7EC; --cloud: #EDEFF7; --purple: #6D42F5; --pale: #F0ECFE; --green: #34C759; /* the app's green (André, 15 Oct) */ }
   * { box-sizing: border-box; }
+  [hidden] { display: none !important; } /* prices hidden 15 Oct: keeps the steps nav and the sign-up steps hidden */
   body { margin: 0; font-family: "Manrope", -apple-system, sans-serif; color: var(--ink); background: #F6F6F9; line-height: 1.5; }
   a { color: inherit; }
   .top { background: #fff; border-bottom: 1px solid var(--line); }
@@ -197,10 +210,10 @@
   @media (max-width: 520px) { .card { padding: 24px; } .guar { margin: 20px -24px -24px; padding: 18px 24px; } .plan { padding: 20px 20px 20px 56px; } .plan .dot { left: 20px; } .tag { position: static; display: inline-block; margin-bottom: 8px; } }
 </style>
 </head>
-<body>
+<body class="s1">
 <header class="top"><div class="in">
   <a href="/dropzones/"><img src="/assets/manifest-lockup.svg?v=5" alt="manifest" /></a>
-  <nav class="steps" aria-label="Steps">
+  <nav class="steps" aria-label="Steps" hidden>
     <span class="s" id="st1"><b>1</b><span class="t">Your info</span></span><i class="sep"></i>
     <span class="s" id="st2"><b>2</b><span class="t">Your plan</span></span><i class="sep"></i>
     <span class="s" id="st3"><b>3</b><span class="t">Payment</span></span><i class="sep"></i>
@@ -209,11 +222,22 @@
 </div></header>
 
 <main>
-  <!-- STEP 1 -->
-  <section id="v1" class="one">
+  <!-- PRICES HIDDEN (15 Oct 2026): the only thing this page shows for now. -->
+  <section id="hidden" class="one">
     <div class="card">
       <img class="card-logo" src="/assets/manifest-lockup.svg?v=5" alt="manifest" />
-      <div class="pkg"><div><small>Your plan · founding price, year one</small><b id="pkgName">Full-time dropzone <em id="pkgFrom">from $279/mo</em></b></div><label class="pkg-change">Change<select id="pkgSelect" aria-label="Change plan"><option value="weekend">Weekend dropzone, $174 a month in year one</option><option value="fulltime">Full-time dropzone, $279 a month in year one</option><option value="big">Big operations, from $489 a month in year one</option></select></label></div>
+      <h1>Your price, <em>set with you</em></h1>
+      <p class="sub">Founding prices are set with each dropzone on a short call. Tell us about your dropzone and we get back to you the same day. No lock-in, cancel anytime.</p>
+      <a class="go" href="/dropzones/#get-price" style="text-decoration:none">Get your price <span aria-hidden="true">→</span></a>
+      <p class="fine"><a href="/dropzones/#pricing">See the plans</a></p>
+    </div>
+  </section>
+
+  <!-- STEP 1 (hidden while prices are hidden) -->
+  <section id="v1" class="one" hidden>
+    <div class="card">
+      <img class="card-logo" src="/assets/manifest-lockup.svg?v=5" alt="manifest" />
+      <div class="pkg"><div><small>Your plan · founding price</small><b id="pkgName">Full-time dropzone <em id="pkgFrom"></em></b></div><label class="pkg-change">Change<select id="pkgSelect" aria-label="Change plan"><option value="weekend">Weekend dropzone</option><option value="fulltime">Full-time dropzone</option><option value="big">Big operations</option></select></label></div>
       <h1>Your dropzone, <em>running on Manifest</em></h1>
       <p class="sub">Tell us where to set it up. Nothing to pay on this step.</p>
       <form id="f1" novalidate>
@@ -233,7 +257,7 @@
       <h2>Your plan</h2>
       <div class="toggle" role="tablist" aria-label="Billing">
         <button type="button" data-int="month" class="on">Monthly</button>
-        <button type="button" data-int="year">Yearly <span class="save">2 months free</span></button>
+        <button type="button" data-int="year">Yearly</button>
       </div>
     </div>
     <div class="grid2">
@@ -246,7 +270,7 @@
         </div>
         <div class="trust">
           <div><b>Every plan runs a full jump day.</b> Bigger plans add aircraft, back office and lower fees.</div>
-          <div><b>12 months at the founding price,</b> then the full price, monthly or yearly. No lock-in: cancel anytime.</div>
+          <div><b>Founding price, set with you.</b> No lock-in: cancel anytime.</div>
           <div><b>Set up with you, directly.</b> We get your desk ready with you before your first load.</div>
           <div><b>Jumpers from 220+ dropzones</b> already use the Manifest app.</div>
         </div>
@@ -257,14 +281,14 @@
         <ul id="sItems"></ul>
         <div class="hr"></div>
         <div class="line"><span id="sLine"></span><span id="sList"></span></div>
-        <div class="line" style="color:var(--green)"><span id="sOffL">Founding dropzone, 30% off year one</span><span id="sOff"></span></div>
+        <div class="line" style="color:var(--green)"><span id="sOffL">Founding dropzone</span><span id="sOff"></span></div>
         <div class="hr"></div>
         <div class="total"><b>Total due today</b><span class="amt" id="sTotal"></span></div>
         <p class="after" id="sAfter"></p>
         <p class="err" id="e2" hidden></p>
         <button class="go" type="button" id="pay">Continue to payment</button>
         <p class="after" id="payNote" hidden style="text-align:center;margin-top:10px">No card needed. We call you to set up.</p>
-        <div class="guar"><b>Founding price: 30% off for 12 months,</b> with no lock-in. Cancel anytime. After 12 months it renews at the full price, monthly or yearly. Your jumpers' data is always yours.</div>
+        <div class="guar"><b>Founding price, set with you,</b> with no lock-in. Cancel anytime. Your jumpers' data is always yours.</div>
       </aside>
     </div>
   </section>
@@ -291,16 +315,23 @@
 </style>
 <script>
 (function () {
+  // PRICES HIDDEN (15 Oct 2026): nothing below runs, so no plan, price or
+  // payment step can show. Set to false to bring the sign-up back (see the
+  // note at the top of this file and PRICES-HIDDEN.md for the numbers).
+  var PRICES_HIDDEN = true;
+  if (PRICES_HIDDEN) return;
   var API = 'https://wkefdtglgbfprvfajrrw.supabase.co/functions/v1/desk-billing';
   // PAYMENTS_LIVE (9 Oct 2026): false until Manifest Jump LLC has its live
   // Stripe account. Until then the last step reserves the founding price as a
   // lead (desk-lead, push to André) instead of opening Stripe Checkout.
   var PAYMENTS_LIVE = false;
   var LEAD = 'https://wkefdtglgbfprvfajrrw.supabase.co/functions/v1/desk-lead';
+  // Prices and fees taken out 15 Oct 2026 (null = hidden). The old values
+  // are in PRICES-HIDDEN.md; put them back here to restore.
   var PLANS = {
-    weekend: { fee: '2%', name: 'Weekend dropzone', desc: 'One aircraft and busy weekends, run by a small manifest team.', month: 249, year: 2490, support: 'Email support' },
-    fulltime: { fee: '1.5%', name: 'Full-time dropzone', desc: 'Jumping most days, with a team on the desk and staff to pay every week.', month: 399, year: 3990, support: 'Priority support' },
-    big: { fee: '1%', name: 'Big operations', desc: 'Several aircraft, big days and boogies, with more people on the desk.', month: 699, year: 6990, support: 'Setup help and a direct line', from: true }
+    weekend: { fee: null, name: 'Weekend dropzone', desc: 'One aircraft and busy weekends, run by a small manifest team.', month: null, year: null, support: 'Email support' },
+    fulltime: { fee: null, name: 'Full-time dropzone', desc: 'Jumping most days, with a team on the desk and staff to pay every week.', month: null, year: null, support: 'Priority support' },
+    big: { fee: null, name: 'Big operations', desc: 'Several aircraft, big days and boogies, with more people on the desk.', month: null, year: null, support: 'Setup help and a direct line', from: true }
   };
   var INCLUDES = {
     weekend: ['Loads, standby, check-in and the hangar board', 'Jumper accounts, top-ups and jump bundles', 'Self-manifest and load calls on every phone', 'Landout safety map and currency checks', '1 aircraft and 3 desk logins (crew free)', 'Email support'],
@@ -310,8 +341,8 @@
   var q = new URLSearchParams(location.search);
   var st = { plan: PLANS[q.get('plan')] ? q.get('plan') : 'fulltime', interval: q.get('interval') === 'year' ? 'year' : 'month', info: null };
   var $ = function (id) { return document.getElementById(id); };
-  var half = function (n) { return Math.floor(n * 0.7); }; // founding price: 30% off, rounded down to whole dollars (12 Oct; matches desk-billing)
-  // Founding 30% stacks on yearly's 2 months free (André, 15 Oct: kept; rewards paying a year upfront).
+  var half = function (n) { return Math.floor(n * 0.7); }; // founding price, rounded down to whole dollars (12 Oct; matches desk-billing)
+  // The founding discount stacks on the yearly price (André, 15 Oct: kept; rewards paying a year upfront).
   var found = function (p, iv) { return half(iv === 'year' ? p.year : p.month); };
   var money = function (n) { return '$' + n.toLocaleString('en-US', { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 }); };
   try { var saved = JSON.parse(sessionStorage.getItem('desk.start') || 'null'); if (saved) { st.info = saved; ['dropzone','email','phone'].forEach(function (k) { if (saved[k]) $('f1')[k].value = saved[k]; }); } } catch (e) {}
@@ -347,7 +378,7 @@
     $('sList').textContent = money(full);
     $('sOff').textContent = '-' + money(full - found(p, st.interval));
     $('sTotal').textContent = money(found(p, st.interval));
-    $('sOffL').textContent = 'Founding dropzone, 30% off year one';
+    $('sOffL').textContent = 'Founding dropzone';
     $('sAfter').textContent = st.interval === 'year'
       ? 'Then ' + money(full) + ' a year from year two. ' + p.fee + ' on jumper top-ups in the app.'
       : money(found(p, st.interval)) + ' a month for your first 12 months, then ' + money(full) + '. ' + p.fee + ' on jumper top-ups in the app.';

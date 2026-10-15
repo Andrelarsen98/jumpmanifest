@@ -51,13 +51,13 @@ Manifest Desk is skydiving software and dropzone management software (a skydive 
 - Rental gear.
 - Landout SOS with a live map and chat, a pickup pin for the driver, and Who's back after each load.
 - Hangar TV board on any TV with a browser.
-- Prices: Weekend dropzone $249/month, Full-time $399/month, Big operations from $699/month. No fee per jump or per booking, no lock-in.
+- Pricing: every plan is a monthly subscription. Founding prices for the first dropzones are set with each dropzone on a short call; ask at https://www.jumpmanifest.com/dropzones/#pricing. No fee per jump or per booking, no lock-in.
 
 ## Pricing (Manifest Desk)
-- Weekend dropzone: $249/month (1 aircraft, 3 desk logins, 2% on in-app top-ups only).
-- Full-time dropzone: $399/month (up to 3 aircraft, 10 desk logins, staff pay and payroll export, 1.5% on in-app top-ups only).
-- Big operations: from $699/month (unlimited aircraft and logins, several dropzones on one login, 1% on in-app top-ups only).
-- Pay yearly and get two months free. No lock-in, cancel anytime. The first 10 founding dropzones get 30% off year one.
+- Weekend dropzone: 1 aircraft, 3 desk logins.
+- Full-time dropzone: up to 3 aircraft, 10 desk logins, staff pay and payroll export.
+- Big operations: unlimited aircraft and logins, several dropzones on one login.
+- A small fee on in-app top-ups only, lower on bigger plans. No lock-in, cancel anytime.
 - No fee on cash or card payments taken at the desk.
 
 ## How to get it
@@ -87,7 +87,7 @@ Manifest Desk is skydiving software and dropzone management software (a skydive 
 
 ### Skydiving software for dropzones
 https://www.jumpmanifest.com/skydiving-manifest-software/
-Manifest Desk is skydiving software for dropzones that runs in any browser at desk.jumpmanifest.com: loads board with exit order, reserved seats and teams, standby by type, load calls and holds, weight and balance, jumper accounts, tickets and vouchers, payments and the cash drawer, waivers and check-in rules, safety checks, staff pay, aircraft fuel and maintenance, reports, rental gear, landout SOS and the hangar TV board. Every load is connected to the Manifest app your jumpers carry. Weekend $249/month, Full-time $399/month, Big operations from $699/month, no lock-in.
+Manifest Desk is skydiving software for dropzones that runs in any browser at desk.jumpmanifest.com: loads board with exit order, reserved seats and teams, standby by type, load calls and holds, weight and balance, jumper accounts, tickets and vouchers, payments and the cash drawer, waivers and check-in rules, safety checks, staff pay, aircraft fuel and maintenance, reports, rental gear, landout SOS and the hangar TV board. Every load is connected to the Manifest app your jumpers carry. Three plans (Weekend, Full-time, Big operations), founding prices set with each dropzone, no lock-in.
 
 ### How Manifest works
 https://www.jumpmanifest.com/how-manifest-works/
@@ -107,7 +107,7 @@ Nothing is tracked during the jump. After landing, a jumper taps Landed out and 
 
 ### Dropzone payments
 https://www.jumpmanifest.com/dropzone-payments/
-Jumpers top up their dropzone account in the Manifest app with Apple Pay or card (Cash App Pay in the US). The money goes straight to the dropzone's own Stripe account through Stripe Connect, with the dropzone as the merchant, and the balance shows on the desk immediately. Fee on in-app top-ups: Weekend 2%, Full-time 1.5%, Big operations 1%. No fee per booking and no fee on payments taken at the desk.
+Jumpers top up their dropzone account in the Manifest app with Apple Pay or card (Cash App Pay in the US). The money goes straight to the dropzone's own Stripe account through Stripe Connect, with the dropzone as the merchant, and the balance shows on the desk immediately. A small fee on in-app top-ups only, lower on bigger plans. No fee per booking and no fee on payments taken at the desk.
 
 ### Skydiving load calls
 https://www.jumpmanifest.com/skydiving-load-calls/
@@ -170,7 +170,7 @@ Your Check-in Pass shows your licence, currency, jump numbers and gear service i
 Your logbook, credentials and documents are yours and are access-controlled. You choose what is public on your profile, you can go fully private, and you can delete your account and its data from inside the app at any time.
 
 ### What is Manifest Desk?
-Manifest Desk is skydiving software for dropzones, running in the browser. It handles loads and exit order, standby, jumper accounts and payments, waivers, staff, aircraft, safety checks and a hangar TV board, and pushes every load call to jumpers' Lock Screens. Jumpers top up with Apple Pay, straight into the dropzone's own Stripe account. Plans start at $249 a month with no lock-in. See Manifest Desk or read what our dropzone software does.
+Manifest Desk is skydiving software for dropzones, running in the browser. It handles loads and exit order, standby, jumper accounts and payments, waivers, staff, aircraft, safety checks and a hangar TV board, and pushes every load call to jumpers' Lock Screens. Jumpers top up with Apple Pay, straight into the dropzone's own Stripe account. Every plan is a monthly subscription with no lock-in, and founding prices are set with each dropzone. See Manifest Desk or read what our dropzone software does.
 
 ### Is Android coming?
 Yes. Android is being built right now. Email me and I will let you know the day it is out.
@@ -184,7 +184,7 @@ Dropzone software, also called skydiving manifest software or a skydive manifest
 At minimum: a loads board with exit order, standby, jumper accounts and balances, load calls and holds, weight and balance against the aircraft, and safety checks for currency, reserve and AAD before anyone boards. A complete system also handles waivers and check-in rules, staff pay, aircraft hours and maintenance, guest payments, the cash drawer and end of day, and reports for your accountant. Manifest Desk does all of these, and puts every load call on each jumper's Lock Screen.
 
 ### How much does Manifest Desk cost?
-A flat monthly price per plan, never a fee per jump or per booking. Weekend dropzone is $249 a month (1 aircraft, 3 desk logins), Full-time is $399 a month (up to 3 aircraft, 10 logins) and Big operations starts at $699 a month (unlimited). The only other fee is on top-ups jumpers make in the app: 2%, 1.5% or 1% depending on the plan. Cash and card taken at the desk carry no fee from us. Pay yearly and get two months free, and cancel anytime.
+Every plan is a monthly subscription with no lock-in, never a fee per jump or per booking. There are three plans: Weekend dropzone (1 aircraft, 3 desk logins), Full-time (up to 3 aircraft, 10 logins) and Big operations (unlimited). Founding prices are set with each dropzone, so ask us for yours. Cash and card taken at the desk carry no fee from us. Cancel anytime.
 
 ### How do we switch from our current system?
 We set up your dropzone with you: aircraft, jump prices, staff and jumpers. You can run Manifest Desk next to your current system for as long as you like, until you trust it, and we are with you on your first jump day. There is no lock-in.
@@ -210,7 +210,7 @@ Yes. We move your jumpers and prices over for you, and you can run both side by 
 We do, during setup. Export your jumpers and balances from your current system as a CSV and the desk imports them, so every account starts with the right balance.
 
 ### Is there a contract?
-A simple service agreement, with no lock-in. Cancel anytime, on any plan, including the founding deal. Paying yearly saves two months.
+A simple monthly subscription, with no lock-in. Cancel anytime, on any plan. Founding prices are set with each dropzone, so ask us for yours.
 
 ### What hardware do we need?
 Any laptop or tablet with a browser runs the desk. Any TV with a browser shows the hangar board.
@@ -219,7 +219,7 @@ Any laptop or tablet with a browser runs the desk. Any TV with a browser shows t
 No. The Manifest app is free to download. At your dropzone, jumpers book, top up and get load calls in it.
 
 ### When are we charged?
-Nothing until your desk goes live. The first 10 dropzones get 30% off their first year.
+Nothing until your desk goes live. Every plan is a monthly subscription with no lock-in, and founding prices for the first dropzones are set with you. Ask us for yours.
 
 ### Do you take a fee on payments at our desk?
 No. Cash, your card terminal and anything you take at the desk is yours, with no fee from us. The fee is only on top-ups jumpers make themselves in the Manifest app.
