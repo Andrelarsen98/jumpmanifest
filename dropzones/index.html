@@ -991,12 +991,12 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
        load board, safety check, hangar TV board and day report (sample data,
        no real names or money). -->
   <figure class="li hero-media" id="demo" style="--i:5">
-    <div class="frame">
-      <div class="frame-bar"><i></i><i></i><i></i><span>desk.jumpmanifest.com</span></div>
-      <picture>
-        <source media="(max-width: 767px)" srcset="/assets/opt/desk-panel-phone.442c3dbb.webp" width="698" height="548" />
-        <img src="/assets/opt/desk-panels.7798c1aa.webp" alt="Manifest Desk panels for a demo dropzone: the next load counting down with 14 on board, standby with 2 waiting, and the loads list" width="1356" height="896" fetchpriority="high" />
-      </picture>
+    <div class="hm-wrap">
+      <div class="frame">
+        <div class="frame-bar"><i></i><i></i><i></i><span>desk.jumpmanifest.com</span></div>
+        <img src="/assets/desk-today.jpg?v=1" alt="Manifest Desk: the Today page of a demo dropzone, with today's takings, open loads, the next load countdown, standby and accounts" width="1440" height="900" fetchpriority="high" />
+      </div>
+      <img class="hm-phone" src="/assets/opt/mock-home3.a2e7757f.webp" width="640" height="1330" alt="" />
     </div>
     <figcaption class="desk-cap">Manifest Desk with sample data from a demo dropzone.</figcaption>
   </figure>
@@ -1015,6 +1015,12 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   .hero-founding { margin: 22px 0 0; font-size: 16px; line-height: 24px; font-weight: 500; color: #050505; text-align: center; }
   @media (min-width: 900px) { .hero-founding { text-align: left; } }
   /* F13: readable Desk panels, captioned as sample data. */
+  /* Hero: the full Desk with the jumper's iPhone in front, as on the other
+     Desk pages (André, 16 Oct 2026). */
+  .hm-wrap { position: relative; }
+  .hero-media .desk-cap { margin-top: 44px; }
+  .hm-phone { position: absolute; right: -3%; bottom: -6%; width: 26%; max-width: 190px; height: auto; filter: drop-shadow(0 18px 28px rgba(15,23,42,.28)); }
+  @media (max-width: 767px) { .hm-phone { width: 30%; right: -1%; bottom: -8%; } .hero-media .desk-cap { margin-top: 26px; } }
   figure.hero-media { margin: 0; }
   .desk-cap { margin: 8px 0 0; font-size: 14px; line-height: 20px; color: #52525B; text-align: left; }
   /* F08: card copy on the pale card fills at 7:1, not 4.4:1. */
