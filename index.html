@@ -984,6 +984,47 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   #desk .dp h3 { font-size: 22px; line-height: 30px; }
 }
 </style>
+<!-- DROPZONE GLOBE (15 Oct 2026, local preview). The admin overview globe
+     (manifest-admin/src/components/Globe.tsx), on the white page: same sea,
+     land, borders, halo, light and camera; purple dots, one per home
+     dropzone, from assets/globe-dropzones.json. -->
+<style id="dz-globe-css">
+  /* One screen (André, 15 Oct): copy left, globe right, the globe sized to
+     the window so heading, globe and button are all in view at once. */
+  .dzg-grid { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: clamp(24px, 4vw, 64px); }
+  .dzg-copy, .dzg-copy h2, .dzg-copy .kicker, .dzg-copy .statement-sub { text-align: left; }
+  .dzg-copy h2 { margin-left: 0; margin-right: 0; }
+  #globe .statement-sub { max-width: 30ch; margin-left: 0; margin-right: 0; padding-left: 0; }
+  #globe .gl-cta { margin-top: 28px; }
+  .dzg { position: relative; width: min(56vw, calc(100vh - 140px), 760px); aspect-ratio: 1 / 1; margin: 0; cursor: grab; overflow: hidden; touch-action: pan-y; }
+  .dzg:active { cursor: grabbing; }
+  .dzg-halo { position: absolute; left: 50%; top: 50%; width: calc(111.4% * var(--hs, 1)); height: calc(111.4% * var(--hs, 1)); transform: translate(-50%, -50%); border-radius: 50%; pointer-events: none;
+    background: radial-gradient(circle, rgba(98,112,240,0) 37%, rgba(98,112,240,.9) 40%, rgba(98,112,240,.5) 47%, rgba(98,112,240,.18) 58%, rgba(98,112,240,0) 72%);
+    filter: blur(14px); opacity: 0; transition: opacity .6s ease; }
+  .dzg.ready .dzg-halo { opacity: 1; }
+  .dzg-stage { position: absolute; inset: 0; z-index: 1; isolation: isolate; opacity: 0; transition: opacity .6s ease; }
+  .dzg.ready .dzg-stage { opacity: 1; }
+  .dzg-hit { width: 26px; height: 26px; display: grid; place-items: center; transform: translate(-50%, -50%); pointer-events: auto; cursor: pointer; }
+  .dzg-dot { width: 13px; height: 13px; border-radius: 50%; pointer-events: none;
+    background: radial-gradient(circle, #d9ceff 0 28%, rgba(124,92,255,.62) 46%, rgba(109,66,245,0) 72%); transition: transform .15s ease; }
+  .dzg-hit.on .dzg-dot { transform: scale(1.5); }
+  .dzg-label { position: absolute; left: 0; top: 0; z-index: 3; pointer-events: none; white-space: nowrap;
+    padding: 8px 12px; border-radius: 12px; background: #fff; color: #050505; text-align: left;
+    box-shadow: 0 8px 24px rgba(15,11,28,.16); font-family: "Manrope", sans-serif; font-size: 14px; line-height: 18px;
+    transform: translate(-50%, calc(-100% - 14px)); opacity: 0; transition: opacity .12s ease; }
+  .dzg-label.show { opacity: 1; }
+  .dzg-label.below { transform: translate(-50%, 14px); }
+  .dzg-label b { display: block; font-weight: 600; }
+  .dzg-label span { display: block; color: #71717B; font-size: 13px; }
+  @media (max-width: 900px) {
+    .dzg-grid { grid-template-columns: 1fr; justify-items: center; }
+    .dzg-copy, .dzg-copy h2, .dzg-copy .kicker, .dzg-copy .statement-sub { text-align: center; }
+    .dzg-copy h2 { margin-left: auto; margin-right: auto; }
+    #globe .statement-sub { margin-left: auto; margin-right: auto; }
+    #globe .gl-cta { margin-top: 20px; }
+    .dzg { width: min(100%, 560px); }
+  }
+</style>
 </head>
 <body>
 <style>
@@ -1490,6 +1531,225 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     </div>
   </div>
 </section>
+
+<!-- DROPZONE GLOBE (15 Oct 2026, local preview): one dot per home dropzone
+     of Manifest jumpers, never per person; counts are dropzones and
+     countries only. Data: assets/globe-dropzones.json. -->
+<section class="block" id="globe">
+  <div class="wrap dzg-grid">
+    <div class="dzg-copy">
+    <div class="kicker">Worldwide</div>
+    <h2>Jumpers at 222 dropzones in 46 countries</h2>
+    <p class="statement-sub">Find your dropzone. Your friends are probably already on it.</p>
+    <div class="gl-cta">
+      <a class="appbtn" href="https://apps.apple.com/app/id6778510429" aria-label="Download Manifest on the App Store">
+        <img src="assets/appstore-badge.svg?v=1" alt="Download on the App Store" />
+      </a>
+    </div>
+    </div>
+    <div class="dzg" id="dzg" role="img" aria-label="A globe with a dot at every dropzone where Manifest jumpers jump">
+      <div class="dzg-halo" aria-hidden="true"></div>
+      <div class="dzg-stage"></div>
+      <div class="dzg-label" aria-hidden="true"><b></b><span></span></div>
+    </div>
+  </div>
+</section>
+<script id="dz-globe-js">
+(function () {
+  // The admin overview globe (manifest-admin/src/components/Globe.tsx) as
+  // plain script tags: globe.gl's standalone build, the land painted at
+  // runtime from the 50 m world atlas, the material tuned in place (never a
+  // globeMaterial of ours), dots as soft HTML discs, the halo a CSS gradient.
+  // Nothing loads until the section is close to the screen.
+  var host = document.getElementById('dzg');
+  if (!host) return;
+  var LIBS = [
+    'https://cdn.jsdelivr.net/npm/d3-array@3.2.4/dist/d3-array.min.js',
+    'https://cdn.jsdelivr.net/npm/d3-geo@3.1.1/dist/d3-geo.min.js',
+    'https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js',
+    'https://cdn.jsdelivr.net/npm/globe.gl@2.46.2/dist/globe.gl.min.js'
+  ];
+  var GEO_URL = 'https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-50m.json';
+  // The admin's colours: light grey-lavender sea, dark slate land.
+  var SEA = '#8b91bf', LAND = '#2a2f47', BORDER = 'rgba(140, 148, 200, 0.35)', HALO = '#6b7cff';
+  // Further out than the admin's 1.45: its panel is wide, this frame is
+  // square, and at 1.45 the atmosphere ran into the canvas edge as a hard
+  // line. The CSS halo shrinks by the admin's own formula to stay on the rim.
+  var HOME_ALTITUDE = 1.9;
+  var apparent = function (alt) { return Math.tan(Math.asin(1 / (1 + alt))); };
+  host.querySelector('.dzg-halo').style.setProperty('--hs', apparent(HOME_ALTITUDE) / apparent(1.45));
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var started = false, g = null;
+
+  function load(src) {
+    return new Promise(function (res, rej) {
+      var s = document.createElement('script');
+      s.src = src; s.async = false; s.crossOrigin = 'anonymous';
+      s.onload = res; s.onerror = function () { rej(new Error('load ' + src)); };
+      document.head.appendChild(s);
+    });
+  }
+
+  // Paint the map once, equirectangular. 8k across on a desktop as in the
+  // admin; 4k on touch devices, where iOS refuses canvases over 16.7 MP.
+  function buildTexture(topo) {
+    // 4k for everyone (15 Oct): the globe is never more than ~760 px wide, and
+    // an 8k canvas cost a visible hitch on the main thread when it was painted.
+    var W = 4096, H = W / 2;
+    var canvas = document.createElement('canvas');
+    canvas.width = W; canvas.height = H;
+    var ctx = canvas.getContext('2d');
+    var proj = d3.geoEquirectangular().translate([W / 2, H / 2]).scale(W / (2 * Math.PI));
+    var path = d3.geoPath(proj, ctx);
+    ctx.fillStyle = SEA; ctx.fillRect(0, 0, W, H);
+    var countries = topo.objects.countries;
+    ctx.beginPath(); path(topojson.feature(topo, countries)); ctx.fillStyle = LAND; ctx.fill();
+    ctx.beginPath(); path(topojson.mesh(topo, countries, function (a, b) { return a !== b; }));
+    ctx.strokeStyle = BORDER; ctx.lineWidth = W / 8192 * 2.4; ctx.stroke();
+    return new Promise(function (res) {
+      canvas.toBlob(function (b) { res(URL.createObjectURL(b)); }, 'image/png');
+    });
+  }
+
+  // The globe's own material, adjusted where it is (admin tuneGlobeMaterial).
+  function tuneGlobeMaterial(globe) {
+    var maxAniso = globe.renderer().capabilities.getMaxAnisotropy();
+    globe.scene().traverse(function (obj) {
+      if (!obj.isMesh || !obj.geometry || obj.geometry.type !== 'SphereGeometry' || !obj.material) return;
+      var m = obj.material;
+      if (!('shininess' in m)) return;
+      m.shininess = 2;
+      m.specular.set('#22264a');
+      m.emissive.set('#0e1128');
+      m.emissiveIntensity = 0.15;
+      var sharpen = function (t) { t.anisotropy = maxAniso; t.minFilter = 1008 /* LinearMipmapLinearFilter */; t.generateMipmaps = true; t.needsUpdate = true; };
+      if (m.map) sharpen(m.map);
+      else {
+        var tries = 0, wait = setInterval(function () {
+          tries++;
+          if (m.map) { sharpen(m.map); clearInterval(wait); } else if (tries > 100) clearInterval(wait);
+        }, 100);
+      }
+      m.needsUpdate = true;
+    });
+  }
+
+  function webgl() {
+    try { var c = document.createElement('canvas'); return !!(window.WebGLRenderingContext && (c.getContext('webgl2') || c.getContext('webgl'))); }
+    catch (e) { return false; }
+  }
+
+  function init() {
+    if (started) return; started = true;
+    // No WebGL: no empty frame either.
+    if (!webgl()) { host.style.display = 'none'; return; }
+    var stage = host.querySelector('.dzg-stage');
+    var label = host.querySelector('.dzg-label');
+    var current = null;
+
+    var libs = LIBS.reduce(function (p, src) { return p.then(function () { return load(src); }); }, Promise.resolve());
+    Promise.all([
+      libs.then(function () { return fetch(GEO_URL).then(function (r) { return r.json(); }); }).then(buildTexture),
+      fetch('/assets/globe-dropzones.json').then(function (r) { return r.json(); })
+    ]).then(function (out) {
+      var texture = out[0], dzs = out[1];
+      var size = function () { return Math.round(host.clientWidth); };
+      g = new Globe(stage, { rendererConfig: { alpha: true, antialias: true }, animateIn: false })
+        .width(size()).height(size())
+        .backgroundColor('rgba(0,0,0,0)')
+        .globeImageUrl(texture)
+        .showAtmosphere(true).atmosphereColor(HALO).atmosphereAltitude(0.17)
+        .onGlobeReady(function () { tuneGlobeMaterial(g); host.classList.add('ready'); })
+        .htmlElementsData(dzs)
+        .htmlLat('lat').htmlLng('lng').htmlAltitude(0.004)
+        .htmlElement(function (d) {
+          var hit = document.createElement('div');
+          hit.className = 'dzg-hit';
+          hit.innerHTML = '<div class="dzg-dot"></div>';
+          hit.addEventListener('mouseenter', function () { show(d, hit); });
+          hit.addEventListener('mouseleave', function () { hide(); });
+          hit.addEventListener('click', function (e) { e.stopPropagation(); show(d, hit); });
+          return hit;
+        });
+
+      g.renderer().setClearColor(0x000000, 0);
+      // Smooth on 3x phones and 5K screens: never draw more than 2 pixels per point.
+      g.renderer().setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      var controls = g.controls();
+      controls.autoRotate = !reduced;
+      controls.autoRotateSpeed = 0.55;
+      controls.enablePan = false;
+      controls.enableZoom = false;
+      controls.minDistance = controls.maxDistance = 100 * (1 + HOME_ALTITUDE);
+      g.pointOfView({ lat: 28, lng: -60, altitude: HOME_ALTITUDE }, 0);
+
+      // Always day, as in the admin: even ambient light and a whisper of sun.
+      var old = g.lights();
+      var Ambient = old[0].constructor, Directional = old[1].constructor;
+      var sun = new Directional(0xffffff, 0.3);
+      sun.position.set(-1.3, 1.1, 1.2);
+      g.lights([new Ambient(0xffffff, 1.15), sun]);
+      tuneGlobeMaterial(g);
+
+      // Label follows its dot; rotation pauses while one is open.
+      function place() {
+        if (!current) return;
+        var r = current.el.getBoundingClientRect(), b = host.getBoundingClientRect();
+        if (!r.width || current.el.style.display === 'none') { hide(); return; }
+        var x = r.left + r.width / 2 - b.left, y = r.top + r.height / 2 - b.top;
+        // Kept inside the frame: centred on the dot, nudged in at the sides,
+        // and below the dot when there is no room above it.
+        var half = label.offsetWidth / 2 + 6;
+        label.classList.toggle('below', y < label.offsetHeight + 20);
+        label.style.left = Math.max(half, Math.min(x, b.width - half)) + 'px';
+        label.style.top = y + 'px';
+        requestAnimationFrame(place);
+      }
+      function show(d, el) {
+        if (current) current.el.classList.remove('on');
+        label.querySelector('b').textContent = d.name;
+        label.querySelector('span').textContent = d.country;
+        current = { d: d, el: el };
+        el.classList.add('on');
+        label.classList.add('show');
+        controls.autoRotate = false;
+        place();
+      }
+      function hide() {
+        if (current) current.el.classList.remove('on');
+        current = null;
+        label.classList.remove('show');
+        controls.autoRotate = !reduced;
+      }
+      host.addEventListener('pointerdown', function (e) { if (!e.target.closest('.dzg-hit')) hide(); });
+
+      if (window.ResizeObserver) new ResizeObserver(function () { var s = size(); if (s) g.width(s).height(s); }).observe(host);
+
+      // Stop drawing while the section is off screen.
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (es) {
+          es.forEach(function (e) { e.isIntersecting ? g.resumeAnimation() : g.pauseAnimation(); });
+        }).observe(host);
+      }
+    }).catch(function (err) { console.warn('globe', err); });
+  }
+
+  // No hitch on the way down (15 Oct): painting the map costs ~0.1 s of main
+  // thread, so it happens in idle time a moment after the page loads, while
+  // the visitor is still reading the top. Scrolling close starts it at once.
+  function go() { if (io) io.disconnect(); init(); }
+  var io = null;
+  if ('IntersectionObserver' in window) {
+    io = new IntersectionObserver(function (es) {
+      if (es.some(function (e) { return e.isIntersecting; })) go();
+    }, { rootMargin: '600px 0px' });
+    io.observe(host);
+  }
+  var idle = window.requestIdleCallback || function (f) { return setTimeout(f, 1); };
+  function soon() { setTimeout(function () { idle(go, { timeout: 4000 }); }, 2500); }
+  if (document.readyState === 'complete') soon(); else window.addEventListener('load', soon, { once: true });
+})();
+</script>
 
 <!-- MANIFEST DESK (15 Oct 2026): the hero's "system for dropzones", shown.
      Every pair checked in code: desk-call pushes (called, 15/10/5, boarding,
