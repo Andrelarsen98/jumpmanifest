@@ -376,6 +376,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       padding: 0 20px; border-radius: 999px; background: #fff; color: #050505 !important; border: 1.5px solid #050505;
       font: 700 15px/1 "Manrope", -apple-system, BlinkMacSystemFont, sans-serif; text-decoration: none !important; }
 .skip:focus { top: 16px; }
+#main:focus { outline: none !important; box-shadow: none !important; }
 :where(a, button, summary, input, select, textarea, [tabindex]):focus-visible {
       outline: 2px solid #050505 !important; outline-offset: 3px !important; box-shadow: 0 0 0 3px #fff; }
 :where(a, button, summary, input, select, textarea, [tabindex]):focus { scroll-margin-top: 96px; scroll-margin-bottom: 24px; }
@@ -894,6 +895,14 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     if (!sheet.hidden) { setSheet(false); burger.focus(); }
   });
   addEventListener('resize', () => { if (innerWidth >= 900 && !sheet.hidden) setSheet(false); closeAll(); });
+  // skip link (A02): move focus into the main content, not just the scroll position
+  const skip = document.querySelector('a.skip');
+  if (skip) skip.addEventListener('click', () => {
+    const m = document.getElementById('main');
+    if (!m) return;
+    if (!m.hasAttribute('tabindex')) m.setAttribute('tabindex', '-1');
+    m.focus();
+  });
 })();
 </script>
 <script id="anchor-fix">
