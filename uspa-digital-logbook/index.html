@@ -566,6 +566,36 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 .doc .wrap figure:not(.seo-art) figcaption { margin: 14px auto 0; max-width: 520px; text-align: center; font-size: 14px; line-height: 20px; color: var(--g, #71717B); }
 </style>
 
+<style id="review-c">
+/* REVIEW FIXES (16 Oct 2026, design review A04 A09 F06 F07): existing app
+   screens and callouts between long text runs, a byline under the H1, and the
+   closing App Store block with a QR code for laptop visitors (1024px and up). */
+.doc .byline { margin: 14px 0 0; font-size: 14px; line-height: 20px; color: #52525b; }
+.doc .byline a { color: #050505; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.doc .rc-shot { margin: 32px auto 8px; max-width: 280px; }
+.doc .rc-shot img { width: 100%; height: auto; display: block; }
+.doc .rc-callout { margin: 28px 0; padding: 24px 26px; background: #f5f5f6; border-radius: 20px; }
+.doc .rc-callout > :first-child { margin-top: 0; }
+.doc .rc-callout > :last-child { margin-bottom: 0; }
+.doc .rc-vs { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+.doc .rc-vs > div { padding: 24px 26px; background: #f5f5f6; border-radius: 20px; }
+.doc .rc-vs h3 { margin: 0 0 8px; font-size: 22px; line-height: 30px; }
+.doc .rc-vs p { margin: 0; }
+.doc .end-cta { display: flex; align-items: center; gap: 32px; margin: 48px 0 0; }
+.doc .end-cta .storebtns { display: flex; align-items: center; gap: 12px 20px; flex-wrap: wrap; margin: 0; }
+.doc .end-cta .appbtn { display: inline-block; }
+.doc .end-cta .appbtn img { height: 54px; width: auto; display: block; }
+.doc .end-cta .seo-link { color: #050505; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.doc .wrap figure.qr { display: none; margin: 0; align-items: center; gap: 16px; }
+.doc .qr img { width: 120px; height: 120px; display: block; border: 1px solid #e4e4e7; border-radius: 12px; padding: 4px; background: #fff; box-sizing: content-box; }
+.doc .wrap .qr figcaption { margin: 0; max-width: 180px; text-align: left; font-size: 14px; line-height: 20px; color: #52525b; }
+@media (min-width: 1024px) { .doc .wrap figure.qr { display: flex; } }
+@media (max-width: 600px) {
+  .doc .rc-vs { grid-template-columns: 1fr; }
+  .doc .end-cta .appbtn img { height: 46px; }
+  .doc .rc-callout, .doc .rc-vs > div { padding: 20px; border-radius: 18px; }
+}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
@@ -599,11 +629,13 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   </div>
 </div>
 
-<main class="doc">
+<!-- TODO owner: choose licence (UK) or license (US) for the whole site. This page uses licence outside SIM quotations. -->
+<main class="doc" id="main">
   <div class="wrap">
     <div class="seo-hero">
       <div class="seo-copy">
         <h1>Do digital logbooks count for USPA licences?</h1>
+        <p class="byline">By <a href="/about/">Andr&eacute; Larsen</a>, founder of Manifest</p><!-- TODO owner: add a "Last updated" date to this byline when you confirm one. -->
         <p class="intro">Yes, USPA allows them explicitly. The confusion is usually about what a digital log has to <em>contain</em>, and who has to sign it. Here is what SIM 3-1 actually says.</p>
         <div class="storebtns"><a class="appbtn" href="https://apps.apple.com/app/id6778510429" aria-label="Download Manifest on the App Store"><img src="/assets/appstore-badge.svg?v=1" alt="Download on the App Store" /></a></div>
       </div>
@@ -614,7 +646,8 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       <img src="/assets/uspa-seal.png?v=1" alt="United States Parachute Association seal" width="58" height="58" />
       <div>
         <small>Listed by the United States Parachute Association</small>
-        <b>Manifest is on USPA&rsquo;s jump log apps page</b>
+        <!-- TODO owner: approve the USPA sentence wording. -->
+        <b>Manifest is on USPA&rsquo;s jump log apps page, added in September 2026</b>
         <p>Built around SIM 3-1: every field recorded, in-person sign-off with the witness&rsquo;s licence number, and entries that lock once signed. <a href="https://www.uspa.org/logbookapps" target="_blank" rel="noopener">See the USPA list</a></p>
         <a class="go" href="https://apps.apple.com/app/id6778510429">Download Manifest, free</a>
       </div>
@@ -640,7 +673,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       <li>equipment used</li>
       <li>verifying signature, including a legible USPA membership number, skydiving licence number, or pilot certificate number</li>
     </ul>
-    <p>That last one is the part people miss. A signature on its own is not enough: it needs a number attached that identifies the person who signed.</p>
+    <div class="rc-callout"><p>That last one is the part people miss. A signature on its own is not enough: it needs a number attached that identifies the person who signed.</p></div>
 
     <h2>Who is allowed to sign depends on what you are claiming</h2>
     <p>This is the other common misunderstanding. There are two different bars.</p>
@@ -656,7 +689,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       <li><strong>A, B and C licences</strong>: a USPA Instructor, Examiner, S&amp;TA or board member must verify the logbook entries.</li>
       <li><strong>D licence</strong>: a USPA S&amp;TA or board member must verify them.</li>
     </ul>
-    <p>You may not sign for your own licence application, or initial any of its verification blocks.</p>
+    <div class="rc-callout"><p>You may not sign for your own licence application, or initial any of its verification blocks.</p></div>
 
     <h2>Your first 500 jumps matter more than the rest</h2>
     <p>SIM 3-1 is specific about this: <em>&ldquo;Skydivers pursuing licenses and ratings must clearly log their first 500 jumps so officials can easily verify them.&rdquo;</em></p>
@@ -664,16 +697,19 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 
     <h2>What this means in practice</h2>
     <p>A digital logbook is accepted if it records all nine fields, keeps them in chronological order, carries a real signature with an identifying number on each jump used as evidence, and can be reviewed by the official verifying your application.</p>
-    <p>What it cannot be is a jump counter. A number in an app with nobody&rsquo;s name against it proves nothing at a licence application, whatever the app is.</p>
+    <div class="rc-callout"><p>What it cannot be is a jump counter. A number in an app with nobody&rsquo;s name against it proves nothing at a licence application, whatever the app is.</p></div>
+
+    <figure class="rc-shot"><img src="/assets/opt/hero-pass.ff5ab49a.webp" width="640" height="1391" alt="Manifest Check-in Pass showing licence, current status, total jumps, reserve repack and AAD service dates, credentials and a QR code" loading="lazy" decoding="async" /></figure>
 
     <h2>Manifest is on USPA&rsquo;s list</h2>
-    <p>USPA keeps a page of jump log apps that meet its criteria, at <a href="https://www.uspa.org/logbookapps" rel="noopener">uspa.org/logbookapps</a>. Manifest was reviewed against them and added in September 2026. Every jump records the nine fields above, sign-off is in person by another licensed jumper with their licence number on the entry, and a signed entry locks so it cannot be edited afterwards.</p>
+    <p>USPA keeps a page of jump log apps that meet its criteria. Manifest is on USPA&rsquo;s jump log apps page at <a href="https://www.uspa.org/logbookapps" rel="noopener">uspa.org/logbookapps</a>, added in September 2026. Every jump records the nine fields above, sign-off is in person by another licensed jumper with their licence number on the entry, and a signed entry locks so it cannot be edited afterwards.</p>
 
     <h2>Source</h2>
     <p>USPA Skydiver&rsquo;s Information Manual, Section 3-1, &ldquo;Licenses&rdquo;: <a href="https://www.uspa.org/SIM/3" rel="noopener">uspa.org/SIM/3</a>. Requirements change; check the current SIM before submitting an application. This page is a plain-language summary, not official USPA guidance.</p>
 
     <h2>About Manifest</h2>
-    <p><a href="/">Manifest</a> is the app for skydivers, with a logbook built around this section. It records all nine fields, and jumps are signed off in person by another licensed jumper whose name and licence number are stored on the entry: witnessed rather than self-reported. Free on iOS.</p>
+    <p><a href="/">Manifest</a> is the app for skydivers, with a logbook built around this section. It records all nine fields, and jumps are signed off in person by another licensed jumper whose name and licence number are stored on the entry: witnessed rather than self-reported.</p>
+    <div class="end-cta"><div class="storebtns"><a class="appbtn" href="https://apps.apple.com/app/id6778510429" aria-label="Download Manifest on the App Store"><img src="/assets/appstore-badge.svg?v=1" alt="Download on the App Store" /></a> <a class="seo-link" href="/dropzones/">Own a dropzone? See Manifest Desk</a></div><figure class="qr"><img src="/assets/appstore-qr.svg?v=1" width="120" height="120" alt="Scan with your iPhone camera to open Manifest in the App Store." loading="lazy" /><figcaption aria-hidden="true">Scan with your iPhone camera to open Manifest in the App Store.</figcaption></figure></div>
   </div>
 </main>
 

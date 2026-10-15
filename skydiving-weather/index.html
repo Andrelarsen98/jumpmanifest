@@ -646,6 +646,36 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 .doc .wrap figure:not(.seo-art) figcaption { margin: 14px auto 0; max-width: 520px; text-align: center; font-size: 14px; line-height: 20px; color: var(--g, #71717B); }
 </style>
 
+<style id="review-c">
+/* REVIEW FIXES (16 Oct 2026, design review A04 A09 F06 F07): existing app
+   screens and callouts between long text runs, a byline under the H1, and the
+   closing App Store block with a QR code for laptop visitors (1024px and up). */
+.doc .byline { margin: 14px 0 0; font-size: 14px; line-height: 20px; color: #52525b; }
+.doc .byline a { color: #050505; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.doc .rc-shot { margin: 32px auto 8px; max-width: 280px; }
+.doc .rc-shot img { width: 100%; height: auto; display: block; }
+.doc .rc-callout { margin: 28px 0; padding: 24px 26px; background: #f5f5f6; border-radius: 20px; }
+.doc .rc-callout > :first-child { margin-top: 0; }
+.doc .rc-callout > :last-child { margin-bottom: 0; }
+.doc .rc-vs { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+.doc .rc-vs > div { padding: 24px 26px; background: #f5f5f6; border-radius: 20px; }
+.doc .rc-vs h3 { margin: 0 0 8px; font-size: 22px; line-height: 30px; }
+.doc .rc-vs p { margin: 0; }
+.doc .end-cta { display: flex; align-items: center; gap: 32px; margin: 48px 0 0; }
+.doc .end-cta .storebtns { display: flex; align-items: center; gap: 12px 20px; flex-wrap: wrap; margin: 0; }
+.doc .end-cta .appbtn { display: inline-block; }
+.doc .end-cta .appbtn img { height: 54px; width: auto; display: block; }
+.doc .end-cta .seo-link { color: #050505; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.doc .wrap figure.qr { display: none; margin: 0; align-items: center; gap: 16px; }
+.doc .qr img { width: 120px; height: 120px; display: block; border: 1px solid #e4e4e7; border-radius: 12px; padding: 4px; background: #fff; box-sizing: content-box; }
+.doc .wrap .qr figcaption { margin: 0; max-width: 180px; text-align: left; font-size: 14px; line-height: 20px; color: #52525b; }
+@media (min-width: 1024px) { .doc .wrap figure.qr { display: flex; } }
+@media (max-width: 600px) {
+  .doc .rc-vs { grid-template-columns: 1fr; }
+  .doc .end-cta .appbtn img { height: 46px; }
+  .doc .rc-callout, .doc .rc-vs > div { padding: 20px; border-radius: 18px; }
+}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
@@ -679,7 +709,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   </div>
 </div>
 
-<main class="doc">
+<main class="doc" id="main">
   <div class="wrap">
     <div class="seo-hero">
       <div class="seo-copy">
@@ -734,7 +764,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     <p>At dropzones running <a href="/dropzones/">Manifest Desk</a>, weather is part of the system too. The desk&rsquo;s top bar always shows the current ground wind at the dropzone, so manifest staff never have to look it up. The hangar board on the TV shows the wind, the temperature and sunset at the dropzone, next to the loads and the calls. If your dropzone also uses Manifest for <a href="/live-skydiving-loads/">live loads</a> and <a href="/skydiving-load-calls/">load calls</a>, you know when you are going up as well as what it is like up there.</p>
 
     <h2>A word on safety</h2>
-    <p>Weather in Manifest supports your judgement and the dropzone&rsquo;s. It never replaces either. A forecast model can miss a local gust front, a sea breeze or a cloud bank sitting over the field, and global models are weaker in complex terrain like fjords and mountains. Look at the sky, look at the wind sock, listen to the S&amp;TA and the pilot, and stay within your own limits. If the dropzone holds the loads, the loads are held.</p>
+    <div class="rc-callout"><p>Weather in Manifest supports your judgement and the dropzone&rsquo;s. It never replaces either. A forecast model can miss a local gust front, a sea breeze or a cloud bank sitting over the field, and global models are weaker in complex terrain like fjords and mountains. Look at the sky, look at the wind sock, listen to the S&amp;TA and the pilot, and stay within your own limits. If the dropzone holds the loads, the loads are held.</p></div>
 
     <p class="wx-cta"><a class="btn" href="https://apps.apple.com/app/id6778510429">Get Manifest on the App Store</a></p>
     <p>Manifest is free on iPhone, with weather, <a href="/skydive-3d-tracking/">3D replays of your jumps</a>, live loads and more. Read what else is in <a href="/skydiving-app/">the skydiving app</a>, or go back to the <a href="/">home page</a>.</p>

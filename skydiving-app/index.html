@@ -544,7 +544,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       "name": "Is Manifest on Android?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Manifest is on iPhone today. An Android version is in the making."
+        "text": "Manifest is on iPhone today. Android is being built now. Email me and I will tell you the day it is out."
       }
     },
     {
@@ -647,6 +647,36 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 .doc .wrap figure:not(.seo-art) figcaption { margin: 14px auto 0; max-width: 520px; text-align: center; font-size: 14px; line-height: 20px; color: var(--g, #71717B); }
 </style>
 
+<style id="review-c">
+/* REVIEW FIXES (16 Oct 2026, design review A04 A09 F06 F07): existing app
+   screens and callouts between long text runs, a byline under the H1, and the
+   closing App Store block with a QR code for laptop visitors (1024px and up). */
+.doc .byline { margin: 14px 0 0; font-size: 14px; line-height: 20px; color: #52525b; }
+.doc .byline a { color: #050505; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.doc .rc-shot { margin: 32px auto 8px; max-width: 280px; }
+.doc .rc-shot img { width: 100%; height: auto; display: block; }
+.doc .rc-callout { margin: 28px 0; padding: 24px 26px; background: #f5f5f6; border-radius: 20px; }
+.doc .rc-callout > :first-child { margin-top: 0; }
+.doc .rc-callout > :last-child { margin-bottom: 0; }
+.doc .rc-vs { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+.doc .rc-vs > div { padding: 24px 26px; background: #f5f5f6; border-radius: 20px; }
+.doc .rc-vs h3 { margin: 0 0 8px; font-size: 22px; line-height: 30px; }
+.doc .rc-vs p { margin: 0; }
+.doc .end-cta { display: flex; align-items: center; gap: 32px; margin: 48px 0 0; }
+.doc .end-cta .storebtns { display: flex; align-items: center; gap: 12px 20px; flex-wrap: wrap; margin: 0; }
+.doc .end-cta .appbtn { display: inline-block; }
+.doc .end-cta .appbtn img { height: 54px; width: auto; display: block; }
+.doc .end-cta .seo-link { color: #050505; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.doc .wrap figure.qr { display: none; margin: 0; align-items: center; gap: 16px; }
+.doc .qr img { width: 120px; height: 120px; display: block; border: 1px solid #e4e4e7; border-radius: 12px; padding: 4px; background: #fff; box-sizing: content-box; }
+.doc .wrap .qr figcaption { margin: 0; max-width: 180px; text-align: left; font-size: 14px; line-height: 20px; color: #52525b; }
+@media (min-width: 1024px) { .doc .wrap figure.qr { display: flex; } }
+@media (max-width: 600px) {
+  .doc .rc-vs { grid-template-columns: 1fr; }
+  .doc .end-cta .appbtn img { height: 46px; }
+  .doc .rc-callout, .doc .rc-vs > div { padding: 20px; border-radius: 18px; }
+}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
@@ -680,12 +710,12 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   </div>
 </div>
 
-<main class="doc">
+<main class="doc" id="main">
   <div class="wrap">
     <div class="seo-hero">
       <div class="seo-copy">
         <h1>The skydive app for fun jumpers</h1>
-        <p class="intro">Manifest is a skydive app (skydiving app) for iPhone built around the jump day: the loads at your dropzone, your jump replayed in 3D, your logbook, your gear and your weather, in one place. It is free to download, and jumpers use it from 220+ home dropzones in 46 countries.</p>
+        <p class="intro">Manifest is a skydive app for iPhone built around the jump day: the loads at your dropzone, your jump replayed in 3D, your logbook, your gear and your weather, in one place. It is free to download, and jumpers use it from 220+ home dropzones in 46 countries.</p>
         <div class="storebtns"><a class="appbtn" href="https://apps.apple.com/app/id6778510429" aria-label="Download Manifest on the App Store"><img src="/assets/appstore-badge.svg?v=1" alt="Download on the App Store" /></a></div>
       </div>
       <div class="seo-art"><div class="fan"><div class="phone back"><img src="/assets/opt/mock-3d.5f7a460f.webp" width="640" height="1328" alt="A jump replayed in 3D over real terrain in the Manifest app" /></div><div class="phone front"><img src="/assets/opt/mock-home3.a2e7757f.webp" width="640" height="1330" alt="Manifest skydiving app home screen on iPhone showing the next load at the dropzone with 10 minutes to call, and tiles for Manifest, Live loads, Record, Log a jump, Weather and Check-in" loading="lazy" /></div></div></div>
@@ -716,8 +746,10 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     </ul>
     <p>Pack, eat, talk to your group. The phone tells you when to move. At dropzones that run Manifest Desk, your load on the Lock Screen is free.</p>
 
+    <figure class="rc-shot"><img src="/assets/opt/lockscreen-poster.6252405d.webp" width="720" height="1152" alt="A Manifest load on the iPhone Lock Screen, 7 minutes to the call, with a Gear up notification" loading="lazy" decoding="async" /></figure>
+
     <h2>Auto-start recording</h2>
-    <p>The best track is the one you did not forget to start. With Pro, the recorder arms itself 2 minutes before your load takes off, so every jump gets recorded without you touching the phone. Pro also backs up your tracks.</p>
+    <div class="rc-callout"><p>The best track is the one you did not forget to start. With Pro, the recorder arms itself 2 minutes before your load takes off, so every jump gets recorded without you touching the phone. Pro also backs up your tracks.</p></div>
 
     <h2>Self-manifest and Apple Pay top-ups</h2>
     <p>At dropzones that run <a href="/dropzones/">Manifest Desk</a>, the app does more:</p>
@@ -730,18 +762,24 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 
     <h2>Logbook with sign-offs and your Check-in Pass</h2>
     <p>Manifest keeps a logbook as one part of the app. Each jump holds the fields USPA SIM 3-1 asks for: date, dropzone, exit altitude, freefall time, discipline, landing distance and equipment. Rental and dropzone gear counts too. Jumps are signed off in person by licensed jumpers who were there.</p>
-    <p>Your Check-in Pass shows your license, jump count, currency and gear dates on one screen for the desk, and it goes into Apple Wallet. Both are free. Read more on <a href="/uspa-digital-logbook/">the USPA digital logbook</a>.</p>
+    <p>Your Check-in Pass shows your licence, jump count, currency and gear dates on one screen for the desk, and it goes into Apple Wallet. Both are free. Read more on <a href="/uspa-digital-logbook/">the USPA digital logbook</a>.</p>
 
-    <figure class="shot"><img src="/assets/opt/hero-pass.ff5ab49a.webp" width="640" height="1391" alt="Manifest Check-in Pass showing license, current status, total jumps, reserve repack and AAD service dates, credentials and a QR code" loading="lazy" /></figure>
+    <figure class="shot"><img src="/assets/opt/hero-pass.ff5ab49a.webp" width="640" height="1391" alt="Manifest Check-in Pass showing licence, current status, total jumps, reserve repack and AAD service dates, credentials and a QR code" loading="lazy" /></figure>
 
     <h2>Weather and winds aloft</h2>
     <p>Weather built for jumping: wind, cloud and rain at the dropzone, plus winds aloft, so you know what the day looks like before you drive out. See <a href="/skydiving-weather/">skydiving weather</a>.</p>
 
+    <figure class="rc-shot"><img src="/assets/opt/weather-poster.feba04c5.webp" width="720" height="1280" alt="The Manifest weather screen for a dropzone, with the next few hours and the wind up where you get out, under canopy and on the ground" loading="lazy" decoding="async" /></figure>
+
     <h2>Gear and reserve repack reminders</h2>
     <p>Add your rig and the app tracks your reserve repack and AAD service dates. You get reminded before they run out, not when the desk turns you away.</p>
 
+    <figure class="rc-shot"><img src="/assets/opt/locker2.bca918f9.webp" width="560" height="1175" alt="The Locker Room showing a complete rig, wingsuit, helmets and altimeter, all service current" loading="lazy" decoding="async" /></figure>
+
     <h2>Dropzones, events, coaches and community</h2>
     <p>Find dropzones, see what events are coming up, find coaches, and connect with the skydiving community around you.</p>
+
+    <figure class="rc-shot"><img src="/assets/opt/community2.0766b4cb.webp" width="560" height="1175" alt="The Community screen showing dropzones turning loads and recent jumper activity" loading="lazy" decoding="async" /></figure>
 
     <h2>Free vs Pro</h2>
     <div class="card">
@@ -764,12 +802,12 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     <div class="faq-list">
       <details class="faq-i"><summary>What does the Manifest skydiving app do?<span class="faq-plus" aria-hidden="true"></span></summary><p>It shows live loads at 150+ dropzones, records your jump with your phone&rsquo;s GPS and replays it in 3D, and keeps your logbook with sign-offs, your Check-in Pass, weather and winds, gear reminders, dropzones, events, coaches and community.</p></details>
       <details class="faq-i"><summary>Is the Manifest app free?<span class="faq-plus" aria-hidden="true"></span></summary><p>Yes, it is free to download. Live loads, recording, the 3D replay, the logbook and the Check-in Pass are free. Manifest Pro is an in-app subscription that adds your load on the Lock Screen, auto-start recording, track backup, replay stats and exports.</p></details>
-      <details class="faq-i"><summary>Is Manifest on Android?<span class="faq-plus" aria-hidden="true"></span></summary><p>Manifest is on iPhone today. An Android version is in the making.</p></details>
+      <details class="faq-i"><summary>Is Manifest on Android?<span class="faq-plus" aria-hidden="true"></span></summary><p>Manifest is on iPhone today. Android is being built now. <a href="mailto:andre@manifestjump.com?subject=Tell%20me%20when%20Manifest%20is%20on%20Android">Email me</a> and I will tell you the day it is out.</p></details>
       <details class="faq-i"><summary>Do I need a GPS logger to record a jump?<span class="faq-plus" aria-hidden="true"></span></summary><p>No. Manifest records the jump with your iPhone&rsquo;s GPS. Keep the phone in a zipped pocket.</p></details>
       <details class="faq-i"><summary>Does my dropzone need to use Manifest?<span class="faq-plus" aria-hidden="true"></span></summary><p>No. Live loads, the 3D replay, the logbook and weather work wherever you jump. Self-manifest, Apple Pay top-ups and the free Lock Screen load are for dropzones that run Manifest Desk.</p></details>
     </div>
 
-    <p style="margin-top:34px"><a class="btn" href="https://apps.apple.com/app/id6778510429">Get Manifest on the App Store</a></p>
+    <div class="end-cta"><div class="storebtns"><a class="appbtn" href="https://apps.apple.com/app/id6778510429" aria-label="Download Manifest on the App Store"><img src="/assets/appstore-badge.svg?v=1" alt="Download on the App Store" /></a></div><figure class="qr"><img src="/assets/appstore-qr.svg?v=1" width="120" height="120" alt="Scan with your iPhone camera to open Manifest in the App Store." loading="lazy" /><figcaption aria-hidden="true">Scan with your iPhone camera to open Manifest in the App Store.</figcaption></figure></div>
     <p>Run a dropzone? See <a href="/dropzones/">Manifest Desk</a> or <a href="/how-manifest-works/">how Manifest works</a>.</p>
   </div>
 </main>

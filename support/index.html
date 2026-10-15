@@ -443,6 +443,18 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   ]
 }
 </script>
+<style id="support-tracks">
+/* SUPPORT TRACKS (16 Oct 2026, design review F17): jumpers and dropzones on
+   Manifest Desk side by side on laptops, stacked on phones. */
+.doc > .wrap > .sup-tracks { max-width: none; }
+.sup-tracks { display: grid; grid-template-columns: 1fr; gap: 16px; margin: 32px 0 8px; }
+@media (min-width: 900px) { .sup-tracks { grid-template-columns: 1fr 1fr; } }
+.sup-tracks > .card { margin: 0; }
+.sup-tracks .card ul { margin: 12px 0 0; padding-left: 20px; }
+.sup-tracks .card li { margin: 6px 0; font-size: 16px; line-height: 22px; font-weight: 500; color: var(--g); }
+.sup-tracks .card li a { color: var(--t); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.sup-tracks .card .email a { overflow-wrap: anywhere; }
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
@@ -476,15 +488,28 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   </div>
 </div>
 
-<main class="doc">
+<main class="doc" id="main">
   <div class="wrap">
     <h1>Support</h1>
-    <p class="intro">Need a hand with Manifest, the skydiving app with live dropzone loads? Every message is read by the person who builds it.</p>
+    <p class="intro">Need a hand with Manifest, the skydiving app with live dropzone loads? Every message is read by me, Andr&eacute; Larsen, the founder and the person who builds it.</p>
 
-    <div class="card">
-      <div class="lbl">Contact us</div>
-      <div class="email"><a href="mailto:andre@manifestjump.com">andre@manifestjump.com</a></div>
-      <div class="reply">Replies usually come within 1&ndash;2 days. Tell me your device, iOS version, and what happened. Screenshots help.</div>
+    <div class="sup-tracks">
+      <div class="card">
+        <div class="lbl">For jumpers</div>
+        <div class="email"><a href="mailto:andre@manifestjump.com">andre@manifestjump.com</a></div>
+        <div class="reply">Replies usually come within 1 to 2 days. Tell me your device, iOS version, and what happened. Screenshots help.</div>
+      </div>
+      <!-- TODO owner: confirm the Weekend plan reply time, jump-day hours with time zone, and whether to publish a phone number. Only confirmed facts are shown below. -->
+      <div class="card" id="dropzones">
+        <div class="lbl">For dropzones on Manifest Desk</div>
+        <div class="email"><a href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%20support">andre@manifestjump.com</a></div>
+        <div class="reply">Write to the same address and put your dropzone's name in the subject.</div>
+        <ul>
+          <li>Full-time dropzone plan: priority support, same day.</li>
+          <li>Big operations: a direct line to the founder.</li>
+          <li>Help with the desk: <a href="/how-manifest-works/">how Manifest works</a>, <a href="/dropzone-payments/">payments and top-ups</a>, <a href="/skydive-landout-safety/">landout safety</a>.</li>
+        </ul>
+      </div>
     </div>
 
     <h2>Frequently asked questions</h2>

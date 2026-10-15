@@ -536,7 +536,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       "name": "Is Manifest on Android?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Manifest is on iPhone today. Android is in the making."
+        "text": "Manifest is on iPhone today. Android is being built now. Email me and I will tell you the day it is out."
       }
     }
   ]
@@ -642,6 +642,36 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 .doc .wrap figure:not(.seo-art) figcaption { margin: 14px auto 0; max-width: 520px; text-align: center; font-size: 14px; line-height: 20px; color: var(--g, #71717B); }
 </style>
 
+<style id="review-c">
+/* REVIEW FIXES (16 Oct 2026, design review A04 A09 F06 F07): existing app
+   screens and callouts between long text runs, a byline under the H1, and the
+   closing App Store block with a QR code for laptop visitors (1024px and up). */
+.doc .byline { margin: 14px 0 0; font-size: 14px; line-height: 20px; color: #52525b; }
+.doc .byline a { color: #050505; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.doc .rc-shot { margin: 32px auto 8px; max-width: 280px; }
+.doc .rc-shot img { width: 100%; height: auto; display: block; }
+.doc .rc-callout { margin: 28px 0; padding: 24px 26px; background: #f5f5f6; border-radius: 20px; }
+.doc .rc-callout > :first-child { margin-top: 0; }
+.doc .rc-callout > :last-child { margin-bottom: 0; }
+.doc .rc-vs { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+.doc .rc-vs > div { padding: 24px 26px; background: #f5f5f6; border-radius: 20px; }
+.doc .rc-vs h3 { margin: 0 0 8px; font-size: 22px; line-height: 30px; }
+.doc .rc-vs p { margin: 0; }
+.doc .end-cta { display: flex; align-items: center; gap: 32px; margin: 48px 0 0; }
+.doc .end-cta .storebtns { display: flex; align-items: center; gap: 12px 20px; flex-wrap: wrap; margin: 0; }
+.doc .end-cta .appbtn { display: inline-block; }
+.doc .end-cta .appbtn img { height: 54px; width: auto; display: block; }
+.doc .end-cta .seo-link { color: #050505; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.doc .wrap figure.qr { display: none; margin: 0; align-items: center; gap: 16px; }
+.doc .qr img { width: 120px; height: 120px; display: block; border: 1px solid #e4e4e7; border-radius: 12px; padding: 4px; background: #fff; box-sizing: content-box; }
+.doc .wrap .qr figcaption { margin: 0; max-width: 180px; text-align: left; font-size: 14px; line-height: 20px; color: #52525b; }
+@media (min-width: 1024px) { .doc .wrap figure.qr { display: flex; } }
+@media (max-width: 600px) {
+  .doc .rc-vs { grid-template-columns: 1fr; }
+  .doc .end-cta .appbtn img { height: 46px; }
+  .doc .rc-callout, .doc .rc-vs > div { padding: 20px; border-radius: 18px; }
+}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
@@ -675,16 +705,18 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   </div>
 </div>
 
-<main class="doc">
+<main class="doc" id="main">
   <div class="wrap">
     <div class="seo-hero">
       <div class="seo-copy">
         <h1>Live skydiving loads on your phone</h1>
-        <p class="intro">Stop refreshing the board in the hangar. Manifest shows the loads turning live at 150+ dropzones on your iPhone: what is on call, how many minutes to the call, and who is on each load, straight from the dropzone's own manifest board.</p>
+        <p class="intro">Stop refreshing the board in the hangar.</p>
         <div class="storebtns"><a class="appbtn" href="https://apps.apple.com/app/id6778510429" aria-label="Download Manifest on the App Store"><img src="/assets/appstore-badge.svg?v=1" alt="Download on the App Store" /></a> <a class="seo-link" href="/dropzones/">Own a dropzone? See Manifest Desk</a></div>
       </div>
       <div class="seo-art"><div class="fan"><div class="phone back"><img src="/assets/opt/mock-home3.a2e7757f.webp" width="640" height="1330" alt="Manifest app home screen with the next load and minutes to call" /></div><div class="phone front"><img src="/assets/opt/phone-liveloads.3fc578b1.webp" alt="Manifest on iPhone listing dropzones with live loads right now, including Calgary Skydive, iSkydive America Los Angeles, Skydive City Z-Hills and Skydive Perris, each marked Live" width="821" height="1705" loading="lazy" decoding="async" /></div></div></div>
     </div>
+
+    <p class="ll-lede">Manifest shows the loads turning live at 150+ dropzones on your iPhone: what is on call, how many minutes to the call, and who is on each load, straight from the dropzone's own manifest board.</p>
 
     <h2>What you see on the load board</h2>
     <p>Pick a dropzone and you get its loads for the day, the same ones the manifest desk is running. No guessing, no asking around, no walking back to the board every five minutes to answer the question every fun jumper asks: when is my load?</p>
@@ -745,7 +777,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
         <details class="faq-i"><summary>Is seeing live loads free?<span class="faq-plus" aria-hidden="true"></span></summary><p>Yes. Manifest is free to download, and seeing the loads, the minutes to call and who is on each load is free. Manifest Pro adds your load on the Lock Screen and in the Dynamic Island with gear-up, 10 minute and final-call notifications.</p></details>
         <details class="faq-i"><summary>How do I know when my load is called?<span class="faq-plus" aria-hidden="true"></span></summary><p>The app shows the minutes to call for every load. With Pro, your phone also notifies you at gear up (15 minutes), at the 10 minute call and at final call (5 minutes), and keeps a live countdown on your Lock Screen. At Manifest Desk dropzones this is free.</p></details>
         <details class="faq-i"><summary>What if my dropzone does not show live loads?<span class="faq-plus" aria-hidden="true"></span></summary><p>Everything else still works. You can log jumps, get them signed off, and record and replay every jump in 3D. A dropzone can connect its loads through Manifest Desk.</p></details>
-        <details class="faq-i"><summary>Is Manifest on Android?<span class="faq-plus" aria-hidden="true"></span></summary><p>Manifest is on iPhone today. Android is in the making.</p></details>
+        <details class="faq-i"><summary>Is Manifest on Android?<span class="faq-plus" aria-hidden="true"></span></summary><p>Manifest is on iPhone today. Android is being built now. <a href="mailto:andre@manifestjump.com?subject=Tell%20me%20when%20Manifest%20is%20on%20Android">Email me</a> and I will tell you the day it is out.</p></details>
       </div>
     </section>
 
