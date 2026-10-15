@@ -1157,7 +1157,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
        a full jump day; bigger plans add aircraft, back office and lower fees.
        The Desk enforces these limits in code. -->
   <section class="pricing" id="pricing">
-    <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="8" cy="8" r="1.5"/></svg>First 10 dropzones: 30% off year one · <span id="foundLeft">10 of 10 places left</span></p>
+    <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="8" cy="8" r="1.5"/></svg>First 10 dropzones: 30% off year one<span id="foundLeft" hidden></span></p>
     <h2>Simple pricing. No lock-in.</h2>
     <p class="lead">Every plan runs a full jump day. Cancel anytime, or pay yearly and get two months free.</p>
     <div class="pc-grid">
@@ -1495,12 +1495,12 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 })();
 </script>
 <script>
-// FOUNDING PLACES LEFT, from the server (desk-billing action "founding"): never a made-up number.
+// FOUNDING PLACES LEFT, from the server, shown only once 5 or fewer are left (André, 15 Oct: '10 of 10 left' read as nobody signed up) (desk-billing action "founding"): never a made-up number.
 (function () {
   var el = document.getElementById('foundLeft'); if (!el) return;
   fetch('https://wkefdtglgbfprvfajrrw.supabase.co/functions/v1/desk-billing', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ action: 'founding' }) })
     .then(function (r) { return r.json(); })
-    .then(function (d) { if (typeof d.left === 'number') el.textContent = d.left > 0 ? d.left + ' of ' + d.cap + ' places left' : 'all places taken'; })
+    .then(function (d) { if (typeof d.left === 'number') if (d.left <= 5) { el.textContent = d.left > 0 ? ' · only ' + d.left + ' places left' : ' · all places taken'; el.hidden = false; } })
     .catch(function () {});
 })();
 </script>
