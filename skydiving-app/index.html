@@ -249,6 +249,18 @@ footer.site .ft-base a { color: inherit; }
 footer.site .ft-social a { background: #2A2A2E !important; border-color: transparent !important; color: #FFFFFF !important; }
 footer.site .ft-social a:hover { background: #3A3A40 !important; }
 footer.site .ft-col a em { color: #FFFFFF !important; background: rgba(255,255,255,.14) !important; }
+
+/* REVIEW FIXES (16 Oct 2026, A02 A18 A19): column titles are H3 now (same look
+   as the old H4); a white focus ring on the dark footer; 44 px tap targets on phones. */
+footer.site .ft-col h3 { font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif !important; font-size: 15px !important;
+      line-height: normal !important; font-weight: 600 !important; letter-spacing: -0.01em !important; text-transform: none !important;
+      color: #8E8E93 !important; margin: 4px 0 18px !important; padding: 0 !important; }
+footer.site :where(a, button):focus-visible { outline-color: #fff !important; box-shadow: none; }
+@media (max-width: 767px) {
+  footer.site .ft-col a { display: flex; align-items: center; min-height: 44px; padding: 0; margin-bottom: 8px; }
+  footer.site .ft-brand .mail a { display: inline-flex; align-items: center; min-height: 44px; }
+  footer.site .ft-social a { width: 44px; height: 44px; }
+}
 </style>
 <style id="lockup-css">/* One logo file: the M centred on the lowercase letters, reaching above and below (2 Oct 2026). */ img.lockup{height:32px!important;width:auto!important;border-radius:0!important;display:block;max-width:none!important} @media (max-width:600px){img.lockup{height:29px!important}} .brand img.lockup{height:21px!important} .hub-wordmark img.lockup{height:22px!important} /* sh-logo-size: header logo a touch smaller (André, 14 Oct) */ .sh-logo img.lockup{height:28px!important} @media (max-width:600px){.sh-logo img.lockup{height:26px!important}} /* ft-logo-size */ footer.site .wordmark img.lockup{height:28px!important} @media (max-width:600px){footer.site .wordmark img.lockup{height:26px!important}}</style>
 <style id="site-header">
@@ -277,9 +289,6 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 .is-current > .sh-t::after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; height: 2px; border-radius: 2px; background: var(--sh-purple); }
 .sh-chev { width: 12px; height: 12px; transition: transform .15s ease; }
 .sh-dd.open .sh-chev, .sh-macc[aria-expanded="true"] .sh-chev { transform: rotate(180deg); }
-.sh-trig:focus-visible, .sh-link:focus-visible, .sh-login:focus-visible, .sh-item:focus-visible, .sh-cta:focus-visible,
-.sh-burger:focus-visible, .sh-macc:focus-visible, .sh-mitem:focus-visible, .sh-mlink:focus-visible, .sh-logo:focus-visible {
-      outline: 2px solid var(--sh-purple); outline-offset: 3px; border-radius: 8px; }
 
 /* the dropdown: hangs from the full header height, so the pointer never crosses a gap */
 .sh-dd { position: relative; height: 100%; display: flex; align-items: center; }
@@ -355,6 +364,42 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 @media (prefers-reduced-motion: reduce) {
   .sh-panel, .sh-chev, .sh-burger span { transition: none !important; }
   .sh-sheet { animation: none; }
+}
+
+/* REVIEW FIXES (16 Oct 2026, design review A02 A12 A18 F05 F06 F19).
+   Skip link first in <body>; one focus ring sitewide; the header row on the
+   same 1280 grid as the content; one header button system in the site's own
+   colours (black Download / Get the app for jumpers, purple Book a demo for
+   dropzones) that stays in the phone header; Download and Book a demo side by side at the
+   bottom of the phone menu. */
+.skip { position: fixed; left: 16px; top: -120px; z-index: 100; display: inline-flex; align-items: center; height: 44px;
+      padding: 0 20px; border-radius: 999px; background: #fff; color: #050505 !important; border: 1.5px solid #050505;
+      font: 700 15px/1 "Manrope", -apple-system, BlinkMacSystemFont, sans-serif; text-decoration: none !important; }
+.skip:focus { top: 16px; }
+#main:focus { outline: none !important; box-shadow: none !important; }
+:where(a, button, summary, input, select, textarea, [tabindex]):focus-visible {
+      outline: 2px solid #050505 !important; outline-offset: 3px !important; box-shadow: 0 0 0 3px #fff; }
+:where(a, button, summary, input, select, textarea, [tabindex]):focus { scroll-margin-top: 96px; scroll-margin-bottom: 24px; }
+.sh-in { max-width: calc(1280px + 10vw); margin: 0 auto; box-sizing: border-box; }
+.sh-cta { background: #050505; color: #fff !important; border: 0; }
+.sh-cta:hover { background: #2A2A2E; }
+.sh-cta-p, .sh-cta-demo { background: var(--sh-purple); color: #fff !important; }
+.sh-cta-p:hover, .sh-cta-demo:hover { background: #5B32E0; }
+.sh-l2, .sh-l4 { display: none; }
+.sh-mctas { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 24px; }
+.sh-mctas .sh-mcta { margin-top: 0; min-height: 52px; padding: 0 12px; }
+@media (max-width: 899px) {
+  .sh-in { gap: 8px; }
+  .sh-right { gap: 8px; }
+  .sh-right > .sh-cta { display: inline-flex !important; position: relative; height: 40px; padding: 0 16px; font-size: 14px; }
+  .sh-right > .sh-cta::before { content: ""; position: absolute; left: 0; right: 0; top: -2px; bottom: -2px; }
+  .sh-right > .sh-cta svg, .sh-right > .sh-cta .sh-l1 { display: none; }
+  .sh-right > .sh-cta .sh-l2 { display: inline; }
+}
+@media (max-width: 359px) {
+  .sh-right > .sh-cta { padding: 0 14px; }
+  .sh-right > .sh-cta .sh-l2 { display: none; }
+  .sh-right > .sh-cta .sh-l4 { display: inline; }
 }
 </style>
 <style id="ft-pay-css">.ft-base{flex-wrap:wrap;gap:12px 24px;align-items:center}.ft-pay{display:flex;flex-wrap:wrap;gap:8px;margin:0}.ft-pay img{height:24px;width:auto;display:block;border-radius:4px}@media (max-width:899px){.ft-base{flex-direction:column;align-items:center !important;justify-content:center;text-align:center}.ft-pay{justify-content:center}}@media (min-width:900px){.ft-base{display:grid!important;grid-template-columns:1fr auto 1fr;align-items:center}.ft-base>.ft-pay{justify-self:center}}</style>
@@ -502,7 +547,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       "name": "Is Manifest on Android?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Manifest is on iPhone today. An Android version is in the making."
+        "text": "Manifest is on iPhone today. Android is being built now. Email me and I will tell you the day it is out."
       }
     },
     {
@@ -605,44 +650,75 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 .doc .wrap figure:not(.seo-art) figcaption { margin: 14px auto 0; max-width: 520px; text-align: center; font-size: 14px; line-height: 20px; color: var(--g, #71717B); }
 </style>
 
+<style id="review-c">
+/* REVIEW FIXES (16 Oct 2026, design review A04 A09 F06 F07): existing app
+   screens and callouts between long text runs, a byline under the H1, and the
+   closing App Store block with a QR code for laptop visitors (1024px and up). */
+.doc .byline { margin: 14px 0 0; font-size: 14px; line-height: 20px; color: #52525b; }
+.doc .byline a { color: #050505; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.doc .rc-shot { margin: 32px auto 8px; max-width: 280px; }
+.doc .rc-shot img { width: 100%; height: auto; display: block; }
+.doc .rc-callout { margin: 28px 0; padding: 24px 26px; background: #f5f5f6; border-radius: 20px; }
+.doc .rc-callout > :first-child { margin-top: 0; }
+.doc .rc-callout > :last-child { margin-bottom: 0; }
+.doc .rc-vs { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+.doc .rc-vs > div { padding: 24px 26px; background: #f5f5f6; border-radius: 20px; }
+.doc .rc-vs h3 { margin: 0 0 8px; font-size: 22px; line-height: 30px; }
+.doc .rc-vs p { margin: 0; }
+.doc .end-cta { display: flex; align-items: center; gap: 32px; margin: 48px 0 0; }
+.doc .end-cta .storebtns { display: flex; align-items: center; gap: 12px 20px; flex-wrap: wrap; margin: 0; }
+.doc .end-cta .appbtn { display: inline-block; }
+.doc .end-cta .appbtn img { height: 54px; width: auto; display: block; }
+.doc .end-cta .seo-link { color: #050505; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.doc .wrap figure.qr { display: none; margin: 0; align-items: center; gap: 16px; }
+.doc .qr img { width: 120px; height: 120px; display: block; border: 1px solid #e4e4e7; border-radius: 12px; padding: 4px; background: #fff; box-sizing: content-box; }
+.doc .wrap .qr figcaption { margin: 0; max-width: 180px; text-align: left; font-size: 14px; line-height: 20px; color: #52525b; }
+@media (min-width: 1024px) { .doc .wrap figure.qr { display: flex; } }
+@media (max-width: 600px) {
+  .doc .rc-vs { grid-template-columns: 1fr; }
+  .doc .end-cta .appbtn img { height: 46px; }
+  .doc .rc-callout, .doc .rc-vs > div { padding: 20px; border-radius: 18px; }
+}
+</style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to main content</a>
 <!-- SITE HEADER (9 Oct 2026): one header on every page. Mega dropdowns on
      laptops, a full-height sheet on phones. Same markup, CSS and JS on each
      page; only the current section and the right-hand button differ. -->
-<div class="sh" data-sh>
+<div class="sh" data-sh role="banner">
   <div class="sh-in">
     <a class="sh-logo" href="/" aria-label="Manifest home"><img class="lockup" src="/assets/manifest-lockup.svg?v=5" alt="Manifest" /></a>
     <nav class="sh-nav" aria-label="Main">
       <div class="sh-dd" data-dd><button class="sh-trig is-current" type="button" aria-expanded="false" aria-controls="sh-p-jumpers"><span class="sh-t">For jumpers</span><svg class="sh-chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="sh-panel" id="sh-p-jumpers"><div class="sh-card"><div class="sh-grid"><a class="sh-item" href="/skydiving-app/" aria-current="page"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18h3"/></svg></span><span class="sh-tx"><b>The skydiving app</b><small>Loads, 3D replays and every jump in one app.</small></span></a><a class="sh-item" href="/live-skydiving-loads/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M8.5 15.5a5 5 0 0 1 0-7M15.5 8.5a5 5 0 0 1 0 7M5.6 18.4a9 9 0 0 1 0-12.8M18.4 5.6a9 9 0 0 1 0 12.8"/></svg></span><span class="sh-tx"><b>Live loads</b><small>Your load and calls, live at 150+ dropzones.</small></span></a><a class="sh-item" href="/skydive-3d-tracking/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg></span><span class="sh-tx"><b>3D replay</b><small>Every jump in 3D from your phone's GPS.</small></span></a><a class="sh-item" href="/skydiving-weather/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h11a3 3 0 1 0-3-3"/><path d="M3 13h15a3 3 0 1 1-3 3"/><path d="M3 17h7"/></svg></span><span class="sh-tx"><b>Weather</b><small>Wind at exit, under canopy and on the ground.</small></span></a><a class="sh-item" href="/uspa-digital-logbook/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19.5v-15A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5zm0 0A1.5 1.5 0 0 0 6.5 21H19v-3"/><path d="M9 10.5l2 2 4-4"/></svg></span><span class="sh-tx"><b>Digital logbook</b><small>Your jumps, signed off in person.</small></span></a><a class="sh-item" href="/#locker"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6V4.5A1.5 1.5 0 0 1 10.5 3h3A1.5 1.5 0 0 1 15 4.5V6"/><rect x="5" y="6" width="14" height="15" rx="3.5"/><path d="M9 13.5h6V17H9z"/></svg></span><span class="sh-tx"><b>Gear locker</b><small>Repacks and AAD service, reminded in time.</small></span></a></div><a class="sh-item sh-foot" href="https://apps.apple.com/app/id6778510429"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M12 7.5v6M9.5 11L12 13.5 14.5 11M10.5 18h3"/></svg></span><span class="sh-tx"><b>Download the app</b><small>Free on the App Store for iPhone.</small></span><span class="sh-go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a></div></div></div>
-      <div class="sh-dd" data-dd><button class="sh-trig" type="button" aria-expanded="false" aria-controls="sh-p-dropzones"><span class="sh-t">For dropzones</span><svg class="sh-chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="sh-panel" id="sh-p-dropzones"><div class="sh-card"><div class="sh-grid"><a class="sh-item" href="/dropzones/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><span class="sh-tx"><b>Manifest Desk</b><small>Loads, money, staff and safety on one screen.</small></span></a><a class="sh-item" href="/dropzone-payments/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3 10h18M7 14.5h3"/></svg></span><span class="sh-tx"><b>Payments and top-ups</b><small>Apple Pay top-ups, straight to your Stripe.</small></span></a><a class="sh-item" href="/skydive-landout-safety/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="sh-tx"><b>Safety</b><small>Landouts on a live map, plus gear checks.</small></span></a><a class="sh-item" href="/skydiving-load-calls/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15L6 16z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg></span><span class="sh-tx"><b>Load calls</b><small>Every call on every jumper's Lock Screen.</small></span></a><a class="sh-item" href="/self-manifest-skydiving/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M3 20a6 6 0 0 1 10.5-4"/><path d="M15 18l2 2 4-4"/></svg></span><span class="sh-tx"><b>Self-manifest</b><small>Jumpers book themselves, you keep control.</small></span></a><a class="sh-item" href="/how-manifest-works/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M11 6h9M11 18h9M6 8.5v7"/></svg></span><span class="sh-tx"><b>How it works</b><small>From sign-up to your first jump day.</small></span></a><a class="sh-item" href="/dropzones/#hangar-board"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M7 8.5h6M7 12.5h10M9 21h6"/></svg></span><span class="sh-tx"><b>Hangar board</b><small>A live board for every TV in the hangar.</small></span></a><a class="sh-item" href="/dropzones/#pricing"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4.5A1.5 1.5 0 0 1 4.5 3H12l9 9-9 9-9-9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><span class="sh-tx"><b>Pricing</b><small>Founding prices set with you.</small></span></a></div><a class="sh-item sh-foot" href="/dropzones/start/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M13 8.5l3.5 3.5-3.5 3.5"/></svg></span><span class="sh-tx"><b>Get started</b><small>Pick a plan and set up your dropzone.</small></span><span class="sh-go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a></div></div></div>
+      <div class="sh-dd" data-dd><button class="sh-trig" type="button" aria-expanded="false" aria-controls="sh-p-dropzones"><span class="sh-t">For dropzones</span><svg class="sh-chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="sh-panel" id="sh-p-dropzones"><div class="sh-card"><div class="sh-grid"><a class="sh-item" href="/dropzones/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><span class="sh-tx"><b>Manifest Desk</b><small>Loads, money, staff and safety on one screen.</small></span></a><a class="sh-item" href="/dropzone-payments/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3 10h18M7 14.5h3"/></svg></span><span class="sh-tx"><b>Payments and top-ups</b><small>Apple Pay top-ups, straight to your Stripe.</small></span></a><a class="sh-item" href="/skydive-landout-safety/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="sh-tx"><b>Safety</b><small>Landouts on a live map, plus gear checks.</small></span></a><a class="sh-item" href="/skydiving-load-calls/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15L6 16z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg></span><span class="sh-tx"><b>Load calls</b><small>Every call on every jumper's Lock Screen.</small></span></a><a class="sh-item" href="/self-manifest-skydiving/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M3 20a6 6 0 0 1 10.5-4"/><path d="M15 18l2 2 4-4"/></svg></span><span class="sh-tx"><b>Self-manifest</b><small>Jumpers book themselves, you keep control.</small></span></a><a class="sh-item" href="/how-manifest-works/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M11 6h9M11 18h9M6 8.5v7"/></svg></span><span class="sh-tx"><b>How it works</b><small>From sign-up to your first jump day.</small></span></a><a class="sh-item" href="/dropzones/#hangar-board"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M7 8.5h6M7 12.5h10M9 21h6"/></svg></span><span class="sh-tx"><b>Hangar board</b><small>A live board for every TV in the hangar.</small></span></a><a class="sh-item" href="/dropzones/#pricing"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4.5A1.5 1.5 0 0 1 4.5 3H12l9 9-9 9-9-9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><span class="sh-tx"><b>Pricing</b><small>Founding prices set with you.</small></span></a></div><a class="sh-item sh-foot" href="/dropzones/#get-price"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M13 8.5l3.5 3.5-3.5 3.5"/></svg></span><span class="sh-tx"><b>Get started</b><small>Tell us about your dropzone. Founding price set with you.</small></span><span class="sh-go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a></div></div></div>
       <a class="sh-link" href="/about/"><span class="sh-t">About</span></a>
       <a class="sh-link" href="/support/"><span class="sh-t">Support</span></a>
       <a class="sh-link" href="/#faq"><span class="sh-t">FAQ</span></a>
     </nav>
     <div class="sh-right">
       <a class="sh-login" href="https://desk.jumpmanifest.com">Dropzone login</a>
-      <a class="sh-cta" href="https://apps.apple.com/app/id6778510429">Download<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      <a class="sh-cta" href="https://apps.apple.com/app/id6778510429"><span class="sh-l1">Download</span><span class="sh-l2">Get the app</span><span class="sh-l4">Get app</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
       <button class="sh-burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="sh-sheet"><span></span><span></span></button>
     </div>
   </div>
   <div class="sh-sheet" id="sh-sheet" hidden>
     <div class="sh-mgroup"><button class="sh-macc is-current" type="button" aria-expanded="false" aria-controls="sh-m-jumpers"><span>For jumpers</span><svg class="sh-chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="sh-mlist" id="sh-m-jumpers" hidden><a class="sh-mitem" href="/skydiving-app/" aria-current="page"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18h3"/></svg></span><span class="sh-tx"><b>The skydiving app</b><small>Loads, 3D replays and every jump in one app.</small></span></a><a class="sh-mitem" href="/live-skydiving-loads/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M8.5 15.5a5 5 0 0 1 0-7M15.5 8.5a5 5 0 0 1 0 7M5.6 18.4a9 9 0 0 1 0-12.8M18.4 5.6a9 9 0 0 1 0 12.8"/></svg></span><span class="sh-tx"><b>Live loads</b><small>Your load and calls, live at 150+ dropzones.</small></span></a><a class="sh-mitem" href="/skydive-3d-tracking/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg></span><span class="sh-tx"><b>3D replay</b><small>Every jump in 3D from your phone's GPS.</small></span></a><a class="sh-mitem" href="/skydiving-weather/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h11a3 3 0 1 0-3-3"/><path d="M3 13h15a3 3 0 1 1-3 3"/><path d="M3 17h7"/></svg></span><span class="sh-tx"><b>Weather</b><small>Wind at exit, under canopy and on the ground.</small></span></a><a class="sh-mitem" href="/uspa-digital-logbook/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19.5v-15A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5zm0 0A1.5 1.5 0 0 0 6.5 21H19v-3"/><path d="M9 10.5l2 2 4-4"/></svg></span><span class="sh-tx"><b>Digital logbook</b><small>Your jumps, signed off in person.</small></span></a><a class="sh-mitem" href="/#locker"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6V4.5A1.5 1.5 0 0 1 10.5 3h3A1.5 1.5 0 0 1 15 4.5V6"/><rect x="5" y="6" width="14" height="15" rx="3.5"/><path d="M9 13.5h6V17H9z"/></svg></span><span class="sh-tx"><b>Gear locker</b><small>Repacks and AAD service, reminded in time.</small></span></a><a class="sh-mitem" href="https://apps.apple.com/app/id6778510429"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M12 7.5v6M9.5 11L12 13.5 14.5 11M10.5 18h3"/></svg></span><span class="sh-tx"><b>Download the app</b><small>Free on the App Store for iPhone.</small></span></a></div></div>
-    <div class="sh-mgroup"><button class="sh-macc" type="button" aria-expanded="false" aria-controls="sh-m-dropzones"><span>For dropzones</span><svg class="sh-chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="sh-mlist" id="sh-m-dropzones" hidden><a class="sh-mitem" href="/dropzones/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><span class="sh-tx"><b>Manifest Desk</b><small>Loads, money, staff and safety on one screen.</small></span></a><a class="sh-mitem" href="/dropzone-payments/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3 10h18M7 14.5h3"/></svg></span><span class="sh-tx"><b>Payments and top-ups</b><small>Apple Pay top-ups, straight to your Stripe.</small></span></a><a class="sh-mitem" href="/skydive-landout-safety/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="sh-tx"><b>Safety</b><small>Landouts on a live map, plus gear checks.</small></span></a><a class="sh-mitem" href="/skydiving-load-calls/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15L6 16z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg></span><span class="sh-tx"><b>Load calls</b><small>Every call on every jumper's Lock Screen.</small></span></a><a class="sh-mitem" href="/self-manifest-skydiving/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M3 20a6 6 0 0 1 10.5-4"/><path d="M15 18l2 2 4-4"/></svg></span><span class="sh-tx"><b>Self-manifest</b><small>Jumpers book themselves, you keep control.</small></span></a><a class="sh-mitem" href="/how-manifest-works/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M11 6h9M11 18h9M6 8.5v7"/></svg></span><span class="sh-tx"><b>How it works</b><small>From sign-up to your first jump day.</small></span></a><a class="sh-mitem" href="/dropzones/#hangar-board"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M7 8.5h6M7 12.5h10M9 21h6"/></svg></span><span class="sh-tx"><b>Hangar board</b><small>A live board for every TV in the hangar.</small></span></a><a class="sh-mitem" href="/dropzones/#pricing"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4.5A1.5 1.5 0 0 1 4.5 3H12l9 9-9 9-9-9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><span class="sh-tx"><b>Pricing</b><small>Founding prices set with you.</small></span></a><a class="sh-mitem" href="/dropzones/start/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M13 8.5l3.5 3.5-3.5 3.5"/></svg></span><span class="sh-tx"><b>Get started</b><small>Pick a plan and set up your dropzone.</small></span></a></div></div>
+    <div class="sh-mgroup"><button class="sh-macc" type="button" aria-expanded="false" aria-controls="sh-m-dropzones"><span>For dropzones</span><svg class="sh-chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="sh-mlist" id="sh-m-dropzones" hidden><a class="sh-mitem" href="/dropzones/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><span class="sh-tx"><b>Manifest Desk</b><small>Loads, money, staff and safety on one screen.</small></span></a><a class="sh-mitem" href="/dropzone-payments/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3 10h18M7 14.5h3"/></svg></span><span class="sh-tx"><b>Payments and top-ups</b><small>Apple Pay top-ups, straight to your Stripe.</small></span></a><a class="sh-mitem" href="/skydive-landout-safety/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="sh-tx"><b>Safety</b><small>Landouts on a live map, plus gear checks.</small></span></a><a class="sh-mitem" href="/skydiving-load-calls/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15L6 16z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg></span><span class="sh-tx"><b>Load calls</b><small>Every call on every jumper's Lock Screen.</small></span></a><a class="sh-mitem" href="/self-manifest-skydiving/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M3 20a6 6 0 0 1 10.5-4"/><path d="M15 18l2 2 4-4"/></svg></span><span class="sh-tx"><b>Self-manifest</b><small>Jumpers book themselves, you keep control.</small></span></a><a class="sh-mitem" href="/how-manifest-works/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M11 6h9M11 18h9M6 8.5v7"/></svg></span><span class="sh-tx"><b>How it works</b><small>From sign-up to your first jump day.</small></span></a><a class="sh-mitem" href="/dropzones/#hangar-board"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M7 8.5h6M7 12.5h10M9 21h6"/></svg></span><span class="sh-tx"><b>Hangar board</b><small>A live board for every TV in the hangar.</small></span></a><a class="sh-mitem" href="/dropzones/#pricing"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4.5A1.5 1.5 0 0 1 4.5 3H12l9 9-9 9-9-9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><span class="sh-tx"><b>Pricing</b><small>Founding prices set with you.</small></span></a><a class="sh-mitem" href="/dropzones/#get-price"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M13 8.5l3.5 3.5-3.5 3.5"/></svg></span><span class="sh-tx"><b>Get started</b><small>Tell us about your dropzone. Founding price set with you.</small></span></a></div></div>
     <a class="sh-mlink" href="/about/"><span class="sh-t">About</span></a>
     <a class="sh-mlink" href="/support/"><span class="sh-t">Support</span></a>
     <a class="sh-mlink" href="/#faq"><span class="sh-t">FAQ</span></a>
     <a class="sh-mlink" href="https://desk.jumpmanifest.com"><span class="sh-t">Dropzone login</span></a>
-    <a class="sh-cta sh-mcta" href="https://apps.apple.com/app/id6778510429">Download<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    <div class="sh-mctas"><a class="sh-cta sh-mcta" href="https://apps.apple.com/app/id6778510429">Download</a><a class="sh-cta sh-mcta sh-cta-demo" href="/dropzones/#get-price">Book a demo</a></div>
   </div>
 </div>
 
-<main class="doc">
+<main class="doc" id="main">
   <div class="wrap">
     <div class="seo-hero">
       <div class="seo-copy">
         <h1>The skydive app for fun jumpers</h1>
-        <p class="intro">Manifest is a skydive app (skydiving app) for iPhone built around the jump day: the loads at your dropzone, your jump replayed in 3D, your logbook, your gear and your weather, in one place. It is free to download, and jumpers use it from 220+ home dropzones in 46 countries.</p>
+        <p class="intro">Manifest is a skydive app for iPhone built around the jump day: the loads at your dropzone, your jump replayed in 3D, your logbook, your gear and your weather, in one place. It is free to download, and jumpers use it from 220+ home dropzones in 46 countries.</p>
         <div class="storebtns"><a class="appbtn" href="https://apps.apple.com/app/id6778510429" aria-label="Download Manifest on the App Store"><img src="/assets/appstore-badge.svg?v=1" alt="Download on the App Store" /></a></div>
       </div>
       <div class="seo-art"><div class="fan"><div class="phone back"><img src="/assets/opt/mock-3d.5f7a460f.webp" width="640" height="1328" alt="A jump replayed in 3D over real terrain in the Manifest app" /></div><div class="phone front"><img src="/assets/opt/mock-home3.a2e7757f.webp" width="640" height="1330" alt="Manifest skydiving app home screen on iPhone showing the next load at the dropzone with 10 minutes to call, and tiles for Manifest, Live loads, Record, Log a jump, Weather and Check-in" loading="lazy" /></div></div></div>
@@ -673,8 +749,10 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     </ul>
     <p>Pack, eat, talk to your group. The phone tells you when to move. At dropzones that run Manifest Desk, your load on the Lock Screen is free.</p>
 
+    <figure class="rc-shot"><img src="/assets/opt/lockscreen-poster.6252405d.webp" width="720" height="1152" alt="A Manifest load on the iPhone Lock Screen, 7 minutes to the call, with a Gear up notification" loading="lazy" decoding="async" /></figure>
+
     <h2>Auto-start recording</h2>
-    <p>The best track is the one you did not forget to start. With Pro, the recorder arms itself 2 minutes before your load takes off, so every jump gets recorded without you touching the phone. Pro also backs up your tracks.</p>
+    <div class="rc-callout"><p>The best track is the one you did not forget to start. With Pro, the recorder arms itself 2 minutes before your load takes off, so every jump gets recorded without you touching the phone. Pro also backs up your tracks.</p></div>
 
     <h2>Self-manifest and Apple Pay top-ups</h2>
     <p>At dropzones that run <a href="/dropzones/">Manifest Desk</a>, the app does more:</p>
@@ -687,18 +765,24 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 
     <h2>Logbook with sign-offs and your Check-in Pass</h2>
     <p>Manifest keeps a logbook as one part of the app. Each jump holds the fields USPA SIM 3-1 asks for: date, dropzone, exit altitude, freefall time, discipline, landing distance and equipment. Rental and dropzone gear counts too. Jumps are signed off in person by licensed jumpers who were there.</p>
-    <p>Your Check-in Pass shows your license, jump count, currency and gear dates on one screen for the desk, and it goes into Apple Wallet. Both are free. Read more on <a href="/uspa-digital-logbook/">the USPA digital logbook</a>.</p>
+    <p>Your Check-in Pass shows your licence, jump count, currency and gear dates on one screen for the desk, and it goes into Apple Wallet. Both are free. Read more on <a href="/uspa-digital-logbook/">the USPA digital logbook</a>.</p>
 
-    <figure class="shot"><img src="/assets/opt/hero-pass.ff5ab49a.webp" width="640" height="1391" alt="Manifest Check-in Pass showing license, current status, total jumps, reserve repack and AAD service dates, credentials and a QR code" loading="lazy" /></figure>
+    <figure class="shot"><img src="/assets/opt/hero-pass.ff5ab49a.webp" width="640" height="1391" alt="Manifest Check-in Pass showing licence, current status, total jumps, reserve repack and AAD service dates, credentials and a QR code" loading="lazy" /></figure>
 
     <h2>Weather and winds aloft</h2>
     <p>Weather built for jumping: wind, cloud and rain at the dropzone, plus winds aloft, so you know what the day looks like before you drive out. See <a href="/skydiving-weather/">skydiving weather</a>.</p>
 
+    <figure class="rc-shot"><img src="/assets/opt/weather-poster.feba04c5.webp" width="720" height="1280" alt="The Manifest weather screen for a dropzone, with the next few hours and the wind up where you get out, under canopy and on the ground" loading="lazy" decoding="async" /></figure>
+
     <h2>Gear and reserve repack reminders</h2>
     <p>Add your rig and the app tracks your reserve repack and AAD service dates. You get reminded before they run out, not when the desk turns you away.</p>
 
+    <figure class="rc-shot"><img src="/assets/opt/locker2.bca918f9.webp" width="560" height="1175" alt="The Locker Room showing a complete rig, wingsuit, helmets and altimeter, all service current" loading="lazy" decoding="async" /></figure>
+
     <h2>Dropzones, events, coaches and community</h2>
     <p>Find dropzones, see what events are coming up, find coaches, and connect with the skydiving community around you.</p>
+
+    <figure class="rc-shot"><img src="/assets/opt/community2.0766b4cb.webp" width="560" height="1175" alt="The Community screen showing dropzones turning loads and recent jumper activity" loading="lazy" decoding="async" /></figure>
 
     <h2>Free vs Pro</h2>
     <div class="card">
@@ -721,12 +805,12 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     <div class="faq-list">
       <details class="faq-i"><summary>What does the Manifest skydiving app do?<span class="faq-plus" aria-hidden="true"></span></summary><p>It shows live loads at 150+ dropzones, records your jump with your phone&rsquo;s GPS and replays it in 3D, and keeps your logbook with sign-offs, your Check-in Pass, weather and winds, gear reminders, dropzones, events, coaches and community.</p></details>
       <details class="faq-i"><summary>Is the Manifest app free?<span class="faq-plus" aria-hidden="true"></span></summary><p>Yes, it is free to download. Live loads, recording, the 3D replay, the logbook and the Check-in Pass are free. Manifest Pro is an in-app subscription that adds your load on the Lock Screen, auto-start recording, track backup, replay stats and exports.</p></details>
-      <details class="faq-i"><summary>Is Manifest on Android?<span class="faq-plus" aria-hidden="true"></span></summary><p>Manifest is on iPhone today. An Android version is in the making.</p></details>
+      <details class="faq-i"><summary>Is Manifest on Android?<span class="faq-plus" aria-hidden="true"></span></summary><p>Manifest is on iPhone today. Android is being built now. <a href="mailto:andre@manifestjump.com?subject=Tell%20me%20when%20Manifest%20is%20on%20Android">Email me</a> and I will tell you the day it is out.</p></details>
       <details class="faq-i"><summary>Do I need a GPS logger to record a jump?<span class="faq-plus" aria-hidden="true"></span></summary><p>No. Manifest records the jump with your iPhone&rsquo;s GPS. Keep the phone in a zipped pocket.</p></details>
       <details class="faq-i"><summary>Does my dropzone need to use Manifest?<span class="faq-plus" aria-hidden="true"></span></summary><p>No. Live loads, the 3D replay, the logbook and weather work wherever you jump. Self-manifest, Apple Pay top-ups and the free Lock Screen load are for dropzones that run Manifest Desk.</p></details>
     </div>
 
-    <p style="margin-top:34px"><a class="btn" href="https://apps.apple.com/app/id6778510429">Get Manifest on the App Store</a></p>
+    <div class="end-cta"><div class="storebtns"><a class="appbtn" href="https://apps.apple.com/app/id6778510429" aria-label="Download Manifest on the App Store"><img src="/assets/appstore-badge.svg?v=1" alt="Download on the App Store" /></a></div><figure class="qr"><img src="/assets/appstore-qr.svg?v=1" width="120" height="120" alt="Scan with your iPhone camera to open Manifest in the App Store." loading="lazy" /><figcaption aria-hidden="true">Scan with your iPhone camera to open Manifest in the App Store.</figcaption></figure></div>
     <p>Run a dropzone? See <a href="/dropzones/">Manifest Desk</a> or <a href="/how-manifest-works/">how Manifest works</a>.</p>
   </div>
 </main>
@@ -735,20 +819,20 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   <div class="ft">
     <div class="ft-brand">
       <a class="wordmark" href="/" aria-label="Manifest home"><img class="lockup" src="/assets/manifest-lockup-white.svg?v=5" alt="Manifest" /></a>
-      <p>The app for skydivers and the system for dropzones. Live loads, 3D replays and a logbook that proves every jump, on one system.</p>
+      <p>The app for skydivers and the system for dropzones. Live loads, 3D jump replay and in-person sign-offs for jumpers. One system that runs the dropzone.</p>
       <div class="mail">Support: <a href="mailto:andre@manifestjump.com">andre@manifestjump.com</a></div>
       <div class="ft-social">
         <a href="https://www.instagram.com/manifestjump/" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></a>
         <a href="https://apps.apple.com/app/id6778510429" aria-label="App Store"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.4 2-3.5 2-3.6-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.9-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.7-.1 0-2.5-1-2.5-3.6zM14.1 5.6c.6-.8 1.1-1.9 1-3-.9 0-2.1.6-2.7 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.5 2.7-1.3z"/></svg></a>
       </div>
     </div>
-    <div class="ft-col"><h4>App</h4>
+    <div class="ft-col"><h3>App</h3>
       <a href="/#replay">3D Replay</a><a href="/#live">Live loads</a><a href="/#everything">Features</a><a href="https://apps.apple.com/app/id6778510429">Download</a></div>
-    <div class="ft-col"><h4>Dropzones</h4>
-      <a href="/dropzones/">Manifest Desk</a><a href="/dropzones/start/">Get started</a><a href="https://desk.jumpmanifest.com">Dropzone login</a></div>
-    <div class="ft-col"><h4>Explore</h4>
+    <div class="ft-col"><h3>Dropzones</h3>
+      <a href="/dropzones/">Manifest Desk</a><a href="/skydiving-manifest-software/">Dropzone software guide</a><a href="/dropzones/#get-price">Get started</a><a href="https://desk.jumpmanifest.com">Dropzone login</a></div>
+    <div class="ft-col"><h3>Explore</h3>
       <a href="/uspa-digital-logbook/">USPA digital logbook</a><a href="/skydive-3d-tracking/">3D jump tracking</a><a href="/#faq">FAQ</a></div>
-    <div class="ft-col"><h4>Company</h4>
+    <div class="ft-col"><h3>Company</h3>
       <a href="/about/">About</a><a href="/support/">Support</a><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a></div>
   </div>
   <div class="ft-base"><span>© 2026 Manifest Jump LLC · Wyoming, USA · Dubai, UAE</span><div class="ft-pay" aria-label="Payment methods accepted"><img src="/assets/pay/apple_pay.svg?v=1" alt="Apple Pay" height="24" /><img src="/assets/pay/visa.svg?v=1" alt="Visa" height="24" /><img src="/assets/pay/master.svg?v=1" alt="Mastercard" height="24" /><img src="/assets/pay/american_express.svg?v=1" alt="American Express" height="24" /><img src="/assets/pay/cashapppay.svg?v=1" alt="Cash App Pay" height="24" /><img src="/assets/pay/stripe.svg?v=1" alt="Stripe" height="24" /></div></div>
@@ -830,6 +914,14 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     if (!sheet.hidden) { setSheet(false); burger.focus(); }
   });
   addEventListener('resize', () => { if (innerWidth >= 900 && !sheet.hidden) setSheet(false); closeAll(); });
+  // skip link (A02): move focus into the main content, not just the scroll position
+  const skip = document.querySelector('a.skip');
+  if (skip) skip.addEventListener('click', () => {
+    const m = document.getElementById('main');
+    if (!m) return;
+    if (!m.hasAttribute('tabindex')) m.setAttribute('tabindex', '-1');
+    m.focus();
+  });
 })();
 </script>
 <script id="anchor-fix">
