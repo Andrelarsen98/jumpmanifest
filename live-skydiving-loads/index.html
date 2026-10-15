@@ -933,5 +933,28 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     if (location.hash.length > 1) window.addEventListener('load', function () { go(decodeURIComponent(location.hash.slice(1)), false); });
   })();
 </script>
+<script id="mailto-copy">
+/* "Write to me" did nothing on Macs with no mail app set up (André, 16 Oct).
+   Every email link still opens the mail app, and also copies the address and
+   says so, so the visitor always has it. Links the demo form takes over are
+   left alone. */
+(function () {
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="mailto:"]');
+    if (!a || e.defaultPrevented) return;
+    var addr = decodeURIComponent(a.getAttribute('href').slice(7).split('?')[0]);
+    var t = document.getElementById('mailto-toast');
+    if (!t) {
+      t = document.createElement('div'); t.id = 'mailto-toast'; t.setAttribute('role', 'status');
+      t.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:200;background:#050505;color:#fff;font:600 15px/20px Manrope,sans-serif;padding:12px 18px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.25);max-width:calc(100vw - 32px);text-align:center;opacity:0;transition:opacity .2s';
+      document.body.appendChild(t);
+    }
+    var show = function (msg) { t.textContent = msg; t.style.opacity = '1'; clearTimeout(t._h); t._h = setTimeout(function () { t.style.opacity = '0'; }, 4000); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(addr).then(function () { show('Email copied: ' + addr); }, function () { show('Email: ' + addr); });
+    } else show('Email: ' + addr);
+  });
+})();
+</script>
 </body>
 </html>
