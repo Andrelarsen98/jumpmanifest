@@ -11,7 +11,7 @@
 
 const SUPABASE_URL = process.env.SUPABASE_URL || 'https://wkefdtglgbfprvfajrrw.supabase.co';
 const SUPABASE_KEY = process.env.SUPABASE_ANON_KEY || 'sb_publishable_bSZ85fokRcmDjIzYr7Q9mQ_w4dQ0b3b';
-const APP_STORE = 'https://apps.apple.com/app/id6778510429';
+const APP_STORE = 'https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429';
 
 const hits = new Map();
 function rateLimited(ip) {

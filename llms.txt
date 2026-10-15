@@ -61,7 +61,7 @@ Manifest Desk is skydiving software and dropzone management software (a skydive 
 - No fee on cash or card payments taken at the desk.
 
 ## How to get it
-- Jumpers: download Manifest free on the App Store: https://apps.apple.com/app/id6778510429 (iPhone). Android is in the making.
+- Jumpers: download Manifest free on the App Store: https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429 (iPhone). Android is in the making.
 - Dropzones: see https://www.jumpmanifest.com/dropzones/ or email andre@manifestjump.com to book a demo.
 
 ## Pages

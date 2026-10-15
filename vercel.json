@@ -24,7 +24,7 @@
   "redirects": [
     {
       "source": "/get",
-      "destination": "https://apps.apple.com/app/id6778510429",
+      "destination": "https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429",
       "permanent": false
     }
   ],
