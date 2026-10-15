@@ -988,6 +988,9 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
      (manifest-admin/src/components/Globe.tsx), on the white page: same sea,
      land, borders, halo, light and camera; purple dots, one per home
      dropzone, from assets/globe-dropzones.json. -->
+<link rel="preload" href="/assets/globe-map.webp" as="image" type="image/webp" fetchpriority="low" />
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/globe.gl@2.46.2/dist/globe.gl.min.js" as="script" crossorigin="anonymous" fetchpriority="low" />
+<link rel="preload" href="/assets/globe-dropzones.json" as="fetch" crossorigin="anonymous" fetchpriority="low" />
 <style id="dz-globe-css">
   /* One screen (André, 15 Oct): copy left, globe right, the globe sized to
      the window so heading, globe and button are all in view at once. */
@@ -1563,13 +1566,12 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   // Nothing loads until the section is close to the screen.
   var host = document.getElementById('dzg');
   if (!host) return;
-  var LIBS = [
-    'https://cdn.jsdelivr.net/npm/d3-array@3.2.4/dist/d3-array.min.js',
-    'https://cdn.jsdelivr.net/npm/d3-geo@3.1.1/dist/d3-geo.min.js',
-    'https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js',
-    'https://cdn.jsdelivr.net/npm/globe.gl@2.46.2/dist/globe.gl.min.js'
-  ];
-  var GEO_URL = 'https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-50m.json';
+  // Fast on a phone (15 Oct): the map is no longer painted in the browser
+  // from the world atlas (d3 + topojson + a 4k canvas + a PNG encode). It is
+  // the same painting saved once as assets/globe-map.webp (150 KB), so the
+  // only library left is globe.gl, and it all starts as the page loads.
+  var LIBS = ['https://cdn.jsdelivr.net/npm/globe.gl@2.46.2/dist/globe.gl.min.js'];
+  var MAP_URL = '/assets/globe-map.webp';
   // The admin's colours: light grey-lavender sea, dark slate land.
   var SEA = '#8b91bf', LAND = '#2a2f47', BORDER = 'rgba(140, 148, 200, 0.35)', HALO = '#6b7cff';
   // Further out than the admin's 1.45: its panel is wide, this frame is
@@ -1587,27 +1589,6 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       s.src = src; s.async = false; s.crossOrigin = 'anonymous';
       s.onload = res; s.onerror = function () { rej(new Error('load ' + src)); };
       document.head.appendChild(s);
-    });
-  }
-
-  // Paint the map once, equirectangular. 8k across on a desktop as in the
-  // admin; 4k on touch devices, where iOS refuses canvases over 16.7 MP.
-  function buildTexture(topo) {
-    // 4k for everyone (15 Oct): the globe is never more than ~760 px wide, and
-    // an 8k canvas cost a visible hitch on the main thread when it was painted.
-    var W = 4096, H = W / 2;
-    var canvas = document.createElement('canvas');
-    canvas.width = W; canvas.height = H;
-    var ctx = canvas.getContext('2d');
-    var proj = d3.geoEquirectangular().translate([W / 2, H / 2]).scale(W / (2 * Math.PI));
-    var path = d3.geoPath(proj, ctx);
-    ctx.fillStyle = SEA; ctx.fillRect(0, 0, W, H);
-    var countries = topo.objects.countries;
-    ctx.beginPath(); path(topojson.feature(topo, countries)); ctx.fillStyle = LAND; ctx.fill();
-    ctx.beginPath(); path(topojson.mesh(topo, countries, function (a, b) { return a !== b; }));
-    ctx.strokeStyle = BORDER; ctx.lineWidth = W / 8192 * 2.4; ctx.stroke();
-    return new Promise(function (res) {
-      canvas.toBlob(function (b) { res(URL.createObjectURL(b)); }, 'image/png');
     });
   }
 
@@ -1667,7 +1648,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 
     var libs = LIBS.reduce(function (p, src) { return p.then(function () { return load(src); }); }, Promise.resolve());
     Promise.all([
-      libs.then(function () { return fetch(GEO_URL).then(function (r) { return r.json(); }); }).then(buildTexture),
+      libs.then(function () { return MAP_URL; }),
       fetch('/assets/globe-dropzones.json').then(function (r) { return r.json(); })
     ]).then(function (out) {
       var texture = out[0], dzs = out[1];
@@ -1764,7 +1745,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     io.observe(host);
   }
   var idle = window.requestIdleCallback || function (f) { return setTimeout(f, 1); };
-  function soon() { setTimeout(function () { idle(go, { timeout: 2000 }); }, 800); }
+  function soon() { idle(go, { timeout: 300 }); }
   if (document.readyState === 'complete') soon(); else window.addEventListener('load', soon, { once: true });
 })();
 </script>
