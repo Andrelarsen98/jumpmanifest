@@ -519,6 +519,87 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   }
 }
 </script>
+<style id="seo-hero-css">
+/* ARTICLE PAGES LAYOUT (15 Oct 2026). The home page's hero on every SEO page:
+   copy on the left, the same phone pair on the right, sized like index.html
+   (phones clamp 220 to 300px wide on laptops, 198 to 268px on phones). The
+   article below reads in one centred 720px column; images are capped. */
+.doc > .wrap > .seo-hero { max-width: none; }
+.seo-hero { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; margin: 0 0 8px; }
+.seo-hero .seo-copy > h1 { margin: 0; }
+.seo-hero .seo-copy > .intro { max-width: 560px; }
+.seo-hero .storebtns { display: flex; align-items: center; justify-content: flex-start; gap: 12px; flex-wrap: wrap; margin: 32px 0 0; }
+.seo-hero .appbtn { display: inline-block; transition: transform .15s ease, filter .15s ease; }
+.seo-hero .appbtn img { height: 54px; width: auto; display: block; }
+.seo-hero .appbtn:hover { transform: translateY(-1px); filter: brightness(1.06); }
+.seo-hero .seo-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin: 32px 0 0 !important; }
+.seo-hero .seo-cta a.btn { color: #fff; padding: 15px 26px; font-size: 16px; }
+.seo-hero .seo-link { color: var(--t, #040815); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.seo-hero .seo-art { position: relative; margin: 0; min-width: 0; }
+.seo-art figcaption, .doc .seo-col figcaption { margin: 14px auto 0; max-width: 420px; text-align: center; font-size: 14px; line-height: 20px; color: var(--g, #71717B); }
+/* The phone pair, copied from index.html (.fan / .phone). */
+.seo-art .fan { position: relative; margin: 0 auto; width: 100%; display: flex; justify-content: center; align-items: flex-start; padding-bottom: 6px; }
+.seo-art .phone { position: relative; flex: 0 0 auto; width: clamp(198px, 38vw, 268px); }
+.seo-art .phone img { width: 100%; height: auto; display: block; border-radius: 0; box-shadow: none; }
+.seo-art .phone.back, .seo-art .phone.front { transform-origin: 50% 50%; animation: settle 1.5s cubic-bezier(.22,.9,.3,1) .7s both; }
+.seo-art .phone.back { z-index: 1; margin-right: clamp(-64px, -9vw, -40px); --rot: -9deg; --slide: 22px; }
+.seo-art .phone.front { z-index: 2; --rot: 6deg; --slide: -22px; }
+.seo-art .phone.solo { --rot: 0deg; --slide: 0px; animation: none; }
+@keyframes settle { from { transform: translateX(var(--slide)) rotate(0deg); } to { transform: translateX(0) rotate(var(--rot)); } }
+.seo-art .fan::before { content: ""; position: absolute; z-index: 0; pointer-events: none; left: 12%; right: 12%; bottom: 4%; height: 13%;
+  background: radial-gradient(ellipse at 50% 50%, rgba(15,23,42,.26), rgba(15,23,42,0) 72%); filter: blur(13px); }
+/* a phone-framed video (weather, Lock Screen) sits at one phone's width */
+.seo-art .vid { display: block; width: clamp(220px, 56vw, 300px); height: auto; margin: 0 auto; border-radius: 0; background: transparent; }
+/* Desk screenshots: a rounded window, with the jumper's phone in front of it */
+.seo-art.desk { padding: 0 0 40px; }
+.seo-art .win { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid #E4E4E7; box-shadow: 0 24px 60px -24px rgba(15,23,42,.28), 0 2px 8px rgba(15,23,42,.06); }
+.seo-art .win-phone { position: absolute; right: -2%; bottom: 0; width: 27%; max-width: 170px; height: auto; filter: drop-shadow(0 18px 28px rgba(15,23,42,.28)); }
+.seo-art.desk figcaption { margin-top: 18px; }
+/* load-in, as on the home page */
+@keyframes rise { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
+.seo-hero .seo-copy > * { animation: rise .7s cubic-bezier(.2,.75,.25,1) both; }
+.seo-hero .seo-copy > :nth-child(2) { animation-delay: .15s; } .seo-hero .seo-copy > :nth-child(3) { animation-delay: .3s; }
+.seo-hero .seo-art { animation: rise .8s cubic-bezier(.2,.75,.25,1) .45s both; }
+@media (prefers-reduced-motion: reduce) { .seo-hero *, .seo-hero .seo-art { animation: none !important; } .seo-art .phone { transform: rotate(var(--rot)); } }
+
+/* Laptops: side by side like the home hero (1.08fr / 1fr). */
+@media (min-width: 900px) {
+  .seo-hero { grid-template-columns: 1.08fr 1fr; column-gap: 56px; min-height: 560px; }
+  .doc .seo-hero h1 { font-size: clamp(48px, 4.4vw, 64px); line-height: 1.04; letter-spacing: -1.6px; max-width: 15ch; }
+  .seo-art .phone { width: clamp(220px, 21vw, 300px); }
+  .seo-art .vid { width: clamp(260px, 25vw, 340px); }
+}
+/* Phones: stacked, centred art, smaller badge (home: 46px). */
+@media (max-width: 899px) {
+  .seo-hero { gap: 40px; }
+  .seo-hero .seo-art { max-width: 560px; margin: 0 auto; width: 100%; }
+}
+@media (max-width: 600px) {
+  .seo-hero .appbtn img { height: 46px; }
+  .seo-hero .seo-cta { margin-top: 26px !important; }
+  .seo-hero .seo-cta a.btn { padding: 13px 22px; font-size: 15px; }
+  .seo-art .phone { width: clamp(170px, 46vw, 220px); }
+  .seo-art .phone.back { margin-right: -44px; }
+  .seo-art .win-phone { width: 30%; right: 0; }
+}
+
+/* THE ARTICLE: one centred reading column, 720px, under the hero. */
+@media (min-width: 900px) {
+  .doc > .wrap > :not(.seo-hero) { max-width: 720px; margin-left: auto; margin-right: auto; }
+}
+.doc > .wrap > .seo-hero + h2, .doc > .wrap > .seo-hero + * { margin-top: 96px; }
+@media (max-width: 600px) { .doc > .wrap > .seo-hero + h2, .doc > .wrap > .seo-hero + * { margin-top: 64px; } }
+/* Images inside the article: capped, centred, rounded. Phone mockups stay
+   phone-sized; wide screenshots fill the column. */
+.doc .wrap figure:not(.seo-art) { margin: 40px auto; text-align: center; }
+.doc .wrap figure:not(.seo-art) img, .doc .wrap figure:not(.seo-art) video { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+.doc .wrap figure:not(.seo-art) img[src*="mock-"], .doc .wrap figure:not(.seo-art) img[src*="phone"], .doc .wrap figure:not(.seo-art) img[src*="hero-pass"],
+.doc .wrap figure:not(.seo-art) video { width: min(280px, 72vw) !important; max-height: 600px; object-fit: contain; border-radius: 0; box-shadow: none; border: 0; }
+.doc .wrap figure:not(.seo-art) img[src*="desk-"], .doc .wrap figure:not(.seo-art) img[src$=".jpg"], .doc .wrap figure:not(.seo-art) img[src*=".jpg?"] {
+  width: 100%; border-radius: 14px; border: 1px solid #E4E4E7; box-shadow: 0 20px 50px -24px rgba(15,23,42,.25); }
+.doc .wrap figure:not(.seo-art) figcaption { margin: 14px auto 0; max-width: 520px; text-align: center; font-size: 14px; line-height: 20px; color: var(--g, #71717B); }
+</style>
+
 </head>
 <body>
 <!-- SITE HEADER (9 Oct 2026): one header on every page. Mega dropdowns on
@@ -553,11 +634,13 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 
 <main class="doc">
   <div class="wrap">
-    <h1>Live skydiving loads on your phone</h1>
-    <p class="intro">Stop refreshing the board in the hangar. Manifest shows the loads turning live at 150+ dropzones on your iPhone: what is on call, how many minutes to the call, and who is on each load, straight from the dropzone's own manifest board.</p>
-    <div class="ll-cta">
-      <a class="btn" href="https://apps.apple.com/app/id6778510429">Download on the App Store</a>
-      <a class="ll-sub" href="/dropzones/">Own a dropzone? See Manifest Desk</a>
+    <div class="seo-hero">
+      <div class="seo-copy">
+        <h1>Live skydiving loads on your phone</h1>
+        <p class="intro">Stop refreshing the board in the hangar. Manifest shows the loads turning live at 150+ dropzones on your iPhone: what is on call, how many minutes to the call, and who is on each load, straight from the dropzone's own manifest board.</p>
+        <div class="storebtns"><a class="appbtn" href="https://apps.apple.com/app/id6778510429" aria-label="Download Manifest on the App Store"><img src="/assets/appstore-badge.svg?v=1" alt="Download on the App Store" /></a> <a class="seo-link" href="/dropzones/">Own a dropzone? See Manifest Desk</a></div>
+      </div>
+      <div class="seo-art"><div class="fan"><div class="phone back"><img src="/assets/mock-home3.png" width="640" height="1330" alt="Manifest app home screen with the next load and minutes to call" /></div><div class="phone front"><img src="/assets/carousel/phone-liveloads.png?v=2" alt="Manifest on iPhone listing dropzones with live loads right now, including Calgary Skydive, iSkydive America Los Angeles, Skydive City Z-Hills and Skydive Perris, each marked Live" width="821" height="1705" loading="lazy" decoding="async" /></div></div></div>
     </div>
 
     <h2>What you see on the load board</h2>
@@ -570,11 +653,6 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       <li><strong>Conditions at the top</strong>: wind, gusts, cloud and temperature for that dropzone. More on that on the <a href="/skydiving-weather/">skydiving weather</a> page.</li>
     </ul>
     <p>The data comes from the dropzone's own manifest board. Manifest does not make up times or estimate them from the sky. If manifest moves a load, you see it move.</p>
-
-    <figure class="ll-fig">
-      <img src="/assets/carousel/phone-liveloads.png?v=2" alt="Manifest on iPhone listing dropzones with live loads right now, including Calgary Skydive, iSkydive America Los Angeles, Skydive City Z-Hills and Skydive Perris, each marked Live" width="821" height="1705" loading="lazy" decoding="async" />
-      <figcaption>Pick your dropzone. A green Live tag means its loads are turning live right now.</figcaption>
-    </figure>
 
     <h2>How it works</h2>
     <ol class="ll-steps">
