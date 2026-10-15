@@ -311,8 +311,8 @@
   var st = { plan: PLANS[q.get('plan')] ? q.get('plan') : 'fulltime', interval: q.get('interval') === 'year' ? 'year' : 'month', info: null };
   var $ = function (id) { return document.getElementById(id); };
   var half = function (n) { return Math.floor(n * 0.7); }; // founding price: 30% off, rounded down to whole dollars (12 Oct; matches desk-billing)
-  // Yearly founding = 30% off TWELVE monthly prices: the founding discount replaces the 2 months free, it does not stack (André, 15 Oct; matches desk-billing).
-  var found = function (p, iv) { return iv === 'year' ? Math.floor(p.month * 12 * 0.7) : half(p.month); };
+  // Founding 30% stacks on yearly's 2 months free (André, 15 Oct: kept; rewards paying a year upfront).
+  var found = function (p, iv) { return half(iv === 'year' ? p.year : p.month); };
   var money = function (n) { return '$' + n.toLocaleString('en-US', { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 }); };
   try { var saved = JSON.parse(sessionStorage.getItem('desk.start') || 'null'); if (saved) { st.info = saved; ['dropzone','email','phone'].forEach(function (k) { if (saved[k]) $('f1')[k].value = saved[k]; }); } } catch (e) {}
 
@@ -347,7 +347,7 @@
     $('sList').textContent = money(full);
     $('sOff').textContent = '-' + money(full - found(p, st.interval));
     $('sTotal').textContent = money(found(p, st.interval));
-    $('sOffL').textContent = st.interval === 'year' ? 'Founding dropzone, 30% off year one (instead of 2 months free)' : 'Founding dropzone, 30% off year one';
+    $('sOffL').textContent = 'Founding dropzone, 30% off year one';
     $('sAfter').textContent = st.interval === 'year'
       ? 'Then ' + money(full) + ' a year from year two. ' + p.fee + ' on jumper top-ups in the app.'
       : money(found(p, st.interval)) + ' a month for your first 12 months, then ' + money(full) + '. ' + p.fee + ' on jumper top-ups in the app.';
