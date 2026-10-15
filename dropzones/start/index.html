@@ -257,12 +257,13 @@
         <ul id="sItems"></ul>
         <div class="hr"></div>
         <div class="line"><span id="sLine"></span><span id="sList"></span></div>
-        <div class="line" style="color:var(--green)"><span>Founding dropzone, 30% off year one</span><span id="sOff"></span></div>
+        <div class="line" style="color:var(--green)"><span id="sOffL">Founding dropzone, 30% off year one</span><span id="sOff"></span></div>
         <div class="hr"></div>
         <div class="total"><b>Total due today</b><span class="amt" id="sTotal"></span></div>
         <p class="after" id="sAfter"></p>
         <p class="err" id="e2" hidden></p>
         <button class="go" type="button" id="pay">Continue to payment</button>
+        <p class="after" id="payNote" hidden style="text-align:center;margin-top:10px">No card needed. We call you to set up.</p>
         <div class="guar"><b>Founding price: 30% off for 12 months,</b> with no lock-in. Cancel anytime. After 12 months it renews at the full price, monthly or yearly. Your jumpers' data is always yours.</div>
       </aside>
     </div>
@@ -310,11 +311,13 @@
   var st = { plan: PLANS[q.get('plan')] ? q.get('plan') : 'fulltime', interval: q.get('interval') === 'year' ? 'year' : 'month', info: null };
   var $ = function (id) { return document.getElementById(id); };
   var half = function (n) { return Math.floor(n * 0.7); }; // founding price: 30% off, rounded down to whole dollars (12 Oct; matches desk-billing)
+  // Yearly founding = 30% off TWELVE monthly prices: the founding discount replaces the 2 months free, it does not stack (André, 15 Oct; matches desk-billing).
+  var found = function (p, iv) { return iv === 'year' ? Math.floor(p.month * 12 * 0.7) : half(p.month); };
   var money = function (n) { return '$' + n.toLocaleString('en-US', { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 }); };
   try { var saved = JSON.parse(sessionStorage.getItem('desk.start') || 'null'); if (saved) { st.info = saved; ['dropzone','email','phone'].forEach(function (k) { if (saved[k]) $('f1')[k].value = saved[k]; }); } } catch (e) {}
 
   function steps(n) { [1,2,3,4].forEach(function (i) { var el = $('st' + i); el.className = 's' + (i === n ? ' on' : i < n ? ' done' : ''); }); }
-  function pkg() { var p = PLANS[st.plan]; $('pkgName').firstChild.nodeValue = p.name + ' '; $('pkgFrom').textContent = (p.from ? 'from ' : '') + money(half(p.month)) + '/mo'; }
+  function pkg() { var p = PLANS[st.plan]; $('pkgName').firstChild.nodeValue = p.name + ' '; $('pkgFrom').textContent = money(half(p.month)) + '/mo'; }
   // Step 2 gets its own history entry, so the browser Back button returns to step 1.
   function show(n, fromPop) {
     $('v1').hidden = n !== 1; $('v2').hidden = n !== 2; document.body.classList.toggle('s1', n === 1); steps(n); window.scrollTo(0, 0);
@@ -327,11 +330,11 @@
     pkg(); $('pkgSelect').value = st.plan;
     var box = $('plans'); box.innerHTML = '';
     Object.keys(PLANS).forEach(function (k) {
-      var p = PLANS[k], full = st.interval === 'year' ? p.year : p.month, now = half(full);
+      var p = PLANS[k], full = st.interval === 'year' ? p.year : p.month, now = found(p, st.interval);
       var el = document.createElement('label'); el.className = 'plan' + (k === st.plan ? ' on' : '');
       el.innerHTML = '<span class="dot"></span>' + (p.tag ? '<span class="tag">' + p.tag.toUpperCase() + '</span>' : '') +
         '<h3>' + p.name + '</h3><p class="desc">' + p.desc + '</p>' +
-        '<div class="price">' + (p.from ? '<span class="per">From</span>' : '') + '<span class="now">' + money(now) + '</span><span class="was">' + money(full) + '</span><span class="per">/' + (st.interval === 'year' ? 'year' : 'month') + ' in year one</span><span class="chip">FOUNDING PRICE</span></div>';
+        '<div class="price">' + '<span class="now">' + money(now) + '</span><span class="was">' + money(full) + '</span><span class="per">/' + (st.interval === 'year' ? 'year' : 'month') + ' in year one</span><span class="chip">FOUNDING PRICE</span></div>';
       el.onclick = function () { st.plan = k; render(); };
       box.appendChild(el);
     });
@@ -342,13 +345,14 @@
     $('sItems').innerHTML = (INCLUDES[st.plan] || []).map(function (t) { return '<li>' + tick + '<span>' + t + '</span></li>'; }).join('');
     $('sLine').textContent = p.name + (st.interval === 'year' ? ', yearly' : ', monthly');
     $('sList').textContent = money(full);
-    $('sOff').textContent = '-' + money(full - half(full));
-    $('sTotal').textContent = money(half(full));
+    $('sOff').textContent = '-' + money(full - found(p, st.interval));
+    $('sTotal').textContent = money(found(p, st.interval));
+    $('sOffL').textContent = st.interval === 'year' ? 'Founding dropzone, 30% off year one (instead of 2 months free)' : 'Founding dropzone, 30% off year one';
     $('sAfter').textContent = st.interval === 'year'
       ? 'Then ' + money(full) + ' a year from year two. ' + p.fee + ' on jumper top-ups in the app.'
-      : money(half(full)) + ' a month for your first 12 months, then ' + money(full) + '. ' + p.fee + ' on jumper top-ups in the app.';
+      : money(found(p, st.interval)) + ' a month for your first 12 months, then ' + money(full) + '. ' + p.fee + ' on jumper top-ups in the app.';
     document.querySelectorAll('.toggle button').forEach(function (b) { b.className = b.dataset.int === st.interval ? 'on' : ''; });
-    if (p.from) $('sAfter').textContent += ' Bigger operations: we agree the final price and fee with you.';
+    if (p.from) $('sAfter').textContent += ' Final price agreed with you.';
   }
 
   $('f1').addEventListener('submit', function (e) {
@@ -365,6 +369,7 @@
   document.querySelectorAll('.toggle button').forEach(function (b) { b.onclick = function () { st.interval = b.dataset.int; render(); }; });
   if (!PAYMENTS_LIVE) {
     $('pay').textContent = 'Reserve my founding price';
+    $('payNote').hidden = false;
     document.querySelector('.paym .l b').textContent = 'Nothing to pay today';
     document.querySelector('.paym .l span').textContent = 'You pay when your desk goes live, with card or Apple Pay via Stripe.';
     $('st3').querySelector('.t').textContent = 'Reserve';
@@ -379,7 +384,7 @@
         try { sessionStorage.removeItem('desk.start'); } catch (e) {}
         steps(4);
         document.getElementById('v2').innerHTML = '<div class="one"><div class="card"><span class="chip" style="margin-bottom:14px">RESERVED</span><h1>Your founding price is <em>reserved</em></h1>' +
-          '<p class="sub">' + p.name + ' at ' + money(half(st.interval === 'year' ? p.year : p.month)) + (st.interval === 'year' ? ' for your first year' : ' a month for your first 12 months') + '. Nothing to pay today.</p>' +
+          '<p class="sub">' + p.name + ' at ' + money(found(p, st.interval)) + (st.interval === 'year' ? ' for your first year' : ' a month for your first 12 months') + '. Nothing to pay today.</p>' +
           '<p class="sub">We will call you to set up your desk with you. You pay when it goes live.</p>' +
           '<a class="go" href="/dropzones/" style="text-decoration:none">Back to Manifest for dropzones</a></div></div>';
         window.scrollTo(0, 0);
