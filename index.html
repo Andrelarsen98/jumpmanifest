@@ -1634,6 +1634,24 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     });
   }
 
+  // Halo and planet fade in together, and only once the map image is on the
+  // sphere and drawn (15 Oct: on a phone the halo showed first, alone, while
+  // the map was still decoding). Two frames after the map lands, or 6 s max.
+  function whenMapped(globe, done) {
+    var t0 = Date.now(), fired = false;
+    function fire() { if (fired) return; fired = true; requestAnimationFrame(function () { requestAnimationFrame(done); }); }
+    (function check() {
+      var ok = false;
+      globe.scene().traverse(function (o) {
+        if (o.isMesh && o.geometry && o.geometry.type === 'SphereGeometry' && o.material && o.material.map) {
+          var img = o.material.map.image;
+          if (img && (img.complete === undefined || img.complete) && (img.width || img.naturalWidth)) ok = true;
+        }
+      });
+      if (ok || Date.now() - t0 > 6000) fire(); else setTimeout(check, 50);
+    })();
+  }
+
   function webgl() {
     try { var c = document.createElement('canvas'); return !!(window.WebGLRenderingContext && (c.getContext('webgl2') || c.getContext('webgl'))); }
     catch (e) { return false; }
@@ -1659,7 +1677,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
         .backgroundColor('rgba(0,0,0,0)')
         .globeImageUrl(texture)
         .showAtmosphere(true).atmosphereColor(HALO).atmosphereAltitude(0.17)
-        .onGlobeReady(function () { tuneGlobeMaterial(g); host.classList.add('ready'); })
+        .onGlobeReady(function () { tuneGlobeMaterial(g); whenMapped(g, function () { host.classList.add('ready'); }); })
         .htmlElementsData(dzs)
         .htmlLat('lat').htmlLng('lng').htmlAltitude(0.004)
         .htmlElement(function (d) {
@@ -1746,7 +1764,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     io.observe(host);
   }
   var idle = window.requestIdleCallback || function (f) { return setTimeout(f, 1); };
-  function soon() { setTimeout(function () { idle(go, { timeout: 4000 }); }, 2500); }
+  function soon() { setTimeout(function () { idle(go, { timeout: 2000 }); }, 800); }
   if (document.readyState === 'complete') soon(); else window.addEventListener('load', soon, { once: true });
 })();
 </script>
