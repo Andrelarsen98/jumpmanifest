@@ -456,6 +456,14 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   "mainEntity": [
     {
       "@type": "Question",
+      "name": "What happens if the internet drops at our dropzone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The desk keeps working for the things that cannot wait. It keeps showing the last loads it had, and check-ins, load calls, boarding and departures you make are saved in the browser and sent the moment the internet is back. Payments and new bookings wait for the connection, and a load call whose time has passed is not sent late."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "What is dropzone software?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -516,6 +524,14 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Before anyone boards, the desk checks currency, reserve repack and AAD service, and your waiver and check-in rules per licence type. Each load shows its weight against the aircraft, the crew it needs and double-manifest conflicts. After the load, Who's back shows who has returned, and a jumper who lands out can send an SOS that puts them on a live map at the desk, with chat and one tap to hold every load. It supports your own emergency procedures; it is not a guaranteed rescue tracker."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What about jumpers on Android?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Manifest app is on iPhone today, and Android is being built."
       }
     }
   ]
@@ -698,11 +714,11 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   <div class="wrap">
     <div class="seo-hero">
       <div class="seo-copy">
-        <h1>Skydiving software for dropzones that talks to your jumpers</h1>
+        <h1>Dropzone software that talks to every jumper&rsquo;s phone</h1>
         <p class="intro">Manifest Desk is skydiving software for dropzones: your manifest system, your money and your safety checks in one browser tab. What makes it different is the other end. Every load on your desk is live in the app your jumpers already carry.</p>
-        <p class="seo-cta"><a class="btn" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo">Book a 20-minute demo</a> <a class="seo-link" href="/dropzones/#pricing">See pricing</a></p>
+        <p class="seo-cta"><a class="btn" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo">Book a 20-minute demo</a> <a class="seo-link" href="/dropzones/#pricing">See plans</a></p>
       </div>
-      <figure class="seo-art desk"><div style="position:relative"><img class="win" src="/assets/desk-today.jpg?v=1" alt="Manifest Desk Today page for a demo dropzone, showing money charged for jumps today, open loads, the next load countdown, standby and jumper accounts" width="1440" height="900" fetchpriority="high" /><img class="win-phone" src="/assets/opt/mock-home3.a2e7757f.webp" width="640" height="1330" alt="" /></div><figcaption>The Today page of a sample dropzone: takings, open loads, the next load, standby and accounts on one screen.</figcaption></figure>
+      <figure class="seo-art desk"><div style="position:relative"><img class="win" src="/assets/desk-today.jpg?v=1" alt="Manifest Desk Today page for a demo dropzone, showing money charged for jumps today, open loads, the next load countdown, standby and jumper accounts" width="1440" height="900" fetchpriority="high" /><img class="win-phone" src="/assets/opt/mock-home3.a2e7757f.webp" width="640" height="1330" alt="" /></div><figcaption>Manifest Desk with sample data from a demo dropzone.</figcaption></figure>
     </div>
 
     <h2>What dropzone software has to do</h2>
@@ -766,6 +782,8 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       <li><strong>Run it alongside.</strong> Keep your current system running next to Manifest Desk until you trust it.</li>
       <li><strong>No lock-in.</strong> Cancel anytime, on any plan.</li>
     </ul>
+    <!-- TODO owner: confirm the typical time from sign-up to first jump day so it can be shown here. -->
+    <p>What we need from you: your jumper list as a CSV, your aircraft and jump prices, and your staff list.</p>
     <p>Want to see it first? The desk has a sample-day demo, and we will walk you through it on a call.</p>
 
     <h2>Pricing</h2>
@@ -774,11 +792,20 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       <li><strong>Full-time:</strong> up to 3 aircraft, 10 logins.</li>
       <li><strong>Big operations:</strong> unlimited.</li>
     </ul>
-    <p>Every plan is a monthly subscription with no lock-in, and no fee per jump or per booking. Founding prices for the first dropzones, set with you. See the plans on the <a href="/dropzones/#pricing">pricing page</a> and ask for yours.</p>
+    <p>Every plan is a monthly subscription with no lock-in, and no fee per jump or per booking. Founding prices for the first dropzones, set with you. See the <a href="/dropzones/#pricing">plans</a> and ask for yours.</p>
     <p class="cta-row"><a class="btn" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo">Book a 20-minute demo</a> <a class="ghost" href="/dropzones/">Explore Manifest Desk</a></p>
 
     <h2>What dropzone software should do: questions owners ask</h2>
     <div class="faq-list">
+        <!-- F10 (16 Oct 2026): the internet answer is taken from the Desk code (manifest-desk src/lib/offline.ts,
+     ShellBars.tsx NetBar, public/sw.js on main). TODO owner: confirm it, and say what the hangar TV board shows offline. -->
+        <details class="faq-i"><summary>What happens if the internet drops at our dropzone?<span class="faq-plus" aria-hidden="true"></span></summary><p>The desk keeps working for the things that cannot wait. It keeps showing the last loads it had, and check-ins, load calls, boarding and departures you make are saved in the browser and sent the moment the internet is back. Payments and new bookings wait for the connection, and a load call whose time has passed is not sent late.</p></details>
+        <!-- TODO owner: supply true answers for offline behaviour of the hangar board and jumper phones; data storage location, access and backups;
+     outage announcements and jump-day contact. Do not claim uptime figures, encryption, PCI or offline desk operation beyond what the code does.
+     Then render these two items here, as plain text, with the same wording on /dropzones/, /skydiving-manifest-software/ and /how-manifest-works/:
+     <details class="faq-i"><summary>Where is our data stored and who can see it?<span class="faq-plus" aria-hidden="true"></span></summary><p>[owner answer]</p></details>
+     <details class="faq-i"><summary>How do you handle an outage on a jump day?<span class="faq-plus" aria-hidden="true"></span></summary><p>[owner answer]</p></details>
+-->
         <details class="faq-i"><summary>What is dropzone software?<span class="faq-plus" aria-hidden="true"></span></summary><p>Dropzone software, also called skydiving manifest software or a skydive manifest system, is what a dropzone uses to build loads, put jumpers on them, charge their accounts and keep the jump day safe and moving. Manifest Desk does all of that in a browser, and connects every load to the phones of the jumpers on it.</p></details>
         <details class="faq-i"><summary>What should skydiving software for a dropzone do?<span class="faq-plus" aria-hidden="true"></span></summary><p>At minimum: a loads board with exit order, standby, jumper accounts and balances, load calls and holds, weight and balance against the aircraft, and safety checks for currency, reserve and AAD before anyone boards. A complete system also handles waivers and check-in rules, staff pay, aircraft hours and maintenance, guest payments, the cash drawer and end of day, and reports for your accountant. Manifest Desk does all of these, and puts every load call on each jumper's Lock Screen.</p></details>
         <details class="faq-i"><summary>How much does Manifest Desk cost?<span class="faq-plus" aria-hidden="true"></span></summary><p>Every plan is a monthly subscription with no lock-in, never a fee per jump or per booking. There are three plans: Weekend dropzone (1 aircraft, 3 desk logins), Full-time (up to 3 aircraft, 10 logins) and Big operations (unlimited). Founding prices are set with each dropzone, so ask us for yours. Cash and card taken at the desk carry no fee from us. Cancel anytime.</p></details>
@@ -787,8 +814,11 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
         <details class="faq-i"><summary>How do payments work?<span class="faq-plus" aria-hidden="true"></span></summary><p>Jumpers top up their account in the Manifest app with Apple Pay or card, and the money goes straight to your own Stripe account through Stripe Connect, so you are the merchant. At the desk you can take guest payments, charge a card on file, sell tickets, vouchers and gift vouchers, and count the cash drawer at end of day. Every payment gets a receipt.</p></details>
         <details class="faq-i"><summary>Does it work for a small club or weekend dropzone?<span class="faq-plus" aria-hidden="true"></span></summary><p>Yes. The Weekend dropzone plan is built for one aircraft and busy weekends, with 3 desk logins and crew free. All you need is a laptop or tablet with a browser for the desk, and any TV with a browser for the hangar board. There is nothing to install.</p></details>
         <details class="faq-i"><summary>What safety features does it have?<span class="faq-plus" aria-hidden="true"></span></summary><p>Before anyone boards, the desk checks currency, reserve repack and AAD service, and your waiver and check-in rules per licence type. Each load shows its weight against the aircraft, the crew it needs and double-manifest conflicts. After the load, Who's back shows who has returned, and a jumper who lands out can send an SOS that puts them on a live map at the desk, with chat and one tap to hold every load. It supports your own emergency procedures; it is not a guaranteed rescue tracker.</p></details>
+        <!-- TODO owner: confirm what Android jumpers can see or receive today (for example the hangar board and desk-side calls) before adding it to this answer. -->
+        <details class="faq-i"><summary>What about jumpers on Android?<span class="faq-plus" aria-hidden="true"></span></summary><p>The Manifest app is on iPhone today, and Android is being built.</p></details>
     </div>
     <p>New to Manifest? Start at the <a href="/">home page</a> or read <a href="/how-manifest-works/">how Manifest works</a>.</p>
+    <p class="cta-row"><a class="btn" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo">Book a 20-minute demo</a> <a class="ghost" href="/dropzones/">Explore Manifest Desk</a></p>
   </div>
 </main>
 

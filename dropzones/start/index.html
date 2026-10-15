@@ -10,7 +10,7 @@
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg?v=4" />
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&display=swap" rel="stylesheet" />
 <!-- PRICES HIDDEN (15 Oct 2026): André is not sure the Desk prices are right,
      so this page shows only the #hidden message, which links to the lead
      form on /dropzones/ (#get-price). Steps 1-2, the plan picker, the order
@@ -212,7 +212,7 @@
 </head>
 <body class="s1">
 <header class="top"><div class="in">
-  <a href="/dropzones/"><img src="/assets/manifest-lockup.svg?v=5" alt="manifest" /></a>
+  <a href="/dropzones/"><img src="/assets/manifest-lockup.svg?v=5" alt="Manifest" /></a>
   <nav class="steps" aria-label="Steps" hidden>
     <span class="s" id="st1"><b>1</b><span class="t">Your info</span></span><i class="sep"></i>
     <span class="s" id="st2"><b>2</b><span class="t">Your plan</span></span><i class="sep"></i>
@@ -222,16 +222,80 @@
 </div></header>
 
 <main>
-  <!-- PRICES HIDDEN (15 Oct 2026): the only thing this page shows for now. -->
+  <!-- PRICES HIDDEN (15 Oct 2026): the only thing this page shows for now.
+       REVIEW A16 F05 F16 F17 A10 (16 Oct 2026): the page uses the site's look
+       (Manrope body, General Sans headings, white page, #F5F5F6 card, no
+       gradient) and carries the same demo form as /dropzones/ inline, so an
+       old "Get started" link can book a demo here without going back. Same
+       fields, same desk-lead endpoint, same title and line.
+       TODO owner: confirm one reply-time sentence for the whole site (Support
+       says 1 to 2 days, the plan table says Priority, same day on Full-time). -->
   <section id="hidden" class="one">
     <div class="card">
-      <img class="card-logo" src="/assets/manifest-lockup.svg?v=5" alt="manifest" />
-      <h1>Your price, <em>set with you</em></h1>
-      <p class="sub">Founding prices are set with each dropzone on a short call. Tell us about your dropzone and we get back to you the same day. No lock-in, cancel anytime.</p>
-      <a class="go" href="/dropzones/#get-price" style="text-decoration:none">Get your price <span aria-hidden="true">→</span></a>
-      <p class="fine"><a href="/dropzones/#pricing">See the plans</a></p>
+      <img class="card-logo" src="/assets/manifest-lockup.svg?v=5" alt="Manifest" />
+      <form id="startForm" novalidate aria-labelledby="startTitle">
+        <h1 id="startTitle">Book a 20-minute demo</h1>
+        <p class="sub">We show you the desk on a video call and set your founding price with you. We reply the same day.</p>
+        <label>Dropzone<input name="dropzone" required autocomplete="organization" placeholder="Skydive Example" /></label>
+        <label>Your name<input name="name" required autocomplete="name" /></label>
+        <label>Email<input name="email" type="email" required autocomplete="email" /></label>
+        <label>Phone <span>(optional)</span><input name="phone" type="tel" autocomplete="tel" /></label>
+        <label>Best time and time zone <span>(optional)</span><input name="best_time" type="text" autocomplete="off" /></label>
+        <label>Anything we should know? <span>(optional)</span><textarea name="message" rows="3" placeholder="Aircraft, loads on a busy day, what you use today"></textarea></label>
+        <input name="website" class="sf-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <p class="err" id="startErr" role="alert" hidden></p>
+        <button class="go" type="submit" id="startGo">Send</button>
+        <p class="fine">Or email <a href="mailto:andre@manifestjump.com">andre@manifestjump.com</a>. <a href="/dropzones/#pricing">See the plans</a></p>
+      </form>
+      <div id="startDone" hidden>
+        <h2 id="startDoneTitle" tabindex="-1">Thanks. We'll be in touch today.</h2>
+        <p class="sub">We will reach out to set up your dropzone with you.</p>
+      </div>
     </div>
   </section>
+  <style id="review-b">
+    /* A16: the site's look instead of the old checkout look. */
+    body, body.s1 { font-family: "Manrope", -apple-system, sans-serif; background: #fff; background-image: none; color: #050505; }
+    body.s1 h1, body.s1 h2, #v2 h1 { font-family: "General Sans", sans-serif; }
+    body.s1 .one .card { background: #F5F5F6; border: 0; box-shadow: none; }
+    body.s1 h1 { font-size: 30px; font-weight: 550; letter-spacing: -0.028em; }
+    body.s1 h2 { font-size: 26px; font-weight: 550; letter-spacing: -0.028em; margin-bottom: 8px; }
+    body.s1 .sub { font-size: 15px; line-height: 22px; color: #52525B; margin: 0 0 8px; }
+    #startForm label { font-size: 14px; font-weight: 600; color: #050505; margin-top: 12px; }
+    #startForm label span { color: #52525B; font-weight: 400; }
+    #startForm input, #startForm textarea { display: block; width: 100%; margin-top: 6px; padding: 12px 14px; border-radius: 14px; border: 1px solid #8A8A93; font: inherit; font-size: 16px; color: #050505; background: #fff; }
+    #startForm input:focus, #startForm textarea:focus { outline: none; border-color: #050505; box-shadow: 0 0 0 1px #050505; }
+    #startForm input[aria-invalid="true"] { border-color: #DC2626; }
+    #startForm .go { margin-top: 20px; }
+    .sf-hp { position: absolute; left: -9999px; width: 1px; height: 1px; }
+    body.s1 .fine, .fine { font-size: 14px; line-height: 20px; color: #52525B; }
+    .fine a { color: #6D42F5; }
+    .legal-foot .in, .legal-foot a { color: #52525B; }
+  </style>
+  <script>
+  (function () {
+    var form = document.getElementById('startForm'), err = document.getElementById('startErr'), go = document.getElementById('startGo'), done = document.getElementById('startDone');
+    var plan = (new URLSearchParams(location.search).get('plan') || '').toLowerCase();
+    plan = { weekend: 'Weekend dropzone', fulltime: 'Full-time dropzone', big: 'Big operations' }[plan] || '';
+    form.addEventListener('input', function (e) { if (e.target.getAttribute('aria-invalid')) e.target.removeAttribute('aria-invalid'); });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var f = form, body = { kind: 'start', plan: plan, dropzone: f.dropzone.value, name: f.name.value, email: f.email.value, phone: f.phone.value, best_time: f.best_time.value, message: f.message.value, website: f.website.value };
+      var bad = [];
+      if (!body.dropzone.trim()) bad.push(f.dropzone);
+      if (!body.name.trim()) bad.push(f.name);
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email.trim())) bad.push(f.email);
+      [f.dropzone, f.name, f.email].forEach(function (el) { if (bad.indexOf(el) < 0) el.removeAttribute('aria-invalid'); else el.setAttribute('aria-invalid', 'true'); });
+      if (bad.length) { err.textContent = 'Add your dropzone, your name and a valid email.'; err.hidden = false; bad[0].focus(); return; }
+      go.disabled = true; go.textContent = 'Sending...'; err.hidden = true;
+      fetch('https://wkefdtglgbfprvfajrrw.supabase.co/functions/v1/desk-lead', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) })
+        .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+        .then(function (x) { if (!x.ok) throw new Error(x.j && x.j.error || 'Could not send'); form.reset(); form.hidden = true; done.hidden = false; document.getElementById('startDoneTitle').focus(); })
+        .catch(function (e2) { err.textContent = (e2 && e2.message) || 'Could not send. Email andre@manifestjump.com instead.'; err.hidden = false; })
+        .then(function () { go.disabled = false; go.textContent = 'Send'; });
+    });
+  })();
+  </script>
 
   <!-- STEP 1 (hidden while prices are hidden) -->
   <section id="v1" class="one" hidden>
