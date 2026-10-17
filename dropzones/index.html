@@ -757,7 +757,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     "Jumper accounts and balances, charged when the load departs",
     "Jump tickets, vouchers and gift vouchers",
     "Apple Pay and card top-ups straight into the dropzone's own Stripe account",
-    "Guest payments, card on file and receipts",
+    "Guest payments with receipts",
     "Cash drawer and end of day",
     "Self-manifest from the Manifest app",
     "Waivers and check-in rules per licence type",
@@ -990,10 +990,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   </div>
   <!-- F13 (16 Oct 2026): the hero shows real Desk panels cut from
        desk-today.jpg (Next load, Standby, Loads; Next load alone on phones) so
-       the UI text is readable. Nothing redrawn.
-       TODO owner: supply real Desk captures of the landout map, top-up sheet,
-       load board, safety check, hangar TV board and day report (sample data,
-       no real names or money). -->
+       the UI text is readable. Nothing redrawn. -->
   <figure class="li hero-media" id="demo" style="--i:5">
     <div class="hm-wrap">
       <div class="frame">
@@ -1197,9 +1194,6 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   <section class="band" id="connected">
     <h2>Your jumpers already carry the app.<br class="dk" /> Now it runs your dropzone.</h2>
     <p class="band-sub">We move your jumpers over, you run it next to your current system until you trust it, and you can cancel anytime.</p>
-    <!-- TODO owner: add one to three named Desk dropzones with a real quote, name, role and written permission. Never invent quotes. Do not quote the App Store rating (only 3 ratings).
-    Quote card to add then: a figure.band-quote with the quote in a blockquote, and a figcaption with the optional dropzone logo, name, role and dropzone.
-    -->
     <div class="band-cta"><a class="band-btn" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo&body=Dropzone%3A%20%0AName%3A%20%0APhone%3A%20%0ABest%20time%20for%20a%2020-minute%20video%20call%3A%20">Book a 20-minute demo<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
   </section>
 
@@ -1228,7 +1222,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     <div class="grid">
       <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h12"/></svg></div><b>Loads and manifest</b><p>Build loads in exit order, reserve seats, keep teams together, standby by type and daily check-in. Weight and balance, required crew and double-manifest rules.</p></div>
       <div class="card" id="hangar-board"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v11H3zM8 20h8M12 16v4"/></svg></div><b>Hangar board</b><p>A live board for every TV, with countdowns, holds, landing direction and one-tap alerts.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18v12H3zM3 10h18M7 15h3"/></svg></div><b>Jumper accounts</b><p>Balances, top-ups, jump tickets, card on file and guest payments with receipts, charged when the load departs. Gift vouchers on Full-time and up.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18v12H3zM3 10h18M7 15h3"/></svg></div><b>Jumper accounts</b><p>Balances, top-ups, jump tickets and guest payments with receipts, charged when the load departs. Gift vouchers on Full-time and up.</p></div>
       <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4"/></svg></div><b>Safety overview</b><p>Currency, reserve and AAD checks, waivers and check-in rules per licence type, and a reminder that opens their gear screen.</p></div>
       <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20a6 6 0 0 1 12 0M17 11a3 3 0 1 0 0-6M21 20a6 6 0 0 0-4-5.6"/></svg></div><b>Staff and pay</b><p>Owner, Manifest and Crew roles, and pay per jump type, worked out from what actually flew. Staff pay on Full-time and up.</p></div>
       <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 13l8-2 4-7 2 1-2 7 6 1 2-3 1 1-1 4 1 4-1 1-2-3-6 1 2 7-2 1-4-7-8-2z"/></svg></div><b>Aircraft</b><p>Fuel, hours flown, a countdown to the 100-hour inspection and the annual, per plane, and a pilot view.</p></div>
@@ -1245,7 +1239,6 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       <li><span class="n">2</span><b>Run it next to your current system</b><p>Keep what you use today running alongside, until you trust it.</p></li>
       <li><span class="n">3</span><b>Go live on a Saturday</b><p>We're with you on your first jump day.</p></li>
     </ol>
-    <!-- TODO owner: confirm the typical time from sign-up to first jump day so it can be shown here. -->
     <p class="how-need">What we need from you: your jumper list as a CSV, your aircraft and jump prices, and your staff list.</p>
   </section>
 
@@ -1259,7 +1252,6 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   <section class="pricing" id="pricing">
     <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="8" cy="8" r="1.5"/></svg>Pricing</p>
     <h2>Pricing that fits your dropzone.</h2>
-    <!-- TODO owner: publish a from-price per plan and the in-app top-up fee as a percentage if you decide to show numbers. -->
     <p class="lead">Founding prices are set with you on a short call, and you hear back the same day. No fee per booking, no lock-in, cancel anytime.</p>
     <div class="pc-grid">
       <div class="pc">
@@ -1385,15 +1377,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       <h2 class="cm-title">Frequently asked questions</h2>
       <h3 class="faq-g">Reliability and data</h3>
       <div class="faq-list">
-        <!-- F10 (16 Oct 2026): the internet answer is taken from the Desk code (manifest-desk src/lib/offline.ts,
-     ShellBars.tsx NetBar, public/sw.js on main). TODO owner: confirm it, and say what the hangar TV board shows offline. -->
         <details class="faq-i"><summary>What happens if the internet drops at our dropzone?<span class="faq-plus" aria-hidden="true"></span></summary><p>The desk keeps working for the things that cannot wait. It keeps showing the last loads it had, and check-ins, load calls, boarding and departures you make are saved in the browser and sent the moment the internet is back. Payments and new bookings wait for the connection, and a load call whose time has passed is not sent late.</p></details>
-        <!-- TODO owner: supply true answers for offline behaviour of the hangar board and jumper phones; data storage location, access and backups;
-     outage announcements and jump-day contact. Do not claim uptime figures, encryption, PCI or offline desk operation beyond what the code does.
-     Then render these two items here, as plain text, with the same wording on /dropzones/, /skydiving-manifest-software/ and /how-manifest-works/:
-     <details class="faq-i"><summary>Where is our data stored and who can see it?<span class="faq-plus" aria-hidden="true"></span></summary><p>(answer from the owner)</p></details>
-     <details class="faq-i"><summary>How do you handle an outage on a jump day?<span class="faq-plus" aria-hidden="true"></span></summary><p>(answer from the owner)</p></details>
--->
       </div>
       <h3 class="faq-g">Setup, pricing and features</h3>
       <div class="faq-list">
@@ -1407,8 +1391,6 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
         <details class="faq-i"><summary>When are we charged?<span class="faq-plus" aria-hidden="true"></span></summary><p>Nothing until your desk goes live. Every plan is a monthly subscription with no lock-in, and founding prices for the first dropzones are set with you. Ask us for yours.</p></details>
         <details class="faq-i"><summary>Do you take a fee on payments at our desk?<span class="faq-plus" aria-hidden="true"></span></summary><p>No. Cash, your card terminal and anything you take at the desk is yours, with no fee from us. The fee is only on top-ups jumpers make themselves in the Manifest app.</p></details>
         <details class="faq-i"><summary>Who owns the data?<span class="faq-plus" aria-hidden="true"></span></summary><p>You do. Export it any time on Full-time and up.</p></details>
-        <!-- TODO owner (A06): confirm what a Weekend plan dropzone can export (jumpers, balances, jump history) and what it can take on cancel; then split the plan table row into Accounting exports and Full data export. If every plan can export its own jumper and jump data, change the answer above to: "You do. Every plan can export its jumpers and jump history. Accounting CSV exports are on Full-time and up." -->
-        <!-- TODO owner: confirm what Android jumpers can see or receive today (for example the hangar board and desk-side calls) before adding it to this answer. -->
         <details class="faq-i"><summary>What about jumpers on Android?<span class="faq-plus" aria-hidden="true"></span></summary><p>The Manifest app is on iPhone today, and Android is being built.</p></details>
       </div>
       <p class="faq-more">Learn more: <a href="/skydiving-manifest-software/">Skydiving software for dropzones</a>, <a href="/self-manifest-skydiving/">Self-manifest</a>, <a href="/dropzone-payments/">Payments</a>, <a href="/skydiving-load-calls/">Load calls</a>, <a href="/skydive-landout-safety/">Landout safety</a>, <a href="/how-manifest-works/">How Manifest works</a>.</p>

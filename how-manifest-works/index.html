@@ -796,15 +796,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 
     <h2>Questions</h2>
     <div class="faq-list">
-      <!-- F10 (16 Oct 2026): the internet answer is taken from the Desk code (manifest-desk src/lib/offline.ts,
-     ShellBars.tsx NetBar, public/sw.js on main). TODO owner: confirm it, and say what the hangar TV board shows offline. -->
       <details class="faq-i"><summary>What happens if the internet drops at our dropzone?<span class="faq-plus" aria-hidden="true"></span></summary><p>The desk keeps working for the things that cannot wait. It keeps showing the last loads it had, and check-ins, load calls, boarding and departures you make are saved in the browser and sent the moment the internet is back. Payments and new bookings wait for the connection, and a load call whose time has passed is not sent late.</p></details>
-      <!-- TODO owner: supply true answers for offline behaviour of the hangar board and jumper phones; data storage location, access and backups;
-     outage announcements and jump-day contact. Do not claim uptime figures, encryption, PCI or offline desk operation beyond what the code does.
-     Then render these two items here, as plain text, with the same wording on /dropzones/, /skydiving-manifest-software/ and /how-manifest-works/:
-     <details class="faq-i"><summary>Where is our data stored and who can see it?<span class="faq-plus" aria-hidden="true"></span></summary><p>(answer from the owner)</p></details>
-     <details class="faq-i"><summary>How do you handle an outage on a jump day?<span class="faq-plus" aria-hidden="true"></span></summary><p>(answer from the owner)</p></details>
--->
       <details class="faq-i"><summary>What is the difference between the Manifest app and Manifest Desk?<span class="faq-plus" aria-hidden="true"></span></summary><p>The app is for jumpers, on iPhone: live loads, self-manifest, top-ups, load calls, recording, the 3D replay and your logbook. Manifest Desk is for dropzone owners and manifest staff, in the browser: the loads board, standby, accounts, staff, aircraft, safety and reports. At a Desk dropzone the two are connected and update each other live.</p></details>
       <details class="faq-i"><summary>Does my dropzone need Manifest Desk for me to use the app?<span class="faq-plus" aria-hidden="true"></span></summary><p>No. Live loads, recording, the 3D replay, the logbook, weather and gear reminders work at any dropzone. Self-manifest, in-app top-ups, one-button load calls, the landout map and free Lock Screen loads need your dropzone to run Manifest Desk.</p></details>
       <details class="faq-i"><summary>Are Lock Screen loads free?<span class="faq-plus" aria-hidden="true"></span></summary><p>At a dropzone that runs Manifest Desk, yes, for every jumper. Everywhere else, your load on the Lock Screen and in the Dynamic Island with gear-up, 10 minute and final call notifications is part of Manifest Pro.</p></details>

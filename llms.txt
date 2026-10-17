@@ -41,7 +41,7 @@ Manifest Desk is skydiving software and dropzone management software (a skydive 
 - Load calls pushed to every jumper's phone and Lock Screen at 15, 10 and 5 minutes and boarding, plus holds for one load or all loads.
 - Weight and balance against the aircraft.
 - Jumper accounts and balances, jump tickets, vouchers and gift vouchers.
-- Apple Pay and card top-ups through Stripe Connect, straight into the dropzone's own Stripe account; guest payments, card on file and receipts.
+- Apple Pay and card top-ups through Stripe Connect, straight into the dropzone's own Stripe account; guest payments with receipts.
 - Cash drawer and end of day.
 - Waivers and check-in rules per licence type; safety checks for currency, reserve repack and AAD service.
 - Staff pay per jump type; roles for Owner, Manifest and Crew.

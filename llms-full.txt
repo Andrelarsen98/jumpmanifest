@@ -41,7 +41,7 @@ Manifest Desk is skydiving software and dropzone management software (a skydive 
 - Load calls pushed to every jumper's phone and Lock Screen at 15, 10 and 5 minutes and boarding, plus holds for one load or all loads.
 - Weight and balance against the aircraft.
 - Jumper accounts and balances, jump tickets, vouchers and gift vouchers.
-- Apple Pay and card top-ups through Stripe Connect, straight into the dropzone's own Stripe account; guest payments, card on file and receipts.
+- Apple Pay and card top-ups through Stripe Connect, straight into the dropzone's own Stripe account; guest payments with receipts.
 - Cash drawer and end of day.
 - Waivers and check-in rules per licence type; safety checks for currency, reserve repack and AAD service.
 - Staff pay per jump type; roles for Owner, Manifest and Crew.
@@ -193,7 +193,7 @@ We set up your dropzone with you: aircraft, jump prices, staff and jumpers. You 
 Yes. Export your jumper list and balances from your current system as a CSV and the desk imports it, so every jumper starts with the right account. We do this for you during setup.
 
 ### How do payments work?
-Jumpers top up their account in the Manifest app with Apple Pay or card, and the money goes straight to your own Stripe account through Stripe Connect, so you are the merchant. At the desk you can take guest payments, charge a card on file, sell tickets, vouchers and gift vouchers, and count the cash drawer at end of day. Every payment gets a receipt.
+Jumpers top up their account in the Manifest app with Apple Pay or card, and the money goes straight to your own Stripe account through Stripe Connect, so you are the merchant. At the desk you can take guest payments, sell tickets, vouchers and gift vouchers, and count the cash drawer at end of day. Every payment gets a receipt.
 
 ### Does it work for a small club or weekend dropzone?
 Yes. The Weekend dropzone plan is built for one aircraft and busy weekends, with 3 desk logins and crew free. All you need is a laptop or tablet with a browser for the desk, and any TV with a browser for the hangar board. There is nothing to install.

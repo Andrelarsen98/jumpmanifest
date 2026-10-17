@@ -553,7 +553,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       "name": "How do payments work?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Jumpers top up their account in the Manifest app with Apple Pay or card, and the money goes straight to your own Stripe account through Stripe Connect, so you are the merchant. At the desk you can take guest payments, charge a card on file, sell tickets, vouchers and gift vouchers, and count the cash drawer at end of day. Every payment gets a receipt."
+        "text": "Jumpers top up their account in the Manifest app with Apple Pay or card, and the money goes straight to your own Stripe account through Stripe Connect, so you are the merchant. At the desk you can take guest payments, sell tickets, vouchers and gift vouchers, and count the cash drawer at end of day. Every payment gets a receipt."
       }
     },
     {
@@ -606,7 +606,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     "Weight and balance against the aircraft, required crew and double-manifest rules",
     "Jumper accounts and balances, tickets, vouchers and gift vouchers",
     "Apple Pay and card top-ups straight into the dropzone's own Stripe account (Stripe Connect)",
-    "Guest payments, card on file and receipts",
+    "Guest payments with receipts",
     "Cash drawer and end of day",
     "Waivers and check-in rules per licence type",
     "Safety checks for currency, reserve repack and AAD service",
@@ -782,7 +782,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     <h3>Weight and balance</h3>
     <p>Each load shows its weight against the aircraft before it departs, so you see a heavy load while there is still time to fix it.</p>
     <h3>Jumper accounts, tickets and vouchers</h3>
-    <p>Every jumper has an account with a live balance. Sell jump tickets, vouchers and gift vouchers, keep a card on file, and see at a glance who owes you money and how much is held on account.</p>
+    <p>Every jumper has an account with a live balance. Sell jump tickets, vouchers and gift vouchers, and see at a glance who owes you money and how much is held on account.</p>
     <h3>Payments, receipts and the cash drawer</h3>
     <p>Jumpers top up with Apple Pay in the app, straight into your own Stripe account. At the desk, take guest payments, send receipts, count the cash drawer and close the day.</p>
     <h3>Waivers and check-in rules</h3>
@@ -829,7 +829,6 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       <li><strong>Run it alongside.</strong> Keep your current system running next to Manifest Desk until you trust it.</li>
       <li><strong>No lock-in.</strong> Cancel anytime, on any plan.</li>
     </ul>
-    <!-- TODO owner: confirm the typical time from sign-up to first jump day so it can be shown here. -->
     <p>What we need from you: your jumper list as a CSV, your aircraft and jump prices, and your staff list.</p>
     <p>Want to see it first? The desk has a sample-day demo, and we will walk you through it on a call.</p>
 
@@ -844,24 +843,15 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 
     <h2>What dropzone software should do: questions owners ask</h2>
     <div class="faq-list">
-        <!-- F10 (16 Oct 2026): the internet answer is taken from the Desk code (manifest-desk src/lib/offline.ts,
-     ShellBars.tsx NetBar, public/sw.js on main). TODO owner: confirm it, and say what the hangar TV board shows offline. -->
         <details class="faq-i"><summary>What happens if the internet drops at our dropzone?<span class="faq-plus" aria-hidden="true"></span></summary><p>The desk keeps working for the things that cannot wait. It keeps showing the last loads it had, and check-ins, load calls, boarding and departures you make are saved in the browser and sent the moment the internet is back. Payments and new bookings wait for the connection, and a load call whose time has passed is not sent late.</p></details>
-        <!-- TODO owner: supply true answers for offline behaviour of the hangar board and jumper phones; data storage location, access and backups;
-     outage announcements and jump-day contact. Do not claim uptime figures, encryption, PCI or offline desk operation beyond what the code does.
-     Then render these two items here, as plain text, with the same wording on /dropzones/, /skydiving-manifest-software/ and /how-manifest-works/:
-     <details class="faq-i"><summary>Where is our data stored and who can see it?<span class="faq-plus" aria-hidden="true"></span></summary><p>(answer from the owner)</p></details>
-     <details class="faq-i"><summary>How do you handle an outage on a jump day?<span class="faq-plus" aria-hidden="true"></span></summary><p>(answer from the owner)</p></details>
--->
         <details class="faq-i"><summary>What is dropzone software?<span class="faq-plus" aria-hidden="true"></span></summary><p>Dropzone software, also called skydiving manifest software or a skydive manifest system, is what a dropzone uses to build loads, put jumpers on them, charge their accounts and keep the jump day safe and moving. Manifest Desk does all of that in a browser, and connects every load to the phones of the jumpers on it.</p></details>
         <details class="faq-i"><summary>What should skydiving software for a dropzone do?<span class="faq-plus" aria-hidden="true"></span></summary><p>At minimum: a loads board with exit order, standby, jumper accounts and balances, load calls and holds, weight and balance against the aircraft, and safety checks for currency, reserve and AAD before anyone boards. A complete system also handles waivers and check-in rules, staff pay, aircraft hours and maintenance, guest payments, the cash drawer and end of day, and reports for your accountant. Manifest Desk does all of these, and puts every load call on each jumper's Lock Screen.</p></details>
         <details class="faq-i"><summary>How much does Manifest Desk cost?<span class="faq-plus" aria-hidden="true"></span></summary><p>Every plan is a monthly subscription with no lock-in, never a fee per jump or per booking. There are three plans: Weekend dropzone (1 aircraft, 3 desk logins), Full-time (up to 3 aircraft, 10 logins) and Big operations (unlimited). Founding prices are set with each dropzone, so ask us for yours. Cash and card taken at the desk carry no fee from us. Cancel anytime.</p></details>
         <details class="faq-i"><summary>How do we switch from our current system?<span class="faq-plus" aria-hidden="true"></span></summary><p>We set up your dropzone with you: aircraft, jump prices, staff and jumpers. You can run Manifest Desk next to your current system for as long as you like, until you trust it, and we are with you on your first jump day. There is no lock-in.</p></details>
         <details class="faq-i"><summary>Can we import our jumpers and balances?<span class="faq-plus" aria-hidden="true"></span></summary><p>Yes. Export your jumper list and balances from your current system as a CSV and the desk imports it, so every jumper starts with the right account. We do this for you during setup.</p></details>
-        <details class="faq-i"><summary>How do payments work?<span class="faq-plus" aria-hidden="true"></span></summary><p>Jumpers top up their account in the Manifest app with Apple Pay or card, and the money goes straight to your own Stripe account through Stripe Connect, so you are the merchant. At the desk you can take guest payments, charge a card on file, sell tickets, vouchers and gift vouchers, and count the cash drawer at end of day. Every payment gets a receipt.</p></details>
+        <details class="faq-i"><summary>How do payments work?<span class="faq-plus" aria-hidden="true"></span></summary><p>Jumpers top up their account in the Manifest app with Apple Pay or card, and the money goes straight to your own Stripe account through Stripe Connect, so you are the merchant. At the desk you can take guest payments, sell tickets, vouchers and gift vouchers, and count the cash drawer at end of day. Every payment gets a receipt.</p></details>
         <details class="faq-i"><summary>Does it work for a small club or weekend dropzone?<span class="faq-plus" aria-hidden="true"></span></summary><p>Yes. The Weekend dropzone plan is built for one aircraft and busy weekends, with 3 desk logins and crew free. All you need is a laptop or tablet with a browser for the desk, and any TV with a browser for the hangar board. There is nothing to install.</p></details>
         <details class="faq-i"><summary>What safety features does it have?<span class="faq-plus" aria-hidden="true"></span></summary><p>Before anyone boards, the desk checks currency, reserve repack and AAD service, and your waiver and check-in rules per licence type. Each load shows its weight against the aircraft, the crew it needs and double-manifest conflicts. After the load, Who's back shows who has returned, and a jumper who lands out can send an SOS that puts them on a live map at the desk, with chat and one tap to hold every load. It supports your own emergency procedures; it is not a guaranteed rescue tracker.</p></details>
-        <!-- TODO owner: confirm what Android jumpers can see or receive today (for example the hangar board and desk-side calls) before adding it to this answer. -->
         <details class="faq-i"><summary>What about jumpers on Android?<span class="faq-plus" aria-hidden="true"></span></summary><p>The Manifest app is on iPhone today, and Android is being built.</p></details>
     </div>
     <p>New to Manifest? Start at the <a href="/">home page</a> or read <a href="/how-manifest-works/">how Manifest works</a>.</p>
