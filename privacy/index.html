@@ -478,7 +478,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       <li>Account: email address and password (passwords are stored hashed by our auth provider; we never see them in plain text). If you sign in with Apple or Google, we receive your name and email address from them instead. If you use Apple&rsquo;s &ldquo;Hide My Email&rdquo;, we only ever receive Apple&rsquo;s relay address, never your real one.</li>
       <li>Profile: name, optional avatar photo, licence type and licensing body, ratings, bio, home dropzone, coaching details.</li>
       <li>Content you create: jump logs, gear items and service history, event listings and RSVPs, messages and photos you send to other users (a chat photo is stored privately and only the two people in that conversation can open it), reports you file.</li>
-      <li>Credential &amp; verification documents: if you choose to upload them, images of your licence, rigger ticket, insurance, medical or other credentials, for your in-app credentials wallet and, if you apply, for blue-check verification. These are stored privately and access-controlled, visible only to you and to authorized Manifest admins reviewing a verification request.</li>
+      <li>Credential &amp; verification documents: if you choose to upload them, images of your licence, rigger ticket, insurance, medical or other credentials, for your in-app credentials wallet and, if you apply, for blue-check verification. These are stored privately and access-controlled, visible only to you, to authorized Manifest admins reviewing a verification request, and to a dropzone on Manifest Desk you choose to share them with (see section 3). Medical papers and passports are never shown to a dropzone.</li>
     </ul>
     <h3>Collected automatically / with permission:</h3>
     <ul>
@@ -525,16 +525,17 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
         <ul>
           <li>your name, photo, email and phone number</li>
           <li>your licence, licence number and ratings</li>
-          <li>your memberships and insurance, with their expiry dates</li>
-          <li>the documents you add in the App (licence, membership card, insurance, gear papers)</li>
+          <li>whether your licence, membership or insurance has run out</li>
           <li>your reserve repack and AAD service dates</li>
           <li>your jump numbers and when you last jumped</li>
           <li>your weight and emergency contact, if you have added them</li>
-          <li>your waivers, plus your bookings, balance and payments at that dropzone</li>
+          <li>your waivers and bookings at that dropzone</li>
+          <li>your balance and payments at that dropzone. Manifest staff open one jumper&rsquo;s account at a time, and in the jumper list they see only whether you owe money. Lists of everyone&rsquo;s balances, money totals and reports are only for the owner and for staff the owner has allowed to see them.</li>
           <li>during a landout alert, your live position, the chat and any photos you send</li>
           <li>while you are on a load, the dropzone&rsquo;s hangar board can show your first name, last initial and profile photo; you can turn the photo off in the App (Settings, &ldquo;Show my photo on hangar boards&rdquo;)</li>
         </ul>
-        Each dropzone decides how long it keeps its own records, for example for safety or accounting rules.</li>
+        <p><strong>Your papers.</strong> When you share your papers with a dropzone in the App, its owner and manifest staff see your licence, membership card, insurance and reserve or rigger card, until the dropzone&rsquo;s next season starts (always at least 30 days) or until you stop sharing, whichever comes first. You can stop sharing at any time. Never medical papers or a passport. A dropzone that adds you by your Pass is not shown your papers.</p>
+        <p>Each dropzone decides how long it keeps its own records, for example for safety or accounting rules.</p></li>
       <li><strong>Stripe</strong>: payments at dropzones that run Manifest Desk, such as balance top-ups.</li>
       <li><strong>Apple</strong> and <strong>Google</strong>: only if you choose to sign in with them, to authenticate you and pass us your name and email address.</li>
     </ul>
@@ -562,6 +563,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 
     <h2>8. Security</h2>
     <p>We use industry-standard measures (encryption in transit, hashed passwords, row-level access controls). No system is perfectly secure; please use a strong, unique password.</p>
+    <p>On Manifest Desk, every staff member signs in with their own account. A person becomes staff only by accepting their own invite from the dropzone: an emailed link that works once, or a notification in the App. Either ends after 7 days. Owners can turn on two-step sign-in with an authenticator app, and the dropzone&rsquo;s account holder can require it for every owner. Owners can pause staff, sign them out of the Desk and see a history of who was given which access. Which money a staff member can see is checked on our servers, not only hidden on screen.</p>
 
     <h2>9. Changes</h2>
     <p>We may update this policy. Material changes will be notified in-app or by email. The &ldquo;Last updated&rdquo; date above reflects the current version.</p>

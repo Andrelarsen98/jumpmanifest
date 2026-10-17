@@ -167,7 +167,7 @@ Yes. Manifest is on the United States Parachute Association's jump log apps page
 Your Check-in Pass shows your licence, currency, jump numbers and gear service in one scannable view, pulled straight from your record so it cannot be edited by hand. The person scanning it does not need the app. Pro also gives you a branded PDF of every signed-off jump.
 
 ### Is my data private?
-Your logbook, credentials and documents are yours and are access-controlled. You choose what is public on your profile, you can go fully private, and you can delete your account and its data from inside the app at any time.
+Your logbook, credentials and documents are yours and are access-controlled. A dropzone sees your licence, membership, insurance and reserve card only after you share them, never your medical papers or passport, and you can stop sharing at any time. You choose what is public on your profile, you can go fully private, and you can delete your account and its data from inside the app at any time.
 
 ### What is Manifest Desk?
 Manifest Desk is skydiving software for dropzones, running in the browser. It handles loads and exit order, standby, jumper accounts and payments, waivers, staff, aircraft, safety checks and a hangar TV board, and pushes every load call to jumpers' Lock Screens. Jumpers top up with Apple Pay, straight into the dropzone's own Stripe account. Every plan is a monthly subscription with no lock-in, and founding prices are set with each dropzone. See Manifest Desk or read what our dropzone software does.

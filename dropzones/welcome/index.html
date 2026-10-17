@@ -28,6 +28,7 @@
   ol { padding-left: 20px; margin: 18px 0 0; }
   ol li { margin: 10px 0; font-size: 16px; }
   ol li b { color: var(--ink); }
+  ol li a { color: var(--purple); font-weight: 600; }
   .go { display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 26px; padding: 18px 24px; border-radius: 99px; background: var(--purple); color: #fff; font-size: 17px; font-weight: 700; text-decoration: none; box-shadow: 0 10px 30px rgba(109,66,245,.28); }
   .ok { display: inline-flex; align-items: center; gap: 8px; color: var(--green); background: #DCFCE7; border-radius: 99px; padding: 6px 12px; font-size: 14px; font-weight: 700; margin-bottom: 16px; }
   .err { color: #DC2626; }
@@ -82,7 +83,7 @@
         var dz = x.j.dropzone, em = x.j.email;
         box.innerHTML = '<span class="ok">✓ Payment received</span><h1>Welcome, <em></em></h1>' +
           '<p>Your desk is ready. Here is what happens next:</p><ol>' +
-          '<li><b>Sign in at desk.jumpmanifest.com</b> with <b class="em"></b>. You are the owner.</li>' +
+          '<li>We emailed <b class="em"></b> a link to set up your Desk account. It works once, for 7 days. Nothing there? Email <a href="mailto:andre@manifestjump.com">andre@manifestjump.com</a>.</li>' +
           '<li><b>Add your aircraft and jump prices</b> under Settings.</li>' +
           '<li><b>Print your join poster</b> so your jumpers find you in the app.</li>' +
           '<li><b>We call you</b> to set up the rest together before your first load.</li></ol>' +
