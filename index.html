@@ -1080,6 +1080,22 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     #globe .gl-cta { margin-top: 20px; }
     .dzg { width: min(100%, 560px); }
   }
+
+/* PHONE HERO (André, 17 Oct 2026): "we almost dont see the product at all".
+   Under 900px the phones come straight after the App Store button, the
+   headline is smaller, the sub is one sentence, and the proof pills (they are
+   repeated at the globe) are left out. Desktop is unchanged. */
+@media (max-width: 899px) {
+  .hero .wrap { display: flex; flex-direction: column; align-items: center; }
+  .hero .wrap > h1 { order: 1; } .hero .wrap > .sub { order: 2; }
+  .hero .wrap > .storebtns { order: 3; } .hero .wrap > .fan { order: 4; margin-top: 44px; }
+  .hero .wrap > .hero-dz { order: 5; margin-top: 4px; } .hero .wrap > .hero-note { order: 6; }
+  .hero .wrap > .toppills { display: none; }
+  .hero h1 { font-size: clamp(34px, 9.6vw, 52px) !important; line-height: 1.04 !important; }
+  .hero .sub { margin-top: 14px !important; font-size: 17px !important; line-height: 25px !important; }
+  .hero .hn-free { display: none; }
+  .hero .storebtns { margin-top: 20px !important; }
+}
 </style>
 </head>
 <body>
@@ -1484,14 +1500,14 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 <header class="hero" id="top">
   <div class="wrap">
     <h1 class="li" style="--i:0"><span class="l1">The app for skydivers.</span><br /><span class="l2">The system for dropzones.</span></h1>
-    <p class="li sub" style="--i:1">Manifest is the iPhone app for <b class="sub-em">live dropzone loads and 3D jump replay.</b> Dropzones run loads, payments and manifest on Manifest Desk.</p>
+    <p class="li sub" style="--i:1">Manifest is the iPhone app for <b class="sub-em">live dropzone loads and 3D jump replay.</b><span class="sub-more"> Dropzones run loads, payments and manifest on Manifest Desk.</span></p>
 
     <div class="li storebtns" style="--i:2">
       <a class="appbtn" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="Download Manifest on the App Store">
         <img src="assets/appstore-badge.svg?v=1" alt="Download on the App Store" />
       </a>
     </div>
-    <p class="li hero-note" style="--i:2">Free to download on iPhone.<br />Android is on the way. <a data-mail href="mailto:andre@manifestjump.com?subject=Android%3A%20tell%20me%20when%20it%20is%20out">Tell me the day it is out.</a></p>
+    <p class="li hero-note" style="--i:2"><span class="hn-free">Free to download on iPhone.<br /></span>Android is on the way. <a data-mail href="mailto:andre@manifestjump.com?subject=Android%3A%20tell%20me%20when%20it%20is%20out">Tell me the day it is out.</a></p>
     <p class="li hero-dz" style="--i:3"><a href="/dropzones/">Run a dropzone? See Manifest Desk</a></p>
     <div class="li toppills" style="--i:3">
       <span class="toppill"><span>Jumpers at <b>220+</b> dropzones</span><i></i><span>Live loads at <b>150+</b></span></span>
