@@ -22,7 +22,7 @@ Most dropzone software only runs the desk, and most skydiving apps only record j
 - Dropzone owners and manifest staff: Manifest Desk runs loads, money, staff and safety, and puts every load call on every jumper's phone.
 
 ## What the app does (iPhone, free to download)
-- Live loads: the loads turning right now at 220+ dropzones in 46 countries, who is on them and the minutes to call, read from each dropzone's own manifest.
+- Live loads: the loads turning right now at 225+ dropzones in 46 countries, who is on them and the minutes to call, read from each dropzone's own manifest.
 - 3D jump replay (free): record a jump with the phone in your pocket and replay the whole flight in 3D over real terrain, from the climb to the landing, using the phone's GPS and barometer. No extra hardware.
 - Logbook with sign-offs: another licensed jumper who was there scans your QR and signs the jump off in person; their name and licence number go on the entry. Records the fields USPA SIM 3-1 requires. Import past jumps from CSV.
 - Check-in Pass and Apple Wallet pass: licence, currency, jump numbers and gear service in one scannable view.
