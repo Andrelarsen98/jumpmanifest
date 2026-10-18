@@ -28,7 +28,7 @@
       "permanent": false
     },
     {
-      "source": "/:path((?:[^/]+/)*[^/.]+)[.,;:!)]+",
+      "source": "/:path([^.,;:!]*[^.,;:!/]):trail([.,;:!]+)",
       "destination": "/:path",
       "permanent": true
     }
