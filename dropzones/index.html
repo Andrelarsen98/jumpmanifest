@@ -671,6 +671,12 @@
     .vis-media .frame { border-radius: 10px; }
     .vis-phone { height: 440px; min-height: 0; }
   }
+  /* LESS PURPLE (19 Oct 2026, André): one purple button per view (the nav's
+     Book a demo); the hero's big button is black, the Desk label light grey. */
+  .hero .ctas .btn.primary { background: #050505 !important; box-shadow: none !important; }
+  .hero .ctas .btn.primary:hover { background: #26262B !important; filter: none !important; }
+  .hero .ctas .btn.primary .bi { background: rgba(255,255,255,.14) !important; }
+  .hero .kicker-brand { background: #F2F2F4 !important; }
 </style>
 <style id="ft-dark">
 /* Dark footer, Nike's (2 Oct 2026): #111 with white text and the white logo. */
@@ -1089,7 +1095,6 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z"/><path d="M21 16v2a4 4 0 0 1-4 4h-5"/></svg>Set up with us, directly</span>
       </div>
     </div>
-    <p class="li hero-founding" style="--i:4">Dropzones are onboarding now, set up directly with us.</p>
   </div>
   <!-- F13 (16 Oct 2026): the hero shows real Desk panels cut from
        desk-today.jpg (Next load, Standby, Loads; Next load alone on phones) so
