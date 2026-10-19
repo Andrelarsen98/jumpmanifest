@@ -2339,8 +2339,9 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     <label>Dropzone<input name="dropzone" required autocomplete="organization" placeholder="Skydive Example" /></label>
     <label>Your name<input name="name" required autocomplete="name" /></label>
     <label>Email<input name="email" type="email" required autocomplete="email" /></label>
+    <label id="leadCountryL">Country<input name="country" autocomplete="country-name" placeholder="Norway" /></label>
     <label>Phone <span>(optional)</span><input name="phone" type="tel" autocomplete="tel" /></label>
-    <label>Best time and time zone <span>(optional)</span><input name="best_time" type="text" autocomplete="off" /></label>
+    <label id="leadTimeL">Best time and time zone <span>(optional)</span><input name="best_time" type="text" autocomplete="off" /></label>
     <label>Anything we should know? <span>(optional)</span><textarea name="message" rows="3" placeholder="Aircraft, loads on a busy day, what you use today"></textarea></label>
     <input name="website" class="lead-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
     <p class="lead-err" id="leadErr" role="alert" hidden></p>
@@ -2349,7 +2350,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   </form>
   <div class="lead-box lead-done" id="leadDone" role="dialog" aria-modal="true" aria-labelledby="leadDoneTitle" hidden>
     <h3 id="leadDoneTitle">Thanks. We'll be in touch today.</h3>
-    <p class="lead-sub">We will reach out to set up your dropzone with you.</p>
+    <p class="lead-sub" id="leadDoneSub">We will reach out to set up your dropzone with you.</p>
     <button class="btn primary" type="button" id="leadOk">Done</button>
   </div>
 </div>
@@ -2361,6 +2362,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   .lead-sub { color: #52525B; font-size: 16px; margin: 0 0 18px; }
   .lead-box label { display: block; font-size: 14px; font-weight: 600; color: #050505; margin-top: 12px; }
   .lead-box label span { color: #52525B; font-weight: 400; }
+  .lead-box label[hidden] { display: none; }
   .lead-box input, .lead-box textarea { display: block; width: 100%; box-sizing: border-box; margin-top: 6px; padding: 13px 14px; border-radius: 14px; border: 1px solid #8A8A93; font: inherit; font-size: 16px; color: #050505; background: #fff; }
   .lead-box input:focus, .lead-box textarea:focus, .lead-box input:focus-visible, .lead-box textarea:focus-visible { outline: none !important; border-color: #6D42F5; box-shadow: 0 0 0 .5px #6D42F5 !important; }
   .lead-box input[aria-invalid="true"] { border-color: #DC2626; }
@@ -2406,6 +2408,19 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   }
   function open(kind, plan, from) {
     ctx = { kind: kind, plan: plan || '' };
+    // GET MANIFEST DESK FREE (19 Oct 2026): every non-demo button is a sign-up
+    // that André approves in admin; the demo keeps its video-call wording.
+    var su = kind !== 'demo';
+    document.getElementById('leadTitle').textContent = su ? 'Get Manifest Desk free' : 'Book a 20-minute demo';
+    document.getElementById('leadSub').textContent = su
+      ? 'Tell us about your dropzone. We approve every new dropzone by hand, and your invite arrives by email, usually the same day.'
+      : 'We show you the desk on a video call and set you up. We reply the same day.';
+    document.getElementById('leadCountryL').hidden = !su;
+    document.getElementById('leadTimeL').hidden = su;
+    document.getElementById('leadDoneTitle').textContent = su ? 'Thanks. You are on the list.' : "Thanks. We'll be in touch today.";
+    document.getElementById('leadDoneSub').textContent = su
+      ? 'We approve new dropzones by hand. Your invite to Manifest Desk arrives by email, usually the same day.'
+      : 'We will reach out to set up your dropzone with you.';
     opener = from || (document.activeElement !== document.body ? document.activeElement : null);
     err.hidden = true; form.hidden = false; done.hidden = true; scrim.hidden = false;
     setInert(true);
@@ -2450,7 +2465,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   form.addEventListener('input', function (e) { if (e.target.getAttribute('aria-invalid')) e.target.removeAttribute('aria-invalid'); });
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var f = form, body = { kind: ctx.kind, plan: ctx.plan, dropzone: f.dropzone.value, name: f.name.value, email: f.email.value, phone: f.phone.value, best_time: f.best_time.value, message: f.message.value, website: f.website.value };
+    var f = form, body = { kind: ctx.kind === 'demo' ? 'demo' : 'signup', country: ctx.kind === 'demo' ? '' : f.country.value, plan: ctx.plan, dropzone: f.dropzone.value, name: f.name.value, email: f.email.value, phone: f.phone.value, best_time: ctx.kind === 'demo' ? f.best_time.value : '', message: f.message.value, website: f.website.value };
     var bad = [];
     if (!body.dropzone.trim()) bad.push(f.dropzone);
     if (!body.name.trim()) bad.push(f.name);
