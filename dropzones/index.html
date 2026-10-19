@@ -1096,10 +1096,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
        the UI text is readable. Nothing redrawn. -->
   <figure class="li hero-media" id="demo" style="--i:5">
     <div class="hm-wrap">
-      <div class="frame">
-        <div class="frame-bar"><i></i><i></i><i></i><span>desk.jumpmanifest.com</span></div>
-        <img src="/assets/desk-today.jpg?v=1" alt="Manifest Desk: the Today page of a demo dropzone, with today's takings, open loads, the next load countdown, standby and accounts" width="1440" height="900" fetchpriority="high" />
-      </div>
+      <img class="studio" src="/assets/features/studio-desk-today.webp" alt="Manifest Desk: the Today page of a demo dropzone, with today's takings, open loads, the next load countdown, standby and accounts" width="1600" height="1242" fetchpriority="high" />
       <img class="hm-phone" src="/assets/opt/mock-home3.a2e7757f.webp" width="640" height="1330" alt="" />
     </div>
     <figcaption class="desk-cap">Manifest Desk with sample data from a demo dropzone.</figcaption>
@@ -1123,6 +1120,8 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
      Desk pages (André, 16 Oct 2026). */
   .hm-wrap { position: relative; }
   .hero-media .desk-cap { margin-top: 44px; }
+  /* STUDIO DISPLAY (19 Oct 2026, André): the desk shown on a Studio Display, white background blends with the page. */
+  img.studio { display: block; width: 100%; height: auto; }
   .hm-phone { position: absolute; right: -3%; bottom: -6%; width: 26%; max-width: 190px; height: auto; filter: drop-shadow(0 18px 28px rgba(15,23,42,.28)); }
   @media (max-width: 767px) { .hm-phone { width: 30%; right: -1%; bottom: -8%; } .hero-media .desk-cap { margin-top: 26px; } }
   figure.hero-media { margin: 0; }
@@ -1233,10 +1232,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       </ul>
     </div>
     <div class="vis-media">
-      <div class="frame">
-        <div class="frame-bar"><i></i><i></i><i></i><span>desk.jumpmanifest.com</span></div>
-        <img src="/assets/desk-today.jpg?v=1" alt="The Today page of Manifest Desk: charged for jumps today against last week, open loads, next load, standby and accounts" width="1440" height="900" loading="lazy" decoding="async" />
-      </div>
+      <img class="studio" src="/assets/features/studio-desk-today.webp" alt="The Today page of Manifest Desk: charged for jumps today against last week, open loads, next load, standby and accounts" width="1600" height="1242" loading="lazy" decoding="async" />
       <p class="desk-cap">Manifest Desk with sample data from a demo dropzone.</p>
     </div>
   </section>
