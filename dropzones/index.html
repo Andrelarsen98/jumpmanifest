@@ -1144,8 +1144,11 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   #app .app-card p { max-width: 320px; margin-left: auto; margin-right: auto; }
   #app .app-foot { margin-top: 56px; }
   /* Top-up phones (André 19 Oct): same phone height, side by side. */
-  #app .pay-duo { display: flex; justify-content: center; align-items: center; gap: clamp(8px, 3vw, 48px); margin-top: 56px; }
-  #app .pay-duo img { display: block; height: auto; mix-blend-mode: multiply; }
+  /* Meadow behind the phones (André 19 Oct): Unsplash photo _8fRer9hPv0 (Unsplash License). */
+  #app .pay-duo { display: flex; justify-content: center; align-items: center; gap: clamp(12px, 4vw, 64px); margin-top: 56px;
+    padding: clamp(36px, 6vw, 80px) 16px; border-radius: 28px; background: #9DB67A url(/assets/features/meadow.webp) center / cover no-repeat; }
+  #app .pay-duo img { display: block; height: auto; filter: drop-shadow(0 24px 40px rgba(0,0,0,.35)); }
+  @media (max-width: 600px) { #app .pay-duo { border-radius: 22px; padding: 28px 10px; gap: 10px; } #app .pay-duo .pd-a, #app .pay-duo .pd-b { width: 46%; } }
   #app .pay-duo .pd-a { width: min(300px, 44%); }
   #app .pay-duo .pd-b { width: min(300px, 44%); }
   @media (max-width: 600px) { #app .app-foot b { display: block; } }
