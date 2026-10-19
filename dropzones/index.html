@@ -1143,6 +1143,11 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   #app .app-card b { margin-top: 20px; }
   #app .app-card p { max-width: 320px; margin-left: auto; margin-right: auto; }
   #app .app-foot { margin-top: 56px; }
+  /* Top-up phones (André 19 Oct): same phone height, side by side. */
+  #app .pay-duo { display: flex; justify-content: center; align-items: center; gap: clamp(8px, 3vw, 48px); margin-top: 56px; }
+  #app .pay-duo img { display: block; height: auto; mix-blend-mode: multiply; }
+  #app .pay-duo .pd-a { width: min(400px, 52%); }
+  #app .pay-duo .pd-b { width: min(288px, 37%); }
   @media (max-width: 600px) { #app .app-foot b { display: block; } }
   @media (max-width: 900px) { #app .app-grid { gap: 44px; } }
   /* F02: each plan's limits right under the price slot. */
@@ -1228,6 +1233,10 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   <section class="sec" id="app">
     <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M11 18.5h2"/></svg>The Manifest app, free to download</p>
     <h2>Your jumpers do the queueing on their phone.</h2>
+    <div class="pay-duo">
+      <img class="pd-a" src="/assets/features/topup-bundles.webp" width="900" height="1175" alt="A jumper tops up in the Manifest app: 10 jump tickets for $330, paid with Apple Pay, Cash App or card" loading="lazy" decoding="async">
+      <img class="pd-b" src="/assets/features/topup-applepay.webp" width="900" height="1710" alt="Apple Pay confirming $330.00 to the dropzone in the Manifest app" loading="lazy" decoding="async">
+    </div>
     <div class="app-panel">
       <div class="app-grid">
         <div class="app-card"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 9.5h19M6.5 15h4"/></svg><b>Top up with Apple Pay</b><p>Money goes straight to your Stripe and shows on the desk instantly.</p></div>
