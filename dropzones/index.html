@@ -562,23 +562,76 @@
     .vs-col h3 { font-size: 26px; line-height: 34px; letter-spacing: -.6px; }
     .vs li { min-height: 0; font-size: 16px; line-height: 23px; padding: 16px 0; }
   }
+  /* BENTO (19 Oct 2026): the jumper app and Desk features as big product
+     tiles. One idea per tile, the real screen is the hero, two short lines. */
+  .bento { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; margin-top: 56px; }
+  .bt { margin: 0; position: relative; overflow: hidden; border-radius: 28px; background: #F5F5F7; min-width: 0; display: flex; }
+  .bt-col { flex-direction: column; align-items: center; }
+  .bt-row { flex-direction: row; align-items: stretch; }
+  .bt figcaption { padding: 44px 44px 0; text-align: center; position: relative; z-index: 1; }
+  .bt-row figcaption { text-align: left; padding: 44px 28px 44px 44px; flex: 1 1 52%; align-self: center; }
+  .bt b { display: block; font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: 34px; line-height: 38px; letter-spacing: -.028em; color: #050505; text-wrap: balance; }
+  .bt span { display: block; margin-top: 10px; font-size: 18px; line-height: 26px; font-weight: 500; color: #71717B; }
+  .bt-dark { background: #050505; }
+  .bt-dark b { color: #fff; } .bt-dark span { color: #D4D4D8; }
+  .bt img { display: block; }
+  .bt-phone, .bt-screen { width: 300px; max-width: 72%; height: auto; margin: 36px auto -34%; }
+  .bt-screen { border-radius: 36px 36px 0 0; box-shadow: 0 0 0 1px rgba(5,5,5,.06); }
+  .bt-mul { mix-blend-mode: multiply; }
+  .bt-row .bt-phone { width: 180px; max-width: 40%; margin: 40px 36px -120px 0; align-self: flex-start; flex: 0 0 auto; }
+  .bt-hero { grid-column: span 7; grid-row: span 2; min-height: 760px; }
+  .bt-hero b { font-size: 48px; line-height: 52px; }
+  .bt-hero .bt-phone { width: 340px; margin-bottom: -30%; }
+  .bt-side { grid-column: span 5; height: 372px; }
+  .bt-half { grid-column: span 6; height: 600px; }
+  .bt-half .bt-phone, .bt-half .bt-screen { width: 280px; }
+  .bt-full { grid-column: span 12; }
+  .bt-full b { font-size: 48px; line-height: 52px; }
+  .bt-full .bt-shot { width: calc(100% - 112px); height: auto; margin: 44px auto 0; border-radius: 16px 16px 0 0; }
+  .bt-wide { grid-column: span 7; height: 480px; }
+  .bt-narrow { grid-column: span 5; height: 480px; }
+  .bt-edge { align-self: flex-end; width: 88%; height: auto; margin-top: 36px; border-top-left-radius: 14px; box-shadow: 0 0 0 1px rgba(5,5,5,.06), 0 18px 50px rgba(5,5,5,.08); }
+  .bt-edge.bt-left { align-self: flex-start; margin-left: 44px; max-width: none; border-radius: 14px 0 0 0; }
+  .bt-narrow .bt-left { width: 150%; }
+  .bt-wide .bt-left { width: 118%; }
+  .bt-center .bt-card { width: 78%; height: auto; margin: auto; box-shadow: 0 18px 50px rgba(5,5,5,.10); border-radius: 22px; }
+  .bento.anim .bt { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  .bento.anim .bt.on { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .bento.anim .bt { opacity: 1; transform: none; transition: none; } }
+  @media (max-width: 980px) {
+    .bt-hero, .bt-side, .bt-half, .bt-wide, .bt-narrow { grid-column: span 12; }
+    .bt-hero { grid-row: auto; min-height: 640px; }
+    .bt-narrow .bt-left, .bt-wide .bt-left { width: 130%; }
+  }
+  @media (max-width: 600px) {
+    .bento { gap: 12px; margin-top: 40px; }
+    .bt { border-radius: 24px; }
+    .bt figcaption { padding: 32px 24px 0; }
+    .bt b, .bt-hero b, .bt-full b { font-size: 28px; line-height: 32px; }
+    .bt span { font-size: 16px; line-height: 22px; margin-top: 8px; }
+    .bt-row { flex-direction: column; align-items: center; }
+    .bt-row figcaption { text-align: center; padding: 32px 24px 0; flex: 0 0 auto; align-self: stretch; }
+    .bt-row .bt-phone { width: 220px; max-width: 64%; margin: 28px auto -40%; align-self: center; }
+    .bt-hero, .bt-side, .bt-half { min-height: 0; height: 500px; }
+    .bt-phone, .bt-screen, .bt-hero .bt-phone, .bt-half .bt-phone, .bt-half .bt-screen { width: 230px; max-width: 66%; margin: 28px auto 0; }
+    .bt-screen { border-radius: 28px 28px 0 0; }
+    .bt-wide, .bt-narrow { height: auto; }
+    .bt-edge { width: 92%; margin-top: 28px; }
+    .bt-narrow .bt-left, .bt-wide .bt-left { width: 160%; margin-left: 24px; }
+    .bt-full .bt-shot { width: calc(100% - 32px); margin-top: 28px; border-radius: 10px 10px 0 0; }
+    .bt-center .bt-card { width: calc(100% - 48px); margin: 28px auto 32px; border-radius: 16px; }
+  }
   /* JUMPER APP, EVERY DAY (9 Oct 2026): eight compact tiles of what jumpers
      use the app for today, then real database numbers, rounded down. */
-  .jgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 56px; }
-  .jgrid .card { padding: 26px 24px 28px; }
-  .jgrid .ico { margin-bottom: 16px; }
   .jstats { list-style: none; margin: 16px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); background: #F7F7F9; border-radius: 22px; }
   .jstats li { padding: 28px 24px; font-size: 16px; line-height: 20.8px; font-weight: 500; color: var(--g); text-align: center; }
   .jstats li + li { border-left: 1px solid #E4E4E7; }
   .jstats b { display: block; margin-bottom: 6px; font-family: "General Sans", "Manrope", sans-serif; font-size: 34px; line-height: 40px; font-weight: 500; letter-spacing: -.5px; color: var(--t); }
   .jfoot { text-align: center; margin-top: 32px; font-size: 20px; line-height: 31px; color: #71717B; }
   .jfoot b { color: #040815; font-weight: 600; }
-  @media (max-width: 980px) { .jgrid { grid-template-columns: repeat(2, 1fr); } .jstats { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 980px) { .jstats { grid-template-columns: repeat(2, 1fr); }
     .jstats li:nth-child(3) { border-left: 0; } .jstats li:nth-child(n+3) { border-top: 1px solid #E4E4E7; } }
-  @media (max-width: 600px) { .jgrid { gap: 10px; margin-top: 40px; } .jgrid .card { padding: 20px 16px 22px; border-radius: 18px; }
-    .jgrid .ico { width: 40px; height: 40px; margin-bottom: 14px; } .jgrid .card b { font-size: 19px; line-height: 25px; margin-bottom: 6px; }
-    .jgrid .card p { font-size: 14.5px; line-height: 19px; letter-spacing: -.3px; }
-    .jstats { margin-top: 10px; border-radius: 18px; } .jstats li { padding: 20px 12px; font-size: 14.5px; line-height: 19px; } .jstats b { font-size: 28px; line-height: 34px; }
+  @media (max-width: 600px) { .jstats { margin-top: 10px; border-radius: 18px; } .jstats li { padding: 20px 12px; font-size: 14.5px; line-height: 19px; } .jstats b { font-size: 28px; line-height: 34px; }
     .jfoot { font-size: 18px; line-height: 28px; } }
 
   /* HERO WITH THE DESK (9 Oct 2026): text left, the Today page right,
@@ -1265,32 +1318,56 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   <section class="sec" id="jumper-app">
     <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M11 18.5h2"/></svg>The app they jump with</p>
     <h2>Not a top-up app. The app they jump with.</h2>
-    <p class="lead">Jumpers open Manifest for everything on a jump day, so your desk lives where their attention already is.</p>
-    <div class="jgrid">
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h12a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3zM4 17a3 3 0 0 1 3-3h12M9 8h6"/></svg></div><b>Logbook</b><p>Every jump logged, signed off by the jumpers who were there.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l8.5 4.75v9.5L12 21.5l-8.5-4.75v-9.5z"/><path d="M3.5 7.25L12 12l8.5-4.75M12 12v9.5"/></svg></div><b>3D replays</b><p>Each jump replayed in 3D from the phone's GPS, shared with friends.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="7" width="14" height="14" rx="3"/><path d="M9 7V5.5a3 3 0 0 1 6 0V7M9 13h6"/></svg></div><b>Gear locker</b><p>Reserve repacks and AAD service dates, with a reminder before they run out.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4"/></svg></div><b>Safety</b><p>Currency, reserve and AAD checked before they get on a load.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M12 8v3.5l2 1.5M11 18.5h2"/></svg></div><b>Live loads</b><p>At Manifest Desk dropzones, their load is on the Lock Screen.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8.5" r="5"/><path d="M8.6 12.2L7.5 21.5l4.5-2.6 4.5 2.6-1.1-9.3"/></svg></div><b>Coaches and sign-offs</b><p>Find a coach, get skills signed off, keep the record.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10a3 3 0 1 0-3-3M3 12h15a3 3 0 1 1-3 3M3 16h7"/></svg></div><b>Weather</b><p>Winds on the ground and aloft at your dropzone.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20a6 6 0 0 1 12 0M17 11a3 3 0 1 0 0-6M21 20a6 6 0 0 0-4-5.6"/></svg></div><b>People and events</b><p>Find jumpers, message them, see what is on at the dropzone.</p></div>
+    <p class="lead">Your desk lives where their attention already is.</p>
+    <div class="bento">
+      <figure class="bt bt-hero bt-col">
+        <figcaption><b>Every jump in 3D.</b><span>Replayed from their phone.</span></figcaption>
+        <img class="bt-phone" src="/assets/opt/mock-3d.5f7a460f.webp" width="640" height="1328" alt="A jump replayed in 3D over Skydive Dubai in the Manifest app" loading="lazy" decoding="async">
+      </figure>
+      <figure class="bt bt-side bt-dark bt-row">
+        <figcaption><b>Landed out? One tap.</b><span>The desk sees where they are.</span></figcaption>
+        <img class="bt-phone" src="/assets/landout-phone.webp" width="640" height="1325" alt="Landout SOS chat in the Manifest app, sharing the jumper's location with the desk" loading="lazy" decoding="async">
+      </figure>
+      <figure class="bt bt-side bt-row">
+        <figcaption><b>Winds before they board.</b><span>On the ground and up high.</span></figcaption>
+        <img class="bt-phone bt-mul" src="/assets/features/app-weather.webp" width="568" height="1182" alt="Dropzone weather in the Manifest app with winds at each stage of the jump" loading="lazy" decoding="async">
+      </figure>
+      <figure class="bt bt-half bt-col">
+        <figcaption><b>Checked in with one scan.</b><span>Licence, reserve and AAD on their pass.</span></figcaption>
+        <img class="bt-screen" src="/assets/opt/hero-pass.ff5ab49a.webp" width="640" height="1391" alt="A jumper's Manifest check-in pass with licence, reserve repack and AAD in date" loading="lazy" decoding="async">
+      </figure>
+      <figure class="bt bt-half bt-col">
+        <figcaption><b>Their people, their dropzone.</b><span>Friends, coaches and 3D jumps.</span></figcaption>
+        <img class="bt-phone" src="/assets/opt/community2.0766b4cb.webp" width="560" height="1175" alt="The Manifest community feed with live dropzones and friends' 3D jumps" loading="lazy" decoding="async">
+      </figure>
     </div>
   </section>
 
   <section class="sec" id="features">
     <p class="eyebrow">Manifest Desk</p>
     <h2>Everything the desk needs.</h2>
-    <p class="lead">Dropzone management software for the whole day, from the first load to the beer light.</p>
-    <div class="grid">
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h12"/></svg></div><b>Loads and manifest</b><p>Build loads in exit order, reserve seats, keep teams together, standby by type and daily check-in. Weight and balance, required crew and double-manifest rules.</p></div>
-      <div class="card" id="hangar-board"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v11H3zM8 20h8M12 16v4"/></svg></div><b>Hangar board</b><p>A live board for every TV, with countdowns, holds, landing direction and one-tap alerts.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18v12H3zM3 10h18M7 15h3"/></svg></div><b>Jumper accounts</b><p>Balances, top-ups, jump tickets and guest payments with receipts, charged when the load departs. Gift vouchers for birthdays and Christmas.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4"/></svg></div><b>Safety overview</b><p>Currency, reserve and AAD checks, waivers and check-in rules per licence type, and a reminder that opens their gear screen.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20a6 6 0 0 1 12 0M17 11a3 3 0 1 0 0-6M21 20a6 6 0 0 0-4-5.6"/></svg></div><b>Staff and pay</b><p>Owner, Manifest and Crew roles, and pay per jump type, worked out from what actually flew, with a payroll export.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 13l8-2 4-7 2 1-2 7 6 1 2-3 1 1-1 4 1 4-1 1-2-3-6 1 2 7-2 1-4-7-8-2z"/></svg></div><b>Aircraft</b><p>Fuel, hours flown, a countdown to the 100-hour inspection and the annual, per plane, and a pilot view.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><b>Reports</b><p>Day log, cash drawer and end of day, liabilities and sales tax. CSV exports for the accountant.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h12a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3zM4 17a3 3 0 0 1 3-3h12M9 8h6"/></svg></div><b>Jumps log themselves</b><p>When a load departs, the jump writes itself into every jumper's jump history in Manifest.</p></div>
+    <p class="lead">From the first load to the beer light.</p>
+    <div class="bento">
+      <figure class="bt bt-full bt-dark bt-col" id="hangar-board">
+        <figcaption><b>Your hangar, live on TV.</b><span>Every load counting down, on every screen.</span></figcaption>
+        <img class="bt-shot" src="/assets/features/desk-board.webp" width="1600" height="1000" alt="The Manifest hangar board on a TV with three loads, boarding, called and open" loading="lazy" decoding="async">
+      </figure>
+      <figure class="bt bt-wide bt-col">
+        <figcaption><b>Landouts on a live map.</b><span>See them, message them, send a driver.</span></figcaption>
+        <img class="bt-shot bt-edge" src="/assets/features/desk-landout.webp" width="1400" height="825" alt="Landout SOS on Manifest Desk with the jumper on a satellite map and a chat" loading="lazy" decoding="async">
+      </figure>
+      <figure class="bt bt-narrow bt-col bt-center">
+        <figcaption><b>Paid in one tap.</b><span>Card or cash, with a receipt.</span></figcaption>
+        <img class="bt-card" src="/assets/features/desk-paid.webp" width="880" height="519" alt="A paid payment for a guest on load 7 in Manifest Desk" loading="lazy" decoding="async">
+      </figure>
+      <figure class="bt bt-narrow bt-col">
+        <figcaption><b>Your whole crew.</b><span>Roles, and pay from what flew.</span></figcaption>
+        <img class="bt-shot bt-edge bt-left" src="/assets/features/desk-staff.webp" width="1200" height="384" alt="The staff page in Manifest Desk with owners, manifest and crew" loading="lazy" decoding="async">
+      </figure>
+      <figure class="bt bt-wide bt-col">
+        <figcaption><b>Every dollar, counted.</b><span>Top-ups, Apple Pay and sales, day by day.</span></figcaption>
+        <img class="bt-shot bt-edge bt-left" src="/assets/features/desk-money.webp" width="1200" height="492" alt="Manifest Desk report with money in, jumps and a day by day chart" loading="lazy" decoding="async">
+      </figure>
     </div>
   </section>
 
@@ -1751,6 +1828,11 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   [L, J, D].forEach(function (x) { x.addEventListener('input', upd); });
   upd();
 })();
+</script>
+<script id="bento-in">
+(function(){var g=document.querySelectorAll('.bento');if(!('IntersectionObserver' in window)||!g.length)return;
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
+g.forEach(function(b){b.classList.add('anim');b.querySelectorAll('.bt').forEach(function(t,i){t.style.transitionDelay=(i%3)*80+'ms';io.observe(t);});});})();
 </script>
 </body>
 </html>
