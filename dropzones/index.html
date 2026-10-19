@@ -1127,6 +1127,10 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   .hero-media .desk-cap { margin-top: 44px; text-align: center; }
   /* STUDIO DISPLAY (19 Oct 2026, André): the desk shown on a Studio Display, white background blends with the page. */
   img.studio { display: block; width: 100%; height: auto; }
+  /* A touch of sky behind the Today display (André 19 Oct): Unsplash WCaquFjxfrs, Unsplash License. */
+  img.studio.sky { box-sizing: border-box; padding: clamp(20px, 4vw, 48px); border-radius: 28px;
+    background: #6E93AE url(/assets/features/sky.webp) center / cover no-repeat; filter: none; }
+  @media (max-width: 600px) { img.studio.sky { border-radius: 22px; } }
   /* André 19 Oct: never a grey card around the Studio Display. */
   .vis-media:has(img.studio) { background: transparent !important; padding: 0 !important; border-radius: 0 !important; }
   .hm-phone { position: absolute; right: -3%; bottom: -6%; width: 26%; max-width: 190px; height: auto; filter: drop-shadow(0 18px 28px rgba(15,23,42,.28)); }
@@ -1296,7 +1300,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       </ul>
     </div>
     <div class="vis-media">
-      <img class="studio" src="/assets/features/studio-desk-today.webp" alt="The Today page of Manifest Desk: charged for jumps today against last week, open loads, next load, standby and accounts" width="1600" height="1242" loading="lazy" decoding="async" />
+      <img class="studio sky" src="/assets/features/studio-desk-today-cut.webp" alt="The Today page of Manifest Desk: charged for jumps today against last week, open loads, next load, standby and accounts" width="1600" height="1242" loading="lazy" decoding="async" />
       <p class="desk-cap">Manifest Desk with sample data from a demo dropzone.</p>
     </div>
   </section>
