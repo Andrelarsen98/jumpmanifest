@@ -59,7 +59,6 @@ Manifest Desk is skydiving software and dropzone management software (a skydive 
 - 1% on top-ups jumpers make in the Manifest app, paid by the dropzone, never added to the jumper.
 - No fee on cash or card payments taken at the desk.
 - Every feature for every dropzone: unlimited aircraft and desk logins, staff pay, gift vouchers, CSV exports, several dropzones on one login. No tiers.
-- First 10 dropzones: half price seats for their whole first year.
 
 ## How to get it
 - Jumpers: download Manifest free on the App Store: https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429 (iPhone). Android is in the making.
