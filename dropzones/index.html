@@ -1127,6 +1127,8 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   .hero-media .desk-cap { margin-top: 44px; }
   /* STUDIO DISPLAY (19 Oct 2026, André): the desk shown on a Studio Display, white background blends with the page. */
   img.studio { display: block; width: 100%; height: auto; }
+  /* André 19 Oct: never a grey card around the Studio Display. */
+  .vis-media:has(img.studio) { background: transparent !important; padding: 0 !important; border-radius: 0 !important; }
   .hm-phone { position: absolute; right: -3%; bottom: -6%; width: 26%; max-width: 190px; height: auto; filter: drop-shadow(0 18px 28px rgba(15,23,42,.28)); }
   @media (max-width: 767px) { .hm-phone { width: 30%; right: -1%; bottom: -8%; } .hero-media .desk-cap { margin-top: 26px; } }
   figure.hero-media { margin: 0; }
@@ -1154,6 +1156,36 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   .faq-g + .faq-list { margin-bottom: 44px; }
   @media (max-width: 600px) { .faq-g { font-size: 21px; line-height: 28px; } .band-btn { font-size: 17px; width: 100%; } }
   </style>
+  <!-- THE APP THEY JUMP WITH (9 Oct 2026): everything below exists in the
+       app today; numbers from the database on 9 Oct 2026, rounded down. -->
+  <section class="sec" id="jumper-app">
+    <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M11 18.5h2"/></svg>The app they jump with</p>
+    <h2>Not a top-up app. The app they jump with.</h2>
+    <p class="lead">Your desk lives where their attention already is.</p>
+    <div class="bento">
+      <figure class="bt bt-hero bt-col">
+        <figcaption><b>Every jump in 3D.</b><span>Replayed from their phone.</span></figcaption>
+        <img class="bt-phone" src="/assets/opt/mock-3d.5f7a460f.webp" width="640" height="1328" alt="A jump replayed in 3D over Skydive Dubai in the Manifest app" loading="lazy" decoding="async">
+      </figure>
+      <figure class="bt bt-side bt-dark bt-row">
+        <figcaption><b>Landed out? One tap.</b><span>The desk sees where they are.</span></figcaption>
+        <img class="bt-phone" src="/assets/landout-phone.webp" width="640" height="1325" alt="Landout SOS chat in the Manifest app, sharing the jumper's location with the desk" loading="lazy" decoding="async">
+      </figure>
+      <figure class="bt bt-side bt-row">
+        <figcaption><b>Winds before they board.</b><span>On the ground and up high.</span></figcaption>
+        <img class="bt-phone bt-mul" src="/assets/features/app-weather.webp" width="568" height="1182" alt="Dropzone weather in the Manifest app with winds at each stage of the jump" loading="lazy" decoding="async">
+      </figure>
+      <figure class="bt bt-half bt-col">
+        <figcaption><b>Checked in with one scan.</b><span>Licence, reserve and AAD on their pass.</span></figcaption>
+        <img class="bt-phone" src="/assets/opt/checkin-pass-framed.webp" width="640" height="1325" alt="A jumper's Manifest check-in pass with licence, reserve repack and AAD in date" loading="lazy" decoding="async">
+      </figure>
+      <figure class="bt bt-half bt-col">
+        <figcaption><b>Their people, their dropzone.</b><span>Friends, coaches and 3D jumps.</span></figcaption>
+        <img class="bt-phone" src="/assets/opt/community2.0766b4cb.webp" width="560" height="1175" alt="The Manifest community feed with live dropzones and friends' 3D jumps" loading="lazy" decoding="async">
+      </figure>
+    </div>
+  </section>
+
   <!-- ONLY-US CARDS (14 Oct 2026): what a dropzone gets that it can't get elsewhere. -->
   <!-- LIVE IN IT (André, 16 Oct 2026): the jumper side as a reason for the owner.
        No competitor names, every feature is in the app today. -->
@@ -1311,35 +1343,6 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     <div class="band-cta"><a class="band-btn" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo&body=Dropzone%3A%20%0AName%3A%20%0APhone%3A%20%0ABest%20time%20for%20a%2020-minute%20video%20call%3A%20">Book a 20-minute demo<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
   </section>
 
-  <!-- THE APP THEY JUMP WITH (9 Oct 2026): everything below exists in the
-       app today; numbers from the database on 9 Oct 2026, rounded down. -->
-  <section class="sec" id="jumper-app">
-    <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M11 18.5h2"/></svg>The app they jump with</p>
-    <h2>Not a top-up app. The app they jump with.</h2>
-    <p class="lead">Your desk lives where their attention already is.</p>
-    <div class="bento">
-      <figure class="bt bt-hero bt-col">
-        <figcaption><b>Every jump in 3D.</b><span>Replayed from their phone.</span></figcaption>
-        <img class="bt-phone" src="/assets/opt/mock-3d.5f7a460f.webp" width="640" height="1328" alt="A jump replayed in 3D over Skydive Dubai in the Manifest app" loading="lazy" decoding="async">
-      </figure>
-      <figure class="bt bt-side bt-dark bt-row">
-        <figcaption><b>Landed out? One tap.</b><span>The desk sees where they are.</span></figcaption>
-        <img class="bt-phone" src="/assets/landout-phone.webp" width="640" height="1325" alt="Landout SOS chat in the Manifest app, sharing the jumper's location with the desk" loading="lazy" decoding="async">
-      </figure>
-      <figure class="bt bt-side bt-row">
-        <figcaption><b>Winds before they board.</b><span>On the ground and up high.</span></figcaption>
-        <img class="bt-phone bt-mul" src="/assets/features/app-weather.webp" width="568" height="1182" alt="Dropzone weather in the Manifest app with winds at each stage of the jump" loading="lazy" decoding="async">
-      </figure>
-      <figure class="bt bt-half bt-col">
-        <figcaption><b>Checked in with one scan.</b><span>Licence, reserve and AAD on their pass.</span></figcaption>
-        <img class="bt-phone" src="/assets/opt/checkin-pass-framed.webp" width="640" height="1325" alt="A jumper's Manifest check-in pass with licence, reserve repack and AAD in date" loading="lazy" decoding="async">
-      </figure>
-      <figure class="bt bt-half bt-col">
-        <figcaption><b>Their people, their dropzone.</b><span>Friends, coaches and 3D jumps.</span></figcaption>
-        <img class="bt-phone" src="/assets/opt/community2.0766b4cb.webp" width="560" height="1175" alt="The Manifest community feed with live dropzones and friends' 3D jumps" loading="lazy" decoding="async">
-      </figure>
-    </div>
-  </section>
 
   <section class="sec" id="features">
     <p class="eyebrow">Manifest Desk</p>
