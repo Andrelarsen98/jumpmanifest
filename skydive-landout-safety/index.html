@@ -598,7 +598,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 .seo-art.desk figcaption { margin-top: 18px; }
 .seo-art.lo-pair .lo-row { display: flex; align-items: flex-end; }
 .seo-art.lo-pair .win { flex: 1 1 auto; min-width: 0; }
-.seo-art.lo-pair .lo-phone { position: relative; flex: 0 0 26%; width: 26%; margin: 0 -3% -4% -12%; height: auto; filter: drop-shadow(0 18px 28px rgba(15,23,42,.28)); }
+.seo-art.lo-pair .lo-phone { position: relative; flex: 0 0 24%; width: 24%; margin: 0 -2% -6% -7%; height: auto; filter: drop-shadow(0 18px 28px rgba(15,23,42,.28)); }
 /* load-in, as on the home page */
 @keyframes rise { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
 .seo-hero .seo-copy > * { animation: rise .7s cubic-bezier(.2,.75,.25,1) both; }
@@ -609,6 +609,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 /* Laptops: side by side like the home hero (1.08fr / 1fr). */
 @media (min-width: 900px) {
   .seo-hero { grid-template-columns: 1.08fr 1fr; column-gap: 56px; min-height: 560px; }
+  .seo-hero.lo-hero { grid-template-columns: 0.9fr 1.25fr; column-gap: 48px; }
   .doc .seo-hero h1 { font-size: clamp(48px, 4.4vw, 64px); line-height: 1.04; letter-spacing: -1.6px; max-width: 15ch; }
   .seo-art .phone { width: clamp(220px, 21vw, 300px); }
   .seo-art .vid { width: clamp(260px, 25vw, 340px); }
@@ -679,13 +680,13 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 
 <main id="main" class="doc">
   <div class="wrap">
-    <div class="seo-hero">
+    <div class="seo-hero lo-hero">
       <div class="seo-copy">
         <h1>Skydive landout safety: find every jumper, fast</h1>
         <p class="intro">A jumper lands out, the next load is boarding, and nobody at the desk knows where they are or whether they are hurt. Manifest turns that moment into a live map, a driver on the way and a clear answer to one question: who&rsquo;s back after the load?</p>
         <p class="seo-cta"><a class="btn" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo">Book a 20-minute demo</a> <a class="seo-link" href="/dropzones/#pricing">See pricing</a></p>
       </div>
-      <figure class="seo-art desk lo-pair"><div class="lo-row"><img class="win" src="/assets/landout-desk.jpg?v=1" width="1600" height="860" alt="Manifest Desk showing a landout: the jumper on a live map 1.8 km from the dropzone, with the chat and a driver QR code" /><img class="lo-phone" src="/assets/landout-phone.webp?v=1" width="640" height="1325" alt="The jumper's phone: Manifest has your location, with the same chat" /></div><figcaption>The desk and the jumper's phone during a landout, with sample data from a demo dropzone.</figcaption></figure>
+      <figure class="seo-art desk lo-pair"><div class="lo-row"><img class="win" src="/assets/landout-desk.jpg?v=2" width="1600" height="926" alt="Manifest Desk showing a landout: the jumper on a live map 1.8 km from the dropzone, with the chat and a driver QR code" /><img class="lo-phone" src="/assets/landout-phone.webp?v=1" width="640" height="1325" alt="The jumper's phone: Manifest has your location, with the same chat" /></div><figcaption>The desk and the jumper's phone during a landout, with sample data from a demo dropzone.</figcaption></figure>
     </div>
 
     <h2>The problem every dropzone knows</h2>
