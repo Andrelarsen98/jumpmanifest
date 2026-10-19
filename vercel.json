@@ -23,6 +23,16 @@
   ],
   "redirects": [
     {
+      "source": "/dropzones/start",
+      "destination": "/dropzones/#pricing",
+      "permanent": false
+    },
+    {
+      "source": "/dropzones/start/",
+      "destination": "/dropzones/#pricing",
+      "permanent": false
+    },
+    {
       "source": "/get",
       "destination": "https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429",
       "permanent": false

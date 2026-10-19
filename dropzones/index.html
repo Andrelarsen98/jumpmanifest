@@ -306,7 +306,7 @@
   .pay-note { text-align: center; color: #71717B; font-size: 15px; margin-top: 14px; }
   @media (max-width: 600px) { .pay-row { gap: 10px 12px; } .pay-row img { height: 32px; } }
   .pc-desc { margin-top: 14px; font-size: 16px; line-height: 22.4px; font-weight: 500; color: rgba(23,23,23,.6); min-height: 45px; }
-  .pc-out { margin-top: 24px; height: 67px; border-width: 1px; border-radius: 20px; }
+  .pc-out { margin-top: 24px; height: 67px; border-width: 1.5px; border-radius: 20px; }
   .pc .pc-btn { margin-top: 24px; height: 67px; border-radius: 20px; }
   .pc-note { font-size: 12px; font-weight: 700; }
   .pc-fits { margin-top: 22px; border-radius: 10px; font-size: 16px; }
@@ -349,7 +349,8 @@
   .pr-dot { margin: 18px 0 0; display: inline-flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 600; color: #050505; }
   @media (max-width: 600px) { .pr-dot { max-width: 300px; align-items: flex-start; text-align: left; } .pr-dot span { margin-top: 7px; } }
   .pr-dot span { flex: none; width: 8px; height: 8px; border-radius: 50%; background: #6D42F5; box-shadow: 0 0 0 4px #F0ECFE; }
-  .pc-out.pr-wide { max-width: 1200px; margin: 32px auto 0; background: #fff; border-radius: 22px; }
+  .pr-all { max-width: 980px; }
+  .pc-out.pr-wide { max-width: 980px; margin: 32px auto 0; background: #fff; border-radius: 22px; }
   /* 19 Oct 2026: the closing band uses the same outline button as pricing. */
   .final .pc-out { display: inline-flex; margin-top: 0; padding: 0 36px; background: #fff; }
   @media (max-width: 600px) { .final .pc-out { width: 100%; padding: 0 20px; } }
@@ -1295,7 +1296,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
           <label class="calc-r"><span>Jumpers per load</span><b id="cJ">14</b><input type="range" id="iJ" min="2" max="23" value="14" aria-label="Jumpers per load" /></label>
           <label class="calc-r"><span>Days you fly a month</span><b id="cD">12</b><input type="range" id="iD" min="1" max="31" value="12" aria-label="Days you fly a month" /></label>
           <div class="calc-out"><span>Your month</span><b id="cT">$1,680</b><small id="cS">1,680 seats flown</small></div>
-          <p class="calc-pay"><b>Add $1 to your ticket and it pays for itself.</b> A $35 jump becomes $36, and Manifest Desk costs you $0.</p>
+          <p class="calc-pay"><b>Add $1 to your ticket and it pays for itself.</b> A $35 jump becomes $36, and your jumpers cover your seat fees.</p>
           <p class="calc-0">A month you do not fly: <b>$0</b></p>
         </div>
       </div>
