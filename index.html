@@ -1440,6 +1440,8 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   .vbox { position: relative; }
   .flag .vbox { width: min(340px, 68vw); margin: 30px auto 0; }
   .flag .vbox > .flagvid { width: 100%; margin: 0; }
+  /* Top-up phone measured against the Lock Screen video: same phone height (19 Oct). */
+  #topup .vbox { width: min(332px, 56vw) !important; }
   @media (max-width: 600px) { .flag .vbox { margin-top: 40px; } }
   @media (min-width: 900px) {
     .flag .vbox { grid-column: 2; grid-row: 1 / -1; align-self: center; justify-self: center; margin: 0; width: min(400px, 100%); }
