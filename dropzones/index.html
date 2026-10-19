@@ -1904,5 +1904,17 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
 g.forEach(function(b){b.classList.add('anim');b.querySelectorAll('.bt').forEach(function(t,i){t.style.transitionDelay=(i%3)*80+'ms';io.observe(t);});});})();
 </script>
+<script>
+// ASK OPENED (v103, 19 Oct 2026): a jumper's "ask your dropzone" message from
+// the app carries ?ask=<code>. A real person opening it runs this (link
+// previews in WhatsApp do not run scripts), so André learns it arrived. The
+// code is then taken out of the address bar so a re-share does not count again.
+(function () {
+  var c = new URLSearchParams(location.search).get('ask');
+  if (!c || !/^[a-f0-9]{6,16}$/.test(c)) return;
+  fetch('https://wkefdtglgbfprvfajrrw.supabase.co/functions/v1/desk-lead', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ kind: 'ask_opened', code: c }) }).catch(function () {});
+  try { history.replaceState(null, '', location.pathname + location.hash); } catch (e) {}
+})();
+</script>
 </body>
 </html>
