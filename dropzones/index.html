@@ -575,16 +575,15 @@
   .bt-dark { background: #050505; }
   .bt-dark b { color: #fff; } .bt-dark span { color: #D4D4D8; }
   .bt img { display: block; }
-  .bt-phone, .bt-screen { width: 300px; max-width: 72%; height: auto; margin: 36px auto -34%; }
-  .bt-screen { border-radius: 36px 36px 0 0; box-shadow: 0 0 0 1px rgba(5,5,5,.06); }
+  /* Phones always show the whole device (André, 19 Oct): never cut by the tile. */
+  .bt-phone { width: 260px; max-width: 70%; height: auto; margin: 40px auto 48px; flex: 0 0 auto; }
   .bt-mul { mix-blend-mode: multiply; }
-  .bt-row .bt-phone { width: 180px; max-width: 40%; margin: 40px 36px -120px 0; align-self: flex-start; flex: 0 0 auto; }
-  .bt-hero { grid-column: span 7; grid-row: span 2; min-height: 760px; }
+  .bt-row .bt-phone { width: 170px; max-width: 40%; margin: 28px 40px 28px 0; align-self: center; }
+  .bt-hero { grid-column: span 7; grid-row: span 2; }
   .bt-hero b { font-size: 48px; line-height: 52px; }
-  .bt-hero .bt-phone { width: 340px; margin-bottom: -30%; }
-  .bt-side { grid-column: span 5; height: 372px; }
-  .bt-half { grid-column: span 6; height: 600px; }
-  .bt-half .bt-phone, .bt-half .bt-screen { width: 280px; }
+  .bt-hero .bt-phone { width: 300px; margin: auto; padding: 40px 0 48px; box-sizing: content-box; }
+  .bt-side { grid-column: span 5; }
+  .bt-half { grid-column: span 6; }
   .bt-full { grid-column: span 12; }
   .bt-full b { font-size: 48px; line-height: 52px; }
   .bt-full .bt-shot { width: calc(100% - 112px); height: auto; margin: 44px auto 0; border-radius: 16px 16px 0 0; }
@@ -600,7 +599,7 @@
   @media (prefers-reduced-motion: reduce) { .bento.anim .bt { opacity: 1; transform: none; transition: none; } }
   @media (max-width: 980px) {
     .bt-hero, .bt-side, .bt-half, .bt-wide, .bt-narrow { grid-column: span 12; }
-    .bt-hero { grid-row: auto; min-height: 640px; }
+    .bt-hero { grid-row: auto; }
     .bt-narrow .bt-left, .bt-wide .bt-left { width: 130%; }
   }
   @media (max-width: 600px) {
@@ -611,10 +610,8 @@
     .bt span { font-size: 16px; line-height: 22px; margin-top: 8px; }
     .bt-row { flex-direction: column; align-items: center; }
     .bt-row figcaption { text-align: center; padding: 32px 24px 0; flex: 0 0 auto; align-self: stretch; }
-    .bt-row .bt-phone { width: 220px; max-width: 64%; margin: 28px auto -40%; align-self: center; }
-    .bt-hero, .bt-side, .bt-half { min-height: 0; height: 500px; }
-    .bt-phone, .bt-screen, .bt-hero .bt-phone, .bt-half .bt-phone, .bt-half .bt-screen { width: 230px; max-width: 66%; margin: 28px auto 0; }
-    .bt-screen { border-radius: 28px 28px 0 0; }
+    .bt-row .bt-phone { width: 190px; max-width: 58%; margin: 28px auto 32px; }
+    .bt-phone, .bt-hero .bt-phone { width: 190px; max-width: 58%; margin: 28px auto 32px; padding: 0; }
     .bt-wide, .bt-narrow { height: auto; }
     .bt-edge { width: 92%; margin-top: 28px; }
     .bt-narrow .bt-left, .bt-wide .bt-left { width: 160%; margin-left: 24px; }
@@ -1334,7 +1331,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       </figure>
       <figure class="bt bt-half bt-col">
         <figcaption><b>Checked in with one scan.</b><span>Licence, reserve and AAD on their pass.</span></figcaption>
-        <img class="bt-screen" src="/assets/opt/checkin-pass-v2.webp" width="640" height="1391" alt="A jumper's Manifest check-in pass with licence, reserve repack and AAD in date" loading="lazy" decoding="async">
+        <img class="bt-phone" src="/assets/opt/checkin-pass-framed.webp" width="640" height="1325" alt="A jumper's Manifest check-in pass with licence, reserve repack and AAD in date" loading="lazy" decoding="async">
       </figure>
       <figure class="bt bt-half bt-col">
         <figcaption><b>Their people, their dropzone.</b><span>Friends, coaches and 3D jumps.</span></figcaption>
