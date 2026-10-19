@@ -339,6 +339,11 @@
   .calc-out small { grid-column: 1 / -1; text-align: right; font-size: 14px; color: #71717B; }
   .calc-0 { margin-top: 14px; font-size: 15px; color: #71717B; }
   .calc-0 b { color: #050505; }
+  .why3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 980px; margin: 40px auto 0; text-align: left; }
+  .why3 > div { background: #fff; border: 1px solid #E4E4E7; border-radius: 10px; padding: 24px; }
+  .why3 b { display: block; font-family: "General Sans", "Manrope", sans-serif; font-weight: 600; font-size: 19px; letter-spacing: -.3px; color: #050505; }
+  .why3 p { margin: 8px 0 0; font-size: 15.5px; line-height: 23px; color: #71717B; }
+  @media (max-width: 980px) { .why3 { grid-template-columns: 1fr; max-width: 480px; } }
   @media (max-width: 980px) { .pps { grid-template-columns: 1fr; max-width: 480px; } }
   @media (max-width: 980px) { .pc.hl { order: -1; } }
   /* Compare table extras: the struck full price and a grey bar for "not in this plan". */
@@ -1256,8 +1261,13 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   <section class="pricing" id="pricing">
     <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="8" cy="8" r="1.5"/></svg>Pricing</p>
     <h2>Free until you fly.</h2>
-    <p class="lead">No monthly fee, no setup fee, no contract. You pay only for the seats that fly, and nothing in a month you do not fly.</p>
-    <div class="pc-grid pps">
+    <p class="lead">Why pay a fixed bill every month, through winter, rain and a broken plane? With Manifest Desk you pay nothing until your plane takes off.</p>
+    <div class="why3">
+      <div><b>Zero risk</b><p>No monthly fee, no setup fee, no contract. Run it next to your current system for free. If you never fly a load on it, you never pay a cent.</p></div>
+      <div><b>Never pay for a grounded day</b><p>Winter, weather, a plane in maintenance: $0. You pay $1 only for each seat that flies.</p></div>
+      <div><b>Set up for you, free</b><p>We move your jumpers, balances and prices over for you, and we're with you on your first Saturday.</p></div>
+    </div>
+    <div class="pc-grid pps" style="margin-top:32px">
       <div class="pc hl"><div class="pc-band">One price for every dropzone</div>
         <div class="pc-in">
           <h3>Manifest Desk</h3>
