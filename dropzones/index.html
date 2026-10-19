@@ -341,13 +341,17 @@
   .calc-0 b { color: #050505; }
   .calc-pay { margin-top: 18px; background: #F0ECFE; border-radius: 12px; padding: 14px 16px; font-size: 15px; line-height: 22px; color: #3a3448; }
   .calc-pay b { color: #050505; font-weight: 600; }
-  .why3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 980px; margin: 40px auto 0; text-align: left; }
-  .why3 > div { background: #fff; border: 1px solid #E4E4E7; border-radius: 10px; padding: 24px; }
-  .why3 b { display: block; font-family: "General Sans", "Manrope", sans-serif; font-weight: 600; font-size: 19px; letter-spacing: -.3px; color: #050505; }
-  .why3 p { margin: 8px 0 0; font-size: 15.5px; line-height: 23px; color: #71717B; }
-  .pr-cta { margin-top: 36px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
-  .pr-cta p { margin: 0; font-size: 16px; font-weight: 600; color: #050505; }
-  @media (max-width: 980px) { .why3 { grid-template-columns: 1fr; max-width: 480px; } }
+  /* PRICING, Softriver structure (19 Oct 2026): a wide two-line promise, a
+     smaller line, a dot line, the price, a wide outline button, a guarantee. */
+  .pricing h2.pr-h { max-width: 980px; margin-left: auto; margin-right: auto; text-wrap: balance; }
+  .pr-dot { margin: 18px 0 0; display: inline-flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 600; color: #050505; }
+  @media (max-width: 600px) { .pr-dot { max-width: 300px; align-items: flex-start; text-align: left; } .pr-dot span { margin-top: 7px; } }
+  .pr-dot span { flex: none; width: 8px; height: 8px; border-radius: 50%; background: #6D42F5; box-shadow: 0 0 0 4px #F0ECFE; }
+  .pc-out.pr-wide { max-width: 1200px; margin: 32px auto 0; background: #fff; border-radius: 22px; }
+  .pr-guar { max-width: 760px; margin: 72px auto 0; }
+  .pr-guar h3 { font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: clamp(24px, 2.6vw, 32px); letter-spacing: -.6px; color: #050505; }
+  .pr-guar p { margin: 16px 0 0; font-size: 18px; line-height: 28px; color: #71717B; text-wrap: balance; }
+  .pr-guar .pr-guar-s { margin-top: 10px; font-size: 16px; line-height: 24px; }
   @media (max-width: 980px) { .pps { grid-template-columns: 1fr; max-width: 480px; } }
   @media (max-width: 980px) { .pc.hl { order: -1; } }
   /* Compare table extras: the struck full price and a grey bar for "not in this plan". */
@@ -1264,18 +1268,10 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
        The Desk enforces these limits in code. -->
   <section class="pricing" id="pricing">
     <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="8" cy="8" r="1.5"/></svg>Pricing</p>
-    <h2>Free until you fly.</h2>
-    <p class="lead">Why pay a fixed bill every month, through winter, rain and a broken plane? With Manifest Desk you pay nothing until your plane takes off.</p>
-    <div class="why3">
-      <div><b>Zero risk</b><p>No monthly fee, no setup fee, no contract. Run it next to your current system for free. If you never fly a load on it, you never pay a cent.</p></div>
-      <div><b>Never pay for a grounded day</b><p>Winter, weather, a plane in maintenance: $0. You pay $1 only for each seat that flies.</p></div>
-      <div><b>Set up for you, free</b><p>We move your jumpers, balances and prices over for you, and we're with you on your first Saturday.</p></div>
-    </div>
-    <div class="pr-cta">
-      <a class="btn primary" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20get%20started">Get Manifest Desk free<span class="bi"><svg viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></span></a>
-      <p>Same price for every dropzone. No quotes, nothing hidden.</p>
-    </div>
-    <div class="pc-grid pps" style="margin-top:32px">
+    <h2 class="pr-h">World-class manifest software,<br />free until your plane takes off.</h2>
+    <p class="lead">Manifest software usually means a fixed bill every month, flying or not. Manifest Desk costs nothing until you fly, then $1 for each seat that does.</p>
+    <p class="pr-dot"><span aria-hidden="true"></span>Same price for every dropzone. No quotes, nothing hidden.</p>
+    <div class="pc-grid pps">
       <div class="pc hl"><div class="pc-band">One price for every dropzone</div>
         <div class="pc-in">
           <h3>Manifest Desk</h3>
@@ -1302,8 +1298,12 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       <h3>Everything included, for every dropzone</h3>
       <ul><li><span class="pr-yes" aria-hidden="true"><svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span>Unlimited aircraft</span></li><li><span class="pr-yes" aria-hidden="true"><svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span>Unlimited desk logins, crew free</span></li><li><span class="pr-yes" aria-hidden="true"><svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span>Loads, calls and holds on every phone</span></li><li><span class="pr-yes" aria-hidden="true"><svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span>Hangar board on every TV</span></li><li><span class="pr-yes" aria-hidden="true"><svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span>Self-manifest from the app</span></li><li><span class="pr-yes" aria-hidden="true"><svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span>Apple Pay and card top-ups</span></li><li><span class="pr-yes" aria-hidden="true"><svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span>Jumper accounts and jump bundles</span></li><li><span class="pr-yes" aria-hidden="true"><svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span>Currency, reserve and AAD checks</span></li><li><span class="pr-yes" aria-hidden="true"><svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span>Landout alert on a live map</span></li><li><span class="pr-yes" aria-hidden="true"><svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span>Staff pay and payroll export</span></li><li><span class="pr-yes" aria-hidden="true"><svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span>Gift vouchers</span></li><li><span class="pr-yes" aria-hidden="true"><svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span>Reports and CSV exports</span></li><li><span class="pr-yes" aria-hidden="true"><svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span>Aircraft hours and inspections</span></li><li><span class="pr-yes" aria-hidden="true"><svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span>Several dropzones on one login</span></li><li><span class="pr-yes" aria-hidden="true"><svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span>We move your jumpers over</span></li></ul>
     </div>
-    <p class="pr-founder">We move your jumpers over, you run it next to your current system until you trust it, and we're with you on your first Saturday.</p>
-    <p class="pr-founder pr-plain">No fee on cash or your card terminal at the desk. No lock-in, stop anytime.</p>
+    <a class="pc-out pr-wide" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20get%20started">Get Manifest Desk free <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    <div class="pr-guar">
+      <h3>Zero risk. Never pay for a grounded day.</h3>
+      <p>No monthly fee, no setup fee, no contract. Run it next to your current system, and if you never fly a load on it, you never pay a cent. Winter, weather or a plane in maintenance: $0.</p>
+      <p class="pr-guar-s">We move your jumpers, balances and prices over for free, and we're with you on your first Saturday.</p>
+    </div>
     <!-- PAYMENTS ACCEPTED (9 Oct 2026, after Softriver's row): what jumpers can
          pay with in the app today. Official icon files from Shopify's
          payment_icons (activemerchant/payment_icons), never redrawn. -->
