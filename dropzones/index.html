@@ -517,6 +517,24 @@
   .band h2 { color: #fff; }
   @media (max-width: 600px) { .band br.dk { display: none; } }
   .band .band-sub { color: #D1D1D6; }
+  /* FILM BAND (19 Oct 2026, André): the dark band becomes a 4:3 window of
+     1960s jump film (Free Fall Safety Procedures, public domain), silent,
+     15 s loop, 1.4 MB. Text inverts against the film like andrelarsen.com
+     (white + difference blend). Reduced motion shows the still. */
+  .band.band-film { max-width: 980px; aspect-ratio: 4 / 3; margin-left: auto; margin-right: auto; padding: 48px 40px; border-radius: 10px; overflow: hidden;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .band.band-film::before { display: none; }
+  .band-vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; background: #050505; }
+  .band-ink-wrap { display: grid; }
+  .band-ink { grid-area: 1 / 1; }
+  .band.band-film .band-ink h2, .band.band-film .band-ink .band-sub, .band.band-film .band-ink .h2 { color: #fff; mix-blend-mode: difference; }
+  /* The same text again in grey with a saturation blend: it takes the colour
+     out of the inverted letters, so they stay black, white and grey (never
+     orange on the blue film). */
+  .band.band-film .band-ink-grey h2, .band.band-film .band-ink-grey .h2, .band.band-film .band-ink-grey .band-sub { color: #808080; mix-blend-mode: saturation; }
+  .band.band-film .band-ink-grey .h2 { margin: 0; }
+  @media (max-width: 600px) { .band.band-film { aspect-ratio: auto; min-height: 560px; padding: 40px 20px; } }
+  @media (prefers-reduced-motion: reduce) { .band-vid { display: none; } .band.band-film { background: #050505 url(/assets/video/dz-band.jpg?v=1) center / cover; } }
 
   @media (max-width: 900px) { .vs { grid-template-columns: 1fr; } }
   @media (max-width: 600px) {
@@ -1213,9 +1231,18 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   </section>
 
   <!-- DARK BAND (9 Oct 2026): the line André picked, numbers from BRAND.md. -->
-  <section class="band" id="connected">
-    <h2>Your jumpers already carry the app.<br class="dk" /> Now it runs your dropzone.</h2>
-    <p class="band-sub">We move your jumpers over, you run it next to your current system until you trust it, and you can cancel anytime.</p>
+  <section class="band band-film" id="connected">
+    <video class="band-vid" src="/assets/video/dz-band.mp4?v=1" poster="/assets/video/dz-band.jpg?v=1" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+    <div class="band-ink-wrap">
+      <div class="band-ink">
+      <h2>Your jumpers already carry the app.<br class="dk" /> Now it runs your dropzone.</h2>
+      <p class="band-sub">We move your jumpers over, you run it next to your current system until you trust it, and you can cancel anytime.</p>
+      </div>
+      <div class="band-ink band-ink-grey" aria-hidden="true">
+      <h2>Your jumpers already carry the app.<br class="dk" /> Now it runs your dropzone.</h2>
+      <p class="band-sub">We move your jumpers over, you run it next to your current system until you trust it, and you can cancel anytime.</p>
+      </div>
+    </div>
     <div class="band-cta"><a class="band-btn" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo&body=Dropzone%3A%20%0AName%3A%20%0APhone%3A%20%0ABest%20time%20for%20a%2020-minute%20video%20call%3A%20">Book a 20-minute demo<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
   </section>
 
