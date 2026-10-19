@@ -1,0 +1,1469 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="apple-itunes-app" content="app-id=6778510429" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Manifest Desk (draft)</title>
+<meta name="robots" content="noindex, nofollow" />
+<meta name="description" content="Manifest Desk is dropzone management software: loads and exit order, standby, accounts, payments, waivers and safety checks, with load calls on every Lock Screen." />
+<meta property="og:url" content="https://www.jumpmanifest.com/dropzones/" />
+<meta property="og:title" content="Dropzone Management Software: Manifest Desk" />
+<meta property="og:description" content="Loads, money, staff and safety on one screen, with every load call on every jumper's Lock Screen. Free until you fly: $1 per seat flown, no monthly fee." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Manifest" />
+<meta property="og:image" content="https://www.jumpmanifest.com/assets/og-image.png?v=10" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:title" content="Dropzone Management Software: Manifest Desk" />
+<meta name="twitter:description" content="Loads, money, staff and safety on one screen, with every load call on every jumper's Lock Screen. Free until you fly: $1 per seat flown, no monthly fee." />
+<meta name="twitter:image" content="https://www.jumpmanifest.com/assets/og-image.png?v=10" />
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg?v=4" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=4" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Manrope:wght@400..800&display=swap" rel="stylesheet" />
+<style>
+  :root { --ink: #050505; --ink2: #3a3448; --muted: #6f6982; --line: rgba(15,11,28,.08); --cloud: #EDEFF7; --violet: #7C3AED; --violet-d: #6D28D9; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Plus Jakarta Sans", -apple-system, sans-serif; color: var(--ink); background: #fff; -webkit-font-smoothing: auto; line-height: 1.5; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+
+  .topbar { position: relative; top: 0; z-index: 60; background: rgba(255,255,255,.94); border-bottom: 1px solid var(--line); }
+  .topbar-in { max-width: none; margin: 0; height: 76px; padding: 0 5%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .wordmark { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); }
+  .wordmark img { width: 34px; height: auto; }
+  .wordmark img.wm { width: auto; height: 22px; }
+  .wordmark span { font-family: "Manrope", sans-serif; font-weight: 700; font-size: 29px; letter-spacing: -0.055em; line-height: 1; margin-top: -3px; }
+  .tb-links { display: flex; align-items: center; gap: 34px; }
+  .tb-links a { font-size: 15.5px; font-weight: 600; color: #0f0b1c; letter-spacing: -0.01em; }
+  .tb-links a:hover { color: var(--muted); }
+  .tb-links a.on { color: var(--violet-d); }
+  .tb-links .soon { display: inline-flex; align-items: center; gap: 7px; }
+  .tb-links .soon em { font-style: normal; font-size: 10.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--violet-d); background: rgba(124,58,237,.1); border-radius: 99px; padding: 3px 7px; }
+  .tb-cta { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 99px; background: #F2F2F5; color: var(--ink); font-size: 15px; font-weight: 700; }
+  .tb-cta:hover { background: #E7E7EC; }
+  .tb-cta svg { width: 15px; height: 15px; }
+  /* Mobile menu, measured from softriver.co: a 50px grey circle with two
+     24x2 lines that turn into an X, and a white panel that slides down from
+     under the header in 0.4 s. Links are the desktop ones, cloned. */
+  .tb-burger { display: none; width: 50px; height: 50px; border: 0; padding: 0; border-radius: 50%;
+               background: #E4E4E7; cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+               -webkit-tap-highlight-color: transparent; }
+  .tb-burger span { display: block; width: 24px; height: 2px; background: #040815; transition: transform .4s ease; }
+  .tb-burger[aria-expanded="true"] span:first-child { transform: translateY(5px) rotate(45deg); }
+  .tb-burger[aria-expanded="true"] span:last-child { transform: translateY(-5px) rotate(-45deg); }
+  .tb-drop { position: absolute; left: 0; right: 0; top: 100%; overflow: hidden; pointer-events: none; }
+  .tb-menu { background: #fff; border-bottom: 1px solid #E4E4E7; padding: 16px 0; text-align: center;
+             transform: translateY(-101%); transition: transform .4s ease; visibility: hidden; }
+  .tb-menu a { display: block; padding: 12px 20px; font-size: 16px; line-height: 24px; font-weight: 600; color: #040815; }
+  .tb-menu a em { display: none; }
+  .topbar.open .tb-drop { pointer-events: auto; }
+  .topbar.open .tb-menu { transform: none; visibility: visible; }
+  .tb-menu { transition: transform .4s ease, visibility 0s linear .4s; }
+  .topbar.open .tb-menu { transition: transform .4s ease, visibility 0s; }
+  @media (max-width: 600px) { .tb-cta { display: none !important; } .tb-burger { display: flex; } }
+
+
+  .hero { text-align: center; padding: 56px 0 0; }
+  .kicker { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: var(--violet-d); background: rgba(124,58,237,.08); border-radius: 99px; padding: 7px 14px; }
+  .kicker i { width: 7px; height: 7px; border-radius: 50%; background: var(--violet); box-shadow: 0 0 0 0 rgba(124,58,237,.5); animation: pulse 1.8s infinite; }
+  @keyframes pulse { 70% { box-shadow: 0 0 0 8px rgba(124,58,237,0); } 100% { box-shadow: 0 0 0 0 rgba(124,58,237,0); } }
+  h1 { font-size: clamp(42px, 6.4vw, 76px); font-weight: 800; letter-spacing: -0.045em; line-height: 1.02; margin: 22px auto 0; max-width: 900px; }
+  h1 span { color: var(--violet); }
+  .sub { font-size: clamp(17px, 2vw, 20px); color: var(--muted); max-width: 640px; margin: 22px auto 0; }
+  .ctas { display: flex; gap: 12px; justify-content: center; margin-top: 34px; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 26px; border-radius: 99px; font-weight: 700; font-size: 16px; }
+  .btn.primary { background: var(--violet); color: #fff; box-shadow: 0 10px 30px rgba(124,58,237,.3); }
+  .btn.primary:hover { background: var(--violet-d); }
+  .btn.ghost { background: #F2F2F5; color: var(--ink); }
+  .btn svg { width: 16px; height: 16px; }
+
+  /* THE DESK FIRST (9 Oct 2026): the real desk in a browser frame, full
+     width straight under the hero text, with a one-line caption and points. */
+  .frame { margin: 56px 0 0; border-radius: 16px; background: #fff; overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(112,115,147,.16), 0 30px 80px rgba(30,30,42,.14); }
+  .frame-bar { height: 36px; display: flex; align-items: center; gap: 7px; padding: 0 14px; background: #F6F7F9; border-bottom: 1px solid rgba(112,115,147,.12); }
+  .frame-bar i { width: 11px; height: 11px; border-radius: 50%; background: #DCDDE3; }
+  .frame-bar span { margin-left: 12px; font-size: 13px; color: #70707D; }
+  .frame img { display: block; width: 100%; height: auto; }
+  .frame-cap { margin-top: 28px; font-size: 18px; line-height: 28px; color: #71717B; }
+  .peek-points { display: flex; justify-content: center; gap: 10px 28px; flex-wrap: wrap; margin: 14px 0 0; color: #71717B; font-size: 15px; }
+  .peek-points b { color: var(--ink); font-weight: 600; }
+
+  /* JUMPER APP (9 Oct 2026): plain cloud panel, three white cards, no
+     photo and no hover effects. */
+  .app-panel { margin-top: 44px; background: #EDEFF7; border-radius: 28px; padding: 16px; }
+  .app-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .app-card { background: #fff; border-radius: 22px; padding: 30px 28px 32px; }
+  .app-card .n { display: inline-block; font-size: 13px; font-weight: 700; line-height: 18px; color: #050505; background: #F0ECFE; border-radius: 99px; padding: 5px 11px; }
+  .app-card b { display: block; margin-top: 22px; font-size: 20px; line-height: 27px; letter-spacing: -0.01em; font-weight: 600; }
+  .app-card p { margin-top: 8px; color: #71717B; font-size: 16px; line-height: 25px; }
+  .app-foot { text-align: center; margin-top: 32px; font-size: 20px; line-height: 31px; color: #71717B; }
+  .app-foot b { color: #050505; font-weight: 600; }
+
+  /* SAFETY (9 Oct 2026): text on the left, three points on the right. */
+  .safety { display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center; }
+  .safety h2 { text-align: left !important; }
+  .safety .txt { margin-top: 20px; color: #71717B; font-size: 20px; line-height: 31px; max-width: 600px; }
+  .s-points { list-style: none; display: grid; gap: 12px; }
+  .s-points li { display: flex; align-items: center; gap: 14px; background: #fff; border: 1px solid #E4E4E7; border-radius: 22px; padding: 20px 22px; font-size: 17px; line-height: 24px; font-weight: 600; color: #050505; }
+  .s-points .dot { width: 28px; height: 28px; border-radius: 50%; background: #6D42F5; color: #fff; flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; }
+  .s-points .dot svg { width: 14px; height: 14px; }
+  @media (max-width: 900px) { .safety { grid-template-columns: 1fr; gap: 32px; } .app-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 600px) { .app-panel { border-radius: 22px; padding: 10px; } .app-grid { gap: 10px; } .app-card { padding: 24px 22px 26px; }
+    .safety .txt, .app-foot { font-size: 17px; line-height: 27px; } .frame { margin-top: 40px; border-radius: 12px; } .frame-bar { height: 28px; }
+    .frame-bar i { width: 8px; height: 8px; } .frame-cap { font-size: 16px; line-height: 25px; } .peek-points { font-size: 14px; } }
+  .sec h2 { font-size: clamp(30px, 4vw, 44px); letter-spacing: -0.035em; line-height: 1.1; text-align: center; }
+  .sec .lead { text-align: center; color: var(--muted); font-size: 18px; margin: 12px auto 0; max-width: 560px; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 44px; }
+  .card { background: #F7F7F9; border-radius: 22px; padding: 26px 22px 28px; }
+  .ico { width: 44px; height: 44px; border-radius: 12px; background: #fff; box-shadow: 0 2px 6px rgba(15,11,28,.06); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+  .ico svg { width: 22px; height: 22px; stroke: var(--violet-d); }
+  .card b { display: block; font-size: 17px; letter-spacing: -0.01em; margin-bottom: 6px; }
+  .card p { color: var(--muted); font-size: 14.5px; }
+
+  .final { text-align: center; }
+  .final h2 { font-size: clamp(32px, 4.4vw, 52px); letter-spacing: -0.04em; line-height: 1.05; }
+  .final p { color: var(--muted); font-size: 18px; margin: 14px auto 0; max-width: 520px; }
+  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: 14px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+  /* ---------- WIDE LAYOUT on laptops (1 Oct 2026) ----------
+     Same as the home page: Softriver's 1280 width with 5% sides, the
+     headline left-aligned and big, bigger section headings. Phones untouched. */
+  @media (min-width: 900px) {
+    .wrap { max-width: 1280px; padding: 0 5%; }
+    .hero { text-align: left; }
+    .hero h1 { margin: 26px 0 0; max-width: 13ch; font-size: clamp(64px, 7.2vw, 96px); line-height: 1; letter-spacing: -.045em; }
+    .hero .sub { margin: 26px 0 0; max-width: 620px; font-size: clamp(18px, 1.7vw, 21px); }
+    .hero .ctas { justify-content: flex-start; margin-top: 38px; }
+    .sec h2 { font-size: clamp(50px, 5.4vw, 74px); }
+    .sec .lead { font-size: 20px; max-width: 620px; }
+    .grid { margin-top: 56px; }
+    .card { padding: 30px 26px 32px; }
+    .card b { font-size: 19px; }
+    .card p { font-size: 15.5px; }
+    .final h2 { font-size: clamp(50px, 5.4vw, 74px); max-width: 18ch; margin: 0 auto; }
+    .final p { font-size: 20px; max-width: 580px; }
+  }
+
+  /* ---------- SOFTRIVER TYPE AND BUTTONS (1 Oct 2026) ----------
+     Measured from softriver.co/white-label: body and buttons in Manrope,
+     purple #6D42F5, subline 20px/31px #71717B with the claim in 600 black,
+     64px pill buttons with a 48px chevron circle, a #F0ECFE badge. */
+  :root { --violet: #6D42F5; --violet-d: #6D42F5; }
+  body { font-family: "Manrope", -apple-system, sans-serif; }
+  .kicker { font-family: "Manrope", sans-serif; background: #F0ECFE; color: #040815; font-size: 12px; font-weight: 500;
+            line-height: 18px; padding: 7px 14px; border-radius: 224px; }
+  .kicker b { font-weight: 700; }
+  /* Headings: General Sans 500 (Fontshare, free for commercial use), the
+     closest free match to Softriver's Neue Montreal 500, which is paid.
+     -2px at 72px = -0.028em, as theirs. */
+  h1, h2 { font-family: "General Sans", "Manrope", sans-serif; font-weight: 500; letter-spacing: -.028em; }
+  h2 { text-wrap: balance; }
+  h1 { line-height: 1; }
+  h1 span { color: #6D42F5; }
+  /* The sentence in grey so the black wordmark lands as the punchline (2 Oct 2026). */
+  h1 .dim { color: #71717A; display: inline !important; }
+  h1 span.l2 { color: inherit; } /* the second line is all ink: "on", the black wordmark, the full stop */
+  .sub { font-family: "Manrope", sans-serif; font-size: 20px; font-weight: 400; line-height: 31px; color: #71717B; }
+  .sub b { font-weight: 600; color: #000; }
+  .btn { font-family: "Manrope", sans-serif; font-size: 20px; font-weight: 600; line-height: 30px; border-radius: 28px; }
+  .btn.primary { background: #6D42F5; color: #fff; height: 64px; padding: 8px 8px 8px 28px; gap: 12px; justify-content: space-between;
+    box-shadow: rgba(109,66,245,.08) 0 4px 4px, rgba(109,66,245,.04) 0 8px 8px, rgba(109,66,245,.02) 0 16px 5px,
+                inset 0 0 2px rgba(255,255,255,.12), inset 0 0 20px rgba(255,255,255,.08); }
+  .btn.primary:hover { background: #6D42F5; filter: brightness(1.06); }
+  .btn .bi { width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.08);
+             display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+  .btn .bi svg { width: 8px; height: 14px; }
+  .btn.ghost { background: #F6F6F6; color: #040815; padding: 17.6px 22px; }
+  @media (min-width: 900px) { .hero h1 { font-size: clamp(64px, 7.2vw, 96px); letter-spacing: -.028em; max-width: none; } .hero h1 span { display: block; } }
+  @media (max-width: 600px) { .sub { font-size: 17px; line-height: 27px; } .btn { font-size: 17px; } .btn.primary { height: 56px; padding: 6px 6px 6px 22px; }
+    .btn .bi { width: 44px; height: 44px; } .btn.ghost { padding: 13px 20px; } }
+
+  /* ---------- SOFTRIVER HERO LAYOUT (1 Oct 2026) ----------
+     Measured at 1440: a 1280 content box with the 5% padding OUTSIDE it
+     (text starts at 80), h1 a fixed 72px/72px -2px, subline two lines at
+     20/31, buttons and the trust row on one line, a red-dot line beside the
+     pill. */
+  .live { display: inline-flex; align-items: center; gap: 10px; font-family: "Manrope", sans-serif; font-size: 14px; font-weight: 500; color: #040815; }
+  .live i { width: 6px; height: 6px; border-radius: 50%; background: #F04438; box-shadow: 0 0 0 4px rgba(240,68,56,.14); }
+  .kicker-brand { display: inline-flex; align-items: baseline; gap: 5px; font-family: "Manrope", sans-serif; font-size: 20px; line-height: 1; font-weight: 700; color: #050505; padding: 9px 16px 10px; letter-spacing: -.02em; }
+  .kicker-brand img { height: 15px; width: auto; display: inline-block; align-self: baseline; }
+  .toprow { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 12px 20px; }
+  .herorow { display: flex; flex-direction: column; align-items: center; gap: 28px; margin-top: 34px; }
+  .herorow .ctas { margin-top: 0; }
+  .trust { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px 0;
+           font-family: "Manrope", sans-serif; font-size: 16px; font-weight: 400; color: #040815; }
+  .trust > * { display: inline-flex; align-items: center; gap: 8px; padding: 0 16px; line-height: 24px; color: inherit; }
+  .trust > * + * { border-left: 1px solid rgba(15,11,28,.12); }
+  .trust svg { width: 20px; height: 20px; flex: 0 0 auto; }
+  .trust svg.flag { width: 22px; height: 15px; border-radius: 2px; box-shadow: 0 0 0 1px rgba(15,11,28,.08); }
+  .trust svg.flag + svg.flag { margin-left: -2px; }
+  .trust img { width: 22px; height: 22px; object-fit: contain; }
+  @media (min-width: 900px) {
+    .wrap { max-width: calc(1280px + 10vw); padding: 0 5vw; }
+    .hero { padding: 16px 0 0; }
+    .toprow { justify-content: flex-start; }
+    .hero h1 { font-size: 72px; line-height: 72px; letter-spacing: -2px; margin-top: 20px; }
+    .hero .sub { max-width: none; margin-top: 24px; }
+    .herorow { flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px 28px; margin-top: 32px; }
+    .trust { justify-content: flex-start; }
+    .trust > :first-child { padding-left: 0; }
+    .peek-points { justify-content: flex-start; }
+    .hero h1 { text-wrap: balance; max-width: 20ch; }
+  }
+  @media (max-width: 600px) { .trust { font-size: 14px; gap: 12px 18px; } .trust > * { padding: 0; border-left: 0 !important; }
+    .hero .sub br { display: none; } }
+
+  /* "manifest" in the headline is the real wordmark in the purple: its
+     x-height (1080 of the 1520 box) matched to General Sans' 0.53em. */
+  .wm-h1 { display: inline-block; height: .746em; width: auto; vertical-align: -.015em; margin-left: .02em; }
+  /* Owner bar, measured from softriver.co/white-label: #2D0896, 56px tall,
+     16/24 Manrope white at -0.32px. Says who the page is for and sends
+     jumpers who land here to the App Store. */
+  .ownerbar { background: #111111; color: #fff; text-align: center; padding: 16px 5vw; font-family: "Manrope", sans-serif;
+              font-size: 16px; font-weight: 400; line-height: 24px; letter-spacing: -.32px; }
+  .ownerbar a { color: #fff; font-weight: 600; white-space: nowrap; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(255,255,255,.4); }
+  .ownerbar a:hover { text-decoration-color: #fff; }
+  @media (max-width: 600px) { .ownerbar { font-size: 13.5px; line-height: 20px; padding: 11px 16px; } }
+  /* ---------- PRICING (1 Oct 2026) ----------
+     Softriver's plan cards, our content: white cards with a hairline, the
+     middle one outlined in purple under a purple band, "Custom" where they
+     show a price, a ticked list, and one strip of what every size gets. */
+  .pricing { text-align: center; }
+  .pr-top { display: inline-flex; align-items: center; gap: 10px; font-family: "Manrope", sans-serif; font-size: 16px; line-height: 24px; color: #040815; }
+  .pr-top i { width: 6px; height: 6px; border-radius: 50%; background: #F04438; box-shadow: 0 0 0 4px rgba(240,68,56,.14); }
+  .pricing h2 { margin-top: 18px; font-size: clamp(36px, 5.4vw, 74px); letter-spacing: -.028em; line-height: 1.05; }
+  .pricing .lead { color: var(--muted); font-size: 20px; line-height: 31px; margin: 18px auto 0; max-width: 760px; text-wrap: balance; }
+  .pr-basis { margin-top: 14px; font-size: 16px; line-height: 24px; font-weight: 600; color: #040815; }
+  .pc-grid { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: end; text-align: left; }
+  .pc { background: #fff; border: 1px solid #E4E4E7; border-radius: 22px; overflow: hidden; }
+  .pc.hl { border: 2px solid #6D42F5; box-shadow: 0 24px 60px rgba(109,66,245,.14); }
+  .pc-band { background: #6D42F5; color: #fff; text-align: center; font-family: "Manrope", sans-serif; font-weight: 600; font-size: 17px; letter-spacing: .02em; text-transform: uppercase; padding: 14px 0; }
+  .pc-in { padding: 36px 34px 38px; }
+  .pc h3 { font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: 24px; letter-spacing: -.5px; color: #040815; }
+  .pc-price { margin-top: 18px; font-family: "General Sans", "Manrope", sans-serif; font-weight: 600; font-size: 48px; line-height: 1; letter-spacing: -1.5px; color: #040815; }
+  .pc-desc { margin-top: 18px; font-size: 17px; line-height: 26px; color: #71717B; min-height: 52px; }
+  .pc-out { margin-top: 26px; display: flex; align-items: center; justify-content: center; gap: 10px; height: 64px; border: 1.5px solid #6D42F5; border-radius: 28px;
+            color: #6D42F5; font-family: "Manrope", sans-serif; font-weight: 600; font-size: 20px; transition: background .15s ease; }
+  .pc-out:hover { background: #fff; }
+  .pc-out svg { width: 18px; height: 18px; }
+  .pc .pc-btn { margin-top: 26px; display: flex; width: 100%; }
+  .pc-note { margin-top: 16px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 14.5px; font-weight: 600; color: #6D42F5; }
+  /* The M in exact brand purple via a mask: the old CSS filter recolour
+     came out pink on iPhone Safari (1 Oct 2026). */
+  .pc-mark { width: 16px; height: 12px; flex: 0 0 auto; background: #6D42F5;
+             -webkit-mask: url(/assets/manifest-mark.svg) center / contain no-repeat; mask: url(/assets/manifest-mark.svg) center / contain no-repeat; }
+  .pc-fits { margin-top: 26px; background: #F0ECFE; border-radius: 12px; padding: 12px; text-align: center; font-weight: 600; font-size: 16px; color: #040815; }
+  .pc ul { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 14px; }
+  .pc li { display: flex; align-items: center; gap: 12px; font-size: 16.5px; line-height: 24px; color: #040815; }
+  .pc li .tk { width: 18px; height: 18px; color: #6D42F5; flex: 0 0 auto; }
+  .pc li.off { color: #A1A1AA; } .pc li.off .tk { color: #D4D4D8; }
+  .pc li span { flex: 1; }
+  .soon-tag { font-style: normal; font-size: 10.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: #6D42F5; background: #F0ECFE; border-radius: 99px; padding: 3px 7px; margin-left: 6px; vertical-align: 2px; white-space: nowrap; }
+  .pc-grid { align-items: stretch; }
+  .pc-band { height: 52px; padding: 0 !important; display: flex; align-items: center; justify-content: center; }
+  @media (min-width: 981px) { .pc:not(.hl) { margin-top: 52px; } }
+  .pr-all { margin: 32px auto 0; background: #FFFFFF; border: 1px solid #E4E4E7; border-radius: 10px !important; border-radius: clamp(22px, 2.6vw, 32px); padding: clamp(26px, 3.4vw, 44px); text-align: left; }
+  .pr-all h3 { font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: clamp(22px, 2.2vw, 28px); letter-spacing: -.6px; }
+  .pr-all ul { list-style: none; margin: 20px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px 28px; }
+  .pr-all li { display: flex; align-items: center; gap: 12px; font-size: 16.5px; line-height: 24px; color: #040815; }
+  .pr-yes { width: 28px; height: 28px; border-radius: 50%; background: #6D42F5; flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; }
+  .pr-yes img { width: 15px; height: auto; display: block; }
+  /* Softriver's pricing section, measured at 1440 (1 Oct 2026): full-width
+     #F9F9F9 band, white cards 1px #E4E4E7 radius 10 padding 32, name 20px,
+     price 38px, desc 16/22.4 at 60% ink, outline button 67px radius 20,
+     ticked rows 40px apart, all cards one height. */
+  /* One gap above pricing, the same as every other section (9 Oct 2026):
+     the band starts where the section before it ends, its own padding is the gap. */
+  .pricing { position: relative; isolation: isolate; margin-top: 0; }
+  .pricing::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%); background: #F9F9F9; z-index: -1; }
+  .pc { border-radius: 10px; border-color: #E4E4E7; }
+  .pc.hl { border-radius: 10px; border: 1px solid #6D42F5; box-shadow: none; } /* slim line, no glow: as Softriver */
+  .pc-in { padding: 32px; }
+  .pc h3 { font-family: "Manrope", sans-serif; font-weight: 500; font-size: 20px; line-height: 28px; letter-spacing: -1px; }
+  .pc-price { margin-top: 14px; font-weight: 550; font-size: 38px; letter-spacing: -1px; }
+  .pc-price small { font-family: "Manrope", sans-serif; font-size: 16px; font-weight: 500; letter-spacing: 0; color: #71717B; margin-left: 4px; }
+  .pc-price .from { font-family: "Manrope", sans-serif; font-size: 16px; font-weight: 500; letter-spacing: 0; color: #71717B; margin-right: 6px; }
+  .pr-founder { margin-top: 32px; font-size: 18px; line-height: 28px; color: #71717B; }
+  .pr-founder b { color: #050505; font-weight: 600; }
+  .pr-founder.pr-plain { margin-top: 6px; }
+  .cm-note { display: block; font-size: 13px; font-weight: 400; color: #71717B; margin-top: 2px; }
+  /* PRICES HIDDEN (15 Oct 2026): the price slot holds a short line instead. */
+  .pc-price.pc-set { font-size: 26px; line-height: 1.2; letter-spacing: -.5px; }
+  .pc-was { margin-left: 10px; font-size: 20px; font-weight: 500; color: #71717B; letter-spacing: 0; }
+  .pr-promise { max-width: 760px; margin: 18px auto 0; text-align: center; font-size: 22px; line-height: 1.35; font-weight: 700; color: #050505; letter-spacing: -.01em; }
+  .pr-why { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 28px; margin: 16px auto 28px; padding: 0; font-size: 15px; color: #3F3F46; }
+  .pr-why b { color: #050505; }
+  .pc-found { display: inline-block; margin: 8px 0 4px; font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #fff; background: #34C759; border-radius: 8px; padding: 4px 8px; }
+  .pay-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 14px 18px; margin: 40px auto 0; padding-top: 32px; border-top: 1px solid #ECECEE; max-width: 720px; }
+  .pay-row img { height: 40px; width: auto; display: block; }
+  .pay-note { text-align: center; color: #71717B; font-size: 15px; margin-top: 14px; }
+  @media (max-width: 600px) { .pay-row { gap: 10px 12px; } .pay-row img { height: 32px; } }
+  .pc-desc { margin-top: 14px; font-size: 16px; line-height: 22.4px; font-weight: 500; color: rgba(23,23,23,.6); min-height: 45px; }
+  .pc-out { margin-top: 24px; height: 67px; border-width: 1.5px; border-radius: 20px; }
+  .pc .pc-btn { margin-top: 24px; height: 67px; border-radius: 20px; }
+  .pc-note { font-size: 12px; font-weight: 700; }
+  .pc-fits { margin-top: 22px; border-radius: 10px; font-size: 16px; }
+  .pc ul { gap: 0; margin-top: 16px; }
+  .pc li { min-height: 40px; font-size: 16px; font-weight: 600; letter-spacing: -.3px; }
+  .pc li.off { font-weight: 500; }
+  /* Everything you get sits inside each card (1 Oct 2026): size terms in
+     bold, then the same compact feature list in all three, so the cards are
+     one length; a full-width Book a call under them, as Softriver. */
+  /* Plan lists, Softriver style (9 Oct 2026): what the plan adds, then
+     greyed lines for what it does not have. */
+  .pc ul.pc-list { margin-top: 24px; gap: 0; }
+  .pc ul.pc-list li { min-height: 36px; font-size: 15px; line-height: 21px; font-weight: 500; letter-spacing: -.2px; color: #050505; padding: 6px 0; }
+  .pc ul.pc-list li .tk { width: 18px; height: 18px; color: #6D42F5; }
+  .pc ul.pc-list li.off { color: #A1A1AA; }
+  .pc .tk-off { width: 18px; height: 18px; flex: 0 0 auto; border-radius: 50%; border: 1px solid #E4E4E7; color: #D4D4D8; display: inline-flex; align-items: center; justify-content: center; }
+  .pc .tk-off svg { width: 11px; height: 11px; }
+  .pc ul.pc-list li.pc-pill { display: block; min-height: 0; margin-bottom: 10px; background: #F0ECFE; border-radius: 12px; padding: 10px 14px; text-align: center; font-size: 14px; line-height: 20px; font-weight: 600; letter-spacing: 0; color: #050505; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  /* PAY PER SEAT (19 Oct 2026): one price card + a seat calculator. */
+  .pps { grid-template-columns: 1fr 1fr; max-width: 980px; margin-left: auto; margin-right: auto; align-items: stretch; }
+  .pps .pc-price { font-size: 64px; letter-spacing: -2px; }
+  .pps .pc-limits { margin-top: 10px; font-size: 17px; font-weight: 600; color: #050505; }
+  .calc .calc-r { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6px 12px; margin-top: 22px; font-size: 16px; font-weight: 500; color: #050505; }
+  .calc .calc-r b { font-family: "General Sans", "Manrope", sans-serif; font-weight: 600; font-size: 18px; font-variant-numeric: tabular-nums; }
+  .calc .calc-r input { grid-column: 1 / -1; width: 100%; accent-color: #6D42F5; }
+  .calc .calc-r input:focus { outline: none; }
+  .calc .calc-r input:focus-visible { outline: 2px solid #6D42F5; outline-offset: 4px; border-radius: 4px; }
+  .calc-out { margin-top: 28px; padding-top: 22px; border-top: 1px solid #E4E4E7; display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 4px 12px; }
+  .calc-out span { font-size: 16px; font-weight: 600; color: #050505; }
+  .calc-out b { font-family: "General Sans", "Manrope", sans-serif; font-weight: 600; font-size: 44px; letter-spacing: -1.5px; color: #040815; font-variant-numeric: tabular-nums; }
+  .calc-out small { grid-column: 1 / -1; text-align: right; font-size: 14px; color: #71717B; }
+  .calc-0 { margin-top: 14px; font-size: 15px; color: #71717B; }
+  .calc-0 b { color: #050505; }
+  .calc-pay { margin-top: 18px; background: #F0ECFE; border-radius: 12px; padding: 14px 16px; font-size: 15px; line-height: 22px; color: #3a3448; }
+  .calc-pay b { color: #050505; font-weight: 600; }
+  /* PRICING, Softriver structure (19 Oct 2026): a wide two-line promise, a
+     smaller line, a dot line, the price, a wide outline button, a guarantee. */
+  .pricing h2.pr-h { max-width: 980px; margin-left: auto; margin-right: auto; text-wrap: balance; }
+  .pr-dot { margin: 18px 0 0; display: inline-flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 600; color: #050505; }
+  @media (max-width: 600px) { .pr-dot { max-width: 300px; align-items: flex-start; text-align: left; } .pr-dot span { margin-top: 7px; } }
+  .pr-dot span { flex: none; width: 8px; height: 8px; border-radius: 50%; background: #6D42F5; box-shadow: 0 0 0 4px #F0ECFE; }
+  .pr-all { max-width: 980px; }
+  .pc-out.pr-wide { max-width: 980px; margin: 32px auto 0; background: #fff; border-radius: 22px; }
+  /* 19 Oct 2026: the closing band uses the same outline button as pricing. */
+  .final .pc-out { display: inline-flex; margin-top: 0; padding: 0 36px; background: #fff; }
+  @media (max-width: 600px) { .final .pc-out { width: 100%; padding: 0 20px; } }
+  .pr-guar { max-width: 760px; margin: 72px auto 0; }
+  .pr-guar h3 { font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: clamp(24px, 2.6vw, 32px); letter-spacing: -.6px; color: #050505; }
+  .pr-guar p { margin: 16px 0 0; font-size: 18px; line-height: 28px; color: #71717B; text-wrap: balance; }
+  .pr-guar.pr-jump { margin-top: 48px; }
+  .pr-guar .pr-guar-s { margin-top: 10px; font-size: 16px; line-height: 24px; }
+  @media (max-width: 980px) { .pps { grid-template-columns: 1fr; max-width: 480px; } }
+  @media (max-width: 980px) { .pc.hl { order: -1; } }
+  /* Compare table extras: the struck full price and a grey bar for "not in this plan". */
+  .cm-was { margin-left: 4px; font-weight: 500; color: #71717B; }
+  .cm-found { display: block; font-style: normal; font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #34C759; margin-top: 2px; }
+  .cm-no { display: inline-block; width: 14px; height: 2px; border-radius: 1px; background: #D4D4D8; vertical-align: middle; }
+  /* HOW IT WORKS (9 Oct 2026): three plain steps. */
+  .how-grid { list-style: none; margin: 44px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .how-grid li { background: #fff; border: 1px solid #E4E4E7; border-radius: 22px; padding: 30px 28px 32px; }
+  .how-grid .n { display: inline-flex; width: 36px; height: 36px; border-radius: 50%; align-items: center; justify-content: center; background: #F0ECFE; color: #050505; font-weight: 700; font-size: 15px; }
+  .how-grid b { display: block; margin-top: 20px; font-size: 20px; line-height: 27px; letter-spacing: -.01em; font-weight: 600; color: #050505; }
+  .how-grid p { margin-top: 8px; color: #71717B; font-size: 16px; line-height: 25px; }
+  @media (min-width: 900px) { .how-grid { margin-top: 56px; } }
+  @media (max-width: 900px) { .how-grid { grid-template-columns: 1fr; } }
+  /* FAQ (9 Oct 2026): plain details/summary rows. */
+  .faq { text-align: left; }
+  .faq-list { max-width: 820px; margin: 0 auto; border-top: 1px solid #E4E4E7; }
+  .faq-more { max-width: 820px; margin: 24px auto 0; font-size: 15px; line-height: 24px; color: #71717B; }
+  .faq-more a { color: #050505; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+  .faq-more a:hover { color: #6D42F5; }
+  .faq-i { border-bottom: 1px solid #E4E4E7; }
+  .faq-i summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 4px; font-size: 18px; line-height: 26px; font-weight: 600; color: #050505; }
+  .faq-i summary::-webkit-details-marker { display: none; }
+  .faq-plus { position: relative; width: 28px; height: 28px; border-radius: 50%; background: #fff; border: 1px solid #E4E4E7; flex: 0 0 auto; }
+  .faq-plus::before, .faq-plus::after { content: ""; position: absolute; left: 50%; top: 50%; width: 12px; height: 1.6px; background: #050505; transform: translate(-50%, -50%); transition: transform .2s ease; }
+  .faq-plus::after { transform: translate(-50%, -50%) rotate(90deg); }
+  .faq-i[open] .faq-plus::after { transform: translate(-50%, -50%) rotate(0deg); }
+  .faq-i p { padding: 0 48px 22px 4px; margin-top: -6px; color: #71717B; font-size: 17px; line-height: 27px; }
+  @media (max-width: 600px) { .faq-i summary { font-size: 16px; line-height: 23px; padding: 18px 2px; } .faq-i p { font-size: 15.5px; line-height: 24px; padding-right: 8px; } }
+  .pc ul.pc-feats { margin-top: 12px; }
+  .pc ul.pc-feats li { min-height: 30px; font-size: 14.5px; font-weight: 500; letter-spacing: -.2px; }
+  .pc ul.pc-feats li .tk { width: 15px; height: 15px; }
+  .pc ul.pc-feats .soon-tag { font-size: 9.5px; padding: 2px 6px; }
+  .pc-call { margin-top: 32px; display: flex; align-items: center; justify-content: center; gap: 10px; height: 67px; border: 1px solid #6D42F5;
+             border-radius: 20px; background: #fff; color: #6D42F5; font-family: "Manrope", sans-serif; font-weight: 600; font-size: 20px; }
+  .pc-call:hover { background: #fff; } .pc-call svg { width: 18px; height: 18px; }
+  /* Claude-style (1 Oct 2026): short cards show only what differs, then a
+     full comparison below with the tier names pinned while you scroll. */
+  .cm { text-align: left; }
+  .cm-title { text-align: center; font-size: clamp(32px, 4.2vw, 56px); letter-spacing: -.028em; line-height: 1.05; margin-bottom: clamp(36px, 4vw, 56px); }
+  .cm-head, .cm-r { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; align-items: center; }
+  .cm-head { position: sticky; top: 0; z-index: 2; background: #F9F9F9; padding: 18px 0; border-bottom: 1px solid #E4E4E7; }
+  .cm-head .cm-c { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .cm-head b { font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: 22px; letter-spacing: -.4px; color: #040815; }
+  .cm-head a { font-size: 14px; font-weight: 600; color: #fff; background: #6D42F5; border-radius: 10px; padding: 8px 14px; transition: background .15s ease; }
+  .cm-head a:hover { background: #5A32E0; }
+  .cm-g { font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: clamp(22px, 2.2vw, 30px); letter-spacing: -.5px; color: #040815; padding: 44px 20px 18px; border-bottom: 1px solid #E4E4E7; }
+  .cm-r { min-height: 64px; border-bottom: 1px solid #E4E4E7; }
+  .cm-l { padding: 14px 20px; font-size: 17px; line-height: 24px; color: #040815; }
+  .cm-c { text-align: center; padding: 10px 8px; }
+  .cm-t { font-size: 16px; font-weight: 600; color: #040815; line-height: 22px; }
+  .cm-yes { display: inline-flex; width: 24px; height: 24px; border-radius: 50%; background: #6D42F5; color: #fff; align-items: center; justify-content: center; }
+  .cm-yes svg { width: 14px; height: 14px; }
+  @media (max-width: 720px) {
+    .cm-head, .cm-r { grid-template-columns: 1.5fr 1fr 1fr 1fr; }
+    .cm-head a { display: none; }
+    .cm-head b { font-size: 14px; letter-spacing: -.2px; text-align: center; }
+    .cm-g { padding: 32px 4px 14px; font-size: 21px; }
+    .cm-l { padding: 12px 4px; font-size: 14px; line-height: 19px; }
+    .cm-t { font-size: 12.5px; line-height: 16px; }
+    .cm-yes { width: 20px; height: 20px; } .cm-yes svg { width: 12px; height: 12px; }
+    .cm .soon-tag { display: inline-block; margin: 4px 0 0; }
+  }
+  @media (max-width: 980px) { .pc-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; } .pr-all ul { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .pricing .lead { font-size: 17px; line-height: 27px; } .pr-all ul { grid-template-columns: 1fr; } .pc-in { padding: 28px 24px 30px; } }
+  @media (max-width: 980px) { .tb-links a:not(.soon) { display: none; } .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) {
+    .topbar-in { height: 62px; padding: 0 16px; } .wordmark img { width: 28px; } .wordmark img.wm { width: auto; height: 18px; } .wordmark span { font-size: 24px; }
+    .tb-links { display: none; } .tb-cta { padding: 9px 15px; font-size: 14px; }
+    .wrap { padding: 0 18px; } .hero { padding: 56px 0 0; }
+    .grid { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- the big footer (1 Oct 2026) ---------- */
+  footer.site { margin-top: 0; background: #F6F6F8; border-top: 1px solid rgba(15,11,28,.07); padding: 72px 0 40px; }
+  .reveal + footer.site { margin-top: 0; }
+  .ft { max-width: calc(1280px + 10vw); margin: 0 auto; padding: 0 5vw; display: grid; grid-template-columns: 1.5fr repeat(4, 1fr); gap: 40px; }
+  .ft-brand .wordmark { display: inline-flex; align-items: center; gap: 10px; }
+  .ft-brand .wordmark img.mk { width: 34px; height: auto; }
+  .ft-brand .wordmark img.wm { height: 22px; width: auto; }
+  .ft-brand p { color: #6f6982; font-size: 15px; line-height: 1.55; margin: 22px 0 0; max-width: 300px; }
+  .ft-brand .mail { margin-top: 18px; font-size: 15px; color: #0f0b1c; font-weight: 600; }
+  .ft-brand .mail a { color: #6f6982; font-weight: 500; }
+  .ft-brand .mail a:hover { color: #0f0b1c; }
+  .ft-social { display: flex; gap: 10px; margin-top: 18px; }
+  .ft-social a { width: 38px; height: 38px; border-radius: 10px; background: #fff; border: 1px solid rgba(15,11,28,.08); display: inline-flex; align-items: center; justify-content: center; color: #0f0b1c; transition: background .15s ease; }
+  .ft-social a:hover { background: #EDEFF7; }
+  .ft-social svg { width: 18px; height: 18px; }
+  .ft-col h4 { font-size: 15px; font-weight: 600; color: #8a869a; margin: 4px 0 18px; letter-spacing: -0.01em; }
+  .ft-col a { display: block; font-size: 15.5px; font-weight: 600; color: #0f0b1c; margin-bottom: 4px; padding: 10px 0; letter-spacing: -0.01em; }
+  .ft-col a:hover { color: #6f6982; }
+  .ft-col a em { font-style: normal; font-size: 10px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: #6D28D9; background: rgba(124,58,237,.1); border-radius: 99px; padding: 2px 6px; margin-left: 6px; vertical-align: 2px; }
+  .ft-base { max-width: 1280px; width: calc(100% - 10vw); margin: 56px auto 0; padding: 22px 0 0; border-top: 1px solid rgba(15,11,28,.08); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: #8a869a; font-size: 14px; }
+  .ft-base a:hover { color: #0f0b1c; }
+  @media (max-width: 980px) { .ft { grid-template-columns: repeat(2, 1fr); } .ft-brand { grid-column: 1 / -1; } }
+  @media (max-width: 560px) { footer.site { padding: 52px 0 32px; } .ft { padding: 0 20px; gap: 32px 20px; } .ft-base { width: calc(100% - 40px); padding: 20px 0 0; } }
+
+  /* ---------- ONE TYPE AND SPACING SYSTEM (9 Oct 2026) ----------
+     Softriver's computed values at 1440 (getComputedStyle), in our fonts:
+     General Sans for headings, Manrope for the rest. One gap between every
+     section: 120px to the next heading on laptops, 80px on phones. */
+  :root { --gap: 120px; --t: #040815; --g: #71717B; }
+  @media (max-width: 600px) { :root { --gap: 80px; } }
+  body { font-size: 16px; line-height: 24px; color: var(--t); overflow-x: clip; }
+  header.hero { padding-bottom: 0; }
+  .sec { padding-top: var(--gap); }
+  .pricing { padding: var(--gap) 0; }
+  .cm, .faq { margin-top: var(--gap); }
+  .final { padding: var(--gap) 0; }
+  /* Section headings: 50/50 weight 500, centred, at most 1024 wide. */
+  .sec h2, .pricing h2, .final h2, .faq h2, .band h2 { font-size: 50px; line-height: 50px; font-weight: 500; letter-spacing: -.5px;
+    max-width: 1024px; margin: 0 auto; text-align: center; text-wrap: balance; }
+  .safety h2 { margin: 0; }
+  /* Sub-heading inside a section (their "We believe..."): 34 / 47.6. */
+  .cm .cm-title { font-size: 34px; line-height: 47.6px; font-weight: 500; letter-spacing: -.5px; margin-bottom: 40px; }
+  .faq .cm-title { margin-bottom: 56px; }
+  /* Lead line under a heading: 20/31 grey, 20px below. */
+  .sec .lead, .pricing .lead, .final p, .band-sub { font-size: 20px; line-height: 31px; font-weight: 400; color: var(--g);
+    margin: 20px auto 0; max-width: 740px; text-align: center; }
+  .safety .txt, .app-foot { font-size: 20px; line-height: 31px; }
+  /* Content starts 56px under the heading block. */
+  .app-panel, .grid, .how-grid, .pc-grid, .vs { margin-top: 56px; }
+  /* Card titles 24 / 33.6 weight 500; card text 16 / 20.8 weight 500 grey. */
+  .app-card b, .card b, .how-grid b { font-family: "General Sans", "Manrope", sans-serif; font-size: 24px; line-height: 33.6px; font-weight: 500; letter-spacing: normal; color: var(--t); }
+  .card b { margin-bottom: 8px; }
+  .app-card p, .card p, .how-grid p, .pc-desc { font-size: 16px; line-height: 20.8px; font-weight: 500; letter-spacing: -.5px; color: var(--g); }
+  .app-card p, .how-grid p { margin-top: 8px; }
+  /* Eyebrow above a few section headings: true lines only. */
+  .eyebrow { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 0 0 20px;
+    font-size: 16px; line-height: 24px; font-weight: 500; color: var(--t); }
+  .eyebrow svg, .eyebrow img { width: 20px; height: 20px; flex: 0 0 auto; }
+  a.eyebrow:hover { color: var(--g); }
+  .eb-mark { width: 22px; height: 16px; flex: 0 0 auto; background: #050505;
+    -webkit-mask: url(/assets/manifest-mark.svg) center / contain no-repeat; mask: url(/assets/manifest-mark.svg) center / contain no-repeat; }
+
+  /* VERSUS (9 Oct 2026): old manifest software against Manifest Desk. */
+  .vs { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1024px; margin-left: auto; margin-right: auto; text-align: left; }
+  .vs-col { border-radius: 22px; padding: 36px 36px 16px; }
+  .vs-old { background: #F9F9F9; }
+  .vs-new { background: #fff; border: 1px solid #6D42F5; }
+  .vs-col h3 { display: flex; align-items: center; gap: 12px; font-family: "General Sans", "Manrope", sans-serif; font-size: 32px; line-height: 44.8px;
+    font-weight: 500; letter-spacing: -1px; color: var(--t); }
+  .vs-col h3 .eb-mark { width: 32px; height: 24px; }
+  .vs ul { list-style: none; margin: 20px 0 0; padding: 0; }
+  .vs li { display: flex; align-items: center; gap: 14px; min-height: 84px; padding: 14px 0; border-top: 1px solid #E4E4E7;
+    font-size: 18px; line-height: 26px; font-weight: 500; letter-spacing: -.3px; color: var(--t); }
+  .vs-old li { color: var(--g); }
+  .vs-no, .vs-yes { width: 28px; height: 28px; border-radius: 50%; flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; }
+  .vs-no { background: #E4E4E7; color: var(--g); }
+  .vs-yes { background: #6D42F5; color: #fff; }
+  .vs-no svg, .vs-yes svg { width: 14px; height: 14px; }
+
+  /* DARK BAND (9 Oct 2026): one line on #050505, full width. */
+  .band { position: relative; isolation: isolate; margin-top: var(--gap); padding: var(--gap) 0; text-align: center; }
+  .band::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%); background: #050505; z-index: -1; }
+  .band h2 { color: #fff; }
+  @media (max-width: 600px) { .band br.dk { display: none; } }
+  .band .band-sub { color: #D1D1D6; }
+  /* FILM BAND (19 Oct 2026, André): the dark band becomes a 4:3 window of
+     1960s jump film (Free Fall Safety Procedures, public domain), silent,
+     15 s loop, 1.4 MB. Text inverts against the film like andrelarsen.com
+     (white + difference blend). Reduced motion shows the still. */
+  .band.band-film { max-width: 980px; aspect-ratio: 4 / 3; margin-left: auto; margin-right: auto; padding: 48px 40px; border-radius: 10px; overflow: hidden;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .band.band-film::before { display: none; }
+  .band-vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; background: #050505; }
+  .band-ink-wrap { display: grid; }
+  .band-ink { grid-area: 1 / 1; }
+  .band.band-film .band-ink h2, .band.band-film .band-ink .band-sub, .band.band-film .band-ink .h2 { color: #fff; mix-blend-mode: difference; }
+  /* The same text again in grey with a saturation blend: it takes the colour
+     out of the inverted letters, so they stay black, white and grey (never
+     orange on the blue film). */
+  .band.band-film .band-ink-grey h2, .band.band-film .band-ink-grey .h2, .band.band-film .band-ink-grey .band-sub { color: #808080; mix-blend-mode: saturation; }
+  .band.band-film .band-ink-grey .h2 { margin: 0; }
+  .band-sub-m { display: none; }
+  /* PHONE (André 19 Oct): the film runs edge to edge in 4:3, the headline on
+     it; the line and the button sit under it on the page. */
+  @media (max-width: 600px) {
+    .band.band-film { display: block; aspect-ratio: auto; padding: 0; border-radius: 0; overflow: visible;
+      width: 100vw; max-width: none; margin-left: calc(50% - 50vw); margin-right: 0; }
+    .band-vid { position: relative; display: block; aspect-ratio: 4 / 3; height: auto; z-index: auto; }
+    .band.band-film .band-ink-wrap { position: absolute; top: 0; left: 0; right: 0; aspect-ratio: 4 / 3; align-items: center; padding: 0 20px; }
+    .band.band-film .band-ink .band-sub { display: none; }
+    .band.band-film .band-ink h2 { font-size: 28px; line-height: 31px; margin: 0; }
+    .band-sub-m { display: block; margin: 20px 20px 0; font-size: 17px; line-height: 26px; color: #52525B; text-align: center; }
+    .band.band-film .band-cta { margin: 18px 20px 0; }
+    .band.band-film .band-btn { background: #fff; border: 1.5px solid #6D42F5; color: #6D42F5; }
+  }
+  @media (prefers-reduced-motion: reduce) { .band-vid { display: none; } .band.band-film { background: #050505 url(/assets/video/dz-band.jpg?v=2) center / cover; } }
+
+  @media (max-width: 900px) { .vs { grid-template-columns: 1fr; } }
+  @media (max-width: 600px) {
+    .sec h2, .pricing h2, .final h2, .faq h2, .band h2 { font-size: 34px; line-height: 36px; }
+    .cm .cm-title { font-size: 28px; line-height: 36px; margin-bottom: 28px; }
+    .faq .cm-title { margin-bottom: 36px; }
+    .sec .lead, .pricing .lead, .final p, .band-sub, .safety .txt, .app-foot { font-size: 18px; line-height: 28px; }
+    .app-panel, .grid, .how-grid, .pc-grid, .vs { margin-top: 40px; }
+    .app-card b, .card b, .how-grid b { font-size: 22px; line-height: 30px; }
+    .eyebrow { font-size: 15px; gap: 8px; margin-bottom: 16px; }
+    .vs-col { padding: 26px 22px 10px; }
+    .vs-col h3 { font-size: 26px; line-height: 34px; letter-spacing: -.6px; }
+    .vs li { min-height: 0; font-size: 16px; line-height: 23px; padding: 16px 0; }
+  }
+  /* BENTO (19 Oct 2026): the jumper app and Desk features as big product
+     tiles. One idea per tile, the real screen is the hero, two short lines. */
+  .bento { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; margin-top: 56px; }
+  .bt { margin: 0; position: relative; overflow: hidden; border-radius: 28px; background: #F5F5F7; min-width: 0; display: flex; }
+  .bt-col { flex-direction: column; align-items: center; }
+  .bt-row { flex-direction: row; align-items: stretch; }
+  .bt figcaption { padding: 44px 44px 0; text-align: center; position: relative; z-index: 1; }
+  .bt-row figcaption { text-align: left; padding: 44px 28px 44px 44px; flex: 1 1 52%; align-self: center; }
+  .bt b { display: block; font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: 34px; line-height: 38px; letter-spacing: -.028em; color: #050505; text-wrap: balance; }
+  .bt span { display: block; margin-top: 10px; font-size: 18px; line-height: 26px; font-weight: 500; color: #71717B; }
+  .bt-dark { background: #050505; }
+  .bt-dark b { color: #fff; } .bt-dark span { color: #D4D4D8; }
+  .bt img { display: block; }
+  /* Phones always show the whole device (André, 19 Oct): never cut by the tile. */
+  .bt-phone { width: 260px; max-width: 70%; height: auto; margin: 40px auto 48px; flex: 0 0 auto; }
+  .bt-mul { mix-blend-mode: multiply; }
+  .bt-row .bt-phone { width: 170px; max-width: 40%; margin: 28px 40px 28px 0; align-self: center; }
+  .bt-hero { grid-column: span 7; grid-row: span 2; }
+  .bt-hero b { font-size: 48px; line-height: 52px; }
+  .bt-hero .bt-phone { width: 300px; margin: auto; padding: 40px 0 48px; box-sizing: content-box; }
+  .bt-side { grid-column: span 5; }
+  .bt-half { grid-column: span 6; }
+  .bt-full { grid-column: span 12; }
+  .bt-full b { font-size: 48px; line-height: 52px; }
+  .bt-full .bt-shot { width: calc(100% - 112px); height: auto; margin: 44px auto 0; border-radius: 16px 16px 0 0; }
+  .bt-wide { grid-column: span 7; height: 480px; }
+  .bt-narrow { grid-column: span 5; height: 480px; }
+  .bt-edge { align-self: flex-end; width: 88%; height: auto; margin-top: 36px; border-top-left-radius: 14px; box-shadow: 0 0 0 1px rgba(5,5,5,.06), 0 18px 50px rgba(5,5,5,.08); }
+  .bt-edge.bt-left { align-self: flex-start; margin-left: 44px; max-width: none; border-radius: 14px 0 0 0; }
+  .bt-narrow .bt-left { width: 150%; }
+  .bt-wide .bt-left { width: 118%; }
+  .bt-center .bt-card { width: 78%; height: auto; margin: auto; box-shadow: 0 18px 50px rgba(5,5,5,.10); border-radius: 22px; }
+  .bento.anim .bt { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  .bento.anim .bt.on { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .bento.anim .bt { opacity: 1; transform: none; transition: none; } }
+  @media (max-width: 980px) {
+    .bt-hero, .bt-side, .bt-half, .bt-wide, .bt-narrow { grid-column: span 12; }
+    .bt-hero { grid-row: auto; }
+    .bt-narrow .bt-left, .bt-wide .bt-left { width: 130%; }
+  }
+  @media (max-width: 600px) {
+    .bento { gap: 12px; margin-top: 40px; }
+    .bt { border-radius: 24px; }
+    .bt figcaption { padding: 32px 24px 0; }
+    .bt b, .bt-hero b, .bt-full b { font-size: 28px; line-height: 32px; }
+    .bt span { font-size: 16px; line-height: 22px; margin-top: 8px; }
+    .bt-row { flex-direction: column; align-items: center; }
+    .bt-row figcaption { text-align: center; padding: 32px 24px 0; flex: 0 0 auto; align-self: stretch; }
+    .bt-row .bt-phone { width: 190px; max-width: 58%; margin: 28px auto 32px; }
+    .bt-phone, .bt-hero .bt-phone { width: 190px; max-width: 58%; margin: 28px auto 32px; padding: 0; }
+    .bt-wide, .bt-narrow { height: auto; }
+    .bt-edge { width: 92%; margin-top: 28px; }
+    .bt-narrow .bt-left, .bt-wide .bt-left { width: 160%; margin-left: 24px; }
+    .bt-full .bt-shot { width: calc(100% - 32px); margin-top: 28px; border-radius: 10px 10px 0 0; }
+    .bt-center .bt-card { width: calc(100% - 48px); margin: 28px auto 32px; border-radius: 16px; }
+  }
+  /* JUMPER APP, EVERY DAY (9 Oct 2026): eight compact tiles of what jumpers
+     use the app for today, then real database numbers, rounded down. */
+  .jstats { list-style: none; margin: 16px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); background: #F7F7F9; border-radius: 22px; }
+  .jstats li { padding: 28px 24px; font-size: 16px; line-height: 20.8px; font-weight: 500; color: var(--g); text-align: center; }
+  .jstats li + li { border-left: 1px solid #E4E4E7; }
+  .jstats b { display: block; margin-bottom: 6px; font-family: "General Sans", "Manrope", sans-serif; font-size: 34px; line-height: 40px; font-weight: 500; letter-spacing: -.5px; color: var(--t); }
+  .jfoot { text-align: center; margin-top: 32px; font-size: 20px; line-height: 31px; color: #71717B; }
+  .jfoot b { color: #040815; font-weight: 600; }
+  @media (max-width: 980px) { .jstats { grid-template-columns: repeat(2, 1fr); }
+    .jstats li:nth-child(3) { border-left: 0; } .jstats li:nth-child(n+3) { border-top: 1px solid #E4E4E7; } }
+  @media (max-width: 600px) { .jstats { margin-top: 10px; border-radius: 18px; } .jstats li { padding: 20px 12px; font-size: 14.5px; line-height: 19px; } .jstats b { font-size: 28px; line-height: 34px; }
+    .jfoot { font-size: 18px; line-height: 28px; } }
+
+  /* HERO WITH THE DESK (9 Oct 2026): text left, the Today page right,
+     shown whole on laptops; stacked on phones. */
+  .hero-media .frame { margin-top: 48px; }
+  @media (min-width: 900px) {
+    .hero-grid { display: grid; grid-template-columns: 42fr 58fr; gap: 48px; align-items: center; }
+    .hero-txt { min-width: 0; }
+    .hero .herorow { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .hero-media { min-width: 0; }
+    .hero-media .frame { margin-top: 0; width: 100%; }
+  }
+  /* VISUAL SECTIONS (9 Oct 2026): media in a cloud panel, text beside it,
+     sides swapping each row; each row fits one laptop screen. */
+  .vis { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+  .vis-txt { min-width: 0; }
+  .vis .eyebrow { justify-content: flex-start; }
+  .vis h2 { text-align: left; margin: 0; }
+  .vis .lead { text-align: left; margin: 20px 0 0; max-width: 560px; }
+  .vis-pts { list-style: none; margin: 32px 0 0; padding: 0; display: grid; gap: 14px; }
+  .vis-pts li { display: flex; align-items: flex-start; gap: 12px; font-size: 16px; line-height: 20.8px; font-weight: 500; letter-spacing: -.3px; color: var(--g); }
+  .vis-pts .tk { width: 18px; height: 18px; margin-top: 1.4px; color: #6D42F5; flex: 0 0 auto; }
+  .vis-media { min-width: 0; background: #EDEFF7; border-radius: 28px; padding: 40px; display: flex; align-items: center; justify-content: center; }
+  .vis:not(.flip) .vis-media { order: -1; }
+  .vis-media .frame { margin: 0; width: 100%; border-radius: 14px; }
+  /* The sample-data caption sits under the screenshot, never beside it (16 Oct). */
+  .vis-media { flex-direction: column; gap: 16px; }
+  .vis-media .desk-cap, .vis-media figcaption { margin: 0; text-align: center; font-size: 14px; line-height: 20px; color: #52525B; }
+  .vis-phone { display: block; height: min(560px, calc(100vh - 300px)); min-height: 420px; width: auto; max-width: 100%; mix-blend-mode: multiply; }
+  .vis-ls { aspect-ratio: 738 / 1180; }
+  .vis-trio { aspect-ratio: 560 / 1175; object-fit: cover; border-radius: 12.5% / 5.96%; }
+  @media (max-width: 900px) {
+    .vis { grid-template-columns: 1fr; gap: 40px; }
+    .vis:not(.flip) .vis-media { order: 0; }
+  }
+  @media (max-width: 600px) {
+    .vis .lead { font-size: 18px; line-height: 28px; }
+    .vis-pts { margin-top: 24px; }
+    .vis-media { border-radius: 22px; padding: 28px 16px; }
+    .vis-media .frame { border-radius: 10px; }
+    .vis-phone { height: 440px; min-height: 0; }
+  }
+</style>
+<style id="ft-dark">
+/* Dark footer, Nike's (2 Oct 2026): #111 with white text and the white logo. */
+footer.site { background: #111111 !important; border-top: 0 !important; }
+footer.site .ft-brand p, footer.site .ft-brand .mail a, footer.site .ft-base { color: #A1A1AA !important; }
+footer.site .ft-brand .mail, footer.site .ft-col a { color: #FFFFFF !important; }
+footer.site .ft-col h4 { color: #8E8E93 !important; }
+footer.site .ft-col a:hover, footer.site .ft-brand .mail a:hover, footer.site .ft-base a:hover { color: #D1D1D6 !important; }
+footer.site .ft-base { border-top-color: rgba(255,255,255,.12) !important; }
+footer.site .ft-base a { color: inherit; }
+footer.site .ft-social a { background: #2A2A2E !important; border-color: transparent !important; color: #FFFFFF !important; }
+footer.site .ft-social a:hover { background: #3A3A40 !important; }
+footer.site .ft-col a em { color: #FFFFFF !important; background: rgba(255,255,255,.14) !important; }
+
+/* REVIEW FIXES (16 Oct 2026, A02 A18 A19): column titles are H3 now (same look
+   as the old H4); a white focus ring on the dark footer; 44 px tap targets on phones. */
+footer.site .ft-col h3 { font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif !important; font-size: 15px !important;
+      line-height: normal !important; font-weight: 600 !important; letter-spacing: -0.01em !important; text-transform: none !important;
+      color: #8E8E93 !important; margin: 4px 0 18px !important; padding: 0 !important; }
+footer.site :where(a, button):focus-visible { outline-color: #fff !important; box-shadow: none; }
+@media (max-width: 767px) {
+  footer.site .ft-col a { display: flex; align-items: center; min-height: 44px; padding: 0; margin-bottom: 8px; }
+  footer.site .ft-brand .mail a { display: inline-flex; align-items: center; min-height: 44px; }
+  footer.site .ft-social a { width: 44px; height: 44px; }
+}
+</style>
+<style id="lockup-css">/* One logo file: the M centred on the lowercase letters, reaching above and below (2 Oct 2026). */ img.lockup{height:32px!important;width:auto!important;border-radius:0!important;display:block;max-width:none!important} @media (max-width:600px){img.lockup{height:29px!important}} .brand img.lockup{height:21px!important} .hub-wordmark img.lockup{height:22px!important} /* sh-logo-size: header logo a touch smaller (André, 14 Oct) */ .sh-logo img.lockup{height:28px!important} @media (max-width:600px){.sh-logo img.lockup{height:26px!important}} /* ft-logo-size */ footer.site .wordmark img.lockup{height:28px!important} @media (max-width:600px){footer.site .wordmark img.lockup{height:26px!important}}</style>
+<style id="loadin">
+/* LOAD-IN, Softriver's (measured from André's screen recording, 2 Oct 2026):
+   each hero line fades in from ~40px lower and rises into place over 0.7s,
+   one after another ~0.15s apart; the top bar slides down from above last. */
+@keyframes rise { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
+@keyframes dropin { from { opacity: 0; transform: translateY(-100%); } to { opacity: 1; transform: none; } }
+.li { animation: rise .7s cubic-bezier(.2,.75,.25,1) both; animation-delay: calc(var(--i, 0) * .15s + .1s); }
+.li-bar { animation: dropin .6s cubic-bezier(.2,.75,.25,1) .95s both; }
+@media (prefers-reduced-motion: reduce) { .li, .li-bar { animation: none !important; } }
+</style>
+<style id="site-header">
+/* SITE HEADER (9 Oct 2026). Sticky white bar with a hairline; mega dropdowns
+   (white 20px cards, two columns) on laptops; a full-height sheet under 900px.
+   overflow-x must be clip, not hidden, on body or sticky stops working. */
+html, body { overflow-x: clip !important; }
+section[id], header[id], div[id] { scroll-margin-top: 96px; }
+.sh, .sh-sheet { --sh-ink: #050505; --sh-muted: #71717B; --sh-purple: #6D42F5; --sh-pale: #F0ECFE; --sh-hover: #F6F6F8;
+      font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif; color: var(--sh-ink); }
+.sh { position: sticky; top: 0; z-index: 60; background: #fff; border-bottom: 1px solid rgba(5,5,5,.08); }
+.sh a, .sh-sheet a { color: inherit; text-decoration: none; }
+.sh-in { height: 76px; padding: 0 5vw; display: flex; align-items: center; gap: 40px; }
+.sh-logo { display: inline-flex; align-items: center; flex: none; }
+/* the pages still carry the old floating-pill rules for a bare `nav`; undo them here */
+.sh nav.sh-nav { position: static; top: auto; left: auto; transform: none; width: auto; z-index: auto;
+      background: none; border: 0; border-radius: 0; box-shadow: none; }
+.sh-nav { display: flex; align-items: center; gap: 30px; height: 100%; flex: 1; min-width: 0; }
+.sh-right { display: flex; align-items: center; gap: 24px; margin-left: auto; flex: none; }
+.sh-trig, .sh-link, .sh-login { font: 600 15.5px/1 "Manrope", sans-serif; letter-spacing: -0.01em; color: var(--sh-ink);
+      background: none; border: 0; padding: 8px 0; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;
+      white-space: nowrap; transition: color .15s ease; }
+.sh-trig:hover, .sh-link:hover, .sh-login:hover, .sh-dd.open .sh-trig { color: var(--sh-muted); }
+.sh-login { font-weight: 500; }
+.sh-t { position: relative; }
+.is-current > .sh-t::after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; height: 2px; border-radius: 2px; background: var(--sh-purple); }
+.sh-chev { width: 12px; height: 12px; transition: transform .15s ease; }
+.sh-dd.open .sh-chev, .sh-macc[aria-expanded="true"] .sh-chev { transform: rotate(180deg); }
+
+/* the dropdown: hangs from the full header height, so the pointer never crosses a gap */
+.sh-dd { position: relative; height: 100%; display: flex; align-items: center; }
+.sh-panel { position: absolute; top: 100%; left: -24px; padding-top: 10px; width: 800px; max-width: calc(100vw - 32px);
+      opacity: 0; visibility: hidden; transform: translateY(-6px); pointer-events: none;
+      transition: opacity .15s ease, transform .15s ease, visibility 0s linear .15s; }
+.sh-dd.open .sh-panel { opacity: 1; visibility: visible; transform: none; pointer-events: auto;
+      transition: opacity .15s ease, transform .15s ease, visibility 0s; }
+.sh-card { background: #fff; border-radius: 20px; padding: 10px;
+      box-shadow: 0 24px 60px -16px rgba(5,5,5,.20), 0 2px 8px rgba(5,5,5,.04), 0 0 0 1px rgba(5,5,5,.06); }
+.sh-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.sh-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px; border-radius: 14px; transition: background .15s ease; }
+.sh-item:hover, .sh-item[aria-current="page"] { background: var(--sh-hover); }
+.sh-ic { display: none; } /* text only, no icons (9 Oct 2026) */
+.sh-tx { display: flex; flex-direction: column; gap: 3px; min-width: 0; padding-top: 1px; }
+.sh-tx b { font-size: 15px; line-height: 20px; font-weight: 600; color: var(--sh-ink); letter-spacing: -0.01em; }
+.sh-tx small { font-size: 13.5px; line-height: 19px; font-weight: 400; color: var(--sh-muted); }
+.sh-foot { margin-top: 6px; align-items: center; background: var(--sh-hover); }
+.sh-foot:hover { background: #EEEEF2; }
+.sh-go { margin-left: auto; width: 32px; height: 32px; border-radius: 50%; background: #fff; display: inline-flex;
+      align-items: center; justify-content: center; flex: none; }
+.sh-go svg { width: 14px; height: 14px; }
+
+/* buttons: Download keeps the grey pill; Get started is the purple pill */
+.sh-cta { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 99px;
+      background: #F2F2F5; color: var(--sh-ink) !important; font: 700 15px/1.2 "Manrope", sans-serif; letter-spacing: -0.01em;
+      white-space: nowrap; transition: background .15s ease; }
+.sh-cta:hover { background: #E7E7EC; }
+.sh-cta svg { width: 15px; height: 15px; }
+.sh-cta-p { background: var(--sh-purple); color: #fff !important; }
+.sh-cta-p:hover { background: #5B32E0; }
+
+/* burger, as before: a 50px grey circle whose two lines turn into an X */
+.sh-burger { display: none; width: 46px; height: 46px; border: 0; padding: 0; border-radius: 50%; background: #E4E4E7;
+      cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 8px; -webkit-tap-highlight-color: transparent; }
+.sh-burger span { display: block; width: 22px; height: 2px; background: #040815; transition: transform .3s ease; }
+.sh-burger[aria-expanded="true"] span:first-child { transform: translateY(5px) rotate(45deg); }
+.sh-burger[aria-expanded="true"] span:last-child { transform: translateY(-5px) rotate(-45deg); }
+
+/* phone sheet */
+.sh-sheet { position: fixed; left: 0; right: 0; top: var(--sh-top, 62px); bottom: 0; background: #fff; overflow-y: auto;
+      overscroll-behavior: contain; padding: 8px 16px 32px; z-index: 59; animation: sh-in .15s ease both; }
+@keyframes sh-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+.sh-macc, .sh-mlink { width: 100%; display: flex; align-items: center; justify-content: space-between; min-height: 58px;
+      padding: 0 4px; background: none; border: 0; cursor: pointer; color: var(--sh-ink);
+      font: 600 17px/1.2 "Manrope", sans-serif; letter-spacing: -0.01em; text-align: left; }
+.sh-macc .sh-chev { width: 14px; height: 14px; }
+.sh-mgroup, .sh-mlink { border-bottom: 1px solid rgba(5,5,5,.08) !important; }
+.sh-macc.is-current > span, .sh-mlink.is-current .sh-t { color: var(--sh-purple); }
+.sh-sheet .sh-t::after { display: none; }
+.sh-mlist { padding: 0 0 12px; }
+.sh-mitem { display: flex; align-items: center; gap: 12px; padding: 10px 4px; border-radius: 12px; }
+.sh-mitem[aria-current="page"] { background: var(--sh-hover); }
+.sh-mitem .sh-ic { width: 34px; height: 34px; }
+.sh-mcta { margin-top: 24px; width: 100%; justify-content: center; padding: 16px 20px; font-size: 16px; }
+@media (min-width: 900px) { .sh-sheet { display: none !important; } }
+
+@media (max-width: 1120px) {
+  .sh-in { gap: 28px; } .sh-nav { gap: 22px; } .sh-right { gap: 18px; }
+}
+@media (max-width: 999px) {
+  .sh-in { padding: 0 24px; } .sh-trig, .sh-link, .sh-login { font-size: 15px; }
+}
+@media (max-width: 899px) {
+  .sh-nav, .sh-login { display: none; }
+  .sh-burger { display: flex; }
+  .sh-right { gap: 10px; }
+}
+@media (max-width: 600px) {
+  .sh-in { height: 62px; padding: 0 16px; }
+  .sh-right > .sh-cta { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sh-panel, .sh-chev, .sh-burger span { transition: none !important; }
+  .sh-sheet { animation: none; }
+}
+
+/* REVIEW FIXES (16 Oct 2026, design review A02 A12 A18 F05 F06 F19).
+   Skip link first in <body>; one focus ring sitewide; the header row on the
+   same 1280 grid as the content; one header button system in the site's own
+   colours (black Download / Get the app for jumpers, purple Book a demo for
+   dropzones) that stays in the phone header; Download and Book a demo side by side at the
+   bottom of the phone menu. */
+.skip { position: fixed; left: 16px; top: -120px; z-index: 100; display: inline-flex; align-items: center; height: 44px;
+      padding: 0 20px; border-radius: 999px; background: #fff; color: #050505 !important; border: 1.5px solid #050505;
+      font: 700 15px/1 "Manrope", -apple-system, BlinkMacSystemFont, sans-serif; text-decoration: none !important; }
+.skip:focus { top: 16px; }
+#main:focus { outline: none !important; box-shadow: none !important; }
+:where(a, button, summary, input, select, textarea, [tabindex]):focus-visible {
+      outline: 2px solid #050505 !important; outline-offset: 3px !important; box-shadow: 0 0 0 3px #fff; }
+:where(a, button, summary, input, select, textarea, [tabindex]):focus { scroll-margin-top: 96px; scroll-margin-bottom: 24px; }
+.sh-in { max-width: calc(1280px + 10vw); margin: 0 auto; box-sizing: border-box; }
+.sh-cta { background: #050505; color: #fff !important; border: 0; }
+.sh-cta:hover { background: #2A2A2E; }
+.sh-cta-p, .sh-cta-demo { background: var(--sh-purple); color: #fff !important; }
+.sh-cta-p:hover, .sh-cta-demo:hover { background: #5B32E0; }
+.sh-l2, .sh-l4 { display: none; }
+.sh-mctas { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 24px; }
+.sh-mctas .sh-mcta { margin-top: 0; min-height: 52px; padding: 0 12px; }
+@media (max-width: 899px) {
+  .sh-in { gap: 8px; }
+  .sh-right { gap: 8px; }
+  .sh-right > .sh-cta { display: inline-flex !important; position: relative; height: 40px; padding: 0 16px; font-size: 14px; }
+  .sh-right > .sh-cta::before { content: ""; position: absolute; left: 0; right: 0; top: -2px; bottom: -2px; }
+  .sh-right > .sh-cta svg, .sh-right > .sh-cta .sh-l1 { display: none; }
+  .sh-right > .sh-cta .sh-l2 { display: inline; }
+}
+@media (max-width: 359px) {
+  .sh-right > .sh-cta { padding: 0 14px; }
+  .sh-right > .sh-cta .sh-l2 { display: none; }
+  .sh-right > .sh-cta .sh-l4 { display: inline; }
+}
+</style>
+<style id="ft-pay-css">.ft-base{flex-wrap:wrap;gap:12px 24px;align-items:center}.ft-pay{display:flex;flex-wrap:wrap;gap:8px;margin:0}.ft-pay img{height:24px;width:auto;display:block;border-radius:4px}@media (max-width:899px){.ft-base{flex-direction:column;align-items:center !important;justify-content:center;text-align:center}.ft-pay{justify-content:center}}@media (min-width:900px){.ft-base{display:grid!important;grid-template-columns:1fr auto 1fr;align-items:center}.ft-base>.ft-pay{justify-self:center}}</style>
+<style id="overscroll-css">html{background-color:#111111;scrollbar-color:#B4B4BE #ffffff}body{background-color:#ffffff}footer.site{box-shadow:0 100vh 0 100vh #111111}</style>
+<style id="apple-draft">
+/* DRAFT (19 Oct 2026): the /dropzones page told apple.com style. One idea
+   per section, big type, one line, the product as the hero. Not linked. */
+.ap { display: block; }
+.ap-sec { padding: 150px 5vw; text-align: center; overflow: hidden; }
+.ap-in { max-width: 1280px; margin: 0 auto; }
+.ap-dark { background: #050505; color: #fff; }
+.ap-grey { background: #F5F5F7; }
+.ap-eyebrow { margin: 0 0 14px; font-family: "Manrope", sans-serif; font-size: 20px; line-height: 28px; font-weight: 600; color: #050505; }
+.ap-dark .ap-eyebrow { color: #fff; }
+.ap-h1, .ap-h2 { margin: 0 auto; font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; letter-spacing: -.035em; color: #050505; text-wrap: balance; }
+.ap-h1 { font-size: clamp(52px, 8.4vw, 112px); line-height: 1; }
+.ap-h2 { font-size: clamp(42px, 6.2vw, 84px); line-height: 1.02; max-width: 1000px; }
+.ap-dark .ap-h1, .ap-dark .ap-h2 { color: #fff; }
+.ap-sub { margin: 22px auto 0; max-width: 720px; font-family: "Manrope", sans-serif; font-size: clamp(19px, 1.9vw, 26px); line-height: 1.35; font-weight: 500; color: #71717B; text-wrap: balance; }
+.ap-dark .ap-sub { color: #D4D4D8; }
+.ap-ctas { display: flex; justify-content: center; align-items: center; gap: 32px; margin-top: 40px; flex-wrap: wrap; }
+.ap-btn { display: inline-flex; align-items: center; height: 56px; padding: 0 30px; border-radius: 999px; background: #6D42F5; color: #fff; font-family: "Manrope", sans-serif; font-size: 18px; font-weight: 600; }
+.ap-btn:hover { filter: brightness(1.06); }
+.ap-dark .ap-btn.ap-white { background: #fff; color: #050505; }
+.ap-link { display: inline-flex; align-items: center; gap: 8px; font-family: "Manrope", sans-serif; font-size: 19px; font-weight: 600; color: #6D42F5; }
+.ap-link svg { width: 7px; height: 12px; }
+.ap-dark .ap-link { color: #fff; }
+.ap-media { margin: 80px auto 0; }
+.ap-shot { display: block; width: 100%; height: auto; border-radius: 18px; box-shadow: 0 30px 80px rgba(5,5,5,.14), 0 0 0 1px rgba(5,5,5,.06); }
+.ap-dark .ap-shot { box-shadow: 0 0 0 1px rgba(255,255,255,.10); }
+/* hero: desk + phone */
+.ap-hero { padding-top: 110px; padding-bottom: 170px; }
+.ap-combo { position: relative; max-width: 1180px; }
+.ap-combo .ap-shot { width: 84%; }
+.ap-combo .ap-phone { position: absolute; right: 0; bottom: -70px; width: 23%; height: auto; filter: drop-shadow(0 30px 50px rgba(5,5,5,.25)); }
+.ap-phone { display: block; height: auto; }
+/* board */
+.ap-board { max-width: 1180px; }
+/* loads: the lock screen film has a white ground, so it sits on grey */
+.ap-ls { display: block; height: min(680px, 70vh); min-height: 460px; width: auto; max-width: 100%; margin: 0 auto; mix-blend-mode: multiply; }
+/* paid: phone + the desk's paid card side by side */
+.ap-pair { display: flex; align-items: center; justify-content: center; gap: 64px; }
+.ap-pair .ap-phone { width: 300px; }
+.ap-card { width: 440px; max-width: 100%; height: auto; border-radius: 24px; box-shadow: 0 30px 80px rgba(5,5,5,.14); }
+.ap-safety .ap-phone { width: 320px; margin: 0 auto; }
+/* film band */
+.ap-film { position: relative; isolation: isolate; padding: 220px 5vw; text-align: center; background: #050505 url(/assets/video/dz-band.jpg?v=2) center / cover; }
+.ap-film video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.ap-film::after { content: ""; position: absolute; inset: 0; background: rgba(5,5,5,.55); z-index: -1; }
+/* everything else: the bento from the live page */
+.ap-more .bento { margin-top: 72px; text-align: left; }
+/* pricing */
+.ap-price { margin: 34px 0 0; font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; letter-spacing: -.03em; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.05; color: #050505; }
+.ap-price-note { margin: 18px auto 0; font-family: "Manrope", sans-serif; font-size: 17px; line-height: 26px; font-weight: 500; color: #71717B; }
+/* faq */
+.ap-faq { padding-top: 140px; padding-bottom: 140px; }
+.ap-faq .faq-list { margin-top: 56px; text-align: left; }
+/* fade in */
+.ap-anim .ap-fade { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+.ap-anim .ap-fade.on { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .ap-anim .ap-fade { opacity: 1; transform: none; transition: none; } }
+@media (max-width: 760px) {
+  .ap-sec { padding: 96px 16px; }
+  .ap-hero { padding-top: 64px; padding-bottom: 110px; }
+  .ap-eyebrow { font-size: 17px; }
+  .ap-ctas { gap: 20px; margin-top: 30px; }
+  .ap-media { margin-top: 52px; }
+  .ap-shot { border-radius: 10px; }
+  .ap-combo .ap-shot { width: 88%; }
+  .ap-combo .ap-phone { width: 30%; bottom: -46px; }
+  .ap-ls { height: auto; min-height: 0; width: 100%; max-width: 330px; }
+  .ap-pair { flex-direction: column; gap: 40px; }
+  .ap-pair .ap-phone, .ap-safety .ap-phone { width: 220px; }
+  .ap-card { border-radius: 16px; }
+  .ap-film { padding: 150px 16px; }
+  .ap-more .bento { margin-top: 48px; }
+  .ap-faq { padding-top: 96px; padding-bottom: 96px; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<div class="ownerbar">This page is for dropzone owners and managers. Looking for the jumper app? <a href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429">Download Manifest&nbsp;&rarr;</a></div>
+<!-- SITE HEADER (9 Oct 2026): one header on every page. Mega dropdowns on
+     laptops, a full-height sheet on phones. Same markup, CSS and JS on each
+     page; only the current section and the right-hand button differ. -->
+<div class="sh li-bar" data-sh role="banner">
+  <div class="sh-in">
+    <a class="sh-logo" href="/" aria-label="Manifest home"><img class="lockup" src="/assets/manifest-lockup.svg?v=5" alt="Manifest" /></a>
+    <nav class="sh-nav" aria-label="Main">
+      <div class="sh-dd" data-dd><button class="sh-trig" type="button" aria-expanded="false" aria-controls="sh-p-jumpers"><span class="sh-t">For jumpers</span><svg class="sh-chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="sh-panel" id="sh-p-jumpers"><div class="sh-card"><div class="sh-grid"><a class="sh-item" href="/skydiving-app/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18h3"/></svg></span><span class="sh-tx"><b>The skydiving app</b><small>Loads, 3D replays and every jump in one app.</small></span></a><a class="sh-item" href="/live-skydiving-loads/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M8.5 15.5a5 5 0 0 1 0-7M15.5 8.5a5 5 0 0 1 0 7M5.6 18.4a9 9 0 0 1 0-12.8M18.4 5.6a9 9 0 0 1 0 12.8"/></svg></span><span class="sh-tx"><b>Live loads</b><small>Your load and calls, live at 150+ dropzones.</small></span></a><a class="sh-item" href="/skydive-3d-tracking/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg></span><span class="sh-tx"><b>3D replay</b><small>Every jump in 3D from your phone's GPS.</small></span></a><a class="sh-item" href="/skydiving-weather/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h11a3 3 0 1 0-3-3"/><path d="M3 13h15a3 3 0 1 1-3 3"/><path d="M3 17h7"/></svg></span><span class="sh-tx"><b>Weather</b><small>Wind at exit, under canopy and on the ground.</small></span></a><a class="sh-item" href="/uspa-digital-logbook/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19.5v-15A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5zm0 0A1.5 1.5 0 0 0 6.5 21H19v-3"/><path d="M9 10.5l2 2 4-4"/></svg></span><span class="sh-tx"><b>Digital logbook</b><small>Your jumps, signed off in person.</small></span></a><a class="sh-item" href="/#locker"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6V4.5A1.5 1.5 0 0 1 10.5 3h3A1.5 1.5 0 0 1 15 4.5V6"/><rect x="5" y="6" width="14" height="15" rx="3.5"/><path d="M9 13.5h6V17H9z"/></svg></span><span class="sh-tx"><b>Gear locker</b><small>Repacks and AAD service, reminded in time.</small></span></a><a class="sh-item" href="/skydive-landout-safety/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M12 8v5M12 16h.01"/></svg></span><span class="sh-tx"><b>Landout SOS</b><small>Landed out? Your dropzone sees you on a map.</small></span></a></div><a class="sh-item sh-foot" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M12 7.5v6M9.5 11L12 13.5 14.5 11M10.5 18h3"/></svg></span><span class="sh-tx"><b>Download the app</b><small>Free on the App Store for iPhone.</small></span><span class="sh-go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a></div></div></div>
+      <div class="sh-dd" data-dd><button class="sh-trig is-current" type="button" aria-expanded="false" aria-controls="sh-p-dropzones"><span class="sh-t">For dropzones</span><svg class="sh-chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="sh-panel" id="sh-p-dropzones"><div class="sh-card"><div class="sh-grid"><a class="sh-item" href="/dropzones/" aria-current="page"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><span class="sh-tx"><b>Manifest Desk</b><small>Loads, money, staff and safety on one screen.</small></span></a><a class="sh-item" href="/dropzone-payments/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3 10h18M7 14.5h3"/></svg></span><span class="sh-tx"><b>Payments and top-ups</b><small>Apple Pay top-ups, straight to your Stripe.</small></span></a><a class="sh-item" href="/skydive-landout-safety/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="sh-tx"><b>Safety</b><small>Landouts on a live map, and who's back after each load.</small></span></a><a class="sh-item" href="/skydiving-load-calls/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15L6 16z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg></span><span class="sh-tx"><b>Load calls</b><small>Every call on every jumper's Lock Screen.</small></span></a><a class="sh-item" href="/self-manifest-skydiving/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M3 20a6 6 0 0 1 10.5-4"/><path d="M15 18l2 2 4-4"/></svg></span><span class="sh-tx"><b>Self-manifest</b><small>Jumpers book themselves, you keep control.</small></span></a><a class="sh-item" href="/how-manifest-works/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M11 6h9M11 18h9M6 8.5v7"/></svg></span><span class="sh-tx"><b>How it works</b><small>From sign-up to your first jump day.</small></span></a><a class="sh-item" href="/dropzones/#hangar-board"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M7 8.5h6M7 12.5h10M9 21h6"/></svg></span><span class="sh-tx"><b>Hangar board</b><small>A live board for every TV in the hangar.</small></span></a><a class="sh-item" href="/dropzones/#pricing"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4.5A1.5 1.5 0 0 1 4.5 3H12l9 9-9 9-9-9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><span class="sh-tx"><b>Pricing</b><small>Free until you fly. $1 per seat.</small></span></a></div><a class="sh-item sh-foot" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20get%20started"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M13 8.5l3.5 3.5-3.5 3.5"/></svg></span><span class="sh-tx"><b>Get started</b><small>Tell us about your dropzone. Free until you fly.</small></span><span class="sh-go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a></div></div></div>
+      <a class="sh-link" href="/about/"><span class="sh-t">About</span></a>
+      <a class="sh-link" href="/support/"><span class="sh-t">Support</span></a>
+      <a class="sh-link" href="/dropzones/#faq"><span class="sh-t">FAQ</span></a>
+    </nav>
+    <div class="sh-right">
+      <a class="sh-login" href="https://desk.jumpmanifest.com">Dropzone login</a>
+      <a class="sh-cta sh-cta-demo" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo" aria-label="Book a demo"><span class="sh-l1">Book a demo</span><span class="sh-l2">Book a demo</span><span class="sh-l4">Demo</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      <button class="sh-burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="sh-sheet"><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="sh-sheet" id="sh-sheet" hidden>
+    <div class="sh-mgroup"><button class="sh-macc" type="button" aria-expanded="false" aria-controls="sh-m-jumpers"><span>For jumpers</span><svg class="sh-chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="sh-mlist" id="sh-m-jumpers" hidden><a class="sh-mitem" href="/skydiving-app/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18h3"/></svg></span><span class="sh-tx"><b>The skydiving app</b><small>Loads, 3D replays and every jump in one app.</small></span></a><a class="sh-mitem" href="/live-skydiving-loads/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M8.5 15.5a5 5 0 0 1 0-7M15.5 8.5a5 5 0 0 1 0 7M5.6 18.4a9 9 0 0 1 0-12.8M18.4 5.6a9 9 0 0 1 0 12.8"/></svg></span><span class="sh-tx"><b>Live loads</b><small>Your load and calls, live at 150+ dropzones.</small></span></a><a class="sh-mitem" href="/skydive-3d-tracking/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg></span><span class="sh-tx"><b>3D replay</b><small>Every jump in 3D from your phone's GPS.</small></span></a><a class="sh-mitem" href="/skydiving-weather/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h11a3 3 0 1 0-3-3"/><path d="M3 13h15a3 3 0 1 1-3 3"/><path d="M3 17h7"/></svg></span><span class="sh-tx"><b>Weather</b><small>Wind at exit, under canopy and on the ground.</small></span></a><a class="sh-mitem" href="/uspa-digital-logbook/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19.5v-15A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5zm0 0A1.5 1.5 0 0 0 6.5 21H19v-3"/><path d="M9 10.5l2 2 4-4"/></svg></span><span class="sh-tx"><b>Digital logbook</b><small>Your jumps, signed off in person.</small></span></a><a class="sh-mitem" href="/#locker"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6V4.5A1.5 1.5 0 0 1 10.5 3h3A1.5 1.5 0 0 1 15 4.5V6"/><rect x="5" y="6" width="14" height="15" rx="3.5"/><path d="M9 13.5h6V17H9z"/></svg></span><span class="sh-tx"><b>Gear locker</b><small>Repacks and AAD service, reminded in time.</small></span></a><a class="sh-mitem" href="/skydive-landout-safety/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M12 8v5M12 16h.01"/></svg></span><span class="sh-tx"><b>Landout SOS</b><small>Landed out? Your dropzone sees you on a map.</small></span></a><a class="sh-mitem" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M12 7.5v6M9.5 11L12 13.5 14.5 11M10.5 18h3"/></svg></span><span class="sh-tx"><b>Download the app</b><small>Free on the App Store for iPhone.</small></span></a></div></div>
+    <div class="sh-mgroup"><button class="sh-macc is-current" type="button" aria-expanded="false" aria-controls="sh-m-dropzones"><span>For dropzones</span><svg class="sh-chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="sh-mlist" id="sh-m-dropzones" hidden><a class="sh-mitem" href="/dropzones/" aria-current="page"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><span class="sh-tx"><b>Manifest Desk</b><small>Loads, money, staff and safety on one screen.</small></span></a><a class="sh-mitem" href="/dropzone-payments/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3 10h18M7 14.5h3"/></svg></span><span class="sh-tx"><b>Payments and top-ups</b><small>Apple Pay top-ups, straight to your Stripe.</small></span></a><a class="sh-mitem" href="/skydive-landout-safety/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="sh-tx"><b>Safety</b><small>Landouts on a live map, and who's back after each load.</small></span></a><a class="sh-mitem" href="/skydiving-load-calls/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15L6 16z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg></span><span class="sh-tx"><b>Load calls</b><small>Every call on every jumper's Lock Screen.</small></span></a><a class="sh-mitem" href="/self-manifest-skydiving/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M3 20a6 6 0 0 1 10.5-4"/><path d="M15 18l2 2 4-4"/></svg></span><span class="sh-tx"><b>Self-manifest</b><small>Jumpers book themselves, you keep control.</small></span></a><a class="sh-mitem" href="/how-manifest-works/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M11 6h9M11 18h9M6 8.5v7"/></svg></span><span class="sh-tx"><b>How it works</b><small>From sign-up to your first jump day.</small></span></a><a class="sh-mitem" href="/dropzones/#hangar-board"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M7 8.5h6M7 12.5h10M9 21h6"/></svg></span><span class="sh-tx"><b>Hangar board</b><small>A live board for every TV in the hangar.</small></span></a><a class="sh-mitem" href="/dropzones/#pricing"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4.5A1.5 1.5 0 0 1 4.5 3H12l9 9-9 9-9-9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><span class="sh-tx"><b>Pricing</b><small>Free until you fly. $1 per seat.</small></span></a><a class="sh-mitem" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20get%20started"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M13 8.5l3.5 3.5-3.5 3.5"/></svg></span><span class="sh-tx"><b>Get started</b><small>Tell us about your dropzone. Free until you fly.</small></span></a></div></div>
+    <a class="sh-mlink" href="/about/"><span class="sh-t">About</span></a>
+    <a class="sh-mlink" href="/support/"><span class="sh-t">Support</span></a>
+    <a class="sh-mlink" href="/dropzones/#faq"><span class="sh-t">FAQ</span></a>
+    <a class="sh-mlink" href="https://desk.jumpmanifest.com"><span class="sh-t">Dropzone login</span></a>
+    <div class="sh-mctas"><a class="sh-cta sh-mcta" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429">Download</a><a class="sh-cta sh-mcta sh-cta-demo" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo">Book a demo</a></div>
+  </div>
+</div>
+
+<main id="main" class="ap">
+
+  <header class="ap-sec ap-hero">
+    <div class="ap-in">
+      <p class="ap-eyebrow ap-fade">Manifest Desk</p>
+      <h1 class="ap-h1 ap-fade">Run your whole dropzone.</h1>
+      <p class="ap-sub ap-fade">Loads, money and safety. One screen, and every phone.</p>
+      <div class="ap-ctas ap-fade">
+        <a class="ap-btn" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo&amp;body=Dropzone%3A%20%0AName%3A%20%0APhone%3A%20%0ABest%20time%20for%20a%2020-minute%20video%20call%3A%20">Book a demo</a>
+        <a class="ap-link" href="#pricing">See pricing <svg viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></a>
+      </div>
+      <figure class="ap-media ap-combo ap-fade" style="margin-left:auto;margin-right:auto">
+        <img class="ap-shot" src="/assets/desk-today.jpg?v=1" width="1440" height="900" alt="Manifest Desk, the Today page of a demo dropzone with takings, loads, standby and accounts" fetchpriority="high" />
+        <img class="ap-phone" src="/assets/opt/mock-home3.a2e7757f.webp" width="640" height="1330" alt="The Manifest app home screen with the jumper's next load" />
+      </figure>
+    </div>
+  </header>
+
+  <section class="ap-sec ap-dark" id="hangar-board">
+    <div class="ap-in">
+      <h2 class="ap-h2 ap-fade">Your hangar, live on TV.</h2>
+      <p class="ap-sub ap-fade">Every load counting down, on every screen.</p>
+      <figure class="ap-media ap-board ap-fade">
+        <img class="ap-shot" src="/assets/features/desk-board.webp" width="1600" height="1000" alt="The Manifest hangar board on a TV with three loads, boarding, called and open" loading="lazy" decoding="async" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="ap-sec ap-grey" id="calls">
+    <div class="ap-in">
+      <h2 class="ap-h2 ap-fade">Loads, live on every phone.</h2>
+      <p class="ap-sub ap-fade">Every call lands on their Lock Screen.</p>
+      <figure class="ap-media ap-fade">
+        <video class="ap-ls" autoplay muted loop playsinline preload="metadata" poster="/assets/opt/lockscreen-poster.6252405d.webp" width="738" height="1180" aria-label="An iPhone Lock Screen with the Manifest load card counting down to the jumper's load">
+          <source src="/assets/opt/lockscreen.704735fc.mp4" type="video/mp4" />
+        </video>
+      </figure>
+    </div>
+  </section>
+
+  <section class="ap-sec ap-dark" id="landout">
+    <div class="ap-in">
+      <h2 class="ap-h2 ap-fade">Landed out? Found fast.</h2>
+      <p class="ap-sub ap-fade">One tap from them. Their spot on your map.</p>
+      <figure class="ap-media ap-combo ap-fade" style="margin-left:auto;margin-right:auto">
+        <img class="ap-shot" src="/assets/landout-desk.jpg" width="1600" height="926" alt="Landout SOS on Manifest Desk with the jumper on a satellite map and a chat" loading="lazy" decoding="async" />
+        <img class="ap-phone" src="/assets/landout-phone.webp" width="640" height="1325" alt="The landout chat in the Manifest app, sharing the jumper's location" loading="lazy" decoding="async" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="ap-sec" id="paid">
+    <div class="ap-in">
+      <h2 class="ap-h2 ap-fade">Paid before the counter.</h2>
+      <p class="ap-sub ap-fade">Apple Pay top-ups, straight to your Stripe.</p>
+      <div class="ap-media ap-pair ap-fade">
+        <img class="ap-phone" src="/assets/opt/app-wallet.webp" width="640" height="1325" alt="The Manifest app wallet with the jumper's balance, top up and book" loading="lazy" decoding="async" />
+        <img class="ap-card" src="/assets/features/desk-paid.webp" width="880" height="519" alt="A paid payment for a guest on load 7 in Manifest Desk" loading="lazy" decoding="async" />
+      </div>
+    </div>
+  </section>
+
+  <section class="ap-sec ap-dark ap-safety" id="safety">
+    <div class="ap-in">
+      <h2 class="ap-h2 ap-fade">Safety, checked at the door.</h2>
+      <p class="ap-sub ap-fade">Licence, reserve and AAD on every pass.</p>
+      <figure class="ap-media ap-fade">
+        <img class="ap-phone" src="/assets/opt/checkin-pass-framed.webp" width="640" height="1325" alt="A jumper's Manifest check-in pass with licence, reserve repack and AAD" loading="lazy" decoding="async" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="ap-film" aria-labelledby="film-h">
+    <video src="/assets/video/dz-band.mp4?v=2" poster="/assets/video/dz-band.jpg?v=2" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+    <div class="ap-in ap-dark" style="background:none">
+      <h2 class="ap-h2 ap-fade" id="film-h">Already in their pocket.</h2>
+      <p class="ap-sub ap-fade">The app your jumpers carry now runs your dropzone.</p>
+    </div>
+  </section>
+
+  <section class="ap-sec ap-more" id="more">
+    <div class="ap-in">
+      <h2 class="ap-h2 ap-fade">Everything else, built in.</h2>
+      <p class="ap-sub ap-fade">For your jumpers, and for your desk.</p>
+      <div class="bento">
+      <figure class="bt bt-hero bt-col">
+        <figcaption><b>Every jump in 3D.</b><span>Replayed from their phone.</span></figcaption>
+        <img class="bt-phone" src="/assets/opt/mock-3d.5f7a460f.webp" width="640" height="1328" alt="A jump replayed in 3D over Skydive Dubai in the Manifest app" loading="lazy" decoding="async">
+      </figure>
+      <figure class="bt bt-side bt-row">
+        <figcaption><b>Winds before they board.</b><span>On the ground and up high.</span></figcaption>
+        <img class="bt-phone bt-mul" src="/assets/features/app-weather.webp" width="568" height="1182" alt="Dropzone weather in the Manifest app with winds at each stage of the jump" loading="lazy" decoding="async">
+      </figure>
+      <figure class="bt bt-side bt-dark bt-row">
+        <figcaption><b>Their people, their dropzone.</b><span>Friends, coaches and 3D jumps.</span></figcaption>
+        <img class="bt-phone" src="/assets/opt/community2.0766b4cb.webp" width="560" height="1175" alt="The Manifest community feed with live dropzones and friends' 3D jumps" loading="lazy" decoding="async">
+      </figure>
+      <figure class="bt bt-wide bt-col">
+        <figcaption><b>Every dollar, counted.</b><span>Top-ups, Apple Pay and sales, day by day.</span></figcaption>
+        <img class="bt-shot bt-edge bt-left" src="/assets/features/desk-money.webp" width="1200" height="492" alt="Manifest Desk report with money in, jumps and a day by day chart" loading="lazy" decoding="async">
+      </figure>
+      <figure class="bt bt-narrow bt-col">
+        <figcaption><b>Your whole crew.</b><span>Roles, and pay from what flew.</span></figcaption>
+        <img class="bt-shot bt-edge bt-left" src="/assets/features/desk-staff.webp" width="1200" height="384" alt="The staff page in Manifest Desk with owners, manifest and crew" loading="lazy" decoding="async">
+      </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="ap-sec ap-grey" id="pricing">
+    <div class="ap-in">
+      <p class="ap-eyebrow ap-fade">Pricing</p>
+      <h2 class="ap-h2 ap-fade">Free until you fly.</h2>
+      <p class="ap-price ap-fade">$1 a seat.</p>
+      <p class="ap-sub ap-fade">Plus 1% on app top-ups. No monthly fee.</p>
+      <div class="ap-ctas ap-fade"><a class="ap-btn" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20get%20started">Get Manifest Desk free</a></div>
+      <p class="ap-price-note ap-fade">A seat is a jumper on a load that took off.</p>
+    </div>
+  </section>
+
+  <section class="ap-sec ap-faq faq" id="faq">
+    <div class="ap-in">
+      <h2 class="ap-h2 ap-fade">Questions.</h2>
+      <div class="faq-list">
+        <details class="faq-i"><summary>What if the internet drops?<span class="faq-plus" aria-hidden="true"></span></summary><p>Calls, check-ins and boarding keep working, and sync when it is back.</p></details>
+        <details class="faq-i"><summary>Is it hard to switch?<span class="faq-plus" aria-hidden="true"></span></summary><p>No. We move your jumpers and balances over for you.</p></details>
+        <details class="faq-i"><summary>Is there a contract?<span class="faq-plus" aria-hidden="true"></span></summary><p>No. You pay for seats that fly, and you can stop anytime.</p></details>
+        <details class="faq-i"><summary>What hardware do we need?<span class="faq-plus" aria-hidden="true"></span></summary><p>Any laptop or tablet. Any TV with a browser for the board.</p></details>
+        <details class="faq-i"><summary>Do jumpers pay for the app?<span class="faq-plus" aria-hidden="true"></span></summary><p>No. The Manifest app is free to download.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="ap-sec ap-dark" id="start">
+    <div class="ap-in">
+      <h2 class="ap-h2 ap-fade">Your next jump day.</h2>
+      <p class="ap-sub ap-fade">We set it up with you, next to what you use today.</p>
+      <div class="ap-ctas ap-fade">
+        <a class="ap-btn ap-white" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo&amp;body=Dropzone%3A%20%0AName%3A%20%0APhone%3A%20%0ABest%20time%20for%20a%2020-minute%20video%20call%3A%20">Book a demo</a>
+        <a class="ap-link" href="#pricing">See pricing <svg viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="ft">
+    <div class="ft-brand">
+      <a class="wordmark" href="/" aria-label="Manifest home"><img class="lockup" src="/assets/manifest-lockup-white.svg?v=5" alt="Manifest" /></a>
+      <p>The app for skydivers and the system for dropzones. Live loads, 3D jump replay and in-person sign-offs for jumpers. One system that runs the dropzone.</p>
+      <div class="mail">Support: <a href="mailto:andre@manifestjump.com">andre@manifestjump.com</a></div>
+      <div class="ft-social">
+        <a href="https://www.instagram.com/manifestjump/" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></a>
+        <a href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="App Store"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.4 2-3.5 2-3.6-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.9-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.7-.1 0-2.5-1-2.5-3.6zM14.1 5.6c.6-.8 1.1-1.9 1-3-.9 0-2.1.6-2.7 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.5 2.7-1.3z"/></svg></a>
+      </div>
+    </div>
+    <div class="ft-col"><h3>App</h3>
+      <a href="/#replay">3D Replay</a><a href="/#live">Live loads</a><a href="/#everything">Features</a><a href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429">Download</a></div>
+    <div class="ft-col"><h3>Dropzones</h3>
+      <a href="/dropzones/">Manifest Desk</a><a href="/skydiving-manifest-software/">Dropzone software guide</a><a href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20get%20started">Get started</a><a href="https://desk.jumpmanifest.com">Dropzone login</a></div>
+    <div class="ft-col"><h3>Explore</h3>
+      <a href="/uspa-digital-logbook/">USPA digital logbook</a><a href="/skydive-3d-tracking/">3D jump tracking</a><a href="/#faq">FAQ</a></div>
+    <div class="ft-col"><h3>Company</h3>
+      <a href="/about/">About</a><a href="/support/">Support</a><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a></div>
+  </div>
+  <div class="ft-base"><span>© 2026 Manifest Jump LLC · Wyoming, USA · Dubai, UAE</span><div class="ft-pay" aria-label="Payment methods accepted"><img src="/assets/pay/apple_pay.svg?v=1" alt="Apple Pay" height="24" /><img src="/assets/pay/visa.svg?v=1" alt="Visa" height="24" /><img src="/assets/pay/master.svg?v=1" alt="Mastercard" height="24" /><img src="/assets/pay/american_express.svg?v=1" alt="American Express" height="24" /><img src="/assets/pay/cashapppay.svg?v=1" alt="Cash App Pay" height="24" /><img src="/assets/pay/stripe.svg?v=1" alt="Stripe" height="24" /></div></div>
+</footer>
+
+<!-- GET STARTED FORM (9 Oct 2026): every "Get started", "Book a demo" and
+     early-access button opens this instead of a mailto (which does nothing in
+     a browser without a mail app). Posts to the desk-lead function: saved,
+     and André's phone gets a push. The mailto stays as the fallback link.
+     REVIEW F05 F16 A10 (16 Oct 2026): one title for every entry point; a real
+     dialog (role, name, focus kept inside, page behind inert, focus back to
+     the button that opened it); errors announced and the first empty field
+     focused; field borders at 3:1; an optional best time sent as best_time. -->
+<div class="lead-scrim" id="leadScrim" hidden>
+  <form class="lead-box" id="leadForm" role="dialog" aria-modal="true" aria-labelledby="leadTitle" novalidate>
+    <button type="button" class="lead-x" id="leadClose" aria-label="Close">&times;</button>
+    <h3 id="leadTitle">Book a 20-minute demo</h3>
+    <p class="lead-sub" id="leadSub">We show you the desk on a video call and set you up. We reply the same day.</p>
+    <label>Dropzone<input name="dropzone" required autocomplete="organization" placeholder="Skydive Example" /></label>
+    <label>Your name<input name="name" required autocomplete="name" /></label>
+    <label>Email<input name="email" type="email" required autocomplete="email" /></label>
+    <label id="leadCountryL">Country<input name="country" autocomplete="country-name" placeholder="Norway" /></label>
+    <label>Phone <span>(optional)</span><input name="phone" type="tel" autocomplete="tel" /></label>
+    <label id="leadTimeL">Best time and time zone <span>(optional)</span><input name="best_time" type="text" autocomplete="off" /></label>
+    <label>Anything we should know? <span>(optional)</span><textarea name="message" rows="3" placeholder="Aircraft, loads on a busy day, what you use today"></textarea></label>
+    <input name="website" class="lead-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+    <p class="lead-err" id="leadErr" role="alert" hidden></p>
+    <button class="btn primary lead-go" type="submit" id="leadGo">Send</button>
+    <p class="lead-alt">Or email <a href="mailto:andre@manifestjump.com">andre@manifestjump.com</a></p>
+  </form>
+  <div class="lead-box lead-done" id="leadDone" role="dialog" aria-modal="true" aria-labelledby="leadDoneTitle" hidden>
+    <h3 id="leadDoneTitle">Thanks. We'll be in touch today.</h3>
+    <p class="lead-sub" id="leadDoneSub">We will reach out to set up your dropzone with you.</p>
+    <button class="btn primary" type="button" id="leadOk">Done</button>
+  </div>
+</div>
+<style>
+  .lead-scrim { position: fixed; inset: 0; z-index: 100; background: rgba(5,5,5,.45); display: flex; align-items: center; justify-content: center; padding: 16px; }
+  .lead-scrim[hidden] { display: none; }
+  .lead-box { position: relative; width: 100%; max-width: 460px; max-height: calc(100vh - 32px); max-height: calc(100dvh - 32px); overflow: auto; background: #fff; border-radius: 28px; padding: 32px; box-shadow: 0 30px 80px rgba(5,5,5,.25); }
+  .lead-box h3 { font-family: "General Sans", sans-serif; font-weight: 550; font-size: 28px; letter-spacing: -0.028em; color: #050505; margin: 0 32px 6px 0; }
+  .lead-sub { color: #52525B; font-size: 16px; margin: 0 0 18px; }
+  .lead-box label { display: block; font-size: 14px; font-weight: 600; color: #050505; margin-top: 12px; }
+  .lead-box label span { color: #52525B; font-weight: 400; }
+  .lead-box label[hidden] { display: none; }
+  .lead-box input, .lead-box textarea { display: block; width: 100%; box-sizing: border-box; margin-top: 6px; padding: 13px 14px; border-radius: 14px; border: 1px solid #8A8A93; font: inherit; font-size: 16px; color: #050505; background: #fff; }
+  .lead-box input:focus, .lead-box textarea:focus, .lead-box input:focus-visible, .lead-box textarea:focus-visible { outline: none !important; border-color: #6D42F5; box-shadow: 0 0 0 .5px #6D42F5 !important; }
+  .lead-box input[aria-invalid="true"] { border-color: #DC2626; }
+  .lead-hp { position: absolute; left: -9999px; width: 1px; height: 1px; }
+  .lead-x { position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; border-radius: 18px; border: 0; background: #F6F6F6; font-size: 22px; line-height: 1; cursor: pointer; color: #050505; }
+  .lead-go { width: 100%; justify-content: center; margin-top: 20px; border: 0; cursor: pointer; }
+  .lead-go[disabled] { opacity: .6; cursor: default; }
+  .lead-err { color: #DC2626; font-size: 14px; margin: 12px 0 0; }
+  .lead-reply { text-align: center; color: #050505; font-size: 14px; margin: 12px 0 0; }
+  .lead-alt { text-align: center; color: #52525B; font-size: 14px; margin: 14px 0 0; }
+  .lead-alt a { color: #6D42F5; }
+  .lead-done .btn { margin-top: 8px; border: 0; cursor: pointer; }
+  /* 19 Oct 2026: Send and Done match the pricing outline buttons (.pc-out): white, 1.5px purple
+     outline, purple text, still white on hover. Fields focus with a purple border, no black ring. */
+  .lead-scrim .btn.lead-go, .lead-scrim .lead-done .btn { display: flex; align-items: center; justify-content: center; width: 100%; height: 56px; padding: 0 24px;
+    background: #fff !important; color: #6D42F5 !important; border: 1.5px solid #6D42F5 !important; border-radius: 28px; box-shadow: none !important; filter: none !important;
+    font-family: "Manrope", sans-serif; font-weight: 600; font-size: 18px; line-height: 1; transition: none; }
+  .lead-scrim .btn.lead-go:hover, .lead-scrim .lead-done .btn:hover { background: #fff !important; color: #6D42F5 !important; filter: none !important; transform: none; }
+  @media (max-width: 600px), (max-height: 940px) {
+    .lead-box { padding: 24px 22px; border-radius: 24px; }
+    .lead-box h3 { font-size: 25px; }
+    .lead-sub { font-size: 15px; line-height: 22px; margin-bottom: 8px; }
+    .lead-box label { margin-top: 9px; }
+    .lead-box input, .lead-box textarea { padding: 10px 12px; }
+    .lead-go { margin-top: 16px; }
+    .lead-alt { margin-top: 10px; }
+  }
+</style>
+<script>
+(function () {
+  var URL_ = 'https://wkefdtglgbfprvfajrrw.supabase.co/functions/v1/desk-lead';
+  var scrim = document.getElementById('leadScrim'), form = document.getElementById('leadForm'), done = document.getElementById('leadDone');
+  var err = document.getElementById('leadErr'), go = document.getElementById('leadGo');
+  var ctx = { kind: 'start', plan: '' }, opener = null, inerted = [];
+  function setInert(on) {
+    if (on) {
+      inerted = [];
+      Array.prototype.forEach.call(document.body.children, function (el) {
+        if (el === scrim || /^(SCRIPT|STYLE|LINK|NOSCRIPT)$/.test(el.tagName) || el.hasAttribute('inert')) return;
+        el.setAttribute('inert', ''); inerted.push(el);
+      });
+    } else { inerted.forEach(function (el) { el.removeAttribute('inert'); }); inerted = []; }
+  }
+  function open(kind, plan, from) {
+    ctx = { kind: kind, plan: plan || '' };
+    // GET MANIFEST DESK FREE (19 Oct 2026): every non-demo button is a sign-up
+    // that André approves in admin; the demo keeps its video-call wording.
+    var su = kind !== 'demo';
+    document.getElementById('leadTitle').textContent = su ? 'Get Manifest Desk free' : 'Book a 20-minute demo';
+    document.getElementById('leadSub').textContent = su
+      ? 'Tell us about your dropzone. We approve every new dropzone by hand, and your invite arrives by email, usually the same day.'
+      : 'We show you the desk on a video call and set you up. We reply the same day.';
+    document.getElementById('leadCountryL').hidden = !su;
+    document.getElementById('leadTimeL').hidden = su;
+    document.getElementById('leadDoneTitle').textContent = su ? 'Thanks. You are on the list.' : "Thanks. We'll be in touch today.";
+    document.getElementById('leadDoneSub').textContent = su
+      ? 'We approve new dropzones by hand. Your invite to Manifest Desk arrives by email, usually the same day.'
+      : 'We will reach out to set up your dropzone with you.';
+    opener = from || (document.activeElement !== document.body ? document.activeElement : null);
+    err.hidden = true; form.hidden = false; done.hidden = true; scrim.hidden = false;
+    setInert(true);
+    setTimeout(function () { form.dropzone.focus(); }, 30);
+  }
+  function close() {
+    if (scrim.hidden) return;
+    scrim.hidden = true; setInert(false);
+    if (opener && document.contains(opener) && opener.focus) opener.focus();
+    opener = null;
+  }
+  document.querySelectorAll('a[href^="mailto:andre@manifestjump.com?"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      var card = a.closest('.pc'); var plan = card && card.querySelector('h3') ? card.querySelector('h3').textContent.trim() : '';
+      var demo = /demo/i.test(decodeURIComponent(a.getAttribute('href')));
+      // 19 Oct 2026: one price for every dropzone, so no plan is guessed from nearby text.
+      open(demo ? 'demo' : 'start', plan, a);
+    });
+  });
+  // F05: every "Get started" opens this form directly; /dropzones/start/ stays live for old links.
+  document.querySelectorAll('a[href="/dropzones/start/"], a[href^="/dropzones/start/?"]').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); open('start', '', a); });
+  });
+  // /dropzones/#get-price (the hidden sign-up page links here) opens the form.
+  if (location.hash === '#get-price') open('start', '');
+  document.getElementById('leadClose').onclick = close;
+  document.getElementById('leadOk').onclick = close;
+  scrim.addEventListener('mousedown', function (e) { if (e.target === scrim) close(); });
+  document.addEventListener('keydown', function (e) {
+    if (scrim.hidden) return;
+    if (e.key === 'Escape') { close(); return; }
+    if (e.key !== 'Tab') return;
+    var box = form.hidden ? done : form;
+    var f = Array.prototype.filter.call(box.querySelectorAll('a[href], button, input, textarea, select'), function (el) { return !el.disabled && el.tabIndex !== -1 && el.offsetParent !== null; });
+    if (!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    if (!box.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+    else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+  form.addEventListener('input', function (e) { if (e.target.getAttribute('aria-invalid')) e.target.removeAttribute('aria-invalid'); });
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = form, body = { kind: ctx.kind === 'demo' ? 'demo' : 'signup', country: ctx.kind === 'demo' ? '' : f.country.value, plan: ctx.plan, dropzone: f.dropzone.value, name: f.name.value, email: f.email.value, phone: f.phone.value, best_time: ctx.kind === 'demo' ? f.best_time.value : '', message: f.message.value, website: f.website.value };
+    var bad = [];
+    if (!body.dropzone.trim()) bad.push(f.dropzone);
+    if (!body.name.trim()) bad.push(f.name);
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email.trim())) bad.push(f.email);
+    [f.dropzone, f.name, f.email].forEach(function (el) { if (bad.indexOf(el) < 0) el.removeAttribute('aria-invalid'); else el.setAttribute('aria-invalid', 'true'); });
+    if (bad.length) { err.textContent = 'Add your dropzone, your name and a valid email.'; err.hidden = false; bad[0].focus(); return; }
+    go.disabled = true; go.textContent = 'Sending...'; err.hidden = true;
+    fetch(URL_, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (x) { if (!x.ok) throw new Error(x.j && x.j.error || 'Could not send'); form.reset(); form.hidden = true; done.hidden = false; document.getElementById('leadOk').focus(); })
+      .catch(function (e2) { err.textContent = (e2 && e2.message) || 'Could not send. Email andre@manifestjump.com instead.'; err.hidden = false; })
+      .then(function () { go.disabled = false; go.textContent = 'Send'; });
+  });
+})();
+</script>
+<script>
+// LAND EXACTLY ON THE ANCHOR (15 Oct): arriving at /dropzones/#pricing from
+// another page, the browser jumps before fonts, images and the founding-seat
+// count are in, and the page settles about 6 px off. Land again as each one
+// arrives, for the first 2.5 s, unless the visitor has started scrolling.
+(function () {
+  if (!location.hash) return;
+  var t = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  if (!t) return;
+  var stop = false, quit = function () { stop = true; };
+  ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (e) { addEventListener(e, quit, { once: true, passive: true }); });
+  var land = function () { if (!stop) t.scrollIntoView({ block: 'start' }); };
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(land);
+  addEventListener('load', function () { land(); [300, 800, 1500, 2500].forEach(function (ms) { setTimeout(land, ms); }); }, { once: true });
+})();
+</script>
+<script id="site-header-js">
+(() => {
+  const bar = document.querySelector('[data-sh]');
+  if (!bar) return;
+  const dds = [...bar.querySelectorAll('[data-dd]')];
+  const canHover = matchMedia('(hover: hover) and (pointer: fine)');
+  let timer = 0;
+
+  const place = (dd) => {
+    const p = dd.querySelector('.sh-panel');
+    p.style.left = '';
+    const r = p.getBoundingClientRect(), over = r.right - (innerWidth - 16);
+    if (over > 0) p.style.left = (parseFloat(getComputedStyle(p).left) - over) + 'px';
+  };
+  const set = (dd, open) => {
+    dd.classList.toggle('open', open);
+    dd.querySelector('.sh-trig').setAttribute('aria-expanded', open);
+    if (open) { dd.openedAt = Date.now(); place(dd); }
+  };
+  const closeAll = (except) => dds.forEach((d) => { if (d !== except && d.classList.contains('open')) set(d, false); });
+  const open = (dd) => { clearTimeout(timer); closeAll(dd); if (!dd.classList.contains('open')) set(dd, true); };
+
+  dds.forEach((dd) => {
+    const trig = dd.querySelector('.sh-trig');
+    dd.addEventListener('mouseenter', () => { if (canHover.matches) { dd.viaHover = true; open(dd); } });
+    dd.addEventListener('mouseleave', () => {
+      if (!canHover.matches) return;
+      clearTimeout(timer); timer = setTimeout(() => set(dd, false), 140);
+    });
+    trig.addEventListener('click', (e) => {
+      // with a mouse, the menu opens on hover and a click goes to the page's top;
+      // Enter or Space (e.detail === 0) opens the menu instead of navigating
+      if (canHover.matches && e.detail !== 0) {
+        const href = trig.getAttribute('aria-controls') === 'sh-p-dropzones' ? '/dropzones/' : '/';
+        if (location.pathname === href) { set(dd, false); history.replaceState(null, '', href); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+        else location.href = href;
+        return;
+      }
+      const isOpen = dd.classList.contains('open');
+      // a click right after hover opened it should not slam it shut again
+      if (isOpen && dd.viaHover && Date.now() - dd.openedAt < 400) return;
+      dd.viaHover = false;
+      isOpen ? set(dd, false) : open(dd);
+    });
+    trig.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') { e.preventDefault(); open(dd); const f = dd.querySelector('.sh-item'); f && f.focus(); }
+    });
+    dd.addEventListener('focusout', (e) => { if (!dd.contains(e.relatedTarget)) set(dd, false); });
+    dd.querySelectorAll('.sh-panel a').forEach((a) => a.addEventListener('click', () => set(dd, false)));
+  });
+
+  // phone sheet
+  const burger = bar.querySelector('.sh-burger'), sheet = bar.querySelector('.sh-sheet');
+  // the bar's load-in animation makes it the containing block for fixed children, so the sheet lives on body
+  document.body.appendChild(sheet);
+  const setSheet = (show) => {
+    if (show) sheet.style.setProperty('--sh-top', (Math.max(0, bar.offsetTop - scrollY) + bar.offsetHeight) + 'px'); // layout, not the load-in transform
+    sheet.hidden = !show;
+    burger.setAttribute('aria-expanded', show);
+    document.documentElement.style.overflow = show ? 'hidden' : '';
+  };
+  burger.addEventListener('click', () => setSheet(sheet.hidden));
+  sheet.querySelectorAll('.sh-macc').forEach((b) => b.addEventListener('click', () => {
+    const list = document.getElementById(b.getAttribute('aria-controls')), show = list.hidden;
+    list.hidden = !show; b.setAttribute('aria-expanded', show);
+  }));
+  sheet.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setSheet(false)));
+
+  document.addEventListener('click', (e) => { if (!e.target.closest('[data-dd]')) closeAll(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    const o = dds.find((d) => d.classList.contains('open'));
+    if (o) { set(o, false); o.querySelector('.sh-trig').focus(); }
+    if (!sheet.hidden) { setSheet(false); burger.focus(); }
+  });
+  addEventListener('resize', () => { if (innerWidth >= 900 && !sheet.hidden) setSheet(false); closeAll(); });
+  // skip link (A02): move focus into the main content, not just the scroll position
+  const skip = document.querySelector('a.skip');
+  if (skip) skip.addEventListener('click', () => {
+    const m = document.getElementById('main');
+    if (!m) return;
+    if (!m.hasAttribute('tabindex')) m.setAttribute('tabindex', '-1');
+    m.focus();
+  });
+})();
+</script>
+<script id="anchor-fix">
+  // IN-PAGE LINKS ALWAYS ARRIVE (13 Oct): the browser's smooth anchor scroll
+  // stopped partway (FAQ landed on Weather) because sections further down
+  // grow while it runs. Scroll ourselves, then correct once it settles.
+  (function () {
+    var HDR = 90;
+    function go(id, smooth) {
+      var el = document.getElementById(id);
+      if (!el) return false;
+      var to = function (b) { window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - HDR, behavior: b }); };
+      to(smooth ? 'smooth' : 'instant');
+      var n = 0, t = setInterval(function () {
+        var off = Math.abs(el.getBoundingClientRect().top - HDR);
+        if (off < 4 || ++n > 12) { clearInterval(t); if (off >= 4) to('instant'); }
+        else if (n % 3 === 0) to('smooth');
+      }, 250);
+      return true;
+    }
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href*="#"]');
+      if (!a || e.metaKey || e.ctrlKey) return;
+      var u = new URL(a.getAttribute('href'), location.href);
+      if (u.pathname !== location.pathname || !u.hash || u.hash === '#') return;
+      if (go(decodeURIComponent(u.hash.slice(1)), true)) { e.preventDefault(); history.pushState(null, '', u.hash); }
+    });
+    if (location.hash.length > 1) window.addEventListener('load', function () { go(decodeURIComponent(location.hash.slice(1)), false); });
+  })();
+</script>
+<script id="mailto-copy">
+/* "Write to me" did nothing on Macs with no mail app set up (André, 16 Oct).
+   Every email link still opens the mail app, and also copies the address and
+   says so, so the visitor always has it. Links the demo form takes over are
+   left alone. */
+(function () {
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="mailto:"]');
+    if (!a || e.defaultPrevented) return;
+    var addr = decodeURIComponent(a.getAttribute('href').slice(7).split('?')[0]);
+    var t = document.getElementById('mailto-toast');
+    if (!t) {
+      t = document.createElement('div'); t.id = 'mailto-toast'; t.setAttribute('role', 'status');
+      t.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:200;background:#050505;color:#fff;font:600 15px/20px Manrope,sans-serif;padding:12px 18px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.25);max-width:calc(100vw - 32px);text-align:center;opacity:0;transition:opacity .2s';
+      document.body.appendChild(t);
+    }
+    var show = function (msg) { t.textContent = msg; t.style.opacity = '1'; clearTimeout(t._h); t._h = setTimeout(function () { t.style.opacity = '0'; }, 4000); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(addr).then(function () { show('Email copied: ' + addr); }, function () { show('Email: ' + addr); });
+    } else show('Email: ' + addr);
+  });
+})();
+</script>
+<script>
+// PAY PER SEAT calculator: loads a day x jumpers per load x days a month, $1 a seat.
+(function () {
+  var L = document.getElementById('iL'), J = document.getElementById('iJ'), D = document.getElementById('iD');
+  if (!L) return;
+  function upd() {
+    var seats = L.value * J.value * D.value;
+    document.getElementById('cL').textContent = L.value;
+    document.getElementById('cJ').textContent = J.value;
+    document.getElementById('cD').textContent = D.value;
+    document.getElementById('cT').textContent = '$' + seats.toLocaleString('en-US');
+    document.getElementById('cS').textContent = seats.toLocaleString('en-US') + ' seats flown';
+  }
+  [L, J, D].forEach(function (x) { x.addEventListener('input', upd); });
+  upd();
+})();
+</script>
+<script id="bento-in">
+(function(){var g=document.querySelectorAll('.bento');if(!('IntersectionObserver' in window)||!g.length)return;
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
+g.forEach(function(b){b.classList.add('anim');b.querySelectorAll('.bt').forEach(function(t,i){t.style.transitionDelay=(i%3)*80+'ms';io.observe(t);});});})();
+</script>
+<script id="ap-fade-in">
+(function(){if(!('IntersectionObserver' in window))return;var m=document.querySelector('main.ap');m.classList.add('ap-anim');
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});},{rootMargin:'0px 0px -6% 0px'});
+m.querySelectorAll('.ap-fade').forEach(function(x){io.observe(x);});})();
+</script>
+</body>
+</html>
