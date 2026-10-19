@@ -533,7 +533,20 @@
      orange on the blue film). */
   .band.band-film .band-ink-grey h2, .band.band-film .band-ink-grey .h2, .band.band-film .band-ink-grey .band-sub { color: #808080; mix-blend-mode: saturation; }
   .band.band-film .band-ink-grey .h2 { margin: 0; }
-  @media (max-width: 600px) { .band.band-film { aspect-ratio: auto; min-height: 560px; padding: 40px 20px; } }
+  .band-sub-m { display: none; }
+  /* PHONE (André 19 Oct): the film runs edge to edge in 4:3, the headline on
+     it; the line and the button sit under it on the page. */
+  @media (max-width: 600px) {
+    .band.band-film { display: block; aspect-ratio: auto; padding: 0; border-radius: 0; overflow: visible;
+      width: 100vw; max-width: none; margin-left: calc(50% - 50vw); margin-right: 0; }
+    .band-vid { position: relative; display: block; aspect-ratio: 4 / 3; height: auto; z-index: auto; }
+    .band.band-film .band-ink-wrap { position: absolute; top: 0; left: 0; right: 0; aspect-ratio: 4 / 3; align-items: center; padding: 0 20px; }
+    .band.band-film .band-ink .band-sub { display: none; }
+    .band.band-film .band-ink h2 { font-size: 28px; line-height: 31px; margin: 0; }
+    .band-sub-m { display: block; margin: 20px 20px 0; font-size: 17px; line-height: 26px; color: #52525B; text-align: center; }
+    .band.band-film .band-cta { margin: 18px 20px 0; }
+    .band.band-film .band-btn { background: #fff; border: 1.5px solid #6D42F5; color: #6D42F5; }
+  }
   @media (prefers-reduced-motion: reduce) { .band-vid { display: none; } .band.band-film { background: #050505 url(/assets/video/dz-band.jpg?v=2) center / cover; } }
 
   @media (max-width: 900px) { .vs { grid-template-columns: 1fr; } }
@@ -1243,6 +1256,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       <p class="band-sub">We move your jumpers over, you run it next to your current system until you trust it, and you can cancel anytime.</p>
       </div>
     </div>
+    <p class="band-sub-m">We move your jumpers over, you run it next to your current system until you trust it, and you can cancel anytime.</p>
     <div class="band-cta"><a class="band-btn" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo&body=Dropzone%3A%20%0AName%3A%20%0APhone%3A%20%0ABest%20time%20for%20a%2020-minute%20video%20call%3A%20">Book a 20-minute demo<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
   </section>
 
