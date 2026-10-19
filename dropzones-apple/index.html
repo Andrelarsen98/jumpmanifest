@@ -923,6 +923,18 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   .ap-more .bento { margin-top: 48px; }
   .ap-faq { padding-top: 96px; padding-bottom: 96px; }
 }
+  /* DEVICES (19 Oct 2026): a CSS laptop with the real Desk inside and the
+     real framed iPhone standing at its lower right. Both always whole. */
+  .dv{position:relative;padding:0 13% 2% 0}
+  .lap{width:100%}
+  .lap-lid{position:relative;background:#0c0c0e;border-radius:18px 18px 4px 4px;padding:2.2% 2.2% 2.6%;box-shadow:0 0 0 1.5px #c6c7cb,0 0 0 2.5px #e6e7ea}
+  .lap-screen{aspect-ratio:16/10;overflow:hidden;border-radius:3px;background:#fff}
+  .lap-screen img{display:block;width:100%;height:100%;object-fit:cover;object-position:left top}
+  .lap-base{position:relative;width:116%;margin-left:-8%;aspect-ratio:100/3.3;background:linear-gradient(180deg,#eceef0 0%,#d5d7da 38%,#b9bbbf 100%);border-radius:2px 2px 50% 50%/2px 2px 100% 100%;box-shadow:0 26px 40px -18px rgba(5,5,5,.45)}
+  .lap-base i{position:absolute;left:50%;top:0;width:15%;height:42%;transform:translateX(-50%);background:linear-gradient(180deg,#b4b6ba,#cfd1d4);border-radius:0 0 10px 10px}
+  .dv-phone{position:absolute;right:0;bottom:0;width:19%;height:auto;filter:drop-shadow(0 22px 30px rgba(5,5,5,.30))}
+  @media (max-width:767px){.lap-lid{border-radius:10px 10px 3px 3px}.dv{padding:0 11% 3% 4%}.lap-base{width:108%;margin-left:-4%}.dv-phone{width:24%}}
+.ap-dv{max-width:1100px;margin-left:auto;margin-right:auto;text-align:left}
 </style>
 </head>
 <body>
@@ -970,9 +982,11 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
         <a class="ap-btn" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20book%20a%20demo&amp;body=Dropzone%3A%20%0AName%3A%20%0APhone%3A%20%0ABest%20time%20for%20a%2020-minute%20video%20call%3A%20">Book a demo</a>
         <a class="ap-link" href="#pricing">See pricing <svg viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></a>
       </div>
-      <figure class="ap-media ap-combo ap-fade" style="margin-left:auto;margin-right:auto">
-        <img class="ap-shot" src="/assets/desk-today.jpg?v=1" width="1440" height="900" alt="Manifest Desk, the Today page of a demo dropzone with takings, loads, standby and accounts" fetchpriority="high" />
-        <img class="ap-phone" src="/assets/opt/mock-home3.a2e7757f.webp" width="640" height="1330" alt="The Manifest app home screen with the jumper's next load" />
+      <figure class="ap-media ap-dv ap-fade">
+        <div class="dv">
+          <div class="lap"><div class="lap-lid"><div class="lap-screen"><img src="/assets/features/desk-today-laptop.webp" width="1800" height="1125" alt="Manifest Desk on a laptop, the Today page of a demo dropzone" fetchpriority="high" /></div></div><div class="lap-base"><i></i></div></div>
+          <img class="dv-phone" src="/assets/opt/mock-home3.a2e7757f.webp" width="640" height="1330" alt="The Manifest app on an iPhone with the jumper's next load" fetchpriority="high" />
+        </div>
       </figure>
     </div>
   </header>
@@ -1003,9 +1017,11 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     <div class="ap-in">
       <h2 class="ap-h2 ap-fade">Landed out? Found fast.</h2>
       <p class="ap-sub ap-fade">One tap from them. Their spot on your map.</p>
-      <figure class="ap-media ap-combo ap-fade" style="margin-left:auto;margin-right:auto">
-        <img class="ap-shot" src="/assets/landout-desk.jpg" width="1600" height="926" alt="Landout SOS on Manifest Desk with the jumper on a satellite map and a chat" loading="lazy" decoding="async" />
-        <img class="ap-phone" src="/assets/landout-phone.webp" width="640" height="1325" alt="The landout chat in the Manifest app, sharing the jumper's location" loading="lazy" decoding="async" />
+      <figure class="ap-media ap-dv ap-fade">
+        <div class="dv">
+          <div class="lap"><div class="lap-lid"><div class="lap-screen"><img src="/assets/features/desk-sos-laptop.webp" width="1800" height="1125" alt="A landout on Manifest Desk, with the jumper on a map and a chat" loading="lazy" decoding="async" /></div></div><div class="lap-base"><i></i></div></div>
+          <img class="dv-phone" src="/assets/landout-phone.webp" width="640" height="1325" alt="The landout chat in the Manifest app, sharing the jumper's location" loading="lazy" decoding="async" />
+        </div>
       </figure>
     </div>
   </section>

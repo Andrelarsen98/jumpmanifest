@@ -1089,18 +1089,17 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z"/><path d="M21 16v2a4 4 0 0 1-4 4h-5"/></svg>Set up with us, directly</span>
       </div>
     </div>
-    <p class="li hero-founding" style="--i:4">Dropzones are onboarding now, set up directly with us.</p>
   </div>
   <!-- F13 (16 Oct 2026): the hero shows real Desk panels cut from
        desk-today.jpg (Next load, Standby, Loads; Next load alone on phones) so
        the UI text is readable. Nothing redrawn. -->
   <figure class="li hero-media" id="demo" style="--i:5">
-    <div class="hm-wrap">
-      <div class="frame">
-        <div class="frame-bar"><i></i><i></i><i></i><span>desk.jumpmanifest.com</span></div>
-        <img src="/assets/desk-today.jpg?v=1" alt="Manifest Desk: the Today page of a demo dropzone, with today's takings, open loads, the next load countdown, standby and accounts" width="1440" height="900" fetchpriority="high" />
+    <div class="dv">
+      <div class="lap" aria-hidden="false">
+        <div class="lap-lid"><div class="lap-screen"><img src="/assets/features/desk-today-laptop.webp" width="1800" height="1125" alt="Manifest Desk on a laptop: the Today page of a demo dropzone with takings, loads, the next load, standby and accounts" fetchpriority="high" /></div></div>
+        <div class="lap-base"><i></i></div>
       </div>
-      <img class="hm-phone" src="/assets/opt/mock-home3.a2e7757f.webp" width="640" height="1330" alt="" />
+      <img class="dv-phone" src="/assets/opt/mock-home3.a2e7757f.webp" width="640" height="1330" alt="The Manifest app on an iPhone with the jumper's next load" />
     </div>
     <figcaption class="desk-cap">Manifest Desk with sample data from a demo dropzone.</figcaption>
   </figure>
@@ -1157,10 +1156,33 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     <h2 id="lv-h">Skydivers deserve better than a ticket app.</h2>
     <p>Give them their whole skydiving life in their pocket, and they&rsquo;ll book, top up and come back more.</p>
   </section>
-  <section class="pain3" aria-label="What only Manifest does">
-    <div class="pain"><b>&ldquo;Load 4, 10 minutes!&rdquo;</b><p>One button at the desk. Every jumper on the load gets the call on their Lock Screen, wherever they are on the dropzone.</p></div>
-    <div class="pain"><b>&ldquo;Where&rsquo;s the jumper who landed out?&rdquo;</b><p>A live map shows them, with a pickup pin for the driver and one tap to put every load on hold.</p></div>
-    <div class="pain"><b>&ldquo;Did you see my jump?&rdquo;</b><p>Every jumper can replay their jump in 3D and share it, with your dropzone&rsquo;s name on it. Free advertising, every jump day.</p></div>
+  <!-- WHY IT WORKS CAROUSEL (19 Oct 2026): apple.com style sideways cards,
+       one question a dropzone hears every day, one line, one real picture. -->
+  <section class="cr" aria-label="What only Manifest does">
+    <div class="cr-track" tabindex="0">
+      <article class="cr-card">
+        <p class="cr-eye">Load calls</p>
+        <h3>&ldquo;Load 4, 10&nbsp;minutes!&rdquo;</h3>
+        <p class="cr-line">One tap at the desk. Every Lock Screen knows.</p>
+        <div class="cr-pic cr-desk"><img src="/assets/help/manifest-call.webp" width="1200" height="750" alt="Calling a load on Manifest Desk" loading="lazy" decoding="async" /></div>
+      </article>
+      <article class="cr-card">
+        <p class="cr-eye">Landouts</p>
+        <h3>&ldquo;Where&rsquo;s the jumper who landed&nbsp;out?&rdquo;</h3>
+        <p class="cr-line">On your map, with a pin for the driver.</p>
+        <div class="cr-pic cr-desk"><img src="/assets/features/desk-landout.webp" width="1400" height="825" alt="A landout on Manifest Desk with the jumper on a satellite map" loading="lazy" decoding="async" /></div>
+      </article>
+      <article class="cr-card">
+        <p class="cr-eye">3D replays</p>
+        <h3>&ldquo;Did you see my&nbsp;jump?&rdquo;</h3>
+        <p class="cr-line">Replayed in 3D and shared, with your name on it.</p>
+        <div class="cr-pic cr-phone"><img src="/assets/features/app-3d-replay.webp" width="571" height="1185" alt="A jump replayed in 3D in the Manifest app" loading="lazy" decoding="async" /></div>
+      </article>
+    </div>
+    <div class="cr-nav">
+      <button type="button" class="cr-btn" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3L5 8l5 5"/></svg></button>
+      <button type="button" class="cr-btn" data-dir="1" aria-label="Next"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button>
+    </div>
   </section>
   <style>
   /* LIVE IN IT line (16 Oct 2026): one headline and one sentence, centred. */
@@ -1168,23 +1190,81 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   .lv h2{margin:0;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.028em;font-size:clamp(34px,4vw,56px);line-height:1.05;color:#050505;text-wrap:balance}
   .lv p{margin:20px auto 0;font-size:20px;line-height:31px;color:#52525B;max-width:620px;text-wrap:balance}
   @media (max-width:899px){.lv{margin-top:64px}.lv p{font-size:17px;line-height:27px}}
-  .pain3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:56px 0 0}
-  .pain{background:#f5f5f6;border-radius:24px;padding:28px 26px}
-  .pain b{display:block;font-family:"Manrope",sans-serif;font-size:21px;line-height:27px;font-weight:700;color:#0f0b1c;letter-spacing:-.01em}
-  .pain p{margin:10px 0 0;font-size:16px;line-height:24px;color:#52525B}
-  @media (max-width:899px){.pain3{grid-template-columns:1fr;gap:12px;margin-top:36px}.pain{padding:22px 20px}.pain b{font-size:19px;line-height:25px}}
+  /* DEVICES (19 Oct 2026): a CSS laptop with the real Desk inside and the
+     real framed iPhone standing at its lower right. Both always whole. */
+  .dv{position:relative;padding:0 13% 2% 0}
+  .lap{width:100%}
+  .lap-lid{position:relative;background:#0c0c0e;border-radius:18px 18px 4px 4px;padding:2.2% 2.2% 2.6%;box-shadow:0 0 0 1.5px #c6c7cb,0 0 0 2.5px #e6e7ea}
+  .lap-screen{aspect-ratio:16/10;overflow:hidden;border-radius:3px;background:#fff}
+  .lap-screen img{display:block;width:100%;height:100%;object-fit:cover;object-position:left top}
+  .lap-base{position:relative;width:116%;margin-left:-8%;aspect-ratio:100/3.3;background:linear-gradient(180deg,#eceef0 0%,#d5d7da 38%,#b9bbbf 100%);border-radius:2px 2px 50% 50%/2px 2px 100% 100%;box-shadow:0 26px 40px -18px rgba(5,5,5,.45)}
+  .lap-base i{position:absolute;left:50%;top:0;width:15%;height:42%;transform:translateX(-50%);background:linear-gradient(180deg,#b4b6ba,#cfd1d4);border-radius:0 0 10px 10px}
+  .dv-phone{position:absolute;right:0;bottom:0;width:19%;height:auto;filter:drop-shadow(0 22px 30px rgba(5,5,5,.30))}
+  @media (max-width:767px){.lap-lid{border-radius:10px 10px 3px 3px}.dv{padding:0 11% 3% 4%}.lap-base{width:108%;margin-left:-4%}.dv-phone{width:24%}}
+  /* WHY CAROUSEL (19 Oct 2026): sideways white cards on grey, arrows bottom right. */
+  .cr{margin:56px 0 0;background:#F5F5F7;border-radius:32px;padding:40px 0 28px}
+  .cr-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 40px;padding:0 40px 8px;scrollbar-width:none;outline:none}
+  .cr-track::-webkit-scrollbar{display:none}
+  .cr-card{flex:0 0 min(480px,82%);scroll-snap-align:start;background:#fff;border-radius:28px;padding:40px 40px 0;display:flex;flex-direction:column;min-height:640px;overflow:hidden}
+  .cr-eye{margin:0;font-size:15px;line-height:20px;font-weight:600;color:#71717B}
+  .cr-card h3{margin:10px 0 0;font-family:"General Sans","Manrope",sans-serif;font-weight:550;font-size:34px;line-height:38px;letter-spacing:-.028em;color:#050505;text-wrap:balance}
+  .cr-line{margin:12px 0 0;font-size:17px;line-height:25px;font-weight:500;color:#71717B}
+  .cr-pic{margin-top:auto;padding-top:32px}
+  .cr-pic img{display:block;height:auto}
+  .cr-desk img{width:150%;max-width:none;border-radius:12px 0 0 0;box-shadow:0 0 0 1px rgba(5,5,5,.07),0 18px 40px rgba(5,5,5,.10)}
+  .cr-phone{align-self:center;padding-bottom:28px}
+  .cr-phone img{width:220px;mix-blend-mode:multiply}
+  .cr-nav{display:flex;justify-content:flex-end;gap:12px;padding:20px 40px 0}
+  .cr-btn{width:44px;height:44px;border-radius:50%;border:0;background:#E4E4E7;color:#050505;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+  .cr-btn svg{width:16px;height:16px}
+  .cr-btn:disabled{opacity:.35;cursor:default}
+  @media (max-width:899px){.cr{margin-top:36px;border-radius:24px;padding:24px 0 20px}.cr-track{gap:12px;padding:0 16px 6px;scroll-padding:0 16px}.cr-card{flex-basis:86%;min-height:540px;padding:28px 24px 0;border-radius:22px}.cr-card h3{font-size:27px;line-height:31px}.cr-line{font-size:16px;line-height:23px}.cr-phone img{width:190px}.cr-nav{padding:16px 16px 0}}
+  /* QUEUE ACCORDION (19 Oct 2026) */
+  .ac{display:grid;grid-template-columns:5fr 7fr;gap:56px;align-items:center;margin-top:56px}
+  .ac-item{border-bottom:1px solid #E4E4E7}
+  .ac-item h3{margin:0}
+  .ac-btn{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:26px 0;border:0;background:none;cursor:pointer;text-align:left;font-family:"General Sans","Manrope",sans-serif;font-weight:550;font-size:28px;line-height:34px;letter-spacing:-.02em;color:#050505}
+  .ac-chev{width:20px;height:20px;flex:0 0 auto;transition:transform .3s}
+  .ac-btn[aria-expanded="true"] .ac-chev{transform:rotate(180deg)}
+  .ac-panel p{margin:-8px 0 26px;font-size:18px;line-height:27px;font-weight:500;color:#71717B}
+  .ac-mimg{display:none}
+  .ac-stage{background:#F5F5F7;border-radius:32px;display:flex;align-items:center;justify-content:center;padding:56px 0;min-height:680px}
+  .ac-simg{display:block;width:280px;height:auto;transition:opacity .25s}
+  .ac-simg.ac-mul,.ac-mimg.ac-mul{mix-blend-mode:multiply}
+  @media (max-width:899px){.ac{grid-template-columns:1fr;gap:0;margin-top:32px}.ac-stage{display:none}.ac-btn{font-size:22px;line-height:28px;padding:20px 0}
+    .ac-panel p{font-size:16px;line-height:24px;margin-bottom:20px}.ac-mimg{display:block;width:100%;height:440px;object-fit:contain;padding:28px 0;box-sizing:border-box;background:#F5F5F7;border-radius:24px;margin:0 0 28px}.ac-panel{background:none}}
   </style>
+  <!-- JUMPER QUEUE ACCORDION (19 Oct 2026): apple.com "Mac and iPhone" style.
+       Three items on the left, the full phone on the right swaps with them. -->
   <section class="sec" id="app">
     <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M11 18.5h2"/></svg>The Manifest app, free to download</p>
-    <h2>Your jumpers do the queueing on their phone.</h2>
-    <div class="app-panel">
-      <div class="app-grid">
-        <div class="app-card"><span class="n">01</span><b>Top up with Apple Pay</b><p>Money goes straight to your Stripe and shows on the desk instantly.</p></div>
-        <div class="app-card"><span class="n">02</span><b>Self-manifest from the phone</b><p>Jumpers book their own slots. The desk always has the final say.</p></div>
-        <div class="app-card"><span class="n">03</span><b>Every call on their phone</b><p>Every call and hold hits their Lock Screen the second you press it.</p></div>
+    <h2>Your jumpers queue on their phone.</h2>
+    <div class="ac">
+      <div class="ac-list">
+        <div class="ac-item open">
+          <h3><button type="button" class="ac-btn" id="ac-b-topup" aria-expanded="true" aria-controls="ac-p-topup" data-img="/assets/opt/app-wallet.webp" data-w="640" data-h="1325" data-alt="The Manifest app wallet with balance, top up and book" data-mul="0">Top up with Apple Pay<svg class="ac-chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg></button></h3>
+          <div class="ac-panel" id="ac-p-topup" role="region" aria-labelledby="ac-b-topup">
+            <p>Straight to your Stripe, on the desk at once.</p>
+            <img class="ac-mimg" src="/assets/opt/app-wallet.webp" width="640" height="1325" alt="The Manifest app wallet with balance, top up and book" loading="lazy" decoding="async" />
+          </div>
+        </div>
+        <div class="ac-item">
+          <h3><button type="button" class="ac-btn" id="ac-b-book" aria-expanded="false" aria-controls="ac-p-book" data-img="/assets/features/app-liveloads.webp" data-w="560" data-h="1171" data-alt="Live loads in the Manifest app with the next load building" data-mul="0">Book from the phone<svg class="ac-chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg></button></h3>
+          <div class="ac-panel" id="ac-p-book" role="region" aria-labelledby="ac-b-book" hidden>
+            <p>They take their own slot. The desk has the final say.</p>
+            <img class="ac-mimg" src="/assets/features/app-liveloads.webp" width="560" height="1171" alt="Live loads in the Manifest app with the next load building" loading="lazy" decoding="async" />
+          </div>
+        </div>
+        <div class="ac-item">
+          <h3><button type="button" class="ac-btn" id="ac-b-call" aria-expanded="false" aria-controls="ac-p-call" data-img="/assets/features/app-lockscreen.webp" data-w="489" data-h="1011" data-alt="An iPhone Lock Screen with the Manifest load countdown" data-mul="0">Every call on their phone<svg class="ac-chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg></button></h3>
+          <div class="ac-panel" id="ac-p-call" role="region" aria-labelledby="ac-b-call" hidden>
+            <p>Calls and holds hit their Lock Screen at once.</p>
+            <img class="ac-mimg" src="/assets/features/app-lockscreen.webp" width="489" height="1011" alt="An iPhone Lock Screen with the Manifest load countdown" loading="lazy" decoding="async" />
+          </div>
+        </div>
       </div>
+      <div class="ac-stage" aria-hidden="true"><img class="ac-simg" src="/assets/opt/app-wallet.webp" width="640" height="1325" alt="" loading="lazy" decoding="async" /></div>
     </div>
-    <p class="app-foot">Less time in line at manifest. <b>More time in the air.</b></p>
   </section>
 
   <!-- VERSUS (9 Oct 2026): old manifest software against the Desk. Every
@@ -1824,6 +1904,20 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   }
   [L, J, D].forEach(function (x) { x.addEventListener('input', upd); });
   upd();
+})();
+</script>
+<script id="cr-ac">
+(function(){
+  var t=document.querySelector('.cr-track');
+  if(t){var b=document.querySelectorAll('.cr-btn');
+    function st(){b[0].disabled=t.scrollLeft<4;b[1].disabled=t.scrollLeft+t.clientWidth>=t.scrollWidth-4;}
+    b.forEach(function(x){x.addEventListener('click',function(){var c=t.querySelector('.cr-card');t.scrollBy({left:(c.offsetWidth+20)*+x.dataset.dir,behavior:'smooth'});});});
+    t.addEventListener('scroll',st,{passive:true});addEventListener('resize',st);st();}
+  var bs=document.querySelectorAll('.ac-btn'),im=document.querySelector('.ac-simg');
+  bs.forEach(function(x){x.addEventListener('click',function(){
+    bs.forEach(function(y){var on=y===x;y.setAttribute('aria-expanded',on);document.getElementById(y.getAttribute('aria-controls')).hidden=!on;y.closest('.ac-item').classList.toggle('open',on);});
+    if(im&&im.getAttribute('src')!==x.dataset.img){im.style.opacity=0;setTimeout(function(){im.src=x.dataset.img;im.width=+x.dataset.w;im.height=+x.dataset.h;im.classList.toggle('ac-mul',x.dataset.mul==='1');im.style.opacity=1;},200);}
+  });});
 })();
 </script>
 <script id="bento-in">
