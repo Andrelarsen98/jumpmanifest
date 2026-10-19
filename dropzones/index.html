@@ -1135,6 +1135,15 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   .desk-cap { margin: 8px 0 0; font-size: 14px; line-height: 20px; color: #52525B; text-align: left; }
   /* F08: card copy on the pale card fills at 7:1, not 4.4:1. */
   .app-card p, .card p, .how-grid p { color: #52525B; }
+  /* André 19 Oct: Apple-style row, no lilac panel, no boxes, no number chips. */
+  #app .app-panel { background: none; border-radius: 0; padding: 0; margin-top: 64px; }
+  #app .app-grid { gap: 56px; }
+  #app .app-card { background: none; border-radius: 0; padding: 0; text-align: center; }
+  #app .app-card .ic { width: 40px; height: 40px; color: #050505; display: block; margin: 0 auto; }
+  #app .app-card b { margin-top: 20px; }
+  #app .app-card p { max-width: 320px; margin-left: auto; margin-right: auto; }
+  #app .app-foot { margin-top: 56px; }
+  @media (max-width: 900px) { #app .app-grid { gap: 44px; } }
   /* F02: each plan's limits right under the price slot. */
   .pc-limits { margin: 10px 0 0; font-size: 16px; line-height: 22px; font-weight: 700; color: #050505; letter-spacing: -.2px; }
   .pc-limits + .pc-desc { margin-top: 4px; }
@@ -1209,15 +1218,20 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   .pain b{display:block;font-family:"Manrope",sans-serif;font-size:21px;line-height:27px;font-weight:700;color:#0f0b1c;letter-spacing:-.01em}
   .pain p{margin:10px 0 0;font-size:16px;line-height:24px;color:#52525B}
   @media (max-width:899px){.pain3{grid-template-columns:1fr;gap:12px;margin-top:36px}.pain{padding:22px 20px}.pain b{font-size:19px;line-height:25px}}
+  /* André 19 Oct: no grey boxes, open columns like the row below. */
+  .pain{background:none;border-radius:0;padding:0;text-align:center}
+  .pain p{max-width:340px;margin-left:auto;margin-right:auto}
+  .pain3{gap:56px}
+  @media (max-width:899px){.pain3{gap:36px}.pain{padding:0}}
   </style>
   <section class="sec" id="app">
     <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M11 18.5h2"/></svg>The Manifest app, free to download</p>
     <h2>Your jumpers do the queueing on their phone.</h2>
     <div class="app-panel">
       <div class="app-grid">
-        <div class="app-card"><span class="n">01</span><b>Top up with Apple Pay</b><p>Money goes straight to your Stripe and shows on the desk instantly.</p></div>
-        <div class="app-card"><span class="n">02</span><b>Self-manifest from the phone</b><p>Jumpers book their own slots. The desk always has the final say.</p></div>
-        <div class="app-card"><span class="n">03</span><b>Every call on their phone</b><p>Every call and hold hits their Lock Screen the second you press it.</p></div>
+        <div class="app-card"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 9.5h19M6.5 15h4"/></svg><b>Top up with Apple Pay</b><p>Money goes straight to your Stripe and shows on the desk instantly.</p></div>
+        <div class="app-card"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M12 8.5v6M9 11.5h6"/></svg><b>Self-manifest from the phone</b><p>Jumpers book their own slots. The desk always has the final say.</p></div>
+        <div class="app-card"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 6 2.5 7.5 2.5 7.5h-17S6 15 6 9z"/><path d="M10.2 20a2 2 0 0 0 3.6 0"/></svg><b>Every call on their phone</b><p>Every call and hold hits their Lock Screen the second you press it.</p></div>
       </div>
     </div>
     <p class="app-foot">Less time in line at manifest. <b>More time in the air.</b></p>
