@@ -24,7 +24,6 @@
 <link rel="apple-touch-icon" href="/assets/app-icon.png?v=3" />
 <!-- Fonts self-hosted (perf, 20 Oct 2026): General Sans (Fontshare ITF FFL, self-hosting allowed) + Manrope (SIL OFL), same files the CDNs served. -->
 <link rel="preload" href="/assets/opt/fonts/manrope-latin.101877a7.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preload" href="/assets/opt/fonts/GeneralSans-Variable.8e765124.woff2" as="font" type="font/woff2" crossorigin />
 <style>
 @font-face{font-family:'General Sans';font-style:normal;font-weight:200 700;font-display:swap;src:url(/assets/opt/fonts/GeneralSans-Variable.8e765124.woff2) format('woff2')}
 @font-face{font-family:'Manrope';font-style:normal;font-weight:400 800;font-display:swap;src:url(/assets/opt/fonts/manrope-cyrillic-ext.28f2a82c.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F}
@@ -35,111 +34,25 @@
 @font-face{font-family:'Manrope';font-style:normal;font-weight:400 800;font-display:swap;src:url(/assets/opt/fonts/manrope-latin.101877a7.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
 </style>
 <style>
-  :root { --ink: #0f0b1c; --violet: #6D42F5; --violet-d: #6D42F5; --muted: #6f6982; --line: rgba(15,11,28,.08); }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  html, body { overflow-x: clip; max-width: 100vw; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    color: var(--ink); background: #ffffff; -webkit-font-smoothing: auto; line-height: 1.6;
-  }
-  a { color: var(--violet-d); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  img { display: block; max-width: 100%; }
-  .wrap { width: 100%; max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  :root { --ink: #050505; --ink2: #3a3448; --muted: #6f6982; --line: rgba(15,11,28,.08); --cloud: #EDEFF7; --violet: #7C3AED; --violet-d: #6D28D9; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, sans-serif; color: var(--ink); background: #fff; -webkit-font-smoothing: auto; line-height: 1.5; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
 
-nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-index: 50;
-        width: min(800px, 92vw);
-        /* NO backdrop-filter. Blurring a fixed element forces anything moving
-           underneath onto its own GPU layer, and the blur then samples across
-           that moving boundary, which is what drew the seam across the pill
-           on load (and caused the iOS scroll lag). Translucency via alpha
-           gives the same glass read with nothing to mis-sample. */
-        background: linear-gradient(180deg, rgba(64,64,69,.88), rgba(48,48,53,.9));
-        border: 1px solid rgba(255,255,255,.13);
-        border-radius: 100px; transform: translateX(-50%);
-        box-shadow: 0 14px 34px rgba(15,11,28,.24), inset 0 1px 0 rgba(255,255,255,.10); }
-.nav-in { display: flex; align-items: center; justify-content: space-between;
-            height: 54px; padding: 0 7px 0 18px; }
-.brand { display: inline-flex; align-items: center; gap: 9px; }
-.brand img { width: 27px; height: 27px; border-radius: 8px; }
-.brand .nm { font-weight: 800; font-size: 17px; letter-spacing: -.03em; color: #fff; }
-.nav-links { display: inline-flex; align-items: center; gap: 26px; }
-.nav-links a { color: rgba(255,255,255,.92); font-weight: 600; font-size: 14.5px; }
-.btn { padding: 9px 17px; font-size: 14px; }
-.btn:hover { transform: translateY(-1px); box-shadow: 0 12px 26px rgba(109,66,245,.4); }
-  .btn {
-    font-family: inherit; font-weight: 700; font-size: 15px; letter-spacing: -.01em;
-    border: 0; cursor: pointer; border-radius: 100px; padding: 12px 22px;
-    background: var(--violet); color: #fff; transition: transform .15s ease, box-shadow .15s ease;
-    box-shadow: 0 8px 20px rgba(109,66,245,.28); white-space: nowrap;
-  }
-  .btn:hover { transform: translateY(-1px); box-shadow: 0 12px 26px rgba(109,66,245,.4); text-decoration: none; }
-  .nav-in .btn { padding: 9px 17px; font-size: 14px; }
-
-
-  /* nav fits a phone */
-  .nav-in { gap: 10px; }
-  .brand, .nav-links, .nav-in .btn { min-width: 0; white-space: nowrap; }
-  @media (max-width: 560px) {
-    nav { width: 94vw; }
-    .nav-in { height: 50px; padding: 0 6px 0 12px; gap: 8px; }
-    .brand { gap: 7px; }
-    .brand img { width: 24px; height: 24px; }
-    .brand .nm { font-size: 15px; }
-    .nav-links { gap: 16px; }
-    .nav-links a { font-size: 13.5px; }
-    .nav-in .btn { padding: 8px 14px; font-size: 13.5px; }
-  }
-  @media (max-width: 380px) {
-    .brand .nm { display: none; }
-    .nav-links { gap: 14px; }
-  }
-
-  /* clears the fixed pill */
-  .doc { padding: 132px 0 90px; }
-  .doc h1 { font-weight: 800; letter-spacing: -.035em; font-size: clamp(34px, 6vw, 52px); line-height: 1.05; }
-  .doc .intro { font-size: 18.5px; margin-top: 18px; color: #312a44; font-weight: 500; }
-  .doc h2 { font-weight: 800; letter-spacing: -.025em; font-size: clamp(22px, 3vw, 27px); margin: 46px 0 6px; }
-  .doc h3 { font-weight: 800; font-size: 17px; margin: 26px 0 4px; }
-  .doc p { margin: 13px 0; color: #312a44; font-weight: 500; }
-  .doc ul { margin: 14px 0 14px 4px; padding-left: 22px; color: #312a44; font-weight: 500; }
-  .doc li { margin: 8px 0; }
-  .doc strong { color: var(--ink); font-weight: 800; }
-  /* Same grey as the cards on /about/ (20 Oct 2026): no purple tint, no border. */
-  .card { margin: 22px 0 6px; padding: 22px 24px; border-radius: 18px; background: #F7F7F9;
-          border: 0; }
-  .card p { margin: 0; }
-  footer { border-top: 1px solid var(--line); padding: 34px 0 56px; margin-top: 70px; }
-  .foot-in { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: space-between;
-             max-width: 1080px; margin: 0 auto; padding: 0 24px; }
-  .foot-links { display: inline-flex; align-items: center; gap: 22px; flex-wrap: wrap; font-weight: 700; font-size: 15px; }
-  .foot-links a { color: var(--muted); } .foot-links a:hover { color: var(--ink); text-decoration: none; }
-  .handle { color: var(--muted); font-weight: 700; font-size: 15px; }
-  /* ---------- the site header (30 Sep 2026) ----------
-     Replaces the floating dark pill. Full-width white bar with a hairline,
-     the black M and the "manifest" wordmark (Manrope Bold, tight) on the
-     left, section links in the middle, one quiet pill on the right. */
-  body { padding-top: 0 !important; }
-  section[id], header[id] { scroll-margin-top: 24px; }
-  .topbar { position: relative; top: 0; z-index: 60; background: rgba(255,255,255,.94);
-            border-bottom: 1px solid rgba(15,11,28,.07); }
-  .topbar-in { max-width: none; margin: 0; height: 76px; padding: 0 5%;
-               display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-  .wordmark { display: inline-flex; align-items: center; gap: 10px; color: #050505; }
-  .wordmark img { width: 34px; height: auto; border-radius: 0; }
+  .topbar { position: relative; top: 0; z-index: 60; background: rgba(255,255,255,.94); border-bottom: 1px solid var(--line); }
+  .topbar-in { max-width: none; margin: 0; height: 76px; padding: 0 5%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .wordmark { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); }
+  .wordmark img { width: 34px; height: auto; }
   .wordmark img.wm { width: auto; height: 22px; }
-  .wordmark span { font-family: "Manrope", sans-serif; font-weight: 700; font-size: 29px;
-                   letter-spacing: -0.055em; line-height: 1; margin-top: -3px; }
+  .wordmark span { font-family: "Manrope", sans-serif; font-weight: 700; font-size: 29px; letter-spacing: -0.055em; line-height: 1; margin-top: -3px; }
   .tb-links { display: flex; align-items: center; gap: 34px; }
   .tb-links a { font-size: 15.5px; font-weight: 600; color: #0f0b1c; letter-spacing: -0.01em; }
-  .tb-links a:hover { color: #6f6982; }
+  .tb-links a:hover { color: var(--muted); }
+  .tb-links a.on { color: var(--violet-d); }
   .tb-links .soon { display: inline-flex; align-items: center; gap: 7px; }
-  .tb-links .soon em { font-style: normal; font-size: 10.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
-                       color: #6D42F5; background: rgba(109,66,245,.1); border-radius: 99px; padding: 3px 7px; }
-  .tb-cta { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 99px;
-            background: #F2F2F5; color: #050505; font-size: 15px; font-weight: 700; letter-spacing: -0.01em;
-            transition: background .15s ease; }
+  .tb-links .soon em { font-style: normal; font-size: 10.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--violet-d); background: rgba(124,58,237,.1); border-radius: 99px; padding: 3px 7px; }
+  .tb-cta { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 99px; background: #F2F2F5; color: var(--ink); font-size: 15px; font-weight: 700; }
   .tb-cta:hover { background: #E7E7EC; }
   .tb-cta svg { width: 15px; height: 15px; }
   /* Mobile menu, measured from softriver.co: a 50px grey circle with two
@@ -162,17 +75,364 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
   .topbar.open .tb-menu { transition: transform .4s ease, visibility 0s; }
   @media (max-width: 600px) { .tb-cta { display: none !important; } .tb-burger { display: flex; } }
 
-  @media (max-width: 980px) { .tb-links a:not(.soon) { display: none; } }
+
+  .hero { text-align: center; padding: 56px 0 0; }
+  .kicker { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: var(--violet-d); background: rgba(124,58,237,.08); border-radius: 99px; padding: 7px 14px; }
+  .kicker i { width: 7px; height: 7px; border-radius: 50%; background: var(--violet); box-shadow: 0 0 0 0 rgba(124,58,237,.5); animation: pulse 1.8s infinite; }
+  @keyframes pulse { 70% { box-shadow: 0 0 0 8px rgba(124,58,237,0); } 100% { box-shadow: 0 0 0 0 rgba(124,58,237,0); } }
+  h1 { font-size: clamp(42px, 6.4vw, 76px); font-weight: 800; letter-spacing: -0.045em; line-height: 1.02; margin: 22px auto 0; max-width: 900px; }
+  h1 span { color: var(--violet); }
+  .sub { font-size: clamp(17px, 2vw, 20px); color: var(--muted); max-width: 640px; margin: 22px auto 0; }
+  .ctas { display: flex; gap: 12px; justify-content: center; margin-top: 34px; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 26px; border-radius: 99px; font-weight: 700; font-size: 16px; }
+  .btn.primary { background: var(--violet); color: #fff; box-shadow: 0 10px 30px rgba(124,58,237,.3); }
+  .btn.primary:hover { background: var(--violet-d); }
+  .btn.ghost { background: #F2F2F5; color: var(--ink); }
+  .btn svg { width: 16px; height: 16px; }
+
+  /* THE DESK FIRST (9 Oct 2026): the real desk in a browser frame, full
+     width straight under the hero text, with a one-line caption and points. */
+  .frame { margin: 56px 0 0; border-radius: 16px; background: #fff; overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(112,115,147,.16), 0 30px 80px rgba(30,30,42,.14); }
+  .frame-bar { height: 36px; display: flex; align-items: center; gap: 7px; padding: 0 14px; background: #F6F7F9; border-bottom: 1px solid rgba(112,115,147,.12); }
+  .frame-bar i { width: 11px; height: 11px; border-radius: 50%; background: #DCDDE3; }
+  .frame-bar span { margin-left: 12px; font-size: 13px; color: #70707D; }
+  .frame img { display: block; width: 100%; height: auto; }
+  .frame-cap { margin-top: 28px; font-size: 18px; line-height: 28px; color: #71717B; }
+  .peek-points { display: flex; justify-content: center; gap: 10px 28px; flex-wrap: wrap; margin: 14px 0 0; color: #71717B; font-size: 15px; }
+  .peek-points b { color: var(--ink); font-weight: 600; }
+
+  /* JUMPER APP (9 Oct 2026): plain cloud panel, three white cards, no
+     photo and no hover effects. */
+  .app-panel { margin-top: 44px; background: #EDEFF7; border-radius: 28px; padding: 16px; }
+  .app-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .app-card { background: #fff; border-radius: 22px; padding: 30px 28px 32px; }
+  .app-card .n { display: inline-block; font-size: 13px; font-weight: 700; line-height: 18px; color: #050505; background: #F0ECFE; border-radius: 99px; padding: 5px 11px; }
+  .app-card b { display: block; margin-top: 22px; font-size: 20px; line-height: 27px; letter-spacing: -0.01em; font-weight: 600; }
+  .app-card p { margin-top: 8px; color: #71717B; font-size: 16px; line-height: 25px; }
+  .app-foot { text-align: center; margin-top: 32px; font-size: 20px; line-height: 31px; color: #71717B; }
+  .app-foot b { color: #050505; font-weight: 600; }
+
+  /* SAFETY (9 Oct 2026): text on the left, three points on the right. */
+  .safety { display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center; }
+  .safety h2 { text-align: left !important; }
+  .safety .txt { margin-top: 20px; color: #71717B; font-size: 20px; line-height: 31px; max-width: 600px; }
+  .s-points { list-style: none; display: grid; gap: 12px; }
+  .s-points li { display: flex; align-items: center; gap: 14px; background: #fff; border: 1px solid #E4E4E7; border-radius: 22px; padding: 20px 22px; font-size: 17px; line-height: 24px; font-weight: 600; color: #050505; }
+  .s-points .dot { width: 28px; height: 28px; border-radius: 50%; background: #6D42F5; color: #fff; flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; }
+  .s-points .dot svg { width: 14px; height: 14px; }
+  @media (max-width: 900px) { .safety { grid-template-columns: 1fr; gap: 32px; } .app-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 600px) { .app-panel { border-radius: 22px; padding: 10px; } .app-grid { gap: 10px; } .app-card { padding: 24px 22px 26px; }
+    .safety .txt, .app-foot { font-size: 17px; line-height: 27px; } .frame { margin-top: 40px; border-radius: 12px; } .frame-bar { height: 28px; }
+    .frame-bar i { width: 8px; height: 8px; } .frame-cap { font-size: 16px; line-height: 25px; } .peek-points { font-size: 14px; } }
+  .sec h2 { font-size: clamp(30px, 4vw, 44px); letter-spacing: -0.035em; line-height: 1.1; text-align: center; }
+  .sec .lead { text-align: center; color: var(--muted); font-size: 18px; margin: 12px auto 0; max-width: 560px; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 44px; }
+  .card { background: #F7F7F9; border-radius: 22px; padding: 26px 22px 28px; }
+  .ico { width: 44px; height: 44px; border-radius: 12px; background: #fff; box-shadow: 0 2px 6px rgba(15,11,28,.06); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+  .ico svg { width: 22px; height: 22px; stroke: var(--violet-d); }
+  .card b { display: block; font-size: 17px; letter-spacing: -0.01em; margin-bottom: 6px; }
+  .card p { color: var(--muted); font-size: 14.5px; }
+
+  .final { text-align: center; }
+  .final h2 { font-size: clamp(32px, 4.4vw, 52px); letter-spacing: -0.04em; line-height: 1.05; }
+  .final p { color: var(--muted); font-size: 18px; margin: 14px auto 0; max-width: 520px; }
+  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: 14px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+  /* ---------- WIDE LAYOUT on laptops (1 Oct 2026) ----------
+     Same as the home page: Softriver's 1280 width with 5% sides, the
+     headline left-aligned and big, bigger section headings. Phones untouched. */
+  @media (min-width: 900px) {
+    .wrap { max-width: 1280px; padding: 0 5%; }
+    .hero { text-align: left; }
+    .hero h1 { margin: 26px 0 0; max-width: 13ch; font-size: clamp(64px, 7.2vw, 96px); line-height: 1; letter-spacing: -.045em; }
+    .hero .sub { margin: 26px 0 0; max-width: 620px; font-size: clamp(18px, 1.7vw, 21px); }
+    .hero .ctas { justify-content: flex-start; margin-top: 38px; }
+    .sec h2 { font-size: clamp(50px, 5.4vw, 74px); }
+    .sec .lead { font-size: 20px; max-width: 620px; }
+    .grid { margin-top: 56px; }
+    .card { padding: 30px 26px 32px; }
+    .card b { font-size: 19px; }
+    .card p { font-size: 15.5px; }
+    .final h2 { font-size: clamp(50px, 5.4vw, 74px); max-width: 18ch; margin: 0 auto; }
+    .final p { font-size: 20px; max-width: 580px; }
+  }
+
+  /* ---------- SOFTRIVER TYPE AND BUTTONS (1 Oct 2026) ----------
+     Measured from softriver.co/white-label: body and buttons in Manrope,
+     purple #6D42F5, subline 20px/31px #71717B with the claim in 600 black,
+     64px pill buttons with a 48px chevron circle, a #F0ECFE badge. */
+  :root { --violet: #6D42F5; --violet-d: #6D42F5; }
+  body { font-family: "Manrope", -apple-system, sans-serif; }
+  .kicker { font-family: "Manrope", sans-serif; background: #F0ECFE; color: #040815; font-size: 12px; font-weight: 500;
+            line-height: 18px; padding: 7px 14px; border-radius: 224px; }
+  .kicker b { font-weight: 700; }
+  /* Headings: General Sans 500 (Fontshare, free for commercial use), the
+     closest free match to Softriver's Neue Montreal 500, which is paid.
+     -2px at 72px = -0.028em, as theirs. */
+  h1, h2 { font-family: "General Sans", "Manrope", sans-serif; font-weight: 500; letter-spacing: -.028em; }
+  h2 { text-wrap: balance; }
+  h1 { line-height: 1; }
+  h1 span { color: #6D42F5; }
+  /* The sentence in grey so the black wordmark lands as the punchline (2 Oct 2026). */
+  h1 .dim { color: #71717A; display: inline !important; }
+  h1 span.l2 { color: inherit; } /* the second line is all ink: "on", the black wordmark, the full stop */
+  .sub { font-family: "Manrope", sans-serif; font-size: 20px; font-weight: 400; line-height: 31px; color: #71717B; }
+  .sub b { font-weight: 600; color: #000; }
+  .btn { font-family: "Manrope", sans-serif; font-size: 20px; font-weight: 600; line-height: 30px; border-radius: 28px; }
+  .btn.primary { background: #6D42F5; color: #fff; height: 64px; padding: 8px 8px 8px 28px; gap: 12px; justify-content: space-between;
+    box-shadow: rgba(109,66,245,.08) 0 4px 4px, rgba(109,66,245,.04) 0 8px 8px, rgba(109,66,245,.02) 0 16px 5px,
+                inset 0 0 2px rgba(255,255,255,.12), inset 0 0 20px rgba(255,255,255,.08); }
+  .btn.primary:hover { background: #6D42F5; filter: brightness(1.06); }
+  .btn .bi { width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.08);
+             display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+  .btn .bi svg { width: 8px; height: 14px; }
+  .btn.ghost { background: #F6F6F6; color: #040815; padding: 17.6px 22px; }
+  @media (min-width: 900px) { .hero h1 { font-size: clamp(64px, 7.2vw, 96px); letter-spacing: -.028em; max-width: none; } .hero h1 span { display: block; } }
+  @media (max-width: 600px) { .sub { font-size: 17px; line-height: 27px; } .btn { font-size: 17px; } .btn.primary { height: 56px; padding: 6px 6px 6px 22px; }
+    .btn .bi { width: 44px; height: 44px; } .btn.ghost { padding: 13px 20px; } }
+
+  /* ---------- SOFTRIVER HERO LAYOUT (1 Oct 2026) ----------
+     Measured at 1440: a 1280 content box with the 5% padding OUTSIDE it
+     (text starts at 80), h1 a fixed 72px/72px -2px, subline two lines at
+     20/31, buttons and the trust row on one line, a red-dot line beside the
+     pill. */
+  .live { display: inline-flex; align-items: center; gap: 10px; font-family: "Manrope", sans-serif; font-size: 14px; font-weight: 500; color: #040815; }
+  .live i { width: 6px; height: 6px; border-radius: 50%; background: #F04438; box-shadow: 0 0 0 4px rgba(240,68,56,.14); }
+  .kicker-brand { display: inline-flex; align-items: baseline; gap: 5px; font-family: "Manrope", sans-serif; font-size: 20px; line-height: 1; font-weight: 700; color: #050505; padding: 9px 16px 10px; letter-spacing: -.02em; }
+  .kicker-brand img { height: 15px; width: auto; display: inline-block; align-self: baseline; }
+  .toprow { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 12px 20px; }
+  .herorow { display: flex; flex-direction: column; align-items: center; gap: 28px; margin-top: 34px; }
+  .herorow .ctas { margin-top: 0; }
+  .trust { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px 0;
+           font-family: "Manrope", sans-serif; font-size: 16px; font-weight: 400; color: #040815; }
+  .trust > * { display: inline-flex; align-items: center; gap: 8px; padding: 0 16px; line-height: 24px; color: inherit; }
+  .trust > * + * { border-left: 1px solid rgba(15,11,28,.12); }
+  .trust svg { width: 20px; height: 20px; flex: 0 0 auto; }
+  .trust svg.flag { width: 22px; height: 15px; border-radius: 2px; box-shadow: 0 0 0 1px rgba(15,11,28,.08); }
+  .trust svg.flag + svg.flag { margin-left: -2px; }
+  .trust img { width: 22px; height: 22px; object-fit: contain; }
+  @media (min-width: 900px) {
+    .wrap { max-width: calc(1280px + 10vw); padding: 0 5vw; }
+    .hero { padding: 16px 0 0; }
+    .toprow { justify-content: flex-start; }
+    .hero h1 { font-size: 72px; line-height: 72px; letter-spacing: -2px; margin-top: 20px; }
+    .hero .sub { max-width: none; margin-top: 24px; }
+    .herorow { flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px 28px; margin-top: 32px; }
+    .trust { justify-content: flex-start; }
+    .trust > :first-child { padding-left: 0; }
+    .peek-points { justify-content: flex-start; }
+    .hero h1 { text-wrap: balance; max-width: 20ch; }
+  }
+  @media (max-width: 600px) { .trust { font-size: 14px; gap: 12px 18px; } .trust > * { padding: 0; border-left: 0 !important; }
+    .hero .sub br { display: none; } }
+
+  /* "manifest" in the headline is the real wordmark in the purple: its
+     x-height (1080 of the 1520 box) matched to General Sans' 0.53em. */
+  .wm-h1 { display: inline-block; height: .746em; width: auto; vertical-align: -.015em; margin-left: .02em; }
+  /* Owner bar, measured from softriver.co/white-label: #2D0896, 56px tall,
+     16/24 Manrope white at -0.32px. Says who the page is for and sends
+     jumpers who land here to the App Store. */
+  .ownerbar { background: #111111; color: #fff; text-align: center; padding: 16px 5vw; font-family: "Manrope", sans-serif;
+              font-size: 16px; font-weight: 400; line-height: 24px; letter-spacing: -.32px; }
+  .ownerbar a { color: #fff; font-weight: 600; white-space: nowrap; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(255,255,255,.4); }
+  .ownerbar a:hover { text-decoration-color: #fff; }
+  @media (max-width: 600px) { .ownerbar { font-size: 13.5px; line-height: 20px; padding: 11px 16px; } }
+  /* ---------- PRICING (1 Oct 2026) ----------
+     Softriver's plan cards, our content: white cards with a hairline, the
+     middle one outlined in purple under a purple band, "Custom" where they
+     show a price, a ticked list, and one strip of what every size gets. */
+  .pricing { text-align: center; }
+  .pr-top { display: inline-flex; align-items: center; gap: 10px; font-family: "Manrope", sans-serif; font-size: 16px; line-height: 24px; color: #040815; }
+  .pr-top i { width: 6px; height: 6px; border-radius: 50%; background: #F04438; box-shadow: 0 0 0 4px rgba(240,68,56,.14); }
+  .pricing h2 { margin-top: 18px; font-size: clamp(36px, 5.4vw, 74px); letter-spacing: -.028em; line-height: 1.05; }
+  .pricing .lead { color: var(--muted); font-size: 20px; line-height: 31px; margin: 18px auto 0; max-width: 760px; text-wrap: balance; }
+  .pr-basis { margin-top: 14px; font-size: 16px; line-height: 24px; font-weight: 600; color: #040815; }
+  .pc-grid { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: end; text-align: left; }
+  .pc { background: #fff; border: 1px solid #E4E4E7; border-radius: 22px; overflow: hidden; }
+  .pc.hl { border: 2px solid #6D42F5; box-shadow: 0 24px 60px rgba(109,66,245,.14); }
+  .pc-band { background: #6D42F5; color: #fff; text-align: center; font-family: "Manrope", sans-serif; font-weight: 600; font-size: 17px; letter-spacing: .02em; text-transform: uppercase; padding: 14px 0; }
+  .pc-in { padding: 36px 34px 38px; }
+  .pc h3 { font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: 24px; letter-spacing: -.5px; color: #040815; }
+  .pc-price { margin-top: 18px; font-family: "General Sans", "Manrope", sans-serif; font-weight: 600; font-size: 48px; line-height: 1; letter-spacing: -1.5px; color: #040815; }
+  .pc-desc { margin-top: 18px; font-size: 17px; line-height: 26px; color: #71717B; min-height: 52px; }
+  .pc-out { margin-top: 26px; display: flex; align-items: center; justify-content: center; gap: 10px; height: 64px; border: 1.5px solid #6D42F5; border-radius: 28px;
+            color: #6D42F5; font-family: "Manrope", sans-serif; font-weight: 600; font-size: 20px; transition: background .15s ease; }
+  .pc-out:hover { background: #fff; }
+  .pc-out svg { width: 18px; height: 18px; }
+  .pc .pc-btn { margin-top: 26px; display: flex; width: 100%; }
+  .pc-note { margin-top: 16px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 14.5px; font-weight: 600; color: #6D42F5; }
+  /* The M in exact brand purple via a mask: the old CSS filter recolour
+     came out pink on iPhone Safari (1 Oct 2026). */
+  .pc-mark { width: 16px; height: 12px; flex: 0 0 auto; background: #6D42F5;
+             -webkit-mask: url(/assets/manifest-mark.svg) center / contain no-repeat; mask: url(/assets/manifest-mark.svg) center / contain no-repeat; }
+  .pc-fits { margin-top: 26px; background: #F0ECFE; border-radius: 12px; padding: 12px; text-align: center; font-weight: 600; font-size: 16px; color: #040815; }
+  .pc ul { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 14px; }
+  .pc li { display: flex; align-items: center; gap: 12px; font-size: 16.5px; line-height: 24px; color: #040815; }
+  .pc li .tk { width: 18px; height: 18px; color: #6D42F5; flex: 0 0 auto; }
+  .pc li.off { color: #A1A1AA; } .pc li.off .tk { color: #D4D4D8; }
+  .pc li span { flex: 1; }
+  .soon-tag { font-style: normal; font-size: 10.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: #6D42F5; background: #F0ECFE; border-radius: 99px; padding: 3px 7px; margin-left: 6px; vertical-align: 2px; white-space: nowrap; }
+  .pc-grid { align-items: stretch; }
+  .pc-band { height: 52px; padding: 0 !important; display: flex; align-items: center; justify-content: center; }
+  @media (min-width: 981px) { .pc:not(.hl) { margin-top: 52px; } }
+  .pr-all { margin: 32px auto 0; background: #FFFFFF; border: 1px solid #E4E4E7; border-radius: 10px !important; border-radius: clamp(22px, 2.6vw, 32px); padding: clamp(26px, 3.4vw, 44px); text-align: left; }
+  .pr-all h3 { font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: clamp(22px, 2.2vw, 28px); letter-spacing: -.6px; }
+  .pr-all ul { list-style: none; margin: 20px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px 28px; }
+  .pr-all li { display: flex; align-items: center; gap: 12px; font-size: 16.5px; line-height: 24px; color: #040815; }
+  .pr-yes { width: 28px; height: 28px; border-radius: 50%; background: #6D42F5; flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; }
+  .pr-yes img { width: 15px; height: auto; display: block; }
+  /* Softriver's pricing section, measured at 1440 (1 Oct 2026): full-width
+     #F9F9F9 band, white cards 1px #E4E4E7 radius 10 padding 32, name 20px,
+     price 38px, desc 16/22.4 at 60% ink, outline button 67px radius 20,
+     ticked rows 40px apart, all cards one height. */
+  /* One gap above pricing, the same as every other section (9 Oct 2026):
+     the band starts where the section before it ends, its own padding is the gap. */
+  .pricing { position: relative; isolation: isolate; margin-top: 0; }
+  .pricing::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%); background: #F9F9F9; z-index: -1; }
+  .pc { border-radius: 10px; border-color: #E4E4E7; }
+  .pc.hl { border-radius: 10px; border: 1px solid #6D42F5; box-shadow: none; } /* slim line, no glow: as Softriver */
+  .pc-in { padding: 32px; }
+  .pc h3 { font-family: "Manrope", sans-serif; font-weight: 500; font-size: 20px; line-height: 28px; letter-spacing: -1px; }
+  .pc-price { margin-top: 14px; font-weight: 550; font-size: 38px; letter-spacing: -1px; }
+  .pc-price small { font-family: "Manrope", sans-serif; font-size: 16px; font-weight: 500; letter-spacing: 0; color: #71717B; margin-left: 4px; }
+  .pc-price .from { font-family: "Manrope", sans-serif; font-size: 16px; font-weight: 500; letter-spacing: 0; color: #71717B; margin-right: 6px; }
+  .pr-founder { margin-top: 32px; font-size: 18px; line-height: 28px; color: #71717B; }
+  .pr-founder b { color: #050505; font-weight: 600; }
+  .pr-founder.pr-plain { margin-top: 6px; }
+  .cm-note { display: block; font-size: 13px; font-weight: 400; color: #71717B; margin-top: 2px; }
+  /* PRICES HIDDEN (15 Oct 2026): the price slot holds a short line instead. */
+  .pc-price.pc-set { font-size: 26px; line-height: 1.2; letter-spacing: -.5px; }
+  .pc-was { margin-left: 10px; font-size: 20px; font-weight: 500; color: #71717B; letter-spacing: 0; }
+  .pr-promise { max-width: 760px; margin: 18px auto 0; text-align: center; font-size: 22px; line-height: 1.35; font-weight: 700; color: #050505; letter-spacing: -.01em; }
+  .pr-why { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 28px; margin: 16px auto 28px; padding: 0; font-size: 15px; color: #3F3F46; }
+  .pr-why b { color: #050505; }
+  .pc-found { display: inline-block; margin: 8px 0 4px; font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #fff; background: #34C759; border-radius: 8px; padding: 4px 8px; }
+  .pay-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 14px 18px; margin: 40px auto 0; padding-top: 32px; border-top: 1px solid #ECECEE; max-width: 720px; }
+  .pay-row img { height: 40px; width: auto; display: block; }
+  .pay-note { text-align: center; color: #71717B; font-size: 15px; margin-top: 14px; }
+  @media (max-width: 600px) { .pay-row { gap: 10px 12px; } .pay-row img { height: 32px; } }
+  .pc-desc { margin-top: 14px; font-size: 16px; line-height: 22.4px; font-weight: 500; color: rgba(23,23,23,.6); min-height: 45px; }
+  .pc-out { margin-top: 24px; height: 67px; border-width: 1.5px; border-radius: 20px; }
+  .pc .pc-btn { margin-top: 24px; height: 67px; border-radius: 20px; }
+  .pc-note { font-size: 12px; font-weight: 700; }
+  .pc-fits { margin-top: 22px; border-radius: 10px; font-size: 16px; }
+  .pc ul { gap: 0; margin-top: 16px; }
+  .pc li { min-height: 40px; font-size: 16px; font-weight: 600; letter-spacing: -.3px; }
+  .pc li.off { font-weight: 500; }
+  /* Everything you get sits inside each card (1 Oct 2026): size terms in
+     bold, then the same compact feature list in all three, so the cards are
+     one length; a full-width Book a call under them, as Softriver. */
+  /* Plan lists, Softriver style (9 Oct 2026): what the plan adds, then
+     greyed lines for what it does not have. */
+  .pc ul.pc-list { margin-top: 24px; gap: 0; }
+  .pc ul.pc-list li { min-height: 36px; font-size: 15px; line-height: 21px; font-weight: 500; letter-spacing: -.2px; color: #050505; padding: 6px 0; }
+  .pc ul.pc-list li .tk { width: 18px; height: 18px; color: #6D42F5; }
+  .pc ul.pc-list li.off { color: #A1A1AA; }
+  .pc .tk-off { width: 18px; height: 18px; flex: 0 0 auto; border-radius: 50%; border: 1px solid #E4E4E7; color: #D4D4D8; display: inline-flex; align-items: center; justify-content: center; }
+  .pc .tk-off svg { width: 11px; height: 11px; }
+  .pc ul.pc-list li.pc-pill { display: block; min-height: 0; margin-bottom: 10px; background: #F0ECFE; border-radius: 12px; padding: 10px 14px; text-align: center; font-size: 14px; line-height: 20px; font-weight: 600; letter-spacing: 0; color: #050505; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  /* PAY PER SEAT: one price card, centred. */
+  .pps { grid-template-columns: 1fr; max-width: 560px; margin-left: auto; margin-right: auto; align-items: stretch; }
+  .pps .pc-price { font-size: 64px; letter-spacing: -2px; }
+  .pps .pc-limits { margin-top: 10px; font-size: 17px; font-weight: 600; color: #050505; }
+  .calc-0 { margin-top: 14px; font-size: 15px; color: #71717B; }
+  .calc-0 b { color: #050505; }
+  .calc-pay { margin-top: 18px; background: #F0ECFE; border-radius: 12px; padding: 14px 16px; font-size: 15px; line-height: 22px; color: #3a3448; }
+  .calc-pay b { color: #050505; font-weight: 600; }
+  /* PRICING, Softriver structure (19 Oct 2026): a wide two-line promise, a
+     smaller line, a dot line, the price, a wide outline button, a guarantee. */
+  .pricing h2.pr-h { max-width: 980px; margin-left: auto; margin-right: auto; text-wrap: balance; }
+  .pr-dot { margin: 18px 0 0; display: inline-flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 600; color: #050505; }
+  @media (max-width: 600px) { .pr-dot { max-width: 300px; align-items: flex-start; text-align: left; } .pr-dot span { margin-top: 7px; } }
+  .pr-dot span { flex: none; width: 8px; height: 8px; border-radius: 50%; background: #6D42F5; box-shadow: 0 0 0 4px #F0ECFE; }
+  .pr-all { max-width: 980px; }
+  .pc-out.pr-wide { max-width: 980px; margin: 32px auto 0; background: #fff; border-radius: 22px; }
+  /* 19 Oct 2026: the closing band uses the same outline button as pricing. */
+  .final .pc-out { display: inline-flex; margin-top: 0; padding: 0 36px; background: #fff; }
+  @media (max-width: 600px) { .final .pc-out { width: 100%; padding: 0 20px; } }
+  .pr-guar { max-width: 760px; margin: 72px auto 0; }
+  .pr-guar h3 { font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: clamp(24px, 2.6vw, 32px); letter-spacing: -.6px; color: #050505; }
+  .pr-guar p { margin: 16px 0 0; font-size: 18px; line-height: 28px; color: #71717B; text-wrap: balance; }
+  .pr-guar.pr-jump { margin-top: 48px; }
+  .pr-guar .pr-guar-s { margin-top: 10px; font-size: 16px; line-height: 24px; }
+  @media (max-width: 980px) { .pps { grid-template-columns: 1fr; max-width: 480px; } }
+  @media (max-width: 980px) { .pc.hl { order: -1; } }
+  /* Compare table extras: the struck full price and a grey bar for "not in this plan". */
+  .cm-was { margin-left: 4px; font-weight: 500; color: #71717B; }
+  .cm-found { display: block; font-style: normal; font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #34C759; margin-top: 2px; }
+  .cm-no { display: inline-block; width: 14px; height: 2px; border-radius: 1px; background: #D4D4D8; vertical-align: middle; }
+  /* HOW IT WORKS (9 Oct 2026): three plain steps. */
+  .how-grid { list-style: none; margin: 44px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .how-grid li { background: #fff; border: 1px solid #E4E4E7; border-radius: 22px; padding: 30px 28px 32px; }
+  .how-grid .n { display: inline-flex; width: 36px; height: 36px; border-radius: 50%; align-items: center; justify-content: center; background: #F0ECFE; color: #050505; font-weight: 700; font-size: 15px; }
+  .how-grid b { display: block; margin-top: 20px; font-size: 20px; line-height: 27px; letter-spacing: -.01em; font-weight: 600; color: #050505; }
+  .how-grid p { margin-top: 8px; color: #71717B; font-size: 16px; line-height: 25px; }
+  @media (min-width: 900px) { .how-grid { margin-top: 56px; } }
+  @media (max-width: 900px) { .how-grid { grid-template-columns: 1fr; } }
+  /* FAQ (9 Oct 2026): plain details/summary rows. */
+  .faq { text-align: left; }
+  .faq-list { max-width: 820px; margin: 0 auto; border-top: 1px solid #E4E4E7; }
+  .faq-more { max-width: 820px; margin: 24px auto 0; font-size: 15px; line-height: 24px; color: #71717B; }
+  .faq-more a { color: #050505; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+  .faq-more a:hover { color: #6D42F5; }
+  .faq-i { border-bottom: 1px solid #E4E4E7; }
+  .faq-i summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 4px; font-size: 18px; line-height: 26px; font-weight: 600; color: #050505; }
+  .faq-i summary::-webkit-details-marker { display: none; }
+  .faq-plus { position: relative; width: 28px; height: 28px; border-radius: 50%; background: #fff; border: 1px solid #E4E4E7; flex: 0 0 auto; }
+  .faq-plus::before, .faq-plus::after { content: ""; position: absolute; left: 50%; top: 50%; width: 12px; height: 1.6px; background: #050505; transform: translate(-50%, -50%); transition: transform .2s ease; }
+  .faq-plus::after { transform: translate(-50%, -50%) rotate(90deg); }
+  .faq-i[open] .faq-plus::after { transform: translate(-50%, -50%) rotate(0deg); }
+  .faq-i p { padding: 0 48px 22px 4px; margin-top: -6px; color: #71717B; font-size: 17px; line-height: 27px; }
+  @media (max-width: 600px) { .faq-i summary { font-size: 16px; line-height: 23px; padding: 18px 2px; } .faq-i p { font-size: 15.5px; line-height: 24px; padding-right: 8px; } }
+  .pc ul.pc-feats { margin-top: 12px; }
+  .pc ul.pc-feats li { min-height: 30px; font-size: 14.5px; font-weight: 500; letter-spacing: -.2px; }
+  .pc ul.pc-feats li .tk { width: 15px; height: 15px; }
+  .pc ul.pc-feats .soon-tag { font-size: 9.5px; padding: 2px 6px; }
+  .pc-call { margin-top: 32px; display: flex; align-items: center; justify-content: center; gap: 10px; height: 67px; border: 1px solid #6D42F5;
+             border-radius: 20px; background: #fff; color: #6D42F5; font-family: "Manrope", sans-serif; font-weight: 600; font-size: 20px; }
+  .pc-call:hover { background: #fff; } .pc-call svg { width: 18px; height: 18px; }
+  /* Claude-style (1 Oct 2026): short cards show only what differs, then a
+     full comparison below with the tier names pinned while you scroll. */
+  .cm { text-align: left; }
+  .cm-title { text-align: center; font-size: clamp(32px, 4.2vw, 56px); letter-spacing: -.028em; line-height: 1.05; margin-bottom: clamp(36px, 4vw, 56px); }
+  .cm-head, .cm-r { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; align-items: center; }
+  .cm-head { position: sticky; top: 0; z-index: 2; background: #F9F9F9; padding: 18px 0; border-bottom: 1px solid #E4E4E7; }
+  .cm-head .cm-c { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .cm-head b { font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: 22px; letter-spacing: -.4px; color: #040815; }
+  .cm-head a { font-size: 14px; font-weight: 600; color: #fff; background: #6D42F5; border-radius: 10px; padding: 8px 14px; transition: background .15s ease; }
+  .cm-head a:hover { background: #5A32E0; }
+  .cm-g { font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: clamp(22px, 2.2vw, 30px); letter-spacing: -.5px; color: #040815; padding: 44px 20px 18px; border-bottom: 1px solid #E4E4E7; }
+  .cm-r { min-height: 64px; border-bottom: 1px solid #E4E4E7; }
+  .cm-l { padding: 14px 20px; font-size: 17px; line-height: 24px; color: #040815; }
+  .cm-c { text-align: center; padding: 10px 8px; }
+  .cm-t { font-size: 16px; font-weight: 600; color: #040815; line-height: 22px; }
+  .cm-yes { display: inline-flex; width: 24px; height: 24px; border-radius: 50%; background: #6D42F5; color: #fff; align-items: center; justify-content: center; }
+  .cm-yes svg { width: 14px; height: 14px; }
+  @media (max-width: 720px) {
+    .cm-head, .cm-r { grid-template-columns: 1.5fr 1fr 1fr 1fr; }
+    .cm-head a { display: none; }
+    .cm-head b { font-size: 14px; letter-spacing: -.2px; text-align: center; }
+    .cm-g { padding: 32px 4px 14px; font-size: 21px; }
+    .cm-l { padding: 12px 4px; font-size: 14px; line-height: 19px; }
+    .cm-t { font-size: 12.5px; line-height: 16px; }
+    .cm-yes { width: 20px; height: 20px; } .cm-yes svg { width: 12px; height: 12px; }
+    .cm .soon-tag { display: inline-block; margin: 4px 0 0; }
+  }
+  @media (max-width: 980px) { .pc-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; } .pr-all ul { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .pricing .lead { font-size: 17px; line-height: 27px; } .pr-all ul { grid-template-columns: 1fr; } .pc-in { padding: 28px 24px 30px; } }
+  @media (max-width: 980px) { .tb-links a:not(.soon) { display: none; } .grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 600px) {
-    .topbar-in { height: 62px; padding: 0 16px; }
-    .wordmark img { width: 28px; } .wordmark img.wm { width: auto; height: 18px; }
-    .wordmark span { font-size: 24px; }
-    .tb-links { display: none; }
-    .tb-cta { padding: 9px 15px; font-size: 14px; }
+    .topbar-in { height: 62px; padding: 0 16px; } .wordmark img { width: 28px; } .wordmark img.wm { width: auto; height: 18px; } .wordmark span { font-size: 24px; }
+    .tb-links { display: none; } .tb-cta { padding: 9px 15px; font-size: 14px; }
+    .wrap { padding: 0 18px; } .hero { padding: 56px 0 0; }
+    .grid { grid-template-columns: 1fr; }
   }
 
   /* ---------- the big footer (1 Oct 2026) ---------- */
-  footer.site { margin-top: clamp(80px,11vw,120px); background: #F6F6F8; border-top: 1px solid rgba(15,11,28,.07); padding: 72px 0 40px; }
+  footer.site { margin-top: 0; background: #F6F6F8; border-top: 1px solid rgba(15,11,28,.07); padding: 72px 0 40px; }
   .reveal + footer.site { margin-top: 0; }
   .ft { max-width: calc(1280px + 10vw); margin: 0 auto; padding: 0 5vw; display: grid; grid-template-columns: 1.5fr repeat(4, 1fr); gap: 40px; }
   .ft-brand .wordmark { display: inline-flex; align-items: center; gap: 10px; }
@@ -189,71 +449,233 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
   .ft-col h4 { font-size: 15px; font-weight: 600; color: #8a869a; margin: 4px 0 18px; letter-spacing: -0.01em; }
   .ft-col a { display: block; font-size: 15.5px; font-weight: 600; color: #0f0b1c; margin-bottom: 4px; padding: 10px 0; letter-spacing: -0.01em; }
   .ft-col a:hover { color: #6f6982; }
-  .ft-col a em { font-style: normal; font-size: 10px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: #6D42F5; background: rgba(109,66,245,.1); border-radius: 99px; padding: 2px 6px; margin-left: 6px; vertical-align: 2px; }
+  .ft-col a em { font-style: normal; font-size: 10px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: #6D28D9; background: rgba(124,58,237,.1); border-radius: 99px; padding: 2px 6px; margin-left: 6px; vertical-align: 2px; }
   .ft-base { max-width: 1280px; width: calc(100% - 10vw); margin: 56px auto 0; padding: 22px 0 0; border-top: 1px solid rgba(15,11,28,.08); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: #8a869a; font-size: 14px; }
   .ft-base a:hover { color: #0f0b1c; }
   @media (max-width: 980px) { .ft { grid-template-columns: repeat(2, 1fr); } .ft-brand { grid-column: 1 / -1; } }
   @media (max-width: 560px) { footer.site { padding: 52px 0 32px; } .ft { padding: 0 20px; gap: 32px 20px; } .ft-base { width: calc(100% - 40px); padding: 20px 0 0; } }
 
-  /* Same type as the home and dropzones pages (1 Oct 2026): body in Manrope,
-     headings in General Sans 550, purple #6D42F5; header and footer as on
-     every page. */
-  body { font-family: "Manrope", -apple-system, sans-serif; }
-  h1, h2 { font-family: "General Sans", "Manrope", sans-serif; font-weight: 550 !important; letter-spacing: -.028em; text-wrap: balance; }
-  /* Wide like the home and dropzones pages (1 Oct 2026): same 1280 box with
-     5vw outside it, so the text starts on the same edge; paragraphs keep a
-     760px reading width. */
-  @media (min-width: 900px) {
-    .wrap { max-width: calc(1280px + 10vw); padding: 0 5vw; }
-    .doc > .wrap > *:not(h1) { max-width: 760px; }
-    .doc h1 { font-size: clamp(52px, 5vw, 72px); line-height: 1.02; max-width: 16ch; }
-  }
-
   /* ---------- ONE TYPE AND SPACING SYSTEM (9 Oct 2026) ----------
-     The same values as the dropzones page, measured from softriver.co at
-     1440: General Sans 500 for headings, Manrope for the rest, ink #040815,
-     grey #71717B. 120px of rhythm on laptops, 80px on phones. */
+     Softriver's computed values at 1440 (getComputedStyle), in our fonts:
+     General Sans for headings, Manrope for the rest. One gap between every
+     section: 120px to the next heading on laptops, 80px on phones. */
   :root { --gap: 120px; --t: #040815; --g: #71717B; }
   @media (max-width: 600px) { :root { --gap: 80px; } }
-  body { font-family: "Manrope", -apple-system, sans-serif; font-size: 16px; line-height: 24px; color: var(--t); }
-  .doc { padding: var(--gap) 0 0; }
-  footer.site { margin-top: var(--gap); }
-  .doc h1, .doc h2, .doc h3 { font-family: "General Sans", "Manrope", sans-serif; font-weight: 500 !important; color: var(--t); }
-  /* Page title: 72 / 72, -2px. */
-  .doc h1 { font-size: 72px; line-height: 72px; letter-spacing: -2px; max-width: 20ch; text-wrap: balance; }
-  /* Lead line under the title: 20 / 31 grey, 24px below. */
-  .doc .intro { font-size: 20px; line-height: 31px; font-weight: 400; color: var(--g); margin: 24px 0 0; }
-  /* Headings inside the page: the sub-heading size, 34 / 47.6. */
-  .doc h2 { font-size: 34px; line-height: 47.6px; letter-spacing: -.5px; margin: 80px 0 12px; }
-  .doc h3 { font-size: 24px; line-height: 33.6px; letter-spacing: normal; margin: 40px 0 8px; }
-  .doc p { font-size: 16px; line-height: 24px; font-weight: 400; color: var(--t); margin: 16px 0; }
-  .doc h2 + p, .doc h3 + p, .doc h2 + ul, .doc h3 + ul { margin-top: 0; }
-  .doc ul { font-size: 16px; line-height: 24px; font-weight: 400; color: var(--t); margin: 16px 0; }
-  .doc li { margin: 8px 0; }
-  .doc strong { color: var(--t); font-weight: 600; }
-  /* Cards: card text 16 / 20.8 weight 500 grey. */
-  .card { margin: 24px 0; }
-  .card p, .card .reply { font-size: 16px; line-height: 20.8px; font-weight: 500; letter-spacing: -.5px; color: var(--g); }
-  .card .lbl { font-size: 16px; line-height: 24px; font-weight: 500; color: var(--t); }
-  .card .email { margin: 4px 0 8px; font-family: "General Sans", "Manrope", sans-serif; font-size: 24px; line-height: 33.6px; font-weight: 500; }
-  @media (min-width: 900px) {
-    .doc > .wrap > *:not(h1) { max-width: 760px; }
-    .doc h1 { font-size: 72px; line-height: 72px; max-width: 20ch; }
+  body { font-size: 16px; line-height: 24px; color: var(--t); overflow-x: clip; }
+  header.hero { padding-bottom: 0; }
+  .sec { padding-top: var(--gap); }
+  .pricing { padding: var(--gap) 0; }
+  .cm, .faq { margin-top: var(--gap); }
+  .final { padding: var(--gap) 0; }
+  /* Section headings: 50/50 weight 500, centred, at most 1024 wide. */
+  .sec h2, .pricing h2, .final h2, .faq h2, .band h2 { font-size: 50px; line-height: 50px; font-weight: 500; letter-spacing: -.5px;
+    max-width: 1024px; margin: 0 auto; text-align: center; text-wrap: balance; }
+  .safety h2 { margin: 0; }
+  /* Sub-heading inside a section (their "We believe..."): 34 / 47.6. */
+  .cm .cm-title { font-size: 34px; line-height: 47.6px; font-weight: 500; letter-spacing: -.5px; margin-bottom: 40px; }
+  .faq .cm-title { margin-bottom: 56px; }
+  /* Lead line under a heading: 20/31 grey, 20px below. */
+  .sec .lead, .pricing .lead, .final p, .band-sub { font-size: 20px; line-height: 31px; font-weight: 400; color: var(--g);
+    margin: 20px auto 0; max-width: 740px; text-align: center; }
+  .safety .txt, .app-foot { font-size: 20px; line-height: 31px; }
+  /* Content starts 56px under the heading block. */
+  .app-panel, .grid, .how-grid, .pc-grid, .vs { margin-top: 56px; }
+  /* Card titles 24 / 33.6 weight 500; card text 16 / 20.8 weight 500 grey. */
+  .app-card b, .card b, .how-grid b { font-family: "General Sans", "Manrope", sans-serif; font-size: 24px; line-height: 33.6px; font-weight: 500; letter-spacing: normal; color: var(--t); }
+  .card b { margin-bottom: 8px; }
+  .app-card p, .card p, .how-grid p, .pc-desc { font-size: 16px; line-height: 20.8px; font-weight: 500; letter-spacing: -.5px; color: var(--g); }
+  .app-card p, .how-grid p { margin-top: 8px; }
+  /* Eyebrow above a few section headings: true lines only. */
+  .eyebrow { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 0 0 20px;
+    font-size: 16px; line-height: 24px; font-weight: 500; color: var(--t); }
+  .eyebrow svg, .eyebrow img { width: 20px; height: 20px; flex: 0 0 auto; }
+  a.eyebrow:hover { color: var(--g); }
+  .eb-mark { width: 22px; height: 16px; flex: 0 0 auto; background: #050505;
+    -webkit-mask: url(/assets/manifest-mark.svg) center / contain no-repeat; mask: url(/assets/manifest-mark.svg) center / contain no-repeat; }
+
+  /* VERSUS (9 Oct 2026): old manifest software against Manifest Desk. */
+  .vs { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1024px; margin-left: auto; margin-right: auto; text-align: left; }
+  .vs-col { border-radius: 22px; padding: 36px 36px 16px; }
+  .vs-old { background: #F9F9F9; }
+  .vs-new { background: #fff; border: 1px solid #6D42F5; }
+  .vs-col h3 { display: flex; align-items: center; gap: 12px; font-family: "General Sans", "Manrope", sans-serif; font-size: 32px; line-height: 44.8px;
+    font-weight: 500; letter-spacing: -1px; color: var(--t); }
+  .vs-col h3 .eb-mark { width: 32px; height: 24px; }
+  .vs ul { list-style: none; margin: 20px 0 0; padding: 0; }
+  .vs li { display: flex; align-items: center; gap: 14px; min-height: 84px; padding: 14px 0; border-top: 1px solid #E4E4E7;
+    font-size: 18px; line-height: 26px; font-weight: 500; letter-spacing: -.3px; color: var(--t); }
+  .vs-old li { color: var(--g); }
+  .vs-no, .vs-yes { width: 28px; height: 28px; border-radius: 50%; flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; }
+  .vs-no { background: #E4E4E7; color: var(--g); }
+  .vs-yes { background: #6D42F5; color: #fff; }
+  .vs-no svg, .vs-yes svg { width: 14px; height: 14px; }
+
+  /* DARK BAND (9 Oct 2026): one line on #050505, full width. */
+  .band { position: relative; isolation: isolate; margin-top: var(--gap); padding: var(--gap) 0; text-align: center; }
+  .band::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%); background: #050505; z-index: -1; }
+  .band h2 { color: #fff; }
+  @media (max-width: 600px) { .band br.dk { display: none; } }
+  .band .band-sub { color: #D1D1D6; }
+  /* FILM BAND (19 Oct 2026, André): the dark band becomes a 4:3 window of
+     1960s jump film (Free Fall Safety Procedures, public domain), silent,
+     15 s loop, 1.4 MB. Text inverts against the film like andrelarsen.com
+     (white + difference blend). Reduced motion shows the still. */
+  .band.band-film { max-width: 980px; aspect-ratio: 4 / 3; margin-left: auto; margin-right: auto; padding: 48px 40px; border-radius: 10px; overflow: hidden;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .band.band-film::before { display: none; }
+  .band-vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; background: #050505; }
+  .band-ink-wrap { display: grid; }
+  .band-ink { grid-area: 1 / 1; }
+  .band.band-film .band-ink h2, .band.band-film .band-ink .band-sub, .band.band-film .band-ink .h2 { color: #fff; mix-blend-mode: difference; }
+  /* The same text again in grey with a saturation blend: it takes the colour
+     out of the inverted letters, so they stay black, white and grey (never
+     orange on the blue film). */
+  .band.band-film .band-ink-grey h2, .band.band-film .band-ink-grey .h2, .band.band-film .band-ink-grey .band-sub { color: #808080; mix-blend-mode: saturation; }
+  .band.band-film .band-ink-grey .h2 { margin: 0; }
+  .band-sub-m { display: none; }
+  /* PHONE (André 19 Oct): the film runs edge to edge in 4:3, the headline on
+     it; the line and the button sit under it on the page. */
+  @media (max-width: 600px) {
+    .band.band-film { display: block; aspect-ratio: auto; padding: 0; border-radius: 0; overflow: visible;
+      width: 100vw; max-width: none; margin-left: calc(50% - 50vw); margin-right: 0; }
+    .band-vid { position: relative; display: block; aspect-ratio: 4 / 3; height: auto; z-index: auto; }
+    .band.band-film .band-ink-wrap { position: absolute; top: 0; left: 0; right: 0; aspect-ratio: 4 / 3; align-items: center; padding: 0 20px; }
+    .band.band-film .band-ink .band-sub { display: none; }
+    .band.band-film .band-ink h2 { font-size: 28px; line-height: 31px; margin: 0; }
+    .band-sub-m { display: block; margin: 20px 20px 0; font-size: 17px; line-height: 26px; color: #52525B; text-align: center; }
+    .band.band-film .band-cta { margin: 18px 20px 0; }
+    .band.band-film .band-btn { background: #fff; border: 1.5px solid #6D42F5; color: #6D42F5; }
+  }
+  @media (prefers-reduced-motion: reduce) { .band-vid { display: none; } .band.band-film { background: #050505 url(/assets/video/dz-band.jpg?v=2) center / cover; } }
+
+  @media (max-width: 900px) { .vs { grid-template-columns: 1fr; } }
+  @media (max-width: 600px) {
+    .sec h2, .pricing h2, .final h2, .faq h2, .band h2 { font-size: 34px; line-height: 36px; }
+    .cm .cm-title { font-size: 28px; line-height: 36px; margin-bottom: 28px; }
+    .faq .cm-title { margin-bottom: 36px; }
+    .sec .lead, .pricing .lead, .final p, .band-sub, .safety .txt, .app-foot { font-size: 18px; line-height: 28px; }
+    .app-panel, .grid, .how-grid, .pc-grid, .vs { margin-top: 40px; }
+    .app-card b, .card b, .how-grid b { font-size: 22px; line-height: 30px; }
+    .eyebrow { font-size: 15px; gap: 8px; margin-bottom: 16px; }
+    .vs-col { padding: 26px 22px 10px; }
+    .vs-col h3 { font-size: 26px; line-height: 34px; letter-spacing: -.6px; }
+    .vs li { min-height: 0; font-size: 16px; line-height: 23px; padding: 16px 0; }
+  }
+  /* BENTO (19 Oct 2026): the jumper app and Desk features as big product
+     tiles. One idea per tile, the real screen is the hero, two short lines. */
+  .bento { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; margin-top: 56px; }
+  .bt { margin: 0; position: relative; overflow: hidden; border-radius: 28px; background: #F5F5F7; min-width: 0; display: flex; }
+  .bt-col { flex-direction: column; align-items: center; }
+  .bt-row { flex-direction: row; align-items: stretch; }
+  .bt figcaption { padding: 44px 44px 0; text-align: center; position: relative; z-index: 1; }
+  .bt-row figcaption { text-align: left; padding: 44px 28px 44px 44px; flex: 1 1 52%; align-self: center; }
+  .bt b { display: block; font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: 34px; line-height: 38px; letter-spacing: -.028em; color: #050505; text-wrap: balance; }
+  .bt span { display: block; margin-top: 10px; font-size: 18px; line-height: 26px; font-weight: 500; color: #71717B; }
+  .bt-dark { background: #050505; }
+  .bt-dark b { color: #fff; } .bt-dark span { color: #D4D4D8; }
+  .bt img { display: block; }
+  /* Phones always show the whole device (André, 19 Oct): never cut by the tile. */
+  .bt-phone { width: 260px; max-width: 70%; height: auto; margin: 40px auto 48px; flex: 0 0 auto; }
+  .bt-mul { mix-blend-mode: multiply; }
+  .bt-row .bt-phone { width: 170px; max-width: 40%; margin: 28px 40px 28px 0; align-self: center; }
+  .bt-hero { grid-column: span 7; grid-row: span 2; }
+  .bt-hero b { font-size: 48px; line-height: 52px; }
+  .bt-hero .bt-phone { width: 300px; margin: auto; padding: 40px 0 48px; box-sizing: content-box; }
+  .bt-side { grid-column: span 5; }
+  .bt-half { grid-column: span 6; }
+  .bt-full { grid-column: span 12; }
+  .bt-full b { font-size: 48px; line-height: 52px; }
+  .bt-full .bt-shot { width: calc(100% - 112px); height: auto; margin: 44px auto 0; border-radius: 16px 16px 0 0; }
+  .bt-wide { grid-column: span 7; height: 480px; }
+  .bt-narrow { grid-column: span 5; height: 480px; }
+  .bt-edge { align-self: flex-end; width: 88%; height: auto; margin-top: 36px; border-top-left-radius: 14px; box-shadow: 0 0 0 1px rgba(5,5,5,.06), 0 18px 50px rgba(5,5,5,.08); }
+  .bt-edge.bt-left { align-self: flex-start; margin-left: 44px; max-width: none; border-radius: 14px 0 0 0; }
+  .bt-narrow .bt-left { width: 150%; }
+  .bt-wide .bt-left { width: 118%; }
+  .bt-center .bt-card { width: 78%; height: auto; margin: auto; box-shadow: 0 18px 50px rgba(5,5,5,.10); border-radius: 22px; }
+  .bento.anim .bt { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  .bento.anim .bt.on { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .bento.anim .bt { opacity: 1; transform: none; transition: none; } }
+  @media (max-width: 980px) {
+    .bt-hero, .bt-side, .bt-half, .bt-wide, .bt-narrow { grid-column: span 12; }
+    .bt-hero { grid-row: auto; }
+    .bt-narrow .bt-left, .bt-wide .bt-left { width: 130%; }
   }
   @media (max-width: 600px) {
-    .doc h1 { font-size: 42px; line-height: 44px; letter-spacing: -1.2px; }
-    .doc .intro { font-size: 18px; line-height: 28px; }
-    .doc h2 { font-size: 28px; line-height: 36px; margin-top: 56px; }
-    .doc h3 { font-size: 22px; line-height: 30px; margin-top: 32px; }
+    .bento { gap: 12px; margin-top: 40px; }
+    .bt { border-radius: 24px; }
+    .bt figcaption { padding: 32px 24px 0; }
+    .bt b, .bt-hero b, .bt-full b { font-size: 28px; line-height: 32px; }
+    .bt span { font-size: 16px; line-height: 22px; margin-top: 8px; }
+    .bt-row { flex-direction: column; align-items: center; }
+    .bt-row figcaption { text-align: center; padding: 32px 24px 0; flex: 0 0 auto; align-self: stretch; }
+    .bt-row .bt-phone { width: 190px; max-width: 58%; margin: 28px auto 32px; }
+    .bt-phone, .bt-hero .bt-phone { width: 190px; max-width: 58%; margin: 28px auto 32px; padding: 0; }
+    .bt-wide, .bt-narrow { height: auto; }
+    .bt-edge { width: 92%; margin-top: 28px; }
+    .bt-narrow .bt-left, .bt-wide .bt-left { width: 160%; margin-left: 24px; }
+    .bt-full .bt-shot { width: calc(100% - 32px); margin-top: 28px; border-radius: 10px 10px 0 0; }
+    .bt-center .bt-card { width: calc(100% - 48px); margin: 28px auto 32px; border-radius: 16px; }
   }
-</style>
-<style id="page-self-manifest">
-  .doc ol.steps { font-size: 16px; line-height: 24px; color: var(--t); margin: 16px 0; padding-left: 22px; }
-  .doc ol.steps li { margin: 10px 0; }
-  .cta-card .lbl { margin-bottom: 6px; }
-  .cta-card .cta-row { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; }
-  .cta-card .cta-row .btn { color: #fff; }
-  .cta-card .cta-link { color: var(--t); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+  /* JUMPER APP, EVERY DAY (9 Oct 2026): eight compact tiles of what jumpers
+     use the app for today, then real database numbers, rounded down. */
+  .jstats { list-style: none; margin: 16px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); background: #F7F7F9; border-radius: 22px; }
+  .jstats li { padding: 28px 24px; font-size: 16px; line-height: 20.8px; font-weight: 500; color: var(--g); text-align: center; }
+  .jstats li + li { border-left: 1px solid #E4E4E7; }
+  .jstats b { display: block; margin-bottom: 6px; font-family: "General Sans", "Manrope", sans-serif; font-size: 34px; line-height: 40px; font-weight: 500; letter-spacing: -.5px; color: var(--t); }
+  .jfoot { text-align: center; margin-top: 32px; font-size: 20px; line-height: 31px; color: #71717B; }
+  .jfoot b { color: #040815; font-weight: 600; }
+  @media (max-width: 980px) { .jstats { grid-template-columns: repeat(2, 1fr); }
+    .jstats li:nth-child(3) { border-left: 0; } .jstats li:nth-child(n+3) { border-top: 1px solid #E4E4E7; } }
+  @media (max-width: 600px) { .jstats { margin-top: 10px; border-radius: 18px; } .jstats li { padding: 20px 12px; font-size: 14.5px; line-height: 19px; } .jstats b { font-size: 28px; line-height: 34px; }
+    .jfoot { font-size: 18px; line-height: 28px; } }
+
+  /* HERO WITH THE DESK (9 Oct 2026): text left, the Today page right,
+     shown whole on laptops; stacked on phones. */
+  .hero-media .frame { margin-top: 48px; }
+  @media (min-width: 900px) {
+    .hero-grid { display: grid; grid-template-columns: 42fr 58fr; gap: 48px; align-items: center; }
+    .hero-txt { min-width: 0; }
+    .hero .herorow { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .hero-media { min-width: 0; }
+    .hero-media .frame { margin-top: 0; width: 100%; }
+  }
+  /* VISUAL SECTIONS (9 Oct 2026): media in a cloud panel, text beside it,
+     sides swapping each row; each row fits one laptop screen. */
+  .vis { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+  .vis-txt { min-width: 0; }
+  .vis .eyebrow { justify-content: flex-start; }
+  .vis h2 { text-align: left; margin: 0; }
+  .vis .lead { text-align: left; margin: 20px 0 0; max-width: 560px; }
+  .vis-pts { list-style: none; margin: 32px 0 0; padding: 0; display: grid; gap: 14px; }
+  .vis-pts li { display: flex; align-items: flex-start; gap: 12px; font-size: 16px; line-height: 20.8px; font-weight: 500; letter-spacing: -.3px; color: var(--g); }
+  .vis-pts .tk { width: 18px; height: 18px; margin-top: 1.4px; color: #6D42F5; flex: 0 0 auto; }
+  .vis-media { min-width: 0; background: #EDEFF7; border-radius: 28px; padding: 40px; display: flex; align-items: center; justify-content: center; }
+  .vis:not(.flip) .vis-media { order: -1; }
+  .vis-media .frame { margin: 0; width: 100%; border-radius: 14px; }
+  /* The sample-data caption sits under the screenshot, never beside it (16 Oct). */
+  .vis-media { flex-direction: column; gap: 16px; }
+  .vis-media .desk-cap, .vis-media figcaption { margin: 0; text-align: center; font-size: 14px; line-height: 20px; color: #52525B; }
+  .vis-phone { display: block; height: min(560px, calc(100vh - 300px)); min-height: 420px; width: auto; max-width: 100%; mix-blend-mode: multiply; }
+  .vis-ls { aspect-ratio: 738 / 1180; }
+  .vis-trio { aspect-ratio: 560 / 1175; object-fit: cover; border-radius: 12.5% / 5.96%; }
+  @media (max-width: 900px) {
+    .vis { grid-template-columns: 1fr; gap: 40px; }
+    .vis:not(.flip) .vis-media { order: 0; }
+  }
+  @media (max-width: 600px) {
+    .vis .lead { font-size: 18px; line-height: 28px; }
+    .vis-pts { margin-top: 24px; }
+    .vis-media { border-radius: 22px; padding: 28px 16px; }
+    .vis-media .frame { border-radius: 10px; }
+    .vis-phone { height: 440px; min-height: 0; }
+  }
+  /* LESS PURPLE (19 Oct 2026, André): one purple button per view (the nav's
+     Book a demo); the hero's big button is black, the Desk label light grey. */
+  .hero .ctas .btn.primary { background: #050505 !important; box-shadow: none !important; }
+  .hero .ctas .btn.primary:hover { background: #26262B !important; filter: none !important; }
+  .hero .ctas .btn.primary .bi { background: rgba(255,255,255,.14) !important; }
+  .hero .kicker-brand { background: #F2F2F4 !important; }
 </style>
 <style id="ft-dark">
 /* Dark footer, Nike's (2 Oct 2026): #111 with white text and the white logo. */
@@ -281,6 +703,16 @@ footer.site :where(a, button):focus-visible { outline-color: #fff !important; bo
 }
 </style>
 <style id="lockup-css">/* One logo file: the M centred on the lowercase letters, reaching above and below (2 Oct 2026). */ img.lockup{height:32px!important;width:auto!important;border-radius:0!important;display:block;max-width:none!important} @media (max-width:600px){img.lockup{height:29px!important}} .brand img.lockup{height:21px!important} .hub-wordmark img.lockup{height:22px!important} /* sh-logo-size: header logo a touch smaller (André, 14 Oct) */ .sh-logo img.lockup{height:28px!important} @media (max-width:600px){.sh-logo img.lockup{height:26px!important}} /* ft-logo-size */ footer.site .wordmark img.lockup{height:28px!important} @media (max-width:600px){footer.site .wordmark img.lockup{height:26px!important}}</style>
+<style id="loadin">
+/* LOAD-IN, Softriver's (measured from André's screen recording, 2 Oct 2026):
+   each hero line fades in from ~40px lower and rises into place over 0.7s,
+   one after another ~0.15s apart; the top bar slides down from above last. */
+@keyframes rise { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
+@keyframes dropin { from { opacity: 0; transform: translateY(-100%); } to { opacity: 1; transform: none; } }
+.li { animation: rise .7s cubic-bezier(.2,.75,.25,1) both; animation-delay: calc(var(--i, 0) * .15s + .1s); }
+.li-bar { animation: dropin .6s cubic-bezier(.2,.75,.25,1) .95s both; }
+@media (prefers-reduced-motion: reduce) { .li, .li-bar { animation: none !important; } }
+</style>
 <style id="site-header">
 /* SITE HEADER (9 Oct 2026). Sticky white bar with a hairline; mega dropdowns
    (white 20px cards, two columns) on laptops; a full-height sheet under 900px.
@@ -424,19 +856,6 @@ h1, h2, h3 { text-wrap: balance; }
 </style>
 <style id="ft-pay-css">.ft-base{flex-wrap:wrap;gap:12px 24px;align-items:center}.ft-pay{display:flex;flex-wrap:wrap;gap:8px;margin:0}.ft-pay img{height:24px;width:auto;display:block;border-radius:4px}@media (max-width:899px){.ft-base{flex-direction:column;align-items:center !important;justify-content:center;text-align:center}.ft-pay{justify-content:center}}@media (min-width:900px){.ft-base{display:grid!important;grid-template-columns:1fr auto 1fr;align-items:center}.ft-base>.ft-pay{justify-self:center}}</style>
 <style id="overscroll-css">html{background-color:#111111;scrollbar-color:#B4B4BE #ffffff}body{background-color:#ffffff}footer.site{box-shadow:0 100vh 0 100vh #111111}</style>
-<style id="faq-css">
-  /* FAQ: same markup and values as the /dropzones/ page */
-  .faq-list { max-width: 820px; margin: 24px 0 0; border-top: 1px solid #E4E4E7; }
-  .faq-i { border-bottom: 1px solid #E4E4E7; }
-  .faq-i summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 4px; font-size: 18px; line-height: 26px; font-weight: 600; color: #050505; }
-  .faq-i summary::-webkit-details-marker { display: none; }
-  .faq-plus { position: relative; width: 28px; height: 28px; border-radius: 50%; background: #fff; border: 1px solid #E4E4E7; flex: 0 0 auto; }
-  .faq-plus::before, .faq-plus::after { content: ""; position: absolute; left: 50%; top: 50%; width: 12px; height: 1.6px; background: #050505; transform: translate(-50%, -50%); transition: transform .2s ease; }
-  .faq-plus::after { transform: translate(-50%, -50%) rotate(90deg); }
-  .faq-i[open] .faq-plus::after { transform: translate(-50%, -50%) rotate(0deg); }
-  .doc .faq-i p { padding: 0 48px 22px 4px; margin: -6px 0 0; color: #71717B; font-size: 17px; line-height: 27px; font-weight: 400; }
-  @media (max-width: 600px) { .faq-i summary { font-size: 16px; line-height: 23px; padding: 18px 2px; } .doc .faq-i p { font-size: 15.5px; line-height: 24px; padding-right: 8px; } }
-</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -576,94 +995,15 @@ h1, h2, h3 { text-wrap: balance; }
   }
 }
 </script>
-<style id="seo-hero-css">
-/* ARTICLE PAGES LAYOUT (15 Oct 2026). The home page's hero on every SEO page:
-   copy on the left, the same phone pair on the right, sized like index.html
-   (phones clamp 220 to 300px wide on laptops, 198 to 268px on phones). The
-   article below reads in one centred 720px column; images are capped. */
-.doc > .wrap > .seo-hero { max-width: none; }
-.seo-hero { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; margin: 0 0 8px; }
-.seo-hero .seo-copy > h1 { margin: 0; }
-.seo-hero .seo-copy > .intro { max-width: 560px; }
-.seo-hero .storebtns { display: flex; align-items: center; justify-content: flex-start; gap: 12px; flex-wrap: wrap; margin: 32px 0 0; }
-.seo-hero .appbtn { display: inline-block; transition: transform .15s ease, filter .15s ease; }
-.seo-hero .appbtn img { height: 54px; width: auto; display: block; }
-.seo-hero .appbtn:hover { transform: translateY(-1px); filter: brightness(1.06); }
-.seo-hero .seo-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin: 32px 0 0 !important; }
-.seo-hero .seo-cta a.btn { color: #fff; padding: 15px 26px; font-size: 16px; }
-.seo-hero .seo-link { color: var(--t, #040815); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
-.seo-hero .seo-art { position: relative; margin: 0; min-width: 0; }
-.seo-art figcaption, .doc .seo-col figcaption { margin: 14px auto 0; max-width: 420px; text-align: center; font-size: 14px; line-height: 20px; color: var(--g, #71717B); }
-/* The phone pair, copied from index.html (.fan / .phone). */
-.seo-art .fan { position: relative; margin: 0 auto; width: 100%; display: flex; justify-content: center; align-items: flex-start; padding-bottom: 6px; }
-.seo-art .phone { position: relative; flex: 0 0 auto; width: clamp(198px, 38vw, 268px); }
-.seo-art .phone img { width: 100%; height: auto; display: block; border-radius: 0; box-shadow: none; }
-.seo-art .phone.back, .seo-art .phone.front { transform-origin: 50% 50%; animation: settle 1.5s cubic-bezier(.22,.9,.3,1) .7s both; }
-.seo-art .phone.back { z-index: 1; margin-right: clamp(-64px, -9vw, -40px); --rot: -9deg; --slide: 22px; }
-.seo-art .phone.front { z-index: 2; --rot: 6deg; --slide: -22px; }
-.seo-art .phone.solo { --rot: 0deg; --slide: 0px; animation: none; }
-@keyframes settle { from { transform: translateX(var(--slide)) rotate(0deg); } to { transform: translateX(0) rotate(var(--rot)); } }
-.seo-art .fan::before { content: ""; position: absolute; z-index: 0; pointer-events: none; left: 12%; right: 12%; bottom: 4%; height: 13%;
-  background: radial-gradient(ellipse at 50% 50%, rgba(15,23,42,.26), rgba(15,23,42,0) 72%); filter: blur(13px); }
-/* a phone-framed video (weather, Lock Screen) sits at one phone's width */
-.seo-art .vid { display: block; width: clamp(220px, 56vw, 300px); height: auto; margin: 0 auto; border-radius: 0; background: transparent; }
-/* Desk screenshots: a rounded window, with the jumper's phone in front of it */
-.seo-art.desk { padding: 0 0 40px; }
-.seo-art .win { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid #E4E4E7; box-shadow: 0 24px 60px -24px rgba(15,23,42,.28), 0 2px 8px rgba(15,23,42,.06); }
-.seo-art .win-phone { position: absolute; right: -2%; bottom: 0; width: 27%; max-width: 170px; height: auto; filter: drop-shadow(0 18px 28px rgba(15,23,42,.28)); }
-.seo-art.desk figcaption { margin-top: 18px; }
-/* load-in, as on the home page */
-@keyframes rise { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
-.seo-hero .seo-copy > * { animation: rise .7s cubic-bezier(.2,.75,.25,1) both; }
-.seo-hero .seo-copy > :nth-child(2) { animation-delay: .15s; } .seo-hero .seo-copy > :nth-child(3) { animation-delay: .3s; }
-.seo-hero .seo-art { animation: rise .8s cubic-bezier(.2,.75,.25,1) .45s both; }
-@media (prefers-reduced-motion: reduce) { .seo-hero *, .seo-hero .seo-art { animation: none !important; } .seo-art .phone { transform: rotate(var(--rot)); } }
-
-/* Laptops: side by side like the home hero (1.08fr / 1fr). */
-@media (min-width: 900px) {
-  .seo-hero { grid-template-columns: 1.08fr 1fr; column-gap: 56px; min-height: 560px; }
-  .doc .seo-hero h1 { font-size: clamp(48px, 4.4vw, 64px); line-height: 1.04; letter-spacing: -1.6px; max-width: 15ch; }
-  .seo-art .phone { width: clamp(220px, 21vw, 300px); }
-  .seo-art .vid { width: clamp(260px, 25vw, 340px); }
-}
-/* Phones: stacked, centred art, smaller badge (home: 46px). */
-@media (max-width: 899px) {
-  .seo-hero { gap: 40px; }
-  .seo-hero .seo-art { max-width: 560px; margin: 0 auto; width: 100%; }
-}
-@media (max-width: 600px) {
-  .seo-hero .appbtn img { height: 46px; }
-  .seo-hero .seo-cta { margin-top: 26px !important; }
-  .seo-hero .seo-cta a.btn { padding: 13px 22px; font-size: 15px; }
-  .seo-art .phone { width: clamp(170px, 46vw, 220px); }
-  .seo-art .phone.back { margin-right: -44px; }
-  .seo-art .win-phone { width: 30%; right: 0; }
-}
-
-/* THE ARTICLE: one centred reading column, 720px, under the hero. */
-@media (min-width: 900px) {
-  .doc > .wrap > :not(.seo-hero) { max-width: 720px; margin-left: auto; margin-right: auto; }
-}
-.doc > .wrap > .seo-hero + h2, .doc > .wrap > .seo-hero + * { margin-top: 96px; }
-@media (max-width: 600px) { .doc > .wrap > .seo-hero + h2, .doc > .wrap > .seo-hero + * { margin-top: 64px; } }
-/* Images inside the article: capped, centred, rounded. Phone mockups stay
-   phone-sized; wide screenshots fill the column. */
-.doc .wrap figure:not(.seo-art) { margin: 40px auto; text-align: center; }
-.doc .wrap figure:not(.seo-art) img, .doc .wrap figure:not(.seo-art) video { display: block; margin: 0 auto; max-width: 100%; height: auto; }
-.doc .wrap figure:not(.seo-art) img[src*="mock-"], .doc .wrap figure:not(.seo-art) img[src*="phone"], .doc .wrap figure:not(.seo-art) img[src*="hero-pass"],
-.doc .wrap figure:not(.seo-art) video { width: min(280px, 72vw) !important; max-height: 600px; object-fit: contain; border-radius: 0; box-shadow: none; border: 0; }
-.doc .wrap figure:not(.seo-art) img[src*="desk-"], .doc .wrap figure:not(.seo-art) img[src$=".jpg"], .doc .wrap figure:not(.seo-art) img[src*=".jpg?"] {
-  width: 100%; border-radius: 14px; border: 1px solid #E4E4E7; box-shadow: 0 20px 50px -24px rgba(15,23,42,.25); }
-.doc .wrap figure:not(.seo-art) figcaption { margin: 14px auto 0; max-width: 520px; text-align: center; font-size: 14px; line-height: 20px; color: var(--g, #71717B); }
-</style>
-
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
+
+<div class="ownerbar">This page is for dropzone owners and managers. Looking for the jumper app? <a href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429">Download Manifest&nbsp;&rarr;</a></div>
 <!-- SITE HEADER (9 Oct 2026): one header on every page. Mega dropdowns on
      laptops, a full-height sheet on phones. Same markup, CSS and JS on each
      page; only the current section and the right-hand button differ. -->
-<div class="sh" data-sh role="banner">
+<div class="sh li-bar" data-sh role="banner">
   <div class="sh-in">
     <a class="sh-logo" href="/" aria-label="Manifest home"><img class="lockup" src="/assets/manifest-lockup.svg?v=5" alt="Manifest" /></a>
     <nav class="sh-nav" aria-label="Main">
@@ -671,7 +1011,7 @@ h1, h2, h3 { text-wrap: balance; }
       <div class="sh-dd" data-dd><button class="sh-trig is-current" type="button" aria-expanded="false" aria-controls="sh-p-dropzones"><span class="sh-t">For dropzones</span><svg class="sh-chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="sh-panel" id="sh-p-dropzones"><div class="sh-card"><div class="sh-grid"><a class="sh-item" href="/dropzones/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><span class="sh-tx"><b>Manifest Desk</b><small>Loads, money, staff and safety on one screen.</small></span></a><a class="sh-item" href="/dropzone-payments/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3 10h18M7 14.5h3"/></svg></span><span class="sh-tx"><b>Payments and top-ups</b><small>Apple Pay top-ups, straight to your Stripe.</small></span></a><a class="sh-item" href="/skydive-landout-safety/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="sh-tx"><b>Safety</b><small>Landouts on a live map, and who's back after each load.</small></span></a><a class="sh-item" href="/skydiving-load-calls/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15L6 16z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg></span><span class="sh-tx"><b>Load calls</b><small>Every call on every jumper's phone.</small></span></a><a class="sh-item" href="/self-manifest-skydiving/" aria-current="page"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M3 20a6 6 0 0 1 10.5-4"/><path d="M15 18l2 2 4-4"/></svg></span><span class="sh-tx"><b>Self-manifest</b><small>Jumpers book themselves, you keep control.</small></span></a><a class="sh-item" href="/how-manifest-works/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M11 6h9M11 18h9M6 8.5v7"/></svg></span><span class="sh-tx"><b>How it works</b><small>From sign-up to your first jump day.</small></span></a><a class="sh-item" href="/dropzones/#hangar-board"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M7 8.5h6M7 12.5h10M9 21h6"/></svg></span><span class="sh-tx"><b>Hangar board</b><small>A live board for every TV in the hangar.</small></span></a><a class="sh-item" href="/dropzones/#pricing"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4.5A1.5 1.5 0 0 1 4.5 3H12l9 9-9 9-9-9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><span class="sh-tx"><b>Pricing</b><small>Free until you fly. $1 per seat.</small></span></a></div><a class="sh-item sh-foot" href="/get-started/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M13 8.5l3.5 3.5-3.5 3.5"/></svg></span><span class="sh-tx"><b>Get started</b><small>Tell us about your dropzone. Free until you fly.</small></span><span class="sh-go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a></div></div></div>
       <a class="sh-link" href="/about/"><span class="sh-t">About</span></a>
       <a class="sh-link" href="/support/"><span class="sh-t">Support</span></a>
-      <a class="sh-link" href="/#faq"><span class="sh-t">FAQ</span></a>
+      <a class="sh-link" href="/dropzones/#faq"><span class="sh-t">FAQ</span></a>
     </nav>
     <div class="sh-right">
       <a class="sh-login" href="https://desk.jumpmanifest.com">Dropzone login</a>
@@ -684,72 +1024,325 @@ h1, h2, h3 { text-wrap: balance; }
     <div class="sh-mgroup"><button class="sh-macc is-current" type="button" aria-expanded="false" aria-controls="sh-m-dropzones"><span>For dropzones</span><svg class="sh-chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="sh-mlist" id="sh-m-dropzones" hidden><a class="sh-mitem" href="/dropzones/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><span class="sh-tx"><b>Manifest Desk</b><small>Loads, money, staff and safety on one screen.</small></span></a><a class="sh-mitem" href="/dropzone-payments/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3 10h18M7 14.5h3"/></svg></span><span class="sh-tx"><b>Payments and top-ups</b><small>Apple Pay top-ups, straight to your Stripe.</small></span></a><a class="sh-mitem" href="/skydive-landout-safety/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="sh-tx"><b>Safety</b><small>Landouts on a live map, and who's back after each load.</small></span></a><a class="sh-mitem" href="/skydiving-load-calls/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15L6 16z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg></span><span class="sh-tx"><b>Load calls</b><small>Every call on every jumper's phone.</small></span></a><a class="sh-mitem" href="/self-manifest-skydiving/" aria-current="page"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M3 20a6 6 0 0 1 10.5-4"/><path d="M15 18l2 2 4-4"/></svg></span><span class="sh-tx"><b>Self-manifest</b><small>Jumpers book themselves, you keep control.</small></span></a><a class="sh-mitem" href="/how-manifest-works/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M11 6h9M11 18h9M6 8.5v7"/></svg></span><span class="sh-tx"><b>How it works</b><small>From sign-up to your first jump day.</small></span></a><a class="sh-mitem" href="/dropzones/#hangar-board"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M7 8.5h6M7 12.5h10M9 21h6"/></svg></span><span class="sh-tx"><b>Hangar board</b><small>A live board for every TV in the hangar.</small></span></a><a class="sh-mitem" href="/dropzones/#pricing"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4.5A1.5 1.5 0 0 1 4.5 3H12l9 9-9 9-9-9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><span class="sh-tx"><b>Pricing</b><small>Free until you fly. $1 per seat.</small></span></a><a class="sh-mitem" href="/get-started/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M13 8.5l3.5 3.5-3.5 3.5"/></svg></span><span class="sh-tx"><b>Get started</b><small>Tell us about your dropzone. Free until you fly.</small></span></a></div></div>
     <a class="sh-mlink" href="/about/"><span class="sh-t">About</span></a>
     <a class="sh-mlink" href="/support/"><span class="sh-t">Support</span></a>
-    <a class="sh-mlink" href="/#faq"><span class="sh-t">FAQ</span></a>
+    <a class="sh-mlink" href="/dropzones/#faq"><span class="sh-t">FAQ</span></a>
     <a class="sh-mlink" href="https://desk.jumpmanifest.com"><span class="sh-t">Dropzone login</span></a>
     <div class="sh-mctas"><a class="sh-cta sh-mcta" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429">Download</a><a class="sh-cta sh-mcta sh-cta-demo" href="/get-started/?demo">Book a demo</a></div>
   </div>
 </div>
 
-<main id="main" class="doc">
-  <div class="wrap">
-    <div class="seo-hero">
-      <div class="seo-copy">
-        <h1>Book your load from your phone</h1>
-        <p class="intro">Self-manifest skydiving means fun jumpers put themselves on a load from the Manifest app, at dropzones that run Manifest Desk. Book yourself and your group, or join standby, and walk to the hangar instead of the counter. The dropzone sets the rules and the desk always has the final say.</p>
-        <div class="storebtns"><a class="appbtn" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="Download Manifest on the App Store"><img src="/assets/appstore-badge.svg?v=1" alt="Download on the App Store" /></a> <a class="seo-link" href="/dropzones/">Own a dropzone? See Manifest Desk</a></div>
+<main id="main" class="wrap sm">
+    <style id="review-b">
+  /* A11: no divider can start a wrapped line of hero chips; spacing only. */
+  .trust { gap: 12px 24px; }
+  .trust > * { padding: 0; }
+  .trust > * + * { border-left: 0; }
+  /* F12: founding status right under the hero actions. */
+  .hero-founding { margin: 22px 0 0; font-size: 16px; line-height: 24px; font-weight: 500; color: #050505; text-align: center; }
+  @media (min-width: 900px) { .hero-founding { text-align: left; } }
+  /* F13: readable Desk panels, captioned as sample data. */
+  /* Hero: the full Desk with the jumper's iPhone in front, as on the other
+     Desk pages (André, 16 Oct 2026). */
+  .hm-wrap { position: relative; }
+  /* MUG + STEAM (19 Oct). Real 3D render (Blender), shot straight on like the display; real scale for a
+     9.5 cm mug, set a little in front of the display so it sits just below the stand's foot line. */
+  .hm-mug { position: absolute; left: 10%; bottom: -2.2%; width: 22%; pointer-events: none; transform: translateY(8%); }
+  /* The steam starts BEHIND the mug, at the coffee, so it rises out of the opening; the mug image covers its root. */
+  .hm-mug .mug-body { position: relative; z-index: 1; display: block; width: 100%; height: auto; }
+  .hm-mug .mug-steam { position: absolute; z-index: 0; left: 7.8%; bottom: 86%; width: 57.4%; overflow: visible; }
+  /* Real coffee steam is thin, white and barely there: a white ribbon (shows on the dark bezel) over a faint
+     grey one (shows on the white page), slow, delicate, always rising out of the cup. */
+  .mug-steam .w { fill: none; stroke-linecap: round; opacity: 0; transform-box: fill-box; transform-origin: 50% 100%;
+    animation: steamRise 9s cubic-bezier(.3,.1,.4,1) infinite; }
+  .mug-steam .tone .w { stroke: url(#steamS); stroke-width: 3.2; }
+  .mug-steam .lite .w { stroke: url(#steamG); stroke-width: 2.2; }
+  .mug-steam .w2 { animation-delay: 3s; }
+  .mug-steam .w3 { animation-delay: 6s; }
+  @keyframes steamRise {
+    0% { opacity: 0; transform: translateY(4%) scale(.9, .7); }
+    20% { opacity: 1; }
+    70% { opacity: .55; }
+    100% { opacity: 0; transform: translateY(-8%) scale(1.2, 1.05); }
+  }
+  @media (prefers-reduced-motion: reduce) { .mug-steam .w { animation: none; opacity: .6; } }
+  .hero-media .desk-cap { margin-top: 44px; text-align: center; }
+  /* STUDIO DISPLAY (19 Oct 2026, André): the desk shown on a Studio Display, white background blends with the page. */
+  img.studio { display: block; width: 100%; height: auto; }
+  /* André 19 Oct: never a grey card around the Studio Display. */
+  .vis-media:has(img.studio) { background: transparent !important; padding: 0 !important; border-radius: 0 !important; }
+  .hm-phone { position: absolute; right: -3%; bottom: -6%; width: 26%; max-width: 190px; height: auto; filter: drop-shadow(0 18px 28px rgba(15,23,42,.28)); }
+  @media (max-width: 767px) { .hm-phone { width: 30%; right: -1%; bottom: -8%; } .hero-media .desk-cap { margin-top: 26px; } }
+  figure.hero-media { margin: 0; }
+  .desk-cap { margin: 8px 0 0; font-size: 14px; line-height: 20px; color: #52525B; text-align: left; }
+  /* F08: card copy on the pale card fills at 7:1, not 4.4:1. */
+  .app-card p, .card p, .how-grid p { color: #52525B; }
+  /* André 19 Oct: Apple-style row, no lilac panel, no boxes, no number chips. */
+  #app .app-panel { background: none; border-radius: 0; padding: 0; margin-top: 64px; }
+  #app .app-grid { gap: 56px; }
+  #app .app-card { background: none; border-radius: 0; padding: 0; text-align: center; }
+  #app .app-card .ic { width: 40px; height: 40px; color: #050505; display: block; margin: 0 auto; }
+  #app .app-card b { margin-top: 20px; }
+  #app .app-card p { max-width: 320px; margin-left: auto; margin-right: auto; }
+  #app .app-foot { margin-top: 56px; }
+  /* Top-up phones (André 19 Oct): same phone height, side by side. */
+  /* Meadow behind the phones (André 19 Oct): Unsplash photo _8fRer9hPv0 (Unsplash License). */
+  #app .pay-duo { display: flex; justify-content: center; align-items: center; gap: clamp(12px, 4vw, 64px); margin-top: 56px;
+    padding: clamp(36px, 6vw, 80px) 16px; border-radius: 28px; background: #9DB67A url(/assets/features/meadow.webp) center / cover no-repeat; 
+    isolation: isolate; transform: translateZ(0); } /* keeps the phones' drop-shadow layer from repainting the owner bar white in Safari */
+  #app .pay-duo img { display: block; height: auto; filter: drop-shadow(0 24px 40px rgba(0,0,0,.35)); }
+  @media (max-width: 600px) { #app .pay-duo { border-radius: 22px; padding: 28px 10px; gap: 10px; } #app .pay-duo .pd-a, #app .pay-duo .pd-b { width: 46%; } }
+  #app .pay-duo .pd-a { width: min(300px, 44%); }
+  #app .pay-duo .pd-b { width: min(300px, 44%); }
+  @media (max-width: 600px) { #app .app-foot b { display: block; } }
+  @media (max-width: 900px) { #app .app-grid { gap: 44px; } }
+  /* F02: each plan's limits right under the price slot. */
+  .pc-limits { margin: 10px 0 0; font-size: 16px; line-height: 22px; font-weight: 700; color: #050505; letter-spacing: -.2px; }
+  .pc-limits + .pc-desc { margin-top: 4px; }
+  /* F08: rows a plan does not include: readable text, a dash, a visible label. */
+  .pc ul.pc-list li.off { color: #52525B; }
+  .pc .off .tk-off { color: #52525B; border-color: #A1A1AA; }
+  .pc .off .off-tag { flex: 0 0 auto; font-size: 11.5px; line-height: 18px; font-weight: 600; letter-spacing: 0; color: #3F3F46; background: #F4F4F5; border-radius: 6px; padding: 1px 6px; }
+  .pc ul.pc-list li.off { gap: 10px; letter-spacing: -.4px; }
+  /* F06: a demo action between the hero and pricing, white on the black band. */
+  .band-cta { margin-top: 32px; display: flex; justify-content: center; }
+  .band-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; padding: 0 28px; border-radius: 999px; background: #fff; color: #050505; font-family: "Manrope", sans-serif; font-size: 18px; font-weight: 700; }
+  .band-btn:hover { background: #F4F4F5; }
+  .band-btn svg { width: 16px; height: 16px; }
+  .band .band-sub { color: #E4E4E7; }
+  /* A05: what the dropzone sends us, under the setup steps. */
+  .how-need { max-width: 820px; margin: 28px auto 0; text-align: center; font-size: 17px; line-height: 26px; color: #3F3F46; }
+  /* F10: group labels inside the FAQ. */
+  .faq-g { max-width: 820px; margin: 0 auto; padding: 0 4px 14px; font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: 26px; line-height: 32px; letter-spacing: -.4px; color: #050505; }
+  .faq-g + .faq-list { margin-bottom: 44px; }
+  @media (max-width: 600px) { .faq-g { font-size: 21px; line-height: 28px; } .band-btn { font-size: 17px; width: 100%; } }
+  </style>
+  <style id="sm-css">
+  /* SELF-MANIFEST PAGE (20 Oct 2026, André: every page polished, its own layout).
+     Base system is the dropzones page; these are the self-manifest-only parts. */
+  .sm .eyebrow{color:#050505}
+  .sm-btn{display:inline-flex;align-items:center;gap:12px;height:56px;padding:0 28px;border-radius:99px;background:#6D42F5;color:#fff!important;font-family:"Manrope",sans-serif;font-weight:700;font-size:17px;text-decoration:none!important}
+  .sm-btn:hover{filter:brightness(1.06)}
+  .sm-btn svg{width:16px;height:16px}
+  .sm-link{font-family:"Manrope",sans-serif;font-weight:600;font-size:17px;color:#050505!important;text-decoration:underline;text-underline-offset:4px;text-decoration-color:#A1A1AA}
+  .sm-link:hover{text-decoration-color:#050505}
+  .sm-h{font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;color:#050505;text-wrap:balance}
+  /* hero: copy left, a hand holding the app over the meadow right */
+  .sm-hero{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;padding-top:clamp(48px,6vw,88px)}
+  .sm-hero .eyebrow{justify-content:flex-start}
+  .sm-hero h1{margin:0;font-size:clamp(46px,5.6vw,80px);line-height:1;max-width:11ch}
+  .sm-hero .lead{margin:24px 0 0;max-width:520px;text-align:left;font-size:21px;line-height:32px;color:#3F3F46}
+  .sm-ctas{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;margin-top:36px}
+  .sm-meadow{position:relative;margin:0;aspect-ratio:4/5;border-radius:32px;overflow:hidden;background:#9DB67A url(/assets/features/meadow.webp) center/cover no-repeat;isolation:isolate}
+  .sm-meadow img{position:absolute;left:50%;bottom:-2%;width:82%;height:auto;transform:translateX(-46%);filter:drop-shadow(0 30px 40px rgba(0,0,0,.35))}
+  /* one load, two screens */
+  .sm-same{position:relative;margin:64px auto 0;max-width:1000px;padding-right:clamp(110px,22%,250px)}
+  .sm-board{background:#0B0B0F;border-radius:28px;padding:32px 36px;color:#fff;box-shadow:0 30px 70px -30px rgba(15,23,42,.45)}
+  .sm-board-h{display:flex;justify-content:space-between;align-items:baseline;gap:16px;font-family:"Manrope",sans-serif;font-weight:700;font-size:15px;color:#A1A1AA;margin-bottom:18px}
+  .sm-board-h b{font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:28px;color:#fff}
+  .sm-sub{font-family:"Manrope",sans-serif;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#A1A1AA;margin:22px 0 4px}
+  .sm-row{display:flex;align-items:center;gap:14px;white-space:nowrap;padding:14px 0;border-top:1px solid rgba(255,255,255,.08);font-family:"Manrope",sans-serif;font-size:17px;font-weight:600}
+  .sm-av{width:30px;height:30px;border-radius:50%;flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;background:#27272A;font-size:12px;font-weight:700;color:#fff}
+  .sm-row em{margin-left:auto;font-style:normal;font-size:13px;font-weight:700;padding:4px 10px;border-radius:99px;background:#27272A;color:#fff;white-space:nowrap}
+  .sm-row.app .sm-av{background:#6D42F5}
+  .sm-row.app em{background:#6D42F5}
+  .sm-row.sb em{background:none;padding:0;color:#D4D4D8}
+  .sm-same video{position:absolute;right:0;bottom:-40px;width:clamp(170px,26%,270px);height:auto;aspect-ratio:560/1176;border-radius:12.5%/5.96%;object-fit:cover;filter:drop-shadow(0 26px 40px rgba(15,23,42,.35))}
+  .sm-cap{margin:72px 0 0;font-size:14px;color:#71717B;text-align:center}
+  /* the jumper's morning, a vertical rail */
+  .sm-rail{list-style:none;margin:64px auto 0;padding:0;max-width:760px;position:relative}
+  .sm-rail::before{content:"";position:absolute;left:11px;top:14px;bottom:14px;width:2px;background:#E4E4E7}
+  .sm-rail li{position:relative;padding:0 0 44px 64px}
+  .sm-rail li:last-child{padding-bottom:0}
+  .sm-rail li::before{content:"";position:absolute;left:0;top:6px;width:24px;height:24px;border-radius:50%;background:#fff;border:6px solid #6D42F5;box-sizing:border-box}
+  .sm-rail li:last-child::before{background:#6D42F5}
+  .sm-rail b{display:block;font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:30px;line-height:36px;color:#050505;letter-spacing:-.01em}
+  .sm-rail p{margin:8px 0 0;font-size:18px;line-height:28px;color:#52525B;max-width:560px}
+  /* standby panel */
+  .sm-panel{display:block;width:100%;height:auto;border-radius:16px}
+  /* money: two phones on the meadow, payment marks under */
+  .sm-money{text-align:center}
+  .sm-duo{display:flex;justify-content:center;align-items:center;gap:clamp(12px,4vw,64px);margin-top:56px;padding:clamp(36px,6vw,80px) 16px;border-radius:32px;background:#9DB67A url(/assets/features/meadow.webp) center 70%/cover no-repeat;isolation:isolate;transform:translateZ(0)}
+  .sm-duo img{display:block;width:min(300px,44%);height:auto;filter:drop-shadow(0 24px 40px rgba(0,0,0,.35))}
+  .sm-marks{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:32px 0 0}
+  .sm-marks img{height:30px;width:auto;border-radius:5px}
+  .sm-fee{margin:28px auto 0;max-width:640px;font-size:18px;line-height:28px;color:#52525B}
+  .sm-fee b{color:#050505}
+  /* in charge: full-bleed black band with spec rows */
+  .sm-band{position:relative;isolation:isolate;margin-top:var(--gap);padding:clamp(80px,10vw,128px) 0}
+  .sm-band::before{content:"";position:absolute;inset:0 auto 0 50%;width:100vw;transform:translateX(-50%);background:#050505;z-index:-1}
+  .sm-band .eyebrow{color:#fff}
+  .sm-band h2{margin:0 auto;text-align:center;max-width:14ch;color:#fff;font-size:clamp(40px,5.4vw,72px);line-height:1.02}
+  .sm-band .sm-bl{margin:24px auto 0;max-width:600px;text-align:center;font-size:20px;line-height:31px;color:#E4E4E7}
+  .sm-spec{margin:64px auto 0;max-width:960px;padding:0;list-style:none}
+  .sm-spec li{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:8px 48px;padding:30px 0;border-top:1px solid rgba(255,255,255,.16)}
+  .sm-spec li:last-child{border-bottom:1px solid rgba(255,255,255,.16)}
+  .sm-spec b{font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:28px;line-height:34px;color:#fff;letter-spacing:-.01em}
+  .sm-spec p{margin:0;font-size:18px;line-height:28px;color:#E4E4E7}
+  /* where it works */
+  .sm-where{text-align:center}
+  .sm-big{margin:0;font-size:clamp(72px,11vw,160px);line-height:.95;letter-spacing:-.045em;color:#050505}
+  .sm-big span{color:#6D42F5}
+  .sm-where .lead{margin-top:28px}
+  .sm-where .lead a,.sm-fun a{color:#050505;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+  .sm-fun{margin:56px auto 0;max-width:680px;padding-top:40px;border-top:1px solid #E4E4E7;font-size:18px;line-height:28px;color:#52525B}
+  .sm-fun b{display:block;margin-bottom:8px;font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:28px;line-height:34px;color:#050505}
+  .sm .faq{margin-top:var(--gap)}
+  @media (max-width:899px){
+    .sm-hero{grid-template-columns:1fr;gap:44px;text-align:center}
+    .sm-hero .eyebrow{justify-content:center}
+    .sm-hero h1{margin:0 auto}
+    .sm-hero .lead{margin:20px auto 0;font-size:18px;line-height:28px;text-align:center}
+    .sm-ctas{justify-content:center}
+    .sm-meadow{aspect-ratio:1/1;border-radius:24px}
+    .sm-meadow img{width:64%}
+    .sm-same{padding-right:0;padding-bottom:0;margin-top:44px}
+    .sm-board{padding:24px 20px;border-radius:22px}
+    .sm-board-h b{font-size:22px}
+    .sm-row{font-size:15px;gap:10px;padding:12px 0}
+    .sm-row em{font-size:12px;padding:3px 8px}
+        .sm-same video{position:static;display:block;width:58%;margin:32px auto 0}
+    .sm-cap{margin-top:20px}
+    .sm-rail{margin-top:44px}
+    .sm-rail li{padding:0 0 32px 48px}
+    .sm-rail b{font-size:22px;line-height:28px}
+    .sm-rail p{font-size:16px;line-height:25px}
+    .sm-duo{border-radius:22px;padding:28px 10px;gap:10px}
+    .sm-duo img{width:46%}
+    .sm-marks img{height:26px}
+    .sm-fee{font-size:16px;line-height:25px}
+    .sm-band .sm-bl{font-size:17px;line-height:27px}
+    .sm-spec{margin-top:44px}
+    .sm-spec li{grid-template-columns:1fr;padding:24px 0}
+    .sm-spec b{font-size:22px;line-height:28px}
+    .sm-spec p{font-size:16px;line-height:25px}
+    .sm-fun{font-size:16px;line-height:25px}
+    .sm-fun b{font-size:22px;line-height:28px}
+  }
+  </style>
+
+  <section class="sm-hero">
+    <div>
+      <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18.5h3"/></svg>Self manifest skydiving</p>
+      <h1 class="sm-h">Book your load from your phone.</h1>
+      <p class="lead">At Manifest Desk dropzones, fun jumpers book themselves and their friends onto a load, and walk to the hangar instead of the counter.</p>
+      <div class="sm-ctas">
+        <a class="sm-btn" href="/get-started/?demo">Book a demo<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <a class="sm-link" href="/dropzones/">See Manifest Desk</a>
       </div>
-      <div class="seo-art"><div class="fan"><div class="phone back"><img src="/assets/opt/phone-liveloads.3fc578b1.webp" width="821" height="1705" alt="Dropzones with live loads in the Manifest app" /></div><div class="phone front"><img src="/assets/opt/mock-home3.a2e7757f.webp" width="640" height="1330" alt="Manifest app home screen with the next load and minutes to call" /></div></div></div>
     </div>
+    <figure class="sm-meadow">
+      <img src="/assets/opt/hand-phone.c1c25f9a.webp" width="631" height="841" alt="A hand holding an iPhone with the Manifest app: the next load, minutes to call and the Manifest tile to book, top up and see tickets" decoding="async" />
+    </figure>
+  </section>
 
-    <h2>What self&#8209;manifest means</h2>
-    <p>Self-manifesting is booking your own slot on a load without queuing at the manifest window. On a busy Saturday the line at the counter is where half the morning goes: people waiting to add a jump, change a load, top up or ask when they are going. Most of that is information the manifest board already has.</p>
-    <p>With Manifest, the board and the app are the same system. When you book a slot in the app, it lands on the desk&rsquo;s loads board straight away, under your name, against your balance. Staff see it the same second you do.</p>
+  <section class="sec" id="what">
+    <p class="eyebrow">What self&#8209;manifest means</p>
+    <h2>One load. Two screens.</h2>
+    <p class="lead">A slot booked in the app lands on the desk&rsquo;s loads board straight away, under the jumper&rsquo;s name and against their balance.</p>
+    <div class="sm-same">
+      <div class="sm-board" role="img" aria-label="An illustration of a load on the desk: three jumpers booked in the app, one added by the desk, and one jumper on standby">
+        <div class="sm-board-h"><b>Load 5</b><span>Loads board</span></div>
+        <div class="sm-row app"><span class="sm-av">LH</span>Lena Hoff<em>Booked in app</em></div>
+        <div class="sm-row app"><span class="sm-av">MF</span>Marco Ferri<em>Booked in app</em></div>
+        <div class="sm-row app"><span class="sm-av">AR</span>Ana Ruiz<em>Booked in app</em></div>
+        <div class="sm-row"><span class="sm-av">JO</span>James Okafor<em>Desk</em></div>
+        <p class="sm-sub">Standby</p>
+        <div class="sm-row sb"><span class="sm-av">CW</span>Chris Walker<em>Next up</em></div>
+      </div>
+      <video data-lazy autoplay muted loop playsinline preload="none" poster="/assets/opt/liveloads-poster.344e7011.webp" width="560" height="1176" aria-label="The live loads screen in the Manifest app, with the next load and the loads later today">
+        <source data-src="/assets/opt/liveloads.91e6219d.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <p class="sm-cap">Illustration with sample names. Staff see a booking the same second the jumper does.</p>
+  </section>
 
-    <h2>How it works for jumpers</h2>
-    <ol class="steps">
-      <li><strong>Open your dropzone in the app.</strong> At a Manifest Desk dropzone you see the loads that are open for booking, how many seats are left and who is already on.</li>
-      <li><strong>Book a load, or join standby.</strong> Pick a slot for yourself. Jumping with friends? Book your group onto the same load in one go.</li>
-      <li><strong>Top up if you need to.</strong> Add money with Apple Pay or card in the app (Cash App Pay in the US). It goes onto your account at that dropzone and the desk sees the new balance immediately.</li>
-      <li><strong>Get your calls on the Lock Screen.</strong> Called, 10 minutes, 5 minutes, boarding and holds arrive on your phone and Lock Screen. Your load on the Lock Screen is part of Manifest Pro.</li>
-      <li><strong>Gear up and go.</strong> No trip to the counter to check whether you are still on. If the desk moves you, you see it in the app.</li>
+  <section class="sec" id="jumpers">
+    <p class="eyebrow">How it works for jumpers</p>
+    <h2>Car park to the plane.</h2>
+    <p class="lead">No queue at the window to add a jump, change a load or ask when you are going.</p>
+    <ol class="sm-rail">
+      <li><b>Open your dropzone.</b><p>See the loads open for booking, the seats left and who is already on.</p></li>
+      <li><b>Book, or join standby.</b><p>Pick a slot for yourself, or book your group onto the same load in one go.</p></li>
+      <li><b>Top up if you need to.</b><p>Apple Pay or card, Cash App Pay in the US. The desk sees the new balance immediately.</p></li>
+      <li><b>Get your calls.</b><p>Called, 10 minutes, 5 minutes, boarding and holds, on your phone.</p></li>
+      <li><b>Gear up and go.</b><p>If the desk moves you, you see it in the app.</p></li>
     </ol>
+  </section>
 
-    <h3>Standby that moves you up</h3>
-    <p>When the load you want is full, join standby instead of hovering by the window. As seats open, standby moves people up, and you see it in the app. The desk can see who has waited longest, so the order stays fair.</p>
+  <section class="sec vis flip" id="standby">
+    <div class="vis-txt">
+      <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Standby</p>
+      <h2>Full load? Wait in the app.</h2>
+      <p class="lead">Join standby instead of hovering by the window. As seats open, standby moves people up.</p>
+      <ul class="vis-pts">
+        <li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg><span>Jumpers see themselves move up in the app</span></li>
+        <li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg><span>The desk sees who has waited longest, so the order stays fair</span></li>
+        <li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg><span>The desk can always reorder standby</span></li>
+      </ul>
+    </div>
+    <div class="vis-media">
+      <img class="sm-panel" src="/assets/opt/desk-panels.7798c1aa.webp" width="1356" height="896" alt="Manifest Desk panels: the next load boarding, standby with two waiting and the longest wait, and the loads list" loading="lazy" decoding="async" />
+      <p class="desk-cap">Manifest Desk with sample data from a demo dropzone.</p>
+    </div>
+  </section>
 
-    <h2>How it works for dropzone owners</h2>
-    <p>Self-manifest only works if the dropzone stays in charge. In Manifest Desk you decide how much of the load building happens on phones.</p>
-    <ul>
-      <li><strong>Who can self-manifest.</strong> Turn it on for the jumpers you choose, not for everyone who downloads an app.</li>
-      <li><strong>Which loads.</strong> Open some loads to booking and keep others for the desk to build by hand.</li>
-      <li><strong>The desk has the final say.</strong> Staff can move anyone to another load, take them off, or reorder standby. A booking from a phone is a request on your board, not a lock on a seat.</li>
-      <li><strong>Money first.</strong> Jumpers top up in the app before they jump. Payments go straight to your own Stripe account (Stripe Connect, you are the merchant) and balances show on the desk immediately.</li>
-      <li><strong>No fee per booking.</strong> The dropzone pays $1 per seat flown, plus 1% on in-app top-ups. Nothing is added to the jumper.</li>
+  <section class="sec sm-money" id="money">
+    <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="2.5"/><path d="M2.5 10h19"/></svg>Money first</p>
+    <h2>Topped up before they jump.</h2>
+    <p class="lead">Payments go straight to your own Stripe account, and the balance shows on the desk immediately.</p>
+    <div class="sm-duo">
+      <img src="/assets/features/topup-bundles.webp?v=2" width="900" height="1710" alt="A jumper tops up in the Manifest app: 10 jump tickets for $330, paid with Apple Pay, Cash App or card" loading="lazy" decoding="async" />
+      <img src="/assets/features/topup-applepay.webp" width="900" height="1710" alt="Apple Pay confirming $330.00 to the dropzone in the Manifest app" loading="lazy" decoding="async" />
+    </div>
+    <div class="sm-marks" aria-label="Apple Pay, Cash App Pay, Visa, Mastercard and American Express, through Stripe">
+      <img src="/assets/pay/apple_pay.svg" alt="Apple Pay" width="38" height="24" loading="lazy" />
+      <img src="/assets/pay/cashapppay.svg" alt="Cash App Pay" width="38" height="24" loading="lazy" />
+      <img src="/assets/pay/visa.svg" alt="Visa" width="38" height="24" loading="lazy" />
+      <img src="/assets/pay/master.svg" alt="Mastercard" width="38" height="24" loading="lazy" />
+      <img src="/assets/pay/american_express.svg" alt="American Express" width="38" height="24" loading="lazy" />
+      <img src="/assets/pay/stripe.svg" alt="Stripe" width="38" height="24" loading="lazy" />
+    </div>
+    <p class="sm-fee"><b>No fee per booking.</b> The dropzone pays $1 per seat flown, plus 1% on in-app top-ups. Nothing is added to the jumper. Cash App Pay is US only.</p>
+  </section>
+
+  <section class="sm-band" id="owners">
+    <p class="eyebrow">How it works for dropzone owners</p>
+    <h2 class="sm-h">Your dropzone. Your rules.</h2>
+    <p class="sm-bl">Self&#8209;manifest only works if the dropzone stays in charge. You decide how much of the load building happens on phones.</p>
+    <ul class="sm-spec">
+      <li><b>Who can self&#8209;manifest</b><p>Turn it on for the jumpers you choose, not for everyone who downloads an app.</p></li>
+      <li><b>Which loads</b><p>Open some loads to booking and keep others for the desk to build by hand.</p></li>
+      <li><b>The final say</b><p>Staff can move anyone to another load, take them off, or reorder standby. A booking from a phone is a request on your board, not a lock on a seat.</p></li>
+      <li><b>A shorter line</b><p>Am I on, how long, did my money go in: answered on the jumper&rsquo;s phone, so staff spend their time on the loads, the aircraft and the people who need them.</p></li>
     </ul>
-    <p>The result is a shorter line at manifest. The questions that used to come to the window (am I on, how long, did my money go in) are answered on the jumper&rsquo;s phone, so staff spend their time on the loads, the aircraft and the people who actually need them.</p>
+  </section>
 
-    <h2>Load calls that reach everyone on the load</h2>
-    <p>Booking is half of it. The other half is making sure people turn up. When staff press one button on the desk, the call goes to every jumper on that load: called, 10 minutes, 5 minutes, boarding and holds. It shows on their phone and on their Lock Screen, so nobody misses the call because they were packing on the far side of the hangar. More on this in <a href="/skydiving-load-calls/">skydiving load calls</a>.</p>
-
-    <h2>Fun jumpers only</h2>
-    <p>Manifest is built for licensed fun jumpers and the dropzones that fly them. Self-manifest is for booking slots on fun-jumper loads. It is not a tandem booking system and there is no tandem booking in the app.</p>
-
-    <h2>Where it works</h2>
-    <p>Self-manifest and top-ups work at dropzones that run <a href="/dropzones/">Manifest Desk</a>. Everywhere else, the app still shows <a href="/live-skydiving-loads/">live skydiving loads</a> at 230 dropzones: what is on call, who is on it and the minutes to call, pulled from the dropzone&rsquo;s own manifest board. Booking needs your dropzone to run the Desk.</p>
-    <p>Want to see the whole flow from the desk side? Read <a href="/how-manifest-works/">how Manifest works</a> or the overview of <a href="/skydiving-manifest-software/">skydiving manifest software</a>.</p>
-
-    <div class="card cta-card">
-      <p class="lbl">Run a dropzone?</p>
-      <p>See self-manifest, standby and load calls on a sample day in Manifest Desk. Free until you fly, no contract.</p>
-      <p class="cta-row"><a class="btn" href="/get-started/?demo">Book a 20-minute demo</a> <a class="cta-link" href="/dropzones/#pricing">See pricing</a></p>
+  <section class="sec vis" id="calls">
+    <div class="vis-txt">
+      <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>Load calls</p>
+      <h2>Booked. Then called.</h2>
+      <p class="lead">Press one button on the desk and the call goes to every jumper on that load, wherever they are packing.</p>
+      <ul class="vis-pts">
+        <li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg><span>Called, 10 minutes, 5 minutes, boarding and holds</span></li>
+        <li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg><span>Their load on the Lock Screen with Manifest Pro</span></li>
+        <li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg><span>More in <a href="/skydiving-load-calls/">skydiving load calls</a></span></li>
+      </ul>
     </div>
-    <div class="card cta-card">
-      <p class="lbl">Jump at a Manifest Desk dropzone?</p>
-      <p>Get the app, free on iPhone. Android is in the making.</p>
-      <p class="cta-row"><a class="btn" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429">Download on the App Store</a></p>
+    <div class="vis-media">
+      <video class="vis-phone vis-ls" data-lazy autoplay muted loop playsinline preload="none" poster="/assets/opt/lockscreen-poster.6252405d.webp" width="738" height="1180" aria-label="An iPhone Lock Screen with the Manifest load card counting down to the jumper's load">
+        <source data-src="/assets/opt/lockscreen.704735fc.mp4" type="video/mp4" />
+      </video>
     </div>
+  </section>
 
-    <h2>Self&#8209;manifest FAQ</h2>
+  <section class="sec sm-where" id="where">
+    <p class="eyebrow">Where it works</p>
+    <p class="sm-big sm-h">230 <span>dropzones.</span></p>
+    <p class="lead">Booking and top-ups need your dropzone to run <a href="/dropzones/">Manifest Desk</a>. Everywhere else, the app shows <a href="/live-skydiving-loads/">live skydiving loads</a> from the dropzone&rsquo;s own manifest board.</p>
+    <p class="sm-fun"><b>Fun jumpers only.</b>Self&#8209;manifest books slots on fun-jumper loads. Manifest is built for licensed fun jumpers and the dropzones that fly them.</p>
+  </section>
+
+  <div class="faq" id="faq">
+    <h2 class="cm-title">Self&#8209;manifest FAQ</h2>
     <div class="faq-list">
       <details class="faq-i"><summary>Can I manifest myself on a skydiving load from my phone?<span class="faq-plus" aria-hidden="true"></span></summary><p>Yes, at dropzones that run Manifest Desk. Open the dropzone in the Manifest app, pick a load that is open for booking and book your slot, or join standby. It lands on the desk&rsquo;s loads board straight away.</p></details>
       <details class="faq-i"><summary>Can I book my friends onto the same load?<span class="faq-plus" aria-hidden="true"></span></summary><p>Yes. You can book yourself and your friends onto a load together, so the group goes up on the same aircraft without each person queuing at manifest.</p></details>
@@ -758,8 +1351,18 @@ h1, h2, h3 { text-wrap: balance; }
       <details class="faq-i"><summary>How do I pay for my jumps?<span class="faq-plus" aria-hidden="true"></span></summary><p>Top up your account at the dropzone in the app with Apple Pay or card, or Cash App Pay in the US. The money goes straight to the dropzone&rsquo;s own Stripe account and the balance shows on the desk immediately. There is no fee per booking.</p></details>
       <details class="faq-i"><summary>Can I book a tandem with Manifest?<span class="faq-plus" aria-hidden="true"></span></summary><p>No. Manifest is for licensed fun jumpers and the dropzones that fly them. Self-manifest books slots on fun-jumper loads only.</p></details>
     </div>
+    <p class="faq-more">Learn more: <a href="/how-manifest-works/">How Manifest works</a>, <a href="/skydiving-manifest-software/">Skydiving manifest software</a>, <a href="/skydiving-load-calls/">Load calls</a>, <a href="/live-skydiving-loads/">Live skydiving loads</a>, <a href="/skydiving-app/">The app for jumpers</a>.</p>
   </div>
+
+  <section class="final">
+    <h2>Shorter line. More time in the air.</h2>
+    <p>See self&#8209;manifest, standby and load calls on a sample day. Free until you fly, no contract.</p>
+    <div class="ctas">
+      <a class="pc-out" href="/get-started/?demo">Book a 20-minute demo <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+  </section>
 </main>
+
 
 <footer class="site">
   <div class="ft">
@@ -784,6 +1387,22 @@ h1, h2, h3 { text-wrap: balance; }
   <div class="ft-base"><span>© 2026 Manifest Jump LLC · Wyoming, USA · Dubai,&nbsp;UAE</span><div class="ft-pay" aria-label="Payment methods accepted"><img src="/assets/pay/apple_pay.svg?v=1" alt="Apple Pay" height="24" /><img src="/assets/pay/visa.svg?v=1" alt="Visa" height="24" /><img src="/assets/pay/master.svg?v=1" alt="Mastercard" height="24" /><img src="/assets/pay/american_express.svg?v=1" alt="American Express" height="24" /><img src="/assets/pay/cashapppay.svg?v=1" alt="Cash App Pay" height="24" /><img src="/assets/pay/stripe.svg?v=1" alt="Stripe" height="24" /></div></div>
 </footer>
 
+<script>
+// LAND EXACTLY ON THE ANCHOR (15 Oct): arriving at /dropzones/#pricing from
+// another page, the browser jumps before fonts, images and the founding-seat
+// count are in, and the page settles about 6 px off. Land again as each one
+// arrives, for the first 2.5 s, unless the visitor has started scrolling.
+(function () {
+  if (!location.hash) return;
+  var t = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  if (!t) return;
+  var stop = false, quit = function () { stop = true; };
+  ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (e) { addEventListener(e, quit, { once: true, passive: true }); });
+  var land = function () { if (!stop) t.scrollIntoView({ block: 'start' }); };
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(land);
+  addEventListener('load', function () { land(); [300, 800, 1500, 2500].forEach(function (ms) { setTimeout(land, ms); }); }, { once: true });
+})();
+</script>
 <script id="site-header-js">
 (() => {
   const bar = document.querySelector('[data-sh]');
@@ -903,22 +1522,6 @@ h1, h2, h3 { text-wrap: balance; }
     if (location.hash.length > 1) window.addEventListener('load', function () { go(decodeURIComponent(location.hash.slice(1)), false); });
   })();
 </script>
-<script>
-// LAND EXACTLY ON THE ANCHOR (15 Oct): arriving at /dropzones/#pricing from
-// another page, the browser jumps before fonts, images and the founding-seat
-// count are in, and the page settles about 6 px off. Land again as each one
-// arrives, for the first 2.5 s, unless the visitor has started scrolling.
-(function () {
-  if (!location.hash) return;
-  var t = document.getElementById(decodeURIComponent(location.hash.slice(1)));
-  if (!t) return;
-  var stop = false, quit = function () { stop = true; };
-  ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (e) { addEventListener(e, quit, { once: true, passive: true }); });
-  var land = function () { if (!stop) t.scrollIntoView({ block: 'start' }); };
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(land);
-  addEventListener('load', function () { land(); [300, 800, 1500, 2500].forEach(function (ms) { setTimeout(land, ms); }); }, { once: true });
-})();
-</script>
 <script id="mailto-copy">
 /* "Write to me" did nothing on Macs with no mail app set up (André, 16 Oct).
    Every email link still opens the mail app, and also copies the address and
@@ -942,5 +1545,42 @@ h1, h2, h3 { text-wrap: balance; }
   });
 })();
 </script>
+<script id="bento-in">
+(function(){var g=document.querySelectorAll('.bento');if(!('IntersectionObserver' in window)||!g.length)return;
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
+g.forEach(function(b){b.classList.add('anim');b.querySelectorAll('.bt').forEach(function(t,i){t.style.transitionDelay=(i%3)*80+'ms';io.observe(t);});});})();
+</script>
+<script>
+// ASK OPENED (v103, 19 Oct 2026): a jumper's "ask your dropzone" message from
+// the app carries ?ask=<code>. A real person opening it runs this (link
+// previews in WhatsApp do not run scripts), so André learns it arrived. The
+// code is then taken out of the address bar so a re-share does not count again.
+(function () {
+  var c = new URLSearchParams(location.search).get('ask');
+  if (!c || !/^[a-f0-9]{6,16}$/.test(c)) return;
+  fetch('https://wkefdtglgbfprvfajrrw.supabase.co/functions/v1/desk-lead', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ kind: 'ask_opened', code: c }) }).catch(function () {});
+  try { history.replaceState(null, '', location.pathname + location.hash); } catch (e) {}
+})();
+</script>
+<script id="lazy-video">
+/* Perf (20 Oct 2026): videos far below the fold carry their file in data-src
+   and get it only when they come within about one screen of view. autoplay,
+   loop and the pause buttons work exactly as before once the file is in. */
+(function () {
+  var vs = document.querySelectorAll("video[data-lazy]");
+  function attach(v) {
+    if (!v.hasAttribute("data-lazy")) return;
+    v.removeAttribute("data-lazy");
+    if (v.getAttribute("data-src")) v.src = v.getAttribute("data-src");
+    Array.prototype.forEach.call(v.querySelectorAll("source[data-src]"), function (s) { s.src = s.getAttribute("data-src"); });
+    v.preload = "metadata";
+    v.load();
+  }
+  if (!("IntersectionObserver" in window)) { Array.prototype.forEach.call(vs, attach); return; }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { io.unobserve(e.target); attach(e.target); } });
+  }, { rootMargin: "100% 0px 100% 0px" });
+  Array.prototype.forEach.call(vs, function (v) { io.observe(v); });
+})();
+</script>
 </body>
-</html>
