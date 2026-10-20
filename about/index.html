@@ -428,6 +428,7 @@ h1, h2, h3 { text-wrap: balance; }
 .founder .fd-mark { width: 22px; height: 16px; flex: 0 0 auto; background: #6D42F5;
   -webkit-mask: url(/assets/manifest-mark.svg) center / contain no-repeat; mask: url(/assets/manifest-mark.svg) center / contain no-repeat; }
 /* FOUNDER PHOTO (20 Oct 2026): André at the dropzone, round. */
+.founder .fd-photo-link { display: inline-block; border-radius: 50%; }
 .founder .fd-photo { display: block; width: 96px; height: 96px; border-radius: 50%; object-fit: cover; margin: 22px 0 0; }
 .doc .founder .fd-name { margin: 18px 0 0; font-size: 40px; line-height: 44px; letter-spacing: -1px; color: #fff; }
 .doc .founder .fd-role { margin: 10px 0 0; font-size: 16px; line-height: 24px; font-weight: 500; color: #fff; padding-bottom: 22px; border-bottom: 1px solid rgba(255,255,255,.16); }
@@ -571,6 +572,24 @@ a.trust-a:hover { color: var(--g); text-decoration: none; }
       "url": "https://www.jumpmanifest.com/assets/app-icon.png?v=3",
       "width": 1024,
       "height": 1024
+    },
+    "founder": {
+      "@type": "Person",
+      "@id": "https://www.jumpmanifest.com/about/#andre-larsen",
+      "name": "André Larsen",
+      "jobTitle": "Founder",
+      "worksFor": { "@id": "https://www.jumpmanifest.com/#organization" },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://www.jumpmanifest.com/assets/andre-larsen-founder-manifest.jpg",
+        "width": 2000,
+        "height": 2000,
+        "caption": "André Larsen, founder of Manifest, at the dropzone"
+      },
+      "sameAs": [
+        "https://www.instagram.com/andre_larsen/",
+        "https://andrelarsen.com/"
+      ]
     }
   },
   "isPartOf": {
@@ -649,7 +668,7 @@ a.trust-a:hover { color: var(--g); text-decoration: none; }
        photo yet, so none is shown. -->
     <aside class="founder" aria-labelledby="founder-name">
       <p class="fd-eb"><span class="fd-mark" aria-hidden="true"></span>Who builds Manifest</p>
-      <img class="fd-photo" src="/assets/opt/andre-192.webp" srcset="/assets/opt/andre-192.webp 192w, /assets/opt/andre-384.webp 384w" sizes="96px" width="96" height="96" alt="Andr&eacute; Larsen at the dropzone" decoding="async" />
+      <a class="fd-photo-link" href="/assets/andre-larsen-founder-manifest.jpg" target="_blank" rel="noopener" aria-label="André Larsen, full size photo"><img class="fd-photo" src="/assets/opt/andre-192.webp" srcset="/assets/opt/andre-192.webp 192w, /assets/opt/andre-384.webp 384w" sizes="96px" width="96" height="96" alt="Andr&eacute; Larsen at the dropzone" decoding="async" /></a>
       <h2 class="fd-name" id="founder-name">Andr&eacute; Larsen</h2>
       <p class="fd-role">Founder, Manifest Jump LLC</p>
       <p class="fd-text">Manifest is built by a small team of skydivers and software developers. I lead it, and every message to andre@manifestjump.com is still read and answered by me.</p>
