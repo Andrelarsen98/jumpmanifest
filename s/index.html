@@ -34,6 +34,9 @@
   .btn { display:block; text-align:center; background:var(--accent); color:#fff; font-weight:800; font-size:15px;
     padding:14px; border-radius:14px; text-decoration:none; margin-top:20px; }
   .note { font-size:12.5px; color:var(--muted); line-height:1.5; margin-top:14px; text-align:center; }
+  /* 44px tap target without moving the line (padding in, same margin out) */
+  .note a { color:inherit; font-weight:600; text-decoration:underline; text-underline-offset:2px; display:inline-block; padding:13px 2px; margin:-13px -2px; }
+  h1, h2, h3 { text-wrap:balance; }
   .foot { text-align:center; margin-top:18px; font-size:12px; color:var(--muted); line-height:1.5; }
 </style>
 <style id="lockup-css">/* One logo file: the M centred on the lowercase letters, reaching above and below (2 Oct 2026). */ img.lockup{height:32px!important;width:auto!important;border-radius:0!important;display:block;max-width:none!important} @media (max-width:600px){img.lockup{height:29px!important}} .brand img.lockup{height:21px!important} .hub-wordmark img.lockup{height:22px!important}</style>
@@ -44,10 +47,10 @@
       <div class="band">
         <div class="brand"><img class="lockup" src="/assets/manifest-lockup-white.svg?v=5" alt="Manifest" /></div>
         <div class="tag">SIGN-OFF</div>
-        <div class="h1">Verify these jumps</div>
+        <h1 class="h1">Verify these jumps</h1>
       </div>
       <div class="body">
-        <p class="lead">A skydiver wants you to sign off their jumps on <strong>Manifest</strong>. Your name &amp; licence get recorded on each jump, just like a paper logbook signature.</p>
+        <p class="lead">A skydiver wants you to sign off their jumps on <strong>Manifest</strong>. Your name and licence get recorded on each jump, just like a signature on paper.</p>
         <ul class="steps">
           <li><span class="n">1</span><span>Open the <strong>Manifest</strong> app on your phone.</span></li>
           <li><span class="n">2</span><span>Tap <strong>Scan Jumps</strong> on the home screen.</span></li>
@@ -57,7 +60,7 @@
         <p class="note">Don't have Manifest yet? <a href="/get">Get it on the App Store</a>, sign in, then scan the QR again.</p>
       </div>
     </div>
-    <div class="foot">Only a licensed jumper can sign off: every sign-off carries the signer's name &amp; licence.<br />jumpmanifest.com</div>
+    <div class="foot">Only a licensed jumper can sign off: every sign-off carries the signer's name and licence.<br />jumpmanifest.com</div>
   </div>
 <script>
 // NO DEAD BUTTON (USPA test, 13 Oct): "manifestapp://" on a phone without

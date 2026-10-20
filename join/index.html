@@ -17,8 +17,9 @@
     display:flex; align-items:center; justify-content:center; padding:24px 16px 40px; }
   .card { width:100%; max-width:420px; background:#fff; border-radius:28px; border:1px solid var(--line); padding:28px 24px; text-align:center; }
   .lockup { height:28px; width:auto; display:block; margin:0 auto 26px; }
-  .logo { width:64px; height:64px; border-radius:16px; object-fit:cover; border:1px solid var(--line); margin:0 auto 14px; display:none; }
-  h1 { font-size:26px; font-weight:700; letter-spacing:-.5px; line-height:1.2; }
+  .logo { width:64px; height:64px; border-radius:16px; object-fit:cover; border:1px solid var(--line); margin:0 auto 14px; display:block; }
+  .logo[hidden] { display:none; }
+  h1 { font-size:26px; font-weight:700; letter-spacing:-.5px; line-height:1.2; text-wrap:balance; }
   .lead { font-size:16px; line-height:1.55; color:var(--muted); margin-top:10px; }
   .hint { font-size:13px; line-height:1.5; color:var(--muted); margin-top:10px; }
   .btn { display:block; background:var(--purple); color:#fff; font-weight:600; font-size:16px; padding:16px; border-radius:999px; text-decoration:none; margin-top:20px; }
@@ -27,7 +28,7 @@
 <body>
   <div class="card">
     <img class="lockup" src="/assets/manifest-lockup.svg?v=5" alt="Manifest" />
-    <img class="logo" id="logo" alt="" />
+    <img class="logo" id="logo" alt="" hidden />
     <h1 id="title">Join your dropzone</h1>
     <p class="lead" id="lead">Ask the desk to add you.</p>
     <p class="hint" id="hint">Joining in the app with this code is not open yet.</p>
@@ -43,7 +44,7 @@
     if (!d || !d.name) { document.getElementById('lead').textContent = 'We could not find this code. Check it with the desk.'; document.getElementById('hint').style.display = 'none'; return; }
     document.getElementById('title').textContent = 'Join ' + d.name;
     document.title = 'Join ' + d.name + ' on Manifest';
-    if (d.logo_url) { var l = document.getElementById('logo'); l.src = d.logo_url; l.style.display = 'block'; }
+    if (d.logo_url) { var l = document.getElementById('logo'); l.src = d.logo_url; l.hidden = false; }
     if (d.open === false) document.getElementById('lead').textContent = d.name + ' is not taking new members in the app right now. Ask the desk.';
   }).catch(function () {});
 </script>

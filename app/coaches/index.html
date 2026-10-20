@@ -563,6 +563,7 @@ document.querySelectorAll('.filter-chip').forEach(function(chip) {
       var el = document.getElementById(id);
       if (!el) return false;
       var to = function (b) { window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - HDR, behavior: b }); };
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) smooth = false;
       to(smooth ? 'smooth' : 'instant');
       var n = 0, t = setInterval(function () {
         var off = Math.abs(el.getBoundingClientRect().top - HDR);
