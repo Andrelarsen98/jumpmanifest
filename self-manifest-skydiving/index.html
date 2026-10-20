@@ -1086,7 +1086,7 @@ h1, h2, h3 { text-wrap: balance; }
   /* Top-up phones (André 19 Oct): same phone height, side by side. */
   /* Meadow behind the phones (André 19 Oct): Unsplash photo _8fRer9hPv0 (Unsplash License). */
   #app .pay-duo { display: flex; justify-content: center; align-items: center; gap: clamp(12px, 4vw, 64px); margin-top: 56px;
-    padding: clamp(36px, 6vw, 80px) 16px; border-radius: 28px; background: #9DB67A url(/assets/features/meadow.webp) center / cover no-repeat; 
+    padding: clamp(36px, 6vw, 80px) 16px; border-radius: 28px; background:#F5F5F6; 
     isolation: isolate; transform: translateZ(0); } /* keeps the phones' drop-shadow layer from repainting the owner bar white in Safari */
   #app .pay-duo img { display: block; height: auto; filter: drop-shadow(0 24px 40px rgba(0,0,0,.35)); }
   @media (max-width: 600px) { #app .pay-duo { border-radius: 22px; padding: 28px 10px; gap: 10px; } #app .pay-duo .pd-a, #app .pay-duo .pd-b { width: 46%; } }
@@ -1128,11 +1128,11 @@ h1, h2, h3 { text-wrap: balance; }
   /* hero: copy left, a hand holding the app over the meadow right */
   .sm-hero{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;padding-top:clamp(48px,6vw,88px)}
   .sm-hero .eyebrow{justify-content:flex-start}
-  .sm-hero h1{margin:0;font-size:clamp(46px,5.6vw,80px);line-height:1;max-width:11ch}
+  .sm-hero h1{margin:0;font-size:clamp(44px,5.5vw,72px);line-height:1;max-width:11ch}
   .sm-hero .lead{margin:24px 0 0;max-width:520px;text-align:left;font-size:21px;line-height:32px;color:#3F3F46}
   .sm-ctas{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;margin-top:36px}
-  .sm-meadow{position:relative;margin:0;aspect-ratio:4/5;border-radius:32px;overflow:hidden;background:#9DB67A url(/assets/features/meadow.webp) center/cover no-repeat;isolation:isolate}
-  .sm-meadow img{position:absolute;left:50%;bottom:-2%;width:82%;height:auto;transform:translateX(-46%);filter:drop-shadow(0 30px 40px rgba(0,0,0,.35))}
+  .sm-meadow{position:relative;margin:0;width:100%;max-width:480px;justify-self:center;aspect-ratio:4/5;border-radius:32px;overflow:hidden;background:#F5F5F6;isolation:isolate}
+  .sm-meadow img{position:absolute;left:50%;bottom:-2%;width:min(72%,340px);height:auto;transform:translateX(-46%);filter:drop-shadow(0 30px 40px rgba(0,0,0,.35))}
   /* one load, two screens */
   .sm-same{position:relative;margin:64px auto 0;max-width:1000px;padding-right:clamp(110px,22%,250px)}
   .sm-board{background:#0B0B0F;border-radius:28px;padding:32px 36px;color:#fff;box-shadow:0 30px 70px -30px rgba(15,23,42,.45)}
@@ -1160,7 +1160,7 @@ h1, h2, h3 { text-wrap: balance; }
   .sm-panel{display:block;width:100%;height:auto;border-radius:16px}
   /* money: two phones on the meadow, payment marks under */
   .sm-money{text-align:center}
-  .sm-duo{display:flex;justify-content:center;align-items:center;gap:clamp(12px,4vw,64px);margin-top:56px;padding:clamp(36px,6vw,80px) 16px;border-radius:32px;background:#9DB67A url(/assets/features/meadow.webp) center 70%/cover no-repeat;isolation:isolate;transform:translateZ(0)}
+  .sm-duo{display:flex;justify-content:center;align-items:center;gap:clamp(12px,4vw,64px);margin-top:56px;padding:clamp(36px,6vw,80px) 16px;border-radius:32px;background:#F5F5F6;isolation:isolate;transform:translateZ(0)}
   .sm-duo img{display:block;width:min(300px,44%);height:auto;filter:drop-shadow(0 24px 40px rgba(0,0,0,.35))}
   .sm-marks{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:32px 0 0}
   .sm-marks img{height:30px;width:auto;border-radius:5px}
@@ -1170,7 +1170,7 @@ h1, h2, h3 { text-wrap: balance; }
   .sm-band{position:relative;isolation:isolate;margin-top:var(--gap);padding:clamp(80px,10vw,128px) 0}
   .sm-band::before{content:"";position:absolute;inset:0 auto 0 50%;width:100vw;transform:translateX(-50%);background:#050505;z-index:-1}
   .sm-band .eyebrow{color:#fff}
-  .sm-band h2{margin:0 auto;text-align:center;max-width:14ch;color:#fff;font-size:clamp(40px,5.4vw,72px);line-height:1.02}
+  .sm-band h2{margin:0 auto;text-align:center;max-width:14ch;color:#fff;font-size:clamp(36px,4.9vw,50px);line-height:1.04}
   .sm-band .sm-bl{margin:24px auto 0;max-width:600px;text-align:center;font-size:20px;line-height:31px;color:#E4E4E7}
   .sm-spec{margin:64px auto 0;max-width:960px;padding:0;list-style:none}
   .sm-spec li{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:8px 48px;padding:30px 0;border-top:1px solid rgba(255,255,255,.16)}
@@ -1179,7 +1179,7 @@ h1, h2, h3 { text-wrap: balance; }
   .sm-spec p{margin:0;font-size:18px;line-height:28px;color:#E4E4E7}
   /* where it works */
   .sm-where{text-align:center}
-  .sm-big{margin:0;font-size:clamp(72px,11vw,160px);line-height:.95;letter-spacing:-.045em;color:#050505}
+  .sm-big{margin:0;font-size:clamp(64px,8.4vw,120px);line-height:.95;letter-spacing:-.045em;color:#050505}
   .sm-big span{color:#6D42F5}
   .sm-where .lead{margin-top:28px}
   .sm-where .lead a,.sm-fun a{color:#050505;font-weight:600;text-decoration:underline;text-underline-offset:3px}
@@ -1193,7 +1193,7 @@ h1, h2, h3 { text-wrap: balance; }
     .sm-hero .lead{margin:20px auto 0;font-size:18px;line-height:28px;text-align:center}
     .sm-ctas{justify-content:center}
     .sm-meadow{aspect-ratio:1/1;border-radius:24px}
-    .sm-meadow img{width:64%}
+    .sm-meadow img{width:min(64%,280px)}
     .sm-same{padding-right:0;padding-bottom:0;margin-top:44px}
     .sm-board{padding:24px 20px;border-radius:22px}
     .sm-board-h b{font-size:22px}

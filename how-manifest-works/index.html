@@ -1103,7 +1103,7 @@ h1, h2, h3 { text-wrap: balance; }
   /* Top-up phones (André 19 Oct): same phone height, side by side. */
   /* Meadow behind the phones (André 19 Oct): Unsplash photo _8fRer9hPv0 (Unsplash License). */
   #app .pay-duo { display: flex; justify-content: center; align-items: center; gap: clamp(12px, 4vw, 64px); margin-top: 56px;
-    padding: clamp(36px, 6vw, 80px) 16px; border-radius: 28px; background: #9DB67A url(/assets/features/meadow.webp) center / cover no-repeat; 
+    padding: clamp(36px, 6vw, 80px) 16px; border-radius: 28px; background:#F5F5F6; 
     isolation: isolate; transform: translateZ(0); } /* keeps the phones' drop-shadow layer from repainting the owner bar white in Safari */
   #app .pay-duo img { display: block; height: auto; filter: drop-shadow(0 24px 40px rgba(0,0,0,.35)); }
   @media (max-width: 600px) { #app .pay-duo { border-radius: 22px; padding: 28px 10px; gap: 10px; } #app .pay-duo .pd-a, #app .pay-duo .pd-b { width: 46%; } }
@@ -1139,7 +1139,7 @@ h1, h2, h3 { text-wrap: balance; }
      the dark in-the-air band, the meadow and the split ending. */
   .hmw-hero{padding-top:clamp(56px,8vw,104px);text-align:center}
   .hmw-hero .eyebrow{justify-content:center}
-  .hmw-hero h1{margin:0 auto;max-width:14ch;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;font-size:clamp(44px,6.4vw,84px);line-height:1;color:#050505;text-wrap:balance}
+  .hmw-hero h1{margin:0 auto;max-width:14ch;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;font-size:clamp(44px,5.5vw,72px);line-height:1;color:#050505;text-wrap:balance}
   .hmw-hero .lead{margin:24px auto 0;max-width:620px}
   .hmw-ctas{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:center;align-items:center;margin-top:32px}
   .hmw-btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;height:56px;padding:0 28px;border-radius:99px;background:#6D42F5;color:#fff!important;font-family:"Manrope",sans-serif;font-weight:700;font-size:17px;line-height:1;text-decoration:none!important;white-space:nowrap}
@@ -1205,14 +1205,14 @@ h1, h2, h3 { text-wrap: balance; }
   .hmw-band{position:relative;isolation:isolate;margin-top:var(--gap);padding:clamp(72px,9vw,120px) 0;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
   .hmw-band::before{content:"";position:absolute;inset:0 auto 0 50%;width:100vw;transform:translateX(-50%);background:#050505;z-index:-1}
   .hmw-band .eyebrow{justify-content:flex-start;color:#fff}
-  .hmw-band h2{margin:0;max-width:13ch;color:#fff;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;font-size:clamp(40px,5.2vw,68px);line-height:1.02;text-wrap:balance}
+  .hmw-band h2{margin:0;max-width:13ch;color:#fff;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;font-size:clamp(36px,4.9vw,50px);line-height:1.06;text-wrap:balance}
   .hmw-band p{margin:24px 0 0;max-width:500px;font-size:20px;line-height:31px;color:#D1D1D6}
   .hmw-band p b{color:#fff;font-weight:600}
   .hmw-band .b-ph{display:flex;justify-content:center}
-  .hmw-band .b-ph img{display:block;width:min(320px,70%);height:auto}
+  .hmw-band .b-ph img{display:block;width:min(300px,70%);height:auto}
   /* the meadow: what works everywhere */
-  .hmw-meadow{display:flex;justify-content:center;align-items:flex-end;gap:clamp(14px,4vw,56px);margin-top:56px;padding:clamp(36px,6vw,80px) 16px;border-radius:28px;background:#9DB67A url(/assets/features/meadow.webp) center / cover no-repeat;isolation:isolate;transform:translateZ(0)}
-  .hmw-meadow img{display:block;width:min(280px,42%);height:auto;filter:drop-shadow(0 24px 40px rgba(0,0,0,.35))}
+  .hmw-meadow{display:flex;justify-content:center;align-items:flex-end;gap:clamp(14px,4vw,56px);margin-top:56px;padding:clamp(36px,6vw,80px) 16px;border-radius:28px;background:#F5F5F6;isolation:isolate;transform:translateZ(0)}
+  .hmw-meadow img{display:block;width:min(250px,42%);height:auto;filter:drop-shadow(0 24px 40px rgba(0,0,0,.35))}
   .hmw-where{display:grid;grid-template-columns:1fr 1fr;gap:56px;max-width:980px;margin:56px auto 0}
   .hmw-where h3{margin:0;font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:26px;line-height:33px;color:#050505}
   .hmw-where .vis-pts{margin-top:20px}
@@ -1231,7 +1231,7 @@ h1, h2, h3 { text-wrap: balance; }
   .hmw-end > div{display:flex;flex-direction:column;align-items:center;text-align:center;padding:64px 40px}
   .hmw-end > div + div{border-left:1px solid #E4E4E7}
   .hmw-end .who{font-family:"Manrope",sans-serif;font-weight:700;font-size:14px;line-height:20px;letter-spacing:.06em;text-transform:uppercase;color:#71717B}
-  .hmw-end h2{margin:12px 0 0;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;font-size:clamp(34px,3.8vw,52px);line-height:1.05;color:#050505;text-wrap:balance}
+  .hmw-end h2{margin:12px 0 0;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;font-size:clamp(34px,4.9vw,50px);line-height:1.05;color:#050505;text-wrap:balance}
   .hmw-end p{margin:16px auto 0;max-width:420px;text-wrap:balance;font-size:18px;line-height:28px;color:#52525B}
   .hmw-row{margin-top:auto;padding-top:32px;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px 24px;min-height:88px}
   .hmw-row .store{display:block;height:56px}

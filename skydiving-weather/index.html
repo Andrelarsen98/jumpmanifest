@@ -1088,7 +1088,7 @@ h1, h2, h3 { text-wrap: balance; }
   /* Top-up phones (André 19 Oct): same phone height, side by side. */
   /* Meadow behind the phones (André 19 Oct): Unsplash photo _8fRer9hPv0 (Unsplash License). */
   #app .pay-duo { display: flex; justify-content: center; align-items: center; gap: clamp(12px, 4vw, 64px); margin-top: 56px;
-    padding: clamp(36px, 6vw, 80px) 16px; border-radius: 28px; background: #9DB67A url(/assets/features/meadow.webp) center / cover no-repeat; 
+    padding: clamp(36px, 6vw, 80px) 16px; border-radius: 28px; background:#F5F5F6; 
     isolation: isolate; transform: translateZ(0); } /* keeps the phones' drop-shadow layer from repainting the owner bar white in Safari */
   #app .pay-duo img { display: block; height: auto; filter: drop-shadow(0 24px 40px rgba(0,0,0,.35)); }
   @media (max-width: 600px) { #app .pay-duo { border-radius: 22px; padding: 28px 10px; gap: 10px; } #app .pay-duo .pd-a, #app .pay-duo .pd-b { width: 46%; } }
@@ -1130,7 +1130,7 @@ h1, h2, h3 { text-wrap: balance; }
 
   /* HERO: copy left, the real weather screen right */
   .wx-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding-top:clamp(40px,6vw,88px)}
-  .wx-hero h1{margin:0;font-weight:550;letter-spacing:-.035em;font-size:clamp(46px,6.2vw,88px);line-height:.98;color:#050505;text-wrap:balance}
+  .wx-hero h1{margin:0;font-weight:550;letter-spacing:-.035em;font-size:clamp(46px,5.6vw,72px);line-height:.98;color:#050505;text-wrap:balance}
   .wx-hero h1 span{color:inherit}
   .wx-hero h1 .eyebrow{justify-content:flex-start;color:#040815;font-family:"Manrope",sans-serif;letter-spacing:0;line-height:24px;margin-bottom:24px}
   .wx-hero h1 .h1-main{display:block;max-width:10ch}
@@ -1144,7 +1144,7 @@ h1, h2, h3 { text-wrap: balance; }
   .wx-sky::before{content:"";position:absolute;inset:0 auto 0 50%;width:100vw;transform:translateX(-50%);background:#050505;z-index:-1}
   .wx-sky-in{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
   .wx-sky .eyebrow{justify-content:flex-start;color:#fff}
-  .wx-sky h2{margin:0;color:#fff;font-weight:550;letter-spacing:-.03em;font-size:clamp(40px,5vw,68px);line-height:1.02;text-wrap:balance}
+  .wx-sky h2{margin:0;color:#fff;font-weight:550;letter-spacing:-.03em;font-size:clamp(34px,5vw,50px);line-height:1.02;text-wrap:balance}
   .wx-sky .wx-lead{margin:24px 0 0;max-width:500px;font-size:20px;line-height:31px;color:#D1D1D6}
   .wx-more{margin-top:40px;display:grid;gap:0;max-width:520px}
   .wx-more div{padding:20px 0;border-top:1px solid rgba(255,255,255,.14)}
@@ -1172,15 +1172,15 @@ h1, h2, h3 { text-wrap: balance; }
   .wx-l1 img{width:300px;right:26%;top:12px;opacity:.55}
   .wx-l2 img{width:380px;left:30%;top:4px;opacity:.8}
   .wx-l3 img{width:360px;right:18%;top:2px;opacity:.95}
-  .wx-ground{height:84px;background:#9DB67A url(/assets/features/meadow.webp) center 40% / cover no-repeat}
+  .wx-ground{display:none}
   .wx-summary{position:absolute;z-index:3;left:50%;top:50%;transform:translate(-50%,-50%);width:max-content;max-width:calc(100% - 48px);padding:18px 26px;border-radius:22px;background:#1C1C1E;box-shadow:0 24px 50px -18px rgba(0,0,0,.6);font-family:"Manrope",sans-serif;font-size:19px;line-height:26px;font-weight:600;color:#fff;text-align:center}
   .wx-fine{margin:28px auto 0;max-width:680px;text-align:center;font-size:17px;line-height:27px;color:#52525B}
   .wx-fine b{color:#050505}
 
   /* JUMPABLE: the question, two real phones on the meadow, then a spec list */
-  .wx-q h2{font-size:clamp(46px,6vw,84px)!important;line-height:1!important;letter-spacing:-.035em!important;font-weight:550!important}
-  .wx-duo{display:flex;justify-content:center;align-items:center;gap:clamp(12px,5vw,72px);margin-top:56px;padding:clamp(36px,6vw,80px) 16px;border-radius:32px;background:#9DB67A url(/assets/features/meadow.webp) center / cover no-repeat;isolation:isolate;transform:translateZ(0)}
-  .wx-duo img{display:block;width:min(360px,72%);height:auto;filter:drop-shadow(0 24px 40px rgba(0,0,0,.35))}
+  .wx-q h2{font-size:clamp(34px,5vw,50px)!important;line-height:1!important;letter-spacing:-.035em!important;font-weight:550!important}
+  .wx-duo{display:flex;justify-content:center;align-items:center;gap:clamp(12px,5vw,72px);margin-top:56px;padding:clamp(36px,6vw,80px) 16px;border-radius:32px;background:#F5F5F6;isolation:isolate;transform:translateZ(0)}
+  .wx-duo img{display:block;width:min(320px,72%);height:auto;filter:drop-shadow(0 24px 40px rgba(0,0,0,.35))}
   .wx-spec{max-width:900px;margin:64px auto 0;padding:0}
   .wx-spec div{display:grid;grid-template-columns:280px 1fr;gap:8px 40px;padding:26px 0;border-top:1px solid #E4E4E7}
   .wx-spec div:last-child{border-bottom:1px solid #E4E4E7}
@@ -1224,9 +1224,9 @@ h1, h2, h3 { text-wrap: balance; }
   .wx-dz h2{text-align:left!important;margin:0!important}
   .wx-dz .lead{text-align:left!important;margin:20px 0 0!important;max-width:600px}
   .wx-dz .lead a,.wx-src a{color:#050505;font-weight:600;text-decoration:underline;text-underline-offset:3px}
-  .wx-mug{display:block;width:100%;max-width:420px;height:auto;margin:0 auto}
+  .wx-mug{display:block;width:100%;max-width:340px;height:auto;margin:0 auto}
   .wx-safe{margin:clamp(96px,11vw,140px) auto 0;max-width:860px;text-align:center}
-  .wx-safe h2{margin:0 auto;font-weight:550;letter-spacing:-.035em;font-size:clamp(40px,5.2vw,72px);line-height:1.02;color:#050505}
+  .wx-safe h2{margin:0 auto;font-weight:550;letter-spacing:-.035em;font-size:clamp(34px,5vw,50px);line-height:1.02;color:#050505}
   .wx-safe .big{margin:24px auto 0;max-width:640px;font-size:22px;line-height:33px;color:#050505;font-weight:500}
   .wx-safe .small{margin:20px auto 0;max-width:680px;font-size:17px;line-height:27px;color:#52525B}
   .wx-safe .held{margin:28px auto 0;font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:24px;line-height:31px;color:#050505}
@@ -1276,7 +1276,7 @@ h1, h2, h3 { text-wrap: balance; }
   }
     /* 20 Oct 2026 (André): the cloud sky is the hero; the black winds band lower down. */
   .wx-top{text-align:center;padding-top:clamp(48px,6vw,88px)}
-  .wx-top h1{margin:0 auto;font-weight:550;letter-spacing:-.035em;font-size:clamp(46px,6.2vw,88px);line-height:.98;color:#050505;text-wrap:balance}
+  .wx-top h1{margin:0 auto;font-weight:550;letter-spacing:-.035em;font-size:clamp(46px,5.6vw,72px);line-height:.98;color:#050505;text-wrap:balance}
   .wx-top h1 .eyebrow{display:flex;justify-content:center;color:#040815;font-family:"Manrope",sans-serif;letter-spacing:0;line-height:24px;margin-bottom:24px;font-size:16px;font-weight:500}
   .wx-top h1 .h1-main{display:block;color:#050505}
   .wx-top .lead{font-size:20px;line-height:31px;color:#52525B}
@@ -1287,7 +1287,8 @@ h1, h2, h3 { text-wrap: balance; }
   .wx-screen h2,.wx-screen .eyebrow{text-align:left;justify-content:flex-start;margin-left:0}
   .wx-screen .lead{text-align:left;margin-left:0}
   .wx-screen figure{margin:0;display:flex;flex-direction:column;align-items:center}
-  .wx-screen video{display:block;width:min(380px,100%);height:auto}
+  .wx-screen video{display:block;width:min(320px,100%);height:auto}
+  @media (max-width:600px){.wx-screen video{width:min(280px,100%);margin:0 auto}}
   .wx-sky{margin-top:clamp(96px,12vw,140px)}
   @media (max-width:899px){.wx-screen{grid-template-columns:1fr;gap:36px}.wx-top .lead{font-size:18px;line-height:28px}}
   </style>

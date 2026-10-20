@@ -1089,7 +1089,7 @@ h1, h2, h3 { text-wrap: balance; }
   /* Top-up phones (André 19 Oct): same phone height, side by side. */
   /* Meadow behind the phones (André 19 Oct): Unsplash photo _8fRer9hPv0 (Unsplash License). */
   #app .pay-duo { display: flex; justify-content: center; align-items: center; gap: clamp(12px, 4vw, 64px); margin-top: 56px;
-    padding: clamp(36px, 6vw, 80px) 16px; border-radius: 28px; background: #9DB67A url(/assets/features/meadow.webp) center / cover no-repeat; 
+    padding: clamp(36px, 6vw, 80px) 16px; border-radius: 28px; background:#F5F5F6; 
     isolation: isolate; transform: translateZ(0); } /* keeps the phones' drop-shadow layer from repainting the owner bar white in Safari */
   #app .pay-duo img { display: block; height: auto; filter: drop-shadow(0 24px 40px rgba(0,0,0,.35)); }
   @media (max-width: 600px) { #app .pay-duo { border-radius: 22px; padding: 28px 10px; gap: 10px; } #app .pay-duo .pd-a, #app .pay-duo .pd-b { width: 46%; } }
@@ -1122,7 +1122,7 @@ h1, h2, h3 { text-wrap: balance; }
   /* LOAD CALLS PAGE (20 Oct 2026, André: every page polished, its own layout).
      Base system is the dropzones page; these are the load-calls-only parts. */
   .lc-hero{padding-top:clamp(48px,7vw,96px);text-align:center}
-  .lc-hero h1{margin:0 auto;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;font-size:clamp(44px,6.6vw,88px);line-height:1;color:#050505;text-wrap:balance;max-width:14ch}
+  .lc-hero h1{margin:0 auto;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;font-size:clamp(44px,5.5vw,72px);line-height:1;color:#050505;text-wrap:balance;max-width:14ch}
   .lc-hero h1 .lc-k{display:flex;align-items:center;justify-content:center;gap:10px;margin:0 0 22px;font-family:"Manrope",sans-serif;font-size:17px;line-height:24px;font-weight:700;letter-spacing:0;color:#6D42F5}
   .lc-hero h1 .lc-k svg{width:20px;height:20px}
   .lc-hero .lead{margin:24px auto 0;max-width:600px}
@@ -1132,7 +1132,7 @@ h1, h2, h3 { text-wrap: balance; }
   .lc-btn svg{width:16px;height:16px}
   .lc-link{font-family:"Manrope",sans-serif;font-weight:600;font-size:17px;color:#050505!important}
   /* meadow stage: the call landing on a phone */
-  .lc-stage{position:relative;margin:56px auto 0;border-radius:36px;overflow:hidden;background:#31749B url(/assets/features/meadow.webp) center/cover no-repeat;padding:clamp(40px,5vw,72px) 24px 0;display:flex;justify-content:center;align-items:flex-end;min-height:420px}
+  .lc-stage{position:relative;margin:56px auto 0;border-radius:36px;overflow:hidden;background:#F5F5F6;padding:clamp(40px,5vw,72px) 24px 0;display:flex;justify-content:center;align-items:flex-end;min-height:420px}
   .lc-ph{display:block;filter:drop-shadow(0 30px 40px rgba(5,5,5,.4));transform:translateY(14%);margin-top:-4%}
   .lc-stage video{display:block;height:min(680px,74vh);min-height:460px;width:auto;aspect-ratio:720/1152;clip-path:inset(1.9% 17.1% 11.4% 17.1% round 8.4% / 5.3%)}
   .lc-chip{position:absolute;display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:99px;background:#050505;color:#fff;font-family:"Manrope",sans-serif;font-weight:700;font-size:16px;line-height:20px;box-shadow:0 18px 40px -16px rgba(5,5,5,.6)}
@@ -1144,7 +1144,7 @@ h1, h2, h3 { text-wrap: balance; }
   /* the call ladder, full-bleed black band */
   .lc-band{position:relative;isolation:isolate;margin-top:clamp(96px,12vw,140px);padding:clamp(80px,10vw,128px) 0;text-align:center;color:#fff}
   .lc-band::before{content:"";position:absolute;inset:0 auto 0 50%;width:100vw;transform:translateX(-50%);background:#050505;z-index:-1}
-  .lc-band h2{margin:0 auto;max-width:16ch;color:#fff;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;font-size:clamp(40px,5.4vw,72px);line-height:1.02;text-wrap:balance}
+  .lc-band h2{margin:0 auto;max-width:16ch;color:#fff;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;font-size:clamp(36px,4.9vw,50px);line-height:1.04;text-wrap:balance}
   .lc-band>p{margin:24px auto 0;max-width:560px;font-size:20px;line-height:31px;color:#D1D1D6}
   .lc-ladder{list-style:none;margin:72px auto 0;padding:0;max-width:1080px;display:grid;grid-template-columns:repeat(6,1fr);position:relative}
   .lc-ladder::before{content:"";position:absolute;left:8.33%;right:8.33%;top:47px;height:2px;background:linear-gradient(90deg,#6D42F5,#B2A4F9 70%,#EF4444)}
@@ -1168,7 +1168,7 @@ h1, h2, h3 { text-wrap: balance; }
   .lc-pa .lc-note b{color:#050505}
   /* hangar board on a Studio Display */
   .lc-board{text-align:center}
-  .lc-board figure{margin:48px auto 0;max-width:1000px}
+  .lc-board figure{margin:48px auto 0;max-width:760px}
   .lc-board img.studio{display:block;width:100%;height:auto}
   .lc-board figcaption{margin:14px 0 0;font-size:14px;color:#71717B}
   /* how it works: sticky title + rail */
@@ -1189,7 +1189,7 @@ h1, h2, h3 { text-wrap: balance; }
   /* busy day: mug + open rows */
   .lc-day{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:72px;align-items:center}
   .lc-day .mug{margin:0;background:#F4F4F5;border-radius:32px;padding:40px;display:flex;align-items:center;justify-content:center}
-  .lc-day .mug img{display:block;width:100%;max-width:420px;height:auto;mix-blend-mode:multiply}
+  .lc-day .mug img{display:block;width:100%;max-width:340px;height:auto;mix-blend-mode:multiply}
   .lc-day .eyebrow{justify-content:flex-start}
   .lc-day h2{text-align:left;margin:0}
   .lc-rows{margin:32px 0 0;padding:0;list-style:none}

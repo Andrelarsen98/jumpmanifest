@@ -1082,7 +1082,7 @@ h1, h2, h3 { text-wrap: balance; }
   /* Top-up phones (André 19 Oct): same phone height, side by side. */
   /* Meadow behind the phones (André 19 Oct): Unsplash photo _8fRer9hPv0 (Unsplash License). */
   #app .pay-duo { display: flex; justify-content: center; align-items: center; gap: clamp(12px, 4vw, 64px); margin-top: 56px;
-    padding: clamp(36px, 6vw, 80px) 16px; border-radius: 28px; background: #9DB67A url(/assets/features/meadow.webp) center / cover no-repeat; 
+    padding: clamp(36px, 6vw, 80px) 16px; border-radius: 28px; background:#F5F5F6; 
     isolation: isolate; transform: translateZ(0); } /* keeps the phones' drop-shadow layer from repainting the owner bar white in Safari */
   #app .pay-duo img { display: block; height: auto; filter: drop-shadow(0 24px 40px rgba(0,0,0,.35)); }
   @media (max-width: 600px) { #app .pay-duo { border-radius: 22px; padding: 28px 10px; gap: 10px; } #app .pay-duo .pd-a, #app .pay-duo .pd-b { width: 46%; } }
@@ -1116,14 +1116,14 @@ h1, h2, h3 { text-wrap: balance; }
      Base system is the dropzones page; these are the landout-only parts. */
   .lo-hero{padding-top:clamp(56px,8vw,104px);text-align:center}
   .lo-hero .eyebrow{justify-content:center}
-  .lo-hero h1{margin:0 auto;max-width:15ch;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;font-size:clamp(44px,6.4vw,84px);line-height:1;color:#050505;text-wrap:balance}
+  .lo-hero h1{margin:0 auto;max-width:15ch;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;font-size:clamp(44px,5.5vw,72px);line-height:1;color:#050505;text-wrap:balance}
   .lo-hero .lead{margin:24px auto 0;max-width:600px}
   .lo-hero .lo-ctas{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:center;align-items:center;margin-top:32px}
   .lo-btn{display:inline-flex;align-items:center;gap:12px;height:56px;padding:0 28px;border-radius:99px;background:#6D42F5;color:#fff!important;font-family:"Manrope",sans-serif;font-weight:700;font-size:17px;text-decoration:none!important}
   .lo-btn:hover{filter:brightness(1.06)}
   .lo-btn svg{width:16px;height:16px}
   .lo-link{font-family:"Manrope",sans-serif;font-weight:600;font-size:17px;color:#050505!important}
-  .lo-art{position:relative;margin:56px auto 0;max-width:980px;padding-bottom:24px}
+  .lo-art{position:relative;margin:56px auto 0;max-width:760px;padding-bottom:24px}
   .lo-art .studio{display:block;width:100%;height:auto}
   .lo-art .lo-ph{position:absolute;right:-1%;bottom:0;width:21%;max-width:210px;height:auto;filter:drop-shadow(0 22px 34px rgba(15,23,42,.3))}
   .lo-cap{margin:14px 0 0;font-size:14px;color:#71717B;text-align:center}
@@ -1137,7 +1137,7 @@ h1, h2, h3 { text-wrap: balance; }
   /* dark band: nothing tracked in the air */
   .lo-band{position:relative;isolation:isolate;margin-top:clamp(96px,12vw,140px);padding:clamp(80px,10vw,128px) 0;text-align:center}
   .lo-band::before{content:"";position:absolute;inset:0 auto 0 50%;width:100vw;transform:translateX(-50%);background:#050505;z-index:-1}
-  .lo-band h2{margin:0 auto;max-width:16ch;color:#fff;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;font-size:clamp(40px,5.4vw,72px);line-height:1.02;text-wrap:balance}
+  .lo-band h2{margin:0 auto;max-width:16ch;color:#fff;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;font-size:clamp(36px,4.9vw,50px);line-height:1.06;text-wrap:balance}
   .lo-band p{margin:24px auto 0;max-width:560px;font-size:20px;line-height:31px;color:#D1D1D6}
   /* who's back board */
   .lo-back{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;text-align:left}
@@ -1158,7 +1158,7 @@ h1, h2, h3 { text-wrap: balance; }
   .lo-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:56px;margin-top:56px;text-align:center}
   .lo-facts b{display:block;font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:26px;line-height:33px;color:#050505}
   .lo-facts p{margin:10px auto 0;max-width:320px;font-size:17px;line-height:26px;color:#52525B}
-  .lo-actions{margin:48px auto 0;max-width:900px;border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 30px 70px -30px rgba(15,23,42,.35),0 2px 8px rgba(15,23,42,.06);border:1px solid #E4E4E7}
+  .lo-actions{margin:48px auto 0;max-width:760px;border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 30px 70px -30px rgba(15,23,42,.35),0 2px 8px rgba(15,23,42,.06);border:1px solid #E4E4E7}
   .lo-actions img{display:block;width:100%;height:auto}
   .lo-limits{margin:72px auto 0;max-width:720px;text-align:center;font-size:16px;line-height:26px;color:#52525B}
   .lo-limits b{color:#050505}

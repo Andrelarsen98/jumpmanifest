@@ -1096,7 +1096,7 @@ h1, h2, h3 { text-wrap: balance; }
   /* Top-up phones (André 19 Oct): same phone height, side by side. */
   /* Meadow behind the phones (André 19 Oct): Unsplash photo _8fRer9hPv0 (Unsplash License). */
   #app .pay-duo { display: flex; justify-content: center; align-items: center; gap: clamp(12px, 4vw, 64px); margin-top: 56px;
-    padding: clamp(36px, 6vw, 80px) 16px; border-radius: 28px; background: #9DB67A url(/assets/features/meadow.webp) center / cover no-repeat; 
+    padding: clamp(36px, 6vw, 80px) 16px; border-radius: 28px; background:#F5F5F6; 
     isolation: isolate; transform: translateZ(0); } /* keeps the phones' drop-shadow layer from repainting the owner bar white in Safari */
   #app .pay-duo img { display: block; height: auto; filter: drop-shadow(0 24px 40px rgba(0,0,0,.35)); }
   @media (max-width: 600px) { #app .pay-duo { border-radius: 22px; padding: 28px 10px; gap: 10px; } #app .pay-duo .pd-a, #app .pay-duo .pd-b { width: 46%; } }
@@ -1130,7 +1130,7 @@ h1, h2, h3 { text-wrap: balance; }
      Base system is the dropzones page; these are the payments-only parts. */
   .dp-hero{padding-top:clamp(56px,8vw,104px);text-align:center}
   .dp-hero .eyebrow{justify-content:center}
-  .dp-hero h1{margin:0 auto;max-width:14ch;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;font-size:clamp(44px,6.6vw,88px);line-height:1;color:#050505;text-wrap:balance}
+  .dp-hero h1{margin:0 auto;max-width:14ch;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;font-size:clamp(44px,5.5vw,72px);line-height:1;color:#050505;text-wrap:balance}
   .dp-hero .lead{margin:24px auto 0;max-width:620px}
   .dp-ctas{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:center;align-items:center;margin-top:32px}
   .dp-btn{display:inline-flex;align-items:center;gap:12px;height:56px;padding:0 28px;border-radius:99px;background:#6D42F5;color:#fff!important;font-family:"Manrope",sans-serif;font-weight:700;font-size:17px;text-decoration:none!important}
@@ -1138,8 +1138,8 @@ h1, h2, h3 { text-wrap: balance; }
   .dp-btn svg{width:16px;height:16px}
   .dp-link{font-family:"Manrope",sans-serif;font-weight:600;font-size:17px;color:#050505!important}
   /* hero: the two top-up phones, big, on the painterly meadow */
-  .dp-meadow{position:relative;isolation:isolate;transform:translateZ(0);margin:56px auto 0;border-radius:32px;overflow:hidden;background:#9DB67A url(/assets/features/meadow.webp) center / cover no-repeat;display:flex;justify-content:center;align-items:flex-start;gap:clamp(16px,5vw,80px);padding:clamp(40px,6vw,88px) 16px clamp(72px,9vw,128px)}
-  .dp-meadow img{display:block;width:min(340px,42%);height:auto;filter:drop-shadow(0 28px 44px rgba(0,0,0,.38))}
+  .dp-meadow{position:relative;isolation:isolate;transform:translateZ(0);margin:56px auto 0;border-radius:32px;overflow:hidden;background:#F5F5F6;display:flex;justify-content:center;align-items:flex-start;gap:clamp(16px,5vw,80px);padding:clamp(40px,6vw,88px) 16px clamp(72px,9vw,128px)}
+  .dp-meadow img{display:block;width:min(260px,42%);height:auto;filter:drop-shadow(0 28px 44px rgba(0,0,0,.38))}
   .dp-meadow .dp-ph2{margin-top:clamp(28px,5vw,72px)}
   .dp-cap{margin:14px 0 0;font-size:14px;color:#52525B;text-align:center}
   /* the official marks, big and open */
@@ -1150,7 +1150,7 @@ h1, h2, h3 { text-wrap: balance; }
   /* black band: where the money goes */
   .dp-band{position:relative;isolation:isolate;margin-top:clamp(96px,12vw,140px);padding:clamp(80px,10vw,128px) 0;text-align:center}
   .dp-band::before{content:"";position:absolute;inset:0 auto 0 50%;width:100vw;transform:translateX(-50%);background:#050505;z-index:-1}
-  .dp-band h2{margin:0 auto;max-width:15ch;color:#fff;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;font-size:clamp(40px,5.4vw,72px);line-height:1.02;text-wrap:balance}
+  .dp-band h2{margin:0 auto;max-width:15ch;color:#fff;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;font-size:clamp(36px,4.9vw,50px);line-height:1.04;text-wrap:balance}
   .dp-band > p{margin:24px auto 0;max-width:580px;font-size:20px;line-height:31px;color:#E4E4E7}
   .dp-flow{position:relative;display:flex;justify-content:space-between;max-width:900px;margin:72px auto 0;padding:0;list-style:none}
   .dp-flow::before{content:"";position:absolute;top:48px;left:16.6%;right:16.6%;height:2px;background:repeating-linear-gradient(90deg,#52525B 0 8px,transparent 8px 16px)}
@@ -1183,7 +1183,7 @@ h1, h2, h3 { text-wrap: balance; }
   .dp-studio{position:relative;padding-bottom:20px}
   .dp-studio .dp-wallet{position:absolute;right:-2%;bottom:0;width:24%;max-width:180px;height:auto;filter:drop-shadow(0 20px 30px rgba(15,23,42,.3))}
   /* reports: the money chart with a cash payment on top */
-  .dp-money{position:relative;max-width:1040px;margin:56px auto 0;padding:0 0 96px}
+  .dp-money{position:relative;max-width:760px;margin:56px auto 0;padding:0 0 96px}
   .dp-money .dp-chart{display:block;width:100%;height:auto;border-radius:24px;box-shadow:0 30px 70px -30px rgba(15,23,42,.35),0 0 0 1px rgba(15,23,42,.06)}
   .dp-money .dp-paid{position:absolute;right:-4%;bottom:0;width:38%;max-width:380px;height:auto;border-radius:18px;box-shadow:0 30px 60px -20px rgba(15,23,42,.45),0 0 0 1px rgba(15,23,42,.06)}
   .dp-money-note{display:flex;flex-wrap:wrap;gap:8px 32px;justify-content:center;margin:40px auto 0;max-width:1040px;padding:0;list-style:none}
@@ -1191,14 +1191,14 @@ h1, h2, h3 { text-wrap: balance; }
   .dp-money-note svg{width:18px;height:18px;color:#6D42F5;flex:0 0 auto}
   /* price: one big number */
   .dp-price{display:grid;grid-template-columns:auto 1fr;gap:64px;align-items:center;max-width:1000px;margin:0 auto}
-  .dp-one{font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:clamp(140px,19vw,260px);line-height:.85;letter-spacing:-.05em;color:#6D42F5}
+  .dp-one{font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:clamp(88px,10vw,120px);line-height:.85;letter-spacing:-.05em;color:#6D42F5}
   .sec .dp-price h2{text-align:left;margin:0}
   .dp-price .eyebrow{justify-content:flex-start}
   .dp-price p{margin:20px 0 0;font-size:20px;line-height:31px;color:#52525B;max-width:540px}
   .dp-price p.dp-seat{font-size:17px;line-height:26px;color:#050505;font-weight:500}
   .dp-price p.dp-seat a{color:#050505;font-weight:700}
   /* self-manifest: the live loads phone on the meadow too */
-  .vis-media.dp-mead{overflow:hidden;background:#9DB67A url(/assets/features/meadow.webp) center / cover no-repeat;isolation:isolate;transform:translateZ(0)}
+  .vis-media.dp-mead{overflow:hidden;background:#F5F5F6;isolation:isolate;transform:translateZ(0)}
   .vis-media.dp-mead .vis-phone{mix-blend-mode:normal;filter:drop-shadow(0 24px 40px rgba(0,0,0,.35))}
   .dp-more{margin:28px 0 0;font-size:17px;line-height:26px;color:#52525B}
   .dp-more a{color:#050505;font-weight:600}

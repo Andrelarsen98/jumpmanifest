@@ -1080,7 +1080,7 @@ h1, h2, h3 { text-wrap: balance; }
   /* Top-up phones (André 19 Oct): same phone height, side by side. */
   /* Meadow behind the phones (André 19 Oct): Unsplash photo _8fRer9hPv0 (Unsplash License). */
   #app .pay-duo { display: flex; justify-content: center; align-items: center; gap: clamp(12px, 4vw, 64px); margin-top: 56px;
-    padding: clamp(36px, 6vw, 80px) 16px; border-radius: 28px; background: #9DB67A url(/assets/features/meadow.webp) center / cover no-repeat; 
+    padding: clamp(36px, 6vw, 80px) 16px; border-radius: 28px; background:#F5F5F6; 
     isolation: isolate; transform: translateZ(0); } /* keeps the phones' drop-shadow layer from repainting the owner bar white in Safari */
   #app .pay-duo img { display: block; height: auto; filter: drop-shadow(0 24px 40px rgba(0,0,0,.35)); }
   @media (max-width: 600px) { #app .pay-duo { border-radius: 22px; padding: 28px 10px; gap: 10px; } #app .pay-duo .pd-a, #app .pay-duo .pd-b { width: 46%; } }
@@ -1121,18 +1121,18 @@ h1, h2, h3 { text-wrap: balance; }
   /* hero: centred headline, two phones on the meadow */
   .ll-hero{padding-top:clamp(56px,8vw,104px);text-align:center}
   .ll-hero .eyebrow{justify-content:center}
-  .ll-hero h1{margin:0 auto;max-width:13ch;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;font-size:clamp(44px,6.6vw,88px);line-height:1;color:#050505;text-wrap:balance}
+  .ll-hero h1{margin:0 auto;max-width:13ch;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;font-size:clamp(44px,5.6vw,72px);line-height:1;color:#050505;text-wrap:balance}
   .ll-hero .lead{margin:24px auto 0;max-width:560px}
-  .ll-stage{position:relative;margin:56px 0 0;border-radius:32px;overflow:hidden;background:#9DB67A url(/assets/features/meadow.webp) center / cover no-repeat;padding:clamp(40px,6vw,88px) 16px 0;display:flex;justify-content:center;align-items:flex-end;gap:clamp(14px,4vw,56px);isolation:isolate;transform:translateZ(0)}
+  .ll-stage{position:relative;margin:56px 0 0;border-radius:32px;overflow:hidden;background:#F5F5F6;padding:clamp(40px,6vw,88px) 16px 0;display:flex;justify-content:center;align-items:flex-end;gap:clamp(14px,4vw,56px);isolation:isolate;transform:translateZ(0)}
   .ll-stage img{display:block;height:auto;filter:drop-shadow(0 26px 40px rgba(0,0,0,.35))}
-  .ll-stage .st-a{width:min(300px,40%);margin-bottom:-9%}
-  .ll-stage .st-b{width:min(330px,44%);margin-bottom:-6%}
+  .ll-stage .st-a{width:min(240px,40%);margin-bottom:-9%}
+  .ll-stage .st-b{width:min(264px,44%);margin-bottom:-6%}
   .ll-cap{margin:14px 0 0;font-size:14px;color:#52525B;text-align:center}
   /* the board */
   .ll .vis-media.ll-lilac{background:#EDEFF7}
   /* 230 */
   .ll-num{text-align:center}
-  .ll-num .big{display:block;font-family:"General Sans","Manrope",sans-serif;font-weight:600;font-size:clamp(120px,22vw,300px);line-height:.9;letter-spacing:-.06em;color:#050505;background:linear-gradient(180deg,#6D42F5 0%,#2A1580 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .ll-num .big{display:block;font-family:"General Sans","Manrope",sans-serif;font-weight:600;font-size:clamp(88px,11vw,120px);line-height:.9;letter-spacing:-.06em;color:#050505;background:linear-gradient(180deg,#6D42F5 0%,#2A1580 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
   .ll-num h2{margin-top:8px!important}
   .ll-num .lead{max-width:620px}
   .ll-live{display:inline-flex;align-items:center;gap:10px;margin-top:28px;font-family:"Manrope",sans-serif;font-weight:700;font-size:16px;color:#050505}
@@ -1143,7 +1143,7 @@ h1, h2, h3 { text-wrap: balance; }
   .ll-how .eyebrow{justify-content:flex-start}
   .ll-how h2{text-align:left!important;margin:0}
   .ll-hand{position:relative;margin:0;border-radius:32px;background:#F5F5F7;overflow:hidden;padding:56px 24px 0;display:flex;justify-content:center;align-items:flex-end;min-height:560px}
-  .ll-hand img{display:block;width:min(400px,92%);height:auto}
+  .ll-hand img{display:block;width:min(340px,92%);height:auto}
   .ll-flow{list-style:none;margin:40px 0 0;padding:0;counter-reset:f;position:relative}
   .ll-flow li{counter-increment:f;position:relative;padding:0 0 30px 64px}
   .ll-flow li:last-child{padding-bottom:0}
@@ -1155,12 +1155,12 @@ h1, h2, h3 { text-wrap: balance; }
   .ll-pro{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:99px;background:#050505;color:#fff;font-family:"Manrope",sans-serif;font-size:12px;font-weight:700;letter-spacing:.02em;vertical-align:4px}
   /* lock screen video on white */
   .ll .vis-media.ll-clear{background:transparent;padding:0}
-  .ll-ls{display:block;width:min(420px,100%);height:auto;aspect-ratio:720/1152;mix-blend-mode:multiply}
+  .ll-ls{display:block;width:min(320px,100%);height:auto;aspect-ratio:720/1152;mix-blend-mode:multiply}
   /* black band: the three calls on a countdown line */
   .ll-band{position:relative;isolation:isolate;margin-top:clamp(96px,12vw,140px);padding:clamp(80px,10vw,128px) 0;text-align:center;color:#fff}
   .ll-band::before{content:"";position:absolute;inset:0 auto 0 50%;width:100vw;transform:translateX(-50%);background:#050505;z-index:-1}
   .ll-band .eyebrow{color:#D4D4D8;justify-content:center}
-  .ll-band h2{margin:0 auto;max-width:16ch;color:#fff;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;font-size:clamp(40px,5.4vw,72px);line-height:1.02;text-wrap:balance}
+  .ll-band h2{margin:0 auto;max-width:16ch;color:#fff;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;font-size:clamp(34px,5vw,50px);line-height:1.02;text-wrap:balance}
   .ll-band > p{margin:24px auto 0;max-width:600px;font-size:20px;line-height:31px;color:#D4D4D8}
   .ll-line{position:relative;list-style:none;margin:80px auto 0;padding:0;max-width:980px;display:flex;justify-content:space-between}
   .ll-line::before{content:"";position:absolute;left:0;right:0;top:118px;height:2px;background:#3F3F46}
@@ -1210,6 +1210,7 @@ h1, h2, h3 { text-wrap: balance; }
     .ll-stage .st-a,.ll-stage .st-b{width:46%}
     .ll-badge img{height:48px}
     .ll-hand{border-radius:22px}
+    .ll-ls{width:min(280px,100%)}
   }
   </style>
 

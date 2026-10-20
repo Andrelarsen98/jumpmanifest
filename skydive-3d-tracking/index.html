@@ -1012,7 +1012,7 @@ h1, h2, h3 { text-wrap: balance; }
   /* Top-up phones (André 19 Oct): same phone height, side by side. */
   /* Meadow behind the phones (André 19 Oct): Unsplash photo _8fRer9hPv0 (Unsplash License). */
   #app .pay-duo { display: flex; justify-content: center; align-items: center; gap: clamp(12px, 4vw, 64px); margin-top: 56px;
-    padding: clamp(36px, 6vw, 80px) 16px; border-radius: 28px; background: #9DB67A url(/assets/features/meadow.webp) center / cover no-repeat; 
+    padding: clamp(36px, 6vw, 80px) 16px; border-radius: 28px; background:#F5F5F6; 
     isolation: isolate; transform: translateZ(0); } /* keeps the phones' drop-shadow layer from repainting the owner bar white in Safari */
   #app .pay-duo img { display: block; height: auto; filter: drop-shadow(0 24px 40px rgba(0,0,0,.35)); }
   @media (max-width: 600px) { #app .pay-duo { border-radius: 22px; padding: 28px 10px; gap: 10px; } #app .pay-duo .pd-a, #app .pay-duo .pd-b { width: 46%; } }
@@ -1047,17 +1047,15 @@ h1, h2, h3 { text-wrap: balance; }
   .t3-hero{position:relative;isolation:isolate;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:clamp(56px,7vw,96px) 0 0;color:#fff}
   .t3-hero::before{content:"";position:absolute;top:-400px;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:#050505;z-index:-1}
   .t3-hero .eyebrow{justify-content:flex-start;color:#fff;margin-left:0}
-  .t3-hero h1{margin:0;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;font-size:clamp(44px,5.6vw,80px);line-height:1;color:#fff;text-wrap:balance}
+  .t3-hero h1{margin:0;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;font-size:clamp(44px,5.6vw,72px);line-height:1;color:#fff;text-wrap:balance}
   .t3-hero .lead{margin:24px 0 0;max-width:520px;text-align:left;color:#D1D1D6}
   .t3-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;margin-top:32px}
   .t3-badge img{display:block;height:54px;width:auto}
-  .t3-by{font-size:15px;color:#A1A1AA}
-  .t3-by a{color:#fff;text-decoration:underline;text-underline-offset:3px}
   .t3-copy{padding-bottom:clamp(56px,7vw,96px)}
-  .t3-ph{align-self:end;justify-self:center;width:min(400px,100%)}
+  .t3-ph{align-self:end;justify-self:center;width:min(320px,100%)}
   .t3-ph img{display:block;width:100%;height:auto;margin-bottom:-1px}
   .t3-fly{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-  .t3-fly video{display:block;width:min(380px,100%);height:auto;margin:0 auto}
+  .t3-fly video{display:block;width:min(320px,100%);height:auto;margin:0 auto}
   .t3-fly h2,.t3-fly .eyebrow{text-align:left;justify-content:flex-start;margin-left:0}
   .t3-fly .lead{text-align:left;margin-left:0}
   .t3-phases{list-style:none;margin:32px 0 0;padding:0}
@@ -1084,14 +1082,14 @@ h1, h2, h3 { text-wrap: balance; }
   .t3-share{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
   .t3-share h2,.t3-share .eyebrow{text-align:left;justify-content:flex-start;margin-left:0}
   .t3-share .lead{text-align:left;margin-left:0}
-  .t3-share-ph img{display:block;width:min(380px,100%);height:auto;margin:0 auto}
+  .t3-share-ph img{display:block;width:min(320px,100%);height:auto;margin:0 auto}
   @media (max-width:899px){.t3-share{grid-template-columns:1fr;gap:36px}.t3-share-ph img{width:min(300px,80%)}}
   .t3-safe{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
   .t3-safe h2,.t3-safe .eyebrow{text-align:left;justify-content:flex-start;margin-left:0}
   .t3-chk{list-style:none;margin:28px 0 0;padding:0}
   .t3-chk li{padding:14px 0;border-top:1px solid #E4E4E7;font-size:17px;line-height:26px;color:#52525B}
   .t3-chk b{color:#050505}
-  .t3-meadow{border-radius:28px;overflow:hidden;background:url(/assets/features/meadow.webp) center/cover;padding:48px 32px 0;display:flex;justify-content:center}
+  .t3-meadow{border-radius:28px;overflow:hidden;background:#F5F5F6;padding:48px 32px 0;display:flex;justify-content:center}
   .t3-meadow img{display:block;width:min(340px,80%);height:auto}
   .t3-tiers{display:grid;grid-template-columns:1fr 1fr;gap:48px;max-width:880px;margin:48px auto 0;text-align:left}
   .t3-tiers h3{margin:0 0 8px;font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:26px;color:#050505;padding-bottom:12px;border-bottom:2px solid #050505}
@@ -1127,7 +1125,6 @@ h1, h2, h3 { text-wrap: balance; }
       <p class="lead">Your iPhone already has GPS and a barometer. That is enough to fly every jump back in 3D, with nothing extra on your helmet.</p>
       <div class="t3-ctas">
         <a class="t3-badge" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="Download Manifest on the App Store"><img src="/assets/appstore-badge.svg?v=1" width="160" height="54" alt="Download on the App Store" /></a>
-        <span class="t3-by">Written by <a href="/about/">Andr&eacute; Larsen</a>, founder of Manifest</span>
       </div>
     </div>
     <div class="t3-ph"><img src="/assets/opt/mock-3d.5f7a460f.webp" width="640" height="1328" alt="A jump replayed in 3D over the desert in the Manifest app, with exit altitude, freefall time and top speed under the map" decoding="async" /></div>

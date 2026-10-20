@@ -1154,7 +1154,7 @@ h1, h2, h3 { text-wrap: balance; }
   /* Top-up phones (André 19 Oct): same phone height, side by side. */
   /* Meadow behind the phones (André 19 Oct): Unsplash photo _8fRer9hPv0 (Unsplash License). */
   #app .pay-duo { display: flex; justify-content: center; align-items: center; gap: clamp(12px, 4vw, 64px); margin-top: 56px;
-    padding: clamp(36px, 6vw, 80px) 16px; border-radius: 28px; background: #9DB67A url(/assets/features/meadow.webp) center / cover no-repeat; 
+    padding: clamp(36px, 6vw, 80px) 16px; border-radius: 28px; background:#F5F5F6; 
     isolation: isolate; transform: translateZ(0); } /* keeps the phones' drop-shadow layer from repainting the owner bar white in Safari */
   #app .pay-duo img { display: block; height: auto; filter: drop-shadow(0 24px 40px rgba(0,0,0,.35)); }
   @media (max-width: 600px) { #app .pay-duo { border-radius: 22px; padding: 28px 10px; gap: 10px; } #app .pay-duo .pd-a, #app .pay-duo .pd-b { width: 46%; } }
@@ -1193,7 +1193,7 @@ h1, h2, h3 { text-wrap: balance; }
   .sms-hero{padding-top:clamp(48px,7vw,96px)}
   .sms-hero .eyebrow{justify-content:flex-start}
   .sms-top{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:24px 64px;align-items:end}
-  .sms-hero h1{margin:0;font-weight:550;letter-spacing:-.034em;font-size:clamp(42px,5.6vw,80px);line-height:1;color:var(--ink);text-wrap:balance}
+  .sms-hero h1{margin:0;font-weight:550;letter-spacing:-.034em;font-size:clamp(42px,5.5vw,72px);line-height:1;color:var(--ink);text-wrap:balance}
   .sms-side .lead{margin:0;text-align:left;max-width:440px;font-size:20px;line-height:31px;color:var(--sub)}
   .sms-ctas{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;margin-top:28px}
   .sms-btn{display:inline-flex;align-items:center;gap:12px;height:56px;padding:0 28px;border-radius:99px;background:var(--pur);color:#fff!important;font-family:"Manrope",sans-serif;font-weight:700;font-size:17px;text-decoration:none!important}
@@ -1201,8 +1201,8 @@ h1, h2, h3 { text-wrap: balance; }
   .sms-btn svg{width:16px;height:16px}
   .sms-link{font-family:"Manrope",sans-serif;font-weight:600;font-size:17px;color:var(--ink)!important}
   .sms-stage{position:relative;margin-top:clamp(40px,5vw,64px);border-radius:32px;overflow:hidden;isolation:isolate;transform:translateZ(0);
-    background:#9DB67A url(/assets/features/meadow.webp) center / cover no-repeat;padding:clamp(40px,6vw,80px) 0 clamp(28px,3.5vw,44px)}
-  .sms-stage .studio{display:block;width:72%;max-width:860px;height:auto;margin:0 auto;filter:drop-shadow(0 30px 40px rgba(0,0,0,.28))}
+    background:#F5F5F6;padding:clamp(40px,6vw,80px) 0 clamp(28px,3.5vw,44px)}
+  .sms-stage .studio{display:block;width:72%;max-width:760px;height:auto;margin:0 auto;filter:drop-shadow(0 30px 40px rgba(0,0,0,.28))}
   .sms-stage .sms-hand{position:absolute;right:3%;bottom:0;width:23%;max-width:300px;height:auto;filter:drop-shadow(0 24px 40px rgba(0,0,0,.35))}
   .sms-cap{margin:14px 0 0;font-size:14px;color:#71717B;text-align:center}
   /* guide contents */
@@ -1238,7 +1238,7 @@ h1, h2, h3 { text-wrap: balance; }
   .sms-cmp .no{background:#F4F4F5;color:#52525B}
   .sms-cmp .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
   /* features: the desk on a display, then a spec sheet */
-  .sms-desk{max-width:900px;margin:56px auto 0}
+  .sms-desk{max-width:760px;margin:56px auto 0}
   .sms-spec{margin:72px 0 0}
   .sms-row{display:grid;grid-template-columns:240px minmax(0,1fr);gap:16px 48px;padding:36px 0;border-top:1px solid var(--line)}
   .sms-row:last-child{border-bottom:1px solid var(--line)}
@@ -1251,7 +1251,7 @@ h1, h2, h3 { text-wrap: balance; }
   .sms-band::before{content:"";position:absolute;inset:0 auto 0 50%;width:100vw;transform:translateX(-50%);background:#050505;z-index:-1}
   .sms-band-in{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:48px 88px;align-items:center}
   .sms-band .eyebrow{justify-content:flex-start;color:#fff}
-  .sms-band h2{margin:0;max-width:13ch;color:#fff;font-weight:550;letter-spacing:-.03em;font-size:clamp(40px,4.8vw,64px);line-height:1.02;text-align:left}
+  .sms-band h2{margin:0;max-width:13ch;color:#fff;font-weight:550;letter-spacing:-.03em;font-size:clamp(36px,4.9vw,50px);line-height:1.04;text-align:left}
   .sms-band .sms-blead{margin:20px 0 0;max-width:520px;font-size:20px;line-height:31px;color:#D1D1D6}
   .sms-band .sms-blead a{color:#fff;font-weight:600;text-decoration:underline;text-underline-offset:3px}
   .sms-ph{display:block;width:100%;max-width:320px;height:auto;margin:0 auto}
@@ -1271,7 +1271,7 @@ h1, h2, h3 { text-wrap: balance; }
   .sms-rail li::before{content:"";position:absolute;left:0;top:4px;width:24px;height:24px;border-radius:50%;background:#fff;border:6px solid var(--pur);box-sizing:border-box}
   .sms-rail b{display:block;font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:26px;line-height:32px;color:var(--ink)}
   .sms-rail p{margin:6px 0 0;font-size:17px;line-height:26px;color:var(--sub)}
-  .sms-dayph{display:block;width:100%;max-width:340px;height:auto;margin:0 auto}
+  .sms-dayph{display:block;width:100%;max-width:320px;height:auto;margin:0 auto}
   /* switching: three short lines in big type */
   .sms-switch{text-align:center}
   .sms-three{margin:0 auto;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;font-size:clamp(40px,5.6vw,76px);line-height:1.06;color:var(--ink)}
@@ -1287,7 +1287,7 @@ h1, h2, h3 { text-wrap: balance; }
   .sms-price .eyebrow,.sms-price h2{justify-content:flex-start;text-align:left;margin-left:0}
   .sms-price h2{margin-top:0}
   .sms-one{display:flex;align-items:baseline;gap:16px;margin:28px 0 0;color:var(--ink)}
-  .sms-one b{font-family:"General Sans","Manrope",sans-serif;font-weight:550;font-size:clamp(88px,10vw,140px);line-height:.9;letter-spacing:-.05em}
+  .sms-one b{font-family:"General Sans","Manrope",sans-serif;font-weight:550;font-size:clamp(80px,8.4vw,120px);line-height:.9;letter-spacing:-.05em}
   .sms-one span{font-family:"Manrope",sans-serif;font-weight:700;font-size:22px;line-height:28px}
   .sms-price .sms-plead{margin:24px 0 0;max-width:480px;font-size:19px;line-height:30px;color:var(--sub)}
   .sms-price .sms-ctas{margin-top:32px}
@@ -1459,7 +1459,7 @@ h1, h2, h3 { text-wrap: balance; }
           <div><dt>Safety checks</dt><dd>Currency, reserve repack date and AAD service, checked before a jumper boards. A season check and a daily check-in sit alongside it.</dd></div>
           <div><dt>Waivers and check-in rules</dt><dd>Rules per licence type, with waivers signed before the jump. The desk shows what is missing.</dd></div>
           <div><dt>Who&rsquo;s back</dt><dd>After each load, the desk shows who has returned.</dd></div>
-          <div><dt>Landout SOS</dt><dd>A jumper who lands out appears on a live map at the desk, with chat until they are picked up.</dd></div>
+          <div><dt>Landout SOS</dt><dd>A jumper who lands out and taps Landed out appears on a live map at the desk, with chat until they are picked up.</dd></div>
         </dl>
       </div>
       <div class="sms-row">
@@ -1508,7 +1508,7 @@ h1, h2, h3 { text-wrap: balance; }
         <li><b>Jumpers check in.</b><p>They book onto loads from the app, or you add them at the desk.</p></li>
         <li><b>Build the load.</b><p>The safety check flags anything out of date before anyone boards.</p></li>
         <li><b>Press call.</b><p>Every jumper on the load gets it on their phone, at 15, 10 and 5 minutes and boarding.</p></li>
-        <li><b>See who is back.</b><p>After the load, the desk sees who has returned. A landout shows on the live map.</p></li>
+        <li><b>See who is back.</b><p>After the load, the desk sees who has returned. A jumper who taps Landed out shows on the live map.</p></li>
       </ol>
       <video class="sms-dayph" data-lazy autoplay muted loop playsinline preload="none" poster="/assets/opt/lockscreen-poster.6252405d.webp" width="720" height="1152" aria-label="An iPhone Lock Screen with the Manifest load card counting down to the jumper's load">
         <source data-src="/assets/opt/lockscreen-v2.mp4" type="video/mp4" />
