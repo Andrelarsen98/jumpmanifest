@@ -20,53 +20,68 @@
   *, *::before, *::after { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
   body { margin: 0; min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; font-family: "Manrope", sans-serif; color: #141316;
-    background: linear-gradient(135deg, #D2CCEE 0%, #E9DDE1 45%, #E8E0E5 60%, #D8D6F0 100%) fixed; }
-  main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 72px 20px 48px; }
-  .card { width: 100%; max-width: 500px; background: #fff; border-radius: 32px; padding: 44px 40px 36px; box-shadow: 0 30px 80px rgba(60, 50, 140, .10); }
-  .logo img { height: 30px; width: auto; display: block; }
-  .plan { margin-top: 28px; display: flex; align-items: center; justify-content: space-between; gap: 12px; background: #F4F4F6; border-radius: 18px; padding: 16px 20px; }
-  .plan small { display: block; font-size: 14px; color: #71717B; }
-  .plan b { display: block; margin-top: 2px; font-size: 17px; font-weight: 700; }
+    background-color: #F0EFF2;
+    /* Softriver's backdrop, sampled from André's screenshot: lilac in the
+       top-left and bottom-right corners, blush in the other two, near white
+       in the middle. */
+    background-image: radial-gradient(60% 55% at 0% 0%, #D5D2F2 0%, rgba(213,210,242,0) 100%),
+      radial-gradient(55% 55% at 100% 0%, #F1E6E1 0%, rgba(241,230,225,0) 100%),
+      radial-gradient(55% 55% at 0% 100%, #F0E8E4 0%, rgba(240,232,228,0) 100%),
+      radial-gradient(60% 55% at 100% 100%, #D7D5F1 0%, rgba(215,213,241,0) 100%);
+    background-attachment: fixed; }
+  main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 56px 20px; }
+  .card { width: 100%; max-width: 430px; background: #fff; border-radius: 24px; padding: 40px 37px 34px; box-shadow: 0 24px 60px rgba(60, 50, 140, .08); }
+  .logo img { height: 21px; width: auto; display: block; }
+  .plan { margin-top: 24px; display: flex; align-items: center; justify-content: space-between; gap: 12px; background: #F4F4F6; border-radius: 12px; padding: 11px 14px; }
+  .plan small { display: block; font-size: 12px; color: #71717B; }
+  .plan b { display: block; margin-top: 1px; font-size: 14px; font-weight: 700; }
   .plan b span { color: #6356EE; }
-  h1 { font-family: "General Sans", sans-serif; font-weight: 600; font-size: 38px; line-height: 1.1; letter-spacing: -0.03em; margin: 30px 0 0; }
-  .sub { margin: 12px 0 0; font-size: 17px; color: #52525B; }
-  .fields { margin-top: 26px; display: grid; gap: 14px; }
-  input { display: block; width: 100%; height: 66px; padding: 0 22px; border: 2px solid #141316; border-radius: 20px; font: inherit; font-size: 17px; color: #141316; background: #fff; -webkit-appearance: none; appearance: none; }
+  h1 { font-family: "General Sans", sans-serif; font-weight: 600; font-size: 30px; line-height: 1.22; letter-spacing: -0.02em; margin: 22px 0 0; }
+  .sub { margin: 10px 0 0; font-size: 15px; color: #52525B; }
+  .fields { margin-top: 22px; display: grid; gap: 12px; }
+  input { display: block; width: 100%; height: 60px; padding: 0 18px; border: 2px solid #141316; border-radius: 13px; font: inherit; font-size: 16px; color: #141316; background: #fff; -webkit-appearance: none; appearance: none; }
   input::placeholder { color: #8E8E96; }
   input:focus { outline: none; border-color: #6356EE; }
   input[aria-invalid="true"] { border-color: #DC2626; }
   .hp { position: absolute; left: -9999px; width: 1px; height: 1px; }
-  .go { display: flex; align-items: center; justify-content: center; gap: 14px; width: 100%; height: 66px; margin-top: 22px; border: 0; border-radius: 20px; cursor: pointer; text-decoration: none;
-    background: linear-gradient(180deg, #6C60F2 0%, #5345E0 100%); color: #fff; font: 700 19px/1 "Manrope", sans-serif; box-shadow: 0 14px 30px rgba(99, 86, 238, .35); }
-  .go svg { width: 20px; height: 20px; }
+  .go { display: flex; align-items: center; justify-content: center; gap: 12px; width: 100%; height: 58px; margin-top: 20px; border: 0; border-radius: 14px; cursor: pointer; text-decoration: none;
+    background: linear-gradient(180deg, #6C60F2 0%, #5345E0 100%); color: #fff; font: 700 17px/1 "Manrope", sans-serif; box-shadow: 0 12px 26px rgba(99, 86, 238, .30); }
+  .go svg { width: 18px; height: 18px; }
   .go[disabled] { opacity: .7; cursor: default; }
   .err { color: #DC2626; font-size: 14px; margin: 12px 0 0; }
-  .fine { margin: 24px 0 0; text-align: center; font-size: 14px; line-height: 21px; color: #71717B; }
-  .fine a { color: #71717B; }
-  footer { padding: 0 20px 32px; text-align: center; font-size: 14px; color: #71717B; }
-  footer a { color: #71717B; margin: 0 10px; }
+  .fine { margin: 40px 0 0; text-align: center; font-size: 12px; line-height: 18px; color: #75767D; }
+  .fine a { color: #75767D; }
+  /* The white footer band, Softriver's: company and address left, links right. */
+  footer { background: #fff; color: #75767D; font-size: 14px; line-height: 20px; }
+  footer .in { max-width: 1060px; margin: 0 auto; padding: 22px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; }
+  footer .co { color: #3F3F46; }
+  footer nav { display: flex; gap: 24px; flex-wrap: wrap; }
+  footer a { color: #75767D; text-decoration: none; }
+  footer a:hover { color: #141316; }
   .top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
   .steps { display: flex; align-items: center; gap: 6px; }
-  .steps i { width: 28px; height: 28px; border-radius: 14px; display: inline-flex; align-items: center; justify-content: center; font: 700 13px/1 "Manrope", sans-serif; font-style: normal; background: #F4F4F6; color: #8E8E96; }
+  .steps i { width: 24px; height: 24px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; font: 700 12px/1 "Manrope", sans-serif; font-style: normal; background: #F4F4F6; color: #8E8E96; }
   .steps i.on { background: #6356EE; color: #fff; }
   .steps i.ok { background: #141316; color: #fff; }
   .steps b { width: 10px; height: 2px; background: #E4E4E7; border-radius: 1px; }
   .q { margin-top: 22px; }
   .q p { margin: 0 0 10px; font-size: 15px; font-weight: 700; }
   .opts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-  .opts button { height: 54px; border: 2px solid #E4E4E7; border-radius: 16px; background: #fff; font: 600 15px/1.1 "Manrope", sans-serif; color: #141316; cursor: pointer; padding: 0 6px; }
+  .opts button { height: 50px; border: 2px solid #E4E4E7; border-radius: 13px; background: #fff; font: 600 15px/1.1 "Manrope", sans-serif; color: #141316; cursor: pointer; padding: 0 6px; }
   .opts button[aria-pressed="true"] { border-color: #6356EE; background: #F1EFFE; color: #141316; }
   .skip { display: block; margin: 16px auto 0; background: none; border: 0; font: 600 15px "Manrope", sans-serif; color: #71717B; cursor: pointer; text-decoration: underline; }
   .next { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 14px; }
-  .next li { display: flex; align-items: center; gap: 14px; font-size: 16px; font-weight: 600; }
+  .next li { display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 600; }
   .next li i { flex: none; width: 30px; height: 30px; border-radius: 15px; background: #F1EFFE; color: #6356EE; font: 700 14px/30px "Manrope", sans-serif; font-style: normal; text-align: center; }
   .alt[hidden] { display: none; }
   .alt { background: #fff; cursor: pointer; font-family: "Manrope", sans-serif;
-    display: flex; align-items: center; justify-content: center; width: 100%; height: 60px; margin-top: 12px; border: 2px solid #141316; border-radius: 20px; color: #141316; font: 700 17px/1 "Manrope", sans-serif; text-decoration: none; }
+    display: flex; align-items: center; justify-content: center; width: 100%; height: 56px; margin-top: 12px; border: 2px solid #141316; border-radius: 14px; color: #141316; font: 700 16px/1 "Manrope", sans-serif; text-decoration: none; }
   @media (max-width: 600px) {
-    main { padding: 32px 16px; }
-    .card { padding: 32px 24px 28px; border-radius: 28px; }
-    h1 { font-size: 32px; margin-top: 26px; }
+    main { padding: 40px 16px; }
+    .card { padding: 32px 24px 28px; }
+    h1 { font-size: 26px; }
+    footer .in { flex-direction: column; text-align: center; padding: 22px 20px 28px; }
+    footer nav { justify-content: center; gap: 18px; }
   }
 </style>
 </head>
@@ -117,7 +132,7 @@
     </div>
   </div>
 </main>
-<footer>&copy; 2026 Manifest Jump LLC <a href="/terms/">Terms</a><a href="/privacy/">Privacy</a><a href="/support/">Contact</a></footer>
+<footer><div class="in"><div class="co">&copy; 2026 Manifest Jump LLC &middot; Wyoming, USA &middot; Dubai, UAE</div><nav><a href="/terms/">Terms of service</a><a href="/privacy/">Privacy policy</a><a href="/support/">Contact</a></nav></div></footer>
 <script>
 (function () {
   var URL_ = 'https://wkefdtglgbfprvfajrrw.supabase.co/functions/v1/desk-lead';
