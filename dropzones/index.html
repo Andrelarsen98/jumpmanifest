@@ -1589,7 +1589,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 <style>
   .lead-scrim { position: fixed; inset: 0; z-index: 100; background: rgba(5,5,5,.45); display: flex; align-items: center; justify-content: center; padding: 16px; }
   .lead-scrim[hidden] { display: none; }
-  .lead-box { position: relative; width: 100%; max-width: 460px; max-height: calc(100vh - 32px); max-height: calc(100dvh - 32px); overflow: auto; background: #fff; border-radius: 28px; padding: 32px; box-shadow: 0 30px 80px rgba(5,5,5,.25); }
+  .lead-box { position: relative; width: 100%; max-width: 460px; max-height: 100%; overflow: auto; overscroll-behavior: contain; background: #fff; border-radius: 28px; padding: 32px; box-shadow: 0 30px 80px rgba(5,5,5,.25); }
   .lead-box h3 { font-family: "General Sans", sans-serif; font-weight: 550; font-size: 28px; letter-spacing: -0.028em; color: #050505; margin: 0 32px 6px 0; }
   .lead-sub { color: #52525B; font-size: 16px; margin: 0 0 18px; }
   .lead-box label { display: block; font-size: 14px; font-weight: 600; color: #050505; margin-top: 12px; }
@@ -1640,6 +1640,15 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     .lead-scrim .btn.lead-go { height: 50px; margin-top: 14px; }
     .lead-alt { margin-top: 8px; font-size: 13px; }
   }
+  /* A FULL SCREEN ON PHONES (20 Oct 2026, André on iPhone: the page behind
+     still scrolled and pulled to refresh, and the keyboard covered the form).
+     Nothing of the page shows, so there is nothing behind to grab; the form
+     is the only thing that scrolls, and never hands a pull to the page. */
+  @media (max-width: 600px) {
+    .lead-scrim { z-index: 1000; background: #fff; align-items: stretch; }
+    .lead-box { height: 100%; max-height: none; border-radius: 0; box-shadow: none; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; touch-action: pan-y; padding: 18px 20px 28px; }
+  }
+  html.lead-open, html.lead-open body { overflow: hidden; overscroll-behavior: none; }
 </style>
 <script>
 (function () {
@@ -1671,8 +1680,29 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
   function fitVV() {
     var v = window.visualViewport; if (!v || scrim.hidden) return;
     scrim.style.height = v.height + 'px'; scrim.style.top = v.offsetTop + 'px';
+    if (focused && window.innerHeight - v.height > 100) focused.scrollIntoView({ block: 'nearest' });
   }
   if (window.visualViewport) { visualViewport.addEventListener('resize', fitVV); visualViewport.addEventListener('scroll', fitVV); }
+  // Pull-to-refresh and page scroll behind the form (iOS): a touch that
+  // would only move the page is cancelled; the form itself still scrolls
+  // when it is taller than the screen (keyboard open).
+  var touchY = 0, focused = null;
+  function noPageTouch(e) { touchY = e.touches[0].clientY; }
+  function noPageMove(e) {
+    var box = form.hidden ? done : form;
+    if (!box.contains(e.target) || box.scrollHeight <= box.clientHeight + 1) { e.preventDefault(); return; }
+    // At the top pulling down, or at the bottom pushing up: that pull would
+    // go to the page (Safari's pull-to-refresh), so it stops here.
+    var dy = e.touches[0].clientY - touchY;
+    if ((box.scrollTop <= 0 && dy > 0) || (box.scrollTop + box.clientHeight >= box.scrollHeight - 1 && dy < 0)) e.preventDefault();
+  }
+  // The focused field stays above the keyboard: re-centred each time the
+  // visible area changes (the keyboard opening), not after a guessed delay.
+  scrim.addEventListener('focusin', function (e) {
+    focused = /^(INPUT|TEXTAREA)$/.test(e.target.tagName) ? e.target : null;
+    var v = window.visualViewport;
+    if (focused && v && window.innerHeight - v.height > 100) focused.scrollIntoView({ block: 'nearest' });
+  });
   function open(kind, plan, from) {
     ctx = { kind: kind, plan: plan || '' };
     // GET STARTED (19 Oct 2026; not "free" since 20 Oct: 1% on app top-ups): every non-demo button is a sign-up
@@ -1690,12 +1720,12 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       : 'We will reach out to set up your dropzone with you.';
     opener = from || (document.activeElement !== document.body ? document.activeElement : null);
     err.hidden = true; form.hidden = false; done.hidden = true; scrim.hidden = false;
-    setInert(true); lockPage(true); fitVV();
+    setInert(true); lockPage(true); fitVV(); document.documentElement.classList.add('lead-open'); scrim.addEventListener('touchstart', noPageTouch, { passive: true }); scrim.addEventListener('touchmove', noPageMove, { passive: false });
     setTimeout(function () { form.dropzone.focus(); }, 30);
   }
   function close() {
     if (scrim.hidden) return;
-    scrim.hidden = true; setInert(false); lockPage(false); scrim.style.height = ''; scrim.style.top = '';
+    scrim.hidden = true; setInert(false); document.documentElement.classList.remove('lead-open'); lockPage(false); scrim.style.height = ''; scrim.style.top = ''; focused = null; scrim.removeEventListener('touchstart', noPageTouch); scrim.removeEventListener('touchmove', noPageMove);
     if (opener && document.contains(opener) && opener.focus) opener.focus();
     opener = null;
   }
@@ -1705,15 +1735,15 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       var card = a.closest('.pc'); var plan = card && card.querySelector('h3') ? card.querySelector('h3').textContent.trim() : '';
       var demo = /demo/i.test(decodeURIComponent(a.getAttribute('href')));
       // 19 Oct 2026: one price for every dropzone, so no plan is guessed from nearby text.
-      open(demo ? 'demo' : 'start', plan, a);
+      location.href = '/get-started/' + (demo ? '?demo' : ''); // own page since 20 Oct 2026
     });
   });
   // F05: every "Get started" opens this form directly; /dropzones/start/ stays live for old links.
   document.querySelectorAll('a[href="/dropzones/start/"], a[href^="/dropzones/start/?"]').forEach(function (a) {
-    a.addEventListener('click', function (e) { e.preventDefault(); open('start', '', a); });
+    a.addEventListener('click', function (e) { e.preventDefault(); location.href = '/get-started/'; });
   });
   // /dropzones/#get-price (the hidden sign-up page links here) opens the form.
-  if (location.hash === '#get-price') open('start', '');
+  if (location.hash === '#get-price') location.replace('/get-started/');
   document.getElementById('leadClose').onclick = close;
   document.getElementById('leadOk').onclick = close;
   scrim.addEventListener('mousedown', function (e) { if (e.target === scrim) close(); });

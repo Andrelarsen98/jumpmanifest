@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Get started · Manifest Desk</title>
+<meta name="description" content="Set up Manifest Desk for your dropzone. $1 per seat flown." />
+<meta name="robots" content="noindex, follow" />
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg?v=4" />
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&display=swap" rel="stylesheet" />
+<!-- GET STARTED AS ITS OWN PAGE (20 Oct 2026, André: "make it premium exactly
+     like Softriver"). Softriver's checkout, measured from André's screenshots:
+     button #6C60F2 -> #5345E0 (flat #6356EE), 2px near-black field border,
+     a lilac-to-blush background, one white card, almost no words. Three
+     fields only. Posts to desk-lead exactly as the old pop-up did (kind
+     signup / demo), so approval in admin is unchanged. ?demo = Book a demo. -->
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; font-family: "Manrope", sans-serif; color: #141316;
+    background: linear-gradient(135deg, #D2CCEE 0%, #E9DDE1 45%, #E8E0E5 60%, #D8D6F0 100%) fixed; }
+  main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 72px 20px 48px; }
+  .card { width: 100%; max-width: 500px; background: #fff; border-radius: 32px; padding: 44px 40px 36px; box-shadow: 0 30px 80px rgba(60, 50, 140, .10); }
+  .logo img { height: 30px; width: auto; display: block; }
+  .plan { margin-top: 28px; display: flex; align-items: center; justify-content: space-between; gap: 12px; background: #F4F4F6; border-radius: 18px; padding: 16px 20px; }
+  .plan small { display: block; font-size: 14px; color: #71717B; }
+  .plan b { display: block; margin-top: 2px; font-size: 17px; font-weight: 700; }
+  .plan b span { color: #6356EE; }
+  h1 { font-family: "General Sans", sans-serif; font-weight: 600; font-size: 38px; line-height: 1.1; letter-spacing: -0.03em; margin: 30px 0 0; }
+  .sub { margin: 12px 0 0; font-size: 17px; color: #52525B; }
+  .fields { margin-top: 26px; display: grid; gap: 14px; }
+  input { display: block; width: 100%; height: 66px; padding: 0 22px; border: 2px solid #141316; border-radius: 20px; font: inherit; font-size: 17px; color: #141316; background: #fff; -webkit-appearance: none; appearance: none; }
+  input::placeholder { color: #8E8E96; }
+  input:focus { outline: none; border-color: #6356EE; }
+  input[aria-invalid="true"] { border-color: #DC2626; }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; }
+  .go { display: flex; align-items: center; justify-content: center; gap: 14px; width: 100%; height: 66px; margin-top: 22px; border: 0; border-radius: 20px; cursor: pointer; text-decoration: none;
+    background: linear-gradient(180deg, #6C60F2 0%, #5345E0 100%); color: #fff; font: 700 19px/1 "Manrope", sans-serif; box-shadow: 0 14px 30px rgba(99, 86, 238, .35); }
+  .go svg { width: 20px; height: 20px; }
+  .go[disabled] { opacity: .7; cursor: default; }
+  .err { color: #DC2626; font-size: 14px; margin: 12px 0 0; }
+  .fine { margin: 24px 0 0; text-align: center; font-size: 14px; line-height: 21px; color: #71717B; }
+  .fine a { color: #71717B; }
+  footer { padding: 0 20px 32px; text-align: center; font-size: 14px; color: #71717B; }
+  footer a { color: #71717B; margin: 0 10px; }
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .steps { display: flex; align-items: center; gap: 6px; }
+  .steps i { width: 28px; height: 28px; border-radius: 14px; display: inline-flex; align-items: center; justify-content: center; font: 700 13px/1 "Manrope", sans-serif; font-style: normal; background: #F4F4F6; color: #8E8E96; }
+  .steps i.on { background: #6356EE; color: #fff; }
+  .steps i.ok { background: #141316; color: #fff; }
+  .steps b { width: 10px; height: 2px; background: #E4E4E7; border-radius: 1px; }
+  .q { margin-top: 22px; }
+  .q p { margin: 0 0 10px; font-size: 15px; font-weight: 700; }
+  .opts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .opts button { height: 54px; border: 2px solid #E4E4E7; border-radius: 16px; background: #fff; font: 600 15px/1.1 "Manrope", sans-serif; color: #141316; cursor: pointer; padding: 0 6px; }
+  .opts button[aria-pressed="true"] { border-color: #6356EE; background: #F1EFFE; color: #141316; }
+  .skip { display: block; margin: 16px auto 0; background: none; border: 0; font: 600 15px "Manrope", sans-serif; color: #71717B; cursor: pointer; text-decoration: underline; }
+  .next { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 14px; }
+  .next li { display: flex; align-items: center; gap: 14px; font-size: 16px; font-weight: 600; }
+  .next li i { flex: none; width: 30px; height: 30px; border-radius: 15px; background: #F1EFFE; color: #6356EE; font: 700 14px/30px "Manrope", sans-serif; font-style: normal; text-align: center; }
+  .alt[hidden] { display: none; }
+  .alt { background: #fff; cursor: pointer; font-family: "Manrope", sans-serif;
+    display: flex; align-items: center; justify-content: center; width: 100%; height: 60px; margin-top: 12px; border: 2px solid #141316; border-radius: 20px; color: #141316; font: 700 17px/1 "Manrope", sans-serif; text-decoration: none; }
+  @media (max-width: 600px) {
+    main { padding: 32px 16px; }
+    .card { padding: 32px 24px 28px; border-radius: 28px; }
+    h1 { font-size: 32px; margin-top: 26px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <div class="card">
+    <div class="top">
+      <a class="logo" href="/" aria-label="Manifest home"><img src="/assets/manifest-lockup.svg?v=5" alt="Manifest" /></a>
+      <div class="steps" aria-hidden="true"><i id="s1" class="on">1</i><b></b><i id="s2">2</i><b></b><i id="s3">3</i></div>
+    </div>
+    <div class="plan"><div><small>Your plan</small><b>Manifest Desk <span>$1 per seat</span></b></div></div>
+
+    <form id="f" novalidate>
+      <h1 id="title">Set up your dropzone</h1>
+      <p class="sub" id="sub">Nothing to pay today.</p>
+      <div class="fields">
+        <input name="dropzone" required autocomplete="organization" placeholder="Dropzone name" aria-label="Dropzone name" />
+        <input name="name" required autocomplete="name" placeholder="Your name" aria-label="Your name" />
+        <input name="email" type="email" required autocomplete="email" inputmode="email" placeholder="Email address" aria-label="Email address" />
+      </div>
+      <input name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <p class="err" id="err" role="alert" hidden></p>
+      <button class="go" type="submit" id="go"><span id="goT">Continue</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></button>
+      <p class="fine">By continuing, you agree to our<br /><a href="/terms/">terms of service</a> and <a href="/privacy/">privacy policy</a>.</p>
+    </form>
+
+    <div id="opt" hidden>
+      <h1 tabindex="-1" id="optTitle">Your dropzone</h1>
+      <p class="sub">Three taps. It helps us set you up.</p>
+      <div class="q"><p>Aircraft</p><div class="opts" data-q="Aircraft"><button type="button">1</button><button type="button">2</button><button type="button">3+</button></div></div>
+      <div class="q"><p>Loads on a busy day</p><div class="opts" data-q="Busy day"><button type="button">Under 10</button><button type="button">10 to 20</button><button type="button">20+</button></div></div>
+      <div class="q"><p>What you use today</p><div class="opts" data-q="Today"><button type="button">Burble</button><button type="button">Paper / Excel</button><button type="button">Other</button></div></div>
+      <p class="err" id="err2" role="alert" hidden></p>
+      <button class="go" type="button" id="fin"><span id="finT">Finish</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></button>
+      <button class="skip" type="button" id="skip">Skip</button>
+    </div>
+
+    <div id="done" hidden>
+      <h1 id="doneTitle" tabindex="-1">You're on the list</h1>
+      <ol class="next" id="nextList">
+        <li><i>1</i>We approve your dropzone today</li>
+        <li><i>2</i>Your invite arrives by email</li>
+        <li><i>3</i>We move your jumpers over, free</li>
+      </ol>
+      <a class="go" id="doneBack" href="/dropzones/">Back to Manifest</a>
+      <button class="alt" type="button" id="call">Book a 20-minute call</button>
+      <p class="sub" id="callOk" style="text-align:center" hidden>We'll email you a time today.</p>
+    </div>
+  </div>
+</main>
+<footer>&copy; 2026 Manifest Jump LLC <a href="/terms/">Terms</a><a href="/privacy/">Privacy</a><a href="/support/">Contact</a></footer>
+<script>
+(function () {
+  var URL_ = 'https://wkefdtglgbfprvfajrrw.supabase.co/functions/v1/desk-lead';
+  var demo = new URLSearchParams(location.search).has('demo');
+  var f = document.getElementById('f'), err = document.getElementById('err'), go = document.getElementById('go'), goT = document.getElementById('goT');
+  try {
+    var r = document.referrer && new URL(document.referrer);
+    if (r && r.origin === location.origin && r.pathname !== location.pathname) document.getElementById('doneBack').href = r.pathname + r.search;
+  } catch (e) {}
+  if (demo) {
+    document.title = 'Book a demo · Manifest Desk';
+    document.getElementById('title').textContent = 'Book a demo';
+    document.getElementById('sub').textContent = '20 minutes, on a video call.';
+    document.getElementById('nextList').innerHTML = '<li><i>1</i>We email you today</li><li><i>2</i>We pick a time together</li><li><i>3</i>20 minutes on a video call</li>';
+    document.getElementById('call').hidden = true;
+  }
+  f.addEventListener('input', function (e) { if (e.target.getAttribute('aria-invalid')) e.target.removeAttribute('aria-invalid'); });
+  // STEP 1: check the three fields, then the options (nothing sent yet).
+  var picked = {};
+  function step(n) {
+    document.getElementById('s1').className = n > 1 ? 'ok' : 'on';
+    document.getElementById('s2').className = n > 2 ? 'ok' : n === 2 ? 'on' : '';
+    document.getElementById('s3').className = n === 3 ? 'on' : '';
+    f.hidden = n !== 1; document.getElementById('opt').hidden = n !== 2; document.getElementById('done').hidden = n !== 3;
+    window.scrollTo(0, 0);
+    var h = document.getElementById(n === 2 ? 'optTitle' : 'doneTitle'); if (n > 1) h.focus();
+  }
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var bad = [];
+    if (!f.dropzone.value.trim()) bad.push(f.dropzone);
+    if (!f.name.value.trim()) bad.push(f.name);
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.value.trim())) bad.push(f.email);
+    [f.dropzone, f.name, f.email].forEach(function (el) { if (bad.indexOf(el) < 0) el.removeAttribute('aria-invalid'); else el.setAttribute('aria-invalid', 'true'); });
+    if (bad.length) { err.textContent = 'Fill in all three.'; err.hidden = false; bad[0].focus(); return; }
+    err.hidden = true; step(2);
+  });
+  // STEP 2: one answer per question; Finish or Skip sends the sign-up ONCE.
+  Array.prototype.forEach.call(document.querySelectorAll('.opts'), function (g) {
+    g.addEventListener('click', function (e) {
+      var btn = e.target.closest('button'); if (!btn) return;
+      Array.prototype.forEach.call(g.children, function (x) { x.setAttribute('aria-pressed', x === btn ? 'true' : 'false'); });
+      picked[g.dataset.q] = btn.textContent;
+    });
+  });
+  var sending = false, last = null;
+  function send(withOptions) {
+    if (sending) return; sending = true;
+    var err2 = document.getElementById('err2'), finT = document.getElementById('finT');
+    var msg = withOptions ? Object.keys(picked).map(function (k) { return k + ': ' + picked[k]; }).join(' · ') : '';
+    var body = { kind: demo ? 'demo' : 'signup', country: '', plan: '', dropzone: f.dropzone.value, name: f.name.value, email: f.email.value, phone: '', best_time: '', message: msg, website: f.website.value };
+    finT.textContent = 'Sending...'; err2.hidden = true;
+    fetch(URL_, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (x) { if (!x.ok) throw new Error(x.j && x.j.error || 'Could not send'); last = body; f.reset(); step(3); })
+      .catch(function (e2) { err2.textContent = (e2 && e2.message) || 'Could not send. Email andre@manifestjump.com'; err2.hidden = false; sending = false; })
+      .then(function () { finT.textContent = 'Finish'; });
+  }
+  document.getElementById('fin').addEventListener('click', function () { send(true); });
+  document.getElementById('skip').addEventListener('click', function () { send(false); });
+  // BOOK A CALL, ONE TAP: we already have their details, so no email app.
+  var call = document.getElementById('call');
+  call.addEventListener('click', function () {
+    if (!last || call.disabled) return;
+    call.disabled = true; call.textContent = 'Sending...';
+    var b = Object.assign({}, last, { kind: 'demo', message: ['Asked for a call after signing up', last.message].filter(Boolean).join(' · ') });
+    fetch(URL_, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(b) })
+      .then(function (r) { if (!r.ok) throw new Error(); call.textContent = 'Call requested \u2713'; document.getElementById('callOk').hidden = false; })
+      .catch(function () { call.disabled = false; call.textContent = 'Book a 20-minute call'; });
+  });
+})();
+</script>
+</body>
+</html>
