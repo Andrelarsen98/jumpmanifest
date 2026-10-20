@@ -551,6 +551,39 @@ a.trust-a:hover { color: var(--g); text-decoration: none; }
   .ab .btn .bi { width: 44px; height: 44px; } .ab .btn.ghost { height: 56px; padding: 0 22px; }
   .ab .ctas { flex-direction: column; align-items: stretch; } 
 }
+
+/* 20 Oct 2026 (André: no boring card columns): jumpers = home .trio,
+   dropzones = home #desk art, how we work = open rows, no boxes. */
+.ab .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 1.8vw, 22px); align-items: stretch; margin-top: 56px; }
+.ab .tcard { background: #f5f5f6; border-radius: clamp(20px, 2.4vw, 28px); padding: clamp(22px, 2.6vw, 32px) clamp(20px, 2.3vw, 28px);
+  display: flex; flex-direction: column; gap: 24px; text-align: left; }
+.ab .tcard > .tmedia { margin-top: auto; }
+.ab .tcard.mid > .tmedia { margin-top: 0; }
+.ab .tcard.mid > div { margin-top: auto; }
+.ab .tmedia { display: block; height: min(46vh, 470px); width: auto; max-width: 100%; aspect-ratio: 560 / 1175; margin-left: auto; margin-right: auto;
+  object-fit: cover; border-radius: 12.5% / 5.96%; background: #fff; }
+.ab .tcard h3 { margin: 0; font-family: "General Sans", "Manrope", sans-serif; font-size: 24px; line-height: 33.6px; font-weight: 500; letter-spacing: normal; color: var(--t); }
+.ab .tcard p { margin: 8px 0 0; font-size: 16px; line-height: 20.8px; font-weight: 500; letter-spacing: -.5px; color: #52525B; }
+@media (max-width: 980px) {
+  .ab .trio { grid-template-columns: 1fr; max-width: 460px; margin-left: auto; margin-right: auto; gap: 18px; }
+  .ab .tcard.mid { order: -1; }
+  .ab .tcard.mid > .tmedia { order: 2; margin-top: 0; }
+  .ab .tcard.mid > div { order: 1; margin-top: 0; }
+  .ab .tcard > .tmedia { margin-top: 0; }
+  .ab .tmedia { width: 72%; height: auto; }
+  .ab .tcard h3 { font-size: 22px; line-height: 30px; }
+}
+.ab .desk-art { position: relative; margin: 56px auto 0; max-width: 720px; padding: 0 0 40px; }
+.ab .desk-art .win { display: block; width: 100%; height: auto; }
+.ab .desk-art .win-phone { position: absolute; right: -2%; bottom: 0; width: 27%; max-width: 170px; height: auto; filter: drop-shadow(0 18px 28px rgba(15,23,42,.28)); }
+@media (max-width: 600px) { .ab .desk-art .win-phone { width: 30%; right: 0; } }
+.ab .how-grid { display: block; max-width: 1024px; }
+.ab .how-grid li { background: none; border: 0; border-top: 1px solid #E4E4E7; border-radius: 0; padding: 36px 0;
+  display: grid; grid-template-columns: 1fr 1.25fr; gap: 12px 48px; align-items: baseline; }
+.ab .how-grid li:last-child { border-bottom: 1px solid #E4E4E7; }
+.ab .how-grid b { font-size: 32px; line-height: 40px; margin: 0; text-wrap: balance; }
+.ab .how-grid p { font-size: 20px; line-height: 31px; font-weight: 400; letter-spacing: normal; }
+@media (max-width: 760px) { .ab .how-grid li { grid-template-columns: 1fr; padding: 28px 0; } .ab .how-grid b { font-size: 26px; line-height: 33px; } .ab .how-grid p { font-size: 17px; line-height: 26px; } }
 </style>
 <style id="ft-pay-css">.ft-base{flex-wrap:wrap;gap:12px 24px;align-items:center}.ft-pay{display:flex;flex-wrap:wrap;gap:8px;margin:0}.ft-pay img{height:24px;width:auto;display:block;border-radius:4px}@media (max-width:899px){.ft-base{flex-direction:column;align-items:center !important;justify-content:center;text-align:center}.ft-pay{justify-content:center}}@media (min-width:900px){.ft-base{display:grid!important;grid-template-columns:1fr auto 1fr;align-items:center}.ft-base>.ft-pay{justify-self:center}}</style>
 <style id="overscroll-css">html{background-color:#111111;scrollbar-color:#B4B4BE #ffffff}body{background-color:#ffffff}footer.site{box-shadow:0 100vh 0 100vh #111111}</style>
@@ -712,20 +745,34 @@ a.trust-a:hover { color: var(--g); text-decoration: none; }
     </div>
   </section>
 
-  <!-- FOR JUMPERS: six things the app does today. -->
+  <!-- FOR JUMPERS: the home page trio, real screens (20 Oct 2026, no icon cards). -->
   <section class="sec" id="jumpers">
     <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M11 18.5h2"/></svg>For jumpers</p>
     <h2>Everything on a jump day, in one app.</h2>
     <p class="lead">Check your load, jump, watch it back, get it signed off. Manifest is free to download for iPhone.</p>
-    <div class="jgrid">
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M12 8v3.5l2 1.5M11 18.5h2"/></svg></div><b>Live loads</b><p>Loads at 230 dropzones, live. With Manifest Pro, your load and countdown sit on your Lock Screen.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l8.5 4.75v9.5L12 21.5l-8.5-4.75v-9.5z"/><path d="M3.5 7.25L12 12l8.5-4.75M12 12v9.5"/></svg></div><b>3D replays</b><p>Every jump flown back in 3D from your phone's GPS. No extra hardware.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h12a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3zM4 17a3 3 0 0 1 3-3h12M9 8h6"/></svg></div><b>Signed-off jumps</b><p>Every jump logged and signed off by the jumpers who were there.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="7" width="14" height="14" rx="3"/><path d="M9 7V5.5a3 3 0 0 1 6 0V7M9 13h6"/></svg></div><b>Gear locker</b><p>Rigs, reserves and AADs, with a reminder before a repack or service falls due.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4"/></svg></div><b>Currency and weather</b><p>Know you're current, and see the winds on the ground and aloft at your dropzone.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20a6 6 0 0 1 12 0M17 11a3 3 0 1 0 0-6M21 20a6 6 0 0 0-4-5.6"/></svg></div><b>Coaches, people and events</b><p>Find a coach, message the jumpers you fly with, see what is on at the dropzone.</p></div>
+    <div class="trio">
+      <div class="tcard">
+        <div>
+          <h3>See who's jumping today</h3>
+          <p>Which dropzones are turning loads right now, the jumpers you know, and every milestone as it lands.</p>
+        </div>
+        <img class="tmedia" src="/assets/opt/community2.0766b4cb.webp" alt="The Community screen showing dropzones turning loads and recent jumper activity" width="560" height="1175" loading="lazy" decoding="async">
+      </div>
+      <div class="tcard mid">
+        <video class="tmedia" src="/assets/opt/liveloads.91e6219d.mp4" poster="/assets/opt/liveloads-poster.344e7011.webp" autoplay muted loop playsinline preload="none" width="560" height="1176" aria-label="Live loads at Skydive Elsinore, with jumper names hidden"></video>
+        <div>
+          <h3>Every load, live</h3>
+          <p>What's on call, who's on it and how long you've got, straight off the dropzone's own manifest, at 230 dropzones.</p>
+        </div>
+      </div>
+      <div class="tcard">
+        <div>
+          <h3>Every rig, always in date</h3>
+          <p>Reserve repacks, AAD service and your whole kit in one locker, with the service history kept, so nothing quietly lapses.</p>
+        </div>
+        <img class="tmedia" src="/assets/opt/locker2.bca918f9.webp" alt="The Locker Room showing a complete rig, wingsuit, helmets and altimeter, all service current" width="560" height="1175" loading="lazy" decoding="async">
+      </div>
     </div>
-    <p class="jfoot">Jumpers from <b>230 dropzones in 46 countries</b> use Manifest.</p>
   </section>
 
   <!-- DARK BAND: the core idea, lines from BRAND.md. -->
@@ -734,17 +781,12 @@ a.trust-a:hover { color: var(--g); text-decoration: none; }
     <p class="band-sub">A load called at the desk lands on every jumper's phone. When it departs, the jump saves itself to their phone.</p>
   </section>
 
-  <!-- FOR DROPZONES: Manifest Desk in four cards, then the dropzones page. -->
+  <!-- FOR DROPZONES: the Studio Display and phone from the home page #desk. -->
   <section class="sec" id="dropzones">
     <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>For dropzones</p>
     <h2>Manifest Desk runs the dropzone.</h2>
     <p class="lead">Manifest software for the whole day, from the first load to the last, connected to the app your jumpers already carry.</p>
-    <div class="grid">
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></div><b>Loads and calls</b><p>Build loads and call them. Every call reaches every phone on the load, and the hangar board shows the rest.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18v12H3zM3 10h18M7 15h3"/></svg></div><b>Self-manifest and top-ups</b><p>Jumpers book themselves and top up with Apple Pay. The money goes to your dropzone's own Stripe.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4"/></svg></div><b>Safety</b><p>Currency, reserve and AAD checked at manifest. A landout shows up on your map.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20a6 6 0 0 1 12 0M17 11a3 3 0 1 0 0-6M21 20a6 6 0 0 0-4-5.6"/></svg></div><b>Staff and pay</b><p>Roles, jobs and pay per jump or per load, worked out from what actually flew.</p></div>
-    </div>
+    <figure class="desk-art"><div style="position:relative"><img class="win" srcset="/assets/opt/studio-desk-today-800w.04733ab5.webp 800w, /assets/features/studio-desk-today.webp 1600w" sizes="(max-width: 600px) 95vw, 720px" src="/assets/features/studio-desk-today.webp" alt="Manifest Desk Today page for a demo dropzone, showing money charged for jumps today, open loads, the next load countdown, standby and jumper accounts" width="1600" height="1242" style="aspect-ratio: 1600 / 1242" loading="lazy" decoding="async" /><img class="win-phone" srcset="/assets/opt/mock-home3-320w.0a398738.webp 320w, /assets/opt/mock-home3.a2e7757f.webp 640w" sizes="(max-width: 480px) 28vw, 186px" src="/assets/opt/mock-home3.a2e7757f.webp" width="640" height="1330" style="aspect-ratio: 640 / 1330" alt="" loading="lazy" decoding="async" /></div></figure>
     <div class="ctas"><a class="btn ghost" href="/dropzones/">See Manifest Desk</a></div>
   </section>
 
@@ -752,10 +794,10 @@ a.trust-a:hover { color: var(--g); text-decoration: none; }
   <section class="sec" id="how">
     <h2>How we work.</h2>
     <ol class="how-grid">
-      <li><span class="n">1</span><b>Built with the people who use it</b><p>Sign in with Apple, the dropzone search and the way jumps get captured after a load all came from jumpers telling us what was missing.</p></li>
-      <li><span class="n">2</span><b>Shipped fast</b><p>New features ship constantly. Tell us what is missing or broken and it gets looked at properly.</p></li>
-      <li><span class="n">3</span><b>Your data stays yours</b><p>We do not sell your personal data. Delete a jump or your whole account in the app, any time. Dropzone money goes straight to the dropzone's own Stripe.</p></li>
-      <li><span class="n">4</span><b>Set up with you, directly</b><p>Every dropzone is set up with us directly, and we are there on its first jump day. Jumpers write to Andr&eacute;, the founder, not a ticket queue.</p></li>
+      <li><b>Built with the people who use it</b><p>Sign in with Apple, the dropzone search and the way jumps get captured after a load all came from jumpers telling us what was missing.</p></li>
+      <li><b>Shipped fast</b><p>New features ship constantly. Tell us what is missing or broken and it gets looked at properly.</p></li>
+      <li><b>Your data stays yours</b><p>We do not sell your personal data. Delete a jump or your whole account in the app, any time. Dropzone money goes straight to the dropzone's own Stripe.</p></li>
+      <li><b>Set up with you, directly</b><p>Every dropzone is set up with us directly, and we are there on its first jump day. Jumpers write to Andr&eacute;, the founder, not a ticket queue.</p></li>
     </ol>
   </section>
 
