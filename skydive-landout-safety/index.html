@@ -953,6 +953,24 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
     .lead-go { margin-top: 16px; }
     .lead-alt { margin-top: 10px; }
   }
+  /* FITS ON ONE PHONE SCREEN (20 Oct 2026, André): a sheet from the bottom,
+     full height, tighter fields, country and phone side by side. Inputs stay
+     16px so iOS never zooms in when a field is tapped. */
+  @media (max-width: 600px) {
+    .lead-scrim { padding: 0; align-items: flex-end; }
+    .lead-box { max-height: 100%; border-radius: 24px 24px 0 0; padding: 20px 20px 20px; }
+    .lead-box h3 { font-size: 22px; margin-right: 40px; }
+    .lead-x { top: 10px; right: 10px; width: 44px; height: 44px; border-radius: 22px; }
+    .lead-sub { font-size: 14px; line-height: 20px; margin-bottom: 4px; }
+    .lead-box label { margin-top: 8px; font-size: 13px; }
+    .lead-box input, .lead-box textarea { margin-top: 4px; padding: 9px 12px; border-radius: 12px; }
+    .lead-box textarea { height: 64px; resize: none; }
+    .lead-box label:has(input[name="country"]), .lead-box label:has(input[name="phone"]), .lead-box label:has(input[name="best_time"]) { display: inline-block; width: calc(50% - 7px); vertical-align: bottom; }
+    .lead-box label:not([hidden]) + label:has(input[name="phone"]), .lead-box label:has(input[name="phone"]) + label:has(input[name="best_time"]) { margin-left: 6px; }
+    .lead-box label:has(input[name="country"])[hidden], .lead-box label:has(input[name="best_time"])[hidden] { display: none; }
+    .lead-scrim .btn.lead-go { height: 50px; margin-top: 14px; }
+    .lead-alt { margin-top: 8px; font-size: 13px; }
+  }
 </style>
 <script>
 (function () {
@@ -969,12 +987,29 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       });
     } else { inerted.forEach(function (el) { el.removeAttribute('inert'); }); inerted = []; }
   }
+  // NO SCROLL BEHIND THE FORM (20 Oct 2026, André on iPhone: swiping the
+  // form moved the page under it). iOS ignores overflow:hidden on body, so
+  // the page is pinned where it was and put back on close.
+  var lockY = 0;
+  function lockPage(on) {
+    var b = document.body;
+    if (on) { lockY = window.scrollY; b.style.position = 'fixed'; b.style.top = -lockY + 'px'; b.style.left = '0'; b.style.right = '0'; b.style.width = '100%'; }
+    else { b.style.position = ''; b.style.top = ''; b.style.left = ''; b.style.right = ''; b.style.width = ''; window.scrollTo(0, lockY); }
+  }
+  // THE KEYBOARD (review 20 Oct 2026): iOS does not shrink a fixed layer
+  // when the keyboard opens, so Send hid under it. The sheet follows the
+  // visible part of the screen while the form is open.
+  function fitVV() {
+    var v = window.visualViewport; if (!v || scrim.hidden) return;
+    scrim.style.height = v.height + 'px'; scrim.style.top = v.offsetTop + 'px';
+  }
+  if (window.visualViewport) { visualViewport.addEventListener('resize', fitVV); visualViewport.addEventListener('scroll', fitVV); }
   function open(kind, plan, from) {
     ctx = { kind: kind, plan: plan || '' };
-    // GET MANIFEST DESK FREE (19 Oct 2026): every non-demo button is a sign-up
+    // GET STARTED (19 Oct 2026; not "free" since 20 Oct: 1% on app top-ups): every non-demo button is a sign-up
     // that André approves in admin; the demo keeps its video-call wording.
     var su = kind !== 'demo';
-    document.getElementById('leadTitle').textContent = su ? 'Get Manifest Desk free' : 'Book a 20-minute demo';
+    document.getElementById('leadTitle').textContent = su ? 'Get started with Manifest Desk' : 'Book a 20-minute demo';
     document.getElementById('leadSub').textContent = su
       ? 'Tell us about your dropzone. We approve every new dropzone by hand, and your invite arrives by email, usually the same day.'
       : 'We show you the desk on a video call and set you up. We reply the same day.';
@@ -986,12 +1021,12 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
       : 'We will reach out to set up your dropzone with you.';
     opener = from || (document.activeElement !== document.body ? document.activeElement : null);
     err.hidden = true; form.hidden = false; done.hidden = true; scrim.hidden = false;
-    setInert(true);
+    setInert(true); lockPage(true); fitVV();
     setTimeout(function () { form.dropzone.focus(); }, 30);
   }
   function close() {
     if (scrim.hidden) return;
-    scrim.hidden = true; setInert(false);
+    scrim.hidden = true; setInert(false); lockPage(false); scrim.style.height = ''; scrim.style.top = '';
     if (opener && document.contains(opener) && opener.focus) opener.focus();
     opener = null;
   }
