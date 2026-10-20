@@ -963,7 +963,7 @@ h1, h2, h3 { text-wrap: balance; }
       "name": "How do we know who is back after a load?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "After each load the desk shows a Who’s back list. Staff tick each name as the jumper walks in, and jumpers with a phone can tick themselves in the app. Anyone not ticked 30 minutes after the load left turns red."
+        "text": "After each load the desk shows a Who’s back list. Staff tick each name as the jumper lands, so nobody is missed."
       }
     },
     {
@@ -1158,6 +1158,8 @@ h1, h2, h3 { text-wrap: balance; }
   .lo-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:56px;margin-top:56px;text-align:center}
   .lo-facts b{display:block;font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:26px;line-height:33px;color:#050505}
   .lo-facts p{margin:10px auto 0;max-width:320px;font-size:17px;line-height:26px;color:#52525B}
+  .lo-actions{margin:48px auto 0;max-width:900px;border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 30px 70px -30px rgba(15,23,42,.35),0 2px 8px rgba(15,23,42,.06);border:1px solid #E4E4E7}
+  .lo-actions img{display:block;width:100%;height:auto}
   .lo-limits{margin:72px auto 0;max-width:720px;text-align:center;font-size:16px;line-height:26px;color:#52525B}
   .lo-limits b{color:#050505}
   .lo .faq{margin-top:clamp(96px,12vw,140px)}
@@ -1208,32 +1210,22 @@ h1, h2, h3 { text-wrap: balance; }
     <div>
       <p class="eyebrow">Who&rsquo;s back</p>
       <h2>Everyone accounted for at sunset.</h2>
-      <p class="lead">After every load the desk lists every name on it. Staff tick them in, jumpers tap &ldquo;I&rsquo;m back&rdquo; in the app, and anyone missing after 30 minutes turns red.</p>
+      <p class="lead">After every load the desk lists every name on it, and staff tick each jumper in as they land. No paper list needed.</p>
     </div>
-    <div class="lo-board" role="img" aria-label="A Who's back list for load 4: three jumpers ticked back, one waiting, one red after 34 minutes">
+    <div class="lo-board" role="img" aria-label="A Who's back list for load 4: three jumpers ticked back, one not back yet">
       <div class="lo-board-h"><b>Load 4</b><span>Who&rsquo;s back</span></div>
       <div class="lo-row"><span class="dot ok"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span>Marco Ferri<em>Back</em></div>
       <div class="lo-row"><span class="dot ok"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span>Lena Hoff<em>Back</em></div>
       <div class="lo-row"><span class="dot ok"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span>James Okafor<em>Back</em></div>
-      <div class="lo-row"><span class="dot wait"></span>Ana Ruiz<em>12 min</em></div>
-      <div class="lo-row red"><span class="dot late"></span>Sofia Rossi<em>34 min</em></div>
+      <div class="lo-row"><span class="dot wait"></span>Sofia Rossi<em>Not back yet</em></div>
     </div>
   </section>
 
-  <section class="sec vis flip" id="desk">
-    <div class="vis-txt">
-      <p class="eyebrow">At the desk</p>
-      <h2>One screen when it matters.</h2>
-      <p class="lead">Everything the safety officer needs, from the first call to the last jumper home.</p>
-      <ul class="vis-pts">
-        <li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Every load on hold in one tap, on every jumper's phone</span></li>
-        <li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>A push to the staff you choose: safety officer, S&amp;TA, drivers</span></li>
-        <li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Currency, reserve, AAD and papers checked before they board</span></li>
-      </ul>
-    </div>
-    <div class="vis-media">
-      <img class="vis-phone vis-trio" src="/assets/opt/checkin-pass-framed.webp" width="640" height="1325" alt="A jumper's Manifest check-in pass with licence, reserve repack and AAD in date" loading="lazy" decoding="async" />
-    </div>
+  <section class="sec lo-hold" id="desk">
+    <p class="eyebrow">At the desk</p>
+    <h2>Stop every load in one tap.</h2>
+    <p class="lead">When a jumper is hurt, the desk puts every load on hold, and every jumper on those loads sees it on their phone.</p>
+    <figure class="lo-actions"><img src="/assets/landout-actions.webp?v=3" width="1080" height="193" alt="The landout card on Manifest Desk: Sofia Rossi landed out, needs a ride, with buttons for I'm driving, Call Sofia, Hold all loads and Found them" loading="lazy" decoding="async" /></figure>
   </section>
   <section class="lo-lim">
     <p class="lo-limits"><b>Built to support your emergency plan, not replace it.</b> It needs the jumper's phone with battery, GPS and signal. Keep your radios, your landout plan and your drivers. Manifest gets them to the right field faster.</p>
@@ -1246,7 +1238,7 @@ h1, h2, h3 { text-wrap: balance; }
       <details class="faq-i"><summary>How do we find a skydiver who landed out?<span class="faq-plus" aria-hidden="true"></span></summary><p>Their position appears on a live satellite map at the desk with the distance from the dropzone, and keeps updating until the landout is resolved. Staff can send a driver a pickup pin by QR code, Google Maps or WhatsApp, and call the jumper in one tap.</p></details>
       <details class="faq-i"><summary>Who gets notified when a jumper lands out?<span class="faq-plus" aria-hidden="true"></span></summary><p>The staff you choose get a push notification. The desk can also put every load on hold with one tap, and the jumper sees who is driving to them and the ETA.</p></details>
       <details class="faq-i"><summary>Can staff see a jumper&rsquo;s emergency contact?<span class="faq-plus" aria-hidden="true"></span></summary><p>Only when the jumper reports an injury. For need a ride or walking back, the emergency contact is not shown.</p></details>
-      <details class="faq-i"><summary>How do we know who is back after a load?<span class="faq-plus" aria-hidden="true"></span></summary><p>After each load the desk shows a Who&rsquo;s back list. Staff tick each name as the jumper walks in, and jumpers with a phone can tick themselves in the app. Anyone not ticked 30 minutes after the load left turns red.</p></details>
+      <details class="faq-i"><summary>How do we know who is back after a load?<span class="faq-plus" aria-hidden="true"></span></summary><p>After each load the desk shows a Who&rsquo;s back list. Staff tick each name as the jumper lands, so nobody is missed.</p></details>
       <details class="faq-i"><summary>Is it a replacement for our emergency plan?<span class="faq-plus" aria-hidden="true"></span></summary><p>No. It supports your dropzone&rsquo;s own emergency procedures. It is not a guaranteed rescue tracker: it depends on the jumper&rsquo;s phone having battery, GPS and signal.</p></details>
     </div>
     <p class="faq-more">Learn more: <a href="/how-manifest-works/">How Manifest works</a>, <a href="/skydiving-load-calls/">Load calls and holds</a>, <a href="/skydiving-manifest-software/">Manifest software</a>, <a href="/skydiving-app/">The app for jumpers</a>.</p>
