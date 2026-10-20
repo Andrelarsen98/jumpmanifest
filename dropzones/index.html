@@ -1222,6 +1222,45 @@ h1, h2, h3 { text-wrap: balance; }
   .faq-g { max-width: 820px; margin: 0 auto; padding: 0 4px 14px; font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: 26px; line-height: 32px; letter-spacing: -.4px; color: #050505; }
   .faq-g + .faq-list { margin-bottom: 44px; }
   @media (max-width: 600px) { .faq-g { font-size: 21px; line-height: 28px; } .band-btn { font-size: 17px; width: 100%; } }
+    /* 21 Oct 2026 (André): make it clear, "THAT'S IT". */
+  .pc .pc-thats{margin:22px 0 0;font-family:"General Sans","Manrope",sans-serif;font-weight:600;font-size:32px;line-height:38px;letter-spacing:-.02em;color:#050505}
+  .pc ul.pc-nos{list-style:none;margin:14px 0 26px;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+  .pc ul.pc-nos li{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:99px;background:#F5F5F6;font-size:15px;line-height:20px;font-weight:600;color:#050505}
+  .pc ul.pc-nos li::before{content:"";width:14px;height:14px;flex:0 0 auto;background:no-repeat center/14px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%2322C55E' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 8.5l3.2 3L13 4.5'/%3E%3C/svg%3E")}
+    /* PRICE CARD v3 (21 Oct 2026): André's reference, one price. */
+  .pq{max-width:780px;margin:56px auto 0;text-align:left}
+  .pq-tray{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px;background:#F2F2F3;border-radius:32px}
+  .pq-side,.pq-card{padding:30px 28px 28px;border-radius:24px;display:flex;flex-direction:column}
+  .pq-card{background:#fff;box-shadow:0 1px 2px rgba(15,23,42,.04),0 10px 30px -12px rgba(15,23,42,.14)}
+  .pq-ic{width:40px;height:40px;border-radius:11px;display:inline-flex;align-items:center;justify-content:center;background:#F0ECFE}
+  .pq-ic img{width:22px;height:22px}
+  .pq-ic-g{background:#3F3F46;color:#fff;box-shadow:inset 0 0 0 4px #52525B}
+  .pq-ic-g svg{width:18px;height:18px}
+  .pq-top{display:flex;justify-content:space-between;align-items:flex-start}
+  .pq-tag{font-size:12px;line-height:16px;font-weight:700;color:#050505;border:1px solid #E4E4E7;border-radius:8px;padding:4px 9px}
+  .pq h3{margin:22px 0 0;font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:20px;line-height:26px;color:#050505;text-align:left}
+  .pq-sub{margin:4px 0 0;font-size:14px;line-height:20px;color:#71717B}
+  .pq-big{display:flex;align-items:baseline;margin-top:22px;font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:48px;line-height:1;letter-spacing:-.03em;color:#050505}
+  .pq-big i{font-style:normal;color:#C4C4CC}
+  .pq-big small{margin-left:8px;font-family:"Manrope",sans-serif;font-size:14px;letter-spacing:0;font-weight:500;color:#52525B}
+  .pq-rule{height:1px;background:#E4E4E7;margin:26px 0 22px}
+  .pq-h{margin:0;font-size:14px;line-height:20px;font-weight:700;color:#050505}
+  .pq-list{list-style:none;margin:12px 0 0;padding:0}
+  .pq-list li{display:flex;gap:9px;align-items:flex-start;padding:4px 0;font-size:14px;line-height:20px;color:#3F3F46}
+  .pq-list svg{width:15px;height:15px;flex:0 0 auto;margin-top:2px;color:#30D158;stroke-width:2.6}
+  .pq-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;margin-top:auto;height:46px;padding:0 22px;border-radius:14px;background:linear-gradient(180deg,#2A2A2E,#050505);color:#fff!important;font-family:"Manrope",sans-serif;font-weight:600;font-size:15px;text-decoration:none!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 2px #E9E5FE}
+  .pq-card .pq-btn{margin-top:28px}
+  .pq-btn:hover{background:#6D42F5}
+  .pq-btn svg{width:15px;height:15px}
+  .pq-call{margin-top:10px;padding:32px 24px;border-radius:28px;text-align:center;box-shadow:inset 0 0 28px 10px rgba(255,255,255,.75);background:radial-gradient(38% 70% at 86% 80%,#A6D2FF 0%,rgba(166,210,255,0) 100%),radial-gradient(30% 55% at 98% 40%,#D7ECFF 0%,rgba(215,236,255,0) 100%),radial-gradient(34% 70% at 66% 22%,#FFCCFD 0%,rgba(255,204,253,0) 100%),radial-gradient(26% 46% at 12% 8%,#C9AEF8 0%,rgba(201,174,248,0) 100%),linear-gradient(174deg,#E4D2F4 0%,#FBF6CF 20%,#FFFDB4 32%,#FFEFD5 46%,#FFDFE8 58%,#FFCFF6 72%,#ECD5FF 85%,#DAE0FF 100%)}
+  .pq-faces{display:inline-flex;align-items:center}
+  .pq-faces img{width:56px;height:56px;border-radius:50%;border:3px solid #fff;display:block}
+  .pq-faces span{width:56px;height:56px;margin-left:-10px;border-radius:50%;background:#fff;display:inline-flex;align-items:center;justify-content:center;color:#050505}
+  .pq-faces svg{width:20px;height:20px}
+  .pq-call-h{margin:16px 0 0;font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:20px;line-height:26px;color:#050505}
+  .pq-call-s{margin:6px 0 0;font-size:14px;line-height:20px;color:#52525B}
+  .pq-btn-s{margin-top:18px;height:42px;border-radius:99px}
+  @media (max-width:700px){.pq-tray{grid-template-columns:1fr}.pq-card{order:-1}}
   </style>
   <!-- THE APP THEY JUMP WITH (9 Oct 2026): everything below exists in the
        app today; numbers from the database on 9 Oct 2026, rounded down. -->
@@ -1473,17 +1512,35 @@ h1, h2, h3 { text-wrap: balance; }
     <h2 class="pr-h">World-class manifest software,<br />free until your plane takes off.</h2>
     <p class="lead">Traditional dropzone software usually means a monthly bill, flying or not, with booking fees and add-ons stacked on top. Manifest Desk is simple: nothing until you fly, then $1 for each seat that does, plus 1% on app top-ups.</p>
     <p class="pr-dot"><span aria-hidden="true"></span>Same price for every dropzone. No quotes, nothing hidden.</p>
-    <div class="pc-grid pps">
-      <div class="pc hl"><div class="pc-band">One price for every dropzone</div>
-        <div class="pc-in">
-          <h3>Manifest Desk</h3>
-          <div class="pc-price">$1<small>per seat flown</small></div>
-          <p class="pc-limits">+ 1% on top-ups jumpers make in the app</p>
-          <a class="pc-out" href="/get-started/">Get started <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-          <p class="pc-note"><span class="pc-mark" aria-hidden="true"></span>No monthly fee. One bill for the seats you flew.</p>
-          <p class="calc-pay"><b>How it pays for itself.</b> Add $1 to your ticket: a $35 jump becomes $36, and Desk costs you nothing. Your call.</p>
-          <p class="calc-0">A month you do not fly: <b>$0</b></p>
+    <!-- PRICE CARD v3 (21 Oct 2026, André's reference): grey tray, the price
+         on a raised white card, a demo strip under it. One price only. -->
+    <div class="pq">
+      <div class="pq-tray">
+        <div class="pq-side">
+          <span class="pq-ic pq-ic-g" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span>
+          <h3>That&rsquo;s it.</h3>
+          <p class="pq-sub">Nothing else, ever.</p>
+          <div class="pq-big">$0<small>a month you do not fly</small></div>
+          <div class="pq-rule"></div>
+          <p class="pq-h">What you never pay:</p>
+          <ul class="pq-list"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>No setup fee</span></li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>No monthly fee</span></li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>No lock-in, cancel anytime</span></li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>No add-ons</span></li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>No hidden fees</span></li></ul>
         </div>
+        <div class="pq-card">
+          <div class="pq-top"><span class="pq-ic" aria-hidden="true"><img src="/assets/favicon.svg?v=4" alt="" width="22" height="22" /></span><span class="pq-tag">Every dropzone</span></div>
+          <h3>Manifest Desk</h3>
+          <p class="pq-sub">The whole jump day, connected to every jumper&rsquo;s phone</p>
+          <div class="pq-big">$1<i>.00</i><small>/seat flown</small></div>
+          <div class="pq-rule"></div>
+          <p class="pq-h">Everything included, plus:</p>
+          <ul class="pq-list"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>1% on top-ups jumpers make in the app</span></li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>One bill a month, for the seats you flew</span></li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Add $1 to your ticket and Desk costs you nothing</span></li></ul>
+          <a class="pq-btn" href="/get-started/">Get started</a>
+        </div>
+      </div>
+      <div class="pq-call">
+        <div class="pq-faces"><img src="/assets/opt/andre-192.webp" width="56" height="56" alt="" /><span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span></div>
+        <p class="pq-call-h">Want to see it on your own dropzone?</p>
+        <p class="pq-call-s">Book a 20-minute call. We walk you through a sample day.</p>
+        <a class="pq-btn pq-btn-s" href="/get-started/?demo">Book a demo<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
       </div>
     </div>
     <div class="pr-all">
@@ -1493,7 +1550,7 @@ h1, h2, h3 { text-wrap: balance; }
     <a class="pc-out pr-wide" href="/get-started/">Get started <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
     <div class="pr-guar">
       <h3>Zero risk. Never pay for a grounded day.</h3>
-      <p>No monthly fee, no setup fee, no contract. Run it next to your current system, and if you never fly a load on it, you never pay a cent. Winter, weather or a plane in maintenance: $0.</p>
+      <p>No monthly fee, no setup fee, no lock-in. Run it next to your current system, and if you never fly a load on it, you never pay a cent. Winter, weather or a plane in maintenance: $0.</p>
       <p class="pr-guar-s">We move your jumpers, balances and prices over for free, and we're with you on your first Saturday.</p>
     </div>
     <div class="pr-guar pr-jump">
@@ -1765,5 +1822,11 @@ g.forEach(function(b){b.classList.add('anim');b.querySelectorAll('.bt').forEach(
   Array.prototype.forEach.call(vs, function (v) { io.observe(v); });
 })();
 </script>
+<style id="btn-black">/* 21 Oct 2026 (André): no purple buttons anywhere. Every filled button is the
+   black price-card button: dark gradient, white text, soft ring. Shapes stay. */
+.sh-cta-demo,.pc-out,.sms-btn,.sm-btn,.pc-call,.lo-btn,.lc-btn,.hmw-btn,.dp-btn,.btn.primary,.pq-btn,a.btn[href*="apps.apple.com"],a.btn[href="/get"]{background:linear-gradient(180deg,#2A2A2E,#050505)!important;color:#fff!important;border:0!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 2px #E9E5FE!important;filter:none!important}
+.sh-cta-demo:hover,.pc-out:hover,.sms-btn:hover,.sm-btn:hover,.pc-call:hover,.lo-btn:hover,.lc-btn:hover,.hmw-btn:hover,.dp-btn:hover,.btn.primary:hover,.pq-btn:hover,a.btn[href*="apps.apple.com"]:hover,a.btn[href="/get"]:hover{background:#000!important;color:#fff!important}
+.sh-cta-demo *,.pc-out *,.sms-btn *,.sm-btn *,.pc-call *,.lo-btn *,.lc-btn *,.hmw-btn *,.dp-btn *,.pq-btn *{color:inherit!important}
+</style>
 </body>
 </html>
