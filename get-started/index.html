@@ -210,7 +210,10 @@
     if (sending) return; sending = true;
     var err2 = document.getElementById('err2'), finT = document.getElementById('finT');
     var msg = withOptions ? Object.keys(picked).map(function (k) { return k + ': ' + picked[k]; }).join(' · ') : '';
-    var body = { kind: demo ? 'demo' : 'signup', country: '', plan: '', dropzone: f.dropzone.value, name: f.name.value, email: f.email.value, phone: '', best_time: '', message: msg, website: f.website.value };
+    var tz = ''; try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+    // No country question: the visitor's time zone tells admin the country
+    // and zone, so Approve opens ready to send (20 Oct 2026).
+    var body = { kind: demo ? 'demo' : 'signup', country: tz, plan: '', dropzone: f.dropzone.value, name: f.name.value, email: f.email.value, phone: '', best_time: '', message: msg, website: f.website.value };
     finT.textContent = 'Sending...'; err2.hidden = true;
     fetch(URL_, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) })
       .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
