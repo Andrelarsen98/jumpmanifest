@@ -451,7 +451,11 @@ h1, h2, h3 { text-wrap: balance; }
     font-weight: 700; font-size: 15px; }
   .hmw-btn:hover { background: #6D42F5; }
   .hmw-link { display: inline-block; margin-left: 16px; color: #040815; font-weight: 700; font-size: 15px; text-decoration: underline; text-underline-offset: 3px; }
-  @media (max-width: 700px) { .hmw-cta { grid-template-columns: 1fr; } .hmw-cta-card { padding: 22px; } .hmw-link { margin: 14px 0 0; display: block; } }
+  /* 20 Oct 2026: button rows pinned to the card bottom so both line up. */
+  .hmw-cta-card { display: flex; flex-direction: column; }
+  .hmw-row { margin-top: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+  .hmw-row .hmw-link { margin: 0; }
+  @media (max-width: 700px) { .hmw-cta { grid-template-columns: 1fr; } .hmw-cta-card { padding: 22px; } }
 </style>
 <script type="application/ld+json">
 {
@@ -785,13 +789,17 @@ h1, h2, h3 { text-wrap: balance; }
       <div class="hmw-cta-card">
         <h3>Jumping this weekend?</h3>
         <p>Get the app. Free on iPhone.</p>
-        <a class="hmw-btn" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429">Download on the App Store</a>
+        <div class="hmw-row">
+          <a class="hmw-btn" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429">Download on the App Store</a>
+        </div>
       </div>
       <div class="hmw-cta-card">
         <h3>Running a dropzone?</h3>
         <p>We set you up and move your jumpers over.</p>
-        <a class="hmw-btn" href="/get-started/?demo">Book a 20-minute demo</a>
-        <a class="hmw-link" href="/dropzones/#pricing">See pricing</a>
+        <div class="hmw-row">
+          <a class="hmw-btn" href="/get-started/?demo">Book a demo</a>
+          <a class="hmw-link" href="/dropzones/#pricing">See pricing</a>
+        </div>
       </div>
     </div>
 
