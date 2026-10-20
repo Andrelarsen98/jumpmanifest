@@ -432,6 +432,8 @@ h1, h2, h3 { text-wrap: balance; }
 .doc .founder .fd-name { margin: 18px 0 0; font-size: 40px; line-height: 44px; letter-spacing: -1px; color: #fff; }
 .doc .founder .fd-role { margin: 10px 0 0; font-size: 16px; line-height: 24px; font-weight: 500; color: #fff; padding-bottom: 22px; border-bottom: 1px solid rgba(255,255,255,.16); }
 .doc .founder .fd-text { margin: 22px 0 0; font-size: 17px; line-height: 26px; font-weight: 400; color: #fff; overflow-wrap: anywhere; }
+/* The two Instagram handles stay together, side by side (20 Oct 2026). */
+.founder .fd-igs { display: inline-flex; flex-wrap: nowrap; gap: 24px; }
 .founder .fd-ctas { display: flex; align-items: center; flex-wrap: wrap; gap: 16px 24px; margin-top: 26px; }
 .founder .fd-btn { display: inline-flex; align-items: center; gap: 14px; height: 56px; padding: 6px 6px 6px 24px; border-radius: 999px;
   background: #fff; color: #050505; font-size: 17px; font-weight: 600; text-decoration: none; }
@@ -653,8 +655,8 @@ a.trust-a:hover { color: var(--g); text-decoration: none; }
       <p class="fd-text">Manifest is built by a small team of skydivers and software developers. I lead it, and every message to andre@manifestjump.com is still read and answered by me.</p>
       <div class="fd-ctas">
         <a class="fd-btn" href="mailto:andre@manifestjump.com">Write to me<span class="fd-bi" aria-hidden="true"><svg viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l6 6-6 6"/></svg></span></a>
-        <a class="fd-ig" href="https://www.instagram.com/manifestjump/" target="_blank" rel="noopener">@manifestjump</a>
-        <a class="fd-ig" href="https://www.instagram.com/andre_larsen/" target="_blank" rel="noopener">@andre_larsen</a>
+        <span class="fd-igs"><a class="fd-ig" href="https://www.instagram.com/manifestjump/" target="_blank" rel="noopener">@manifestjump</a>
+        <a class="fd-ig" href="https://www.instagram.com/andre_larsen/" target="_blank" rel="noopener">@andre_larsen</a></span>
       </div>
       <p class="fd-co">Manifest Jump LLC &middot; Wyoming, USA &middot; Dubai,&nbsp;UAE</p>
     </aside>
