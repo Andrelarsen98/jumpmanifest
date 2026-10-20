@@ -1045,7 +1045,7 @@ h1, h2, h3 { text-wrap: balance; }
   /* 3D PAGE v2 (20 Oct 2026, André: "looks very AI, does not match"): one
      black hero as the big moment, the rest white like the other pages. */
   .t3-hero{position:relative;isolation:isolate;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:clamp(56px,7vw,96px) 0 0;color:#fff}
-  .t3-hero::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:#050505;z-index:-1}
+  .t3-hero::before{content:"";position:absolute;top:-400px;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:#050505;z-index:-1}
   .t3-hero .eyebrow{justify-content:flex-start;color:#fff;margin-left:0}
   .t3-hero h1{margin:0;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;font-size:clamp(44px,5.6vw,80px);line-height:1;color:#fff;text-wrap:balance}
   .t3-hero .lead{margin:24px 0 0;max-width:520px;text-align:left;color:#D1D1D6}
@@ -1081,6 +1081,11 @@ h1, h2, h3 { text-wrap: balance; }
   .t3-big{text-align:center}
   .t3-big h2{max-width:16ch;margin:0 auto}
   .t3-big p{max-width:620px;margin:20px auto 0;font-size:20px;line-height:31px;color:#52525B}
+  .t3-share{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .t3-share h2,.t3-share .eyebrow{text-align:left;justify-content:flex-start;margin-left:0}
+  .t3-share .lead{text-align:left;margin-left:0}
+  .t3-share-ph img{display:block;width:min(380px,100%);height:auto;margin:0 auto}
+  @media (max-width:899px){.t3-share{grid-template-columns:1fr;gap:36px}.t3-share-ph img{width:min(300px,80%)}}
   .t3-safe{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
   .t3-safe h2,.t3-safe .eyebrow{text-align:left;justify-content:flex-start;margin-left:0}
   .t3-chk{list-style:none;margin:28px 0 0;padding:0}
@@ -1144,6 +1149,20 @@ h1, h2, h3 { text-wrap: balance; }
     </div>
   </section>
 
+  <section class="sec t3-share" id="share">
+    <div>
+      <p class="eyebrow">Share the jump</p>
+      <h2>Post it before you pack.</h2>
+      <p class="lead">Every jump becomes a card with the track, your exit, freefall and top speed. Tap it to tilt, rotate or zoom.</p>
+      <ul class="t3-chk">
+        <li><b>Instagram Story and Reels.</b> Snapchat and WhatsApp too.</li>
+        <li><b>The Manifest community.</b> Post it for the jumpers you fly with.</li>
+        <li><b>Save it or copy a link.</b> Or send it anywhere else from your phone.</li>
+      </ul>
+    </div>
+    <div class="t3-share-ph"><img src="/assets/opt/share-3d.webp" width="870" height="1808" alt="The Manifest share screen: a jump at Skydive Perris as a card with exit 13.3k ft, freefall 65 sec and top speed, and buttons for Instagram Story, Instagram Reels, Manifest Community, Snapchat, WhatsApp, Save, Copy link and More" loading="lazy" decoding="async" /></div>
+  </section>
+
   <section class="sec" id="sensors">
     <p class="eyebrow">Two sensors, one jump</p>
     <h2>GPS for where. Barometer for how high.</h2>
@@ -1152,6 +1171,16 @@ h1, h2, h3 { text-wrap: balance; }
       <div><b>Barometer for height.</b><p>Exit height, opening height and freefall time, from air pressure. It needs no satellites and updates far faster than a GPS fix.</p></div>
     </div>
     <p class="t3-note"><b>The same division of labour a dedicated skydiving logger uses.</b> Pressure moves with the weather, so an honest track is calibrated against ground level at the dropzone. Expect metres of accuracy, not centimetres.</p>
+  </section>
+
+  <section class="sec" id="honest">
+    <p class="eyebrow">The honest part</p>
+    <h2>A replay, not an altimeter.</h2>
+    <div class="t3-rows">
+      <div><b>Never use it to pull.</b><p>Manifest records the jump for you to watch afterwards. Your altimeter and your AAD keep you alive, not your phone.</p></div>
+      <div><b>GPS is not always perfect.</b><p>Inside the aircraft, in a pocket or under a metal roof, the phone can lose the satellites for a while. The climb can draw rough or jump, and some tracks have gaps.</p></div>
+      <div><b>Metres, not centimetres.</b><p>Heights come from the barometer and are set against the ground at the dropzone. Weather moves pressure, so treat every number as close, not exact.</p></div>
+    </div>
   </section>
 
   <section class="sec" id="numbers">
