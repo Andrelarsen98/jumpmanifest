@@ -1180,7 +1180,7 @@ h1, h2, h3 { text-wrap: balance; }
   /* JUMPABLE: the question, two real phones on the meadow, then a spec list */
   .wx-q h2{font-size:clamp(46px,6vw,84px)!important;line-height:1!important;letter-spacing:-.035em!important;font-weight:550!important}
   .wx-duo{display:flex;justify-content:center;align-items:center;gap:clamp(12px,5vw,72px);margin-top:56px;padding:clamp(36px,6vw,80px) 16px;border-radius:32px;background:#9DB67A url(/assets/features/meadow.webp) center / cover no-repeat;isolation:isolate;transform:translateZ(0)}
-  .wx-duo img{display:block;width:min(340px,44%);height:auto;filter:drop-shadow(0 24px 40px rgba(0,0,0,.35))}
+  .wx-duo img{display:block;width:min(360px,72%);height:auto;filter:drop-shadow(0 24px 40px rgba(0,0,0,.35))}
   .wx-spec{max-width:900px;margin:64px auto 0;padding:0}
   .wx-spec div{display:grid;grid-template-columns:280px 1fr;gap:8px 40px;padding:26px 0;border-top:1px solid #E4E4E7}
   .wx-spec div:last-child{border-bottom:1px solid #E4E4E7}
@@ -1267,60 +1267,41 @@ h1, h2, h3 { text-wrap: balance; }
     .wx-summary{position:relative;left:auto;top:auto;transform:none;order:-1;margin:20px 20px 4px;width:auto;max-width:none;font-size:16px;line-height:22px;padding:14px 18px}
     .wx-ground{height:56px}
     .wx-duo{border-radius:24px;padding:28px 10px;gap:10px}
-    .wx-duo img{width:46%}
+    .wx-duo img{width:72%}
     .wx-units{padding:26px 20px;border-radius:24px}
     .wx-rail li{padding-left:64px;padding-bottom:32px}
     .wx-rail b{font-size:21px;line-height:28px}
     .wx-rail p{font-size:16px;line-height:25px}
     .wx-safe .big{font-size:19px;line-height:29px}
   }
+    /* 20 Oct 2026 (André): the cloud sky is the hero; the black winds band lower down. */
+  .wx-top{text-align:center;padding-top:clamp(48px,6vw,88px)}
+  .wx-top h1{margin:0 auto;font-weight:550;letter-spacing:-.035em;font-size:clamp(46px,6.2vw,88px);line-height:.98;color:#050505;text-wrap:balance}
+  .wx-top h1 .eyebrow{display:flex;justify-content:center;color:#040815;font-family:"Manrope",sans-serif;letter-spacing:0;line-height:24px;margin-bottom:24px;font-size:16px;font-weight:500}
+  .wx-top h1 .h1-main{display:block;color:#050505}
+  .wx-top .lead{font-size:20px;line-height:31px;color:#52525B}
+  .wx-screen .wx-cap{text-align:center;max-width:380px}
+  .wx-top .lead{margin:24px auto 0;max-width:560px}
+  .wx-top .wx-ctas{justify-content:center}
+  .wx-screen{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .wx-screen h2,.wx-screen .eyebrow{text-align:left;justify-content:flex-start;margin-left:0}
+  .wx-screen .lead{text-align:left;margin-left:0}
+  .wx-screen figure{margin:0;display:flex;flex-direction:column;align-items:center}
+  .wx-screen video{display:block;width:min(380px,100%);height:auto}
+  .wx-sky{margin-top:clamp(96px,12vw,140px)}
+  @media (max-width:899px){.wx-screen{grid-template-columns:1fr;gap:36px}.wx-top .lead{font-size:18px;line-height:28px}}
   </style>
 
-  <section class="wx-hero">
-    <div>
-      <h1><span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h11a3 3 0 1 0-3-3"/><path d="M3 13h15a3 3 0 1 1-3 3"/><path d="M3 17h7"/></svg>Skydiving weather app</span><span class="h1-main">Built around the jump.</span></h1>
-      <p class="lead">The wind where you get out, under canopy and on the ground, for any dropzone.</p>
-      <div class="wx-ctas">
+
+
+
+  <section class="wx-top">
+    <h1><span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h11a3 3 0 1 0-3-3"/><path d="M3 13h15a3 3 0 1 1-3 3"/><path d="M3 17h7"/></svg>Skydiving weather app</span><span class="h1-main">Built around the jump.</span></h1>
+    <p class="lead">The wind where you get out, under canopy and on the ground, for any dropzone.</p>
+    <div class="wx-ctas">
         <a class="wx-badge" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="Download Manifest on the App Store"><img src="/assets/appstore-badge.svg?v=1" alt="Download on the App Store" width="162" height="54" /></a>
         <a class="wx-link" href="#winds">Read the three winds</a>
       </div>
-    </div>
-    <figure>
-      <video autoplay loop muted playsinline preload="metadata" poster="/assets/opt/weather-poster.feba04c5.webp" width="720" height="1280" aria-label="The Manifest weather screen for a dropzone: sky and ground wind on top, the next few hours with sunrise and sunset, a cloud summary up to 14,000 feet, and wind up where you get out, under canopy and on the ground">
-        <source src="/assets/opt/weather.6052ec54.mp4" type="video/mp4" />
-      </video>
-      <figcaption class="wx-cap">The weather screen in the Manifest app, scrolling through the hours at one dropzone.</figcaption>
-    </figure>
-  </section>
-
-  <section class="wx-sky" id="winds">
-    <div class="wx-sky-in">
-      <div>
-        <p class="eyebrow">Winds aloft for skydiving</p>
-        <h2>Three heights. Three numbers.</h2>
-        <p class="wx-lead">Winds aloft, boiled down to the three heights a jump actually passes through.</p>
-        <div class="wx-more">
-          <div><b>A note when it changes.</b><p>A turn of 40&deg; or more, or wind that picks up, eases or falls away, shows between the rows before you board.</p></div>
-          <div><b>The full profile.</b><p>Wind every 1,000 ft (or every 300 m), each level with direction, temperature and cloud. Heights are above the dropzone, with its ground elevation shown.</p></div>
-        </div>
-      </div>
-      <div>
-        <div class="wx-ladder" role="img" aria-label="Wind at each stage: 12 knots from the north-west at 13,000 feet, a note that the wind eases to 1 knot, 1 knot from the west under canopy around 3,000 feet, and 2 knots from the south on the ground, gusting to 6">
-          <p class="wx-ladder-h">Wind at each stage</p>
-          <div class="wx-alt"><div><small>13,000 ft</small><b>Up where you get out</b><span>from the north-west</span></div><div class="wx-kt">12<i>kt</i></div></div>
-          <div class="wx-note">Wind eases to 1 kt.</div>
-          <div class="wx-alt"><div><small>Around 3,000 ft</small><b>Under canopy</b><span>from the west</span></div><div class="wx-kt">1<i>kt</i></div></div>
-          <div class="wx-alt"><div><small>Ground</small><b>On the ground</b><span>gusting to 6 kt, from the south</span></div><div class="wx-kt">2<i>kt</i></div></div>
-        </div>
-        <p class="wx-cap">From the weather screen at Skydive Voss.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec" id="cloud">
-    <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 .5-7.97A6 6 0 0 0 6 11a3.5 3.5 0 0 0 1 7z"/></svg>Cloud</p>
-    <h2>Cloud, by layer.</h2>
-    <p class="lead">Cloud is the other thing that holds loads. One line first, then cover for each band.</p>
     <div class="wx-strata" role="img" aria-label="The three cloud bands Manifest shows: high above 26,000 feet, middle from 10,000 to 26,000 feet, and low below about 10,000 feet, with the summary line No cloud layer up to 14,000 ft">
       <div class="wx-layer wx-l1"><b>High</b><span>Above 26,000 ft</span><img src="/assets/opt/cloud-r.8c2fd097.webp" alt="" width="1150" height="646" loading="lazy" decoding="async" /></div>
       <div class="wx-layer wx-l2"><b>Middle</b><span>10,000 to 26,000 ft</span><img src="/assets/opt/cloud.852c5bc0.webp" alt="" width="1150" height="646" loading="lazy" decoding="async" /></div>
@@ -1331,14 +1312,27 @@ h1, h2, h3 { text-wrap: balance; }
     <p class="wx-fine"><b>These are the forecast model&rsquo;s bands, not a measured cloud base.</b> Cloud clearance is your dropzone&rsquo;s call.</p>
   </section>
 
+  <section class="sec wx-screen" id="screen">
+    <div>
+      <p class="eyebrow">In the app</p>
+      <h2>Cloud first. Then the wind.</h2>
+      <p class="lead">One line on the cloud, then cover for each band, the next few hours and the wind at every stage of the jump.</p>
+    </div>
+    <figure>
+      <video autoplay loop muted playsinline preload="metadata" poster="/assets/opt/weather-poster.feba04c5.webp" width="720" height="1280" aria-label="The Manifest weather screen for a dropzone: sky and ground wind on top, the next few hours with sunrise and sunset, a cloud summary up to 14,000 feet, and wind up where you get out, under canopy and on the ground">
+        <source src="/assets/opt/weather.6052ec54.mp4" type="video/mp4" />
+      </video>
+      <figcaption class="wx-cap">The weather screen in the Manifest app, scrolling through the hours at one dropzone.</figcaption>
+    </figure>
+  </section>
+
   <section class="sec wx-q" id="jumpable">
     <h2>Is it jumpable today?</h2>
     <p class="lead">Manifest deliberately does not answer it with a green tick or a red cross.</p>
     <div class="wx-duo">
       <img src="/assets/skydiving-weather-calmest.webp" width="569" height="1182" alt="Manifest weather at Skydive Voss: clear, rain around for parts of the day, calmest 19:00 to 21:00, no cloud layer up to 14,000 ft, and the wind at each stage" loading="lazy" decoding="async" />
-      <img src="/assets/skydiving-weather-cloud.webp" width="569" height="1182" alt="Manifest weather at Skydive Voss at 07:00: cloud 1,000 ft to 2,000 ft, broken, clear above 3,000 ft, and a note that the wind drops by about half under canopy" loading="lazy" decoding="async" />
     </div>
-    <p class="wx-cap">Two hours at Skydive Voss, in the Manifest app.</p>
+    <p class="wx-cap">The calmest window at Skydive Voss, in the Manifest app.</p>
     <dl class="wx-spec">
       <div><dt>The next few hours</dt><dd>A strip of hours from early morning to late evening, each with sky, temperature and wind, with sunrise and sunset dropped in where they fall.</dd></div>
       <div><dt>The day in one line</dt><dd>&ldquo;Rain around for parts of the day&rdquo;, then the calmest window left in today&rsquo;s daylight, such as &ldquo;Calmest 19:00 to 21:00&rdquo;.</dd></div>
@@ -1406,6 +1400,30 @@ h1, h2, h3 { text-wrap: balance; }
       <p class="big">Weather in Manifest supports your judgement and the dropzone&rsquo;s. It never replaces either.</p>
       <p class="small">A forecast model can miss a local gust front, a sea breeze or a cloud bank sitting over the field, and global models are weaker in complex terrain like fjords and mountains. Look at the sky, look at the wind sock, listen to the S&amp;TA and the pilot, and stay within your own limits.</p>
       <p class="held">If the dropzone holds the loads, the loads are held.</p>
+    </div>
+  </section>
+
+  <section class="wx-sky" id="winds">
+    <div class="wx-sky-in">
+      <div>
+        <p class="eyebrow">Winds aloft for skydiving</p>
+        <h2>Three heights. Three numbers.</h2>
+        <p class="wx-lead">Winds aloft, boiled down to the three heights a jump actually passes through.</p>
+        <div class="wx-more">
+          <div><b>A note when it changes.</b><p>A turn of 40&deg; or more, or wind that picks up, eases or falls away, shows between the rows before you board.</p></div>
+          <div><b>The full profile.</b><p>Wind every 1,000 ft (or every 300 m), each level with direction, temperature and cloud. Heights are above the dropzone, with its ground elevation shown.</p></div>
+        </div>
+      </div>
+      <div>
+        <div class="wx-ladder" role="img" aria-label="Wind at each stage: 12 knots from the north-west at 13,000 feet, a note that the wind eases to 1 knot, 1 knot from the west under canopy around 3,000 feet, and 2 knots from the south on the ground, gusting to 6">
+          <p class="wx-ladder-h">Wind at each stage</p>
+          <div class="wx-alt"><div><small>13,000 ft</small><b>Up where you get out</b><span>from the north-west</span></div><div class="wx-kt">12<i>kt</i></div></div>
+          <div class="wx-note">Wind eases to 1 kt.</div>
+          <div class="wx-alt"><div><small>Around 3,000 ft</small><b>Under canopy</b><span>from the west</span></div><div class="wx-kt">1<i>kt</i></div></div>
+          <div class="wx-alt"><div><small>Ground</small><b>On the ground</b><span>gusting to 6 kt, from the south</span></div><div class="wx-kt">2<i>kt</i></div></div>
+        </div>
+        <p class="wx-cap">From the weather screen at Skydive Voss.</p>
+      </div>
     </div>
   </section>
 

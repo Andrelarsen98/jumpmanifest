@@ -1136,7 +1136,7 @@ h1, h2, h3 { text-wrap: balance; }
   .ll-num h2{margin-top:8px!important}
   .ll-num .lead{max-width:620px}
   .ll-live{display:inline-flex;align-items:center;gap:10px;margin-top:28px;font-family:"Manrope",sans-serif;font-weight:700;font-size:16px;color:#050505}
-  .ll-live i{width:10px;height:10px;border-radius:50%;background:#22C55E;box-shadow:0 0 0 0 rgba(34,197,94,.5);animation:llPulse 2s ease-out infinite}
+  /* the app's own Live tag (dropzone-picker-sheet: 7px dot, gap 5, C.live #30D158 dark theme) */.ll-tag{display:inline-flex;align-items:center;gap:5px;background:#050505;border-radius:99px;padding:5px 11px;color:#30D158;font-size:13px;font-weight:700;letter-spacing:.2px}.ll-tag i{width:7px;height:7px;border-radius:50%;background:#30D158}
   @keyframes llPulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,.55)}100%{box-shadow:0 0 0 14px rgba(34,197,94,0)}}
   /* steps beside the hand */
   .ll-how{display:grid;grid-template-columns:5fr 6fr;gap:72px;align-items:center}
@@ -1166,7 +1166,7 @@ h1, h2, h3 { text-wrap: balance; }
   .ll-line::before{content:"";position:absolute;left:0;right:0;top:118px;height:2px;background:#3F3F46}
   .ll-line::after{content:"";position:absolute;left:0;top:118px;height:2px;width:100%;background:#6D42F5;transform-origin:left;animation:llRun 6s linear infinite}
   @keyframes llRun{0%{transform:scaleX(0)}85%{transform:scaleX(1)}100%{transform:scaleX(1);opacity:0}}
-  @media (prefers-reduced-motion:reduce){.ll-line::after{animation:none}.ll-live i{animation:none}}
+  @media (prefers-reduced-motion:reduce){.ll-line::after{animation:none}}
   .ll-line li{position:relative;flex:0 0 auto;width:200px;text-align:center}
   .ll-line li:first-child{text-align:left}
   .ll-line li:last-child{text-align:right}
@@ -1251,7 +1251,7 @@ h1, h2, h3 { text-wrap: balance; }
     <span class="big" aria-hidden="true">230</span>
     <h2>Dropzones turning live.</h2>
     <p class="lead">Straight from each dropzone&rsquo;s own manifest board. Manifest does not make up times. If manifest moves a load, you see it move.</p>
-    <p class="ll-live"><i aria-hidden="true"></i>Look for the green Live tag</p>
+    <p class="ll-live">Look for the <span class="ll-tag"><i aria-hidden="true"></i>Live</span> tag</p>
   </section>
 
   <section class="sec ll-how" id="how">
@@ -1284,7 +1284,7 @@ h1, h2, h3 { text-wrap: balance; }
     </div>
     <div class="vis-media ll-clear">
       <video class="ll-ls" data-lazy autoplay loop muted playsinline preload="none" poster="/assets/opt/lockscreen-poster.6252405d.webp" width="720" height="1152" aria-label="A Manifest load on the iPhone Lock Screen counting down to the call, with Gear up and You're on the load notifications, then the live loads screen for the dropzone">
-        <source data-src="/assets/opt/lockscreen.704735fc.mp4" type="video/mp4" />
+        <source data-src="/assets/opt/lockscreen-v2.mp4" type="video/mp4" />
       </video>
     </div>
   </section>
@@ -1306,7 +1306,7 @@ h1, h2, h3 { text-wrap: balance; }
     <ul class="ll-why">
       <li>You stop missing loads. <span>The call reaches you wherever you are on the dropzone.</span></li>
       <li>You stop hovering at manifest. <span>The board is in your pocket.</span></li>
-      <li>You plan the day better. <span>Minutes to call tells you if there is time for a pack job, food or another dirt dive.</span></li>
+      <li>You plan the day better. <span>Minutes to call tells you if there is time for a pack job, food or a coffee.</span></li>
       <li>You find your group. <span>See who is on which load before you go looking for them.</span></li>
     </ul>
   </section>
