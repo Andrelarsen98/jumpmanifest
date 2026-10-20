@@ -327,7 +327,9 @@
   .pc ul.pc-list li.pc-pill { display: block; min-height: 0; margin-bottom: 10px; background: #F0ECFE; border-radius: 12px; padding: 10px 14px; text-align: center; font-size: 14px; line-height: 20px; font-weight: 600; letter-spacing: 0; color: #050505; }
   .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   /* PAY PER SEAT (19 Oct 2026): one price card + a seat calculator. */
-  .pps { grid-template-columns: 1fr 1fr; max-width: 980px; margin-left: auto; margin-right: auto; align-items: stretch; }
+  /* NO SLIDER (20 Oct 2026, André: it ran to $22k a month and scared
+     people): one price card, centred, with the two lines that matter. */
+  .pps { grid-template-columns: 1fr; max-width: 560px; margin-left: auto; margin-right: auto; align-items: stretch; }
   .pps .pc-price { font-size: 64px; letter-spacing: -2px; }
   .pps .pc-limits { margin-top: 10px; font-size: 17px; font-weight: 600; color: #050505; }
   .calc .calc-r { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6px 12px; margin-top: 22px; font-size: 16px; font-weight: 500; color: #050505; }
@@ -1314,7 +1316,7 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
         <h3><span class="eb-mark" aria-hidden="true"></span>Manifest Desk</h3>
         <ul>
           <li><span class="vs-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span><span>A desk connected to the app your jumpers already carry</span></li>
-          <li><span class="vs-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span><span>One simple price up front: $1 per seat flown, no monthly fee</span></li>
+          <li><span class="vs-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span><span>$1 per seat flown. Nothing up front, no monthly fee</span></li>
           <li><span class="vs-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span><span>Multiple payment options in the app</span></li>
           <li><span class="vs-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span><span>Every call on every phone, and on the Lock Screen</span></li>
           <li><span class="vs-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span><span>No lock-in, cancel anytime</span></li>
@@ -1475,15 +1477,6 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
           <p class="pc-limits">+ 1% on top-ups jumpers make in the app</p>
           <a class="pc-out" href="mailto:andre@manifestjump.com?subject=Manifest%20Desk%3A%20get%20started">Get started <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
           <p class="pc-note"><span class="pc-mark" aria-hidden="true"></span>No monthly fee. One bill for the seats you flew.</p>
-        </div>
-      </div>
-      <div class="pc calc">
-        <div class="pc-in">
-          <h3>What would you pay?</h3>
-          <label class="calc-r"><span>Loads a day</span><b id="cL">10</b><input type="range" id="iL" min="1" max="30" value="10" aria-label="Loads a day" /></label>
-          <label class="calc-r"><span>Jumpers per load</span><b id="cJ">14</b><input type="range" id="iJ" min="2" max="23" value="14" aria-label="Jumpers per load" /></label>
-          <label class="calc-r"><span>Days you fly a month</span><b id="cD">12</b><input type="range" id="iD" min="1" max="31" value="12" aria-label="Days you fly a month" /></label>
-          <div class="calc-out"><span>Your bill</span><b id="cT">$1,680</b><small id="cS">1,680 seats flown</small></div>
           <p class="calc-pay"><b>How it pays for itself.</b> Add $1 to your ticket: a $35 jump becomes $36, and Desk costs you nothing. Your call.</p>
           <p class="calc-0">A month you do not fly: <b>$0</b></p>
         </div>
@@ -1883,21 +1876,6 @@ section[id], header[id], div[id] { scroll-margin-top: 96px; }
 })();
 </script>
 <script>
-// PAY PER SEAT calculator: loads a day x jumpers per load x days a month, $1 a seat.
-(function () {
-  var L = document.getElementById('iL'), J = document.getElementById('iJ'), D = document.getElementById('iD');
-  if (!L) return;
-  function upd() {
-    var seats = L.value * J.value * D.value;
-    document.getElementById('cL').textContent = L.value;
-    document.getElementById('cJ').textContent = J.value;
-    document.getElementById('cD').textContent = D.value;
-    document.getElementById('cT').textContent = '$' + seats.toLocaleString('en-US');
-    document.getElementById('cS').textContent = seats.toLocaleString('en-US') + ' seats flown';
-  }
-  [L, J, D].forEach(function (x) { x.addEventListener('input', upd); });
-  upd();
-})();
 </script>
 <script id="bento-in">
 (function(){var g=document.querySelectorAll('.bento');if(!('IntersectionObserver' in window)||!g.length)return;
