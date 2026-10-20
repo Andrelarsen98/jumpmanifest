@@ -427,6 +427,8 @@ h1, h2, h3 { text-wrap: balance; }
 .founder .fd-eb { display: flex; align-items: center; gap: 10px; margin: 0; font-size: 15px; line-height: 22px; font-weight: 500; color: #fff; }
 .founder .fd-mark { width: 22px; height: 16px; flex: 0 0 auto; background: #6D42F5;
   -webkit-mask: url(/assets/manifest-mark.svg) center / contain no-repeat; mask: url(/assets/manifest-mark.svg) center / contain no-repeat; }
+/* FOUNDER PHOTO (20 Oct 2026): André at the dropzone, round. */
+.founder .fd-photo { display: block; width: 96px; height: 96px; border-radius: 50%; object-fit: cover; margin: 22px 0 0; }
 .doc .founder .fd-name { margin: 18px 0 0; font-size: 40px; line-height: 44px; letter-spacing: -1px; color: #fff; }
 .doc .founder .fd-role { margin: 10px 0 0; font-size: 16px; line-height: 24px; font-weight: 500; color: #fff; padding-bottom: 22px; border-bottom: 1px solid rgba(255,255,255,.16); }
 .doc .founder .fd-text { margin: 22px 0 0; font-size: 17px; line-height: 26px; font-weight: 400; color: #fff; overflow-wrap: anywhere; }
@@ -638,17 +640,17 @@ a.trust-a:hover { color: var(--g); text-decoration: none; }
     <h1>One system for both sides of the hangar.</h1>
     <p class="intro">Manifest is the skydiving app jumpers use for everything on a jump day. Manifest Desk is the manifest software that runs the dropzone. They are connected live, so a load called at the desk lands on every jumper's phone.</p>
     <div class="trust">
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20a6 6 0 0 1 12 0M17 11a3 3 0 1 0 0-6M21 20a6 6 0 0 0-4-5.6"/></svg>Jumpers from 230 dropzones in 46 countries</span>
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><path d="M8.5 15.5a5 5 0 0 1 0-7M15.5 8.5a5 5 0 0 1 0 7M5.6 18.4a9 9 0 0 1 0-12.8M18.4 5.6a9 9 0 0 1 0 12.8"/></svg>Live loads at 230 dropzones</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20a6 6 0 0 1 12 0M17 11a3 3 0 1 0 0-6M21 20a6 6 0 0 0-4-5.6"/></svg>Jumpers at 230 dropzones in 46 countries</span>
     </div>
     </div>
     <!-- FOUNDER CARD (16 Oct 2026, design review F07): who builds Manifest. No
        photo yet, so none is shown. -->
     <aside class="founder" aria-labelledby="founder-name">
       <p class="fd-eb"><span class="fd-mark" aria-hidden="true"></span>Who builds Manifest</p>
+      <img class="fd-photo" src="/assets/opt/andre-192.webp" srcset="/assets/opt/andre-192.webp 192w, /assets/opt/andre-384.webp 384w" sizes="96px" width="96" height="96" alt="Andr&eacute; Larsen at the dropzone" decoding="async" />
       <h2 class="fd-name" id="founder-name">Andr&eacute; Larsen</h2>
       <p class="fd-role">Founder, Manifest Jump LLC</p>
-      <p class="fd-text">You write to me, not a ticket queue. Every message to andre@manifestjump.com is read and answered by me.</p>
+      <p class="fd-text">Manifest is built by a small team of skydivers and software developers. I lead it, and every message to andre@manifestjump.com is still read and answered by me.</p>
       <div class="fd-ctas">
         <a class="fd-btn" href="mailto:andre@manifestjump.com">Write to me<span class="fd-bi" aria-hidden="true"><svg viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l6 6-6 6"/></svg></span></a>
         <a class="fd-ig" href="https://www.instagram.com/manifestjump/" rel="noopener">@manifestjump</a>
