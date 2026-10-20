@@ -666,6 +666,22 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
 .sh-nav:has(.sh-dd.open) .sh-dd:not(.open) .sh-panel{transition:none}
 .sh-cta-demo:focus-visible,.fd-btn:focus-visible,.btn.ghost:focus-visible,.btn.demo:focus-visible,.band-btn:focus-visible,.pc-out:focus-visible,.sms-btn:focus-visible,.sm-btn:focus-visible,.pc-call:focus-visible,.lo-btn:focus-visible,.lc-btn:focus-visible,.hmw-btn:focus-visible,.dp-btn:focus-visible,.btn.primary:focus-visible,.pq-btn:focus-visible,a.btn[href*="apps.apple.com"]:focus-visible,a.btn[href="/get"]:focus-visible{outline:2px solid #050505!important;outline-offset:3px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 3px #fff!important}
 </style>
+<style id="founder-card-v2">/* 21 Oct 2026 (André): the founder card is the photo, fading to black at the bottom. */
+aside.founder.fc{position:relative;width:100%;max-width:380px;aspect-ratio:4/5.4;margin:0 auto;padding:0!important;border:0!important;border-radius:32px;overflow:hidden;background:#050505!important;box-shadow:0 30px 70px -28px rgba(15,23,42,.45),0 2px 8px rgba(15,23,42,.08);text-align:left}
+aside.founder.fc>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:52% 18%;transform:scale(1.12);transform-origin:52% 10%}
+aside.founder.fc::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,5,0) 46%,rgba(5,5,5,.6) 64%,rgba(5,5,5,.92) 80%);pointer-events:none}
+.fc-in{position:absolute;left:0;right:0;bottom:0;padding:26px 26px 24px;z-index:1;color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.55)}
+.fc-eb{margin:0;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:rgba(255,255,255,.75)}
+.fc .fc-name{margin:8px 0 0;font-family:"General Sans","Manrope",sans-serif;font-weight:550;font-size:30px;line-height:34px;letter-spacing:-.02em;color:#fff;text-align:left}
+.fc-role{margin:4px 0 0;font-size:14px;font-weight:700;color:#fff}
+.fc-text{margin:8px 0 0;font-size:15px;line-height:22px;color:rgba(255,255,255,.85)}
+.fc-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:20px}
+.fc-ig{color:#fff!important;font-size:14px;font-weight:600;text-decoration:none!important;opacity:.9}
+.fc-btn{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 18px;border-radius:99px;background:#fff!important;color:#050505!important;font-weight:700;font-size:15px;text-decoration:none!important;text-shadow:none}
+.fc-btn svg{width:14px;height:14px}
+aside.founder.fc .fc-eb{color:rgba(255,255,255,.78)!important}aside.founder.fc .fc-role{color:#fff!important}aside.founder.fc .fc-text{color:rgba(255,255,255,.88)!important}aside.founder.fc p{max-width:none!important}
+@media (max-width:899px){aside.founder.fc{margin-top:28px;max-width:360px}}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
@@ -714,18 +730,18 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
     </div>
     <!-- FOUNDER CARD (16 Oct 2026, design review F07): who builds Manifest. No
        photo yet, so none is shown. -->
-    <aside class="founder" aria-labelledby="founder-name">
-      <p class="fd-eb"><span class="fd-mark" aria-hidden="true"></span>Who builds Manifest</p>
-      <img class="fd-photo" src="/assets/opt/andre-192.webp" srcset="/assets/opt/andre-192.webp 192w, /assets/opt/andre-384.webp 384w" sizes="96px" width="96" height="96" alt="Andr&eacute; Larsen at the dropzone" decoding="async" />
-      <h2 class="fd-name" id="founder-name">Andr&eacute; Larsen</h2>
-      <p class="fd-role">Founder, Manifest Jump LLC</p>
-      <p class="fd-text">Manifest is built by a small team of skydivers and software developers. I lead it, and every message to andre@manifestjump.com is still read and answered by me.</p>
-      <div class="fd-ctas">
-        <a class="fd-btn" href="mailto:andre@manifestjump.com">Write to me<span class="fd-bi" aria-hidden="true"><svg viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l6 6-6 6"/></svg></span></a>
-        <span class="fd-igs"><a class="fd-ig" href="https://www.instagram.com/manifestjump/" target="_blank" rel="noopener">@manifestjump</a>
-        <a class="fd-ig" href="https://www.instagram.com/andre_larsen/" target="_blank" rel="noopener">@andre_larsen</a></span>
+    <aside class="founder fc" aria-labelledby="founder-name">
+      <img src="/assets/opt/andre-card-900.webp" width="900" height="900" alt="Andr&eacute; Larsen, founder of Manifest, at the dropzone in his rig" decoding="async" />
+      <div class="fc-in">
+        <p class="fc-eb">Who builds Manifest</p>
+        <h2 class="fc-name" id="founder-name">Andr&eacute; Larsen</h2>
+        <p class="fc-role">Founder, Manifest Jump LLC</p>
+        <p class="fc-text">Manifest is built by a small team of skydivers and software developers. I lead it, and I read every message.</p>
+        <div class="fc-row">
+          <a class="fc-ig" href="https://www.instagram.com/andre_larsen/" target="_blank" rel="noopener">@andre_larsen</a>
+          <a class="fc-btn" href="mailto:andre@manifestjump.com">Write to me<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        </div>
       </div>
-      <p class="fd-co">Manifest Jump LLC &middot; Wyoming, USA &middot; Dubai,&nbsp;UAE</p>
     </aside>
   </div>
 </section>
