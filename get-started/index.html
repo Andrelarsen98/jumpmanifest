@@ -6,6 +6,9 @@
 <title>Get started · Manifest Desk</title>
 <meta name="description" content="Set up Manifest Desk for your dropzone. $1 per seat flown." />
 <meta name="robots" content="noindex, follow" />
+<meta property="og:title" content="Get started · Manifest Desk" />
+<meta property="og:description" content="Set up Manifest Desk for your dropzone. $1 per seat flown." />
+<meta property="og:image" content="https://www.jumpmanifest.com/assets/og-image.png?v=10" />
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg?v=4" />
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -41,7 +44,7 @@
   .fields { margin-top: 22px; display: grid; gap: 12px; }
   input { display: block; width: 100%; height: 60px; padding: 0 18px; border: 2px solid #141316; border-radius: 13px; font: inherit; font-size: 16px; color: #141316; background: #fff; -webkit-appearance: none; appearance: none; }
   input::placeholder { color: #8E8E96; }
-  input:focus { outline: none; border-color: #6356EE; }
+  input:focus { outline: 2px solid #6356EE; outline-offset: 1px; border-color: #6356EE; }
   input[aria-invalid="true"] { border-color: #DC2626; }
   .hp { position: absolute; left: -9999px; width: 1px; height: 1px; }
   .go { display: flex; align-items: center; justify-content: center; gap: 12px; width: 100%; height: 58px; margin-top: 20px; border: 0; border-radius: 14px; cursor: pointer; text-decoration: none;
@@ -119,9 +122,9 @@
       <a class="logo" href="/" aria-label="Manifest home"><img src="/assets/manifest-lockup.svg?v=5" alt="Manifest" /></a>
       <div class="steps" aria-hidden="true"><i id="s1" class="on">1</i><b></b><i id="s2">2</i><b></b><i id="s3">3</i></div>
     </div>
-    <div class="plan"><div><small>Your plan</small><b>Manifest Desk <span>$1 per seat</span></b></div></div>
+    <div class="plan"><div><small>Your plan</small><b>Manifest Desk <span>$1 per seat flown</span></b></div></div>
 
-    <form id="f" novalidate>
+    <form id="f" method="post" action="/get-started/" novalidate>
       <h1 id="title">Set up your dropzone</h1>
       <p class="sub" id="sub">Nothing to pay today.</p>
       <div class="fields">
@@ -134,13 +137,14 @@
       <button class="go" type="submit" id="go"><span id="goT">Continue</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></button>
       <p class="fine">By continuing, you agree to our<br /><a href="/terms/">terms of service</a> and <a href="/privacy/">privacy policy</a>.</p>
     </form>
+    <noscript><p class="sub">This form needs JavaScript. Email <a href="mailto:andre@manifestjump.com">andre@manifestjump.com</a> with your dropzone's name instead.</p></noscript>
 
     <div id="opt" hidden>
       <h1 tabindex="-1" id="optTitle">Your dropzone</h1>
       <p class="sub">Three taps. It helps us set you up.</p>
-      <div class="q"><p>Aircraft</p><div class="opts" data-q="Aircraft"><button type="button">1</button><button type="button">2</button><button type="button">3+</button></div></div>
-      <div class="q"><p>Loads on a busy day</p><div class="opts" data-q="Busy day"><button type="button">Under 10</button><button type="button">10 to 20</button><button type="button">20+</button></div></div>
-      <div class="q"><p>What you use today</p><div class="opts" data-q="Today"><button type="button">Burble</button><button type="button">Paper / Excel</button><button type="button">Other</button></div></div>
+      <div class="q"><p>Aircraft</p><div class="opts" data-q="Aircraft"><button type="button" aria-pressed="false">1</button><button type="button" aria-pressed="false">2</button><button type="button" aria-pressed="false">3+</button></div></div>
+      <div class="q"><p>Loads on a busy day</p><div class="opts" data-q="Busy day"><button type="button" aria-pressed="false">Under 10</button><button type="button" aria-pressed="false">10 to 20</button><button type="button" aria-pressed="false">20+</button></div></div>
+      <div class="q"><p>What you use today</p><div class="opts" data-q="Today"><button type="button" aria-pressed="false">Burble</button><button type="button" aria-pressed="false">Paper / Excel</button><button type="button" aria-pressed="false">Other</button></div></div>
       <p class="err" id="err2" role="alert" hidden></p>
       <button class="go" type="button" id="fin"><span id="finT">Finish</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></button>
       <button class="skip" type="button" id="skip">Skip</button>
@@ -149,7 +153,7 @@
     <div id="done" hidden>
       <h1 id="doneTitle" tabindex="-1">You're on the list</h1>
       <ol class="next" id="nextList">
-        <li><i>1</i>We approve your dropzone today</li>
+        <li><i>1</i>We review your dropzone, usually the same day</li>
         <li><i>2</i>Your invite arrives by email</li>
         <li><i>3</i>We move your jumpers over, free</li>
       </ol>
@@ -218,7 +222,7 @@
     fetch(URL_, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) })
       .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
       .then(function (x) { if (!x.ok) throw new Error(x.j && x.j.error || 'Could not send'); last = body; f.reset(); step(3); })
-      .catch(function (e2) { err2.textContent = (e2 && e2.message) || 'Could not send. Email andre@manifestjump.com'; err2.hidden = false; sending = false; })
+      .catch(function () { err2.textContent = 'Could not send. Email andre@manifestjump.com'; err2.hidden = false; sending = false; })
       .then(function () { finT.textContent = 'Finish'; });
   }
   document.getElementById('fin').addEventListener('click', function () { send(true); });

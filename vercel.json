@@ -24,12 +24,22 @@
   "redirects": [
     {
       "source": "/dropzones/start",
-      "destination": "/dropzones/#pricing",
+      "destination": "/get-started/",
       "permanent": false
     },
     {
       "source": "/dropzones/start/",
-      "destination": "/dropzones/#pricing",
+      "destination": "/get-started/",
+      "permanent": false
+    },
+    {
+      "source": "/dropzones/welcome",
+      "destination": "/get-started/",
+      "permanent": false
+    },
+    {
+      "source": "/dropzones/welcome/",
+      "destination": "/get-started/",
       "permanent": false
     },
     {
