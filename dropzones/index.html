@@ -546,7 +546,7 @@
     .band.band-film .band-cta { margin: 18px 20px 0; }
     .band.band-film .band-btn { background: #fff; border: 1.5px solid #6D42F5; color: #6D42F5; }
   }
-  @media (prefers-reduced-motion: reduce) { .band-vid { display: none; } .band.band-film { background: #050505 url(/assets/video/dz-band.jpg?v=2) center / cover; } }
+  @media (prefers-reduced-motion: reduce) { .band-vid { display: none; } .band.band-film { background: #050505 url(/assets/video/dz-band.jpg?v=3) center / cover; } }
 
   @media (max-width: 900px) { .vs { grid-template-columns: 1fr; } }
   @media (max-width: 600px) {
@@ -1044,6 +1044,21 @@ h1, h2, h3 { text-wrap: balance; }
   ]
 }
 </script>
+<script>try{if(sessionStorage.getItem("sh-in"))document.documentElement.classList.add("sh-seen");else sessionStorage.setItem("sh-in","1")}catch(e){}</script>
+<style id="btn-black-head">/* 21 Oct 2026 (André): no purple buttons anywhere. Every filled button is the
+   black price-card button: dark gradient, white text, soft ring. Shapes stay. */
+.sh-cta-demo,.fd-btn,.btn.ghost,.btn.demo,.band-btn,.pc-out,.sms-btn,.sm-btn,.pc-call,.lo-btn,.lc-btn,.hmw-btn,.dp-btn,.btn.primary,.pq-btn,a.btn[href*="apps.apple.com"],a.btn[href="/get"]{background:linear-gradient(180deg,#2A2A2E,#050505)!important;color:#fff!important;border:0!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14)!important;filter:none!important;transition:box-shadow .2s ease!important}
+@media (hover:hover){.sh-cta-demo:hover,.fd-btn:hover,.btn.ghost:hover,.btn.demo:hover,.band-btn:hover,.pc-out:hover,.sms-btn:hover,.sm-btn:hover,.pc-call:hover,.lo-btn:hover,.lc-btn:hover,.hmw-btn:hover,.dp-btn:hover,.btn.primary:hover,.pq-btn:hover,a.btn[href*="apps.apple.com"]:hover,a.btn[href="/get"]:hover{background:linear-gradient(180deg,#3A3A3F,#0A0A0A)!important;color:#fff!important;transform:none!important}}
+.sh-cta-demo *,.fd-btn *,.btn.ghost *,.btn.demo *,.band-btn *,.pc-out *,.sms-btn *,.sm-btn *,.pc-call *,.lo-btn *,.lc-btn *,.hmw-btn *,.dp-btn *,.pq-btn *{color:inherit!important}
+/* 21 Oct 2026 flash fixes: no iOS grey tap box anywhere, the header slides in on the first page of a visit only, hover only on real mouse devices. */
+html{-webkit-tap-highlight-color:transparent}
+a,button,summary,label,input,select,textarea{-webkit-tap-highlight-color:transparent}
+summary{-webkit-user-select:none;user-select:none}
+html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:none!important}
+@media (max-width:600px){.hero .ctas{flex-direction:column;align-items:stretch}.hero .ctas .btn{width:100%;justify-content:center}}
+.sh-nav:has(.sh-dd.open) .sh-dd:not(.open) .sh-panel{transition:none}
+.sh-cta-demo:focus-visible,.fd-btn:focus-visible,.btn.ghost:focus-visible,.btn.demo:focus-visible,.band-btn:focus-visible,.pc-out:focus-visible,.sms-btn:focus-visible,.sm-btn:focus-visible,.pc-call:focus-visible,.lo-btn:focus-visible,.lc-btn:focus-visible,.hmw-btn:focus-visible,.dp-btn:focus-visible,.btn.primary:focus-visible,.pq-btn:focus-visible,a.btn[href*="apps.apple.com"]:focus-visible,a.btn[href="/get"]:focus-visible{outline:2px solid #050505!important;outline-offset:3px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 3px #fff!important}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
@@ -1195,7 +1210,7 @@ h1, h2, h3 { text-wrap: balance; }
   /* Top-up phones (André 19 Oct): same phone height, side by side. */
   /* Meadow behind the phones (André 19 Oct): Unsplash photo _8fRer9hPv0 (Unsplash License). */
   #app .pay-duo { display: flex; justify-content: center; align-items: center; gap: clamp(12px, 4vw, 64px); margin-top: 56px;
-    padding: clamp(36px, 6vw, 80px) 16px; border-radius: 28px; background: #9DB67A url(/assets/features/meadow.webp) center / cover no-repeat; 
+    padding: clamp(36px, 6vw, 80px) 16px; border-radius: 28px; background: #9DB67A url(/assets/features/meadow-1400.webp) center / cover no-repeat; 
     isolation: isolate; transform: translateZ(0); } /* keeps the phones' drop-shadow layer from repainting the owner bar white in Safari */
   #app .pay-duo img { display: block; height: auto; filter: drop-shadow(0 24px 40px rgba(0,0,0,.35)); }
   @media (max-width: 600px) { #app .pay-duo { border-radius: 22px; padding: 28px 10px; gap: 10px; } #app .pay-duo .pd-a, #app .pay-duo .pd-b { width: 46%; } }
@@ -1240,16 +1255,16 @@ h1, h2, h3 { text-wrap: balance; }
   .pq-top{display:flex;justify-content:space-between;align-items:flex-start}
   .pq-tag{font-size:12px;line-height:16px;font-weight:700;color:#050505;border:1px solid #E4E4E7;border-radius:8px;padding:4px 9px}
   .pq h3{margin:22px 0 0;font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:20px;line-height:26px;color:#050505;text-align:left}
-  .pq-sub{margin:4px 0 0;font-size:14px;line-height:20px;color:#71717B}
+  .pq-sub{margin:4px 0 0;font-size:14px;line-height:20px;color:#66666F}
   .pq-big{display:flex;align-items:baseline;margin-top:22px;font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:48px;line-height:1;letter-spacing:-.03em;color:#050505}
-  .pq-big i{font-style:normal;color:#C4C4CC}
+  .pq-big i{font-style:normal;color:#85858E}
   .pq-big small{margin-left:8px;font-family:"Manrope",sans-serif;font-size:14px;letter-spacing:0;font-weight:500;color:#52525B}
   .pq-rule{height:1px;background:#E4E4E7;margin:26px 0 22px}
   .pq-h{margin:0;font-size:14px;line-height:20px;font-weight:700;color:#050505}
   .pq-list{list-style:none;margin:12px 0 0;padding:0}
   .pq-list li{display:flex;gap:9px;align-items:flex-start;padding:4px 0;font-size:14px;line-height:20px;color:#3F3F46}
   .pq-list svg{width:15px;height:15px;flex:0 0 auto;margin-top:2px;color:#30D158;stroke-width:2.6}
-  .pq-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;margin-top:auto;height:46px;padding:0 22px;border-radius:14px;background:linear-gradient(180deg,#2A2A2E,#050505);color:#fff!important;font-family:"Manrope",sans-serif;font-weight:600;font-size:15px;text-decoration:none!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 2px #E9E5FE}
+  .pq-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;margin-top:auto;height:46px;padding:0 22px;border-radius:14px;background:linear-gradient(180deg,#2A2A2E,#050505);color:#fff!important;font-family:"Manrope",sans-serif;font-weight:600;font-size:15px;text-decoration:none!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14)}
   .pq-card .pq-btn{margin-top:28px}
   .pq-btn:hover{background:#6D42F5}
   .pq-btn svg{width:15px;height:15px}
@@ -1403,8 +1418,8 @@ h1, h2, h3 { text-wrap: balance; }
       </ul>
     </div>
     <div class="vis-media">
-      <video class="vis-phone vis-ls" data-lazy autoplay muted loop playsinline preload="none" poster="/assets/opt/lockscreen-poster.6252405d.webp" width="738" height="1180" aria-label="An iPhone Lock Screen with the Manifest load card counting down to the jumper's load">
-        <source data-src="/assets/opt/lockscreen-v2.mp4" type="video/mp4" />
+      <video class="vis-phone vis-ls" data-lazy autoplay muted loop playsinline preload="none" poster="/assets/opt/lockscreen-v3-poster.webp" width="738" height="1180" aria-label="An iPhone Lock Screen with the Manifest load card counting down to the jumper's load">
+        <source data-src="/assets/opt/lockscreen-v3.mp4" type="video/mp4" />
       </video>
     </div>
   </section>
@@ -1445,7 +1460,7 @@ h1, h2, h3 { text-wrap: balance; }
 
   <!-- DARK BAND (9 Oct 2026): the line André picked, numbers from BRAND.md. -->
   <section class="band band-film" id="connected">
-    <video class="band-vid" data-lazy data-src="/assets/video/dz-band.mp4?v=2" poster="/assets/video/dz-band.jpg?v=2" autoplay muted loop playsinline preload="none" aria-hidden="true"></video>
+    <video class="band-vid" data-lazy data-src="/assets/video/dz-band.mp4?v=3" poster="/assets/video/dz-band.jpg?v=3" autoplay muted loop playsinline preload="none" aria-hidden="true"></video>
     <div class="band-ink-wrap">
       <div class="band-ink">
       <h2>Your jumpers already carry the app.<br class="dk" /> Now it runs your dropzone.</h2>
@@ -1531,7 +1546,7 @@ h1, h2, h3 { text-wrap: balance; }
           <div class="pq-top"><span class="pq-ic" aria-hidden="true"><img src="/assets/favicon.svg?v=4" alt="" width="22" height="22" /></span><span class="pq-tag">Every dropzone</span></div>
           <h3>Manifest Desk</h3>
           <p class="pq-sub">The whole jump day, connected to every jumper&rsquo;s phone</p>
-          <div class="pq-big">$1<i>.00</i><small>/seat flown</small></div>
+          <div class="pq-big">$1<small>per seat flown</small></div>
           <div class="pq-rule"></div>
           <p class="pq-h">Everything included, plus:</p>
           <ul class="pq-list"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>1% on top-ups jumpers make in the app</span></li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>One bill a month, for the seats you flew</span></li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Add $1 to your ticket: a $35 jump becomes $36 and Desk costs you nothing. Your call.</span></li></ul>
@@ -1743,6 +1758,8 @@ h1, h2, h3 { text-wrap: balance; }
     function go(id, smooth) {
       var el = document.getElementById(id);
       if (!el) return false;
+      var rv = el.closest('.js-rise, .bento.anim .bt');
+      if (rv) { rv.style.transition = 'none'; rv.classList.add('rise-in', 'on'); void rv.offsetWidth; rv.style.transition = ''; }
       var to = function (b) { window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - HDR, behavior: b }); };
       if (matchMedia('(prefers-reduced-motion: reduce)').matches) smooth = false;
       to(smooth ? 'smooth' : 'instant');
@@ -1826,9 +1843,72 @@ g.forEach(function(b){b.classList.add('anim');b.querySelectorAll('.bt').forEach(
 </script>
 <style id="btn-black">/* 21 Oct 2026 (André): no purple buttons anywhere. Every filled button is the
    black price-card button: dark gradient, white text, soft ring. Shapes stay. */
-.sh-cta-demo,.fd-btn,.btn.ghost,.btn.demo,.band-btn,.pc-out,.sms-btn,.sm-btn,.pc-call,.lo-btn,.lc-btn,.hmw-btn,.dp-btn,.btn.primary,.pq-btn,a.btn[href*="apps.apple.com"],a.btn[href="/get"]{background:linear-gradient(180deg,#2A2A2E,#050505)!important;color:#fff!important;border:0!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 2px #E9E5FE!important;filter:none!important;transition:box-shadow .2s ease!important}
-.sh-cta-demo:hover,.fd-btn:hover,.btn.ghost:hover,.btn.demo:hover,.band-btn:hover,.pc-out:hover,.sms-btn:hover,.sm-btn:hover,.pc-call:hover,.lo-btn:hover,.lc-btn:hover,.hmw-btn:hover,.dp-btn:hover,.btn.primary:hover,.pq-btn:hover,a.btn[href*="apps.apple.com"]:hover,a.btn[href="/get"]:hover{background:linear-gradient(180deg,#3A3A3F,#0A0A0A)!important;color:#fff!important;transform:none!important}
+.sh-cta-demo,.fd-btn,.btn.ghost,.btn.demo,.band-btn,.pc-out,.sms-btn,.sm-btn,.pc-call,.lo-btn,.lc-btn,.hmw-btn,.dp-btn,.btn.primary,.pq-btn,a.btn[href*="apps.apple.com"],a.btn[href="/get"]{background:linear-gradient(180deg,#2A2A2E,#050505)!important;color:#fff!important;border:0!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14)!important;filter:none!important;transition:box-shadow .2s ease!important}
+@media (hover:hover){.sh-cta-demo:hover,.fd-btn:hover,.btn.ghost:hover,.btn.demo:hover,.band-btn:hover,.pc-out:hover,.sms-btn:hover,.sm-btn:hover,.pc-call:hover,.lo-btn:hover,.lc-btn:hover,.hmw-btn:hover,.dp-btn:hover,.btn.primary:hover,.pq-btn:hover,a.btn[href*="apps.apple.com"]:hover,a.btn[href="/get"]:hover{background:linear-gradient(180deg,#3A3A3F,#0A0A0A)!important;color:#fff!important;transform:none!important}}
 .sh-cta-demo *,.fd-btn *,.btn.ghost *,.btn.demo *,.band-btn *,.pc-out *,.sms-btn *,.sm-btn *,.pc-call *,.lo-btn *,.lc-btn *,.hmw-btn *,.dp-btn *,.pq-btn *{color:inherit!important}
+/* 21 Oct 2026 flash fixes: no iOS grey tap box anywhere, the header slides in on the first page of a visit only, hover only on real mouse devices. */
+html{-webkit-tap-highlight-color:transparent}
+a,button,summary,label,input,select,textarea{-webkit-tap-highlight-color:transparent}
+summary{-webkit-user-select:none;user-select:none}
+html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:none!important}
+@media (max-width:600px){.hero .ctas{flex-direction:column;align-items:stretch}.hero .ctas .btn{width:100%;justify-content:center}}
+.sh-nav:has(.sh-dd.open) .sh-dd:not(.open) .sh-panel{transition:none}
+.sh-cta-demo:focus-visible,.fd-btn:focus-visible,.btn.ghost:focus-visible,.btn.demo:focus-visible,.band-btn:focus-visible,.pc-out:focus-visible,.sms-btn:focus-visible,.sm-btn:focus-visible,.pc-call:focus-visible,.lo-btn:focus-visible,.lc-btn:focus-visible,.hmw-btn:focus-visible,.dp-btn:focus-visible,.btn.primary:focus-visible,.pq-btn:focus-visible,a.btn[href*="apps.apple.com"]:focus-visible,a.btn[href="/get"]:focus-visible{outline:2px solid #050505!important;outline-offset:3px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 3px #fff!important}
+@media (min-width:900px) and (max-width:1179px){.hero-grid{grid-template-columns:1fr;gap:48px}.hero h1{max-width:16ch}.hero .herorow{flex-direction:row;align-items:center}}
+@media (min-width:1180px) and (max-width:1365px){.hero .ctas{flex-wrap:nowrap;gap:10px}.hero .ctas .btn{font-size:17px}.hero .ctas .btn.primary{padding-left:22px}.hero .ctas .btn.ghost{padding-left:18px;padding-right:18px}}
+@media (min-width:981px) and (max-width:1365px){.bt-hero,.bt-side{grid-column:span 6}.bt-row figcaption{padding:40px 16px 40px 32px}.bt-row b{font-size:30px;line-height:34px}.bt-row .bt-phone{margin-right:28px}}
+</style>
+<script id="rm-video">(function(){if(!window.matchMedia||!matchMedia("(prefers-reduced-motion: reduce)").matches||document.querySelector(".vpause"))return;document.querySelectorAll("video").forEach(function(v){v.removeAttribute("autoplay");v.autoplay=false;v.pause();v.addEventListener("play",function(){v.pause()});});})();</script>
+<style id="no-purple">/* 21 Oct 2026 (André): no purple on anything you can press, no purple ticks, no purple step dots.
+   Ticks = app green #30D158. Press/active/dots = ink #050505, hover = #71717B (same as the header). */
+
+/* 1. Button ring: lavender #E9E5FE -> neutral */
+.sh-cta-demo,.fd-btn,.btn.ghost,.btn.demo,.band-btn,.pc-out,.sms-btn,.sm-btn,.pc-call,.lo-btn,.lc-btn,.hmw-btn,.dp-btn,.btn.primary,.pq-btn,a.btn[href*="apps.apple.com"],a.btn[href="/get"],.go{box-shadow:inset 0 1px 0 rgba(255,255,255,.14)!important}
+
+/* 2. Header: active-page underline + mobile menu current item */
+.is-current > .sh-t::after{background:#050505!important}
+.sh-macc.is-current > span,.sh-mlink.is-current .sh-t{color:#050505!important}
+
+/* 3. Body links on help / support / privacy / terms (were purple text) */
+main.doc a:not([class]),.sup-tracks .email a{color:#050505!important;text-decoration:underline!important;text-decoration-color:rgba(5,5,5,.3)!important;text-underline-offset:3px}
+main.doc a:not([class]):hover,.sup-tracks .email a:hover{color:#71717B!important;text-decoration-color:currentColor!important}
+.help-grid .hcard i{color:#050505!important}
+
+/* 4. Link hovers that turned purple */
+.faq-help a:hover,.faq-more a:hover,.hero-note a:hover,.hero-dz a:hover,.final-dz a:hover,#globe .dzg-more a:hover,#desk .desk-link:hover,.hmw-ctas a.hmw-link:hover,.hmw-row a.hmw-link:hover,.hmw-where .vis-pts a:hover,.hmw .vis .more a:hover,.wx-ctas a.wx-link:hover,.sms-toc a:hover{color:#71717B!important}
+.sms-four a:hover{color:#fff!important}
+.sms-toc a::before{color:#71717B!important}
+
+/* 5. Focus rings */
+#desk .btn:focus-visible,#desk .desk-link:focus-visible,.vpause:focus-visible,.mq-btn:focus-visible{outline-color:#050505!important}
+input:focus{outline-color:#050505!important;border-color:#050505!important}
+
+/* 6. Ticks -> app green */
+svg.tk,.vis-pts li > svg,.sa-plan.pro li > svg,.dp-money-note li > svg,.sms-big li > svg,.sms-need li > svg{color:#30D158!important}
+.vs-yes,.pr-yes,svg.ic.yes,.vs-ic.yes{background:#30D158!important}
+
+/* 7. Step dots / numbered steps */
+.dp-rail li::before,.lc-rail li::before,.sm-rail li::before,.sms-rail li::before,.hmw-day > li::after,.hmw-day .a:not(:empty)::after{border-color:#050505!important}
+.dp-rail li:last-child::before,.lc-rail li:last-child::before,.sm-rail li:last-child::before,.ll-flow li:last-child::before{background:#050505!important}
+.sa-rail li:last-child::before{background:#050505!important;border-color:#050505!important}
+.lo-steps li::before{color:#050505!important}
+.ll-line .dot{border-color:#050505!important}
+.ll-line::after{background:#050505!important}
+.lc-ladder li:not(.hold) .d{border-color:#fff!important}
+.lc-ladder::before{background:linear-gradient(rgba(255,255,255,.6),rgba(255,255,255,.2))!important}
+ol.steps > li::before,.how-grid .n,.next li i{background:#F2F2F5!important;color:#050505!important}
+.steps i.on{background:#050505!important;color:#fff!important}
+
+/* 8. Things that look pressable: help-page button names, the illustrated Call pill */
+.doc kbd{background:#F2F2F5!important;color:#050505!important}
+span.go > svg{background:#050505!important}
+
+.vs-new{border-color:#E4E4E7!important}
+/* 21 Oct 2026 (André): plain small green checks, no filled circles. */
+.pr-yes{width:18px!important;height:18px!important;border-radius:0!important;background:no-repeat center/18px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%2330D158' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 8.5l3.2 3L13 4.5'/%3E%3C/svg%3E")!important}
+.pr-yes img{display:none!important}
+.vs-yes{background:none!important;color:#30D158!important;width:20px!important;height:20px!important}
+.vs-yes svg{width:16px!important;height:16px!important;stroke-width:2.6}
 </style>
 </body>
 </html>

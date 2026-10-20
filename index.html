@@ -1106,6 +1106,20 @@ h1, h2, h3 { text-wrap: balance; }
 }
 </style>
 <style id="studio-css">img.studio-desk{border:0!important;border-radius:0!important;box-shadow:none!important;background:transparent!important;outline:0!important;width:100%;height:auto;display:block}</style>
+<script>try{if(sessionStorage.getItem("sh-in"))document.documentElement.classList.add("sh-seen");else sessionStorage.setItem("sh-in","1")}catch(e){}</script>
+<style id="btn-black-head">/* 21 Oct 2026 (André): no purple buttons anywhere. Every filled button is the
+   black price-card button: dark gradient, white text, soft ring. Shapes stay. */
+.sh-cta-demo,.fd-btn,.btn.ghost,.btn.demo,.band-btn,.pc-out,.sms-btn,.sm-btn,.pc-call,.lo-btn,.lc-btn,.hmw-btn,.dp-btn,.btn.primary,.pq-btn,a.btn[href*="apps.apple.com"],a.btn[href="/get"]{background:linear-gradient(180deg,#2A2A2E,#050505)!important;color:#fff!important;border:0!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14)!important;filter:none!important;transition:box-shadow .2s ease!important}
+@media (hover:hover){.sh-cta-demo:hover,.fd-btn:hover,.btn.ghost:hover,.btn.demo:hover,.band-btn:hover,.pc-out:hover,.sms-btn:hover,.sm-btn:hover,.pc-call:hover,.lo-btn:hover,.lc-btn:hover,.hmw-btn:hover,.dp-btn:hover,.btn.primary:hover,.pq-btn:hover,a.btn[href*="apps.apple.com"]:hover,a.btn[href="/get"]:hover{background:linear-gradient(180deg,#3A3A3F,#0A0A0A)!important;color:#fff!important;transform:none!important}}
+.sh-cta-demo *,.fd-btn *,.btn.ghost *,.btn.demo *,.band-btn *,.pc-out *,.sms-btn *,.sm-btn *,.pc-call *,.lo-btn *,.lc-btn *,.hmw-btn *,.dp-btn *,.pq-btn *{color:inherit!important}
+/* 21 Oct 2026 flash fixes: no iOS grey tap box anywhere, the header slides in on the first page of a visit only, hover only on real mouse devices. */
+html{-webkit-tap-highlight-color:transparent}
+a,button,summary,label,input,select,textarea{-webkit-tap-highlight-color:transparent}
+summary{-webkit-user-select:none;user-select:none}
+html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:none!important}
+.sh-nav:has(.sh-dd.open) .sh-dd:not(.open) .sh-panel{transition:none}
+.sh-cta-demo:focus-visible,.fd-btn:focus-visible,.btn.ghost:focus-visible,.btn.demo:focus-visible,.band-btn:focus-visible,.pc-out:focus-visible,.sms-btn:focus-visible,.sm-btn:focus-visible,.pc-call:focus-visible,.lo-btn:focus-visible,.lc-btn:focus-visible,.hmw-btn:focus-visible,.dp-btn:focus-visible,.btn.primary:focus-visible,.pq-btn:focus-visible,a.btn[href*="apps.apple.com"]:focus-visible,a.btn[href="/get"]:focus-visible{outline:2px solid #050505!important;outline-offset:3px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 3px #fff!important}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
@@ -1663,9 +1677,9 @@ h1, h2, h3 { text-wrap: balance; }
     <h2 style="margin-top:0"><span class="l1">Your load.</span><br />Live on your Lock Screen.</h2>
     <p>Notifications the second the plane's called, gear-up and final call, plus a live countdown in your Dynamic Island. So it never leaves without you.</p>
     </div>
-    <div class="vbox"><video class="flagvid" id="flagVid" autoplay data-lazy loop muted playsinline preload="none" poster="/assets/opt/lockscreen-poster.6252405d.webp" width="720" height="1152"
+    <div class="vbox"><video class="flagvid" id="flagVid" autoplay data-lazy loop muted playsinline preload="none" poster="/assets/opt/lockscreen-v3-poster.webp" width="720" height="1152"
            aria-label="Live loads on your Lock Screen">
-      <source data-src="/assets/opt/lockscreen-v2.mp4" type="video/mp4" />
+      <source data-src="/assets/opt/lockscreen-v3.mp4" type="video/mp4" />
     </video><button class="vpause" type="button" aria-label="Pause video" aria-pressed="false"><svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="3.5" y="2.5" width="3" height="11" rx="1"/><rect x="9.5" y="2.5" width="3" height="11" rx="1"/></svg><svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 2.8v10.4a.8.8 0 0 0 1.2.7l8.3-5.2a.8.8 0 0 0 0-1.4L5.7 2.1a.8.8 0 0 0-1.2.7z"/></svg></button></div>
     <div class="ftext fb">
     <p class="flagsub">No shouting across the hangar. No missed calls. No sprinting for the plane.
@@ -1702,7 +1716,7 @@ h1, h2, h3 { text-wrap: balance; }
     </div>
     <div class="vbox"><video class="flagvid" data-lazy loop muted playsinline preload="none" poster="/assets/opt/jumptrack3-poster.bcbd71bb.webp" width="720" height="1280"
            aria-label="A skydive replayed in 3D over real terrain, from exit to landing">
-      <source data-src="/assets/opt/jumptrack3.210f3465.mp4" type="video/mp4" />
+      <source data-src="/assets/opt/jumptrack3-540.mp4" type="video/mp4" />
     </video><button class="vpause" type="button" aria-label="Pause video" aria-pressed="false"><svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="3.5" y="2.5" width="3" height="11" rx="1"/><rect x="9.5" y="2.5" width="3" height="11" rx="1"/></svg><svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 2.8v10.4a.8.8 0 0 0 1.2.7l8.3-5.2a.8.8 0 0 0 0-1.4L5.7 2.1a.8.8 0 0 0-1.2.7z"/></svg></button></div>
     <div class="ftext fb">
     <p class="flagsub">Exit, freefall, the moment you pulled, the canopy ride, the spot you landed.
@@ -1757,7 +1771,7 @@ h1, h2, h3 { text-wrap: balance; }
       <div class="feat"><span class="feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="7" ry="2.5"/><path d="M5 5.5v13c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-13"/><path d="M9.5 12.5h5M10.5 16h3"/></svg></span><h3>Tunnel logging</h3><p>Indoor time, alongside your jumps.</p></div>
       <div class="feat"><span class="feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v11.5M7.5 10L12 14.5 16.5 10"/><path d="M4 14.5v4A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5v-4"/></svg></span><h3>Import your history</h3><p>Bring your whole history over from a CSV, from any app.</p></div>
       <div class="feat"><span class="feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span><h3>Verified sign-offs</h3><p>Witnessed by the jumpers who were there.</p></div>
-      <div class="feat"><span class="feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="6" height="6" rx="1.2"/><rect x="14.5" y="3.5" width="6" height="6" rx="1.2"/><rect x="3.5" y="14.5" width="6" height="6" rx="1.2"/><path d="M14.5 14.5h3v3M20.5 14.5v6h-6"/></svg></span><h3>Check-in Pass</h3><p>Licence and currency, scannable at the desk.</p></div>
+      <div class="feat"><span class="feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="6" height="6" rx="1.2"/><rect x="14.5" y="3.5" width="6" height="6" rx="1.2"/><rect x="3.5" y="14.5" width="6" height="6" rx="1.2"/><path d="M14.5 14.5h3v3M20.5 14.5v6h-6"/></svg></span><h3><span style="white-space:nowrap">Check-in</span> Pass</h3><p>Licence and currency, scannable at the desk.</p></div>
       <div class="feat"><span class="feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6V4.5A1.5 1.5 0 0 1 10.5 3h3A1.5 1.5 0 0 1 15 4.5V6"/><rect x="5" y="6" width="14" height="15" rx="3.5"/><path d="M9 13.5h6V17H9z"/></svg></span><h3>Gear &amp; service</h3><p>Rigs, reserves and AADs, always in date.</p></div>
       <div class="feat"><span class="feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h11a3 3 0 1 0-3-3"/><path d="M3 13h15a3 3 0 1 1-3 3"/><path d="M3 17h7"/></svg></span><h3>Jump weather</h3><p>Wind at exit, under canopy and on the ground.</p></div>
       <div class="feat"><span class="feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 10.5c0 5.2-8.5 10-8.5 10s-8.5-4.8-8.5-10a8.5 8.5 0 0 1 17 0z"/><circle cx="12" cy="10.2" r="2.8"/></svg></span><h3>Dropzones &amp; events</h3><p>Find them worldwide, and what's on.</p></div>
@@ -2250,6 +2264,7 @@ h1, h2, h3 { text-wrap: balance; }
   Array.prototype.forEach.call(document.querySelectorAll("video.flagvid"), function (v) {
     function kick() {
       if (v.dataset.userPaused) return; // F15: never undo a pause the visitor chose
+      if (v.readyState < 2) { v.addEventListener("loadeddata", kick, { once: true }); return; }
       if (v.paused || v.ended) {
         if (v.ended || v.currentTime >= v.duration - 0.05) v.currentTime = 0;
         var p = v.play();
@@ -2471,6 +2486,8 @@ h1, h2, h3 { text-wrap: balance; }
     function go(id, smooth) {
       var el = document.getElementById(id);
       if (!el) return false;
+      var rv = el.closest('.js-rise, .bento.anim .bt');
+      if (rv) { rv.style.transition = 'none'; rv.classList.add('rise-in', 'on'); void rv.offsetWidth; rv.style.transition = ''; }
       var to = function (b) { window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - HDR, behavior: b }); };
       if (matchMedia('(prefers-reduced-motion: reduce)').matches) smooth = false;
       to(smooth ? 'smooth' : 'instant');
@@ -2517,9 +2534,70 @@ h1, h2, h3 { text-wrap: balance; }
 <script src="/assets/android-waitlist.js?v=1" defer></script>
 <style id="btn-black">/* 21 Oct 2026 (André): no purple buttons anywhere. Every filled button is the
    black price-card button: dark gradient, white text, soft ring. Shapes stay. */
-.sh-cta-demo,.fd-btn,.btn.ghost,.btn.demo,.band-btn,.pc-out,.sms-btn,.sm-btn,.pc-call,.lo-btn,.lc-btn,.hmw-btn,.dp-btn,.btn.primary,.pq-btn,a.btn[href*="apps.apple.com"],a.btn[href="/get"]{background:linear-gradient(180deg,#2A2A2E,#050505)!important;color:#fff!important;border:0!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 2px #E9E5FE!important;filter:none!important;transition:box-shadow .2s ease!important}
-.sh-cta-demo:hover,.fd-btn:hover,.btn.ghost:hover,.btn.demo:hover,.band-btn:hover,.pc-out:hover,.sms-btn:hover,.sm-btn:hover,.pc-call:hover,.lo-btn:hover,.lc-btn:hover,.hmw-btn:hover,.dp-btn:hover,.btn.primary:hover,.pq-btn:hover,a.btn[href*="apps.apple.com"]:hover,a.btn[href="/get"]:hover{background:linear-gradient(180deg,#3A3A3F,#0A0A0A)!important;color:#fff!important;transform:none!important}
+.sh-cta-demo,.fd-btn,.btn.ghost,.btn.demo,.band-btn,.pc-out,.sms-btn,.sm-btn,.pc-call,.lo-btn,.lc-btn,.hmw-btn,.dp-btn,.btn.primary,.pq-btn,a.btn[href*="apps.apple.com"],a.btn[href="/get"]{background:linear-gradient(180deg,#2A2A2E,#050505)!important;color:#fff!important;border:0!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14)!important;filter:none!important;transition:box-shadow .2s ease!important}
+@media (hover:hover){.sh-cta-demo:hover,.fd-btn:hover,.btn.ghost:hover,.btn.demo:hover,.band-btn:hover,.pc-out:hover,.sms-btn:hover,.sm-btn:hover,.pc-call:hover,.lo-btn:hover,.lc-btn:hover,.hmw-btn:hover,.dp-btn:hover,.btn.primary:hover,.pq-btn:hover,a.btn[href*="apps.apple.com"]:hover,a.btn[href="/get"]:hover{background:linear-gradient(180deg,#3A3A3F,#0A0A0A)!important;color:#fff!important;transform:none!important}}
 .sh-cta-demo *,.fd-btn *,.btn.ghost *,.btn.demo *,.band-btn *,.pc-out *,.sms-btn *,.sm-btn *,.pc-call *,.lo-btn *,.lc-btn *,.hmw-btn *,.dp-btn *,.pq-btn *{color:inherit!important}
+/* 21 Oct 2026 flash fixes: no iOS grey tap box anywhere, the header slides in on the first page of a visit only, hover only on real mouse devices. */
+html{-webkit-tap-highlight-color:transparent}
+a,button,summary,label,input,select,textarea{-webkit-tap-highlight-color:transparent}
+summary{-webkit-user-select:none;user-select:none}
+html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:none!important}
+.sh-nav:has(.sh-dd.open) .sh-dd:not(.open) .sh-panel{transition:none}
+.sh-cta-demo:focus-visible,.fd-btn:focus-visible,.btn.ghost:focus-visible,.btn.demo:focus-visible,.band-btn:focus-visible,.pc-out:focus-visible,.sms-btn:focus-visible,.sm-btn:focus-visible,.pc-call:focus-visible,.lo-btn:focus-visible,.lc-btn:focus-visible,.hmw-btn:focus-visible,.dp-btn:focus-visible,.btn.primary:focus-visible,.pq-btn:focus-visible,a.btn[href*="apps.apple.com"]:focus-visible,a.btn[href="/get"]:focus-visible{outline:2px solid #050505!important;outline-offset:3px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 3px #fff!important}
+.js-rise[id]{scroll-margin-top:126px}
+@media (min-width:900px) and (max-width:1199px){#everything .feats{gap:12px}#everything .feat{padding:22px 18px 24px}#everything .feat h3{font-size:20px;line-height:26px}}
+</style>
+<script id="rm-video">(function(){if(!window.matchMedia||!matchMedia("(prefers-reduced-motion: reduce)").matches||document.querySelector(".vpause"))return;document.querySelectorAll("video").forEach(function(v){v.removeAttribute("autoplay");v.autoplay=false;v.pause();v.addEventListener("play",function(){v.pause()});});})();</script>
+<style id="no-purple">/* 21 Oct 2026 (André): no purple on anything you can press, no purple ticks, no purple step dots.
+   Ticks = app green #30D158. Press/active/dots = ink #050505, hover = #71717B (same as the header). */
+
+/* 1. Button ring: lavender #E9E5FE -> neutral */
+.sh-cta-demo,.fd-btn,.btn.ghost,.btn.demo,.band-btn,.pc-out,.sms-btn,.sm-btn,.pc-call,.lo-btn,.lc-btn,.hmw-btn,.dp-btn,.btn.primary,.pq-btn,a.btn[href*="apps.apple.com"],a.btn[href="/get"],.go{box-shadow:inset 0 1px 0 rgba(255,255,255,.14)!important}
+
+/* 2. Header: active-page underline + mobile menu current item */
+.is-current > .sh-t::after{background:#050505!important}
+.sh-macc.is-current > span,.sh-mlink.is-current .sh-t{color:#050505!important}
+
+/* 3. Body links on help / support / privacy / terms (were purple text) */
+main.doc a:not([class]),.sup-tracks .email a{color:#050505!important;text-decoration:underline!important;text-decoration-color:rgba(5,5,5,.3)!important;text-underline-offset:3px}
+main.doc a:not([class]):hover,.sup-tracks .email a:hover{color:#71717B!important;text-decoration-color:currentColor!important}
+.help-grid .hcard i{color:#050505!important}
+
+/* 4. Link hovers that turned purple */
+.faq-help a:hover,.faq-more a:hover,.hero-note a:hover,.hero-dz a:hover,.final-dz a:hover,#globe .dzg-more a:hover,#desk .desk-link:hover,.hmw-ctas a.hmw-link:hover,.hmw-row a.hmw-link:hover,.hmw-where .vis-pts a:hover,.hmw .vis .more a:hover,.wx-ctas a.wx-link:hover,.sms-toc a:hover{color:#71717B!important}
+.sms-four a:hover{color:#fff!important}
+.sms-toc a::before{color:#71717B!important}
+
+/* 5. Focus rings */
+#desk .btn:focus-visible,#desk .desk-link:focus-visible,.vpause:focus-visible,.mq-btn:focus-visible{outline-color:#050505!important}
+input:focus{outline-color:#050505!important;border-color:#050505!important}
+
+/* 6. Ticks -> app green */
+svg.tk,.vis-pts li > svg,.sa-plan.pro li > svg,.dp-money-note li > svg,.sms-big li > svg,.sms-need li > svg{color:#30D158!important}
+.vs-yes,.pr-yes,svg.ic.yes,.vs-ic.yes{background:#30D158!important}
+
+/* 7. Step dots / numbered steps */
+.dp-rail li::before,.lc-rail li::before,.sm-rail li::before,.sms-rail li::before,.hmw-day > li::after,.hmw-day .a:not(:empty)::after{border-color:#050505!important}
+.dp-rail li:last-child::before,.lc-rail li:last-child::before,.sm-rail li:last-child::before,.ll-flow li:last-child::before{background:#050505!important}
+.sa-rail li:last-child::before{background:#050505!important;border-color:#050505!important}
+.lo-steps li::before{color:#050505!important}
+.ll-line .dot{border-color:#050505!important}
+.ll-line::after{background:#050505!important}
+.lc-ladder li:not(.hold) .d{border-color:#fff!important}
+.lc-ladder::before{background:linear-gradient(rgba(255,255,255,.6),rgba(255,255,255,.2))!important}
+ol.steps > li::before,.how-grid .n,.next li i{background:#F2F2F5!important;color:#050505!important}
+.steps i.on{background:#050505!important;color:#fff!important}
+
+/* 8. Things that look pressable: help-page button names, the illustrated Call pill */
+.doc kbd{background:#F2F2F5!important;color:#050505!important}
+span.go > svg{background:#050505!important}
+
+.vs-new{border-color:#E4E4E7!important}
+/* 21 Oct 2026 (André): plain small green checks, no filled circles. */
+.pr-yes{width:18px!important;height:18px!important;border-radius:0!important;background:no-repeat center/18px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%2330D158' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 8.5l3.2 3L13 4.5'/%3E%3C/svg%3E")!important}
+.pr-yes img{display:none!important}
+.vs-yes{background:none!important;color:#30D158!important;width:20px!important;height:20px!important}
+.vs-yes svg{width:16px!important;height:16px!important;stroke-width:2.6}
 </style>
 </body>
 </html>

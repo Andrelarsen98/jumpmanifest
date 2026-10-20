@@ -451,6 +451,21 @@ h1, h2, h3 { text-wrap: balance; }
 .toc a { color: var(--t); font-weight: 600; display: block; padding: 8px 0; }
 @media (max-width: 600px) { .toc ol { columns: 1; } }
 </style>
+<script>try{if(sessionStorage.getItem("sh-in"))document.documentElement.classList.add("sh-seen");else sessionStorage.setItem("sh-in","1")}catch(e){}</script>
+<style id="btn-black-head">/* 21 Oct 2026 (André): no purple buttons anywhere. Every filled button is the
+   black price-card button: dark gradient, white text, soft ring. Shapes stay. */
+.sh-cta-demo,.fd-btn,.btn.ghost,.btn.demo,.band-btn,.pc-out,.sms-btn,.sm-btn,.pc-call,.lo-btn,.lc-btn,.hmw-btn,.dp-btn,.btn.primary,.pq-btn,a.btn[href*="apps.apple.com"],a.btn[href="/get"]{background:linear-gradient(180deg,#2A2A2E,#050505)!important;color:#fff!important;border:0!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14)!important;filter:none!important;transition:box-shadow .2s ease!important}
+@media (hover:hover){.sh-cta-demo:hover,.fd-btn:hover,.btn.ghost:hover,.btn.demo:hover,.band-btn:hover,.pc-out:hover,.sms-btn:hover,.sm-btn:hover,.pc-call:hover,.lo-btn:hover,.lc-btn:hover,.hmw-btn:hover,.dp-btn:hover,.btn.primary:hover,.pq-btn:hover,a.btn[href*="apps.apple.com"]:hover,a.btn[href="/get"]:hover{background:linear-gradient(180deg,#3A3A3F,#0A0A0A)!important;color:#fff!important;transform:none!important}}
+.sh-cta-demo *,.fd-btn *,.btn.ghost *,.btn.demo *,.band-btn *,.pc-out *,.sms-btn *,.sm-btn *,.pc-call *,.lo-btn *,.lc-btn *,.hmw-btn *,.dp-btn *,.pq-btn *{color:inherit!important}
+/* 21 Oct 2026 flash fixes: no iOS grey tap box anywhere, the header slides in on the first page of a visit only, hover only on real mouse devices. */
+html{-webkit-tap-highlight-color:transparent}
+a,button,summary,label,input,select,textarea{-webkit-tap-highlight-color:transparent}
+summary{-webkit-user-select:none;user-select:none}
+html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:none!important}
+.toc a{padding-top:10px!important;padding-bottom:10px!important}
+.sh-nav:has(.sh-dd.open) .sh-dd:not(.open) .sh-panel{transition:none}
+.sh-cta-demo:focus-visible,.fd-btn:focus-visible,.btn.ghost:focus-visible,.btn.demo:focus-visible,.band-btn:focus-visible,.pc-out:focus-visible,.sms-btn:focus-visible,.sm-btn:focus-visible,.pc-call:focus-visible,.lo-btn:focus-visible,.lc-btn:focus-visible,.hmw-btn:focus-visible,.dp-btn:focus-visible,.btn.primary:focus-visible,.pq-btn:focus-visible,a.btn[href*="apps.apple.com"]:focus-visible,a.btn[href="/get"]:focus-visible{outline:2px solid #050505!important;outline-offset:3px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 3px #fff!important}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
@@ -718,6 +733,8 @@ h1, h2, h3 { text-wrap: balance; }
     function go(id, smooth) {
       var el = document.getElementById(id);
       if (!el) return false;
+      var rv = el.closest('.js-rise, .bento.anim .bt');
+      if (rv) { rv.style.transition = 'none'; rv.classList.add('rise-in', 'on'); void rv.offsetWidth; rv.style.transition = ''; }
       var to = function (b) { window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - HDR, behavior: b }); };
       if (matchMedia('(prefers-reduced-motion: reduce)').matches) smooth = false;
       to(smooth ? 'smooth' : 'instant');
@@ -763,9 +780,68 @@ h1, h2, h3 { text-wrap: balance; }
 </script>
 <style id="btn-black">/* 21 Oct 2026 (André): no purple buttons anywhere. Every filled button is the
    black price-card button: dark gradient, white text, soft ring. Shapes stay. */
-.sh-cta-demo,.fd-btn,.btn.ghost,.btn.demo,.band-btn,.pc-out,.sms-btn,.sm-btn,.pc-call,.lo-btn,.lc-btn,.hmw-btn,.dp-btn,.btn.primary,.pq-btn,a.btn[href*="apps.apple.com"],a.btn[href="/get"]{background:linear-gradient(180deg,#2A2A2E,#050505)!important;color:#fff!important;border:0!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 2px #E9E5FE!important;filter:none!important;transition:box-shadow .2s ease!important}
-.sh-cta-demo:hover,.fd-btn:hover,.btn.ghost:hover,.btn.demo:hover,.band-btn:hover,.pc-out:hover,.sms-btn:hover,.sm-btn:hover,.pc-call:hover,.lo-btn:hover,.lc-btn:hover,.hmw-btn:hover,.dp-btn:hover,.btn.primary:hover,.pq-btn:hover,a.btn[href*="apps.apple.com"]:hover,a.btn[href="/get"]:hover{background:linear-gradient(180deg,#3A3A3F,#0A0A0A)!important;color:#fff!important;transform:none!important}
+.sh-cta-demo,.fd-btn,.btn.ghost,.btn.demo,.band-btn,.pc-out,.sms-btn,.sm-btn,.pc-call,.lo-btn,.lc-btn,.hmw-btn,.dp-btn,.btn.primary,.pq-btn,a.btn[href*="apps.apple.com"],a.btn[href="/get"]{background:linear-gradient(180deg,#2A2A2E,#050505)!important;color:#fff!important;border:0!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14)!important;filter:none!important;transition:box-shadow .2s ease!important}
+@media (hover:hover){.sh-cta-demo:hover,.fd-btn:hover,.btn.ghost:hover,.btn.demo:hover,.band-btn:hover,.pc-out:hover,.sms-btn:hover,.sm-btn:hover,.pc-call:hover,.lo-btn:hover,.lc-btn:hover,.hmw-btn:hover,.dp-btn:hover,.btn.primary:hover,.pq-btn:hover,a.btn[href*="apps.apple.com"]:hover,a.btn[href="/get"]:hover{background:linear-gradient(180deg,#3A3A3F,#0A0A0A)!important;color:#fff!important;transform:none!important}}
 .sh-cta-demo *,.fd-btn *,.btn.ghost *,.btn.demo *,.band-btn *,.pc-out *,.sms-btn *,.sm-btn *,.pc-call *,.lo-btn *,.lc-btn *,.hmw-btn *,.dp-btn *,.pq-btn *{color:inherit!important}
+/* 21 Oct 2026 flash fixes: no iOS grey tap box anywhere, the header slides in on the first page of a visit only, hover only on real mouse devices. */
+html{-webkit-tap-highlight-color:transparent}
+a,button,summary,label,input,select,textarea{-webkit-tap-highlight-color:transparent}
+summary{-webkit-user-select:none;user-select:none}
+html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:none!important}
+.toc a{padding-top:10px!important;padding-bottom:10px!important}
+.sh-nav:has(.sh-dd.open) .sh-dd:not(.open) .sh-panel{transition:none}
+.sh-cta-demo:focus-visible,.fd-btn:focus-visible,.btn.ghost:focus-visible,.btn.demo:focus-visible,.band-btn:focus-visible,.pc-out:focus-visible,.sms-btn:focus-visible,.sm-btn:focus-visible,.pc-call:focus-visible,.lo-btn:focus-visible,.lc-btn:focus-visible,.hmw-btn:focus-visible,.dp-btn:focus-visible,.btn.primary:focus-visible,.pq-btn:focus-visible,a.btn[href*="apps.apple.com"]:focus-visible,a.btn[href="/get"]:focus-visible{outline:2px solid #050505!important;outline-offset:3px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 3px #fff!important}
+</style>
+<style id="no-purple">/* 21 Oct 2026 (André): no purple on anything you can press, no purple ticks, no purple step dots.
+   Ticks = app green #30D158. Press/active/dots = ink #050505, hover = #71717B (same as the header). */
+
+/* 1. Button ring: lavender #E9E5FE -> neutral */
+.sh-cta-demo,.fd-btn,.btn.ghost,.btn.demo,.band-btn,.pc-out,.sms-btn,.sm-btn,.pc-call,.lo-btn,.lc-btn,.hmw-btn,.dp-btn,.btn.primary,.pq-btn,a.btn[href*="apps.apple.com"],a.btn[href="/get"],.go{box-shadow:inset 0 1px 0 rgba(255,255,255,.14)!important}
+
+/* 2. Header: active-page underline + mobile menu current item */
+.is-current > .sh-t::after{background:#050505!important}
+.sh-macc.is-current > span,.sh-mlink.is-current .sh-t{color:#050505!important}
+
+/* 3. Body links on help / support / privacy / terms (were purple text) */
+main.doc a:not([class]),.sup-tracks .email a{color:#050505!important;text-decoration:underline!important;text-decoration-color:rgba(5,5,5,.3)!important;text-underline-offset:3px}
+main.doc a:not([class]):hover,.sup-tracks .email a:hover{color:#71717B!important;text-decoration-color:currentColor!important}
+.help-grid .hcard i{color:#050505!important}
+
+/* 4. Link hovers that turned purple */
+.faq-help a:hover,.faq-more a:hover,.hero-note a:hover,.hero-dz a:hover,.final-dz a:hover,#globe .dzg-more a:hover,#desk .desk-link:hover,.hmw-ctas a.hmw-link:hover,.hmw-row a.hmw-link:hover,.hmw-where .vis-pts a:hover,.hmw .vis .more a:hover,.wx-ctas a.wx-link:hover,.sms-toc a:hover{color:#71717B!important}
+.sms-four a:hover{color:#fff!important}
+.sms-toc a::before{color:#71717B!important}
+
+/* 5. Focus rings */
+#desk .btn:focus-visible,#desk .desk-link:focus-visible,.vpause:focus-visible,.mq-btn:focus-visible{outline-color:#050505!important}
+input:focus{outline-color:#050505!important;border-color:#050505!important}
+
+/* 6. Ticks -> app green */
+svg.tk,.vis-pts li > svg,.sa-plan.pro li > svg,.dp-money-note li > svg,.sms-big li > svg,.sms-need li > svg{color:#30D158!important}
+.vs-yes,.pr-yes,svg.ic.yes,.vs-ic.yes{background:#30D158!important}
+
+/* 7. Step dots / numbered steps */
+.dp-rail li::before,.lc-rail li::before,.sm-rail li::before,.sms-rail li::before,.hmw-day > li::after,.hmw-day .a:not(:empty)::after{border-color:#050505!important}
+.dp-rail li:last-child::before,.lc-rail li:last-child::before,.sm-rail li:last-child::before,.ll-flow li:last-child::before{background:#050505!important}
+.sa-rail li:last-child::before{background:#050505!important;border-color:#050505!important}
+.lo-steps li::before{color:#050505!important}
+.ll-line .dot{border-color:#050505!important}
+.ll-line::after{background:#050505!important}
+.lc-ladder li:not(.hold) .d{border-color:#fff!important}
+.lc-ladder::before{background:linear-gradient(rgba(255,255,255,.6),rgba(255,255,255,.2))!important}
+ol.steps > li::before,.how-grid .n,.next li i{background:#F2F2F5!important;color:#050505!important}
+.steps i.on{background:#050505!important;color:#fff!important}
+
+/* 8. Things that look pressable: help-page button names, the illustrated Call pill */
+.doc kbd{background:#F2F2F5!important;color:#050505!important}
+span.go > svg{background:#050505!important}
+
+.vs-new{border-color:#E4E4E7!important}
+/* 21 Oct 2026 (André): plain small green checks, no filled circles. */
+.pr-yes{width:18px!important;height:18px!important;border-radius:0!important;background:no-repeat center/18px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%2330D158' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 8.5l3.2 3L13 4.5'/%3E%3C/svg%3E")!important}
+.pr-yes img{display:none!important}
+.vs-yes{background:none!important;color:#30D158!important;width:20px!important;height:20px!important}
+.vs-yes svg{width:16px!important;height:16px!important;stroke-width:2.6}
 </style>
 </body>
 </html>

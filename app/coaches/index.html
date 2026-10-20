@@ -562,6 +562,8 @@ document.querySelectorAll('.filter-chip').forEach(function(chip) {
     function go(id, smooth) {
       var el = document.getElementById(id);
       if (!el) return false;
+      var rv = el.closest('.js-rise, .bento.anim .bt');
+      if (rv) { rv.style.transition = 'none'; rv.classList.add('rise-in', 'on'); void rv.offsetWidth; rv.style.transition = ''; }
       var to = function (b) { window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - HDR, behavior: b }); };
       if (matchMedia('(prefers-reduced-motion: reduce)').matches) smooth = false;
       to(smooth ? 'smooth' : 'instant');

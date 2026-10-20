@@ -901,5 +901,6 @@
   showEntry();
 })();
 </script>
+<script id="rm-video">(function(){if(!window.matchMedia||!matchMedia("(prefers-reduced-motion: reduce)").matches||document.querySelector(".vpause"))return;document.querySelectorAll("video").forEach(function(v){v.removeAttribute("autoplay");v.autoplay=false;v.pause();v.addEventListener("play",function(){v.pause()});});})();</script>
 </body>
 </html>
