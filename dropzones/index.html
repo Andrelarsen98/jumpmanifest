@@ -290,7 +290,7 @@
   /* One gap above pricing, the same as every other section (9 Oct 2026):
      the band starts where the section before it ends, its own padding is the gap. */
   .pricing { position: relative; isolation: isolate; margin-top: 0; }
-  .pricing::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%); background: #F9F9F9; z-index: -1; }
+  .pricing::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%); background: #fff; z-index: -1; }
   .pc { border-radius: 10px; border-color: #E4E4E7; }
   .pc.hl { border-radius: 10px; border: 1px solid #6D42F5; box-shadow: none; } /* slim line, no glow: as Softriver */
   .pc-in { padding: 32px; }
@@ -1824,8 +1824,8 @@ g.forEach(function(b){b.classList.add('anim');b.querySelectorAll('.bt').forEach(
 </script>
 <style id="btn-black">/* 21 Oct 2026 (André): no purple buttons anywhere. Every filled button is the
    black price-card button: dark gradient, white text, soft ring. Shapes stay. */
-.sh-cta-demo,.fd-btn,.btn.ghost,.btn.demo,.band-btn,.pc-out,.sms-btn,.sm-btn,.pc-call,.lo-btn,.lc-btn,.hmw-btn,.dp-btn,.btn.primary,.pq-btn,a.btn[href*="apps.apple.com"],a.btn[href="/get"]{background:linear-gradient(180deg,#2A2A2E,#050505)!important;color:#fff!important;border:0!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 2px #E9E5FE!important;filter:none!important}
-.sh-cta-demo:hover,.fd-btn:hover,.btn.ghost:hover,.btn.demo:hover,.band-btn:hover,.pc-out:hover,.sms-btn:hover,.sm-btn:hover,.pc-call:hover,.lo-btn:hover,.lc-btn:hover,.hmw-btn:hover,.dp-btn:hover,.btn.primary:hover,.pq-btn:hover,a.btn[href*="apps.apple.com"]:hover,a.btn[href="/get"]:hover{background:#000!important;color:#fff!important}
+.sh-cta-demo,.fd-btn,.btn.ghost,.btn.demo,.band-btn,.pc-out,.sms-btn,.sm-btn,.pc-call,.lo-btn,.lc-btn,.hmw-btn,.dp-btn,.btn.primary,.pq-btn,a.btn[href*="apps.apple.com"],a.btn[href="/get"]{background:linear-gradient(180deg,#2A2A2E,#050505)!important;color:#fff!important;border:0!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 2px #E9E5FE!important;filter:none!important;transition:box-shadow .2s ease!important}
+.sh-cta-demo:hover,.fd-btn:hover,.btn.ghost:hover,.btn.demo:hover,.band-btn:hover,.pc-out:hover,.sms-btn:hover,.sm-btn:hover,.pc-call:hover,.lo-btn:hover,.lc-btn:hover,.hmw-btn:hover,.dp-btn:hover,.btn.primary:hover,.pq-btn:hover,a.btn[href*="apps.apple.com"]:hover,a.btn[href="/get"]:hover{background:linear-gradient(180deg,#3A3A3F,#0A0A0A)!important;color:#fff!important;transform:none!important}
 .sh-cta-demo *,.fd-btn *,.btn.ghost *,.btn.demo *,.band-btn *,.pc-out *,.sms-btn *,.sm-btn *,.pc-call *,.lo-btn *,.lc-btn *,.hmw-btn *,.dp-btn *,.pq-btn *{color:inherit!important}
 </style>
 </body>
