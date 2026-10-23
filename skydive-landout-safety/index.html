@@ -454,6 +454,24 @@
   .ft-base a:hover { color: #0f0b1c; }
   @media (max-width: 980px) { .ft { grid-template-columns: repeat(2, 1fr); } .ft-brand { grid-column: 1 / -1; } }
   @media (max-width: 560px) { footer.site { padding: 52px 0 32px; } .ft { padding: 0 20px; gap: 32px 20px; } .ft-base { width: calc(100% - 40px); padding: 20px 0 0; } }
+  /* PHONE FOOTER (23 Oct), apple.com's pattern: the two long menus fold
+     into rows you tap open ("For jumpers +"), Company stays open as one
+     short row of links, so About and Support are on screen at once.
+     Rows stay 44 px tall to tap (Apple's minimum). */
+  @media (max-width: 560px) {
+    footer.site .ft { gap: 0 20px; }
+    footer.site .ft-brand { margin-bottom: 24px; }
+    footer.site .ft-brand p { margin-top: 14px; }
+    footer.site .ft-col { grid-column: 1 / -1; border-top: 1px solid rgba(255,255,255,.12); }
+    footer.site .ft-col a { margin-bottom: 0; min-height: 44px; font-size: 15px; }
+    footer.site .ft-col:not(:last-child) h3 { display: flex; align-items: center; justify-content: space-between; min-height: 52px; margin: 0 !important; cursor: pointer; color: #FFFFFF !important; }
+    footer.site .ft-col:not(:last-child) h3::after { content: "+"; font-size: 22px; font-weight: 400; color: #A1A1AA; transition: transform .2s ease; }
+    footer.site .ft-col.open h3::after { transform: rotate(45deg); }
+    footer.site .ft-col:not(:last-child):not(.open) a { display: none; }
+    footer.site .ft-col.open { padding-bottom: 8px; }
+    footer.site .ft-col:last-child { display: flex; flex-wrap: wrap; column-gap: 22px; padding-top: 16px; }
+    footer.site .ft-col:last-child h3 { flex-basis: 100%; margin-bottom: 4px; }
+  }
 
   /* ---------- ONE TYPE AND SPACING SYSTEM (9 Oct 2026) ----------
      Softriver's computed values at 1440 (getComputedStyle), in our fonts:
@@ -1552,4 +1570,5 @@ span.go > svg{background:#050505!important}
 .vs-yes svg{width:16px!important;height:16px!important;stroke-width:2.6}
 .vs-no{color:#FF453A!important;background:none!important;width:20px!important;height:20px!important}.vs-no svg{width:16px!important;height:16px!important;stroke-width:2.6}
 </style>
+<script>/* phone footer: tap a menu heading to open it */document.addEventListener('click',function(e){var h=e.target.closest&&e.target.closest('footer.site .ft-col:not(:last-child) h3');if(!h||innerWidth>560)return;h.parentNode.classList.toggle('open');});</script>
 </body>
