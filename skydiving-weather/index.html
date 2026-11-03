@@ -1002,7 +1002,7 @@ h1, h2, h3 { text-wrap: balance; }
   "name": "Manifest",
   "operatingSystem": "iOS",
   "applicationCategory": "SportsApplication",
-  "description": "The app for skydivers: weather and winds aloft for jumping, live loads, 3D replays of your jumps, logbook sign-offs, gear reminders and more.",
+  "description": "The app for skydivers: weather and winds aloft for jumping, live loads, 3D replays of your jumps, jump sign-offs, gear reminders and more.",
   "url": "https://www.jumpmanifest.com/",
   "downloadUrl": "https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429",
   "offers": {
@@ -1029,8 +1029,9 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
 .sh-nav:has(.sh-dd.open) .sh-dd:not(.open) .sh-panel{transition:none}
 .sh-cta-demo:focus-visible,.fd-btn:focus-visible,.btn.ghost:focus-visible,.btn.demo:focus-visible,.band-btn:focus-visible,.pc-out:focus-visible,.sms-btn:focus-visible,.sm-btn:focus-visible,.pc-call:focus-visible,.lo-btn:focus-visible,.lc-btn:focus-visible,.hmw-btn:focus-visible,.dp-btn:focus-visible,.btn.primary:focus-visible,.pq-btn:focus-visible,a.btn[href*="apps.apple.com"]:focus-visible,a.btn[href="/get"]:focus-visible{outline:2px solid #050505!important;outline-offset:3px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 3px #fff!important}
 </style>
+<link rel="stylesheet" href="/assets/site-dark.css?v=5" />
 </head>
-<body>
+<body class="dk">
 <a class="skip" href="#main">Skip to main content</a>
 
 <!-- SITE HEADER (9 Oct 2026): one header on every page. Mega dropdowns on
@@ -1064,428 +1065,211 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
 </div>
 
 
-<main id="main" class="wrap wx">
-  <style id="review-b">
-  /* A11: no divider can start a wrapped line of hero chips; spacing only. */
-  .trust { gap: 12px 24px; }
-  .trust > * { padding: 0; }
-  .trust > * + * { border-left: 0; }
-  /* F12: founding status right under the hero actions. */
-  .hero-founding { margin: 22px 0 0; font-size: 16px; line-height: 24px; font-weight: 500; color: #050505; text-align: center; }
-  @media (min-width: 900px) { .hero-founding { text-align: left; } }
-  /* F13: readable Desk panels, captioned as sample data. */
-  /* Hero: the full Desk with the jumper's iPhone in front, as on the other
-     Desk pages (André, 16 Oct 2026). */
-  .hm-wrap { position: relative; }
-  /* MUG + STEAM (19 Oct). Real 3D render (Blender), shot straight on like the display; real scale for a
-     9.5 cm mug, set a little in front of the display so it sits just below the stand's foot line. */
-  .hm-mug { position: absolute; left: 10%; bottom: -2.2%; width: 22%; pointer-events: none; transform: translateY(8%); }
-  /* The steam starts BEHIND the mug, at the coffee, so it rises out of the opening; the mug image covers its root. */
-  .hm-mug .mug-body { position: relative; z-index: 1; display: block; width: 100%; height: auto; }
-  .hm-mug .mug-steam { position: absolute; z-index: 0; left: 7.8%; bottom: 86%; width: 57.4%; overflow: visible; }
-  /* Real coffee steam is thin, white and barely there: a white ribbon (shows on the dark bezel) over a faint
-     grey one (shows on the white page), slow, delicate, always rising out of the cup. */
-  .mug-steam .w { fill: none; stroke-linecap: round; opacity: 0; transform-box: fill-box; transform-origin: 50% 100%;
-    animation: steamRise 9s cubic-bezier(.3,.1,.4,1) infinite; }
-  .mug-steam .tone .w { stroke: url(#steamS); stroke-width: 3.2; }
-  .mug-steam .lite .w { stroke: url(#steamG); stroke-width: 2.2; }
-  .mug-steam .w2 { animation-delay: 3s; }
-  .mug-steam .w3 { animation-delay: 6s; }
-  @keyframes steamRise {
-    0% { opacity: 0; transform: translateY(4%) scale(.9, .7); }
-    20% { opacity: 1; }
-    70% { opacity: .55; }
-    100% { opacity: 0; transform: translateY(-8%) scale(1.2, 1.05); }
-  }
-  @media (prefers-reduced-motion: reduce) { .mug-steam .w { animation: none; opacity: .6; } }
-  .hero-media .desk-cap { margin-top: 44px; text-align: center; }
-  /* STUDIO DISPLAY (19 Oct 2026, André): the desk shown on a Studio Display, white background blends with the page. */
-  img.studio { display: block; width: 100%; height: auto; }
-  /* André 19 Oct: never a grey card around the Studio Display. */
-  .vis-media:has(img.studio) { background: transparent !important; padding: 0 !important; border-radius: 0 !important; }
-  .hm-phone { position: absolute; right: -3%; bottom: -6%; width: 26%; max-width: 190px; height: auto; filter: drop-shadow(0 18px 28px rgba(15,23,42,.28)); }
-  @media (max-width: 767px) { .hm-phone { width: 30%; right: -1%; bottom: -8%; } .hero-media .desk-cap { margin-top: 26px; } }
-  figure.hero-media { margin: 0; }
-  .desk-cap { margin: 8px 0 0; font-size: 14px; line-height: 20px; color: #52525B; text-align: left; }
-  /* F08: card copy on the pale card fills at 7:1, not 4.4:1. */
-  .app-card p, .card p, .how-grid p { color: #52525B; }
-  /* André 19 Oct: Apple-style row, no lilac panel, no boxes, no number chips. */
-  #app .app-panel { background: none; border-radius: 0; padding: 0; margin-top: 64px; }
-  #app .app-grid { gap: 56px; }
-  #app .app-card { background: none; border-radius: 0; padding: 0; text-align: center; }
-  #app .app-card .ic { width: 40px; height: 40px; color: #050505; display: block; margin: 0 auto; }
-  #app .app-card b { margin-top: 20px; }
-  #app .app-card p { max-width: 320px; margin-left: auto; margin-right: auto; }
-  #app .app-foot { margin-top: 56px; }
-  /* Top-up phones (André 19 Oct): same phone height, side by side. */
-  /* Meadow behind the phones (André 19 Oct): Unsplash photo _8fRer9hPv0 (Unsplash License). */
-  #app .pay-duo { display: flex; justify-content: center; align-items: center; gap: clamp(12px, 4vw, 64px); margin-top: 56px;
-    padding: clamp(36px, 6vw, 80px) 16px; border-radius: 28px; background:#F5F5F6; 
-    isolation: isolate; transform: translateZ(0); } /* keeps the phones' drop-shadow layer from repainting the owner bar white in Safari */
-  #app .pay-duo img { display: block; height: auto; filter: drop-shadow(0 24px 40px rgba(0,0,0,.35)); }
-  @media (max-width: 600px) { #app .pay-duo { border-radius: 22px; padding: 28px 10px; gap: 10px; } #app .pay-duo .pd-a, #app .pay-duo .pd-b { width: 46%; } }
-  #app .pay-duo .pd-a { width: min(300px, 44%); }
-  #app .pay-duo .pd-b { width: min(300px, 44%); }
-  @media (max-width: 600px) { #app .app-foot b { display: block; } }
-  @media (max-width: 900px) { #app .app-grid { gap: 44px; } }
-  /* F02: each plan's limits right under the price slot. */
-  .pc-limits { margin: 10px 0 0; font-size: 16px; line-height: 22px; font-weight: 700; color: #050505; letter-spacing: -.2px; }
-  .pc-limits + .pc-desc { margin-top: 4px; }
-  /* F08: rows a plan does not include: readable text, a dash, a visible label. */
-  .pc ul.pc-list li.off { color: #52525B; }
-  .pc .off .tk-off { color: #52525B; border-color: #A1A1AA; }
-  .pc .off .off-tag { flex: 0 0 auto; font-size: 11.5px; line-height: 18px; font-weight: 600; letter-spacing: 0; color: #3F3F46; background: #F4F4F5; border-radius: 6px; padding: 1px 6px; }
-  .pc ul.pc-list li.off { gap: 10px; letter-spacing: -.4px; }
-  /* F06: a demo action between the hero and pricing, white on the black band. */
-  .band-cta { margin-top: 32px; display: flex; justify-content: center; }
-  .band-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; padding: 0 28px; border-radius: 999px; background: #fff; color: #050505; font-family: "Manrope", sans-serif; font-size: 18px; font-weight: 700; }
-  .band-btn:hover { background: #F4F4F5; }
-  .band-btn svg { width: 16px; height: 16px; }
-  .band .band-sub { color: #E4E4E7; }
-  /* A05: what the dropzone sends us, under the setup steps. */
-  .how-need { max-width: 820px; margin: 28px auto 0; text-align: center; font-size: 17px; line-height: 26px; color: #3F3F46; }
-  /* F10: group labels inside the FAQ. */
-  .faq-g { max-width: 820px; margin: 0 auto; padding: 0 4px 14px; font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: 26px; line-height: 32px; letter-spacing: -.4px; color: #050505; }
-  .faq-g + .faq-list { margin-bottom: 44px; }
-  @media (max-width: 600px) { .faq-g { font-size: 21px; line-height: 28px; } .band-btn { font-size: 17px; width: 100%; } }
+<main id="main">
+  <style id="wx-dk">
+    @media (max-width: 760px) { body.dk #main .dk-h1 br { display: none; } }
+    body.dk #main .x-strata { position: relative; width: min(860px, calc(100vw - 40px)); margin: 0 auto; border-radius: 22px; overflow: hidden; background: linear-gradient(180deg, #1F2A44 0, #2B3A5A 45%, #3A3F52 100%); box-shadow: var(--sh-win); text-align: left; }
+    body.dk #main .x-layer { position: relative; height: 104px; padding: 22px 28px; box-sizing: border-box; border-bottom: 1px solid rgba(255,255,255,.14); overflow: hidden; }
+    body.dk #main .x-layer b { display: block; font-size: 19px; line-height: 24px; font-weight: 600; color: #fff; }
+    body.dk #main .x-layer span { font-size: 14px; line-height: 20px; color: var(--ink2); }
+    body.dk #main .x-layer img { position: absolute; right: 4%; top: -18px; width: 260px; height: auto; max-width: none; margin: 0; border: 0; box-shadow: none; border-radius: 0; opacity: .9; pointer-events: none; }
+    body.dk #main .x-layer.l2 img { right: 22%; width: 300px; }
+    body.dk #main .x-layer.l3 img { right: 8%; width: 220px; top: -4px; }
+    body.dk #main .x-sum { padding: 16px 28px; background: rgba(0,0,0,.42); font-size: 15px; line-height: 22px; font-weight: 600; color: #fff; }
+    body.dk #main .x-spec { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 58px; width: min(900px, calc(100vw - 40px)); margin: 48px auto 0; text-align: left; }
+    body.dk #main .x-spec div { margin: 0; }
+    body.dk #main .x-spec dt { font-size: 19px; line-height: 24px; font-weight: 600; color: var(--ink); }
+    body.dk #main .x-spec dd { margin: 8px 0 0; font-size: 16px; line-height: 25px; color: var(--ink2); }
+    body.dk #main .x-panel { width: min(100%, 440px); margin: 0 auto; padding: 24px; box-sizing: border-box; border-radius: 22px; background: var(--plate); box-shadow: var(--sh-win); text-align: left; }
+    body.dk #main .x-panel-h { margin: 0 0 12px; font-size: 19px; line-height: 24px; font-weight: 600; color: var(--ink); }
+    body.dk #main .x-u { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 0; border-top: 1px solid var(--hair); font-size: 15px; color: var(--ink2); }
+    body.dk #main .x-panel > p:last-child { margin: 12px 0 0; font-size: 14px; line-height: 21px; color: var(--ink2); }
+    body.dk #main .x-pills { display: inline-flex; gap: 2px; padding: 3px; border-radius: 999px; background: #000; }
+    body.dk #main .x-pills button { min-width: 44px; min-height: 30px; padding: 4px 12px; border: 0; border-radius: 999px; background: transparent; color: #fff; font: 600 13px/1 "Manrope", sans-serif; cursor: pointer; }
+    body.dk #main .x-pills button[aria-pressed="true"] { background: #fff; color: #050505; }
+    body.dk #main .x-mug { display: block; width: min(100%, 420px); height: auto; margin: 0 auto; }
+    body.dk #main .x-safe .dk-close { padding: 64px 0; }
+    body.dk #main .x-safe .dk-l { color: #fff; }
+    body.dk #main .x-alt { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 0; border-top: 1px solid var(--hair); }
+    body.dk #main .x-alt small { display: block; font-size: 12px; line-height: 16px; color: var(--ink2); }
+    body.dk #main .x-alt b { display: block; font-size: 16px; line-height: 22px; font-weight: 600; color: var(--ink); }
+    body.dk #main .x-alt span { font-size: 13px; line-height: 18px; color: var(--ink2); }
+    body.dk #main .x-kt { flex: none; font-family: "General Sans", "Manrope", sans-serif; font-size: 32px; line-height: 1; font-weight: 500; color: #fff; }
+    body.dk #main .x-kt i { margin-left: 3px; font-family: "Manrope", sans-serif; font-style: normal; font-size: 13px; color: var(--ink2); }
+    body.dk #main .x-note { padding: 8px 0 12px; font-size: 13px; line-height: 18px; font-weight: 600; color: #FFD60A; }
+    @media (max-width: 760px) {
+      body.dk #main .x-spec { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+      body.dk #main .x-layer { padding: 18px 20px; }
+      body.dk #main .x-layer img { width: 170px; right: -8px; top: 0; }
+      body.dk #main .x-layer.l2 img { width: 190px; right: -4px; }
+      body.dk #main .x-layer.l3 img { width: 150px; }
+      body.dk #main .x-sum { padding: 14px 20px; }
+    }
   </style>
-  <style id="wx-css">
-  /* WEATHER PAGE (20 Oct 2026, André: every page polished, its own layout).
-     Base system is the dropzones page; these are the weather-only parts. */
-  .wx h1,.wx h2{font-family:"General Sans","Manrope",sans-serif}
-  .wx-badge{display:inline-block;transition:transform .15s ease}
-  .wx-badge:hover{transform:translateY(-1px)}
-  .wx-badge img{display:block;height:54px;width:auto}
-  .wx-link{font-family:"Manrope",sans-serif;font-weight:600;font-size:17px;color:#050505!important;text-decoration:none}
-  .wx-link:hover{color:#6D42F5!important}
-  .wx-cap{margin:14px 0 0;font-size:14px;line-height:20px;color:#52525B;text-align:center}
+  <header class="dk-head">
+    <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
+    <img class="dk-head-art" src="/assets/hero/plate-skydiving-weather.webp" alt="" decoding="async" fetchpriority="high" />
+    <h1 class="dk-h1">Skydiving weather app, <br />built around the jump.</h1>
+    <p class="dk-l">The wind where you get out, under canopy and on the ground, for any dropzone.</p>
+    <div class="dk-ctas"><a class="dk-badge" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="Download Manifest on the App Store"><img src="/assets/appstore-badge.svg?v=1" alt="Download on the App Store" width="160" height="54" /></a><a class="dk-a" href="#winds">Read the three winds</a></div>
+  </header>
 
-  /* HERO: copy left, the real weather screen right */
-  .wx-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding-top:clamp(40px,6vw,88px)}
-  .wx-hero h1{margin:0;font-weight:550;letter-spacing:-.035em;font-size:clamp(46px,5.6vw,72px);line-height:.98;color:#050505;text-wrap:balance}
-  .wx-hero h1 span{color:inherit}
-  .wx-hero h1 .eyebrow{justify-content:flex-start;color:#040815;font-family:"Manrope",sans-serif;letter-spacing:0;line-height:24px;margin-bottom:24px}
-  .wx-hero h1 .h1-main{display:block;max-width:10ch}
-  .wx-hero .lead{margin:28px 0 0;max-width:500px;text-align:left;font-size:21px;line-height:32px;color:#52525B}
-  .wx-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px;margin-top:36px}
-  .wx-hero figure{margin:0;display:flex;flex-direction:column;align-items:center}
-  .wx-hero video{display:block;height:min(680px,calc(100vh - 140px));min-height:520px;width:auto;max-width:100%;aspect-ratio:720/1280}
+  <section class="dk-band dk-tight">
+    <div class="x-strata" role="img" aria-label="The three cloud bands Manifest shows: high above 26,000 feet, middle from 10,000 to 26,000 feet, and low below about 10,000 feet, with the summary line No cloud layer up to 14,000 ft">
+      <div class="x-layer"><b>High</b><span>Above 26,000 ft</span><img src="/assets/opt/cloud-r.8c2fd097.webp" alt="" width="1150" height="646" decoding="async" /></div>
+      <div class="x-layer l2"><b>Middle</b><span>10,000 to 26,000 ft</span><img src="/assets/opt/cloud.852c5bc0.webp" alt="" width="1150" height="646" decoding="async" /></div>
+      <div class="x-layer l3"><b>Low</b><span>Below about 10,000 ft</span><img src="/assets/opt/cloud-r.8c2fd097.webp" alt="" width="1150" height="646" decoding="async" /></div>
+      <div class="x-sum">No cloud layer up to 14,000 ft.</div>
+    </div>
+    <div class="dk-t"><p class="dk-n" style="margin-top:16px"><b>These are the forecast model&rsquo;s bands, not a measured cloud base.</b> Cloud clearance is your dropzone&rsquo;s call.</p></div>
+  </section>
 
-  /* WINDS: full-bleed black band with an altitude ladder */
-  .wx-sky{position:relative;isolation:isolate;margin-top:clamp(96px,11vw,140px);padding:clamp(80px,9vw,120px) 0;color:#fff}
-  .wx-sky::before{content:"";position:absolute;inset:0 auto 0 50%;width:100vw;transform:translateX(-50%);background:#050505;z-index:-1}
-  .wx-sky-in{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
-  .wx-sky .eyebrow{justify-content:flex-start;color:#fff}
-  .wx-sky h2{margin:0;color:#fff;font-weight:550;letter-spacing:-.03em;font-size:clamp(34px,5vw,50px);line-height:1.02;text-wrap:balance}
-  .wx-sky .wx-lead{margin:24px 0 0;max-width:500px;font-size:20px;line-height:31px;color:#D1D1D6}
-  .wx-more{margin-top:40px;display:grid;gap:0;max-width:520px}
-  .wx-more div{padding:20px 0;border-top:1px solid rgba(255,255,255,.14)}
-  .wx-more b{display:block;font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:20px;line-height:28px;color:#fff}
-  .wx-more p{margin:6px 0 0;font-size:16px;line-height:25px;color:#D1D1D6}
-  .wx-ladder{position:relative;background:#141417;border-radius:32px;padding:36px 36px 32px 76px}
-  .wx-ladder::before{content:"";position:absolute;left:43px;top:104px;bottom:72px;border-left:2px dashed rgba(178,164,249,.55)}
-  .wx-ladder-h{margin:0 0 8px -40px;font-family:"Manrope",sans-serif;font-size:13px;line-height:18px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#A1A1AA}
-  .wx-alt{position:relative;display:grid;grid-template-columns:1fr auto;align-items:center;gap:4px 16px;padding:22px 0}
-  .wx-alt::before{content:"";position:absolute;left:-40px;top:50%;width:16px;height:16px;margin-top:-8px;border-radius:50%;background:#B2A4F9;box-shadow:0 0 0 6px rgba(178,164,249,.18)}
-  .wx-alt small{display:block;font-family:"Manrope",sans-serif;font-size:13px;line-height:18px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#B2A4F9}
-  .wx-alt b{display:block;margin-top:4px;font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:24px;line-height:31px;color:#fff}
-  .wx-alt span{display:block;font-size:15px;line-height:22px;color:#A1A1AA}
-  .wx-kt{font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:64px;line-height:1;letter-spacing:-.03em;color:#fff;white-space:nowrap}
-  .wx-kt i{font-style:normal;font-size:20px;letter-spacing:0;color:#A1A1AA;margin-left:4px}
-  .wx-note{position:relative;margin:2px 0;padding:10px 16px;display:inline-block;border-radius:99px;background:#26262B;font-family:"Manrope",sans-serif;font-size:15px;line-height:20px;font-weight:600;color:#fff}
-  .wx-sky .wx-cap{color:#A1A1AA;text-align:left;margin-top:18px}
-
-  /* CLOUD: a sky in layers, ground at the bottom */
-  .wx-strata{position:relative;overflow:hidden;margin:56px auto 0;max-width:1080px;border-radius:32px;background:linear-gradient(180deg,#0E1D47 0%,#24479A 46%,#6F98DE 82%,#A9C4EE 100%);color:#fff}
-  .wx-layer{position:relative;display:flex;justify-content:space-between;align-items:baseline;gap:16px;min-height:150px;padding:28px 40px;border-bottom:1px dashed rgba(255,255,255,.35)}
-  .wx-layer b{position:relative;z-index:2;font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:30px;line-height:36px}
-  .wx-layer span{position:relative;z-index:2;font-family:"Manrope",sans-serif;font-weight:700;font-size:17px;line-height:24px;color:#fff;text-align:right}
-  .wx-layer img{position:absolute;z-index:1;height:auto;pointer-events:none}
-  .wx-l1 img{width:300px;right:26%;top:12px;opacity:.55}
-  .wx-l2 img{width:380px;left:30%;top:4px;opacity:.8}
-  .wx-l3 img{width:360px;right:18%;top:2px;opacity:.95}
-  .wx-layer b,.wx-layer span{text-shadow:0 1px 10px rgba(14,29,71,.55)}
-  .wx-ground{display:none}
-  .wx-summary{position:absolute;z-index:3;left:50%;top:50%;transform:translate(-50%,-50%);width:max-content;max-width:calc(100% - 48px);padding:18px 26px;border-radius:22px;background:#1C1C1E;box-shadow:0 24px 50px -18px rgba(0,0,0,.6);font-family:"Manrope",sans-serif;font-size:19px;line-height:26px;font-weight:600;color:#fff;text-align:center}
-  /* QA 21 Oct: between phone and desktop the centred pill covered the Middle label; sit it on top as on phones */
-  @media (min-width:601px) and (max-width:900px){.wx-strata{display:flex;flex-direction:column}.wx-summary{position:relative;left:auto;top:auto;transform:none;order:-1;margin:24px 40px 4px;width:auto;max-width:none}}
-  .wx-fine{margin:28px auto 0;max-width:680px;text-align:center;font-size:17px;line-height:27px;color:#52525B}
-  .wx-fine b{color:#050505}
-
-  /* JUMPABLE: the question, two real phones on the meadow, then a spec list */
-  .wx-q h2{font-size:clamp(34px,5vw,50px)!important;line-height:1!important;letter-spacing:-.035em!important;font-weight:550!important}
-  .wx-duo{display:flex;justify-content:center;align-items:center;gap:clamp(12px,5vw,72px);margin-top:56px;padding:clamp(36px,6vw,80px) 16px;border-radius:32px;background:#F5F5F6;isolation:isolate;transform:translateZ(0)}
-  .wx-duo img{display:block;width:min(320px,72%);height:auto;filter:drop-shadow(0 24px 40px rgba(0,0,0,.35))}
-  .wx-spec{max-width:900px;margin:64px auto 0;padding:0}
-  .wx-spec div{display:grid;grid-template-columns:280px 1fr;gap:8px 40px;padding:26px 0;border-top:1px solid #E4E4E7}
-  .wx-spec div:last-child{border-bottom:1px solid #E4E4E7}
-  .wx-spec dt{font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:24px;line-height:32px;color:#050505}
-  .wx-spec dd{margin:0;font-size:18px;line-height:28px;color:#52525B}
-  .wx-limit{margin:56px auto 0;max-width:760px;text-align:center;font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:clamp(26px,3vw,36px);line-height:1.2;letter-spacing:-.02em;color:#050505;text-wrap:balance}
-
-  /* ANY DROPZONE: copy with a units switcher */
-  .wx-any{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
-  .wx-any .eyebrow{justify-content:flex-start}
-  .wx-any h2{text-align:left!important;margin:0!important}
-  .wx-any .lead{text-align:left!important;margin:20px 0 0!important;max-width:520px}
-  .wx-units{background:#0B0B0F;border-radius:32px;padding:36px;color:#fff;box-shadow:0 30px 70px -30px rgba(15,23,42,.45)}
-  .wx-units .wx-units-h{margin:0 0 8px;color:#fff;font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:24px;line-height:31px}
-  .wx-u{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;border-top:1px solid rgba(255,255,255,.1)}
-  .wx-u > span{font-family:"Manrope",sans-serif;font-size:17px;font-weight:600;color:#fff}
-  .wx-pills{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
-  .wx-pills button{min-height:44px;appearance:none;border:0;cursor:pointer;min-width:58px;height:40px;padding:0 16px;border-radius:99px;background:#2C2C2E;color:#fff;font-family:"Manrope",sans-serif;font-size:15px;font-weight:700}
-  .wx-pills button[aria-pressed="true"]{background:#fff;color:#050505}
-  .wx-units p{margin:14px 0 0;font-size:15px;line-height:22px;color:#A1A1AA}
-  .wx-src{margin:56px auto 0;max-width:760px;text-align:center;font-size:16px;line-height:26px;color:#52525B}
-  .wx-src b{color:#050505}
-
-  /* HOW: sticky heading left, steps on a rail right */
-  .wx-how{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;align-items:start}
-  .wx-how-h{position:sticky;top:120px}
-  .wx-how .eyebrow{justify-content:flex-start}
-  .wx-how h2{text-align:left!important;margin:0!important}
-  .wx-how .lead{text-align:left!important;margin:20px 0 0!important}
-  .wx-rail{list-style:none;margin:0;padding:0;counter-reset:s;position:relative}
-  .wx-rail::before{content:"";position:absolute;left:21px;top:22px;bottom:22px;width:2px;background:#E4E4E7}
-  .wx-rail li{counter-increment:s;position:relative;padding:0 0 40px 76px}
-  .wx-rail li:last-child{padding-bottom:0}
-  .wx-rail li::before{content:counter(s);position:absolute;left:0;top:0;width:44px;height:44px;border-radius:50%;background:#050505;color:#fff;display:flex;align-items:center;justify-content:center;font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:19px}
-  .wx-rail b{display:block;padding-top:6px;font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:26px;line-height:33px;color:#050505}
-  .wx-rail p{margin:6px 0 0;font-size:18px;line-height:28px;color:#52525B}
-
-  /* AT THE DROPZONE: the mug, then the safety word */
-  .wx-dz{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:center}
-  .wx-dz .eyebrow{justify-content:flex-start}
-  .wx-dz h2{text-align:left!important;margin:0!important}
-  .wx-dz .lead{text-align:left!important;margin:20px 0 0!important;max-width:600px}
-  .wx-dz .lead a,.wx-src a{color:#050505;font-weight:600;text-decoration:underline;text-underline-offset:3px}
-  .wx-mug{display:block;width:100%;max-width:340px;height:auto;margin:0 auto}
-  .wx-safe{margin:clamp(96px,11vw,140px) auto 0;max-width:860px;text-align:center}
-  .wx-safe h2{margin:0 auto;font-weight:550;letter-spacing:-.035em;font-size:clamp(34px,5vw,50px);line-height:1.02;color:#050505}
-  .wx-safe .big{margin:24px auto 0;max-width:640px;font-size:22px;line-height:33px;color:#050505;font-weight:500}
-  .wx-safe .small{margin:20px auto 0;max-width:680px;font-size:17px;line-height:27px;color:#52525B}
-  .wx-safe .held{margin:28px auto 0;font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:24px;line-height:31px;color:#050505}
-
-  .wx .faq{margin-top:clamp(96px,12vw,140px)}
-  .wx .final .wx-badge{margin-top:32px}
-  @media (max-width:899px){
-    .wx-hero,.wx-sky-in,.wx-any,.wx-how,.wx-dz{grid-template-columns:1fr;gap:44px}
-    .wx-hero{text-align:center}
-    .wx-hero h1 .eyebrow{justify-content:center}
-    .wx-hero h1 .h1-main{margin:0 auto}
-    .wx-hero .lead{margin:24px auto 0;text-align:center;font-size:18px;line-height:28px}
-    .wx-ctas{justify-content:center}
-    .wx-hero video{height:auto;min-height:0;width:100%;max-width:400px}
-    .wx-how-h{position:static}
-    .wx-spec div{grid-template-columns:1fr;padding:22px 0}
-    .wx-spec dt{font-size:21px;line-height:28px}
-    .wx-spec dd{font-size:16px;line-height:25px}
-    .wx-dz .wx-mug{max-width:300px}
-  }
-  @media (max-width:600px){
-    .wx-ladder{padding:28px 20px 24px 56px;border-radius:24px}
-    .wx-ladder::before{left:27px;top:92px;bottom:64px}
-    .wx-ladder-h{margin-left:-36px}
-    .wx-alt::before{left:-36px;width:14px;height:14px;margin-top:-7px}
-    .wx-alt b{font-size:20px;line-height:26px}
-    .wx-kt{font-size:44px}
-    .wx-kt i{font-size:16px}
-    .wx-sky .wx-lead{font-size:18px;line-height:28px}
-    .wx-strata{border-radius:24px;margin-top:40px}
-    .wx-layer{min-height:120px;padding:20px 20px;flex-direction:column;gap:2px}
-    .wx-layer b{font-size:24px;line-height:30px}
-    .wx-layer span{text-align:left;font-size:15px}
-    .wx-l1 img{width:200px;right:-30px}
-    .wx-l2 img{width:240px;left:auto;right:-50px}
-    .wx-l3 img{width:280px;right:-110px}
-    .wx-strata{display:flex;flex-direction:column}
-    .wx-summary{position:relative;left:auto;top:auto;transform:none;order:-1;margin:20px 20px 4px;width:auto;max-width:none;font-size:16px;line-height:22px;padding:14px 18px}
-    .wx-ground{height:56px}
-    .wx-duo{border-radius:24px;padding:28px 10px;gap:10px}
-    .wx-duo img{width:72%}
-    .wx-units{padding:26px 20px;border-radius:24px}
-    .wx-rail li{padding-left:64px;padding-bottom:32px}
-    .wx-rail b{font-size:21px;line-height:28px}
-    .wx-rail p{font-size:16px;line-height:25px}
-    .wx-safe .big{font-size:19px;line-height:29px}
-  }
-    /* 20 Oct 2026 (André): the cloud sky is the hero; the black winds band lower down. */
-  .wx-top{text-align:center;padding-top:clamp(48px,6vw,88px)}
-  .wx-top h1{margin:0 auto;font-weight:550;letter-spacing:-.035em;font-size:clamp(46px,5.6vw,72px);line-height:.98;color:#050505;text-wrap:balance}
-  .wx-top h1 .eyebrow{display:flex;justify-content:center;color:#040815;font-family:"Manrope",sans-serif;letter-spacing:0;line-height:24px;margin-bottom:24px;font-size:16px;font-weight:500}
-  .wx-top h1 .h1-main{display:block;color:#050505}
-  .wx-top .lead{font-size:20px;line-height:31px;color:#52525B}
-  .wx-screen .wx-cap{text-align:center;max-width:380px}
-  .wx-top .lead{margin:24px auto 0;max-width:560px}
-  .wx-top .wx-ctas{justify-content:center}
-  .wx-screen{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-  .wx-screen h2,.wx-screen .eyebrow{text-align:left;justify-content:flex-start;margin-left:0}
-  .wx-screen .lead{text-align:left;margin-left:0}
-  .wx-screen figure{margin:0;display:flex;flex-direction:column;align-items:center}
-  .wx-screen video{display:block;width:min(320px,100%);height:auto}
-  @media (max-width:600px){.wx-screen video{width:min(280px,100%);margin:0 auto}}
-  .wx-sky{margin-top:clamp(96px,12vw,140px)}
-  @media (max-width:899px){.wx-screen{grid-template-columns:1fr;gap:36px}.wx-top .lead{font-size:18px;line-height:28px}}
-  </style>
-
-
-
-
-  <section class="wx-top">
-    <h1><span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h11a3 3 0 1 0-3-3"/><path d="M3 13h15a3 3 0 1 1-3 3"/><path d="M3 17h7"/></svg>Skydiving weather app</span><span class="h1-main">Built around the jump.</span></h1>
-    <p class="lead">The wind where you get out, under canopy and on the ground, for any dropzone.</p>
-    <div class="wx-ctas">
-        <a class="wx-badge" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="Download Manifest on the App Store"><img src="/assets/appstore-badge.svg?v=1" alt="Download on the App Store" width="162" height="54" /></a>
-        <a class="wx-link" href="#winds">Read the three winds</a>
+  <section class="dk-band" id="screen">
+    <div class="dk-split">
+      <div>
+        <p class="dk-eyebrow">In the app</p>
+        <h2 class="dk-h">Cloud first. Then the wind.</h2>
+        <p class="dk-l">One line on the cloud, then cover for each band, the next few hours and the wind at every stage of the jump.</p>
+        <p class="dk-n">The weather screen in the Manifest app, scrolling through the hours at one dropzone.</p>
       </div>
-    <div class="wx-strata" role="img" aria-label="The three cloud bands Manifest shows: high above 26,000 feet, middle from 10,000 to 26,000 feet, and low below about 10,000 feet, with the summary line No cloud layer up to 14,000 ft">
-      <div class="wx-layer wx-l1"><b>High</b><span>Above 26,000 ft</span><img src="/assets/opt/cloud-r.8c2fd097.webp" alt="" width="1150" height="646" loading="lazy" decoding="async" /></div>
-      <div class="wx-layer wx-l2"><b>Middle</b><span>10,000 to 26,000 ft</span><img src="/assets/opt/cloud.852c5bc0.webp" alt="" width="1150" height="646" loading="lazy" decoding="async" /></div>
-      <div class="wx-layer wx-l3"><b>Low</b><span>Below about 10,000 ft</span><img src="/assets/opt/cloud-r.8c2fd097.webp" alt="" width="1150" height="646" loading="lazy" decoding="async" /></div>
-      <div class="wx-ground"></div>
-      <div class="wx-summary">No cloud layer up to 14,000 ft.</div>
+      <div class="dk-split-v"><span class="dk-phone"><video autoplay loop muted playsinline preload="metadata" poster="/assets/opt/weather-poster.feba04c5.webp" width="720" height="1280" aria-label="The Manifest weather screen for a dropzone: sky and ground wind on top, the next few hours with sunrise and sunset, a cloud summary up to 14,000 feet, and wind up where you get out, under canopy and on the ground"><source src="/assets/opt/weather.6052ec54.mp4" type="video/mp4" /></video></span></div>
     </div>
-    <p class="wx-fine"><b>These are the forecast model&rsquo;s bands, not a measured cloud base.</b> Cloud clearance is your dropzone&rsquo;s call.</p>
   </section>
 
-  <section class="sec wx-screen" id="screen">
-    <div>
-      <p class="eyebrow">In the app</p>
-      <h2>Cloud first. Then the wind.</h2>
-      <p class="lead">One line on the cloud, then cover for each band, the next few hours and the wind at every stage of the jump.</p>
+  <section class="dk-band" id="jumpable">
+    <div class="dk-t">
+      <h2 class="dk-h">Is it jumpable today?</h2>
+      <p class="dk-l">Manifest deliberately does not answer it with a green tick or a red cross.</p>
     </div>
-    <figure>
-      <video autoplay loop muted playsinline preload="metadata" poster="/assets/opt/weather-poster.feba04c5.webp" width="720" height="1280" aria-label="The Manifest weather screen for a dropzone: sky and ground wind on top, the next few hours with sunrise and sunset, a cloud summary up to 14,000 feet, and wind up where you get out, under canopy and on the ground">
-        <source src="/assets/opt/weather.6052ec54.mp4" type="video/mp4" />
-      </video>
-      <figcaption class="wx-cap">The weather screen in the Manifest app, scrolling through the hours at one dropzone.</figcaption>
-    </figure>
-  </section>
-
-  <section class="sec wx-q" id="jumpable">
-    <h2>Is it jumpable today?</h2>
-    <p class="lead">Manifest deliberately does not answer it with a green tick or a red cross.</p>
-    <div class="wx-duo">
-      <img src="/assets/skydiving-weather-calmest.webp" width="569" height="1182" alt="Manifest weather at Skydive Voss: clear, rain around for parts of the day, calmest 19:00 to 21:00, no cloud layer up to 14,000 ft, and the wind at each stage" loading="lazy" decoding="async" />
+    <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
+    <div class="dk-plate dk-plate-sill">
+      <img class="dk-paint" src="/assets/hero/plate-skydiving-weather-2.webp" alt="" loading="lazy" decoding="async" />
+      <img class="dk-ph mid" src="/assets/skydiving-weather-calmest.webp" width="569" height="1182" alt="Manifest weather at Skydive Voss: clear, rain around for parts of the day, calmest 19:00 to 21:00, no cloud layer up to 14,000 ft, and the wind at each stage" loading="lazy" decoding="async" />
     </div>
-    <p class="wx-cap">The calmest window at Skydive Voss, in the Manifest app.</p>
-    <dl class="wx-spec">
+    <p class="dk-n">The calmest window at Skydive Voss, in the Manifest app.</p>
+    <dl class="x-spec">
       <div><dt>The next few hours</dt><dd>A strip of hours from early morning to late evening, each with sky, temperature and wind, with sunrise and sunset dropped in where they fall.</dd></div>
       <div><dt>The day in one line</dt><dd>&ldquo;Rain around for parts of the day&rdquo;, then the calmest window left in today&rsquo;s daylight, such as &ldquo;Calmest 19:00 to 21:00&rdquo;.</dd></div>
       <div><dt>Tap any hour</dt><dd>The whole screen moves with it: sky, winds at each height, cloud and the notes in between.</dd></div>
       <div><dt>Sunrise and sunset</dt><dd>In the dropzone&rsquo;s own local time, so you know how long the light lasts for a sunset load.</dd></div>
     </dl>
-    <p class="wx-fine"><b>Whether a load flies depends on the aircraft, the dropzone&rsquo;s cloud policy, the S&amp;TA on duty and who is on the load.</b> Some dropzones fly through conditions that hold others on the ground. Manifest gives you the numbers that decision is made from.</p>
-    <p class="wx-limit">Your licence, your canopy and your currency set what you jump in. Not the forecast.</p>
+    <div class="dk-t">
+      <p class="dk-l" style="margin-top:40px"><b>Whether a load flies depends on the aircraft, the dropzone&rsquo;s cloud policy, the S&amp;TA on duty and who is on the load.</b> Some dropzones fly through conditions that hold others on the ground. Manifest gives you the numbers that decision is made from.</p>
+      <p class="dk-l">Your licence, your canopy and your currency set what you jump in. Not the forecast.</p>
+    </div>
   </section>
 
-  <section class="sec" id="any-dropzone">
-    <div class="wx-any">
+  <section class="dk-band" id="any-dropzone">
+    <div class="dk-split flip">
       <div>
-        <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 10.5c0 5.2-8.5 10-8.5 10s-8.5-4.8-8.5-10a8.5 8.5 0 0 1 17 0z"/><circle cx="12" cy="10.2" r="2.8"/></svg>Dropzone weather for any dropzone</p>
-        <h2>Any dropzone. One tap home.</h2>
-        <p class="lead">It opens on your home dropzone, with the field itself as the background and the forecast cloud drawn over it.</p>
-        <ul class="vis-pts">
-          <li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Switch to any other dropzone from the picker at the top, say before a boogie.</li>
-          <li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Jump back to your home dropzone with one tap.</li>
-          <li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Units follow your settings.</li>
+        <p class="dk-eyebrow">Dropzone weather for any dropzone</p>
+        <h2 class="dk-h">Any dropzone. One tap home.</h2>
+        <p class="dk-l">It opens on your home dropzone, with the field itself as the background and the forecast cloud drawn over it.</p>
+        <ul class="dk-list">
+          <li>Switch to any other dropzone from the picker at the top, say before a boogie.</li>
+          <li>Jump back to your home dropzone with one tap.</li>
+          <li>Units follow your settings.</li>
         </ul>
       </div>
-      <div class="wx-units">
-        <p class="wx-units-h">Your units</p>
-        <div class="wx-u"><span>Wind</span><div class="wx-pills" data-pills><button type="button" aria-pressed="true">kt</button><button type="button" aria-pressed="false">mph</button><button type="button" aria-pressed="false">m/s</button></div></div>
-        <div class="wx-u"><span>Heights</span><div class="wx-pills" data-pills><button type="button" aria-pressed="true">ft</button><button type="button" aria-pressed="false">m</button></div></div>
-        <div class="wx-u"><span>Temperature</span><div class="wx-pills" data-pills><button type="button" aria-pressed="true">&deg;C</button><button type="button" aria-pressed="false">&deg;F</button></div></div>
-        <p>Tap the wind unit on the weather screen to change it on the spot.</p>
+      <div class="dk-split-v">
+        <div class="x-panel">
+          <p class="x-panel-h">Your units</p>
+          <div class="x-u"><span>Wind</span><div class="x-pills" data-pills><button type="button" aria-pressed="true">kt</button><button type="button" aria-pressed="false">mph</button><button type="button" aria-pressed="false">m/s</button></div></div>
+          <div class="x-u"><span>Heights</span><div class="x-pills" data-pills><button type="button" aria-pressed="true">ft</button><button type="button" aria-pressed="false">m</button></div></div>
+          <div class="x-u"><span>Temperature</span><div class="x-pills" data-pills><button type="button" aria-pressed="true">&deg;C</button><button type="button" aria-pressed="false">&deg;F</button></div></div>
+          <p>Tap the wind unit on the weather screen to change it on the spot.</p>
+        </div>
       </div>
     </div>
-    <p class="wx-src"><b>A forecast from the Open-Meteo weather model, for today and tomorrow.</b> Every number on the screen, including &ldquo;Now&rdquo;, is a forecast, not a reading from a wind sock or a station at the field. Weather is part of the free app.</p>
+    <div class="dk-t"><p class="dk-n" style="margin-top:48px"><b>A forecast from the Open-Meteo weather model, for today and tomorrow.</b> Every number on the screen, including &ldquo;Now&rdquo;, is a forecast, not a reading from a wind sock or a station at the field. Weather is part of the free app.</p></div>
     <script>document.querySelectorAll('[data-pills]').forEach(function(g){g.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;g.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});});});</script>
   </section>
 
-  <section class="sec" id="how">
-    <div class="wx-how">
-      <div class="wx-how-h">
-        <p class="eyebrow">How it works</p>
-        <h2>Check it before you drive.</h2>
-        <p class="lead">Five steps from the App Store to the calmest window.</p>
+  <section class="dk-band" id="how">
+    <div class="dk-t">
+      <p class="dk-eyebrow">How it works</p>
+      <h2 class="dk-h">Check it before you drive.</h2>
+      <p class="dk-l">Five steps from the App Store to the calmest window.</p>
+    </div>
+    <ol class="dk-steps">
+      <li><b>Download Manifest.</b>From the App Store, then set your home dropzone.</li>
+      <li><b>Open Weather.</b>The sky, the ground wind and gusts, and the next few hours at a glance.</li>
+      <li><b>Read the three winds.</b>Exit, canopy and ground, plus any turn or change between them.</li>
+      <li><b>Scrub the hours.</b>Find the calmest window, then check sunset.</li>
+      <li><b>Open the full profile.</b>Every 1,000 ft, and cloud by layer.</li>
+    </ol>
+  </section>
+
+  <section class="dk-band" id="at-the-dropzone">
+    <div class="dk-split">
+      <div class="dk-split-v"><img class="x-mug" srcset="/assets/opt/mug-wind-hold-480w.b52b4622.webp 480w, /assets/features/mug-wind-hold.webp 767w" sizes="(max-width: 900px) 300px, 420px" src="/assets/features/mug-wind-hold.webp" width="767" height="630" alt="A white Manifest mug that reads Wind hold = coffee" loading="lazy" decoding="async" /></div>
+      <div>
+        <p class="dk-eyebrow">At the dropzone</p>
+        <h2 class="dk-h">On the desk.<br />On the hangar TV.</h2>
+        <p class="dk-l">At dropzones running <a class="dk-a" href="/dropzones/">Manifest Desk</a>, the desk&rsquo;s top bar always shows the current ground wind, and the hangar board shows the wind, the temperature and sunset next to the loads and the calls.</p>
+        <p class="dk-l">With <a class="dk-a" href="/live-skydiving-loads/">live loads</a> and <a class="dk-a" href="/skydiving-load-calls/">load calls</a> there too, you know when you are going up as well as what it is like up there.</p>
       </div>
-      <ol class="wx-rail">
-        <li><b>Download Manifest.</b><p>From the App Store, then set your home dropzone.</p></li>
-        <li><b>Open Weather.</b><p>The sky, the ground wind and gusts, and the next few hours at a glance.</p></li>
-        <li><b>Read the three winds.</b><p>Exit, canopy and ground, plus any turn or change between them.</p></li>
-        <li><b>Scrub the hours.</b><p>Find the calmest window, then check sunset.</p></li>
-        <li><b>Open the full profile.</b><p>Every 1,000 ft, and cloud by layer.</p></li>
-      </ol>
+    </div>
+    <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
+    <div class="dk-plate dk-plate-close x-safe" style="margin-top:72px">
+      <img class="dk-paint" src="/assets/hero/plate-replay.webp" alt="" loading="lazy" decoding="async" />
+      <div class="dk-close">
+        <h2 class="dk-h">Your judgement first.</h2>
+        <p class="dk-l"><b>Weather in Manifest supports your judgement and the dropzone&rsquo;s. It never replaces either.</b></p>
+        <p class="dk-l">A forecast model can miss a local gust front, a sea breeze or a cloud bank sitting over the field, and global models are weaker in complex terrain like fjords and mountains. Look at the sky, look at the wind sock, listen to the S&amp;TA and the pilot, and stay within your own limits.</p>
+        <p class="dk-l">If the dropzone holds the loads, the loads are held.</p>
+      </div>
     </div>
   </section>
 
-  <section class="sec" id="at-the-dropzone">
-    <div class="wx-dz">
-      <img class="wx-mug" srcset="/assets/opt/mug-wind-hold-480w.b52b4622.webp 480w, /assets/features/mug-wind-hold.webp 767w" sizes="(max-width: 900px) 300px, 420px" src="/assets/features/mug-wind-hold.webp" width="767" height="630" alt="A white Manifest mug that reads Wind hold = coffee" loading="lazy" decoding="async" />
+  <section class="dk-band" id="winds">
+    <div class="dk-split flip">
       <div>
-        <p class="eyebrow">At the dropzone</p>
-        <h2>On the desk.<br />On the hangar TV.</h2>
-        <p class="lead">At dropzones running <a href="/dropzones/">Manifest Desk</a>, the desk&rsquo;s top bar always shows the current ground wind, and the hangar board shows the wind, the temperature and sunset next to the loads and the calls.</p>
-        <p class="lead">With <a href="/live-skydiving-loads/">live loads</a> and <a href="/skydiving-load-calls/">load calls</a> there too, you know when you are going up as well as what it is like up there.</p>
+        <p class="dk-eyebrow">Winds aloft for skydiving</p>
+        <h2 class="dk-h">Three heights. Three numbers.</h2>
+        <p class="dk-l">Winds aloft, boiled down to the three heights a jump actually passes through.</p>
+        <ul class="dk-list">
+          <li><b>A note when it changes.</b> A turn of 40&deg; or more, or wind that picks up, eases or falls away, shows between the rows before you board.</li>
+          <li><b>The full profile.</b> Wind every 1,000 ft (or every 300 m), each level with direction, temperature and cloud. Heights are above the dropzone, with its ground elevation shown.</li>
+        </ul>
       </div>
-    </div>
-
-    <div class="wx-safe">
-      <h2>Your judgement first.</h2>
-      <p class="big">Weather in Manifest supports your judgement and the dropzone&rsquo;s. It never replaces either.</p>
-      <p class="small">A forecast model can miss a local gust front, a sea breeze or a cloud bank sitting over the field, and global models are weaker in complex terrain like fjords and mountains. Look at the sky, look at the wind sock, listen to the S&amp;TA and the pilot, and stay within your own limits.</p>
-      <p class="held">If the dropzone holds the loads, the loads are held.</p>
-    </div>
-  </section>
-
-  <section class="wx-sky" id="winds">
-    <div class="wx-sky-in">
-      <div>
-        <p class="eyebrow">Winds aloft for skydiving</p>
-        <h2>Three heights. Three numbers.</h2>
-        <p class="wx-lead">Winds aloft, boiled down to the three heights a jump actually passes through.</p>
-        <div class="wx-more">
-          <div><b>A note when it changes.</b><p>A turn of 40&deg; or more, or wind that picks up, eases or falls away, shows between the rows before you board.</p></div>
-          <div><b>The full profile.</b><p>Wind every 1,000 ft (or every 300 m), each level with direction, temperature and cloud. Heights are above the dropzone, with its ground elevation shown.</p></div>
+      <div class="dk-split-v">
+        <div class="x-panel" role="img" aria-label="Wind at each stage: 12 knots from the north-west at 13,000 feet, a note that the wind eases to 1 knot, 1 knot from the west under canopy around 3,000 feet, and 2 knots from the south on the ground, gusting to 6">
+          <p class="x-panel-h">Wind at each stage</p>
+          <div class="x-alt"><div><small>13,000 ft</small><b>Up where you get out</b><span>from the north-west</span></div><div class="x-kt">12<i>kt</i></div></div>
+          <div class="x-note">Wind eases to 1 kt.</div>
+          <div class="x-alt"><div><small>Around 3,000 ft</small><b>Under canopy</b><span>from the west</span></div><div class="x-kt">1<i>kt</i></div></div>
+          <div class="x-alt"><div><small>Ground</small><b>On the ground</b><span>gusting to 6 kt, from the south</span></div><div class="x-kt">2<i>kt</i></div></div>
         </div>
       </div>
-      <div>
-        <div class="wx-ladder" role="img" aria-label="Wind at each stage: 12 knots from the north-west at 13,000 feet, a note that the wind eases to 1 knot, 1 knot from the west under canopy around 3,000 feet, and 2 knots from the south on the ground, gusting to 6">
-          <p class="wx-ladder-h">Wind at each stage</p>
-          <div class="wx-alt"><div><small>13,000 ft</small><b>Up where you get out</b><span>from the north-west</span></div><div class="wx-kt">12<i>kt</i></div></div>
-          <div class="wx-note">Wind eases to 1 kt.</div>
-          <div class="wx-alt"><div><small>Around 3,000 ft</small><b>Under canopy</b><span>from the west</span></div><div class="wx-kt">1<i>kt</i></div></div>
-          <div class="wx-alt"><div><small>Ground</small><b>On the ground</b><span>gusting to 6 kt, from the south</span></div><div class="wx-kt">2<i>kt</i></div></div>
-        </div>
-        <p class="wx-cap">From the weather screen at Skydive Voss.</p>
-      </div>
     </div>
+    <p class="dk-n" style="margin-top:20px">From the weather screen at Skydive Voss.</p>
   </section>
 
-  <div class="faq" id="faq">
-    <h2 class="cm-title">Frequently asked questions</h2>
-    <div class="faq-list">
-      <details class="faq-i"><summary>Does Manifest tell me if it is jumpable today?<span class="faq-plus" aria-hidden="true"></span></summary><p>No, on purpose. Whether a load flies is the dropzone&rsquo;s decision and depends on the aircraft, cloud policy, the S&amp;TA on duty and who is jumping. Manifest shows the wind at each height, cloud, rain and the calmest window, so you can judge it yourself.</p></details>
-
-      <details class="faq-i"><summary>Does the app show winds aloft for skydiving?<span class="faq-plus" aria-hidden="true"></span></summary><p>Yes. It shows the wind at 13,000 ft where you get out, around 3,000 ft under canopy and on the ground with gusts. The full profile lists the wind every 1,000 ft above the dropzone with direction, temperature and cloud.</p></details>
-
-      <details class="faq-i"><summary>Where does the weather data come from?<span class="faq-plus" aria-hidden="true"></span></summary><p>It is a forecast from the Open-Meteo weather model, for today and tomorrow. Everything on the screen, including Now, is a forecast, not a measurement at the field.</p></details>
-
-      <details class="faq-i"><summary>Can I check the weather at a dropzone that is not my home dropzone?<span class="faq-plus" aria-hidden="true"></span></summary><p>Yes. Pick any dropzone from the picker at the top of the weather screen, then tap once to go back to your home dropzone.</p></details>
-
-      <details class="faq-i"><summary>Can I see the wind in m/s or mph instead of knots?<span class="faq-plus" aria-hidden="true"></span></summary><p>Yes. Wind can be shown in knots, mph or m/s, heights in feet or metres, and temperature in Celsius or Fahrenheit.</p></details>
-
-      <details class="faq-i"><summary>Is the weather screen free?<span class="faq-plus" aria-hidden="true"></span></summary><p>Yes. Weather is part of the free Manifest app on iPhone.</p></details>
-
+  <section class="dk-band" id="faq">
+    <div class="dk-t"><h2 class="dk-h">Frequently asked questions</h2></div>
+    <div class="dk-qs" data-qs>
+      <details class="dk-q"><summary>Does Manifest tell me if it is jumpable today?</summary><p>No, on purpose. Whether a load flies is the dropzone&rsquo;s decision and depends on the aircraft, cloud policy, the S&amp;TA on duty and who is jumping. Manifest shows the wind at each height, cloud, rain and the calmest window, so you can judge it yourself.</p></details>
+      <details class="dk-q"><summary>Does the app show winds aloft for skydiving?</summary><p>Yes. It shows the wind at 13,000 ft where you get out, around 3,000 ft under canopy and on the ground with gusts. The full profile lists the wind every 1,000 ft above the dropzone with direction, temperature and cloud.</p></details>
+      <details class="dk-q"><summary>Where does the weather data come from?</summary><p>It is a forecast from the Open-Meteo weather model, for today and tomorrow. Everything on the screen, including Now, is a forecast, not a measurement at the field.</p></details>
+      <details class="dk-q"><summary>Can I check the weather at a dropzone that is not my home dropzone?</summary><p>Yes. Pick any dropzone from the picker at the top of the weather screen, then tap once to go back to your home dropzone.</p></details>
+      <details class="dk-q"><summary>Can I see the wind in m/s or mph instead of knots?</summary><p>Yes. Wind can be shown in knots, mph or m/s, heights in feet or metres, and temperature in Celsius or Fahrenheit.</p></details>
+      <details class="dk-q"><summary>Is the weather screen free?</summary><p>Yes. Weather is part of the free Manifest app on iPhone.</p></details>
     </div>
-    <p class="faq-more">Learn more: <a href="/skydiving-app/">The skydiving app</a>, <a href="/skydive-3d-tracking/">3D replays of your jumps</a>, <a href="/live-skydiving-loads/">Live loads</a>, <a href="/skydiving-load-calls/">Load calls</a>, <a href="/dropzones/">Manifest Desk</a>, <a href="/">Home</a>.</p>
-  </div>
+    <p class="dk-qhelp">Learn more: <a href="/skydiving-app/">The skydiving app</a>, <a href="/skydive-3d-tracking/">3D replays of your jumps</a>, <a href="/live-skydiving-loads/">Live loads</a>, <a href="/skydiving-load-calls/">Load calls</a>, <a href="/dropzones/">Manifest Desk</a>, <a href="/">Home</a>.</p>
+  </section>
 
-  <section class="final">
-    <h2>Look up before you drive.</h2>
-    <p>Weather, 3D replays of your jumps, live loads and more, free on iPhone.</p>
-    <a class="wx-badge" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="Download Manifest on the App Store"><img src="/assets/appstore-badge.svg?v=1" alt="Download on the App Store" width="162" height="54" /></a>
+  <section class="dk-band dk-tight dk-close-b">
+    <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
+    <div class="dk-plate dk-plate-close" style="margin-top:0">
+      <img class="dk-paint" src="/assets/hero/plate-close.webp" alt="" loading="lazy" decoding="async" />
+      <div class="dk-close">
+        <h2 class="dk-h">Look up before you drive.</h2>
+        <p class="dk-l">Weather, 3D replays of your jumps, live loads and more, free on iPhone.</p>
+        <div class="dk-close-get"><a class="dk-badge" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="Download Manifest on the App Store"><img src="/assets/appstore-badge.svg?v=1" alt="Download on the App Store" width="160" height="54" /></a><img class="dk-qr" src="/assets/appstore-qr.svg?v=1" width="120" height="120" alt="Scan with your iPhone camera to open Manifest in the App Store." loading="lazy" /></div>
+        <p class="dk-close-dz">Run a dropzone? See <a href="/dropzones/">Manifest Desk</a>.</p>
+      </div>
+    </div>
   </section>
 </main>
 
@@ -1509,6 +1293,8 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
       <a href="/about/">About</a><a href="/support/">Support</a><a href="/help/">Help center</a><a href="/#faq">FAQ</a><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a></div>
   </div>
   <div class="ft-base"><span>© 2026 Manifest Jump LLC · Wyoming, USA · Dubai,&nbsp;UAE</span><div class="ft-pay" aria-label="Payment methods accepted"><img src="/assets/pay/apple_pay.svg?v=1" alt="Apple Pay" height="24" /><img src="/assets/pay/visa.svg?v=1" alt="Visa" height="24" /><img src="/assets/pay/master.svg?v=1" alt="Mastercard" height="24" /><img src="/assets/pay/american_express.svg?v=1" alt="American Express" height="24" /><img src="/assets/pay/cashapppay.svg?v=1" alt="Cash App Pay" height="24" /><img src="/assets/pay/stripe.svg?v=1" alt="Stripe" height="24" /></div></div>
+  <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
+  <div class="ft-art" aria-hidden="true"><img src="/assets/hero/plate-footer.webp" alt="" loading="lazy" decoding="async" /></div>
 </footer>
 
 <script>
@@ -1775,6 +1561,7 @@ span.go > svg{background:#050505!important}
 .vs-yes svg{width:16px!important;height:16px!important;stroke-width:2.6}
 .vs-no{color:#FF453A!important;background:none!important;width:20px!important;height:20px!important}.vs-no svg{width:16px!important;height:16px!important;stroke-width:2.6}
 </style>
-<script>/* phone footer: tap a menu heading to open it */document.addEventListener('click',function(e){var h=e.target.closest&&e.target.closest('footer.site .ft-col:not(:last-child) h3');if(!h||innerWidth>560)return;h.parentNode.classList.toggle('open');});</script>
+<script src="/assets/site-dark.js?v=4" defer></script>
+
 </body>
 </html>

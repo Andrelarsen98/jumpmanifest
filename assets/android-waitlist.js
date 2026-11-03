@@ -4,16 +4,16 @@
    function (kind 'android'): saved, pushed to André, emailed. */
 (function () {
   var URL_ = 'https://wkefdtglgbfprvfajrrw.supabase.co/functions/v1/desk-lead';
-  var css = '.aw-scrim{position:fixed;inset:0;z-index:9999;background:rgba(10,10,12,.45);display:flex;align-items:center;justify-content:center;padding:16px}' +
-    '.aw-box{background:#fff;color:#050505;border-radius:24px;padding:28px 24px 24px;width:100%;max-width:400px;box-shadow:0 24px 60px rgba(0,0,0,.25);font-family:inherit;position:relative}' +
+  var css = '.aw-scrim{position:fixed;inset:0;z-index:9999;background:rgba(10,10,12,.6);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:16px}' +
+    '.aw-box{background:#23242A;color:#F1F2F5;border-radius:24px;padding:28px 24px 24px;width:100%;max-width:400px;box-shadow:0 24px 60px rgba(0,0,0,.5),inset 0 0 0 1px rgba(241,242,245,.08);font-family:inherit;position:relative}' +
     '.aw-box h3{margin:0;font-size:24px;line-height:30px;font-weight:600;letter-spacing:-.01em}' +
-    '.aw-box p{margin:8px 0 0;font-size:16px;line-height:24px;color:#52525B}' +
-    '.aw-box input{display:block;width:100%;box-sizing:border-box;margin-top:20px;height:52px;border:1px solid #D4D4D8;border-radius:14px;padding:0 16px;font:inherit;font-size:17px;color:#050505;background:#fff}' +
-    '.aw-box input:focus{outline:2px solid #050505;outline-offset:1px}' +
-    '.aw-box .aw-go{display:block;width:100%;margin-top:12px;height:52px;border:0;border-radius:99px;background:#050505;color:#fff;font:inherit;font-size:17px;font-weight:600;cursor:pointer}' +
+    '.aw-box p{margin:8px 0 0;font-size:16px;line-height:24px;color:#D1D1D6}' +
+    '.aw-box input{display:block;width:100%;box-sizing:border-box;margin-top:20px;height:52px;border:1px solid rgba(241,242,245,.18);border-radius:14px;padding:0 16px;font:inherit;font-size:17px;color:#F1F2F5;background:#1A1B20}' +
+    '.aw-box input:focus{outline:2px solid #F1F2F5;outline-offset:1px}' +
+    '.aw-box .aw-go{display:block;width:100%;margin-top:12px;height:52px;border:0;border-radius:99px;background:#FFFFFF;color:#050505;font:inherit;font-size:17px;font-weight:600;cursor:pointer}' +
     '.aw-box .aw-go:disabled{opacity:.6;cursor:default}' +
-    '.aw-box .aw-x{position:absolute;top:14px;right:14px;width:36px;height:36px;border:0;border-radius:99px;background:#F4F4F5;color:#050505;font-size:20px;line-height:36px;cursor:pointer}' +
-    '.aw-box .aw-err{color:#DC2626;font-size:14px;margin-top:10px}';
+    '.aw-box .aw-x{position:absolute;top:14px;right:14px;width:36px;height:36px;border:0;border-radius:99px;background:rgba(241,242,245,.1);color:#F1F2F5;font-size:20px;line-height:36px;cursor:pointer}' +
+    '.aw-box .aw-err{color:#FF6B6B;font-size:14px;margin-top:10px}';
   var scrim = null, last = null;
   function close() { if (scrim) { scrim.remove(); scrim = null; } if (last) last.focus(); }
   function open(a) {

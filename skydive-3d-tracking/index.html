@@ -954,8 +954,9 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
 .sh-nav:has(.sh-dd.open) .sh-dd:not(.open) .sh-panel{transition:none}
 .sh-cta-demo:focus-visible,.fd-btn:focus-visible,.btn.ghost:focus-visible,.btn.demo:focus-visible,.band-btn:focus-visible,.pc-out:focus-visible,.sms-btn:focus-visible,.sm-btn:focus-visible,.pc-call:focus-visible,.lo-btn:focus-visible,.lc-btn:focus-visible,.hmw-btn:focus-visible,.dp-btn:focus-visible,.btn.primary:focus-visible,.pq-btn:focus-visible,a.btn[href*="apps.apple.com"]:focus-visible,a.btn[href="/get"]:focus-visible{outline:2px solid #050505!important;outline-offset:3px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 3px #fff!important}
 </style>
+<link rel="stylesheet" href="/assets/site-dark.css?v=5" />
 </head>
-<body>
+<body class="dk">
 <a class="skip" href="#main">Skip to main content</a>
 
 <!-- SITE HEADER (9 Oct 2026): one header on every page. Mega dropdowns on
@@ -988,234 +989,92 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
   </div>
 </div>
 
-<main id="main" class="wrap t3">
-  <style id="review-b">
-  /* A11: no divider can start a wrapped line of hero chips; spacing only. */
-  .trust { gap: 12px 24px; }
-  .trust > * { padding: 0; }
-  .trust > * + * { border-left: 0; }
-  /* F12: founding status right under the hero actions. */
-  .hero-founding { margin: 22px 0 0; font-size: 16px; line-height: 24px; font-weight: 500; color: #050505; text-align: center; }
-  @media (min-width: 900px) { .hero-founding { text-align: left; } }
-  /* F13: readable Desk panels, captioned as sample data. */
-  /* Hero: the full Desk with the jumper's iPhone in front, as on the other
-     Desk pages (André, 16 Oct 2026). */
-  .hm-wrap { position: relative; }
-  /* MUG + STEAM (19 Oct). Real 3D render (Blender), shot straight on like the display; real scale for a
-     9.5 cm mug, set a little in front of the display so it sits just below the stand's foot line. */
-  .hm-mug { position: absolute; left: 10%; bottom: -2.2%; width: 22%; pointer-events: none; transform: translateY(8%); }
-  /* The steam starts BEHIND the mug, at the coffee, so it rises out of the opening; the mug image covers its root. */
-  .hm-mug .mug-body { position: relative; z-index: 1; display: block; width: 100%; height: auto; }
-  .hm-mug .mug-steam { position: absolute; z-index: 0; left: 7.8%; bottom: 86%; width: 57.4%; overflow: visible; }
-  /* Real coffee steam is thin, white and barely there: a white ribbon (shows on the dark bezel) over a faint
-     grey one (shows on the white page), slow, delicate, always rising out of the cup. */
-  .mug-steam .w { fill: none; stroke-linecap: round; opacity: 0; transform-box: fill-box; transform-origin: 50% 100%;
-    animation: steamRise 9s cubic-bezier(.3,.1,.4,1) infinite; }
-  .mug-steam .tone .w { stroke: url(#steamS); stroke-width: 3.2; }
-  .mug-steam .lite .w { stroke: url(#steamG); stroke-width: 2.2; }
-  .mug-steam .w2 { animation-delay: 3s; }
-  .mug-steam .w3 { animation-delay: 6s; }
-  @keyframes steamRise {
-    0% { opacity: 0; transform: translateY(4%) scale(.9, .7); }
-    20% { opacity: 1; }
-    70% { opacity: .55; }
-    100% { opacity: 0; transform: translateY(-8%) scale(1.2, 1.05); }
-  }
-  @media (prefers-reduced-motion: reduce) { .mug-steam .w { animation: none; opacity: .6; } }
-  .hero-media .desk-cap { margin-top: 44px; text-align: center; }
-  /* STUDIO DISPLAY (19 Oct 2026, André): the desk shown on a Studio Display, white background blends with the page. */
-  img.studio { display: block; width: 100%; height: auto; }
-  /* André 19 Oct: never a grey card around the Studio Display. */
-  .vis-media:has(img.studio) { background: transparent !important; padding: 0 !important; border-radius: 0 !important; }
-  .hm-phone { position: absolute; right: -3%; bottom: -6%; width: 26%; max-width: 190px; height: auto; filter: drop-shadow(0 18px 28px rgba(15,23,42,.28)); }
-  @media (max-width: 767px) { .hm-phone { width: 30%; right: -1%; bottom: -8%; } .hero-media .desk-cap { margin-top: 26px; } }
-  figure.hero-media { margin: 0; }
-  .desk-cap { margin: 8px 0 0; font-size: 14px; line-height: 20px; color: #52525B; text-align: left; }
-  /* F08: card copy on the pale card fills at 7:1, not 4.4:1. */
-  .app-card p, .card p, .how-grid p { color: #52525B; }
-  /* André 19 Oct: Apple-style row, no lilac panel, no boxes, no number chips. */
-  #app .app-panel { background: none; border-radius: 0; padding: 0; margin-top: 64px; }
-  #app .app-grid { gap: 56px; }
-  #app .app-card { background: none; border-radius: 0; padding: 0; text-align: center; }
-  #app .app-card .ic { width: 40px; height: 40px; color: #050505; display: block; margin: 0 auto; }
-  #app .app-card b { margin-top: 20px; }
-  #app .app-card p { max-width: 320px; margin-left: auto; margin-right: auto; }
-  #app .app-foot { margin-top: 56px; }
-  /* Top-up phones (André 19 Oct): same phone height, side by side. */
-  /* Meadow behind the phones (André 19 Oct): Unsplash photo _8fRer9hPv0 (Unsplash License). */
-  #app .pay-duo { display: flex; justify-content: center; align-items: center; gap: clamp(12px, 4vw, 64px); margin-top: 56px;
-    padding: clamp(36px, 6vw, 80px) 16px; border-radius: 28px; background:#F5F5F6; 
-    isolation: isolate; transform: translateZ(0); } /* keeps the phones' drop-shadow layer from repainting the owner bar white in Safari */
-  #app .pay-duo img { display: block; height: auto; filter: drop-shadow(0 24px 40px rgba(0,0,0,.35)); }
-  @media (max-width: 600px) { #app .pay-duo { border-radius: 22px; padding: 28px 10px; gap: 10px; } #app .pay-duo .pd-a, #app .pay-duo .pd-b { width: 46%; } }
-  #app .pay-duo .pd-a { width: min(300px, 44%); }
-  #app .pay-duo .pd-b { width: min(300px, 44%); }
-  @media (max-width: 600px) { #app .app-foot b { display: block; } }
-  @media (max-width: 900px) { #app .app-grid { gap: 44px; } }
-  /* F02: each plan's limits right under the price slot. */
-  .pc-limits { margin: 10px 0 0; font-size: 16px; line-height: 22px; font-weight: 700; color: #050505; letter-spacing: -.2px; }
-  .pc-limits + .pc-desc { margin-top: 4px; }
-  /* F08: rows a plan does not include: readable text, a dash, a visible label. */
-  .pc ul.pc-list li.off { color: #52525B; }
-  .pc .off .tk-off { color: #52525B; border-color: #A1A1AA; }
-  .pc .off .off-tag { flex: 0 0 auto; font-size: 11.5px; line-height: 18px; font-weight: 600; letter-spacing: 0; color: #3F3F46; background: #F4F4F5; border-radius: 6px; padding: 1px 6px; }
-  .pc ul.pc-list li.off { gap: 10px; letter-spacing: -.4px; }
-  /* F06: a demo action between the hero and pricing, white on the black band. */
-  .band-cta { margin-top: 32px; display: flex; justify-content: center; }
-  .band-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; padding: 0 28px; border-radius: 999px; background: #fff; color: #050505; font-family: "Manrope", sans-serif; font-size: 18px; font-weight: 700; }
-  .band-btn:hover { background: #F4F4F5; }
-  .band-btn svg { width: 16px; height: 16px; }
-  .band .band-sub { color: #E4E4E7; }
-  /* A05: what the dropzone sends us, under the setup steps. */
-  .how-need { max-width: 820px; margin: 28px auto 0; text-align: center; font-size: 17px; line-height: 26px; color: #3F3F46; }
-  /* F10: group labels inside the FAQ. */
-  .faq-g { max-width: 820px; margin: 0 auto; padding: 0 4px 14px; font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: 26px; line-height: 32px; letter-spacing: -.4px; color: #050505; }
-  .faq-g + .faq-list { margin-bottom: 44px; }
-  @media (max-width: 600px) { .faq-g { font-size: 21px; line-height: 28px; } .band-btn { font-size: 17px; width: 100%; } }
+<main id="main">
+  <style id="t3-dk">
+    body.dk #main .x-dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 58px; width: min(900px, calc(100vw - 40px)); margin: 48px auto 0; text-align: left; }
+    body.dk #main .x-dl div { margin: 0; }
+    body.dk #main .x-dl dt { font-size: 19px; line-height: 24px; font-weight: 600; color: var(--ink); }
+    body.dk #main .x-dl dd { margin: 8px 0 0; font-size: 16px; line-height: 25px; color: var(--ink2); }
+    body.dk #main .x-vs .me { color: var(--ink); font-weight: 600; }
+    body.dk #main .x-state .dk-h { font-size: clamp(36px, 5vw, 56px); line-height: 1.06; }
+    body.dk #main .x-hand { display: block; width: min(100%, 460px); height: auto; margin: 0 auto; filter: drop-shadow(0 18px 34px rgba(0,0,0,.5)); }
+    @media (max-width: 760px) { body.dk #main .x-dl { grid-template-columns: minmax(0, 1fr); gap: 28px; } }
   </style>
-  <style id="t3-css">
-  /* 3D PAGE v2 (20 Oct 2026, André: "looks very AI, does not match"): one
-     black hero as the big moment, the rest white like the other pages. */
-  .t3-hero{position:relative;isolation:isolate;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:clamp(56px,7vw,96px) 0 0;color:#fff}
-  .t3-hero::before{content:"";position:absolute;top:-400px;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:#050505;z-index:-1}
-  .t3-hero .eyebrow{justify-content:flex-start;color:#fff;margin-left:0}
-  .t3-hero h1{margin:0;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;font-size:clamp(44px,5.6vw,72px);line-height:1;color:#fff;text-wrap:balance}
-  .t3-hero .lead{margin:24px 0 0;max-width:520px;text-align:left;color:#D1D1D6}
-  .t3-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;margin-top:32px}
-  .t3-badge img{display:block;height:54px;width:auto}
-  .t3-copy{padding-bottom:clamp(56px,7vw,96px)}
-  .t3-ph{align-self:end;justify-self:center;width:min(320px,100%)}
-  .t3-ph img{display:block;width:100%;height:auto;margin-bottom:-1px}
-  .t3-fly{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-  .t3-fly video{display:block;width:min(320px,100%);height:auto;margin:0 auto}
-  .t3-fly h2,.t3-fly .eyebrow{text-align:left;justify-content:flex-start;margin-left:0}
-  .t3-fly .lead{text-align:left;margin-left:0}
-  .t3-phases{list-style:none;margin:32px 0 0;padding:0}
-  .t3-phases li{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:16px 0;border-top:1px solid #E4E4E7;font-size:17px;line-height:26px;color:#52525B}
-  .t3-phases li:last-child{border-bottom:1px solid #E4E4E7}
-  .t3-phases b{font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:20px;color:#050505}
-  .t3-rows{max-width:1024px;margin:56px auto 0}
-  .t3-rows>div{display:grid;grid-template-columns:1fr 1.25fr;gap:12px 48px;align-items:baseline;padding:32px 0;border-top:1px solid #E4E4E7;text-align:left}
-  .t3-rows>div:last-child{border-bottom:1px solid #E4E4E7}
-  .t3-rows b,.t3-rows dt{font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:30px;line-height:38px;color:#050505;margin:0}
-  .t3-rows p,.t3-rows dd{margin:0;font-size:19px;line-height:30px;color:#52525B}
-  .t3-note{max-width:720px;margin:32px auto 0;text-align:center;font-size:16px;line-height:26px;color:#52525B}
-  .t3-note b{color:#050505}
-  .t3-vs{width:100%;max-width:880px;margin:56px auto 0;border-collapse:collapse;text-align:left}
-  .t3-vs th,.t3-vs td{padding:20px 16px;border-bottom:1px solid #E4E4E7;font-size:17px;line-height:26px;vertical-align:top;color:#52525B}
-  .t3-vs thead th{font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:22px;color:#050505}
-  .t3-vs tbody th{font-weight:700;color:#050505;width:24%}
-  .t3-vs .me{color:#050505;font-weight:600}
-  .t3-vs thead .me{color:#6D42F5}
-  .t3-after{margin:28px auto 0;text-align:center;font-size:20px;line-height:30px;color:#050505;font-weight:600}
-  .t3-big{text-align:center}
-  .t3-big h2{max-width:16ch;margin:0 auto}
-  .t3-big p{max-width:620px;margin:20px auto 0;font-size:20px;line-height:31px;color:#52525B}
-  .t3-share{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-  .t3-share h2,.t3-share .eyebrow{text-align:left;justify-content:flex-start;margin-left:0}
-  .t3-share .lead{text-align:left;margin-left:0}
-  .t3-share-ph img{display:block;width:min(320px,100%);height:auto;margin:0 auto}
-  @media (max-width:899px){.t3-share{grid-template-columns:1fr;gap:36px}.t3-share-ph img{width:min(300px,80%)}}
-  .t3-safe{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-  .t3-safe h2,.t3-safe .eyebrow{text-align:left;justify-content:flex-start;margin-left:0}
-  .t3-chk{list-style:none;margin:28px 0 0;padding:0}
-  .t3-chk li{padding:14px 0;border-top:1px solid #E4E4E7;font-size:17px;line-height:26px;color:#52525B}
-  .t3-chk b{color:#050505}
-  .t3-meadow{border-radius:28px;overflow:hidden;background:#F5F5F6;padding:48px 32px 0;display:flex;justify-content:center}
-  .t3-meadow img{display:block;width:min(340px,80%);height:auto}
-  .t3-tiers{display:grid;grid-template-columns:1fr 1fr;gap:48px;max-width:880px;margin:48px auto 0;text-align:left}
-  .t3-tiers h3{margin:0 0 8px;font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:26px;color:#050505;padding-bottom:12px;border-bottom:2px solid #050505}
-  .t3-tiers .pro h3{color:#6D42F5;border-color:#6D42F5}
-  .t3-tiers ul{list-style:none;margin:0;padding:0}
-  .t3-tiers li{padding:12px 0;border-bottom:1px solid #E4E4E7;font-size:17px;line-height:26px;color:#52525B}
-  .t3-end{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:20px 32px;margin-top:32px}
-  .t3-qr{display:flex;align-items:center;gap:12px;margin:0;max-width:240px;text-align:left;font-size:13px;line-height:18px;color:#71717B}
-  .t3-qr img{width:84px;height:84px}
-  .t3-dz{font-weight:700;color:#050505!important;text-decoration:underline;text-underline-offset:3px}
-  @media (max-width:899px){
-    .t3-hero{grid-template-columns:1fr;gap:40px;text-align:center}
-    .t3-hero .eyebrow,.t3-ctas{justify-content:center}
-    .t3-hero .lead{margin-left:auto;margin-right:auto;text-align:center}
-    .t3-copy{padding-bottom:0}
-    .t3-ph{width:min(300px,78%)}
-    .t3-fly,.t3-safe{grid-template-columns:1fr;gap:36px}
-    .t3-fly video{width:min(300px,80%)}
-    .t3-rows>div{grid-template-columns:1fr;padding:24px 0}
-    .t3-rows b,.t3-rows dt{font-size:24px;line-height:31px}
-    .t3-rows p,.t3-rows dd{font-size:17px;line-height:26px}
-    .t3-tiers{grid-template-columns:1fr;gap:36px}
-    .t3-phases li{grid-template-columns:96px 1fr}
-    .t3-vs th,.t3-vs td{padding:14px 8px;font-size:15px;line-height:22px}
-    .t3-big p{font-size:17px;line-height:27px}
-  }
-  </style>
+  <header class="dk-head">
+    <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
+    <img class="dk-head-art" src="/assets/hero/plate-skydive-3d-tracking.webp" alt="" decoding="async" fetchpriority="high" />
+    <p class="dk-eyebrow">3D Jump Track</p>
+    <h1 class="dk-h1">3D skydive tracking with your phone.</h1>
+    <p class="dk-l">Your iPhone already has GPS and a barometer. That is enough to fly every jump back in 3D, with nothing extra on your helmet.</p>
+    <div class="dk-ctas"><a class="dk-badge" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="Download Manifest on the App Store"><img src="/assets/appstore-badge.svg?v=1" alt="Download on the App Store" width="160" height="54" /></a></div>
+  </header>
 
-  <section class="t3-hero">
-    <div class="t3-copy">
-      <p class="eyebrow">3D Jump Track</p>
-      <h1>3D skydive tracking with your phone.</h1>
-      <p class="lead">Your iPhone already has GPS and a barometer. That is enough to fly every jump back in 3D, with nothing extra on your helmet.</p>
-      <div class="t3-ctas">
-        <a class="t3-badge" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="Download Manifest on the App Store"><img src="/assets/appstore-badge.svg?v=1" width="160" height="54" alt="Download on the App Store" /></a>
+  <section class="dk-band dk-tight" id="recorded">
+    <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
+    <div class="dk-plate dk-plate-sill" style="margin-top:0">
+      <img class="dk-paint" src="/assets/hero/plate-skydive-3d-tracking-2.webp" alt="" decoding="async" />
+      <span class="dk-phone"><video autoplay muted loop playsinline preload="metadata" poster="/assets/opt/jumptrack3-poster.bcbd71bb.webp" width="720" height="1280" aria-label="A skydive replayed in 3D over the Swiss Alps in the Manifest app, from exit to landing"><source src="/assets/opt/jumptrack3-540.mp4" type="video/mp4" /></video></span>
+    </div>
+    <div class="dk-t" style="margin-top:72px">
+      <p class="dk-eyebrow">What gets recorded</p>
+      <h2 class="dk-h">The whole jump, flown back.</h2>
+      <p class="dk-l">About once a second, from climb-out until you stand in the landing area: a position, an altitude and a moment in time.</p>
+    </div>
+    <ol class="dk-steps">
+      <li><b>Climb</b>A sustained climb is the aircraft.</li>
+      <li><b>Exit</b>A sharp change in vertical speed.</li>
+      <li><b>Freefall</b>The fast part.</li>
+      <li><b>Opening</b>The descent rate collapses.</li>
+      <li><b>Canopy</b>Everything after it, down to the ground.</li>
+    </ol>
+  </section>
+
+  <section class="dk-band" id="share">
+    <div class="dk-split">
+      <div>
+        <p class="dk-eyebrow">Share the jump</p>
+        <h2 class="dk-h">Post it before you pack.</h2>
+        <p class="dk-l">Every jump becomes a card with the track, your exit, freefall and top speed. Tap it to tilt, rotate or zoom.</p>
+        <ul class="dk-list">
+          <li><b>Instagram Story and Reels.</b> Snapchat and WhatsApp too.</li>
+          <li><b>The Manifest community.</b> Post it for the jumpers you fly with.</li>
+          <li><b>Save it or copy a link.</b> Or send it anywhere else from your phone.</li>
+        </ul>
       </div>
-    </div>
-    <div class="t3-ph"><img src="/assets/opt/mock-3d.5f7a460f.webp" width="640" height="1328" alt="A jump replayed in 3D over the desert in the Manifest app, with exit altitude, freefall time and top speed under the map" decoding="async" /></div>
-  </section>
-
-  <section class="sec t3-fly" id="recorded">
-    <video autoplay muted loop playsinline preload="metadata" poster="/assets/opt/jumptrack3-poster.bcbd71bb.webp" width="720" height="1280" aria-label="A skydive replayed in 3D over the Swiss Alps in the Manifest app, from exit to landing"><source src="/assets/opt/jumptrack3-540.mp4" type="video/mp4" /></video>
-    <div>
-      <p class="eyebrow">What gets recorded</p>
-      <h2>The whole jump, flown back.</h2>
-      <p class="lead">About once a second, from climb-out until you stand in the landing area: a position, an altitude and a moment in time.</p>
-      <ol class="t3-phases">
-        <li><b>Climb</b><span>A sustained climb is the aircraft.</span></li>
-        <li><b>Exit</b><span>A sharp change in vertical speed.</span></li>
-        <li><b>Freefall</b><span>The fast part.</span></li>
-        <li><b>Opening</b><span>The descent rate collapses.</span></li>
-        <li><b>Canopy</b><span>Everything after it, down to the ground.</span></li>
-      </ol>
+      <div class="dk-split-v"><img class="dk-ph mid" src="/assets/opt/share-3d.webp?v=2" width="640" height="1330" alt="The Manifest share screen: a jump at Skydive Perris as a card with exit 13.3k ft, freefall 65 sec and top speed, and buttons for Instagram Story, Instagram Reels, Manifest Community, Snapchat, WhatsApp, Save, Copy link and More" loading="lazy" decoding="async" /></div>
     </div>
   </section>
 
-  <section class="sec t3-share" id="share">
-    <div>
-      <p class="eyebrow">Share the jump</p>
-      <h2>Post it before you pack.</h2>
-      <p class="lead">Every jump becomes a card with the track, your exit, freefall and top speed. Tap it to tilt, rotate or zoom.</p>
-      <ul class="t3-chk">
-        <li><b>Instagram Story and Reels.</b> Snapchat and WhatsApp too.</li>
-        <li><b>The Manifest community.</b> Post it for the jumpers you fly with.</li>
-        <li><b>Save it or copy a link.</b> Or send it anywhere else from your phone.</li>
-      </ul>
+  <section class="dk-band" id="sensors">
+    <div class="dk-t">
+      <p class="dk-eyebrow">Two sensors, one jump</p>
+      <h2 class="dk-h">GPS for where. Barometer for how high.</h2>
     </div>
-    <div class="t3-share-ph"><img src="/assets/opt/share-3d.webp?v=2" width="640" height="1330" alt="The Manifest share screen: a jump at Skydive Perris as a card with exit 13.3k ft, freefall 65 sec and top speed, and buttons for Instagram Story, Instagram Reels, Manifest Community, Snapchat, WhatsApp, Save, Copy link and More" loading="lazy" decoding="async" /></div>
+    <div class="dk-facts two">
+      <div class="dk-fact"><h3 class="dk-h3">GPS for the ground track.</h3><p class="dk-p">The jump run, the spot, the canopy pattern. Its altitude is its weakest number, with errors of tens of metres.</p></div>
+      <div class="dk-fact"><h3 class="dk-h3">Barometer for height.</h3><p class="dk-p">Exit height, opening height and freefall time, from air pressure. It needs no satellites and updates far faster than a GPS fix.</p></div>
+    </div>
+    <div class="dk-t"><p class="dk-l" style="margin-top:40px"><b>The same division of labour a dedicated skydiving logger uses.</b> Pressure moves with the weather, so an honest track is calibrated against ground level at the dropzone.</p></div>
   </section>
 
-  <section class="sec" id="sensors">
-    <p class="eyebrow">Two sensors, one jump</p>
-    <h2>GPS for where. Barometer for how high.</h2>
-    <div class="t3-rows">
-      <div><b>GPS for the ground track.</b><p>The jump run, the spot, the canopy pattern. Its altitude is its weakest number, with errors of tens of metres.</p></div>
-      <div><b>Barometer for height.</b><p>Exit height, opening height and freefall time, from air pressure. It needs no satellites and updates far faster than a GPS fix.</p></div>
+  <section class="dk-band" id="honest">
+    <div class="dk-t">
+      <p class="dk-eyebrow">The honest part</p>
+      <h2 class="dk-h">A replay, not an altimeter.</h2>
     </div>
-    <p class="t3-note"><b>The same division of labour a dedicated skydiving logger uses.</b> Pressure moves with the weather, so an honest track is calibrated against ground level at the dropzone. Expect metres of accuracy, not centimetres.</p>
-  </section>
-
-  <section class="sec" id="honest">
-    <p class="eyebrow">The honest part</p>
-    <h2>A replay, not an altimeter.</h2>
-    <div class="t3-rows">
-      <div><b>Never use it to pull.</b><p>Manifest records the jump for you to watch afterwards. Your altimeter and your AAD keep you alive, not your phone.</p></div>
-      <div><b>GPS is not always perfect.</b><p>Inside the aircraft, in a pocket or under a metal roof, the phone can lose the satellites for a while. The climb can draw rough or jump, and some tracks have gaps.</p></div>
-      <div><b>Metres, not centimetres.</b><p>Heights come from the barometer and are set against the ground at the dropzone. Weather moves pressure, so treat every number as close, not exact.</p></div>
+    <div class="dk-facts dk-facts-arc">
+      <div class="dk-fact"><h3 class="dk-h3">Never use it to pull.</h3><p class="dk-p">Manifest records the jump for you to watch afterwards. Your altimeter and your AAD keep you alive, not your phone.</p></div>
+      <div class="dk-fact"><h3 class="dk-h3">GPS is not always perfect.</h3><p class="dk-p">Inside the aircraft, in a pocket or under a metal roof, the phone can lose the satellites for a while. The climb can draw rough or jump, and some tracks have gaps.</p></div>
+      <div class="dk-fact"><h3 class="dk-h3">Close, not exact.</h3><p class="dk-p">Heights come from the barometer and are set against the ground at the dropzone. Weather moves pressure, so treat every number as close, not exact.</p></div>
     </div>
   </section>
 
-  <section class="sec" id="numbers">
-    <p class="eyebrow">What the numbers mean</p>
-    <h2>Four numbers. All measured.</h2>
-    <dl class="t3-rows">
+  <section class="dk-band" id="numbers">
+    <div class="dk-t">
+      <p class="dk-eyebrow">What the numbers mean</p>
+      <h2 class="dk-h">Four numbers. All measured.</h2>
+    </div>
+    <dl class="x-dl">
       <div><dt>Exit altitude</dt><dd>Height above the dropzone when you left the aircraft, from the barometer. Usually a little under what the pilot called.</dd></div>
       <div><dt>Freefall time</dt><dd>From exit to line stretch. Measured, so it will not match the count in your head.</dd></div>
       <div><dt>Top speed</dt><dd>The fastest descent rate recorded. Near terminal on a belly jump; on a track or a wingsuit it says something about the flight.</dd></div>
@@ -1223,56 +1082,66 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
     </dl>
   </section>
 
-  <section class="sec" id="versus">
-    <p class="eyebrow">Phone versus a dedicated logger</p>
-    <h2>The tracker you never forget.</h2>
-    <table class="t3-vs">
-      <thead><tr><td aria-hidden="true"></td><th scope="col" class="me">Phone</th><th scope="col">Dedicated logger</th></tr></thead>
-      <tbody>
-        <tr><th scope="row">On the jump</th><td class="me">Already in your pocket</td><td>One more device to charge, mount and remember</td></tr>
-        <tr><th scope="row">Sampling</th><td class="me">About once a second</td><td>Faster</td></tr>
-        <tr><th scope="row">The track</th><td class="me">Ready to watch in 3D</td><td>A file to import later</td></tr>
-        <tr><th scope="row">Best for</th><td class="me">Seeing the jump and checking your opening</td><td>Competing in speed or performance flying</td></tr>
-      </tbody>
-    </table>
-    <p class="t3-after">For the overwhelming majority of jumps, the phone is enough.</p>
-  </section>
-
-  <section class="sec t3-big" id="google-earth">
-    <p class="eyebrow">Why not just use Google Earth?</p>
-    <h2>Google Earth will not fly it on a phone.</h2>
-    <p>A KML track opens fine, but only Earth Pro on a desktop plays a tour. Manifest animates the same terrain on the phone that recorded it.</p>
-  </section>
-
-  <section class="sec t3-safe" id="safely">
-    <div>
-      <p class="eyebrow">Recording a jump safely</p>
-      <h2>Zip it. Jump it.</h2>
-      <ul class="t3-chk">
-        <li><b>A zipped pocket.</b> A jump track is not worth a phone through someone&rsquo;s roof.</li>
-        <li><b>Location set to Always.</b> Recording carries on with the screen off and stops by itself once you land.</li>
-        <li><b>Start before you board.</b> Or let it arm itself when your load takes off.</li>
-      </ul>
+  <section class="dk-band" id="versus">
+    <div class="dk-t">
+      <p class="dk-eyebrow">Phone versus a dedicated logger</p>
+      <h2 class="dk-h">The tracker you never forget.</h2>
     </div>
-    <div class="t3-meadow"><img src="/assets/opt/hand-phone.c1c25f9a.webp" width="631" height="841" alt="A hand holding an iPhone with the Manifest home screen, Record one tap away" loading="lazy" decoding="async" /></div>
+    <div class="dk-table-wrap">
+      <table class="dk-table x-vs">
+        <thead><tr><td aria-hidden="true"></td><th scope="col" class="me">Phone</th><th scope="col">Dedicated logger</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">On the jump</th><td class="me">Already in your pocket</td><td>One more device to charge, mount and remember</td></tr>
+          <tr><th scope="row">Sampling</th><td class="me">About once a second</td><td>Faster</td></tr>
+          <tr><th scope="row">The track</th><td class="me">Ready to watch in 3D</td><td>A file to import later</td></tr>
+          <tr><th scope="row">Best for</th><td class="me">Seeing the jump and checking your opening</td><td>Competing in speed or performance flying</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="dk-n">For the overwhelming majority of jumps, the phone is enough.</p>
   </section>
 
-  <section class="sec" id="manifest">
-    <p class="eyebrow">How Manifest does it</p>
-    <h2>Free to record and replay.</h2>
-    <div class="t3-tiers">
+  <section class="dk-band x-state" id="google-earth">
+    <div class="dk-t">
+      <p class="dk-eyebrow">Why not just use Google Earth?</p>
+      <h2 class="dk-h">Google Earth will not fly it on a phone.</h2>
+      <p class="dk-l">A KML track opens fine, but only Earth Pro on a desktop plays a tour. Manifest animates the same terrain on the phone that recorded it.</p>
+    </div>
+  </section>
+
+  <section class="dk-band" id="safely">
+    <div class="dk-split flip">
       <div>
-        <h3>Free</h3>
-        <ul>
+        <p class="dk-eyebrow">Recording a jump safely</p>
+        <h2 class="dk-h">Zip it. Jump it.</h2>
+        <ul class="dk-list">
+          <li><b>A zipped pocket.</b> A jump track is not worth a phone through someone&rsquo;s roof.</li>
+          <li><b>Location set to Always.</b> Recording carries on with the screen off and stops by itself once you land.</li>
+          <li><b>Start before you board.</b> Or, with Manifest Pro, let it arm itself when your load takes off.</li>
+        </ul>
+      </div>
+      <div class="dk-split-v"><img class="x-hand" src="/assets/opt/hand-phone.c1c25f9a.webp" width="631" height="841" alt="A hand holding an iPhone with the Manifest home screen, Record one tap away" loading="lazy" decoding="async" /></div>
+    </div>
+  </section>
+
+  <section class="dk-band" id="manifest">
+    <div class="dk-t">
+      <p class="dk-eyebrow">How Manifest does it</p>
+      <h2 class="dk-h">Free to record and replay.</h2>
+    </div>
+    <div class="dk-plans">
+      <div class="dk-plan">
+        <h3 class="dk-h3">Free</h3>
+        <ul class="dk-list">
           <li>Record every jump with your phone</li>
           <li>Replay it in 3D over real terrain</li>
           <li>Save the jump for other jumpers to sign off</li>
           <li>Saved tracks backed up to your account</li>
         </ul>
       </div>
-      <div class="pro">
-        <h3>Manifest Pro</h3>
-        <ul>
+      <div class="dk-plan hi">
+        <h3 class="dk-h3">Manifest Pro</h3>
+        <ul class="dk-list">
           <li>A recorder that arms itself when your load takes off</li>
           <li>Raw CSV and KML export, for Google Earth and other tools</li>
           <li>Every track backed up</li>
@@ -1281,16 +1150,19 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
     </div>
   </section>
 
-  <section class="final">
-    <h2>See your next jump.</h2>
-    <p>Manifest is free on the App Store for iPhone.</p>
-    <div class="t3-end">
-      <a class="t3-badge" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="Download Manifest on the App Store"><img src="/assets/appstore-badge.svg?v=1" width="160" height="54" alt="Download on the App Store" /></a>
-      <figure class="t3-qr"><img src="/assets/appstore-qr.svg?v=1" width="120" height="120" alt="Scan with your iPhone camera to open Manifest in the App Store." loading="lazy" /><figcaption aria-hidden="true">Scan with your iPhone camera to open Manifest in the App Store.</figcaption></figure>
-      <a class="t3-dz" href="/dropzones/">Own a dropzone? See Manifest Desk</a>
+  <section class="dk-band dk-tight dk-close-b">
+    <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
+    <div class="dk-plate dk-plate-close" style="margin-top:0">
+      <img class="dk-paint" src="/assets/hero/plate-close.webp" alt="" loading="lazy" decoding="async" />
+      <div class="dk-close">
+        <h2 class="dk-h">See your next jump.</h2>
+        <p class="dk-l">Manifest is free on the App Store for iPhone.</p>
+        <div class="dk-close-get"><a class="dk-badge" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="Download Manifest on the App Store"><img src="/assets/appstore-badge.svg?v=1" alt="Download on the App Store" width="160" height="54" /></a><img class="dk-qr" src="/assets/appstore-qr.svg?v=1" width="120" height="120" alt="Scan with your iPhone camera to open Manifest in the App Store." loading="lazy" /></div>
+        <p class="dk-close-dz"><a href="/dropzones/">Own a dropzone? See Manifest Desk</a></p>
+      </div>
     </div>
-    <p class="faq-more">Learn more: <a href="/skydiving-app/">The skydiving app</a>, <a href="/live-skydiving-loads/">Live loads</a>, <a href="/skydiving-weather/">Jump weather</a>, <a href="/uspa-digital-logbook/">Jump sign-offs</a>, <a href="/skydive-landout-safety/">Landout SOS</a>.</p>
   </section>
+  <p class="dk-qhelp" style="text-align:center;padding-bottom:32px">Learn more: <a href="/skydiving-app/">The skydiving app</a>, <a href="/live-skydiving-loads/">Live loads</a>, <a href="/skydiving-weather/">Jump weather</a>, <a href="/uspa-digital-logbook/">Jump sign-offs</a>, <a href="/skydive-landout-safety/">Landout SOS</a>.</p>
 </main>
 
 
@@ -1313,6 +1185,8 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
       <a href="/about/">About</a><a href="/support/">Support</a><a href="/help/">Help center</a><a href="/#faq">FAQ</a><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a></div>
   </div>
   <div class="ft-base"><span>© 2026 Manifest Jump LLC · Wyoming, USA · Dubai,&nbsp;UAE</span><div class="ft-pay" aria-label="Payment methods accepted"><img src="/assets/pay/apple_pay.svg?v=1" alt="Apple Pay" height="24" /><img src="/assets/pay/visa.svg?v=1" alt="Visa" height="24" /><img src="/assets/pay/master.svg?v=1" alt="Mastercard" height="24" /><img src="/assets/pay/american_express.svg?v=1" alt="American Express" height="24" /><img src="/assets/pay/cashapppay.svg?v=1" alt="Cash App Pay" height="24" /><img src="/assets/pay/stripe.svg?v=1" alt="Stripe" height="24" /></div></div>
+  <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
+  <div class="ft-art" aria-hidden="true"><img src="/assets/hero/plate-footer.webp" alt="" loading="lazy" decoding="async" /></div>
 </footer>
 
 <script>
@@ -1579,5 +1453,6 @@ span.go > svg{background:#050505!important}
 .vs-yes svg{width:16px!important;height:16px!important;stroke-width:2.6}
 .vs-no{color:#FF453A!important;background:none!important;width:20px!important;height:20px!important}.vs-no svg{width:16px!important;height:16px!important;stroke-width:2.6}
 </style>
-<script>/* phone footer: tap a menu heading to open it */document.addEventListener('click',function(e){var h=e.target.closest&&e.target.closest('footer.site .ft-col:not(:last-child) h3');if(!h||innerWidth>560)return;h.parentNode.classList.toggle('open');});</script>
+<script src="/assets/site-dark.js?v=4" defer></script>
+
 </body>

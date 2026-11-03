@@ -38,6 +38,19 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
 .sh-nav:has(.sh-dd.open) .sh-dd:not(.open) .sh-panel{transition:none}
 .sh-cta-demo:focus-visible,.fd-btn:focus-visible,.btn.ghost:focus-visible,.btn.demo:focus-visible,.band-btn:focus-visible,.pc-out:focus-visible,.sms-btn:focus-visible,.sm-btn:focus-visible,.pc-call:focus-visible,.lo-btn:focus-visible,.lc-btn:focus-visible,.hmw-btn:focus-visible,.dp-btn:focus-visible,.btn.primary:focus-visible,.pq-btn:focus-visible,a.btn[href*="apps.apple.com"]:focus-visible,a.btn[href="/get"]:focus-visible{outline:2px solid #050505!important;outline-offset:3px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 3px #fff!important}
 </style>
+<style id="dark-flow">
+/* Same dark system. Looks only; the flow and scripts are untouched. */
+body { background: #1A1B20 !important; color: #F1F2F5 !important; }
+.card { background: #23242A !important; border: 0 !important; border-radius: 22px !important; box-shadow: 0 0 0 1px rgba(255,255,255,.10), 0 4px 8px rgba(0,0,0,.38), 0 16px 32px rgba(0,0,0,.24) !important; }
+.lockup { filter: brightness(0) invert(1); }
+.lead, .hint, .note, .foot { color: #D1D1D6 !important; } h1, .h1 { color: #fff !important; font-weight: 400 !important; }
+html body .btn, html body a.btn, html body a.btn[href="/get"] { background: #F4F5F8 !important; background-image: none !important; color: #050505 !important; font-weight: 600 !important; border-radius: 999px !important; box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(0,0,0,.3), 0 4px 8px rgba(0,0,0,.2) !important; }
+.band { background: transparent !important; color: #fff !important; padding-bottom: 0 !important; }
+.body { color: #F1F2F5; } .lead { color: #F1F2F5 !important; }
+.steps .n { background: rgba(241,242,245,.12) !important; color: #fff !important; }
+.note a, .foot a { color: #fff !important; }
+.brand .m { background: #EDEFF7 !important; }
+</style>
 </head>
 <body>
   <div class="card">
@@ -50,6 +63,7 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
   </div>
 <script>
   var code = (location.pathname.split('/')[2] || new URLSearchParams(location.search).get('c') || '').toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 12);
+  if (!code) document.getElementById('hint').hidden = true;
   if (code) fetch('https://wkefdtglgbfprvfajrrw.supabase.co/rest/v1/rpc/desk_join_preview', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', apikey: 'sb_publishable_bSZ85fokRcmDjIzYr7Q9mQ_w4dQ0b3b' },

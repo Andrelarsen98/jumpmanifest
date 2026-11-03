@@ -10,7 +10,7 @@
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://www.jumpmanifest.com/assets/og-image.png?v=11" />
-<meta name="description" content="Manifest is the skydiving app for jumpers and Manifest Desk is the manifest software for dropzones, connected live. Founded by André Larsen, entrepreneur, skydiver and FPV pilot in Dubai." />
+<meta name="description" content="Manifest is the skydiving app for jumpers and Desk for dropzones, connected live. Founded by André Larsen, entrepreneur, skydiver and FPV pilot in Dubai." />
 <link rel="canonical" href="https://www.jumpmanifest.com/about/" />
 <meta property="og:title" content="About Manifest" />
 <meta property="og:description" content="One app, both sides of the hangar. The skydiving app for jumpers and the manifest software for dropzones." />
@@ -705,8 +705,9 @@ aside.founder.fc::after{content:"";position:absolute;inset:0;background:linear-g
 aside.founder.fc .fc-eb{color:rgba(255,255,255,.78)!important}aside.founder.fc .fc-role{color:#fff!important}aside.founder.fc .fc-text{color:rgba(255,255,255,.88)!important}aside.founder.fc p{max-width:none!important}
 @media (max-width:899px){aside.founder.fc{margin-top:28px;max-width:360px}}
 </style>
+<link rel="stylesheet" href="/assets/site-dark.css?v=5" />
 </head>
-<body>
+<body class="dk">
 <a class="skip" href="#main">Skip to main content</a>
 <!-- SITE HEADER (9 Oct 2026): one header on every page. Mega dropdowns on
      laptops, a full-height sheet on phones. Same markup, CSS and JS on each
@@ -742,18 +743,25 @@ aside.founder.fc .fc-eb{color:rgba(255,255,255,.78)!important}aside.founder.fc .
      first, dropzones second. Every line is true today; reach numbers from
      BRAND.md, never raw counts. Lock Screen loads are Pro, said as such. -->
 <main id="main">
-<section class="doc">
-  <div class="wrap ab-hero">
-    <div class="ab-copy">
-    <h1>One system for both sides of the hangar.</h1>
-    <p class="intro">Manifest is the skydiving app jumpers use for everything on a jump day. Manifest Desk is the manifest software that runs the dropzone. They are connected live, so a load called at the desk lands on every jumper's phone.</p>
-    <div class="trust">
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20a6 6 0 0 1 12 0M17 11a3 3 0 1 0 0-6M21 20a6 6 0 0 0-4-5.6"/></svg>Jumpers at 230 dropzones in 46 countries</span>
-    </div>
-    </div>
-    <!-- FOUNDER CARD (16 Oct 2026, design review F07): who builds Manifest. No
-       photo yet, so none is shown. -->
-    <aside class="founder fc" aria-labelledby="founder-name">
+<style>
+body.dk #main .ab-founder { padding-top: 8px; }
+body.dk #main .ab-founder aside.founder.fc { margin: 0 auto; box-shadow: 0 0 0 1px rgba(255,255,255,.10), 0 30px 70px rgba(0,0,0,.5); }
+body.dk #main .ab-vs { text-align: left; }
+body.dk #main .ab-vs .dk-h3 { margin: 0; }
+body.dk #main .ab-vs .ab-old .dk-list li { color: #D1D1D6; }
+body.dk #main .ab-vs .ab-new .dk-list li { color: #F1F2F5; }
+body.dk #main .ab-final a:not([class]) { color: #F1F2F5; text-decoration: underline; text-underline-offset: 3px; }
+</style>
+<header class="dk-head">
+  <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
+  <img class="dk-head-art" src="/assets/hero/plate-about.webp" alt="" decoding="async" fetchpriority="high" />
+  <h1 class="dk-h1">One system for both sides of the hangar.</h1>
+  <p class="dk-l">Manifest is the skydiving app jumpers use for everything on a jump day. Manifest Desk is the manifest software that runs the dropzone. They are connected live, so a load called at the desk lands on every jumper's phone.</p>
+  <p class="dk-head-under">Jumpers at <b>230</b> dropzones in <b>46</b> countries</p>
+</header>
+
+<section class="dk-band dk-tight ab-founder">
+  <aside class="founder fc" aria-labelledby="founder-name">
       <img src="/assets/opt/andre-card-900.webp" width="900" height="900" alt="Andr&eacute; Larsen, founder of Manifest, at the dropzone in his rig" decoding="async" />
       <div class="fc-in">
         <p class="fc-eb">Who builds Manifest</p>
@@ -766,105 +774,104 @@ aside.founder.fc .fc-eb{color:rgba(255,255,255,.78)!important}aside.founder.fc .
         </div>
       </div>
     </aside>
+</section>
+
+<section class="dk-band" id="why">
+  <div class="dk-t">
+    <p class="dk-eyebrow">Why Manifest exists</p>
+    <h2 class="dk-h">A jump day shouldn't live on a whiteboard.</h2>
+    <p class="dk-l">Loads go up on a board and get called over the PA. Records are paper nobody can check. The desk runs software jumpers never see. Manifest puts the jumper and the dropzone on one system.</p>
+  </div>
+  <div class="dk-facts two ab-vs">
+    <div class="dk-fact ab-old">
+      <h3 class="dk-h3">The old way</h3>
+      <ul class="dk-list">
+        <li>Loads on a whiteboard, calls over the PA</li>
+        <li>Paper records nobody can verify</li>
+        <li>Repack dates you find out about at the desk</li>
+        <li>A queue at the card terminal</li>
+        <li>A desk your jumpers never see</li>
+      </ul>
+    </div>
+    <div class="dk-fact ab-new">
+      <h3 class="dk-h3">Manifest</h3>
+      <ul class="dk-list">
+        <li>Your load and every call on your phone</li>
+        <li>Every jump recorded and verified</li>
+        <li>A reminder before your reserve or AAD falls due</li>
+        <li>Apple Pay top-ups in the app</li>
+        <li>A desk connected to the app jumpers carry</li>
+      </ul>
+    </div>
   </div>
 </section>
 
-<div class="wrap ab">
-  <!-- WHY: the problem and the idea, in the versus pattern from /dropzones/. -->
-  <section class="sec" id="why">
-    <p class="eyebrow"><span class="eb-mark" aria-hidden="true"></span>Why Manifest exists</p>
-    <h2>A jump day shouldn't live on a whiteboard.</h2>
-    <p class="lead">Loads go up on a board and get called over the PA. Logbooks are paper nobody can check. The desk runs software jumpers never see. <b>Manifest puts the jumper and the dropzone on one system.</b></p>
-    <div class="vs">
-      <div class="vs-col vs-old">
-        <h3>The old way</h3>
-        <ul>
-          <li><span class="vs-no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Loads on a whiteboard, calls over the PA</span></li>
-          <li><span class="vs-no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Paper records nobody can verify</span></li>
-          <li><span class="vs-no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Repack dates you find out about at the desk</span></li>
-          <li><span class="vs-no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>A queue at the card terminal</span></li>
-          <li><span class="vs-no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>A desk your jumpers never see</span></li>
-        </ul>
-      </div>
-      <div class="vs-col vs-new">
-        <h3><span class="eb-mark" aria-hidden="true"></span>Manifest</h3>
-        <ul>
-          <li><span class="vs-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span><span>Your load and every call on your phone</span></li>
-          <li><span class="vs-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span><span>Every jump recorded and verified</span></li>
-          <li><span class="vs-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span><span>A reminder before your reserve or AAD falls due</span></li>
-          <li><span class="vs-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span><span>Apple Pay top-ups in the app</span></li>
-          <li><span class="vs-yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span><span>A desk connected to the app jumpers carry</span></li>
-        </ul>
-      </div>
+<section class="dk-band" id="jumpers">
+  <div class="dk-t">
+    <p class="dk-eyebrow">For jumpers</p>
+    <h2 class="dk-h">Everything on a jump day, in one app.</h2>
+    <p class="dk-l">Check your load, jump, watch it back, get it signed off. Manifest is free to download for iPhone.</p>
+  </div>
+  <div class="dk-figs">
+    <figure>
+      <img class="dk-ph" src="/assets/opt/community3.webp" alt="The Community screen showing dropzones turning loads and recent jumper activity" width="560" height="1175" loading="lazy" decoding="async">
+      <figcaption><h3 class="dk-h3">See who's jumping today</h3>Which dropzones are turning loads right now, the jumpers you know, and every milestone as it lands.</figcaption>
+    </figure>
+    <figure>
+      <span class="dk-screen"><video src="/assets/opt/liveloads.91e6219d.mp4" poster="/assets/opt/liveloads-poster.344e7011.webp" autoplay muted loop playsinline preload="none" width="560" height="1176" aria-label="Live loads at Skydive Elsinore, with jumper names hidden"></video></span>
+      <figcaption><h3 class="dk-h3">Every load, live</h3>What's on call, who's on it and how long you've got, straight off the dropzone's own manifest, at 150 dropzones.</figcaption>
+    </figure>
+    <figure>
+      <img class="dk-ph" src="/assets/opt/locker2.bca918f9.webp" alt="The Locker Room showing a complete rig, wingsuit, helmets and altimeter, all service current" width="560" height="1175" loading="lazy" decoding="async">
+      <figcaption><h3 class="dk-h3">Every rig, always in date</h3>Reserve repacks, AAD service and your whole kit in one locker, with the service history kept, so nothing quietly lapses.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="dk-band" id="connected">
+  <div class="dk-t">
+    <h2 class="dk-h">One app, both sides of the hangar.</h2>
+    <p class="dk-l">A load called at the desk lands on every jumper's phone. When it departs, the jump saves itself to their phone.</p>
+  </div>
+</section>
+
+<section class="dk-band dk-tight" id="dropzones">
+  <div class="dk-t">
+    <p class="dk-eyebrow">For dropzones</p>
+    <h2 class="dk-h">Manifest Desk runs the dropzone.</h2>
+    <p class="dk-l">Manifest software for the whole day, from the first load to the last, connected to the app your jumpers already carry.</p>
+  </div>
+  <div class="dk-plate dk-plate-wide">
+    <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
+    <img class="dk-paint" src="/assets/hero/plate-about-2.webp" alt="" loading="lazy" decoding="async" />
+    <img class="dk-wide" src="/assets/opt/desk-today.68a82734.webp" width="1440" height="900" alt="Manifest Desk Today page for a demo dropzone, showing money charged for jumps today, open loads, the next load countdown, standby and jumper accounts" loading="lazy" decoding="async" />
+    <img class="dk-wide-ph" src="/assets/opt/mock-home3.a2e7757f.webp" width="640" height="1330" alt="" loading="lazy" decoding="async" />
+  </div>
+  <div class="dk-ctas"><a class="dk-btn2" href="/dropzones/">See Manifest Desk</a></div>
+</section>
+
+<section class="dk-band" id="how">
+  <div class="dk-t"><h2 class="dk-h">How we work.</h2></div>
+  <ol class="dk-steps">
+    <li><b>Precision-built</b>Software for modern dropzones and the skydivers who fly them, held to the standard of the best apps you use every day.</li>
+    <li><b>Always improving</b>Regular updates to the app and Manifest Desk, each one tested before it reaches you.</li>
+    <li><b>Your data stays yours</b>We do not sell your personal data. Delete a jump or your whole account in the app, any time. Dropzone money goes straight to the dropzone's own Stripe.</li>
+    <li><b>Set up with you, directly</b>Every dropzone is set up with us directly, and we are there on its first jump day. Jumpers write to Andr&eacute;, the founder, not a ticket queue.</li>
+  </ol>
+</section>
+
+<section class="dk-band dk-tight dk-close-b">
+  <div class="dk-plate dk-plate-close" style="margin-top:0">
+    <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
+    <img class="dk-paint" src="/assets/hero/plate-close.webp" alt="" loading="lazy" decoding="async" />
+    <div class="dk-close ab-final">
+      <h2 class="dk-h">Every jump. Every load.</h2>
+      <p class="dk-l">Questions or ideas? Write to <a href="mailto:andre@manifestjump.com">andre@manifestjump.com</a> or <a href="https://www.instagram.com/manifestjump/" target="_blank" rel="noopener">@manifestjump</a> on Instagram.</p>
+      <div class="dk-close-get"><a class="dk-badge" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="Download Manifest on the App Store"><img src="/assets/appstore-badge.svg?v=1" alt="Download on the App Store" width="160" height="54" /></a><img class="dk-qr" src="/assets/appstore-qr.svg?v=1" width="120" height="120" alt="Scan with your iPhone camera to open Manifest in the App Store." loading="lazy" /></div>
+      <p class="dk-close-dz">Run a dropzone? See <a href="/dropzones/">Manifest Desk</a>.</p>
     </div>
-  </section>
-
-  <!-- FOR JUMPERS: the home page trio, real screens (20 Oct 2026, no icon cards). -->
-  <section class="sec" id="jumpers">
-    <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M11 18.5h2"/></svg>For jumpers</p>
-    <h2>Everything on a jump day, in one app.</h2>
-    <p class="lead">Check your load, jump, watch it back, get it signed off. Manifest is free to download for iPhone.</p>
-    <div class="trio">
-      <div class="tcard">
-        <div>
-          <h3>See who's jumping today</h3>
-          <p>Which dropzones are turning loads right now, the jumpers you know, and every milestone as it lands.</p>
-        </div>
-        <img class="tmedia" src="/assets/opt/community3.webp" alt="The Community screen showing dropzones turning loads and recent jumper activity" width="560" height="1175" loading="lazy" decoding="async">
-      </div>
-      <div class="tcard mid">
-        <video class="tmedia" src="/assets/opt/liveloads.91e6219d.mp4" poster="/assets/opt/liveloads-poster.344e7011.webp" autoplay muted loop playsinline preload="none" width="560" height="1176" aria-label="Live loads at Skydive Elsinore, with jumper names hidden"></video>
-        <div>
-          <h3>Every load, live</h3>
-          <p>What's on call, who's on it and how long you've got, straight off the dropzone's own manifest, at 150 dropzones.</p>
-        </div>
-      </div>
-      <div class="tcard">
-        <div>
-          <h3>Every rig, always in date</h3>
-          <p>Reserve repacks, AAD service and your whole kit in one locker, with the service history kept, so nothing quietly lapses.</p>
-        </div>
-        <img class="tmedia" src="/assets/opt/locker2.bca918f9.webp" alt="The Locker Room showing a complete rig, wingsuit, helmets and altimeter, all service current" width="560" height="1175" loading="lazy" decoding="async">
-      </div>
-    </div>
-  </section>
-
-  <!-- DARK BAND: the core idea, lines from BRAND.md. -->
-  <section class="band" id="connected">
-    <h2>One app, both sides of the hangar.</h2>
-    <p class="band-sub">A load called at the desk lands on every jumper's phone. When it departs, the jump saves itself to their phone.</p>
-  </section>
-
-  <!-- FOR DROPZONES: the Studio Display and phone from the home page #desk. -->
-  <section class="sec" id="dropzones">
-    <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>For dropzones</p>
-    <h2>Manifest Desk runs the dropzone.</h2>
-    <p class="lead">Manifest software for the whole day, from the first load to the last, connected to the app your jumpers already carry.</p>
-    <figure class="desk-art"><div style="position:relative"><img class="win" srcset="/assets/opt/studio-desk-today-800w.04733ab5.webp 800w, /assets/features/studio-desk-today.webp 1600w" sizes="(max-width: 600px) 95vw, 720px" src="/assets/features/studio-desk-today.webp" alt="Manifest Desk Today page for a demo dropzone, showing money charged for jumps today, open loads, the next load countdown, standby and jumper accounts" width="1600" height="1242" style="aspect-ratio: 1600 / 1242" loading="lazy" decoding="async" /><img class="win-phone" srcset="/assets/opt/mock-home3-320w.0a398738.webp 320w, /assets/opt/mock-home3.a2e7757f.webp 640w" sizes="(max-width: 480px) 28vw, 186px" src="/assets/opt/mock-home3.a2e7757f.webp" width="640" height="1330" style="aspect-ratio: 640 / 1330" alt="" loading="lazy" decoding="async" /></div></figure>
-    <div class="ctas"><a class="btn ghost" href="/dropzones/">See Manifest Desk</a></div>
-  </section>
-
-  <!-- HOW WE WORK: four true values. -->
-  <section class="sec" id="how">
-    <h2>How we work.</h2>
-    <ol class="how-grid">
-      <li><b>Precision-built</b><p>Software for modern dropzones and the skydivers who fly them, held to the standard of the best apps you use every day.</p></li>
-      <li><b>Always improving</b><p>Regular updates to the app and Manifest Desk, each one tested before it reaches you.</p></li>
-      <li><b>Your data stays yours</b><p>We do not sell your personal data. Delete a jump or your whole account in the app, any time. Dropzone money goes straight to the dropzone's own Stripe.</p></li>
-      <li><b>Set up with you, directly</b><p>Every dropzone is set up with us directly, and we are there on its first jump day. Jumpers write to Andr&eacute;, the founder, not a ticket queue.</p></li>
-    </ol>
-  </section>
-
-  <!-- CLOSING: who builds it, and the two ways in. -->
-  <section class="final">
-    <h2>Every jump. Every load.</h2>
-    <p>Questions or ideas? Write to <a href="mailto:andre@manifestjump.com">andre@manifestjump.com</a> or <a href="https://www.instagram.com/manifestjump/" target="_blank" rel="noopener">@manifestjump</a> on Instagram.</p>
-    <div class="ctas">
-      <a class="btn primary" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429">Download the app<span class="bi"><svg viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></span></a>
-      <a class="btn ghost" href="/dropzones/">For dropzones</a>
-    </div>
-  </section>
-</div>
+  </div>
+</section>
 </main>
 
 <footer class="site">
@@ -886,6 +893,8 @@ aside.founder.fc .fc-eb{color:rgba(255,255,255,.78)!important}aside.founder.fc .
       <a href="/about/">About</a><a href="/support/">Support</a><a href="/help/">Help center</a><a href="/#faq">FAQ</a><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a></div>
   </div>
   <div class="ft-base"><span>© 2026 Manifest Jump LLC · Wyoming, USA · Dubai,&nbsp;UAE</span><div class="ft-pay" aria-label="Payment methods accepted"><img src="/assets/pay/apple_pay.svg?v=1" alt="Apple Pay" height="24" /><img src="/assets/pay/visa.svg?v=1" alt="Visa" height="24" /><img src="/assets/pay/master.svg?v=1" alt="Mastercard" height="24" /><img src="/assets/pay/american_express.svg?v=1" alt="American Express" height="24" /><img src="/assets/pay/cashapppay.svg?v=1" alt="Cash App Pay" height="24" /><img src="/assets/pay/stripe.svg?v=1" alt="Stripe" height="24" /></div></div>
+  <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
+  <div class="ft-art" aria-hidden="true"><img src="/assets/hero/plate-footer.webp" alt="" loading="lazy" decoding="async" /></div>
 </footer>
 <script id="site-header-js">
 (() => {
@@ -1097,6 +1106,7 @@ span.go > svg{background:#050505!important}
 .vs-yes svg{width:16px!important;height:16px!important;stroke-width:2.6}
 .vs-no{color:#FF453A!important;background:none!important;width:20px!important;height:20px!important}.vs-no svg{width:16px!important;height:16px!important;stroke-width:2.6}
 </style>
-<script>/* phone footer: tap a menu heading to open it */document.addEventListener('click',function(e){var h=e.target.closest&&e.target.closest('footer.site .ft-col:not(:last-child) h3');if(!h||innerWidth>560)return;h.parentNode.classList.toggle('open');});</script>
+<script src="/assets/site-dark.js?v=4" defer></script>
+
 </body>
 </html>

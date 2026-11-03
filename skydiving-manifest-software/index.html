@@ -1048,7 +1048,7 @@ h1, h2, h3 { text-wrap: balance; }
   "featureList": [
     "Loads board with exit order, reserved seats and teams",
     "Standby by jumper type, with teams kept together",
-    "Load calls pushed to jumpers' phones and Lock Screens at 15, 10 and 5 minutes, plus holds",
+    "Load calls pushed to jumpers' phones at 15, 10 and 5 minutes, plus holds",
     "Weight and balance against the aircraft, required crew and double-manifest rules",
     "Jumper accounts and balances, tickets, vouchers and gift vouchers",
     "Apple Pay and card top-ups straight into the dropzone's own Stripe account (Stripe Connect)",
@@ -1096,11 +1096,11 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
 .sh-nav:has(.sh-dd.open) .sh-dd:not(.open) .sh-panel{transition:none}
 .sh-cta-demo:focus-visible,.fd-btn:focus-visible,.btn.ghost:focus-visible,.btn.demo:focus-visible,.band-btn:focus-visible,.pc-out:focus-visible,.sms-btn:focus-visible,.sm-btn:focus-visible,.pc-call:focus-visible,.lo-btn:focus-visible,.lc-btn:focus-visible,.hmw-btn:focus-visible,.dp-btn:focus-visible,.btn.primary:focus-visible,.pq-btn:focus-visible,a.btn[href*="apps.apple.com"]:focus-visible,a.btn[href="/get"]:focus-visible{outline:2px solid #050505!important;outline-offset:3px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 3px #fff!important}
 </style>
+<link rel="stylesheet" href="/assets/site-dark.css?v=5" />
 </head>
-<body>
+<body class="dk">
 <a class="skip" href="#main">Skip to main content</a>
 
-<div class="ownerbar">This page is for dropzone owners and managers. Looking for the jumper app? <a href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429">Download Manifest&nbsp;&rarr;</a></div>
 <!-- SITE HEADER (9 Oct 2026): one header on every page. Mega dropdowns on
      laptops, a full-height sheet on phones. Same markup, CSS and JS on each
      page; only the current section and the right-hand button differ. -->
@@ -1131,342 +1131,123 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
   </div>
 </div>
 
-<main id="main" class="wrap sms">
-  <style id="review-b">
-  /* A11: no divider can start a wrapped line of hero chips; spacing only. */
-  .trust { gap: 12px 24px; }
-  .trust > * { padding: 0; }
-  .trust > * + * { border-left: 0; }
-  /* F12: founding status right under the hero actions. */
-  .hero-founding { margin: 22px 0 0; font-size: 16px; line-height: 24px; font-weight: 500; color: #050505; text-align: center; }
-  @media (min-width: 900px) { .hero-founding { text-align: left; } }
-  /* F13: readable Desk panels, captioned as sample data. */
-  /* Hero: the full Desk with the jumper's iPhone in front, as on the other
-     Desk pages (André, 16 Oct 2026). */
-  .hm-wrap { position: relative; }
-  /* MUG + STEAM (19 Oct). Real 3D render (Blender), shot straight on like the display; real scale for a
-     9.5 cm mug, set a little in front of the display so it sits just below the stand's foot line. */
-  .hm-mug { position: absolute; left: 10%; bottom: -2.2%; width: 22%; pointer-events: none; transform: translateY(8%); }
-  /* The steam starts BEHIND the mug, at the coffee, so it rises out of the opening; the mug image covers its root. */
-  .hm-mug .mug-body { position: relative; z-index: 1; display: block; width: 100%; height: auto; }
-  .hm-mug .mug-steam { position: absolute; z-index: 0; left: 7.8%; bottom: 86%; width: 57.4%; overflow: visible; }
-  /* Real coffee steam is thin, white and barely there: a white ribbon (shows on the dark bezel) over a faint
-     grey one (shows on the white page), slow, delicate, always rising out of the cup. */
-  .mug-steam .w { fill: none; stroke-linecap: round; opacity: 0; transform-box: fill-box; transform-origin: 50% 100%;
-    animation: steamRise 9s cubic-bezier(.3,.1,.4,1) infinite; }
-  .mug-steam .tone .w { stroke: url(#steamS); stroke-width: 3.2; }
-  .mug-steam .lite .w { stroke: url(#steamG); stroke-width: 2.2; }
-  .mug-steam .w2 { animation-delay: 3s; }
-  .mug-steam .w3 { animation-delay: 6s; }
-  @keyframes steamRise {
-    0% { opacity: 0; transform: translateY(4%) scale(.9, .7); }
-    20% { opacity: 1; }
-    70% { opacity: .55; }
-    100% { opacity: 0; transform: translateY(-8%) scale(1.2, 1.05); }
-  }
-  @media (prefers-reduced-motion: reduce) { .mug-steam .w { animation: none; opacity: .6; } }
-  .hero-media .desk-cap { margin-top: 44px; text-align: center; }
-  /* STUDIO DISPLAY (19 Oct 2026, André): the desk shown on a Studio Display, white background blends with the page. */
-  img.studio { display: block; width: 100%; height: auto; }
-  /* André 19 Oct: never a grey card around the Studio Display. */
-  .vis-media:has(img.studio) { background: transparent !important; padding: 0 !important; border-radius: 0 !important; }
-  .hm-phone { position: absolute; right: -3%; bottom: -6%; width: 26%; max-width: 190px; height: auto; filter: drop-shadow(0 18px 28px rgba(15,23,42,.28)); }
-  @media (max-width: 767px) { .hm-phone { width: 30%; right: -1%; bottom: -8%; } .hero-media .desk-cap { margin-top: 26px; } }
-  figure.hero-media { margin: 0; }
-  .desk-cap { margin: 8px 0 0; font-size: 14px; line-height: 20px; color: #52525B; text-align: left; }
-  /* F08: card copy on the pale card fills at 7:1, not 4.4:1. */
-  .app-card p, .card p, .how-grid p { color: #52525B; }
-  /* André 19 Oct: Apple-style row, no lilac panel, no boxes, no number chips. */
-  #app .app-panel { background: none; border-radius: 0; padding: 0; margin-top: 64px; }
-  #app .app-grid { gap: 56px; }
-  #app .app-card { background: none; border-radius: 0; padding: 0; text-align: center; }
-  #app .app-card .ic { width: 40px; height: 40px; color: #050505; display: block; margin: 0 auto; }
-  #app .app-card b { margin-top: 20px; }
-  #app .app-card p { max-width: 320px; margin-left: auto; margin-right: auto; }
-  #app .app-foot { margin-top: 56px; }
-  /* Top-up phones (André 19 Oct): same phone height, side by side. */
-  /* Meadow behind the phones (André 19 Oct): Unsplash photo _8fRer9hPv0 (Unsplash License). */
-  #app .pay-duo { display: flex; justify-content: center; align-items: center; gap: clamp(12px, 4vw, 64px); margin-top: 56px;
-    padding: clamp(36px, 6vw, 80px) 16px; border-radius: 28px; background:#F5F5F6; 
-    isolation: isolate; transform: translateZ(0); } /* keeps the phones' drop-shadow layer from repainting the owner bar white in Safari */
-  #app .pay-duo img { display: block; height: auto; filter: drop-shadow(0 24px 40px rgba(0,0,0,.35)); }
-  @media (max-width: 600px) { #app .pay-duo { border-radius: 22px; padding: 28px 10px; gap: 10px; } #app .pay-duo .pd-a, #app .pay-duo .pd-b { width: 46%; } }
-  #app .pay-duo .pd-a { width: min(300px, 44%); }
-  #app .pay-duo .pd-b { width: min(300px, 44%); }
-  @media (max-width: 600px) { #app .app-foot b { display: block; } }
-  @media (max-width: 900px) { #app .app-grid { gap: 44px; } }
-  /* F02: each plan's limits right under the price slot. */
-  .pc-limits { margin: 10px 0 0; font-size: 16px; line-height: 22px; font-weight: 700; color: #050505; letter-spacing: -.2px; }
-  .pc-limits + .pc-desc { margin-top: 4px; }
-  /* F08: rows a plan does not include: readable text, a dash, a visible label. */
-  .pc ul.pc-list li.off { color: #52525B; }
-  .pc .off .tk-off { color: #52525B; border-color: #A1A1AA; }
-  .pc .off .off-tag { flex: 0 0 auto; font-size: 11.5px; line-height: 18px; font-weight: 600; letter-spacing: 0; color: #3F3F46; background: #F4F4F5; border-radius: 6px; padding: 1px 6px; }
-  .pc ul.pc-list li.off { gap: 10px; letter-spacing: -.4px; }
-  /* F06: a demo action between the hero and pricing, white on the black band. */
-  .band-cta { margin-top: 32px; display: flex; justify-content: center; }
-  .band-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; padding: 0 28px; border-radius: 999px; background: #fff; color: #050505; font-family: "Manrope", sans-serif; font-size: 18px; font-weight: 700; }
-  .band-btn:hover { background: #F4F4F5; }
-  .band-btn svg { width: 16px; height: 16px; }
-  .band .band-sub { color: #E4E4E7; }
-  /* A05: what the dropzone sends us, under the setup steps. */
-  .how-need { max-width: 820px; margin: 28px auto 0; text-align: center; font-size: 17px; line-height: 26px; color: #3F3F46; }
-  /* F10: group labels inside the FAQ. */
-  .faq-g { max-width: 820px; margin: 0 auto; padding: 0 4px 14px; font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: 26px; line-height: 32px; letter-spacing: -.4px; color: #050505; }
-  .faq-g + .faq-list { margin-bottom: 44px; }
-  @media (max-width: 600px) { .faq-g { font-size: 21px; line-height: 28px; } .band-btn { font-size: 17px; width: 100%; } }
-  </style>
-  <style id="sms-css">
-  /* SKYDIVING MANIFEST SOFTWARE (20 Oct 2026, André: every page its own layout).
-     A guide to dropzone software. Base system is the dropzones page; these are
-     the parts only this page uses. */
-  .sms{--ink:#050505;--sub:#52525B;--line:#E4E4E7;--pur:#6D42F5}
-  .sms h1,.sms h2,.sms h3{font-family:"General Sans","Manrope",sans-serif}
-  /* hero: editorial, headline left, lead and actions right */
-  .sms-hero{padding-top:clamp(48px,7vw,96px)}
-  .sms-hero .eyebrow{justify-content:flex-start}
-  .sms-top{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:24px 64px;align-items:end}
-  .sms-hero h1{margin:0;font-weight:550;letter-spacing:-.034em;font-size:clamp(42px,5.5vw,72px);line-height:1;color:var(--ink);text-wrap:balance}
-  .sms-side .lead{margin:0;text-align:left;max-width:440px;font-size:20px;line-height:31px;color:var(--sub)}
-  .sms-ctas{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;margin-top:28px}
-  .sms-btn{display:inline-flex;align-items:center;gap:12px;height:56px;padding:0 28px;border-radius:99px;background:var(--pur);color:#fff!important;font-family:"Manrope",sans-serif;font-weight:700;font-size:17px;text-decoration:none!important}
-  .sms-btn:hover{filter:brightness(1.06)}
-  .sms-btn svg{width:16px;height:16px}
-  .sms-link{font-family:"Manrope",sans-serif;font-weight:600;font-size:17px;color:var(--ink)!important}
-  .sms-stage{position:relative;margin-top:clamp(40px,5vw,64px);border-radius:32px;overflow:hidden;isolation:isolate;transform:translateZ(0);
-    background:#F5F5F6;padding:clamp(40px,6vw,80px) 0 clamp(28px,3.5vw,44px)}
-  .sms-stage .studio{display:block;width:72%;max-width:760px;height:auto;margin:0 auto;filter:drop-shadow(0 30px 40px rgba(0,0,0,.28))}
-  .sms-stage .sms-hand{position:absolute;right:3%;bottom:0;width:23%;max-width:300px;height:auto;filter:drop-shadow(0 24px 40px rgba(0,0,0,.35))}
-  .sms-cap{margin:14px 0 0;font-size:14px;color:#71717B;text-align:center}
-  /* guide contents */
-  .sms-toc{margin:40px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 32px;counter-reset:t}
-  .sms-toc li{counter-increment:t}
-  .sms-toc a{display:inline-flex;align-items:baseline;gap:8px;font-family:"Manrope",sans-serif;font-weight:600;font-size:16px;color:var(--ink);text-decoration:none}
-  .sms-toc a::before{content:counter(t,decimal-leading-zero);font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:14px;color:var(--pur)}
-  .sms-toc a:hover{color:var(--pur)}
-  /* the job: big statement left, the list in big type right */
-  .sms-job{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:40px 80px;align-items:start}
-  .sms-job .eyebrow,.sms-job h2{justify-content:flex-start;text-align:left;margin-left:0}
-  .sms-job h2{margin-top:0}
-  .sms-job .lead{text-align:left;margin:20px 0 0;max-width:460px}
-  .sms-big{list-style:none;margin:0;padding:0}
-  .sms-big li{display:flex;gap:20px;align-items:center;padding:22px 0;border-top:1px solid var(--line);font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:clamp(24px,2.5vw,34px);line-height:1.15;letter-spacing:-.02em;color:var(--ink)}
-  .sms-big li:last-child{border-bottom:1px solid var(--line)}
-  .sms-big svg{flex:0 0 auto;width:30px;height:30px;color:var(--pur)}
-  /* compare table, Apple style */
-  .sms-cmp{width:100%;max-width:1000px;margin:56px auto 0;border-collapse:collapse;display:block}
-  .sms-cmp thead,.sms-cmp tbody{display:block}
-  .sms-cmp tr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:0 32px;align-items:center;border-top:1px solid var(--line);padding:24px 0}
-  .sms-cmp thead tr{border-top:0;padding:0 0 28px;align-items:end}
-  .sms-cmp tbody tr:last-child{border-bottom:1px solid var(--line)}
-  .sms-cmp th,.sms-cmp td{display:block;padding:0;text-align:center}
-  .sms-cmp thead th{font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:clamp(20px,2vw,28px);line-height:1.15;letter-spacing:-.015em;color:var(--ink)}
-  .sms-cmp thead th.new{position:relative;padding-top:18px}
-  .sms-cmp thead th.new::before{content:"";position:absolute;top:0;left:50%;width:40px;height:4px;border-radius:4px;background:var(--pur);transform:translateX(-50%)}
-  .sms-cmp tbody th{text-align:left;font-family:"Manrope",sans-serif;font-weight:700;font-size:17px;line-height:24px;color:var(--ink)}
-  .sms-cmp td{font-family:"Manrope",sans-serif;font-size:17px;line-height:24px;color:var(--sub)}
-  .sms-cmp td.new{color:var(--ink);font-weight:600}
-  .sms-cmp .ic{display:block;width:26px;height:26px;margin:0 auto 10px;border-radius:50%;padding:5px;box-sizing:border-box}
-  .sms-cmp .yes{background:var(--pur);color:#fff}
-  .sms-cmp .no{background:#F4F4F5;color:#52525B}
-  .sms-cmp .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-  /* features: the desk on a display, then a spec sheet */
-  .sms-desk{max-width:760px;margin:56px auto 0}
-  .sms-spec{margin:72px 0 0}
-  .sms-row{display:grid;grid-template-columns:240px minmax(0,1fr);gap:16px 48px;padding:36px 0;border-top:1px solid var(--line)}
-  .sms-row:last-child{border-bottom:1px solid var(--line)}
-  .sms-row h3{margin:0;font-weight:500;font-size:28px;line-height:34px;letter-spacing:-.02em;color:var(--ink)}
-  .sms-row dl{margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 48px}
-  .sms-row dt{font-family:"Manrope",sans-serif;font-weight:700;font-size:18px;line-height:26px;color:var(--ink)}
-  .sms-row dd{margin:6px 0 0;font-size:16px;line-height:25px;color:var(--sub)}
-  /* the app side: full-bleed black band */
-  .sms-band{position:relative;isolation:isolate;margin-top:clamp(96px,12vw,140px);padding:clamp(80px,10vw,128px) 0;color:#fff}
-  .sms-band::before{content:"";position:absolute;inset:0 auto 0 50%;width:100vw;transform:translateX(-50%);background:#050505;z-index:-1}
-  .sms-band-in{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:48px 88px;align-items:center}
-  .sms-band .eyebrow{justify-content:flex-start;color:#fff}
-  .sms-band h2{margin:0;max-width:13ch;color:#fff;font-weight:550;letter-spacing:-.03em;font-size:clamp(36px,4.9vw,50px);line-height:1.04;text-align:left}
-  .sms-band .sms-blead{margin:20px 0 0;max-width:520px;font-size:20px;line-height:31px;color:#D1D1D6}
-  .sms-band .sms-blead a{color:#fff;font-weight:600;text-decoration:underline;text-underline-offset:3px}
-  .sms-ph{display:block;width:100%;max-width:320px;height:auto;margin:0 auto}
-  .sms-four{list-style:none;margin:40px 0 0;padding:0}
-  .sms-four li{padding:22px 0;border-top:1px solid rgba(255,255,255,.14)}
-  .sms-four b{display:block;font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:24px;line-height:30px;color:#fff}
-  .sms-four p{margin:8px 0 0;font-size:17px;line-height:26px;color:#D1D1D6}
-  .sms-four a{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-family:"Manrope",sans-serif;font-weight:600;font-size:16px;color:#fff;text-decoration:none}
-  .sms-four a:hover{color:#C9BDFF}
-  .sms-four a svg{width:14px;height:14px}
-  /* a jump day: a rail of five moments next to the live loads screen */
-  .sms-day{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:48px 88px;align-items:center;margin-top:56px}
-  .sms-rail{list-style:none;margin:0;padding:0;position:relative}
-  .sms-rail::before{content:"";position:absolute;left:11px;top:14px;bottom:14px;width:2px;background:var(--line)}
-  .sms-rail li{position:relative;padding:0 0 36px 56px}
-  .sms-rail li:last-child{padding-bottom:0}
-  .sms-rail li::before{content:"";position:absolute;left:0;top:4px;width:24px;height:24px;border-radius:50%;background:#fff;border:6px solid var(--pur);box-sizing:border-box}
-  .sms-rail b{display:block;font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:26px;line-height:32px;color:var(--ink)}
-  .sms-rail p{margin:6px 0 0;font-size:17px;line-height:26px;color:var(--sub)}
-  .sms-dayph{display:block;width:100%;max-width:320px;height:auto;margin:0 auto}
-  /* switching: three short lines in big type */
-  .sms-switch{text-align:center}
-  .sms-three{margin:0 auto;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;font-size:clamp(40px,5.6vw,76px);line-height:1.06;color:var(--ink)}
-  .sms-three span{display:block}
-  .sms-three span:nth-child(2){color:var(--pur)}
-  .sms-switch .lead{margin-top:28px}
-  .sms-need{list-style:none;margin:20px auto 0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:14px 36px}
-  .sms-need li{display:inline-flex;align-items:center;gap:10px;font-family:"Manrope",sans-serif;font-weight:600;font-size:17px;color:var(--ink)}
-  .sms-need svg{width:22px;height:22px;color:var(--pur);flex:0 0 auto}
-  .sms-need-h{margin:48px 0 0;font-family:"Manrope",sans-serif;font-weight:700;font-size:15px;letter-spacing:.02em;color:var(--sub)}
-  /* pricing: the price, and the bill it adds up to */
-  .sms-price{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px 80px;align-items:center}
-  .sms-price .eyebrow,.sms-price h2{justify-content:flex-start;text-align:left;margin-left:0}
-  .sms-price h2{margin-top:0}
-  .sms-one{display:flex;align-items:baseline;gap:16px;margin:28px 0 0;color:var(--ink)}
-  .sms-one b{font-family:"General Sans","Manrope",sans-serif;font-weight:550;font-size:clamp(80px,8.4vw,120px);line-height:.9;letter-spacing:-.05em}
-  .sms-one span{font-family:"Manrope",sans-serif;font-weight:700;font-size:22px;line-height:28px}
-  .sms-price .sms-plead{margin:24px 0 0;max-width:480px;font-size:19px;line-height:30px;color:var(--sub)}
-  .sms-price .sms-ctas{margin-top:32px}
-  .sms-bill{background:#050505;color:#fff;border-radius:28px;padding:32px 32px 28px;box-shadow:0 30px 70px -30px rgba(15,23,42,.45)}
-  .sms-bill-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
-  .sms-bill-h b{font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:24px}
-  .sms-bill-h span{font-family:"Manrope",sans-serif;font-weight:600;font-size:15px;color:#A1A1AA}
-  .sms-bill dl{margin:0}
-  .sms-bill dl div{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:15px 0;border-top:1px solid rgba(255,255,255,.12)}
-  .sms-bill dt{font-family:"Manrope",sans-serif;font-size:17px;line-height:24px;color:#E4E4E7}
-  .sms-bill dd{margin:0;font-family:"Manrope",sans-serif;font-weight:700;font-size:17px;line-height:24px;color:#fff;text-align:right;white-space:nowrap}
-  .sms-bill .tot dt,.sms-bill .tot dd{font-weight:700;color:#fff}
-  .sms-bill .tot dd{color:#4ADE80}
-  .sms-all{margin:56px auto 0;max-width:760px;text-align:center;font-size:17px;line-height:27px;color:var(--sub)}
-  .sms-all b{color:var(--ink)}
-  .sms-all a{color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:3px}
-  .sms .sec .lead,.sms-switch .lead{color:#52525B}
-  .sms .faq{margin-top:clamp(96px,12vw,140px)}
-  .sms .faq .cm-title{max-width:18ch;margin-left:auto;margin-right:auto;text-wrap:balance}
-  @media (max-width:899px){
-    .sms-top{grid-template-columns:1fr}
-    .sms-side .lead{font-size:18px;line-height:28px}
-    .sms-stage{border-radius:22px}
-    .sms-stage .studio{width:86%}
-    .sms-stage .sms-hand{width:30%;right:1%}
-    .sms-toc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 20px;justify-content:start;max-width:420px;margin-left:auto;margin-right:auto}
-    .sms-job{grid-template-columns:1fr;gap:32px}
-    .sms-big li{padding:18px 0;gap:14px}
-    .sms-big svg{width:24px;height:24px}
-    .sms-cmp{margin-top:40px}
-    .sms-cmp tr{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px 16px;padding:20px 0}
-    .sms-cmp thead tr{padding-bottom:20px}
-    .sms-cmp thead td{display:none}
-    .sms-cmp tbody th{grid-column:1 / -1;text-align:center;font-size:15px;line-height:20px;color:var(--sub);font-weight:600}
-    .sms-cmp td{font-size:15px;line-height:21px}
-    .sms-row{grid-template-columns:1fr;padding:28px 0}
-    .sms-row h3{font-size:24px;line-height:30px}
-    .sms-row dl{grid-template-columns:1fr;gap:20px}
-    .sms-band-in{grid-template-columns:1fr}
-    .sms-band .sms-blead{font-size:17px;line-height:27px}
-    .sms-ph{max-width:240px;order:2}
-    .sms-four b{font-size:21px;line-height:27px}
-    .sms-day{grid-template-columns:1fr}
-    .sms-dayph{max-width:250px}
-    .sms-rail b{font-size:22px;line-height:28px}
-    .sms-rail p{font-size:16px;line-height:25px}
-    .sms-need{flex-direction:column;align-items:flex-start;gap:12px;width:max-content;max-width:100%}
-    .sms-price{grid-template-columns:1fr}
-    .sms-bill{padding:24px 22px 20px;border-radius:22px}
-    .sms-bill dt,.sms-bill dd{font-size:16px}
-  }
-  @media (max-width:600px){
-    .sms-btn{width:100%;justify-content:center}
-    .sms-ctas{gap:16px;justify-content:center}
-    .sms-hero .eyebrow{justify-content:flex-start}
-  }
+<main id="main">
+  <style>
+  /* Small rules only these Desk pages need. */
+  body.dk #main .dz-owner { margin-top: 20px; color: #fff; text-shadow: 0 1px 10px rgba(6,10,40,.7); }
+  body.dk #main .dz-cap { margin: 16px auto 0; text-align: center; }
+  body.dk #main .dz-wide-fit { position: absolute; left: 50%; top: 40px; width: min(980px, 80%); height: auto; transform: translateX(-50%); border-radius: 12px; box-shadow: var(--sh-win); }
+  body.dk #main .dz-card { margin: 0; padding: 22px 22px 0; border-radius: 22px; background: #23242A; box-shadow: var(--sh-win); overflow: hidden; text-align: left; display: flex; flex-direction: column; }
+  body.dk #main .dz-card figcaption { margin: 0 0 18px; font-size: 15px; line-height: 23px; color: #D1D1D6; }
+  body.dk #main .dz-card figcaption b { display: block; font-size: 17px; line-height: 22px; font-weight: 600; color: #F1F2F5; }
+  body.dk #main .dz-card img { display: block; width: 100%; height: auto; margin-top: auto; border-radius: 10px 10px 0 0; }
+  body.dk #main .dz-card.pad { padding-bottom: 22px; } body.dk #main .dz-card.pad img { border-radius: 10px; }
+  body.dk #main .dz-two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; width: min(1120px, calc(100vw - 40px)); margin: 24px auto 0; }
+  @media (max-width: 760px) { body.dk #main .dz-two { grid-template-columns: 1fr; gap: 14px; } body.dk #main .dk-plate-row .dk-ph { display: block; width: 43%; } body.dk #main .dz-wide-fit { width: 92%; top: 20px; } }
+  body.dk #main .sms-toc { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 20px; margin: 32px auto 0; padding: 0; font-size: 14px; }
+  body.dk #main .sms-toc li { margin: 0; }
+  body.dk #main .sms-big { list-style: none; width: min(743px, calc(100vw - 40px)); margin: 48px auto 0; padding: 0; }
+  body.dk #main .sms-big li { margin: 0; padding: 14px 0; font-family: "General Sans", "Manrope", sans-serif; font-weight: 500; font-size: clamp(22px, 2.6vw, 30px); line-height: 1.2; letter-spacing: -.012em; color: #F1F2F5; border-top: 1px solid rgba(241,242,245,.1); }
+  body.dk #main .sms-big li:last-child { border-bottom: 1px solid rgba(241,242,245,.1); }
+  body.dk #main .sms-spec { width: min(1120px, calc(100vw - 40px)); margin: 72px auto 0; text-align: left; }
+  body.dk #main .sms-row { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 24px; padding: 32px 0; border-top: 1px solid rgba(241,242,245,.1); }
+  body.dk #main .sms-row h3 { margin: 0; font-family: "General Sans", "Manrope", sans-serif; font-size: 24px; line-height: 30px; font-weight: 500; color: #F1F2F5; }
+  body.dk #main .sms-row dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 40px; margin: 0; }
+  body.dk #main .sms-row dt { font-size: 17px; line-height: 23px; font-weight: 600; color: #F1F2F5; }
+  body.dk #main .sms-row dd { margin: 4px 0 0; font-size: 15px; line-height: 23px; color: #D1D1D6; }
+  body.dk #main .sms-three span { display: block; }
+  body.dk #main .sms-bill { padding: 29px; border-radius: 22px; background: linear-gradient(#34333A, #302E33); box-shadow: var(--sh-win); }
+  body.dk #main .sms-bill-h { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; font-size: 15px; color: #D1D1D6; }
+  body.dk #main .sms-bill-h b { font-size: 19px; font-weight: 600; color: #F1F2F5; }
+  body.dk #main .sms-bill dl { margin: 16px 0 0; }
+  body.dk #main .sms-bill dl div { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-top: 1px solid rgba(241,242,245,.14); font-size: 15px; line-height: 22px; color: #D1D1D6; }
+  body.dk #main .sms-bill dd { margin: 0; font-weight: 600; color: #F1F2F5; white-space: nowrap; }
+  body.dk #main .sms-bill .tot dt, body.dk #main .sms-bill .tot dd { font-weight: 700; color: #F1F2F5; }
+  @media (max-width: 760px) { body.dk #main .sms-row { grid-template-columns: 1fr; gap: 16px; padding: 24px 0; } body.dk #main .sms-row dl { grid-template-columns: 1fr; gap: 18px; } body.dk #main .sms-spec { margin-top: 48px; } body.dk #main .sms-bill { padding: 22px; } }
   </style>
 
-  <section class="sms-hero">
-    <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>Skydiving manifest software</p>
-    <div class="sms-top">
-      <h1>Dropzone software that talks to every jumper&rsquo;s phone.</h1>
-      <div class="sms-side">
-        <p class="lead">Loads, money and safety checks in one browser tab, and every load live in the app your jumpers already carry.</p>
-        <div class="sms-ctas">
-          <a class="sms-btn" href="/get-started/?demo">Book a 20-minute demo<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-          <a class="sms-link" href="#pricing">See pricing</a>
-        </div>
-      </div>
+  <header class="dk-head">
+    <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
+    <img class="dk-head-art" src="/assets/hero/plate-skydiving-manifest-software.webp" alt="" decoding="async" fetchpriority="high" />
+    <p class="dk-eyebrow">Skydiving manifest software</p>
+    <h1 class="dk-h1">Dropzone software that talks to every jumper&rsquo;s phone.</h1>
+    <p class="dk-l">Loads, money and safety checks in one browser tab, and every load live in the app your jumpers already carry.</p>
+    <div class="dk-ctas"><a class="dk-btn" href="/get-started/?demo">Book a 20-minute demo</a><a class="dk-a" href="#pricing">See pricing</a></div>
+    <p class="dk-n dz-owner">This page is for dropzone owners and managers. Looking for the jumper app? <a class="dk-a" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429">Download Manifest</a></p>
+  </header>
+
+  <section class="dk-band dk-tight">
+    <div class="dk-plate dk-plate-wide" style="margin-top:0">
+      <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
+      <img class="dk-paint" src="/assets/hero/plate-skydiving-manifest-software-2.webp" alt="" decoding="async" />
+      <img class="dk-wide" src="/assets/features/desk-board.webp" width="1600" height="1000" alt="The Manifest hangar board on a display: load 4 boarding now, load 5 called with 7 minutes to departure, load 6 open" decoding="async" />
+      <img class="dk-wide-ph" src="/assets/opt/hand-phone.c1c25f9a.webp" width="631" height="841" alt="A jumper holding the Manifest app, showing their next load building with 10 minutes to go" decoding="async" />
     </div>
-    <figure class="sms-stage" style="margin-bottom:0">
-      <img class="studio" srcset="/assets/features/skydiving-manifest-software-studio-board-800w.webp 800w, /assets/features/skydiving-manifest-software-studio-board.webp 1600w" sizes="(max-width: 900px) 86vw, 860px" src="/assets/features/skydiving-manifest-software-studio-board.webp" width="1600" height="1242" alt="The Manifest hangar board on a display: load 4 boarding now, load 5 called with 7 minutes to departure, load 6 open" fetchpriority="high" decoding="async" />
-      <img class="sms-hand" src="/assets/opt/hand-phone.c1c25f9a.webp" width="631" height="841" alt="A jumper holding the Manifest app, showing their next load building with 10 minutes to go" decoding="async" />
-    </figure>
-    <p class="sms-cap">Sample data from a demo dropzone.</p>
+    <p class="dk-n dz-cap">Sample data from a demo dropzone.</p>
     <nav aria-label="In this guide">
       <ol class="sms-toc">
-        <li><a href="#job">The job</a></li>
-        <li><a href="#compare">Old and new</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#connected">The app side</a></li>
-        <li><a href="#jump-day">A jump day</a></li>
-        <li><a href="#switching">Switching</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#faq">Questions</a></li>
+        <li><a class="dk-a" href="#job">The job</a></li><li><a class="dk-a" href="#compare">Old and new</a></li><li><a class="dk-a" href="#features">Features</a></li><li><a class="dk-a" href="#connected">The app side</a></li><li><a class="dk-a" href="#jump-day">A jump day</a></li><li><a class="dk-a" href="#switching">Switching</a></li><li><a class="dk-a" href="#pricing">Pricing</a></li><li><a class="dk-a" href="#faq">Questions</a></li>
       </ol>
     </nav>
   </section>
 
-  <section class="sec sms-job" id="job">
-    <div>
-      <p class="eyebrow">What dropzone software has to do</p>
-      <h2>On a busy Saturday, manifest is the bottleneck.</h2>
-      <p class="lead">Most dropzone management software handles the desk side. The jumper side is still shouting, a whiteboard and a queue at the counter.</p>
+  <section class="dk-band" id="job">
+    <div class="dk-t">
+      <p class="dk-eyebrow">What dropzone software has to do</p>
+      <h2 class="dk-h">On a busy Saturday, manifest is the bottleneck.</h2>
+      <p class="dk-l">Most dropzone management software handles the desk side. The jumper side is still shouting, a whiteboard and a queue at the counter.</p>
     </div>
-    <ul class="sms-big">
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Fill the plane in exit order.</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Keep standby fair.</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Know who owes money.</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Get people to the hangar.</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Nobody boards with an out-of-date reserve.</li>
-    </ul>
+    <ul class="sms-big"><li>Fill the plane in exit order.</li><li>Keep standby fair.</li><li>Know who owes money.</li><li>Get people to the hangar.</li><li>Nobody boards with an out-of-date reserve.</li></ul>
   </section>
 
-  <section class="sec" id="compare">
-    <p class="eyebrow">Old software and Manifest Desk</p>
-    <h2>Both sides of the hangar.</h2>
-    <p class="lead">Manifest Desk covers the desk and every jumper&rsquo;s phone, on one live system.</p>
-    <table class="sms-cmp">
+  <section class="dk-band" id="compare">
+    <div class="dk-t">
+      <p class="dk-eyebrow">Old software and Manifest Desk</p>
+      <h2 class="dk-h">Both sides of the hangar.</h2>
+      <p class="dk-l">Manifest Desk covers the desk and every jumper&rsquo;s phone, on one live system.</p>
+    </div>
+    <div class="dk-table-wrap"><table class="dk-table">
       <thead>
         <tr><td></td><th scope="col">Most dropzone software</th><th scope="col" class="new">Manifest Desk</th></tr>
       </thead>
       <tbody>
         <tr><th scope="row">Loads, standby and balances</th>
-          <td><svg class="ic yes" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg>At the desk</td>
-          <td class="new"><svg class="ic yes" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg>At the desk and on every phone</td></tr>
+          <td>At the desk</td>
+          <td class="new">At the desk and on every phone</td></tr>
         <tr><th scope="row">What jumpers see</th>
-          <td><svg class="ic no" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4.5 8h7"/></svg>A desk they never see</td>
-          <td class="new"><svg class="ic yes" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg>Their load, live in the app</td></tr>
+          <td>A desk they never see</td>
+          <td class="new">Their load, live in the app</td></tr>
         <tr><th scope="row">Load calls</th>
-          <td><svg class="ic no" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4.5 8h7"/></svg>Shouted over the PA</td>
-          <td class="new"><svg class="ic yes" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg>On every jumper&rsquo;s phone</td></tr>
+          <td>Shouted over the PA</td>
+          <td class="new">On every jumper&rsquo;s phone</td></tr>
         <tr><th scope="row">Booking</th>
-          <td><svg class="ic no" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4.5 8h7"/></svg>A queue at the counter</td>
-          <td class="new"><svg class="ic yes" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg>Self-manifest from the app</td></tr>
+          <td>A queue at the counter</td>
+          <td class="new">Self-manifest from the app</td></tr>
         <tr><th scope="row">Payments</th>
-          <td><svg class="ic no" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4.5 8h7"/></svg>A queue at the card terminal</td>
-          <td class="new"><svg class="ic yes" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg>Apple Pay top-ups into your Stripe</td></tr>
+          <td>A queue at the card terminal</td>
+          <td class="new">Apple Pay top-ups into your Stripe</td></tr>
         <tr><th scope="row">Price</th>
-          <td><svg class="ic no" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4.5 8h7"/></svg>Price on request</td>
-          <td class="new"><svg class="ic yes" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg>$1 per seat flown</td></tr>
+          <td>Price on request</td>
+          <td class="new">$1 per seat flown</td></tr>
         <tr><th scope="row">Contract</th>
-          <td><svg class="ic no" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4.5 8h7"/></svg>Long contracts</td>
-          <td class="new"><svg class="ic yes" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg>No lock-in, stop anytime</td></tr>
+          <td>Long contracts</td>
+          <td class="new">No lock-in, stop anytime</td></tr>
       </tbody>
-    </table>
+    </table></div>
   </section>
 
-  <section class="sec" id="features">
-    <p class="eyebrow">Features</p>
-    <h2>Everything on the desk.</h2>
-    <p class="lead">Your manifest system, your money and your safety checks in one browser tab.</p>
-    <figure class="sms-desk">
-      <img class="studio" srcset="/assets/opt/studio-desk-today-800w.04733ab5.webp 800w, /assets/features/studio-desk-today.webp 1600w" sizes="(max-width: 900px) 95vw, 900px" src="/assets/features/studio-desk-today.webp" width="1600" height="1242" alt="Manifest Desk Today page for a demo dropzone, showing money charged for jumps today, open loads, the next load countdown, standby and jumper accounts" loading="lazy" decoding="async" />
-      <p class="sms-cap">Manifest Desk with sample data from a demo dropzone.</p>
-    </figure>
+  <section class="dk-band" id="features">
+    <div class="dk-t">
+      <p class="dk-eyebrow">Features</p>
+      <h2 class="dk-h">Everything on the desk.</h2>
+      <p class="dk-l">Your manifest system, your money and your safety checks in one browser tab.</p>
+    </div>
+    <div class="dk-plate dk-plate-wide">
+      <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
+      <img class="dk-paint" src="/assets/hero/plate-skydiving-manifest-software.webp" alt="" loading="lazy" decoding="async" />
+      <img class="dk-wide" src="/assets/opt/desk-today.68a82734.webp" width="1440" height="900" alt="Manifest Desk Today page for a demo dropzone, showing money charged for jumps today, open loads, the next load countdown, standby and jumper accounts" loading="lazy" decoding="async" />
+    </div>
+    <p class="dk-n dz-cap">Manifest Desk with sample data from a demo dropzone.</p>
     <div class="sms-spec">
       <div class="sms-row">
         <h3>Loads</h3>
@@ -1515,99 +1296,121 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
     </div>
   </section>
 
-  <section class="sms-band" id="connected">
-    <div class="sms-band-in">
-      <img class="sms-ph" src="/assets/opt/phone-liveloads.3fc578b1.webp" width="821" height="1705" alt="Choosing a dropzone in the Manifest app, with live loads at dropzones around the world" loading="lazy" decoding="async" />
+  <section class="dk-band" id="connected">
+    <div class="dk-split">
+      <div class="dk-split-v"><img class="dk-ph mid" src="/assets/opt/phone-liveloads.3fc578b1.webp" width="821" height="1705" alt="Choosing a dropzone in the Manifest app, with live loads at dropzones around the world" loading="lazy" decoding="async" /></div>
       <div>
-        <p class="eyebrow">Connected to the jumper app</p>
-        <h2>The other half is in their pocket.</h2>
-        <p class="sms-blead">Old manifest software stops at the counter. The free <a href="/skydiving-app/">Manifest app</a> is already used by jumpers from 230 dropzones in 46 countries.</p>
-        <ul class="sms-four">
-          <li><b>Self-manifest.</b><p>Jumpers book themselves and their friends onto a load, or join standby. You set the limits, and the desk always has the final say.</p><a href="/self-manifest-skydiving/">How self-manifest works<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></li>
-          <li><b>Load calls on their phone.</b><p>Called, 15, 10 and 5 minutes, boarding and holds reach every jumper on the load, on their phone and Lock Screen.</p><a href="/skydiving-load-calls/">More on load calls<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></li>
-          <li><b>Apple Pay top-ups into your Stripe.</b><p>Apple Pay or card (Cash App Pay in the US). You are the merchant, and the balance shows on the desk immediately.</p><a href="/dropzone-payments/">Dropzone payments explained<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></li>
-          <li><b>Landouts on a live map.</b><p>Nothing is tracked during the jump. After landing, a jumper taps &ldquo;Landed out?&rdquo; and the desk sees them on a satellite map, with a pickup pin for the driver and one tap to hold every load.</p><a href="/skydive-landout-safety/">Landout safety<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></li>
-        </ul>
+        <p class="dk-eyebrow">Connected to the jumper app</p>
+        <h2 class="dk-h">The other half is in their pocket.</h2>
+        <p class="dk-l">Old manifest software stops at the counter. The free <a class="dk-a" href="/skydiving-app/">Manifest app</a> is already used by jumpers from 230 dropzones in 46 countries.</p>
       </div>
     </div>
-  </section>
-
-  <section class="sec" id="jump-day">
-    <p class="eyebrow">How it works on a jump day</p>
-    <h2>One jump day, start to finish.</h2>
-    <div class="sms-day">
-      <ol class="sms-rail">
-        <li><b>Open the desk.</b><p>In a browser, with the hangar board on a TV.</p></li>
-        <li><b>Jumpers check in.</b><p>They book onto loads from the app, or you add them at the desk.</p></li>
-        <li><b>Build the load.</b><p>The safety check flags anything out of date before anyone boards.</p></li>
-        <li><b>Press call.</b><p>Every jumper on the load gets it on their phone, at 15, 10 and 5 minutes and boarding.</p></li>
-        <li><b>See who is back.</b><p>After the load, the desk sees who has returned. A jumper who taps Landed out shows on the live map.</p></li>
-      </ol>
-      <video class="sms-dayph" data-lazy autoplay muted loop playsinline preload="none" poster="/assets/opt/lockscreen-v3-poster.webp" width="720" height="1152" aria-label="An iPhone Lock Screen with the Manifest load card counting down to the jumper's load">
-        <source data-src="/assets/opt/lockscreen-v3.mp4" type="video/mp4" />
-      </video>
+    <div class="dk-facts" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))">
+      <div class="dk-fact"><h3 class="dk-h3">Self-manifest.</h3><p class="dk-p">Jumpers book themselves and their friends onto a load, or join standby. You set the limits, and the desk always has the final say.</p><a class="dk-a dk-more" href="/self-manifest-skydiving/">How self-manifest works</a></div>
+      <div class="dk-fact"><h3 class="dk-h3">Load calls on their phone.</h3><p class="dk-p">Called, 15, 10 and 5 minutes, boarding and holds reach every jumper on the load, on their phone.</p><a class="dk-a dk-more" href="/skydiving-load-calls/">More on load calls</a></div>
+      <div class="dk-fact"><h3 class="dk-h3">Apple Pay top-ups into your Stripe.</h3><p class="dk-p">Apple Pay or card. You are the merchant, and the balance shows on the desk immediately.</p><a class="dk-a dk-more" href="/dropzone-payments/">Dropzone payments explained</a></div>
+      <div class="dk-fact"><h3 class="dk-h3">Landouts on a live map.</h3><p class="dk-p">Nothing is tracked during the jump. After landing, a jumper taps &ldquo;Landed out?&rdquo; and the desk sees them on a satellite map, with a pickup pin for the driver and one tap to hold every load.</p><a class="dk-a dk-more" href="/skydive-landout-safety/">Landout safety</a></div>
     </div>
   </section>
 
-  <section class="sec sms-switch" id="switching">
-    <p class="eyebrow">Switching from your current system</p>
-    <h2 class="sms-three"><span>We set you up.</span><span>Run it alongside.</span><span>No lock-in.</span></h2>
-    <p class="lead">We import your jumpers and balances for you, you keep your current system running until you trust it, and there is no lock-in.</p>
-    <p class="sms-need-h">What we need from you</p>
-    <ul class="sms-need">
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Your jumper list as a CSV</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Your aircraft and jump prices</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Your staff list</li>
-    </ul>
-  </section>
-
-  <section class="sec sms-price" id="pricing">
-    <div>
-      <p class="eyebrow">Pricing</p>
-      <h2>Free until you fly.</h2>
-      <p class="sms-one"><b>$1</b><span>per seat flown</span></p>
-      <p class="sms-plead">No monthly fee, no setup fee, no lock-in. Billed once a month for the month before.</p>
-      <div class="sms-ctas">
-        <a class="sms-btn" href="/get-started/?demo">Book a 20-minute demo<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-        <a class="sms-link" href="/dropzones/#pricing">Pricing details</a>
+  <section class="dk-band" id="jump-day">
+    <div class="dk-t">
+      <p class="dk-eyebrow">How it works on a jump day</p>
+      <h2 class="dk-h">One jump day, start to finish.</h2>
+    </div>
+    <ol class="dk-steps">
+      <li><b>Open the desk.</b>In a browser, with the hangar board on a TV.</li>
+      <li><b>Jumpers check in.</b>They book onto loads from the app, or you add them at the desk.</li>
+      <li><b>Build the load.</b>The safety check flags anything out of date before anyone boards.</li>
+      <li><b>Press call.</b>Every jumper on the load gets it on their phone, at 15, 10 and 5 minutes and boarding.</li>
+      <li><b>See who is back.</b>After the load, the desk sees who has returned. A jumper who taps Landed out shows on the live map.</li>
+    </ol>
+    <div class="dk-plate dk-plate-lock">
+      <img class="dk-paint" src="/assets/hero/plate-skydiving-manifest-software-2.webp" alt="" loading="lazy" decoding="async" />
+      <div class="ls" data-ls role="img" aria-label="An iPhone Lock Screen with the Manifest load card counting down to the plane and load call notifications arriving">
+        <div class="ls-island" aria-hidden="true"><img src="/assets/hero/app-icon.png" width="15" height="15" alt="" /><i></i><b data-ls-island>10m</b></div>
+        <div class="ls-date" aria-hidden="true">Saturday</div>
+        <div class="ls-time" aria-hidden="true">9:41</div>
+        <div class="la" aria-hidden="true">
+          <div class="la-top"><span class="la-k">YOUR LOAD</span><span class="la-dz">SKYDIVE ELSINORE</span></div>
+          <div class="la-mid"><div class="la-l"><div class="la-name" data-ls-name>Blue Caravan 3</div><div class="la-st"><b data-ls-status>ON CALL</b><span data-ls-cap>   ·   7/12</span></div></div><div class="la-count" data-ls-count><u data-ls-min>10</u><s>MIN</s></div></div>
+          <div class="la-line"></div>
+          <div class="la-row"><span><b>Silver Caravan 15</b><i>   ·   12/17</i></span><em><span data-ls-add="12">22</span> min</em></div>
+          <div class="la-row"><span><b>Silver Caravan 16</b><i>   ·   15/17</i></span><em><span data-ls-add="27">37</span> min</em></div>
+        </div>
+        <div class="ls-ntfs" data-ls-ntfs aria-hidden="true">
+          <div class="aw-ntf is-in"><img src="/assets/hero/app-icon.png" width="38" height="38" alt="" /><div class="aw-ntx2"><span class="aw-ntop"><b>10 min call · Blue Caravan 3</b><time>now</time></span><p>Gear check and helmet on. Head to the loading area.</p></div></div>
+          <div class="aw-ntf is-in"><img src="/assets/hero/app-icon.png" width="38" height="38" alt="" /><div class="aw-ntx2"><span class="aw-ntop"><b>Gear up · Blue Caravan 3</b><time>5m ago</time></span><p>15 min out. Time to get your rig on.</p></div></div>
+        </div>
       </div>
     </div>
-    <div class="sms-bill" role="group" aria-label="What a dropzone pays for Manifest Desk">
-      <div class="sms-bill-h" style="border:0;padding:0"><b>Manifest Desk</b><span>Your monthly bill</span></div>
-      <dl>
-        <div><dt>Monthly fee</dt><dd>$0</dd></div>
-        <div><dt>Setup fee</dt><dd>$0</dd></div>
-        <div><dt>Each seat flown</dt><dd>$1</dd></div>
-        <div><dt>Top-ups jumpers make in the app</dt><dd>1%</dd></div>
-        <div><dt>Cash and your card terminal</dt><dd>No fee</dd></div>
-        <div class="tot"><dt>A month with no flying</dt><dd>$0</dd></div>
-      </dl>
+    <p class="dk-n dz-cap">The Lock Screen card, with Manifest Pro.</p>
+  </section>
+
+  <section class="dk-band" id="switching">
+    <div class="dk-t">
+      <p class="dk-eyebrow">Switching from your current system</p>
+      <h2 class="dk-h sms-three"><span>We set you up.</span><span>Run it alongside.</span><span>No lock-in.</span></h2>
+      <p class="dk-l">We import your jumpers and balances for you, you keep your current system running until you trust it, and there is no lock-in.</p>
+      <p class="dk-p" style="margin-top:32px;font-weight:600;color:#F1F2F5">What we need from you</p>
+    </div>
+    <div class="dk-facts" style="margin-top:16px">
+      <div class="dk-fact"><p class="dk-p">Your jumper list as a CSV</p></div>
+      <div class="dk-fact"><p class="dk-p">Your aircraft and jump prices</p></div>
+      <div class="dk-fact"><p class="dk-p">Your staff list</p></div>
     </div>
   </section>
-  <p class="sms-all"><b>Every feature for every dropzone.</b> Unlimited aircraft and desk logins, staff pay, gift vouchers, CSV exports and several dropzones on one login. The 1% on in-app top-ups is paid by the dropzone, never added to the jumper.</p>
 
-  <div class="faq" id="faq">
-    <h2 class="cm-title">What dropzone software should do: questions owners ask</h2>
-    <div class="faq-list">
-        <details class="faq-i"><summary>What happens if the internet drops at our dropzone?<span class="faq-plus" aria-hidden="true"></span></summary><p>The desk keeps working for the things that cannot wait. It keeps showing the last loads it had, and check-ins, load calls, boarding and departures you make are saved in the browser and sent the moment the internet is back. Payments and new bookings wait for the connection, and a load call whose time has passed is not sent late.</p></details>
-        <details class="faq-i"><summary>What is dropzone software?<span class="faq-plus" aria-hidden="true"></span></summary><p>Dropzone software, also called skydiving manifest software or a skydive manifest system, is what a dropzone uses to build loads, put jumpers on them, charge their accounts and keep the jump day safe and moving. Manifest Desk does all of that in a browser, and connects every load to the phones of the jumpers on it.</p></details>
-        <details class="faq-i"><summary>What should skydiving software for a dropzone do?<span class="faq-plus" aria-hidden="true"></span></summary><p>At minimum: a loads board with exit order, standby, jumper accounts and balances, load calls and holds, weight and balance against the aircraft, and safety checks for currency, reserve and AAD before anyone boards. A complete system also handles waivers and check-in rules, staff pay, aircraft hours and maintenance, guest payments, the cash drawer and end of day, and reports for your accountant. Manifest Desk does all of these, and puts every load call on each jumper's phone.</p></details>
-        <details class="faq-i"><summary>How much does Manifest Desk cost?<span class="faq-plus" aria-hidden="true"></span></summary><p>Manifest Desk is free until you fly. There is no monthly fee, no setup fee and no lock-in contract. You pay $1 per seat flown, billed once a month for the month before, plus 1% on top-ups jumpers make in the app, paid by the dropzone. A month with no flying is $0. Cash and card taken at the desk carry no fee from us. Every feature is included for every dropzone, and you can stop anytime.</p></details>
-        <details class="faq-i"><summary>How do we switch from our current system?<span class="faq-plus" aria-hidden="true"></span></summary><p>We set up your dropzone with you: aircraft, jump prices, staff and jumpers. You can run Manifest Desk next to your current system for as long as you like, until you trust it, and we are with you on your first jump day. There is no lock-in.</p></details>
-        <details class="faq-i"><summary>Can we import our jumpers and balances?<span class="faq-plus" aria-hidden="true"></span></summary><p>Yes. Export your jumper list and balances from your current system as a CSV and the desk imports it, so every jumper starts with the right account. We do this for you during setup.</p></details>
-        <details class="faq-i"><summary>How do payments work?<span class="faq-plus" aria-hidden="true"></span></summary><p>Jumpers top up their account in the Manifest app with Apple Pay or card, and the money goes straight to your own Stripe account through Stripe Connect, so you are the merchant. At the desk you can take guest payments, sell tickets, vouchers and gift vouchers, and count the cash drawer at end of day. Every payment gets a receipt.</p></details>
-        <details class="faq-i"><summary>Does it work for a small club or weekend dropzone?<span class="faq-plus" aria-hidden="true"></span></summary><p>Yes. You pay only for the seats that fly, so a quiet month costs little and a month with no flying is $0. Every feature is included, with unlimited aircraft and desk logins. All you need is a laptop or tablet with a browser for the desk, and any TV with a browser for the hangar board. There is nothing to install.</p></details>
-        <details class="faq-i"><summary>What safety features does it have?<span class="faq-plus" aria-hidden="true"></span></summary><p>Before anyone boards, the desk checks currency, reserve repack and AAD service, and your waiver and check-in rules per licence type. Each load shows its weight against the aircraft, the crew it needs and double-manifest conflicts. After the load, Who's back shows who has returned, and a jumper who lands out can send an SOS that puts them on a live map at the desk, with chat and one tap to hold every load. It supports your own emergency procedures; it is not a guaranteed rescue tracker.</p></details>
-        <details class="faq-i"><summary>What about jumpers on Android?<span class="faq-plus" aria-hidden="true"></span></summary><p>The Manifest app is on iPhone today, and Android is being built.</p></details>
+  <section class="dk-band" id="pricing">
+    <div class="dk-split">
+      <div>
+        <p class="dk-eyebrow">Pricing</p>
+        <h2 class="dk-h">Free until you fly.</h2>
+        <span class="dk-big" style="margin-top:16px">$1<small>per seat flown</small></span>
+        <p class="dk-l">No monthly fee, no setup fee, no lock-in. Billed once a month for the month before.</p>
+        <div class="dk-ctas" style="justify-content:flex-start"><a class="dk-btn" href="/get-started/?demo">Book a 20-minute demo</a><a class="dk-a" href="/dropzones/#pricing">Pricing details</a></div>
+      </div>
+      <div class="sms-bill" role="group" aria-label="What a dropzone pays for Manifest Desk">
+        <div class="sms-bill-h"><b>Manifest Desk</b><span>Your monthly bill</span></div>
+        <dl>
+          <div><dt>Monthly fee</dt><dd>$0</dd></div>
+          <div><dt>Setup fee</dt><dd>$0</dd></div>
+          <div><dt>Each seat flown</dt><dd>$1</dd></div>
+          <div><dt>Top-ups jumpers make in the app</dt><dd>1%</dd></div>
+          <div><dt>Cash and your card terminal</dt><dd>No fee</dd></div>
+          <div class="tot"><dt>A month with no flying</dt><dd>$0</dd></div>
+        </dl>
+      </div>
     </div>
-    <p class="faq-more">New to Manifest? Start at the <a href="/">home page</a> or read <a href="/how-manifest-works/">how Manifest works</a>. More for dropzones: <a href="/dropzones/">Manifest Desk</a>, <a href="/self-manifest-skydiving/">Self-manifest</a>, <a href="/skydiving-load-calls/">Load calls</a>, <a href="/dropzone-payments/">Payments</a>, <a href="/skydive-landout-safety/">Landout safety</a>.</p>
-  </div>
+    <div class="dk-t" style="margin-top:48px"><p class="dk-p"><b style="color:#F1F2F5;font-weight:600">Every feature for every dropzone.</b> Unlimited aircraft and desk logins, staff pay, gift vouchers, CSV exports and several dropzones on one login. The 1% on in-app top-ups is paid by the dropzone, never added to the jumper.</p></div>
+  </section>
 
-  <section class="final">
-    <h2>See it on a sample day.</h2>
-    <p>The desk has a sample-day demo, and we will walk you through it on a call.</p>
-    <div class="ctas">
-      <a class="pc-out" href="/get-started/?demo">Book a 20-minute demo <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+  <section class="dk-band" id="faq">
+    <div class="dk-t"><h2 class="dk-h">What dropzone software should do: questions owners ask</h2></div>
+    <div class="dk-qs" data-qs>
+      <details class="dk-q"><summary>What happens if the internet drops at our dropzone?</summary><p>The desk keeps working for the things that cannot wait. It keeps showing the last loads it had, and check-ins, load calls, boarding and departures you make are saved in the browser and sent the moment the internet is back. Payments and new bookings wait for the connection, and a load call whose time has passed is not sent late.</p></details>
+      <details class="dk-q"><summary>What is dropzone software?</summary><p>Dropzone software, also called skydiving manifest software or a skydive manifest system, is what a dropzone uses to build loads, put jumpers on them, charge their accounts and keep the jump day safe and moving. Manifest Desk does all of that in a browser, and connects every load to the phones of the jumpers on it.</p></details>
+      <details class="dk-q"><summary>What should skydiving software for a dropzone do?</summary><p>At minimum: a loads board with exit order, standby, jumper accounts and balances, load calls and holds, weight and balance against the aircraft, and safety checks for currency, reserve and AAD before anyone boards. A complete system also handles waivers and check-in rules, staff pay, aircraft hours and maintenance, guest payments, the cash drawer and end of day, and reports for your accountant. Manifest Desk does all of these, and puts every load call on each jumper's phone.</p></details>
+      <details class="dk-q"><summary>How much does Manifest Desk cost?</summary><p>Manifest Desk is free until you fly. There is no monthly fee, no setup fee and no lock-in contract. You pay $1 per seat flown, billed once a month for the month before, plus 1% on top-ups jumpers make in the app, paid by the dropzone. A month with no flying is $0. Cash and card taken at the desk carry no fee from us. Every feature is included for every dropzone, and you can stop anytime.</p></details>
+      <details class="dk-q"><summary>How do we switch from our current system?</summary><p>We set up your dropzone with you: aircraft, jump prices, staff and jumpers. You can run Manifest Desk next to your current system for as long as you like, until you trust it, and we are with you on your first jump day. There is no lock-in.</p></details>
+      <details class="dk-q"><summary>Can we import our jumpers and balances?</summary><p>Yes. Export your jumper list and balances from your current system as a CSV and the desk imports it, so every jumper starts with the right account. We do this for you during setup.</p></details>
+      <details class="dk-q"><summary>How do payments work?</summary><p>Jumpers top up their account in the Manifest app with Apple Pay or card, and the money goes straight to your own Stripe account through Stripe Connect, so you are the merchant. At the desk you can take guest payments, sell tickets, vouchers and gift vouchers, and count the cash drawer at end of day. Every payment gets a receipt.</p></details>
+      <details class="dk-q"><summary>Does it work for a small club or weekend dropzone?</summary><p>Yes. You pay only for the seats that fly, so a quiet month costs little and a month with no flying is $0. Every feature is included, with unlimited aircraft and desk logins. All you need is a laptop or tablet with a browser for the desk, and any TV with a browser for the hangar board. There is nothing to install.</p></details>
+      <details class="dk-q"><summary>What safety features does it have?</summary><p>Before anyone boards, the desk checks currency, reserve repack and AAD service, and your waiver and check-in rules per licence type. Each load shows its weight against the aircraft, the crew it needs and double-manifest conflicts. After the load, Who's back shows who has returned, and a jumper who lands out can send an SOS that puts them on a live map at the desk, with chat and one tap to hold every load. It supports your own emergency procedures; it is not a guaranteed rescue tracker.</p></details>
+      <details class="dk-q"><summary>What about jumpers on Android?</summary><p>The Manifest app is on iPhone today, and Android is being built.</p></details>
+    </div>
+    <button class="dk-btn2 dk-qs-more" type="button">Show all questions</button>
+    <p class="dk-qhelp">New to Manifest? Start at the <a href="/">home page</a> or read <a href="/how-manifest-works/">how Manifest works</a>. More for dropzones: <a href="/dropzones/">Manifest Desk</a>, <a href="/self-manifest-skydiving/">Self-manifest</a>, <a href="/skydiving-load-calls/">Load calls</a>, <a href="/dropzone-payments/">Payments</a>, <a href="/skydive-landout-safety/">Landout safety</a>.</p>
+  </section>
+
+  <section class="dk-band dk-tight dk-close-b">
+    <div class="dk-plate dk-plate-close" style="margin-top:0">
+      <img class="dk-paint" src="/assets/hero/plate-close.webp" alt="" loading="lazy" decoding="async" />
+      <div class="dk-close">
+        <h2 class="dk-h">See it on a sample day.</h2>
+        <p class="dk-l">The desk has a sample-day demo, and we will walk you through it on a call.</p>
+        <div class="dk-ctas"><a class="dk-btn" href="/get-started/?demo">Book a 20-minute demo</a></div>
+      </div>
     </div>
   </section>
 </main>
@@ -1631,6 +1434,8 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
       <a href="/about/">About</a><a href="/support/">Support</a><a href="/help/">Help center</a><a href="/dropzones/#faq">FAQ</a><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a></div>
   </div>
   <div class="ft-base"><span>© 2026 Manifest Jump LLC · Wyoming, USA · Dubai,&nbsp;UAE</span><div class="ft-pay" aria-label="Payment methods accepted"><img src="/assets/pay/apple_pay.svg?v=1" alt="Apple Pay" height="24" /><img src="/assets/pay/visa.svg?v=1" alt="Visa" height="24" /><img src="/assets/pay/master.svg?v=1" alt="Mastercard" height="24" /><img src="/assets/pay/american_express.svg?v=1" alt="American Express" height="24" /><img src="/assets/pay/cashapppay.svg?v=1" alt="Cash App Pay" height="24" /><img src="/assets/pay/stripe.svg?v=1" alt="Stripe" height="24" /></div></div>
+  <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
+  <div class="ft-art" aria-hidden="true"><img src="/assets/hero/plate-footer.webp" alt="" loading="lazy" decoding="async" /></div>
 </footer>
 
 <script>
@@ -1898,6 +1703,7 @@ span.go > svg{background:#050505!important}
 .vs-yes svg{width:16px!important;height:16px!important;stroke-width:2.6}
 .vs-no{color:#FF453A!important;background:none!important;width:20px!important;height:20px!important}.vs-no svg{width:16px!important;height:16px!important;stroke-width:2.6}
 </style>
-<script>/* phone footer: tap a menu heading to open it */document.addEventListener('click',function(e){var h=e.target.closest&&e.target.closest('footer.site .ft-col:not(:last-child) h3');if(!h||innerWidth>560)return;h.parentNode.classList.toggle('open');});</script>
+
+<script src="/assets/site-dark.js?v=4" defer></script>
 </body>
 </html>

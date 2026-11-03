@@ -880,7 +880,7 @@ h1, h2, h3 { text-wrap: balance; }
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Skydiving load calls, on every jumper's phone",
-  "description": "Load calls on every jumper's phone: staff press one button for called, gear-up at 15 minutes, 10 minutes, 5 minutes, boarding or hold. Lock Screen and Dynamic Island countdown.",
+  "description": "Load calls on every jumper's phone: staff press one button for called, gear-up at 15 minutes, 10 minutes, 5 minutes, boarding or hold. Lock Screen and Dynamic Island countdown with Manifest Pro.",
   "image": "https://www.jumpmanifest.com/assets/og-image.png?v=11",
   "author": {
     "@type": "Organization",
@@ -951,7 +951,7 @@ h1, h2, h3 { text-wrap: balance; }
       "name": "How do skydiving load call notifications work in Manifest?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Desk staff press a call button on the load in Manifest Desk: called, gear-up at 15 minutes, 10 minutes, 5 minutes, boarding or hold. Every jumper on that load gets it on their iPhone as a notification and on the Lock Screen, wherever they are on the dropzone."
+        "text": "Desk staff press a call button on the load in Manifest Desk: called, gear-up at 15 minutes, 10 minutes, 5 minutes, boarding or hold. Every jumper on that load gets it on their iPhone as a notification, wherever they are on the dropzone."
       }
     },
     {
@@ -991,7 +991,7 @@ h1, h2, h3 { text-wrap: balance; }
       "name": "How do we get load calls at our dropzone?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Load calls come with Manifest Desk. Book a 20-minute demo and we set you up directly and move your jumpers over. The desk is free until you fly: $1 per seat flown, no monthly fee, stop anytime."
+        "text": "Load calls come with Manifest Desk. Book a 20-minute demo and we set you up directly and move your jumpers over. The desk is free until you fly: $1 per seat flown and 1% on app top-ups, both on the dropzone, no monthly fee, stop anytime."
       }
     }
   ]
@@ -1005,7 +1005,7 @@ h1, h2, h3 { text-wrap: balance; }
   "operatingSystem": "iOS",
   "applicationCategory": "SportsApplication",
   "url": "https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429",
-  "description": "The app for skydivers. Your load on the Lock Screen and in the Dynamic Island with gear-up, 10 minute and final call notifications.",
+  "description": "The app for skydivers. Your load on the Lock Screen and in the Dynamic Island with gear-up, 10 minute and final call notifications, with Manifest Pro.",
   "offers": {
     "@type": "Offer",
     "price": "0",
@@ -1030,8 +1030,9 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
 .sh-nav:has(.sh-dd.open) .sh-dd:not(.open) .sh-panel{transition:none}
 .sh-cta-demo:focus-visible,.fd-btn:focus-visible,.btn.ghost:focus-visible,.btn.demo:focus-visible,.band-btn:focus-visible,.pc-out:focus-visible,.sms-btn:focus-visible,.sm-btn:focus-visible,.pc-call:focus-visible,.lo-btn:focus-visible,.lc-btn:focus-visible,.hmw-btn:focus-visible,.dp-btn:focus-visible,.btn.primary:focus-visible,.pq-btn:focus-visible,a.btn[href*="apps.apple.com"]:focus-visible,a.btn[href="/get"]:focus-visible{outline:2px solid #050505!important;outline-offset:3px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 3px #fff!important}
 </style>
+<link rel="stylesheet" href="/assets/site-dark.css?v=5" />
 </head>
-<body>
+<body class="dk">
 <a class="skip" href="#main">Skip to main content</a>
 
 <div class="ownerbar">This page is for dropzone owners and managers. Looking for the jumper app? <a href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429">Download Manifest&nbsp;&rarr;</a></div>
@@ -1065,322 +1066,172 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
   </div>
 </div>
 
-<main id="main" class="wrap lc">
-  <style id="review-b">
-  /* A11: no divider can start a wrapped line of hero chips; spacing only. */
-  .trust { gap: 12px 24px; }
-  .trust > * { padding: 0; }
-  .trust > * + * { border-left: 0; }
-  /* F12: founding status right under the hero actions. */
-  .hero-founding { margin: 22px 0 0; font-size: 16px; line-height: 24px; font-weight: 500; color: #050505; text-align: center; }
-  @media (min-width: 900px) { .hero-founding { text-align: left; } }
-  /* F13: readable Desk panels, captioned as sample data. */
-  /* Hero: the full Desk with the jumper's iPhone in front, as on the other
-     Desk pages (André, 16 Oct 2026). */
-  .hm-wrap { position: relative; }
-  /* MUG + STEAM (19 Oct). Real 3D render (Blender), shot straight on like the display; real scale for a
-     9.5 cm mug, set a little in front of the display so it sits just below the stand's foot line. */
-  .hm-mug { position: absolute; left: 10%; bottom: -2.2%; width: 22%; pointer-events: none; transform: translateY(8%); }
-  /* The steam starts BEHIND the mug, at the coffee, so it rises out of the opening; the mug image covers its root. */
-  .hm-mug .mug-body { position: relative; z-index: 1; display: block; width: 100%; height: auto; }
-  .hm-mug .mug-steam { position: absolute; z-index: 0; left: 7.8%; bottom: 86%; width: 57.4%; overflow: visible; }
-  /* Real coffee steam is thin, white and barely there: a white ribbon (shows on the dark bezel) over a faint
-     grey one (shows on the white page), slow, delicate, always rising out of the cup. */
-  .mug-steam .w { fill: none; stroke-linecap: round; opacity: 0; transform-box: fill-box; transform-origin: 50% 100%;
-    animation: steamRise 9s cubic-bezier(.3,.1,.4,1) infinite; }
-  .mug-steam .tone .w { stroke: url(#steamS); stroke-width: 3.2; }
-  .mug-steam .lite .w { stroke: url(#steamG); stroke-width: 2.2; }
-  .mug-steam .w2 { animation-delay: 3s; }
-  .mug-steam .w3 { animation-delay: 6s; }
-  @keyframes steamRise {
-    0% { opacity: 0; transform: translateY(4%) scale(.9, .7); }
-    20% { opacity: 1; }
-    70% { opacity: .55; }
-    100% { opacity: 0; transform: translateY(-8%) scale(1.2, 1.05); }
-  }
-  @media (prefers-reduced-motion: reduce) { .mug-steam .w { animation: none; opacity: .6; } }
-  .hero-media .desk-cap { margin-top: 44px; text-align: center; }
-  /* STUDIO DISPLAY (19 Oct 2026, André): the desk shown on a Studio Display, white background blends with the page. */
-  img.studio { display: block; width: 100%; height: auto; }
-  /* André 19 Oct: never a grey card around the Studio Display. */
-  .vis-media:has(img.studio) { background: transparent !important; padding: 0 !important; border-radius: 0 !important; }
-  .hm-phone { position: absolute; right: -3%; bottom: -6%; width: 26%; max-width: 190px; height: auto; filter: drop-shadow(0 18px 28px rgba(15,23,42,.28)); }
-  @media (max-width: 767px) { .hm-phone { width: 30%; right: -1%; bottom: -8%; } .hero-media .desk-cap { margin-top: 26px; } }
-  figure.hero-media { margin: 0; }
-  .desk-cap { margin: 8px 0 0; font-size: 14px; line-height: 20px; color: #52525B; text-align: left; }
-  /* F08: card copy on the pale card fills at 7:1, not 4.4:1. */
-  .app-card p, .card p, .how-grid p { color: #52525B; }
-  /* André 19 Oct: Apple-style row, no lilac panel, no boxes, no number chips. */
-  #app .app-panel { background: none; border-radius: 0; padding: 0; margin-top: 64px; }
-  #app .app-grid { gap: 56px; }
-  #app .app-card { background: none; border-radius: 0; padding: 0; text-align: center; }
-  #app .app-card .ic { width: 40px; height: 40px; color: #050505; display: block; margin: 0 auto; }
-  #app .app-card b { margin-top: 20px; }
-  #app .app-card p { max-width: 320px; margin-left: auto; margin-right: auto; }
-  #app .app-foot { margin-top: 56px; }
-  /* Top-up phones (André 19 Oct): same phone height, side by side. */
-  /* Meadow behind the phones (André 19 Oct): Unsplash photo _8fRer9hPv0 (Unsplash License). */
-  #app .pay-duo { display: flex; justify-content: center; align-items: center; gap: clamp(12px, 4vw, 64px); margin-top: 56px;
-    padding: clamp(36px, 6vw, 80px) 16px; border-radius: 28px; background:#F5F5F6; 
-    isolation: isolate; transform: translateZ(0); } /* keeps the phones' drop-shadow layer from repainting the owner bar white in Safari */
-  #app .pay-duo img { display: block; height: auto; filter: drop-shadow(0 24px 40px rgba(0,0,0,.35)); }
-  @media (max-width: 600px) { #app .pay-duo { border-radius: 22px; padding: 28px 10px; gap: 10px; } #app .pay-duo .pd-a, #app .pay-duo .pd-b { width: 46%; } }
-  #app .pay-duo .pd-a { width: min(300px, 44%); }
-  #app .pay-duo .pd-b { width: min(300px, 44%); }
-  @media (max-width: 600px) { #app .app-foot b { display: block; } }
-  @media (max-width: 900px) { #app .app-grid { gap: 44px; } }
-  /* F02: each plan's limits right under the price slot. */
-  .pc-limits { margin: 10px 0 0; font-size: 16px; line-height: 22px; font-weight: 700; color: #050505; letter-spacing: -.2px; }
-  .pc-limits + .pc-desc { margin-top: 4px; }
-  /* F08: rows a plan does not include: readable text, a dash, a visible label. */
-  .pc ul.pc-list li.off { color: #52525B; }
-  .pc .off .tk-off { color: #52525B; border-color: #A1A1AA; }
-  .pc .off .off-tag { flex: 0 0 auto; font-size: 11.5px; line-height: 18px; font-weight: 600; letter-spacing: 0; color: #3F3F46; background: #F4F4F5; border-radius: 6px; padding: 1px 6px; }
-  .pc ul.pc-list li.off { gap: 10px; letter-spacing: -.4px; }
-  /* F06: a demo action between the hero and pricing, white on the black band. */
-  .band-cta { margin-top: 32px; display: flex; justify-content: center; }
-  .band-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; padding: 0 28px; border-radius: 999px; background: #fff; color: #050505; font-family: "Manrope", sans-serif; font-size: 18px; font-weight: 700; }
-  .band-btn:hover { background: #F4F4F5; }
-  .band-btn svg { width: 16px; height: 16px; }
-  .band .band-sub { color: #E4E4E7; }
-  /* A05: what the dropzone sends us, under the setup steps. */
-  .how-need { max-width: 820px; margin: 28px auto 0; text-align: center; font-size: 17px; line-height: 26px; color: #3F3F46; }
-  /* F10: group labels inside the FAQ. */
-  .faq-g { max-width: 820px; margin: 0 auto; padding: 0 4px 14px; font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: 26px; line-height: 32px; letter-spacing: -.4px; color: #050505; }
-  .faq-g + .faq-list { margin-bottom: 44px; }
-  @media (max-width: 600px) { .faq-g { font-size: 21px; line-height: 28px; } .band-btn { font-size: 17px; width: 100%; } }
+<main id="main">
+  <style id="lc-dk">
+    @media (max-width: 760px) { body.dk #main .dk-h1 br { display: none; } }
+    body.dk #main .x-shot { display: block; aspect-ratio: 1546 / 899; overflow: hidden; background: #000; }
+    body.dk #main .x-shot img { position: absolute; left: -1.746%; top: -3.78%; width: 103.49%; max-width: none; height: auto; margin: 0; border: 0; box-shadow: none; border-radius: 0; }
+    body.dk #main .x-six { list-style: none; width: min(720px, calc(100vw - 40px)); margin: 48px auto 0; padding: 0; text-align: left; }
+    body.dk #main .x-six li { display: grid; grid-template-columns: 84px minmax(0, 1fr); column-gap: 20px; align-items: baseline; margin: 0; padding: 20px 0; border-top: 1px solid var(--hair); }
+    body.dk #main .x-six .t { grid-row: span 2; font-family: "General Sans", "Manrope", sans-serif; font-size: 40px; line-height: 44px; font-weight: 500; letter-spacing: -.02em; color: var(--ink); }
+    body.dk #main .x-six b { font-size: 19px; line-height: 24px; font-weight: 600; color: var(--ink); }
+    body.dk #main .x-six p { margin: 4px 0 0; font-size: 16px; line-height: 24px; color: var(--ink2); }
+    body.dk #main .x-six .hold .t { color: #FFD60A; }
+    body.dk #main .x-places { justify-content: center; }
+    body.dk #main .x-places li { color: var(--ink); }
+    body.dk #main .x-mug { display: block; width: min(100%, 420px); height: auto; margin: 0 auto; }
+    @media (max-width: 760px) { body.dk #main .x-six li { grid-template-columns: 60px minmax(0, 1fr); column-gap: 12px; } body.dk #main .x-six .t { font-size: 30px; line-height: 34px; } }
   </style>
-  <style id="lc-css">
-  /* LOAD CALLS PAGE (20 Oct 2026, André: every page polished, its own layout).
-     Base system is the dropzones page; these are the load-calls-only parts. */
-  .lc-hero{padding-top:clamp(48px,7vw,96px);text-align:center}
-  .lc-hero h1{margin:0 auto;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;font-size:clamp(44px,5.5vw,72px);line-height:1;color:#050505;text-wrap:balance;max-width:14ch}
-  .lc-hero h1 .lc-k{display:flex;align-items:center;justify-content:center;gap:10px;margin:0 0 22px;font-family:"Manrope",sans-serif;font-size:17px;line-height:24px;font-weight:700;letter-spacing:0;color:#6D42F5}
-  .lc-hero h1 .lc-k svg{width:20px;height:20px}
-  .lc-hero .lead{margin:24px auto 0;max-width:600px}
-  .lc-ctas{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:center;align-items:center;margin-top:32px}
-  .lc-btn{display:inline-flex;align-items:center;gap:12px;height:56px;padding:0 28px;border-radius:99px;background:#6D42F5;color:#fff!important;font-family:"Manrope",sans-serif;font-weight:700;font-size:17px;text-decoration:none!important}
-  .lc-btn:hover{filter:brightness(1.06)}
-  .lc-btn svg{width:16px;height:16px}
-  .lc-link{font-family:"Manrope",sans-serif;font-weight:600;font-size:17px;color:#050505!important}
-  /* meadow stage: the call landing on a phone */
-  .lc-stage{position:relative;margin:56px auto 0;border-radius:36px;overflow:hidden;background:#F5F5F6;padding:clamp(40px,5vw,72px) 24px 0;display:flex;justify-content:center;align-items:flex-end;min-height:420px}
-  .lc-ph{display:block;filter:drop-shadow(0 30px 40px rgba(5,5,5,.4));transform:translateY(14%);margin-top:-4%}
-  .lc-stage video{display:block;height:min(680px,74vh);min-height:460px;width:auto;aspect-ratio:720/1152;clip-path:inset(1.9% 17.1% 11.4% 17.1% round 8.4% / 5.3%)}
-  .lc-chip{position:absolute;display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:99px;background:#050505;color:#fff;font-family:"Manrope",sans-serif;font-weight:700;font-size:16px;line-height:20px;box-shadow:0 18px 40px -16px rgba(5,5,5,.6)}
-  .lc-chip i{width:10px;height:10px;border-radius:50%;background:#22C55E;flex:0 0 auto}
-  .lc-chip.c1{left:7%;top:22%}
-  .lc-chip.c2{right:7%;top:40%}
-  .lc-chip.c3{left:10%;top:62%}
-  .lc-cap{margin:14px 0 0;font-size:14px;color:#71717B;text-align:center}
-  /* the call ladder, full-bleed black band */
-  .lc-band{position:relative;isolation:isolate;margin-top:clamp(96px,12vw,140px);padding:clamp(80px,10vw,128px) 0;text-align:center;color:#fff}
-  .lc-band::before{content:"";position:absolute;inset:0 auto 0 50%;width:100vw;transform:translateX(-50%);background:#050505;z-index:-1}
-  .lc-band h2{margin:0 auto;max-width:16ch;color:#fff;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;font-size:clamp(36px,4.9vw,50px);line-height:1.04;text-wrap:balance}
-  .lc-band>p{margin:24px auto 0;max-width:560px;font-size:20px;line-height:31px;color:#D1D1D6}
-  .lc-ladder{list-style:none;margin:72px auto 0;padding:0;max-width:1080px;display:grid;grid-template-columns:repeat(6,1fr);position:relative}
-  .lc-ladder::before{content:"";position:absolute;left:8.33%;right:8.33%;top:47px;height:2px;background:linear-gradient(90deg,#6D42F5,#B2A4F9 70%,#EF4444)}
-  .lc-ladder li{position:relative;display:flex;flex-direction:column;align-items:center;padding:0 8px}
-  .lc-ladder .t{font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:30px;line-height:30px;height:30px;color:#fff;letter-spacing:-.02em}
-  .lc-ladder .d{width:18px;height:18px;border-radius:50%;background:#050505;border:3px solid #B2A4F9;margin:8px 0 22px}
-  .lc-ladder li:first-child .d{border-color:#6D42F5}
-  .lc-ladder b{font-family:"Manrope",sans-serif;font-weight:700;font-size:18px;line-height:24px;color:#fff}
-  .lc-ladder p{margin:8px 0 0;font-size:15px;line-height:22px;color:#D1D1D6;max-width:170px}
-  .lc-ladder .hold .t{color:#EF4444}
-  .lc-ladder .hold .d{border-color:#EF4444}
-  /* the PA reaches a place */
-  .lc-pa{text-align:center}
-  .lc-pa h2{max-width:18ch;margin:0 auto}
-  .lc-pa h2 span{color:#6D42F5}
-  .lc-places{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin:48px auto 0;max-width:900px;padding:0;list-style:none}
-  .lc-places li{display:inline-flex;align-items:center;gap:12px;padding:14px 22px 14px 16px;border-radius:99px;background:#F4F4F5;font-family:"Manrope",sans-serif;font-weight:700;font-size:18px;line-height:24px;color:#050505}
-  .lc-places li i{width:26px;height:26px;border-radius:50%;background:#22C55E;color:#04130A;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
-  .lc-places li i svg{width:14px;height:14px}
-  .lc-pa .lc-note{margin:32px auto 0;max-width:620px;font-size:18px;line-height:28px;color:#52525B}
-  .lc-pa .lc-note b{color:#050505}
-  /* hangar board on a Studio Display */
-  .lc-board{text-align:center}
-  .lc-board figure{margin:48px auto 0;max-width:760px}
-  .lc-board img.studio{display:block;width:100%;height:auto}
-  .lc-board figcaption{margin:14px 0 0;font-size:14px;color:#71717B}
-  /* how it works: sticky title + rail */
-  .lc-how{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:72px;align-items:start}
-  .lc-how-h{position:sticky;top:120px}
-  .lc-how-h .eyebrow{justify-content:flex-start}
-  .lc-how-h h2{text-align:left;margin:0}
-  .lc-how-h .lead{text-align:left;margin:20px 0 0}
-  .lc-rail{list-style:none;margin:0;padding:0 0 0 40px;position:relative}
-  .lc-rail::before{content:"";position:absolute;left:9px;top:12px;bottom:12px;width:2px;background:#E4E4E7}
-  .lc-rail li{position:relative;padding:0 0 44px}
-  .lc-rail li:last-child{padding-bottom:0}
-  .lc-rail li::before{content:"";position:absolute;left:-40px;top:6px;width:20px;height:20px;border-radius:50%;background:#fff;border:3px solid #6D42F5;box-sizing:border-box}
-  .lc-rail li:last-child::before{background:#6D42F5}
-  .lc-rail b{display:block;font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:26px;line-height:33px;color:#050505}
-  .lc-rail p{margin:8px 0 0;font-size:18px;line-height:28px;color:#52525B}
-  .lc-rail a{color:#050505;text-decoration:underline;text-underline-offset:3px}
-  /* busy day: mug + open rows */
-  .lc-day{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:72px;align-items:center}
-  .lc-day .mug{margin:0;background:#F4F4F5;border-radius:32px;padding:40px;display:flex;align-items:center;justify-content:center}
-  .lc-day .mug img{display:block;width:100%;max-width:340px;height:auto;mix-blend-mode:multiply}
-  .lc-day .eyebrow{justify-content:flex-start}
-  .lc-day h2{text-align:left;margin:0}
-  .lc-rows{margin:32px 0 0;padding:0;list-style:none}
-  .lc-rows li{padding:20px 0;border-top:1px solid #E4E4E7}
-  .lc-rows li:last-child{border-bottom:1px solid #E4E4E7}
-  .lc-rows b{display:block;font-family:"Manrope",sans-serif;font-weight:700;font-size:19px;line-height:26px;color:#050505}
-  .lc-rows p{margin:4px 0 0;font-size:17px;line-height:26px;color:#52525B}
-  .lc-more{margin:48px auto 0;max-width:760px;text-align:center;font-size:17px;line-height:27px;color:#52525B}
-  .lc-more a{color:#050505;font-weight:600;text-decoration:underline;text-underline-offset:3px}
-  .lc .faq{margin-top:clamp(96px,12vw,140px)}
-  .lc .final .lc-jump{margin-top:22px;font-size:16px;line-height:24px;color:#52525B}
-  .lc .final .lc-jump a{color:#050505;font-weight:600;text-decoration:underline;text-underline-offset:3px}
-  @media (max-width:899px){
-    .lc-stage{border-radius:24px;padding:84px 12px 0;min-height:0}
-    .lc-stage video{height:440px;min-height:0}
-    .lc-chip{font-size:13px;padding:9px 13px;gap:8px}
-    .lc-chip i{width:8px;height:8px}
-    .lc-chip.c1{left:16px;top:18px}
-    .lc-chip.c2{right:16px;top:18px}
-    .lc-chip.c3{display:none}
-    .lc-band>p{font-size:17px;line-height:27px}
-    .lc-ladder{grid-template-columns:1fr;max-width:420px;margin-top:48px;text-align:left}
-    .lc-ladder::before{left:46px;right:auto;top:20px;bottom:20px;width:2px;height:auto;background:linear-gradient(180deg,#6D42F5,#B2A4F9 70%,#EF4444)}
-    .lc-ladder li{display:grid;grid-template-columns:28px 18px 1fr;column-gap:16px;align-items:start;padding:0 0 26px}
-    .lc-ladder li:last-child{padding-bottom:0}
-    .lc-ladder .t{font-size:20px;line-height:24px;height:auto;text-align:right;grid-row:span 2}
-    .lc-ladder .d{margin:3px 0 0;grid-row:span 2}
-    .lc-ladder b{font-size:17px}
-    .lc-ladder p{margin:2px 0 0;max-width:none;font-size:15px}
-    .lc-places{gap:10px;margin-top:32px}
-    .lc-places li{font-size:16px;padding:11px 18px 11px 12px}
-    .lc-pa .lc-note{font-size:17px;line-height:27px}
-    .lc-how,.lc-day{grid-template-columns:1fr;gap:40px}
-    .lc-how-h{position:static}
-    .lc-rail b{font-size:21px;line-height:28px}
-    .lc-rail p{font-size:16px;line-height:25px}
-    .lc-rail li{padding-bottom:32px}
-    .lc-day .mug{padding:24px;border-radius:22px}
-    .lc-day .mug img{max-width:300px}
-  }
-  </style>
+  <header class="dk-head">
+    <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
+    <img class="dk-head-art" src="/assets/hero/plate-skydiving-load-calls.webp" alt="" decoding="async" fetchpriority="high" />
+    <h1 class="dk-h1">Skydiving load calls <br />on every jumper&rsquo;s phone.</h1>
+    <p class="dk-l">Staff press one button at the desk. Every jumper on that load gets it, wherever they are on the dropzone.</p>
+    <div class="dk-ctas"><a class="dk-btn" href="/get-started/?demo">Book a demo</a><a class="dk-a" href="/dropzones/">See Manifest Desk</a></div>
+  </header>
 
-  <section class="lc-hero">
-    <h1><span class="lc-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>Skydiving load calls</span>On every jumper&rsquo;s phone.</h1>
-    <p class="lead">Staff press one button at the desk. Every jumper on that load gets it, wherever they are on the dropzone.</p>
-    <div class="lc-ctas">
-      <a class="lc-btn" href="/get-started/?demo">Book a demo<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-      <a class="lc-link" href="/dropzones/">See Manifest Desk</a>
+  <section class="dk-band dk-tight">
+    <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
+    <div class="dk-plate dk-plate-lock" style="margin-top:0">
+      <img class="dk-paint" src="/assets/hero/plate-skydiving-load-calls-2.webp" alt="" loading="lazy" decoding="async" />
+      <div class="ls" data-ls role="img" aria-label="An iPhone Lock Screen with the Manifest load card counting down to the plane and load call notifications arriving">
+        <div class="ls-island" aria-hidden="true"><img src="/assets/hero/app-icon.png" width="15" height="15" alt="" /><i></i><b data-ls-island>10m</b></div>
+        <div class="ls-date" aria-hidden="true">Saturday</div>
+        <div class="ls-time" aria-hidden="true">9:41</div>
+        <div class="la" aria-hidden="true">
+          <div class="la-top"><span class="la-k">YOUR LOAD</span><span class="la-dz">SKYDIVE ELSINORE</span></div>
+          <div class="la-mid"><div class="la-l"><div class="la-name" data-ls-name>Blue Caravan 3</div><div class="la-st"><b data-ls-status>ON CALL</b><span data-ls-cap>   ·   7/12</span></div></div><div class="la-count" data-ls-count><u data-ls-min>10</u><s>MIN</s></div></div>
+          <div class="la-line"></div>
+          <div class="la-row"><span><b>Silver Caravan 15</b><i>   ·   12/17</i></span><em><span data-ls-add="12">22</span> min</em></div>
+          <div class="la-row"><span><b>Silver Caravan 16</b><i>   ·   15/17</i></span><em><span data-ls-add="27">37</span> min</em></div>
+        </div>
+        <div class="ls-ntfs" data-ls-ntfs aria-hidden="true">
+          <div class="aw-ntf is-in"><img src="/assets/hero/app-icon.png" width="38" height="38" alt="" /><div class="aw-ntx2"><span class="aw-ntop"><b>10 min call · Blue Caravan 3</b><time>now</time></span><p>Gear check and helmet on. Head to the loading area.</p></div></div>
+          <div class="aw-ntf is-in"><img src="/assets/hero/app-icon.png" width="38" height="38" alt="" /><div class="aw-ntx2"><span class="aw-ntop"><b>Gear up · Blue Caravan 3</b><time>5m ago</time></span><p>15 min out. Time to get your rig on.</p></div></div>
+        </div>
+      </div>
     </div>
-    <figure class="lc-stage">
-      <span class="lc-chip c1" aria-hidden="true"><i></i>Called</span>
-      <span class="lc-chip c2" aria-hidden="true"><i></i>Gear-up at 15</span>
-      <span class="lc-chip c3" aria-hidden="true"><i></i>10 minutes</span>
-      <span class="lc-ph"><video autoplay muted loop playsinline preload="metadata" poster="/assets/opt/lockscreen-v3-poster.webp" width="720" height="1152" aria-label="An iPhone Lock Screen showing a load card with a 7 minute countdown, a gear-up notification and a you have been manifested notification, then the live loads screen with the next load and minutes to call"><source src="/assets/opt/lockscreen-v3.mp4" type="video/mp4" /></video></span>
-    </figure>
-    <p class="lc-cap">Your load on the Lock Screen with a live countdown, and the gear-up call.</p>
+    <p class="dk-n">Your load on the Lock Screen with a live countdown, and the gear-up call. With Manifest Pro.</p>
   </section>
 
-  <section class="lc-band" id="calls">
-    <h2>Six calls. One tap each.</h2>
-    <p>Each load has its call buttons right on it in Manifest Desk.</p>
-    <ol class="lc-ladder">
-      <li><span class="t">On</span><span class="d"></span><b>Called</b><p>The load is on. Everyone on it is told at once.</p></li>
-      <li><span class="t">15</span><span class="d"></span><b>Gear-up</b><p>Time to gear up, on every phone on that load.</p></li>
-      <li><span class="t">10</span><span class="d"></span><b>10 minutes</b><p>The 10 minute call skydivers expect.</p></li>
-      <li><span class="t">5</span><span class="d"></span><b>5 minutes</b><p>Final call. Rigs on, heading to the plane.</p></li>
-      <li><span class="t">Go</span><span class="d"></span><b>Boarding</b><p>Walk out now.</p></li>
-      <li class="hold"><span class="t">!</span><span class="d"></span><b>Hold</b><p>Winds, weather or the aircraft. Or every load at once.</p></li>
+  <section class="dk-band" id="calls">
+    <div class="dk-t">
+      <h2 class="dk-h">Six calls. One tap each.</h2>
+      <p class="dk-l">Each load has its call buttons right on it in Manifest Desk.</p>
+    </div>
+    <ol class="x-six">
+      <li><span class="t">On</span><b>Called</b><p>The load is on. Everyone on it is told at once.</p></li>
+      <li><span class="t">15</span><b>Gear-up</b><p>Time to gear up, on every phone on that load.</p></li>
+      <li><span class="t">10</span><b>10 minutes</b><p>The 10 minute call skydivers expect.</p></li>
+      <li><span class="t">5</span><b>5 minutes</b><p>Final call. Rigs on, heading to the plane.</p></li>
+      <li><span class="t">Go</span><b>Boarding</b><p>Walk out now.</p></li>
+      <li class="hold"><span class="t">!</span><b>Hold</b><p>Winds, weather or the aircraft. Or every load at once.</p></li>
     </ol>
   </section>
 
-  <section class="sec lc-pa" id="pa">
-    <p class="eyebrow">The problem with the PA</p>
-    <h2>The PA reaches a place. <span>A call reaches people.</span></h2>
-    <ul class="lc-places" aria-label="Where the call on the phone reaches jumpers">
-      <li><i><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg></i>The packing mat</li>
-      <li><i><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg></i>The parking lot</li>
-      <li><i><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg></i>The bathroom</li>
-      <li><i><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg></i>The shade, earbuds in</li>
-    </ul>
-    <p class="lc-note"><b>Only the jumpers on that load are pinged.</b> Nobody on load 9 hears about load 6, so people trust the notification. Keep the PA for the hangar if you like.</p>
-  </section>
-
-  <section class="sec vis flip" id="jumpers">
-    <div class="vis-txt">
-      <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M11 18.5h2"/></svg>For jumpers</p>
-      <h2>Your load in the Dynamic Island.</h2>
-      <p class="lead">The load number and the minutes left, on the Lock Screen, without opening anything. With Manifest Pro.</p>
-      <ul class="vis-pts">
-        <li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Gear-up at 15, the 10 minute call and final call at 5</span></li>
-        <li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Live loads at 150 dropzones, from the dropzone&rsquo;s own board</span></li>
-        <li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Recording starts by itself 2 minutes before takeoff, for the <a href="/skydive-3d-tracking/">3D replay</a></span></li>
+  <section class="dk-band" id="pa">
+    <div class="dk-t">
+      <p class="dk-eyebrow">The problem with the PA</p>
+      <h2 class="dk-h">The PA reaches a place. A call reaches people.</h2>
+      <ul class="dk-calls x-places" aria-label="Where the call on the phone reaches jumpers">
+        <li><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="#30D158" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg>The packing mat</li>
+        <li><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="#30D158" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg>The parking lot</li>
+        <li><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="#30D158" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg>The bathroom</li>
+        <li><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="#30D158" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3L12.5 5"/></svg>The shade, earbuds in</li>
       </ul>
-    </div>
-    <div class="vis-media">
-      <video class="vis-phone vis-trio" autoplay muted loop playsinline preload="metadata" poster="/assets/opt/liveloads-poster.344e7011.webp" width="560" height="1176" aria-label="The live loads screen in the Manifest app, with the next load and minutes to call"><source src="/assets/opt/liveloads.91e6219d.mp4" type="video/mp4" /></video>
+      <p class="dk-l"><b>Only the jumpers on that load are pinged.</b> Nobody on load 9 hears about load 6, so people trust the notification. Keep the PA for the hangar if you like.</p>
     </div>
   </section>
 
-  <section class="sec lc-board" id="board">
-    <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>The hangar board</p>
-    <h2>The hangar sees it too.</h2>
-    <p class="lead">Called, boarding and minutes to departure on the TV, the moment the desk presses the button.</p>
-    <figure>
-      <img class="studio" srcset="/assets/skydiving-load-calls-studio-800w.webp 800w, /assets/skydiving-load-calls-studio.webp 1600w" sizes="(max-width: 1040px) 95vw, 1000px" src="/assets/skydiving-load-calls-studio.webp" width="1600" height="1242" alt="The Manifest hangar board on a Studio Display: load 4 boarding now, load 5 called with 7 minutes to departure, load 6 open" loading="lazy" decoding="async" />
-      <figcaption>Sample data from a demo dropzone.</figcaption>
-    </figure>
+  <section class="dk-band" id="jumpers">
+    <div class="dk-split flip">
+      <div>
+        <p class="dk-eyebrow">For jumpers</p>
+        <h2 class="dk-h">Your load in the Dynamic Island.</h2>
+        <p class="dk-l">The load number and the minutes left, on the Lock Screen, without opening anything. With Manifest Pro.</p>
+        <ul class="dk-list">
+          <li>Gear-up at 15, the 10 minute call and final call at 5</li>
+          <li>Live loads at 150 dropzones, from the dropzone&rsquo;s own board</li>
+          <li>Recording starts by itself 2 minutes before takeoff, for the <a class="dk-a" href="/skydive-3d-tracking/">3D replay</a></li>
+        </ul>
+      </div>
+      <div class="dk-split-v"><span class="dk-screen"><video data-lazy autoplay muted loop playsinline preload="none" poster="/assets/opt/liveloads-poster.344e7011.webp" width="560" height="1176" aria-label="The live loads screen in the Manifest app, with the next load and minutes to call"><source data-src="/assets/opt/liveloads.91e6219d.mp4" type="video/mp4" /></video></span></div>
+    </div>
   </section>
 
-  <section class="sec lc-how" id="how">
-    <div class="lc-how-h">
-      <p class="eyebrow">How it works</p>
-      <h2>From the desk to the door.</h2>
-      <p class="lead">Built into <a href="/dropzones/">Manifest Desk</a>, the loads board your staff already work in the browser.</p>
+  <section class="dk-band" id="board">
+    <div class="dk-t">
+      <p class="dk-eyebrow">The hangar board</p>
+      <h2 class="dk-h">The hangar sees it too.</h2>
+      <p class="dk-l">Called, boarding and minutes to departure on the TV, the moment the desk presses the button.</p>
     </div>
-    <ol class="lc-rail">
-      <li><b>The dropzone runs loads in Desk.</b><p>Jumpers are manifested on the loads board, or <a href="/self-manifest-skydiving/">book themselves</a> within the limits you set.</p></li>
-      <li><b>Jumpers have the Manifest app.</b><p>Free on iPhone. Whoever is on the load is who the call reaches.</p></li>
-      <li><b>Staff press a call on the load.</b><p>Called, gear-up at 15, 10 minutes, 5 minutes, boarding or hold.</p></li>
-      <li><b>Every jumper on that load gets it.</b><p>As a notification and on the Lock Screen, with the countdown in the Dynamic Island.</p></li>
-      <li><b>The load goes up full and on time.</b><p>A hold reaches the same people the same way.</p></li>
+    <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
+    <div class="dk-plate dk-plate-wide">
+      <img class="dk-paint" src="/assets/hero/plate-desk.webp" alt="" loading="lazy" decoding="async" />
+      <span class="dk-wide x-shot"><img src="/assets/skydiving-load-calls-studio.webp" width="1600" height="1242" alt="The Manifest hangar board: load 4 boarding now, load 5 called with 7 minutes to departure, load 6 open" loading="lazy" decoding="async" /></span>
+    </div>
+    <p class="dk-n">Sample data from a demo dropzone.</p>
+  </section>
+
+  <section class="dk-band" id="how">
+    <div class="dk-t">
+      <p class="dk-eyebrow">How it works</p>
+      <h2 class="dk-h">From the desk to the door.</h2>
+      <p class="dk-l">Built into <a class="dk-a" href="/dropzones/">Manifest Desk</a>, the loads board your staff already work in the browser.</p>
+    </div>
+    <ol class="dk-steps">
+      <li><b>The dropzone runs loads in Desk.</b>Jumpers are manifested on the loads board, or <a class="dk-a" href="/self-manifest-skydiving/">book themselves</a> within the limits you set.</li>
+      <li><b>Jumpers have the Manifest app.</b>Free on iPhone. Whoever is on the load is who the call reaches.</li>
+      <li><b>Staff press a call on the load.</b>Called, gear-up at 15, 10 minutes, 5 minutes, boarding or hold.</li>
+      <li><b>Every jumper on that load gets it.</b>As a notification on their phone. With Manifest Pro, also on the Lock Screen, with the countdown in the Dynamic Island.</li>
+      <li><b>The load goes up full and on time.</b>A hold reaches the same people the same way.</li>
     </ol>
   </section>
 
-  <section class="sec lc-day" id="busy-day">
-    <figure class="mug"><img src="/assets/features/mug-wind-hold.webp" width="767" height="630" alt="A white Manifest mug that reads Wind hold = coffee" loading="lazy" decoding="async" /></figure>
-    <div>
-      <p class="eyebrow">On a busy day</p>
-      <h2>A quieter desk.</h2>
-      <ul class="lc-rows">
-        <li><b>Fewer missed loads.</b><p>A jumper away from the hangar still gets the 10 minute call.</p></li>
-        <li><b>One button, not ten announcements.</b><p>No shouting, repeating or walking the hangar for the last name.</p></li>
-        <li><b>Holds that land.</b><p>When the winds pick up, the load hears it the moment you decide.</p></li>
-        <li><b>Calm jumpers.</b><p>A countdown on the Lock Screen beats guessing at the speaker.</p></li>
-      </ul>
+  <section class="dk-band" id="busy-day">
+    <div class="dk-split">
+      <div class="dk-split-v"><img class="x-mug" src="/assets/features/mug-wind-hold.webp" width="767" height="630" alt="A white Manifest mug that reads Wind hold = coffee" loading="lazy" decoding="async" /></div>
+      <div>
+        <p class="dk-eyebrow">On a busy day</p>
+        <h2 class="dk-h">A quieter desk.</h2>
+        <ul class="dk-list">
+          <li><b>Fewer missed loads.</b> A jumper away from the hangar still gets the 10 minute call.</li>
+          <li><b>One button, not ten announcements.</b> No shouting, repeating or walking the hangar for the last name.</li>
+          <li><b>Holds that land.</b> When the winds pick up, the load hears it the moment you decide.</li>
+          <li><b>Calm jumpers.</b> A countdown on the phone beats guessing at the speaker.</li>
+        </ul>
+      </div>
     </div>
   </section>
-  <p class="lc-more">Load calls sit next to <a href="/live-skydiving-loads/">live loads</a>, standby, jumper balances, the hangar TV board and <a href="/skydive-landout-safety/">landout safety</a>. See <a href="/dropzones/#pricing">pricing</a>.</p>
 
-  <div class="faq" id="faq">
-    <h2 class="cm-title">Questions</h2>
-    <div class="faq-list">
-      <details class="faq-i"><summary>How do skydiving load call notifications work in Manifest?<span class="faq-plus" aria-hidden="true"></span></summary><p>Desk staff press a call button on the load in Manifest Desk: called, gear-up at 15 minutes, 10 minutes, 5 minutes, boarding or hold. Every jumper on that load gets it on their iPhone as a notification and on the Lock Screen, wherever they are on the dropzone.</p></details>
-      <details class="faq-i"><summary>Do jumpers need Manifest Pro to get load calls?<span class="faq-plus" aria-hidden="true"></span></summary><p>Your load on the Lock Screen and in the Dynamic Island, with gear-up, 10 minute and final call notifications, is part of Manifest Pro.</p></details>
-      <details class="faq-i"><summary>Does a load call go to everyone at the dropzone?<span class="faq-plus" aria-hidden="true"></span></summary><p>No. A call goes only to the jumpers on that load. Nobody on a later load is pinged, so people keep trusting the notification.</p></details>
-      <details class="faq-i"><summary>Can we still use our PA system?<span class="faq-plus" aria-hidden="true"></span></summary><p>Yes. Keep the PA for the hangar if you like. Manifest adds the call on the phone, which also reaches jumpers in the parking lot, at the packing mat or anywhere else on the dropzone.</p></details>
-      <details class="faq-i"><summary>Does it work on Android?<span class="faq-plus" aria-hidden="true"></span></summary><p>The Manifest app is on iPhone today, free to download. An Android version is in the making. <a data-android href="#android">Tell me the day it is out.</a> Manifest Desk runs in the browser on any computer.</p></details>
-      <details class="faq-i"><summary>How do we get load calls at our dropzone?<span class="faq-plus" aria-hidden="true"></span></summary><p>Load calls come with Manifest Desk. Book a 20-minute demo and we set you up directly and move your jumpers over. The desk is free until you fly: $1 per seat flown, no monthly fee, stop anytime.</p></details>
-    </div>
-    <p class="faq-more">Learn more: <a href="/dropzones/">Manifest Desk</a>, <a href="/live-skydiving-loads/">Live skydiving loads</a>, <a href="/self-manifest-skydiving/">Self-manifest</a>, <a href="/skydive-landout-safety/">Landout safety</a>, <a href="/skydive-3d-tracking/">3D replay</a>, <a href="/">What else Manifest does</a>.</p>
-  </div>
+  <section class="dk-band dk-tight">
+    <div class="dk-t"><p class="dk-l">Load calls sit next to <a class="dk-a" href="/live-skydiving-loads/">live loads</a>, standby, jumper balances, the hangar TV board and <a class="dk-a" href="/skydive-landout-safety/">landout safety</a>. See <a class="dk-a" href="/dropzones/#pricing">pricing</a>.</p></div>
+  </section>
 
-  <section class="final">
-    <h2>Call the load once.</h2>
-    <p>Free until you fly, $1 per seat flown, stop anytime.</p>
-    <div class="ctas">
-      <a class="pc-out" href="/get-started/?demo">Book a 20-minute demo <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+  <section class="dk-band" id="faq">
+    <div class="dk-t"><h2 class="dk-h">Questions</h2></div>
+    <div class="dk-qs" data-qs>
+      <details class="dk-q"><summary>How do skydiving load call notifications work in Manifest?</summary><p>Desk staff press a call button on the load in Manifest Desk: called, gear-up at 15 minutes, 10 minutes, 5 minutes, boarding or hold. Every jumper on that load gets it on their iPhone as a notification, wherever they are on the dropzone.</p></details>
+      <details class="dk-q"><summary>Do jumpers need Manifest Pro to get load calls?</summary><p>Your load on the Lock Screen and in the Dynamic Island, with gear-up, 10 minute and final call notifications, is part of Manifest Pro.</p></details>
+      <details class="dk-q"><summary>Does a load call go to everyone at the dropzone?</summary><p>No. A call goes only to the jumpers on that load. Nobody on a later load is pinged, so people keep trusting the notification.</p></details>
+      <details class="dk-q"><summary>Can we still use our PA system?</summary><p>Yes. Keep the PA for the hangar if you like. Manifest adds the call on the phone, which also reaches jumpers in the parking lot, at the packing mat or anywhere else on the dropzone.</p></details>
+      <details class="dk-q"><summary>Does it work on Android?</summary><p>The Manifest app is on iPhone today, free to download. An Android version is in the making. <a data-android href="#android">Tell me the day it is out.</a> Manifest Desk runs in the browser on any computer.</p></details>
+      <details class="dk-q"><summary>How do we get load calls at our dropzone?</summary><p>Load calls come with Manifest Desk. Book a 20-minute demo and we set you up directly and move your jumpers over. The desk is free until you fly: $1 per seat flown and 1% on app top-ups, both on the dropzone, no monthly fee, stop anytime.</p></details>
     </div>
-    <p class="lc-jump">Jumping this weekend? <a href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429">Get Manifest on your iPhone</a>. Free to download.</p>
+    <p class="dk-qhelp">Learn more: <a href="/dropzones/">Manifest Desk</a>, <a href="/live-skydiving-loads/">Live skydiving loads</a>, <a href="/self-manifest-skydiving/">Self-manifest</a>, <a href="/skydive-landout-safety/">Landout safety</a>, <a href="/skydive-3d-tracking/">3D replay</a>, <a href="/">What else Manifest does</a>.</p>
+  </section>
+
+  <section class="dk-band dk-tight dk-close-b">
+    <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
+    <div class="dk-plate dk-plate-close" style="margin-top:0">
+      <img class="dk-paint" src="/assets/hero/plate-close.webp" alt="" loading="lazy" decoding="async" />
+      <div class="dk-close">
+        <h2 class="dk-h">Call the load once.</h2>
+        <p class="dk-l">Free until you fly, $1 per seat flown, stop anytime.</p>
+        <div class="dk-close-get"><a class="dk-btn" href="/get-started/?demo">Book a 20-minute demo</a></div>
+        <p class="dk-close-dz">Jumping this weekend? <a href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429">Get Manifest on your iPhone</a>. Free to download.</p>
+      </div>
+    </div>
   </section>
 </main>
 
@@ -1404,6 +1255,8 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
       <a href="/about/">About</a><a href="/support/">Support</a><a href="/help/">Help center</a><a href="/dropzones/#faq">FAQ</a><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a></div>
   </div>
   <div class="ft-base"><span>© 2026 Manifest Jump LLC · Wyoming, USA · Dubai,&nbsp;UAE</span><div class="ft-pay" aria-label="Payment methods accepted"><img src="/assets/pay/apple_pay.svg?v=1" alt="Apple Pay" height="24" /><img src="/assets/pay/visa.svg?v=1" alt="Visa" height="24" /><img src="/assets/pay/master.svg?v=1" alt="Mastercard" height="24" /><img src="/assets/pay/american_express.svg?v=1" alt="American Express" height="24" /><img src="/assets/pay/cashapppay.svg?v=1" alt="Cash App Pay" height="24" /><img src="/assets/pay/stripe.svg?v=1" alt="Stripe" height="24" /></div></div>
+  <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
+  <div class="ft-art" aria-hidden="true"><img src="/assets/hero/plate-footer.webp" alt="" loading="lazy" decoding="async" /></div>
 </footer>
 
 <script>
@@ -1671,6 +1524,7 @@ span.go > svg{background:#050505!important}
 .vs-yes svg{width:16px!important;height:16px!important;stroke-width:2.6}
 .vs-no{color:#FF453A!important;background:none!important;width:20px!important;height:20px!important}.vs-no svg{width:16px!important;height:16px!important;stroke-width:2.6}
 </style>
-<script>/* phone footer: tap a menu heading to open it */document.addEventListener('click',function(e){var h=e.target.closest&&e.target.closest('footer.site .ft-col:not(:last-child) h3');if(!h||innerWidth>560)return;h.parentNode.classList.toggle('open');});</script>
+<script src="/assets/site-dark.js?v=4" defer></script>
+
 </body>
 </html>

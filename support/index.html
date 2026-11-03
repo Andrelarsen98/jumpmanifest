@@ -502,8 +502,9 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
 .sh-nav:has(.sh-dd.open) .sh-dd:not(.open) .sh-panel{transition:none}
 .sh-cta-demo:focus-visible,.fd-btn:focus-visible,.btn.ghost:focus-visible,.btn.demo:focus-visible,.band-btn:focus-visible,.pc-out:focus-visible,.sms-btn:focus-visible,.sm-btn:focus-visible,.pc-call:focus-visible,.lo-btn:focus-visible,.lc-btn:focus-visible,.hmw-btn:focus-visible,.dp-btn:focus-visible,.btn.primary:focus-visible,.pq-btn:focus-visible,a.btn[href*="apps.apple.com"]:focus-visible,a.btn[href="/get"]:focus-visible{outline:2px solid #050505!important;outline-offset:3px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 3px #fff!important}
 </style>
+<link rel="stylesheet" href="/assets/site-dark.css?v=5" />
 </head>
-<body>
+<body class="dk">
 <a class="skip" href="#main">Skip to main content</a>
 <!-- SITE HEADER (9 Oct 2026): one header on every page. Mega dropdowns on
      laptops, a full-height sheet on phones. Same markup, CSS and JS on each
@@ -535,12 +536,27 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
   </div>
 </div>
 
-<main class="doc" id="main">
-  <div class="wrap">
-    <h1>Support</h1>
-    <p class="intro">Need a hand with Manifest, the skydiving app with live dropzone loads? Every message is read by me, Andr&eacute; Larsen, the founder.</p>
-
-    <div class="sup-tracks">
+<main id="main">
+<style>
+body.dk #main .sup-tracks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; width: min(1120px, calc(100vw - 40px)); margin: 0 auto; }
+body.dk #main .sup-tracks > .card { margin: 0; padding: 32px; border: 0; border-radius: 22px; background: #23242A; box-shadow: 0 0 0 1px rgba(255,255,255,.10), 0 18px 44px rgba(0,0,0,.34); }
+body.dk #main .sup-tracks .lbl { font-size: 15px; line-height: 22px; font-weight: 600; color: #D1D1D6; }
+body.dk #main .sup-tracks .email { margin: 6px 0 10px; font-family: "General Sans", "Manrope", sans-serif; font-size: clamp(20px, 2.2vw, 26px); line-height: 1.3; font-weight: 500; overflow-wrap: anywhere; }
+body.dk #main .sup-tracks .email a { color: #F1F2F5 !important; text-decoration-color: rgba(241,242,245,.35) !important; }
+body.dk #main .sup-tracks .reply { font-size: 16px; line-height: 24px; font-weight: 400; letter-spacing: 0; color: #D1D1D6; }
+body.dk #main .sup-tracks ul { margin: 14px 0 0; padding-left: 20px; }
+body.dk #main .sup-tracks li { margin: 8px 0; font-size: 15px; line-height: 23px; font-weight: 400; color: #D1D1D6; }
+body.dk #main .sup-tracks li a { color: #F1F2F5 !important; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+body.dk #main .sup-rest { padding-block: 40px clamp(72px, 9vw, 128px); }
+@media (max-width: 860px) { body.dk #main .sup-tracks { grid-template-columns: minmax(0, 1fr); } body.dk #main .sup-tracks > .card { padding: 24px; } }
+</style>
+<header class="dk-head">
+  <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
+  <img class="dk-head-art" src="/assets/hero/plate-support.webp" alt="" decoding="async" fetchpriority="high" />
+  <h1 class="dk-h1">Support</h1>
+  <p class="dk-l">Need a hand with Manifest, the skydiving app with live dropzone loads? Every message is read by me, Andr&eacute; Larsen, the founder.</p>
+</header>
+<div class="sup-tracks">
       <div class="card">
         <div class="lbl">For jumpers</div>
         <div class="email"><a href="mailto:andre@manifestjump.com">andre@manifestjump.com</a></div>
@@ -562,7 +578,7 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
         </ul>
       </div>
     </div>
-
+<div class="dk-long sup-rest"><div class="wrap">
     <h2>Frequently asked questions</h2>
 
     <h3>How do I log a jump, and does it work without signal?</h3>
@@ -579,7 +595,7 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
 
     <h3>What does Manifest Pro include?</h3>
     <p>Pro is the Lock Screen. Your load appears there the moment it is called, with gear-up and final-call notifications and a live countdown in the Dynamic Island, so the plane does not leave without you.</p>
-    <p>It also adds cloud backup of your tracks, replay stats, your jump receipt, your credentials on your Check-in Pass, and branded PDF exports of your logbook and gear passport. It&rsquo;s a yearly subscription or a one-time Lifetime purchase. Logging, currency, sign-offs, live loads, dropzones, events and community stay free.</p>
+    <p>It also adds cloud backup of your tracks, replay stats, Your day, pre-filled, your credentials on your Check-in Pass, and branded PDFs of your jumps and gear. It&rsquo;s a monthly or yearly subscription. Logging, currency, sign-offs, live loads, dropzones, events and community stay free.</p>
 
     <h3>How do I manage or cancel my subscription?</h3>
     <p>Subscriptions are billed through your Apple ID, so you manage them in iOS: <strong>Settings &rarr; [your name] &rarr; Subscriptions &rarr; Manifest</strong>, where you can change plan or cancel. Cancelling stops the next renewal; you keep Pro until the current period ends.</p>
@@ -595,7 +611,7 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
 
     <h2>Still stuck?</h2>
     <p>Email <a href="mailto:andre@manifestjump.com"><strong>andre@manifestjump.com</strong></a> and I&rsquo;ll help. Blue skies.</p>
-  </div>
+</div></div>
 </main>
 
 <footer class="site">
@@ -617,6 +633,8 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
       <a href="/about/">About</a><a href="/support/">Support</a><a href="/help/">Help center</a><a href="/#faq">FAQ</a><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a></div>
   </div>
   <div class="ft-base"><span>© 2026 Manifest Jump LLC · Wyoming, USA · Dubai,&nbsp;UAE</span><div class="ft-pay" aria-label="Payment methods accepted"><img src="/assets/pay/apple_pay.svg?v=1" alt="Apple Pay" height="24" /><img src="/assets/pay/visa.svg?v=1" alt="Visa" height="24" /><img src="/assets/pay/master.svg?v=1" alt="Mastercard" height="24" /><img src="/assets/pay/american_express.svg?v=1" alt="American Express" height="24" /><img src="/assets/pay/cashapppay.svg?v=1" alt="Cash App Pay" height="24" /><img src="/assets/pay/stripe.svg?v=1" alt="Stripe" height="24" /></div></div>
+  <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
+  <div class="ft-art" aria-hidden="true"><img src="/assets/hero/plate-footer.webp" alt="" loading="lazy" decoding="async" /></div>
 </footer>
 <script id="site-header-js">
 (() => {
@@ -826,6 +844,7 @@ span.go > svg{background:#050505!important}
 .vs-yes{background:none!important;color:#30D158!important;width:20px!important;height:20px!important}
 .vs-yes svg{width:16px!important;height:16px!important;stroke-width:2.6}
 </style>
-<script>/* phone footer: tap a menu heading to open it */document.addEventListener('click',function(e){var h=e.target.closest&&e.target.closest('footer.site .ft-col:not(:last-child) h3');if(!h||innerWidth>560)return;h.parentNode.classList.toggle('open');});</script>
+<script src="/assets/site-dark.js?v=4" defer></script>
+
 </body>
 </html>
