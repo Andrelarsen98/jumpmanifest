@@ -473,6 +473,7 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
   </div>
 </div>
 
+<div class="nf-art" aria-hidden="true"><picture><source media="(max-width: 760px)" srcset="/assets/paint/09-open-loggia-phone-828.webp" /><img src="/assets/hero/loggia-2560.webp" srcset="/assets/hero/loggia-1600.webp 1600w, /assets/hero/loggia-2560.webp 2560w" sizes="100vw" alt="" fetchpriority="high" decoding="async" /></picture></div>
 <main class="doc nf" id="main">
   <style>
     body.dk #main.nf { text-align: center; min-height: 60svh; }
@@ -723,5 +724,13 @@ span.go > svg{background:#050505!important}
 </style>
 
 <script src="/assets/site-dark.js?v=5" defer></script>
+<style id="nf-full">/* 4 Nov 2026 (André: "have the image cover this full page"): one screen, the home painting edge to edge, the words on it. */
+.nf-art { position: fixed; inset: 0; z-index: 0; background: #2c2618; }
+.nf-art img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; display: block; }
+.nf-art::after { content: ""; position: absolute; inset: 0; background: radial-gradient(60% 50% at 50% 42%, rgba(10,10,14,.55), rgba(10,10,14,.15) 70%, rgba(10,10,14,0)); }
+html body.dk #main.nf { position: relative; z-index: 1; min-height: 100svh !important; display: flex; align-items: center; justify-content: center; padding: 96px 20px !important; box-sizing: border-box; background: transparent !important; }
+html body.dk #main.nf h1, html body.dk #main.nf .intro { color: #fff !important; text-shadow: 0 1px 24px rgba(6,10,40,.45); }
+html body:has(#main.nf) footer.site { display: none !important; }
+</style>
 </body>
 </html>
