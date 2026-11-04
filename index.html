@@ -3346,5 +3346,25 @@ html body span.go { background: none !important; box-shadow: none !important; tr
 }
 @media (max-width: 760px) and (max-height: 720px) { .hero-art { --win-h: calc(270px + env(safe-area-inset-top)) !important; } .art-win { --feed-h: 150px !important; } }
 </style>
+<style id="phone-hero-steady2">/* 5 Nov 2026 (André: "on Instagram the parachutes and the logo move up and down when you scroll"). In Instagram and Safari the
+   browser bars grow and shrink while you scroll, which changes the screen height and the bottom safe area, and everything placed from
+   the bottom of the hero moved with it. The hero height is now taken ONCE (on load and on rotation, never on scroll) and every piece
+   is placed from that fixed number. The canopies no longer sway. */
+@media (max-width: 760px) {
+  .hero-art { height: var(--hero-h, 100svh) !important; min-height: 0 !important; }
+  .art-copy { bottom: calc(var(--hero-h, 100svh) * .13 + 34px) !important; }
+  .art-sky img { animation: none !important; }
+  /* The "short phone" layout used to follow a max-height media query, which flips while the bars move: decided once instead. */
+  html:not(.hero-short) .hero-art { --win-h: calc(318px + env(safe-area-inset-top)) !important; }
+  html:not(.hero-short) .art-win { --feed-h: 196px !important; }
+  html:not(.hero-short) .hero-art .art-icon { display: block !important; }
+  html:not(.hero-short) .hero-art h1 { margin-top: 14px !important; }
+  html.hero-short .hero-art { --win-h: calc(270px + env(safe-area-inset-top)) !important; }
+  html.hero-short .art-win { --feed-h: 150px !important; }
+  html.hero-short .hero-art .art-icon { display: none !important; }
+  html.hero-short .hero-art h1 { margin-top: 0 !important; }
+}
+</style>
+<script id="hero-h">(function(){if(!matchMedia('(max-width: 760px)').matches)return;var r=document.documentElement,w=0;function set(){var h=Math.max(560,Math.round(window.innerHeight));r.style.setProperty('--hero-h',h+'px');r.classList.toggle('hero-short',h<=720);w=innerWidth;}set();addEventListener('orientationchange',function(){setTimeout(set,300)});addEventListener('resize',function(){if(Math.abs(innerWidth-w)>40)set();});})();</script>
 </body>
 </html>
