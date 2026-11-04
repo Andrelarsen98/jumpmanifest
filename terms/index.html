@@ -828,5 +828,13 @@ span.go > svg{background:#050505!important}
 </style>
 
 <script src="/assets/site-dark.js?v=5" defer></script>
+<style id="audit2-fixes">/* 4 Nov night, second 10-agent check. */
+@font-face{font-family:"Geist";font-style:normal;font-weight:100 900;font-display:swap;src:url(/assets/fonts/geist-variable.woff2) format("woff2")}
+html body .sh, html body .sh.li-bar { z-index: 2147483001 !important; }
+html body .sh-sheet .is-current > span, html body .sh-sheet .is-current .sh-t, html body .sh-macc.is-current > span, html body .sh-mlink.is-current .sh-t, html body .sh-sheet a[aria-current] .sh-t { color: #fff !important; }
+html body .aw-scrim { z-index: 2147483600 !important; }
+html body span.go { background: none !important; box-shadow: none !important; transform: none !important; }
+</style>
+<script id="away-all">(function(){if(document.getElementById('hero-art-js'))return;var b=document.querySelector('.sh'),f=document.querySelector('footer.site');if(!b||!f||b.dataset.awayBound)return;b.dataset.awayBound=1;var ly=null,a=false,r=0;function ap(){r=0;var y=Math.max(0,scrollY||0),d=ly===null?0:y-ly;ly=y;var p=f.getBoundingClientRect().top<innerHeight*.5;var n=p&&(d>0||(d===0&&a));if(n!==a){a=n;b.classList.toggle('is-away',a);}}addEventListener('scroll',function(){if(!r)r=requestAnimationFrame(ap)},{passive:true});addEventListener('scrollend',ap);})();</script>
 </body>
 </html>
