@@ -3,7 +3,7 @@
 <head>
 <meta name="apple-itunes-app" content="app-id=6778510429" />
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>Terms of Service | Manifest</title>
     <link rel="canonical" href="https://www.jumpmanifest.com/terms/" />
 <meta property="og:url" content="https://www.jumpmanifest.com/terms/" />
@@ -931,5 +931,11 @@ html { background-color: #14110d; overscroll-behavior: none; } body { overscroll
 <style id="tap44">@media (max-width: 760px) { html body footer.site .ft-col a, html body footer.site a { min-height: 44px; display: inline-flex; align-items: center; } html body .sh .sh-burger { width: 44px !important; height: 44px !important; } html body .sh .sh-right > .sh-cta { min-height: 44px !important; } }</style>
 <style id="nav-always">/* 5 Nov 2026 (André): the bar stays on screen all the way down, footer included. */ html body .sh.is-away, html.sh-seen body .sh.li-bar.is-away { opacity: 1 !important; visibility: visible !important; transform: none !important; pointer-events: auto !important; }</style>
 <style id="cta-blue-fix">html body .sh .sh-right > .sh-cta, html body .sh.over-art .sh-right > .sh-cta, html body .sh .sh-mctas .sh-cta { background: linear-gradient(180deg,#2f5cf2 0%,#1439c9 100%) !important; color: #fff !important; box-shadow: rgba(255,255,255,.24) 0 1px 0 inset, rgba(8,18,64,.34) 0 -1px 0 inset, rgba(10,22,80,.14) 0 1px 2px !important; } html body .sh .sh-right > .sh-cta * { color: #fff !important; }</style>
+<div id="top-tint" aria-hidden="true"></div>
+<style id="top-tint-css">/* 5 Nov 2026: Safari (iOS 26) colours the area behind the clock and Dynamic Island from a fixed element on the top edge.
+   This 1px strip is dark while the painting is at the top and white once the light page is under the bar. */
+#top-tint { position: fixed; top: 0; left: 0; right: 0; height: 1px; z-index: 2147483002; pointer-events: none; background: #1b150d; transition: background-color .25s ease; }
+</style>
+<script id="top-tint-js">(function(){var t=document.getElementById('top-tint');var h=document.querySelector('.hero-art, .dkh .dk-head, .nf-art');if(!t)return;var meta=document.querySelector('meta[name="theme-color"]');var dark=null;function set(){var y=Math.max(0,scrollY||0);var b=h?h.getBoundingClientRect().bottom+y:0;var d=!!h&&y<b-40;if(d!==dark){dark=d;var c=d?'#1b150d':'#ffffff';t.style.backgroundColor=c;if(meta)meta.setAttribute('content',c);}}set();addEventListener('scroll',function(){requestAnimationFrame(set)},{passive:true});addEventListener('load',set);})();</script>
 </body>
 </html>

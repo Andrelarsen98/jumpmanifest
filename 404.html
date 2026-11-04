@@ -4,7 +4,7 @@
 <meta name="apple-itunes-app" content="app-id=6778510429" />
 <meta charset="UTF-8" />
 <meta name="robots" content="noindex" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>Page not found · Manifest</title>
 <meta name="theme-color" content="#ffffff" />
 <link rel="icon" type="image/png" href="/assets/app-icon.png?v=3" />
@@ -742,5 +742,11 @@ html body span.go { background: none !important; box-shadow: none !important; tr
 <script id="away-all">(function(){if(document.getElementById('hero-art-js'))return;var b=document.querySelector('.sh'),f=document.querySelector('footer.site');if(!b||!f||b.dataset.awayBound)return;b.dataset.awayBound=1;var ly=null,a=false,r=0;function ap(){r=0;var y=Math.max(0,scrollY||0),d=ly===null?0:y-ly;ly=y;var p=f.getBoundingClientRect().top<innerHeight*.5;var n=p&&(d>0||(d===0&&a));if(n!==a){a=n;b.classList.toggle('is-away',a);}}addEventListener('scroll',function(){if(!r)r=requestAnimationFrame(ap)},{passive:true});addEventListener('scrollend',ap);})();</script>
 <style id="tap44">@media (max-width: 760px) { html body footer.site .ft-col a, html body footer.site a { min-height: 44px; display: inline-flex; align-items: center; } html body .sh .sh-burger { width: 44px !important; height: 44px !important; } html body .sh .sh-right > .sh-cta { min-height: 44px !important; } }</style>
 <style id="nav-always">/* 5 Nov 2026 (André): the bar stays on screen all the way down, footer included. */ html body .sh.is-away, html.sh-seen body .sh.li-bar.is-away { opacity: 1 !important; visibility: visible !important; transform: none !important; pointer-events: auto !important; }</style>
+<div id="top-tint" aria-hidden="true"></div>
+<style id="top-tint-css">/* 5 Nov 2026: Safari (iOS 26) colours the area behind the clock and Dynamic Island from a fixed element on the top edge.
+   This 1px strip is dark while the painting is at the top and white once the light page is under the bar. */
+#top-tint { position: fixed; top: 0; left: 0; right: 0; height: 1px; z-index: 2147483002; pointer-events: none; background: #1b150d; transition: background-color .25s ease; }
+</style>
+<script id="top-tint-js">(function(){var t=document.getElementById('top-tint');var h=document.querySelector('.hero-art, .dkh .dk-head, .nf-art');if(!t)return;var meta=document.querySelector('meta[name="theme-color"]');var dark=null;function set(){var y=Math.max(0,scrollY||0);var b=h?h.getBoundingClientRect().bottom+y:0;var d=!!h&&y<b-40;if(d!==dark){dark=d;var c=d?'#1b150d':'#ffffff';t.style.backgroundColor=c;if(meta)meta.setAttribute('content',c);}}set();addEventListener('scroll',function(){requestAnimationFrame(set)},{passive:true});addEventListener('load',set);})();</script>
 </body>
 </html>

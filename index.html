@@ -2397,7 +2397,7 @@ a.aw-bar .aw-ph{ color: #fff; }
           <a class="desk-link" href="/dropzones/">See Manifest Desk</a>
         </div>
       </div>
-      <figure class="desk-art"><div style="position:relative"><img srcset="/assets/opt/studio-desk-today-800w.04733ab5.webp 800w, /assets/features/studio-desk-today.webp 1600w" style="aspect-ratio: 1600 / 1242" sizes="(max-width: 600px) 95vw, (max-width: 1000px) 810px, 720px" class="win studio-desk" src="/assets/features/studio-desk-today.webp" alt="Manifest Desk Today page for a demo dropzone, showing money charged for jumps today, open loads, the next load countdown, standby and jumper accounts" width="1600" height="1242" loading="lazy" decoding="async" /><img srcset="/assets/opt/mock-home3-320w.0a398738.webp 320w, /assets/opt/mock-home3.a2e7757f.webp 640w" style="aspect-ratio: 640 / 1330" sizes="(max-width: 480px) 28vw, 186px" class="win-phone" src="/assets/opt/mock-home3.a2e7757f.webp" width="640" height="1330" alt="" loading="lazy" decoding="async" /></div></figure>
+      <figure class="desk-art"><div style="position:relative"><img srcset="/assets/opt/studio-desk-today-800w-cut.webp 800w, /assets/features/studio-desk-today-cut.webp 1600w" style="aspect-ratio: 1600 / 1242" sizes="(max-width: 600px) 95vw, (max-width: 1000px) 810px, 720px" class="win studio-desk" src="/assets/features/studio-desk-today-cut.webp" alt="Manifest Desk Today page for a demo dropzone, showing money charged for jumps today, open loads, the next load countdown, standby and jumper accounts" width="1600" height="1242" loading="lazy" decoding="async" /><img srcset="/assets/opt/mock-home3-320w.0a398738.webp 320w, /assets/opt/mock-home3.a2e7757f.webp 640w" style="aspect-ratio: 640 / 1330" sizes="(max-width: 480px) 28vw, 186px" class="win-phone" src="/assets/opt/mock-home3.a2e7757f.webp" width="640" height="1330" alt="" loading="lazy" decoding="async" /></div></figure>
     </div>
     <ol class="desk-pairs">
       <li class="dp"><div class="dp-dir"><span>Desk</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg><span>App</span></div><h3>You call a load.</h3><p>Everyone on it gets the call, then 15, 10 and 5 minutes and boarding, with a live countdown on the Lock Screen.</p></li>
@@ -3379,5 +3379,20 @@ html body span.go { background: none !important; box-shadow: none !important; tr
 </style>
 <script id="aw-replay-play">(function(){var c=document.querySelector('[data-chat]');if(!c)return;function go(){c.querySelectorAll('.aw-map-v video').forEach(function(v){if(v.paused){v.muted=true;var p=v.play();if(p&&p.catch)p.catch(function(){});}});}new MutationObserver(go).observe(c,{childList:true,subtree:true});go();})();</script>
 <style id="cta-blue-fix">html body .sh .sh-right > .sh-cta, html body .sh.over-art .sh-right > .sh-cta, html body .sh .sh-mctas .sh-cta { background: linear-gradient(180deg,#2f5cf2 0%,#1439c9 100%) !important; color: #fff !important; box-shadow: rgba(255,255,255,.24) 0 1px 0 inset, rgba(8,18,64,.34) 0 -1px 0 inset, rgba(10,22,80,.14) 0 1px 2px !important; } html body .sh .sh-right > .sh-cta * { color: #fff !important; }</style>
+<div id="top-tint" aria-hidden="true"></div>
+<style id="top-tint-css">/* 5 Nov 2026: Safari (iOS 26) colours the area behind the clock and Dynamic Island from a fixed element on the top edge.
+   This 1px strip is dark while the painting is at the top and white once the light page is under the bar. */
+#top-tint { position: fixed; top: 0; left: 0; right: 0; height: 1px; z-index: 2147483002; pointer-events: none; background: #1b150d; transition: background-color .25s ease; }
+</style>
+<script id="top-tint-js">(function(){var t=document.getElementById('top-tint');var h=document.querySelector('.hero-art, .dkh .dk-head, .nf-art');if(!t)return;var meta=document.querySelector('meta[name="theme-color"]');var dark=null;function set(){var y=Math.max(0,scrollY||0);var b=h?h.getBoundingClientRect().bottom+y:0;var d=!!h&&y<b-40;if(d!==dark){dark=d;var c=d?'#1b150d':'#ffffff';t.style.backgroundColor=c;if(meta)meta.setAttribute('content',c);}}set();addEventListener('scroll',function(){requestAnimationFrame(set)},{passive:true});addEventListener('load',set);})();</script>
+<style id="desk-art-paint">/* 5 Nov 2026 (André): the Studio Display and iPhone stand on a painting ("Temple in the valley") instead of white. */
+#desk .desk-art { isolation: isolate; border-radius: 22px; overflow: hidden; padding: 44px 6% 40px !important; max-width: none !important;
+  background: #2c2618 url(/assets/paint/07-temple-in-the-valley-1280.webp) center 60% / cover no-repeat; box-shadow: 0 24px 60px -24px rgba(15,23,42,.35); }
+#desk .desk-art::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(70% 60% at 50% 45%, rgba(10,10,14,.0), rgba(10,10,14,.28)); }
+#desk .desk-art img { filter: drop-shadow(0 22px 34px rgba(0,0,0,.45)); }
+@media (min-width: 1100px) { #desk .desk-art { background-image: url(/assets/paint/07-temple-in-the-valley-2560.webp); } }
+@media (max-width: 760px) { #desk .desk-art { margin-left: -20px !important; margin-right: -20px !important; width: auto !important; border-radius: 0; padding: 40px 18px 36px !important; }
+  #desk .desk-art img { filter: none; } }
+</style>
 </body>
 </html>
