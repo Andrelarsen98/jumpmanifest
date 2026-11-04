@@ -87,3 +87,21 @@
     list.addEventListener('toggle', () => { if (cur) { g.classList.add('is-first'); put(cur); void g.offsetWidth; g.classList.remove('is-first'); } }, true);
   });
 })();
+
+/* 4 Nov 2026 audit: subpages had no footer hide, so the header pill covered the footer. Same rule as the home page and ocelli.app:
+   away once the footer's top is above the middle of the screen AND you are scrolling down; back on any scroll up. */
+(function () {
+  if (document.getElementById('hero-art-js')) return;
+  var bar = document.querySelector('.sh'), foot = document.querySelector('footer.site');
+  if (!bar || !foot) return;
+  var lastY = null, away = false, raf = 0, timer = 0;
+  function apply() {
+    var y = Math.max(0, window.scrollY || 0), d = lastY === null ? 0 : y - lastY; lastY = y;
+    var past = foot.getBoundingClientRect().top < innerHeight * .5;
+    var next = past && (d > 0 || (d === 0 && away));
+    if (next !== away) { away = next; bar.classList.toggle('is-away', away); }
+  }
+  function run() { if (raf) { cancelAnimationFrame(raf); raf = 0; } if (timer) { clearTimeout(timer); timer = 0; } apply(); }
+  addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(run); if (!timer) timer = setTimeout(run, 250); }, { passive: true });
+  addEventListener('scrollend', run);
+})();

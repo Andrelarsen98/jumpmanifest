@@ -366,5 +366,19 @@ span.go > svg{background:#050505!important}
 .vs-yes{background:none!important;color:#30D158!important;width:20px!important;height:20px!important}
 .vs-yes svg{width:16px!important;height:16px!important;stroke-width:2.6}
 </style>
+<style id="audit-fixes">/* 4 Nov 2026 audit. Continue / Finish / Back to Manifest: the site's blue button, readable in every state (hover was black on black).
+   The field you are typing in gets a white ring; a field with an error keeps its red border even while focused. */
+html body .go, html body a.go, html body button.go { background: linear-gradient(180deg, #2f5cf2 0%, #1439c9 100%) !important; color: #fff !important;
+  box-shadow: rgba(255,255,255,.24) 0 1px 0 inset, rgba(8,18,64,.34) 0 -1px 0 inset, rgba(10,22,80,.14) 0 1px 2px, rgba(10,22,80,.12) 0 2px 4px, rgba(10,22,80,.1) 0 4px 8px !important; }
+html body .go *, html body .go svg { color: #fff !important; }
+html body span.go > svg { background: transparent !important; }
+@media (hover: hover) { html body .go:not([disabled]):hover, html body a.go:hover { background: linear-gradient(180deg, #3a63f2 0%, #1a45e0 100%) !important; color: #fff !important; } }
+html body .go:not([disabled]):active { background: #1a44dc !important; }
+html body .go[disabled] { opacity: .55; }
+html body input:focus, html body textarea:focus, html body select:focus { outline: 2px solid #fff !important; outline-offset: 0 !important; border-color: #fff !important; }
+html body :is(input, textarea, select)[aria-invalid="true"], html body :is(input, textarea, select)[aria-invalid="true"]:focus { border-color: #DC2626 !important; outline-color: #DC2626 !important; }
+html body input:-webkit-autofill, html body input:-webkit-autofill:hover, html body input:-webkit-autofill:focus { -webkit-text-fill-color: #F1F2F5 !important; -webkit-box-shadow: 0 0 0 1000px #1A1B20 inset !important; caret-color: #F1F2F5; }
+html { color-scheme: dark; }
+</style>
 </body>
 </html>

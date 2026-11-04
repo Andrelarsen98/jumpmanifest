@@ -471,3 +471,24 @@ html body footer.site, html body.dk footer.site { justify-content: flex-end !imp
 @media (max-width: 720px) {
   html body.dk footer.site .ft-col:not(.x-open) a, html body.dk footer.site .ft-col.open a { display: block !important; padding: 6px 0 !important; min-height: 28px !important; line-height: 20.8px !important; font-size: 13px !important; }
 }
+
+/* ---------- Audit fixes, 4 Nov 2026 (10-agent check, Mac + iPhone). ---------- */
+/* Menus: the dropdown card and the phone sheet are solid, so page text never shows through them. */
+html body .sh-card, html body .sh-panel .sh-card { background: #23242A !important; }
+/* The drop-in animation left an identity transform on the bar for the whole first visit, which switches off its frosted blur. */
+html body .sh.li-bar { animation-fill-mode: backwards !important; }
+/* Owner bar ("This page is for dropzone owners..."): one rule for every page that has it, and it steps aside while the phone menu is open. */
+html body.dk .ownerbar { position: absolute; top: 66px; left: 0; right: 0; z-index: 2; padding: 0 20px; background: transparent; font-size: 13px; line-height: 20px; color: #fff; text-shadow: 0 1px 10px rgba(6,10,40,.7); }
+html body.dk .ownerbar a { color: #fff; }
+html body:has(.sh-burger[aria-expanded="true"]) .ownerbar { visibility: hidden; }
+/* Page-head eyebrow is white on the painting (a stronger grey rule was winning). */
+html body.dk #main .dk-head .dk-eyebrow { color: #fff; }
+/* Two phones side by side keep their own shapes (the shorter one was stretched to the taller one). */
+html body.dk #main .dk-split-v { align-items: center; }
+/* Phones: drop shadows on the phone screenshots cost a stutter and paint a black box in Safari; they go on phones. */
+@media (max-width: 760px) { html body.dk #main :is(.dk-ph, .dk-wide-ph, .dk-studio, .x-hand) { filter: none !important; } }
+/* Header steps aside for the footer on every page, as on the home page (Ocelli's .nav[data-away]). */
+html body .sh.is-away { opacity: 0 !important; visibility: hidden !important; transform: translateY(calc(-100% - 8px)) !important; pointer-events: none !important;
+  transition: opacity .55s cubic-bezier(.65,0,.35,1), transform .55s cubic-bezier(.65,0,.35,1), visibility linear .55s !important; }
+/* Phones: the burger and the header button reach Apple's 44 px tap size. */
+@media (max-width: 760px) { html body .sh .sh-burger { width: 44px !important; height: 44px !important; } html body .sh .sh-right > .sh-cta { height: 44px !important; } }
