@@ -2692,7 +2692,39 @@ body:has(.hero-art) { padding-top: 0 !important; }
       lastY = y;
     };
     const on = () => { if (!ticking) ticking = requestAnimationFrame(update); };
-    update(); addEventListener('scroll', on, { passive: true }); addEventListener('resize', on);
+    // PHONES: ocelli.app's gate (read from its nav.js, 4 Nov 2026). No bar over the painting at all; it fades in once the
+    // painting's bottom edge has left the top of the screen and fades out on the way back. 14px dead band on closing, always
+    // closed at scrollY 0. The painting's bottom is a document offset taken once (and again on resize), never per frame.
+    const phone = matchMedia('(max-width: 720px)');
+    if (phone.matches) {
+      let heroBottom = 0, open = null, raf = 0, timer = 0, lastP = null, awayP = false;
+      const sheetOpen = () => !!document.querySelector('.sh-burger[aria-expanded="true"]');
+      const measure = () => { heroBottom = next.getBoundingClientRect().top - parseFloat(getComputedStyle(next).marginTop) + scrollY; };
+      const apply = () => {
+        const y = Math.max(0, scrollY || 0);
+        bar.classList.remove('over-art', 'sh-hide');
+        const bottom = heroBottom - y;
+        const want = sheetOpen() ? true : (y === 0 ? false : (open === true ? bottom < 14 : bottom <= 0));
+        if (want !== open) { open = want; bar.classList.toggle('gate-closed', !want); }
+        if (foot) {
+          const d = lastP === null ? 0 : y - lastP; lastP = y;
+          const past = foot.getBoundingClientRect().top < innerHeight * .5;
+          const nextAway = past && (d > 0 || (d === 0 && awayP));
+          if (nextAway !== awayP) { awayP = nextAway; bar.classList.toggle('is-away', awayP); }
+        }
+      };
+      const run = () => { if (raf) { cancelAnimationFrame(raf); raf = 0; } if (timer) { clearTimeout(timer); timer = 0; } apply(); };
+      const onP = () => { if (!raf) raf = requestAnimationFrame(run); if (!timer) timer = setTimeout(run, 250); };
+      const again = () => { measure(); apply(); };
+      measure(); apply();
+      addEventListener('scroll', onP, { passive: true });
+      addEventListener('scrollend', run);
+      addEventListener('resize', again); addEventListener('pageshow', again); addEventListener('load', again);
+      document.addEventListener('visibilitychange', () => { if (!document.hidden) run(); });
+      if ('ResizeObserver' in window) new ResizeObserver(again).observe(document.querySelector('.hero-art'));
+    } else {
+      update(); addEventListener('scroll', on, { passive: true }); addEventListener('resize', on);
+    }
   }
   // THE WINDOW. Same schedule as Ocelli's panel, read from its during.js: a 27.4 s loop that only
   // plays while the window is really on screen and the tab is in front. The first click on a tab
@@ -4103,6 +4135,22 @@ html body footer.site, html body.dk footer.site { justify-content: flex-end !imp
   html body.dk footer.site .ft-col a { padding: 6px 0 !important; min-height: 28px !important; line-height: 16px !important; font-size: 13px !important; }
   html body.dk footer.site .ft-base { width: calc(100vw - 44px) !important; }
 }
+</style>
+<style id="phone-gate">/* 4 Nov 2026 (André: "the pillars on mobile scroll over the painting, match exact behaviour"; "the nav needs to fade in and out
+   much better on mobile"). ocelli.app on phones: the hero is pinned (sticky) and the page rises over it, the first section pulling up
+   32px; the header is gated: hidden over the hero, opacity .34s + a 10px drop .42s cubic-bezier(.32,.72,0,1) on the way in,
+   .22s on the way out, and it steps aside for the footer (.55s). Numbers from its site.css. */
+@media (max-width: 720px) {
+  .hero-art { position: sticky !important; top: 0; z-index: 0; }
+  #main > :not(.hero-art) { position: relative; z-index: 1; background-color: #1A1B20; }
+  #art-next { margin-top: -32px; }
+  html .sh.li-bar, html.sh-seen .sh.li-bar { animation: none !important; visibility: visible; transition: opacity .34s, transform .42s cubic-bezier(.32,.72,0,1), visibility 0s !important; }
+  html .sh.li-bar.gate-closed, html.sh-seen .sh.li-bar.gate-closed { opacity: 0 !important; visibility: hidden !important; transform: translateY(-10px) !important; pointer-events: none !important;
+    transition: opacity .22s, transform .22s, visibility linear .22s !important; }
+  html .sh.li-bar.is-away, html.sh-seen .sh.li-bar.is-away { opacity: 0 !important; visibility: hidden !important; transform: translateY(calc(-100% - 8px)) !important; pointer-events: none !important;
+    transition: opacity .55s cubic-bezier(.65,0,.35,1), transform .55s cubic-bezier(.65,0,.35,1), visibility linear .55s !important; }
+}
+@media (max-width: 720px) and (prefers-reduced-motion: reduce) { html .sh.li-bar, html .sh.li-bar.gate-closed, html .sh.li-bar.is-away { transition: opacity .01s, visibility 0s !important; transform: none !important; } }
 </style>
 </body>
 </html>
