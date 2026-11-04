@@ -2706,7 +2706,8 @@ body:has(.hero-art) { padding-top: 0 !important; }
     // closed at scrollY 0. The painting's bottom is a document offset taken once (and again on resize), never per frame.
     const phone = matchMedia('(max-width: 720px)');
     if (phone.matches) {
-      let heroBottom = 0, open = null, raf = 0, timer = 0, lastP = null, awayP = false;
+      let heroBottom = 0, open = null, raf = 0, timer = 0, lastP = null, awayP = false, heroOff = false;
+      const heroEl = document.querySelector('.hero-art');
       const sheetOpen = () => !!document.querySelector('.sh-burger[aria-expanded="true"]');
       const measure = () => { heroBottom = next.getBoundingClientRect().top - parseFloat(getComputedStyle(next).marginTop) + scrollY; };
       const apply = () => {
@@ -2715,6 +2716,10 @@ body:has(.hero-art) { padding-top: 0 !important; }
         const bottom = heroBottom - y;
         const want = sheetOpen() ? true : (y === 0 ? false : (open === true ? bottom < 14 : bottom <= 0));
         if (want !== open) { open = want; bar.classList.toggle('gate-closed', !want); }
+        // Once the page fully covers the pinned painting, the painting stops drawing: nothing can bleed through a hairline
+        // between sections and the phone stops compositing a full-screen layer nobody sees. Back 120px before it is uncovered.
+        const covered = y > heroBottom + 120;
+        if (covered !== heroOff) { heroOff = covered; heroEl.style.visibility = covered ? 'hidden' : ''; }
         if (foot) {
           const d = lastP === null ? 0 : y - lastP; lastP = y;
           const past = foot.getBoundingClientRect().top < innerHeight * .5;
@@ -4151,7 +4156,7 @@ html body footer.site, html body.dk footer.site { justify-content: flex-end !imp
    .22s on the way out, and it steps aside for the footer (.55s). Numbers from its site.css. */
 @media (max-width: 720px) {
   .hero-art { position: sticky !important; top: 0; z-index: 0; }
-  #main > :not(.hero-art) { position: relative; z-index: 1; background-color: #1A1B20; }
+  #main > :not(.hero-art) { position: relative; z-index: 1; background-color: #1A1B20; box-shadow: 0 -1px 0 #1A1B20, 0 1px 0 #1A1B20; }
   #art-next { margin-top: -32px; }
   html .sh.li-bar, html.sh-seen .sh.li-bar { animation: none !important; visibility: visible; transition: opacity .34s, transform .42s cubic-bezier(.32,.72,0,1), visibility 0s !important; }
   html .sh.li-bar.gate-closed, html.sh-seen .sh.li-bar.gate-closed { opacity: 0 !important; visibility: hidden !important; transform: translateY(-10px) !important; pointer-events: none !important;
