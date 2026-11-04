@@ -1823,7 +1823,7 @@ body:has(.hero-art) { padding-top: 0 !important; }
 
   <div class="art-copy">
     <a class="art-icon-a" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="Manifest on the App Store"><img class="art-icon" src="/assets/hero/app-icon.png" width="49" height="49" alt="" /></a>
-    <h1>The app for skydivers.<br />The system for dropzones.</h1>
+    <h1>Your load. Your jump.<br />Flown back in 3D.</h1>
     <p class="art-lede">Manifest is the iPhone app for live dropzone loads and 3D jump replay. Dropzones run on <a href="/dropzones/">Manifest Desk</a>.</p>
     <a class="art-store" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="Download Manifest on the App Store"><img src="assets/appstore-badge.svg?v=1" alt="Download on the App Store" /></a>
     <p class="hero-note art-note">Free to download on iPhone. Android is on the way. <a data-android href="#android">Tell me the day it is out.</a></p>
@@ -1841,22 +1841,109 @@ body:has(.hero-art) { padding-top: 0 !important; }
   </div>
 </section>
 
-<section class="hb" id="replay">
-  <div class="hb-t">
-    <h2 class="hb-h">Your jump. Flown back in 3D.</h2>
-    <p class="hb-l">Put your phone in your pocket and jump. Manifest replays the whole flight over the real terrain you fell through, from the climb to the landing.</p>
-    <p class="hb-n">Free to record and replay.</p>
-  </div>
-  <div class="hb-plate hb-plate-replay">
-    <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
-    <img class="hb-paint" src="/assets/paint/02-rose-parterre-1280.webp" srcset="/assets/paint/02-rose-parterre-1280.webp 1280w, /assets/paint/02-rose-parterre-2560.webp 2560w" sizes="(max-width: 760px) 100vw, 1240px" alt="" loading="lazy" decoding="async" />
-    <div class="hb-phone vbox">
-      <video data-lazy loop muted playsinline preload="none" poster="/assets/opt/jumptrack3-poster.bcbd71bb.webp" width="720" height="1280" aria-label="A skydive replayed in 3D over real terrain, from exit to landing">
-        <source data-src="/assets/opt/jumptrack3.210f3465.mp4" type="video/mp4" />
-      </video>
+<!-- Manifest replay band. Drop in right under the hero. Media: assets/replay/jump-replay.mp4 + jump-replay-poster.webp (adjust the two paths below). -->
+<section class="rb" id="replay" aria-labelledby="rb-title">
+  <style id="replay-band">
+    .rb{--rb-page:#1A1B20;--rb-card:#23242A;--rb-text:#F1F2F5;--rb-soft:#D1D1D6;--rb-line:#34353C;
+      background:var(--rb-page);color:var(--rb-text);font-family:"Geist",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      padding:48px 16px;box-sizing:border-box;overflow:hidden}
+    .rb *,.rb *::before,.rb *::after{box-sizing:border-box}
+    .rb-plate{max-width:1180px;margin:0 auto;background:var(--rb-card);border-radius:22px;
+      display:grid;grid-template-columns:1fr;gap:32px;padding:36px 20px 20px;overflow:hidden}
+    .rb-copy{max-width:460px}
+    .rb-eyebrow{margin:0 0 12px;font-size:14px;letter-spacing:.02em;color:var(--rb-soft)}
+    .rb-title{margin:0;font-weight:400;font-size:clamp(34px,8.4vw,56px);line-height:1.04;letter-spacing:-.02em}
+    .rb-lede{margin:16px 0 0;font-size:17px;line-height:1.5;color:var(--rb-soft)}
+    .rb-steps{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+    .rb-step{border-radius:14px;background:var(--rb-page);padding:12px 14px;transition:background-color .35s ease,color .35s ease}
+    .rb-step b{display:block;font-weight:500;font-size:15px;color:var(--rb-text)}
+    .rb-step span{display:block;margin-top:2px;font-size:13px;color:var(--rb-soft)}
+    .rb-step.is-on{background:#F1F2F5}
+    .rb-step.is-on b,.rb-step.is-on span{color:#1A1B20}
+    .rb-cta{display:inline-flex;align-items:center;justify-content:center;margin-top:28px;min-height:48px;padding:0 24px;
+      border-radius:999px;background:linear-gradient(180deg,#2f5cf2,#1439c9);color:#fff;font-size:16px;font-weight:500;text-decoration:none}
+    .rb-cta:focus-visible{outline:2px solid #fff;outline-offset:3px}
+    .rb-more{display:inline-block;margin:28px 0 0 20px;font-size:16px;color:var(--rb-text);text-decoration:none}
+    .rb-more:hover{text-decoration:underline}
+    .rb-stage{position:relative;display:flex;flex-direction:column;align-items:center;gap:12px;min-width:0}
+    .rb-phone{position:relative;width:min(100%,300px);aspect-ratio:574/1188}
+    .rb-phone video,.rb-phone img{display:block;width:100%;height:100%;object-fit:cover;border-radius:13.5%/6.5%;background:var(--rb-card)}
+    .rb-toggle{align-self:center;width:40px;height:40px;border:0;border-radius:50%;
+      background:var(--rb-page);color:#F1F2F5;display:grid;place-items:center;cursor:pointer}
+    .rb-toggle:focus-visible{outline:2px solid #fff;outline-offset:2px}
+    .rb-toggle svg{width:16px;height:16px;fill:currentColor}
+    .rb-toggle .rb-i-play{display:none}
+    .rb.is-paused .rb-toggle .rb-i-play{display:block}
+    .rb.is-paused .rb-toggle .rb-i-pause{display:none}
+    @media (min-width:900px){
+      .rb{padding:72px 24px}
+      .rb-plate{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:40px;padding:0 64px}
+      .rb-copy{padding:64px 0}
+      .rb-stage{padding:48px 0}
+      .rb-phone{width:min(100%,320px)}
+    }
+    @media (prefers-reduced-motion:reduce){.rb-step{transition:none}}
+  </style>
+
+  <div class="rb-plate">
+    <div class="rb-copy">
+      <p class="rb-eyebrow">A real jump, Skydive Switzerland</p>
+      <h2 class="rb-title" id="rb-title">Your whole jump,<br> in&nbsp;3D.</h2>
+      <p class="rb-lede">From the climb to touchdown. Manifest rebuilds every skydive on real terrain, so you can fly it again.</p>
+      <ol class="rb-steps" aria-label="Jump timeline">
+        <li class="rb-step" data-from="3.5" data-to="4.9"><b>Exit</b><span>12,800 ft</span></li>
+        <li class="rb-step" data-from="4.9" data-to="8.8"><b>Freefall</b><span>51 s</span></li>
+        <li class="rb-step" data-from="8.8" data-to="12.5"><b>Canopy</b><span>Open at 2,550 ft</span></li>
+        <li class="rb-step" data-from="12.5" data-to="99"><b>Landed</b><span>Back on the DZ</span></li>
+      </ol>
+      <a class="rb-cta" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429">Download</a>
+      <a class="rb-more" href="/skydive-3d-tracking/">More about 3D replay</a>
+    </div>
+    <div class="rb-stage">
+      <div class="rb-phone">
+        <video class="rb-video" muted playsinline loop autoplay preload="auto"
+          poster="/assets/opt/jump-replay-poster.webp" aria-label="3D replay of a real skydive: climb, exit, freefall, canopy and landing">
+          <source src="/assets/opt/jump-replay.mp4" type="video/mp4">
+        </video>
+      </div>
+      <button class="rb-toggle" type="button" aria-label="Pause replay">
+          <svg class="rb-i-pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="2" width="3.5" height="12" rx="1"/><rect x="9.5" y="2" width="3.5" height="12" rx="1"/></svg>
+          <svg class="rb-i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11a.8.8 0 0 0 1.2.7l9-5.5a.8.8 0 0 0 0-1.4l-9-5.5A.8.8 0 0 0 4 2.5z"/></svg>
+      </button>
     </div>
   </div>
+
+  <script>
+  (function(){
+    var root=document.getElementById('replay'); if(!root) return;
+    var v=root.querySelector('.rb-video'), btn=root.querySelector('.rb-toggle');
+    var steps=[].slice.call(root.querySelectorAll('.rb-step'));
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)');
+    var userPaused=false, visible=false;
+    function setPausedUI(p){root.classList.toggle('is-paused',p);btn.setAttribute('aria-label',p?'Play replay':'Pause replay');}
+    function tryPlay(){var p=v.play(); if(p&&p.catch) p.catch(function(){setPausedUI(true);});}
+    function sync(){
+      if(visible&&!userPaused) tryPlay(); else v.pause();
+    }
+    if(reduce&&reduce.matches){userPaused=true;v.removeAttribute('autoplay');v.pause();}
+    v.addEventListener('play',function(){setPausedUI(false);});
+    v.addEventListener('pause',function(){setPausedUI(true);});
+    btn.addEventListener('click',function(){userPaused=!v.paused?true:false; if(userPaused) v.pause(); else tryPlay();});
+    function mark(){
+      var t=v.currentTime;
+      for(var j=0;j<steps.length;j++){
+        steps[j].classList.toggle('is-on',t>=parseFloat(steps[j].dataset.from)&&t<parseFloat(steps[j].dataset.to));
+      }
+    }
+    v.addEventListener('timeupdate',mark);
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){visible=es[0].isIntersecting;sync();},{threshold:0.25}).observe(v);
+    } else { visible=true; sync(); }
+    document.addEventListener('visibilitychange',function(){ if(document.hidden) v.pause(); else sync(); });
+  })();
+  </script>
 </section>
+
 
 <section class="hb hb-day" id="jump-day">
   <div class="hb-t">
@@ -1981,6 +2068,71 @@ body:has(.hero-art) { padding-top: 0 !important; }
     <div class="hb-ctas"><a class="hb-btn" href="/get-started/?demo">Book a 20-minute demo</a><a class="hb-a" href="/dropzones/">See Manifest Desk</a></div>
   </div>
 </section>
+
+<!-- FILM BAND (drop-in). Footage: "Free Fall Safety Procedures" (1966), U.S. National
+     Archives, public domain. Graded warm and soft to sit next to the paintings.
+     Media paths are relative: film-band.mp4 + film-band.jpg next to the page,
+     change them to /assets/... when it moves into the site. -->
+<style id="film-band">
+  .fb { --fb-ink: #F1F2F5; --fb-sub: #D1D1D6; --fb-dim: #8E8E93;
+        padding: 96px 16px; font-family: "Geist", system-ui, -apple-system, sans-serif; color: var(--fb-ink); }
+  .fb * { box-sizing: border-box; }
+  .fb-plate { position: relative; isolation: isolate; max-width: 960px; margin: 0 auto; aspect-ratio: 4 / 3;
+              border-radius: 22px; overflow: hidden; background: #2A2724 url(/assets/video/film-band.jpg) center / cover;
+              box-shadow: 0 30px 80px -30px rgba(0,0,0,.6); }
+  .fb-vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; z-index: -1; }
+  /* The ink: white with difference reads dark on the bright sky, and the same words in
+     #808080 with saturation on top strip any tint, so the letters stay grey to black. */
+  /* No z-index here: a stacking context on this wrapper would cut the blend off from the video. */
+  .fb-ink { position: absolute; inset: 0; display: grid; place-items: center; padding: 0 24px; pointer-events: none; }
+  .fb-ink h2 { grid-area: 1 / 1; margin: 0; text-align: center; font-weight: 400; font-size: 60px; line-height: 1.05;
+               letter-spacing: -.02em; text-wrap: balance; color: #fff; mix-blend-mode: difference; }
+  .fb-ink h2.fb-grey { color: #808080; mix-blend-mode: saturation; }
+  .fb-copy { max-width: 960px; margin: 28px auto 0; text-align: center; }
+  .fb-line { margin: 0; font-size: 21px; line-height: 1.45; font-weight: 400; color: var(--fb-sub); text-wrap: balance; }
+  .fb-credit { margin: 10px 0 0; font-size: 13px; line-height: 1.4; color: var(--fb-dim); letter-spacing: .01em; }
+  @media (max-width: 600px) {
+    .fb { padding: 64px 16px; }
+    .fb-ink h2 { font-size: 32px; }
+    .fb-line { font-size: 17px; }
+    .fb-copy { margin-top: 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .fb-vid { display: none; } }
+</style>
+
+<section class="fb" aria-label="Skydiving film from 1966">
+  <div class="fb-plate">
+    <video class="fb-vid" data-src="/assets/video/film-band.mp4" poster="/assets/video/film-band.jpg" autoplay muted loop playsinline preload="none" aria-hidden="true"></video>
+    <div class="fb-ink">
+      <h2>Same sky since 1966.</h2>
+      <h2 class="fb-grey" aria-hidden="true">Same sky since 1966.</h2>
+    </div>
+  </div>
+  <div class="fb-copy">
+    <p class="fb-line">Canopies got smaller and rigs got lighter. The count in the door is the same.</p>
+    <p class="fb-credit">Free Fall Safety Procedures, 1966. U.S. National Archives.</p>
+  </div>
+</section>
+
+<script>
+(function () {
+  var vids = document.querySelectorAll('.fb-vid');
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (still.matches) return; // poster only, the file is never fetched
+  function load(v) { if (!v.src && v.dataset.src) { v.src = v.dataset.src; } }
+  function play(v) { load(v); var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+  if (!('IntersectionObserver' in window)) { vids.forEach(play); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { play(e.target); } else if (e.target.src) { e.target.pause(); }
+    });
+  }, { rootMargin: '200px 0px' });
+  vids.forEach(function (v) { v.muted = true; io.observe(v); });
+  still.addEventListener && still.addEventListener('change', function (m) {
+    if (m.matches) vids.forEach(function (v) { v.pause(); });
+  });
+})();
+</script>
 
 <section class="hb" id="reviews">
   <div class="hb-t"><h2 class="hb-h">What jumpers say.</h2><p class="hb-l">Word for word, from the App Store.</p></div>
@@ -4327,5 +4479,6 @@ body { overscroll-behavior: none; overflow-x: clip; }
 .arch-ph-v video { display: block; width: 100%; height: 100%; object-fit: cover; -webkit-mask: url(/assets/opt/liveloads-mask.png) 0 0 / 100% 100% no-repeat; mask: url(/assets/opt/liveloads-mask.png) 0 0 / 100% 100% no-repeat; }
 @media (max-width: 760px) { .arch-ph { width: 200px; filter: none; } }
 </style>
+<style id="rb-fix">html body #main .rb h2 { color: #F1F2F5 !important; text-align: left; margin-left: 0; max-width: none; } </style>
 </body>
 </html>
