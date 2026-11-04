@@ -2085,5 +2085,16 @@ html body span.go { background: none !important; box-shadow: none !important; tr
   #today .dk-plate, #today .dz-cap { display: none !important; }
 }
 </style>
+<style id="dz-phone-front2">/* 5 Nov 2026: on a real iPhone the screen is shorter than in my test, and the words (placed from the bottom) ran into the devices.
+   Now the devices and the words stack in order, the painting fills at least one full screen behind them, and nothing can overlap. */
+@media (max-width: 760px) {
+  .dkh .dk-head { height: auto !important; min-height: var(--hero-h, 100svh) !important; justify-content: center !important;
+    padding: calc(env(safe-area-inset-top, 0px) + 84px) 18px 40px !important; gap: 0; }
+  .dkh .dk-head > picture, .dkh .dk-head > picture img, .dkh .dk-head-art { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; object-position: 50% 0 !important; }
+  .dzh-dev { position: relative !important; top: auto !important; left: auto !important; right: auto !important; width: 100%; height: auto !important; aspect-ratio: 1600 / 1100; margin: 0 0 22px; flex: none; }
+  .dzh-studio { left: 50% !important; top: 0 !important; width: 80% !important; transform: translateX(-56%) !important; }
+  .dzh-phone { right: 3% !important; top: auto !important; bottom: 0 !important; width: 25% !important; }
+}
+</style>
 </body>
 </html>
