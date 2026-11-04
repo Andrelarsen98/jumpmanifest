@@ -1882,7 +1882,7 @@ a.aw-bar .aw-ph{ color: #fff; }
         <div class="aw-pane" role="tabpanel" id="aw-pane-2" aria-labelledby="aw-tab-2" aria-hidden="true">
           <div class="aw-chat" data-chat>
                 <p class="aw-q is-in">Load 14 &middot; Skydive Dubai, Desert Campus</p>
-                <div class="aw-a aw-replay is-in"><span class="aw-map" role="img" aria-label="A jump replayed in 3D over real terrain"></span><span class="aw-stats"><span class="aw-stat is-in"><small>Exit</small><b>13.5 k ft</b></span><span class="aw-stat is-in"><small>Freefall</small><b>52 sec</b></span><span class="aw-stat is-in"><small>Top speed</small><b>120 mph</b></span></span></div>
+                <div class="aw-a aw-replay is-in"><span class="aw-map aw-map-v" role="img" aria-label="A jump replayed in 3D over real terrain"><video src="/assets/opt/replay-square.mp4" poster="/assets/opt/replay-square-poster.jpg" muted autoplay loop playsinline preload="none"></video></span><span class="aw-stats"><span class="aw-stat is-in"><small>Exit</small><b>13.5 k ft</b></span><span class="aw-stat is-in"><small>Freefall</small><b>52 sec</b></span><span class="aw-stat is-in"><small>Top speed</small><b>120 mph</b></span></span></div>
           </div>
         </div>
       </div>
@@ -3366,5 +3366,18 @@ html body span.go { background: none !important; box-shadow: none !important; tr
 }
 </style>
 <script id="hero-h">(function(){if(!matchMedia('(max-width: 760px)').matches)return;var r=document.documentElement,w=0;function set(){var h=Math.max(560,Math.round(window.innerHeight));r.style.setProperty('--hero-h',h+'px');r.classList.toggle('hero-short',h<=720);w=innerWidth;}set();addEventListener('orientationchange',function(){setTimeout(set,300)});addEventListener('resize',function(){if(Math.abs(innerWidth-w)>40)set();});})();</script>
+<style id="aw-replay-video">/* 5 Nov 2026 (André): the 3D replay tab plays the real replay, square on the left, the numbers on the right, filling the card. */
+.aw-map.aw-map-v { position: relative; overflow: hidden; background: #0b1020 !important; }
+.aw-map-v video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 760px) {
+  .aw-replay { gap: 18px !important; align-items: center !important; }
+  .aw-map.aw-map-v { width: 168px !important; height: 168px !important; flex: none; border-radius: 12px !important; }
+  .aw-stats { gap: 10px !important; }
+  .aw-stat small { font-size: 11px !important; line-height: 14px !important; }
+  .aw-stat b { font-size: 20px !important; line-height: 24px !important; }
+}
+</style>
+<script id="aw-replay-play">(function(){var c=document.querySelector('[data-chat]');if(!c)return;function go(){c.querySelectorAll('.aw-map-v video').forEach(function(v){if(v.paused){v.muted=true;var p=v.play();if(p&&p.catch)p.catch(function(){});}});}new MutationObserver(go).observe(c,{childList:true,subtree:true});go();})();</script>
+<style id="cta-blue-fix">html body .sh .sh-right > .sh-cta, html body .sh.over-art .sh-right > .sh-cta, html body .sh .sh-mctas .sh-cta { background: linear-gradient(180deg,#2f5cf2 0%,#1439c9 100%) !important; color: #fff !important; box-shadow: rgba(255,255,255,.24) 0 1px 0 inset, rgba(8,18,64,.34) 0 -1px 0 inset, rgba(10,22,80,.14) 0 1px 2px !important; } html body .sh .sh-right > .sh-cta * { color: #fff !important; }</style>
 </body>
 </html>
