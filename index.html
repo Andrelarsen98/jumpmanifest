@@ -2523,6 +2523,7 @@ a.aw-bar .aw-ph{ color: #fff; }
 </main>
 
 <footer class="site">
+<div class="ftp-art" aria-hidden="true"><picture><source media="(max-width: 760px)" srcset="/assets/paint/06-sun-behind-the-hill-phone-828.webp" /><img src="/assets/paint/06-sun-behind-the-hill-2560.webp" alt="" loading="lazy" decoding="async" /></picture></div>
   <div class="ft">
     <div class="ft-brand">
       <a class="wordmark" href="/" aria-label="Manifest home"><img class="lockup" src="/assets/manifest-lockup-white.svg?v=6" alt="Manifest" /></a>
@@ -3199,5 +3200,17 @@ span.go > svg{background:#050505!important}
 @media (max-width: 720px) and (prefers-reduced-motion: reduce) { html .sh.li-bar, html .sh.li-bar.gate-closed, html .sh.li-bar.is-away { transition: opacity .01s, visibility 0s !important; transform: none !important; } }
 </style>
 <style id="phone-noshadow">/* Safari paints a black box over the hero while any drop-shadow filter sits on the page: no filters on phones. */ @media (max-width: 760px) { img.carousel-phone, img.win-phone, .dzg-halo { filter: none !important; } }</style>
+<style id="ft-painting">/* 4 Nov 2026 (André): the previous live footer, on a painting ("Sun behind the hill"). The painting fills the footer; its top dissolves
+   out of the page above, a dark veil keeps every line readable, and it runs on under Safari's bar to the very end. */
+footer.site { position: relative !important; isolation: isolate; overflow: hidden; background: #14110d !important; box-shadow: none !important; border-top: 0 !important; margin-top: 0 !important; }
+footer.site > :not(.ftp-art) { position: relative; z-index: 1; }
+.ftp-art { position: absolute; inset: 0; z-index: 0; pointer-events: none; -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 120px); mask-image: linear-gradient(to bottom, transparent 0, #000 120px); }
+.ftp-art img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 70%; display: block; }
+.ftp-art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(14,12,10,.86) 0, rgba(14,12,10,.62) 45%, rgba(14,12,10,.38) 100%); }
+footer.site, footer.site p, footer.site a, footer.site span, footer.site small { color: rgba(255,255,255,.82); }
+footer.site h3, footer.site b, footer.site strong { color: #fff; }
+html { background-color: #14110d; overscroll-behavior: none; } body { overscroll-behavior: none; }
+@media (max-width: 760px) { footer.site { padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 128px) !important; } .ftp-art img { object-position: 50% 100%; } }
+</style>
 </body>
 </html>
