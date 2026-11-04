@@ -4152,5 +4152,32 @@ html body footer.site, html body.dk footer.site { justify-content: flex-end !imp
 }
 @media (max-width: 720px) and (prefers-reduced-motion: reduce) { html .sh.li-bar, html .sh.li-bar.gate-closed, html .sh.li-bar.is-away { transition: opacity .01s, visibility 0s !important; transform: none !important; } }
 </style>
+<style id="phone-hero-2">/* 4 Nov 2026 (André, on his iPhone): show more of the painting, the logo and words further down on it, a bigger and longer
+   demo window, and no flashing when scrolling back up fast. */
+@media (max-width: 760px) {
+  /* The full screen is the painting: the iPhone cut is 1290x2796 (0.461), a phone screen ~0.46, so the whole picture shows. */
+  .hero-art { height: 100svh !important; min-height: 600px !important; --win-h: calc(340px + env(safe-area-inset-top)) !important; }
+  .art-win { width: calc(100% - 16px) !important; --feed-h: 206px !important; --map-w: 200px !important; --map-h: 140px !important; --map-y: -51px !important; }
+  .art-win .la-row, .art-win .la-line { display: flex !important; } .art-win .la-line { display: block !important; }
+  /* Logo, headline and badge sit low on the painting, clear of Safari's bottom bar. */
+  .art-copy { top: auto !important; bottom: calc(env(safe-area-inset-bottom) + 72px) !important; }
+  /* Flashing fix: the pinned painting gets its own layer that stays decoded, any gap shows the painting's own colour instead of
+     black, and the window drops its live blur (a 34px backdrop blur re-rendered over the pinned painting on every frame of a fast scroll). */
+  .hero-art { will-change: transform; }
+  .art-bg { background-color: #2c2618 !important; }
+  .art-bg img { transform: translateZ(0); -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+  .art-win { -webkit-backdrop-filter: none !important; backdrop-filter: none !important;
+    background: linear-gradient(180deg, #000 0, #000 38px, rgba(0,0,0,.82) 30%, rgba(0,0,0,.58) 62%, rgba(0,0,0,.46) 100%) !important; }
+}
+@media (max-width: 760px) and (max-height: 720px) { .hero-art { --win-h: calc(270px + env(safe-area-inset-top)) !important; } .art-win { --feed-h: 140px !important; } }
+</style>
+<style id="phone-hero-full">/* 4 Nov 2026 (André: "use the full image, don't crop it, use the mobile version"): on phones the hero is exactly the iPhone
+   cut's shape (1290x2796 = 216.74% of the width), so the whole painting shows from the top of the arch to the bottom edge. It is taller
+   than most screens, so it pins once its bottom edge reaches the bottom of the screen (negative sticky top) and the page rises over it there. */
+@media (max-width: 760px) {
+  .hero-art { height: 216.74vw !important; min-height: 0 !important; top: min(0px, calc(100svh - 216.74vw)) !important; }
+  .art-bg img { object-fit: cover; object-position: 50% 0 !important; }
+}
+</style>
 </body>
 </html>
