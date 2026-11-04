@@ -1847,6 +1847,10 @@ a.aw-bar .aw-ph{ color: #fff; }
     <script>(function(){var i=document.currentScript.previousElementSibling.querySelector("img");if(i.complete)return;i.style.opacity=0;var f=function(){i.style.transition="opacity .2s linear";i.style.opacity=1};i.addEventListener("load",f);i.addEventListener("error",f)})();</script>
   </div>
 
+  <div class="art-sky" aria-hidden="true">
+      <img class="sky-can c1" src="/assets/hero/canopy.svg" alt="" /><img class="sky-can c2" src="/assets/hero/canopy.svg" alt="" /><img class="sky-can c3" src="/assets/hero/canopy.svg" alt="" />
+      <img class="sky-plane" src="/assets/hero/plane.svg" alt="" />
+    </div>
   <div class="art-win" role="group" aria-label="Manifest app demo: load calls, next load and 3D replay" data-art-win>
     <div class="aw-chrome">
       <span class="aw-meter" aria-hidden="true"><canvas class="aw-scope" width="60" height="40"></canvas><span class="aw-time" data-time>10:00</span></span>
@@ -3287,5 +3291,22 @@ html body .sh-cta:active,html body .sh-cta-demo:active,html body .fd-btn:active,
 html body .sh.over-art .sh-cta{background:linear-gradient(180deg,#2f5cf2 0%,#1439c9 100%)!important}
 </style>
 <style id="over-art-wide">/* Over the painting the bar spreads to the edges (logo left, Download right) so it never crowds the demo window. */ html body .sh.li-bar.over-art { width: auto !important; max-width: none !important; left: 0 !important; right: 0 !important; margin: 0 !important; top: 10px !important; } html body .sh.over-art .sh-in { max-width: none !important; padding: 0 clamp(20px, 5.5vw, 80px) !important; } @media (min-width: 761px) and (max-width: 1180px) { html body .sh.over-art .sh-login { display: none !important; } }</style>
+<style id="art-sky">/* 4 Nov 2026 (André): canopies in the left sky, a jump plane on the right. A layer over the painting (the file is untouched),
+   coloured like distant objects in it and softened by the haze, so they read as painted in. */
+.art-sky { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.art-sky img { position: absolute; display: block; height: auto; filter: blur(.4px) sepia(.6) brightness(.32) contrast(1.1); mix-blend-mode: multiply; }
+.sky-can { width: 54px; opacity: .78; animation: sky-drift 16s ease-in-out infinite alternate; }
+.sky-can.c1 { left: 4.5%; top: 17%; width: 74px; }
+.sky-can.c2 { left: 9.5%; top: 29%; width: 54px; opacity: .7; animation-delay: -5s; }
+.sky-can.c3 { left: 2.5%; top: 37%; width: 40px; opacity: .6; animation-delay: -10s; }
+.sky-plane { right: 1.2%; top: 30%; width: 108px; opacity: .7; animation: sky-fly 40s linear infinite; }
+@keyframes sky-drift { from { transform: translate(0, 0) rotate(-2deg); } to { transform: translate(6px, 14px) rotate(2deg); } }
+@keyframes sky-fly { from { transform: translateX(10px); } to { transform: translateX(-40px); } }
+@media (max-width: 760px) {
+  .sky-can.c1 { left: 9%; top: 66%; width: 40px; } .sky-can.c2 { left: 20%; top: 73%; width: 30px; } .sky-can.c3 { display: none; }
+  .sky-plane { right: 8%; top: 64%; width: 76px; }
+}
+@media (prefers-reduced-motion: reduce) { .art-sky img { animation: none; } }
+</style>
 </body>
 </html>

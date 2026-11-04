@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 70" fill="currentColor">
+  <!-- A high-wing jump plane (Caravan / Twin Otter type) in side view, flying left. -->
+  <path d="M8 40 C14 33 30 31 52 31 L150 30 L178 14 L188 14 L182 32 L192 33 L192 38 L150 41 L60 44 C38 45 18 45 8 40 Z"/>
+  <path d="M60 28 L150 26 L150 29 L60 31 Z"/>
+  <path d="M38 22 L176 18 L176 23 L38 26 Z" opacity=".95"/>
+  <path d="M70 44 L66 56 L72 56 L78 44 Z"/><circle cx="68" cy="58" r="3"/>
+  <path d="M110 43 L108 56 L114 56 L116 43 Z"/><circle cx="111" cy="58" r="3"/>
+  <path d="M4 34 L10 28 L10 46 L4 42 Z" opacity=".8"/>
+</svg>
