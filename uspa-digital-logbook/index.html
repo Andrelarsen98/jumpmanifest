@@ -1326,7 +1326,7 @@ html body:has(.sh-burger[aria-expanded="true"]) .ownerbar{ visibility: hidden; }
       </ul>
     </div>
     <div class="vis-media ul-dark">
-      <img src="/assets/opt/app-wallet.webp" width="640" height="1325" alt="The Manifest app at a dropzone: balance, My Pass, top up, and the jumper checked in on Load 1" loading="lazy" decoding="async" />
+      <img src="/assets/opt/checkin-pass-framed.webp" width="640" height="1325" alt="The Manifest app at a dropzone: balance, My Pass, top up, and the jumper checked in on Load 1" loading="lazy" decoding="async" />
     </div>
   </section>
 
@@ -1742,5 +1742,6 @@ html body span.go { background: none !important; box-shadow: none !important; tr
 </style>
 <script id="away-all">(function(){if(document.getElementById('hero-art-js'))return;var b=document.querySelector('.sh'),f=document.querySelector('footer.site');if(!b||!f||b.dataset.awayBound)return;b.dataset.awayBound=1;var ly=null,a=false,r=0;function ap(){r=0;var y=Math.max(0,scrollY||0),d=ly===null?0:y-ly;ly=y;var p=f.getBoundingClientRect().top<innerHeight*.5;var n=p&&(d>0||(d===0&&a));if(n!==a){a=n;b.classList.toggle('is-away',a);}}addEventListener('scroll',function(){if(!r)r=requestAnimationFrame(ap)},{passive:true});addEventListener('scrollend',ap);})();</script>
 <style id="ul-gap">#short-answer, .ul-band:first-of-type { margin-top: 0 !important; }</style>
+<style id="tap44">@media (max-width: 760px) { html body footer.site .ft-col a, html body footer.site a { min-height: 44px; display: inline-flex; align-items: center; } html body .sh .sh-burger { width: 44px !important; height: 44px !important; } html body .sh .sh-right > .sh-cta { min-height: 44px !important; } }</style>
 </body>
 </html>

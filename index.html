@@ -2163,7 +2163,7 @@ a.aw-bar .aw-ph{ color: #fff; }
   // the same painting saved once as assets/globe-map.webp (150 KB), so the
   // only library left is globe.gl, and it all starts as the page loads.
   var LIBS = ['https://cdn.jsdelivr.net/npm/globe.gl@2.46.2/dist/globe.gl.min.js'];
-  var MAP_URL = '/assets/globe-map.webp';
+  var MAP_URL = '/assets/globe-map-2k.webp'; // 2048 wide: the first-view freeze was mostly this texture upload
   // The admin's colours: light grey-lavender sea, dark slate land.
   var SEA = '#8b91bf', LAND = '#2a2f47', BORDER = 'rgba(140, 148, 200, 0.35)', HALO = '#6b7cff';
   // Further out than the admin's 1.45: its panel is wide, this frame is
@@ -3326,5 +3326,6 @@ html body .aw-scrim { z-index: 2147483600 !important; }
 html body span.go { background: none !important; box-shadow: none !important; transform: none !important; }
 </style>
 <script id="away-all">(function(){if(document.getElementById('hero-art-js'))return;var b=document.querySelector('.sh'),f=document.querySelector('footer.site');if(!b||!f||b.dataset.awayBound)return;b.dataset.awayBound=1;var ly=null,a=false,r=0;function ap(){r=0;var y=Math.max(0,scrollY||0),d=ly===null?0:y-ly;ly=y;var p=f.getBoundingClientRect().top<innerHeight*.5;var n=p&&(d>0||(d===0&&a));if(n!==a){a=n;b.classList.toggle('is-away',a);}}addEventListener('scroll',function(){if(!r)r=requestAnimationFrame(ap)},{passive:true});addEventListener('scrollend',ap);})();</script>
+<style id="tap44">@media (max-width: 760px) { html body footer.site .ft-col a, html body footer.site a { min-height: 44px; display: inline-flex; align-items: center; } html body .sh .sh-burger { width: 44px !important; height: 44px !important; } html body .sh .sh-right > .sh-cta { min-height: 44px !important; } }</style>
 </body>
 </html>
