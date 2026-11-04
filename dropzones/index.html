@@ -2066,7 +2066,7 @@ html body span.go { background: none !important; box-shadow: none !important; tr
   .dkh .dk-head .dk-h1 { font-size: 34px !important; line-height: 1.08 !important; }
 }
 </style>
-<script id="dz-hero-h">(function(){if(!matchMedia('(max-width: 760px)').matches)return;var r=document.documentElement,w=0;function set(){r.style.setProperty('--hero-h',Math.max(600,Math.round(innerHeight))+'px');w=innerWidth;}set();addEventListener('orientationchange',function(){setTimeout(set,300)});addEventListener('resize',function(){if(Math.abs(innerWidth-w)>40)set();});})();</script>
+<script id="dz-hero-h">(function(){if(!matchMedia('(max-width: 760px)').matches)return;var r=document.documentElement,w=0;function set(){r.style.setProperty('--hero-h',Math.max(600,Math.round((function(){try{var d=document.createElement('div');d.style.cssText='position:fixed;top:0;height:100lvh;width:0;visibility:hidden';document.body.appendChild(d);var v=d.getBoundingClientRect().height;d.remove();return Math.max(v||0,innerHeight);}catch(e){return innerHeight}})()))+'px');w=innerWidth;}set();addEventListener('orientationchange',function(){setTimeout(set,300)});addEventListener('resize',function(){if(Math.abs(innerWidth-w)>40)set();});})();</script>
 <div id="top-tint" aria-hidden="true"></div>
 <style id="top-tint-css">/* 5 Nov 2026: Safari (iOS 26) colours the area behind the clock and Dynamic Island from a fixed element on the top edge.
    This 1px strip is dark while the painting is at the top and white once the light page is under the bar. */
@@ -2096,5 +2096,6 @@ html body span.go { background: none !important; box-shadow: none !important; tr
   .dzh-phone { right: 3% !important; top: auto !important; bottom: 0 !important; width: 25% !important; }
 }
 </style>
+<style id="foot-gap">/* 5 Nov 2026: breathing room between the last section and the painted footer on every page. */ html body footer.site { margin-top: clamp(72px, 9vw, 120px) !important; }</style>
 </body>
 </html>

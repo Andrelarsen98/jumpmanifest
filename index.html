@@ -3365,7 +3365,7 @@ html body span.go { background: none !important; box-shadow: none !important; tr
   html.hero-short .hero-art h1 { margin-top: 0 !important; }
 }
 </style>
-<script id="hero-h">(function(){if(!matchMedia('(max-width: 760px)').matches)return;var r=document.documentElement,w=0;function set(){var h=Math.max(560,Math.round(window.innerHeight));r.style.setProperty('--hero-h',h+'px');r.classList.toggle('hero-short',h<=720);w=innerWidth;}set();addEventListener('orientationchange',function(){setTimeout(set,300)});addEventListener('resize',function(){if(Math.abs(innerWidth-w)>40)set();});})();</script>
+<script id="hero-h">(function(){if(!matchMedia('(max-width: 760px)').matches)return;var r=document.documentElement,w=0;function set(){var h=Math.max(560,Math.round((function(){try{var d=document.createElement('div');d.style.cssText='position:fixed;top:0;height:100lvh;width:0;visibility:hidden';document.body.appendChild(d);var v=d.getBoundingClientRect().height;d.remove();return Math.max(v||0,innerHeight);}catch(e){return innerHeight}})()));r.style.setProperty('--hero-h',h+'px');r.classList.toggle('hero-short',h<=720);w=innerWidth;}set();addEventListener('orientationchange',function(){setTimeout(set,300)});addEventListener('resize',function(){if(Math.abs(innerWidth-w)>40)set();});})();</script>
 <style id="aw-replay-video">/* 5 Nov 2026 (André): the 3D replay tab plays the real replay, square on the left, the numbers on the right, filling the card. */
 .aw-map.aw-map-v { position: relative; overflow: hidden; background: #0b1020 !important; }
 .aw-map-v video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
