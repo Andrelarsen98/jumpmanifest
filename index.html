@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="google-site-verification" content="LSNgKsqUgjF5U6ow4S-UaRolkd8qAiVDrORzruiayW0" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>Manifest: the skydive app with live loads and 3D replays</title>
 <meta name="description" content="The skydive app for iPhone: live loads, every jump replayed in 3D, weather and gear. Plus Manifest Desk for dropzones." />
 <meta property="og:site_name" content="Manifest" />
@@ -19,7 +19,7 @@
 <meta name="twitter:title" content="Manifest: the app for skydivers, the system for dropzones" />
 <meta name="twitter:description" content="Live loads for jumpers at 150 dropzones, every jump replayed in 3D over real terrain, and Manifest Desk for dropzones. Free on iPhone." />
 <meta name="twitter:image" content="https://www.jumpmanifest.com/assets/og-image.png?v=11" />
-<meta name="theme-color" content="#ffffff" />
+<meta name="theme-color" content="#1b150d" />
 <!-- Apple Smart App Banner. iOS renders this itself, above the page, and the
      handoff to the App Store is handled by the OS rather than by a link in the
      document — which is the one route that still works inside sandboxed in-app
@@ -3327,5 +3327,15 @@ html body span.go { background: none !important; box-shadow: none !important; tr
 </style>
 <script id="away-all">(function(){if(document.getElementById('hero-art-js'))return;var b=document.querySelector('.sh'),f=document.querySelector('footer.site');if(!b||!f||b.dataset.awayBound)return;b.dataset.awayBound=1;var ly=null,a=false,r=0;function ap(){r=0;var y=Math.max(0,scrollY||0),d=ly===null?0:y-ly;ly=y;var p=f.getBoundingClientRect().top<innerHeight*.5;var n=p&&(d>0||(d===0&&a));if(n!==a){a=n;b.classList.toggle('is-away',a);}}addEventListener('scroll',function(){if(!r)r=requestAnimationFrame(ap)},{passive:true});addEventListener('scrollend',ap);})();</script>
 <style id="tap44">@media (max-width: 760px) { html body footer.site .ft-col a, html body footer.site a { min-height: 44px; display: inline-flex; align-items: center; } html body .sh .sh-burger { width: 44px !important; height: 44px !important; } html body .sh .sh-right > .sh-cta { min-height: 44px !important; } }</style>
+<style id="phone-hero-full2">/* 5 Nov 2026 (André): on iPhone the painting fills the whole screen like the wallpaper (arch at the top), the demo window
+   stays at the top, and the logo, headline and badge sit lower, centred in the open valley. */
+@media (max-width: 760px) {
+  .hero-art { height: 100svh !important; min-height: 600px !important; }
+  .art-bg img { object-fit: cover !important; object-position: 50% 0 !important; }
+  .art-copy { top: auto !important; bottom: calc(env(safe-area-inset-bottom, 0px) + 13svh) !important; }
+  .sky-can.c1 { top: 41% !important; left: 8% !important; } .sky-can.c2 { top: 47% !important; left: 19% !important; }
+  html { background-color: #1b150d; }
+}
+</style>
 </body>
 </html>
