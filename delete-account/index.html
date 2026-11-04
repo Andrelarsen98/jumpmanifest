@@ -460,8 +460,13 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
 .sh-nav:has(.sh-dd.open) .sh-dd:not(.open) .sh-panel{transition:none}
 .sh-cta-demo:focus-visible,.fd-btn:focus-visible,.btn.ghost:focus-visible,.btn.demo:focus-visible,.band-btn:focus-visible,.pc-out:focus-visible,.sms-btn:focus-visible,.sm-btn:focus-visible,.pc-call:focus-visible,.lo-btn:focus-visible,.lc-btn:focus-visible,.hmw-btn:focus-visible,.dp-btn:focus-visible,.btn.primary:focus-visible,.pq-btn:focus-visible,a.btn[href*="apps.apple.com"]:focus-visible,a.btn[href="/get"]:focus-visible{outline:2px solid #050505!important;outline-offset:3px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 3px #fff!important}
 </style>
+<style id="top-tint-css">/* 5 Nov 2026: Safari (iOS 26) colours the area behind the clock and Dynamic Island from a fixed element on the top edge.
+   This 1px strip is dark while the painting is at the top and white once the light page is under the bar. */
+#top-tint { position: fixed; top: 0; left: 0; right: 0; height: 1px; z-index: 2147483002; pointer-events: none; background: #1b150d; transition: background-color .25s ease; }
+</style>
 </head>
 <body>
+<div id="top-tint" aria-hidden="true"></div>
 <a class="skip" href="#main">Skip to main content</a>
 <!-- SITE HEADER (9 Oct 2026): one header on every page. Mega dropdowns on
      laptops, a full-height sheet on phones. Same markup, CSS and JS on each
@@ -864,12 +869,8 @@ html { background-color: #14110d; overscroll-behavior: none; } body { overscroll
 <style id="tap44">@media (max-width: 760px) { html body footer.site .ft-col a, html body footer.site a { min-height: 44px; display: inline-flex; align-items: center; } html body .sh .sh-burger { width: 44px !important; height: 44px !important; } html body .sh .sh-right > .sh-cta { min-height: 44px !important; } }</style>
 <style id="nav-always">/* 5 Nov 2026 (André): the bar stays on screen all the way down, footer included. */ html body .sh.is-away, html.sh-seen body .sh.li-bar.is-away { opacity: 1 !important; visibility: visible !important; transform: none !important; pointer-events: auto !important; }</style>
 <style id="cta-blue-fix">html body .sh .sh-right > .sh-cta, html body .sh.over-art .sh-right > .sh-cta, html body .sh .sh-mctas .sh-cta { background: linear-gradient(180deg,#2f5cf2 0%,#1439c9 100%) !important; color: #fff !important; box-shadow: rgba(255,255,255,.24) 0 1px 0 inset, rgba(8,18,64,.34) 0 -1px 0 inset, rgba(10,22,80,.14) 0 1px 2px !important; } html body .sh .sh-right > .sh-cta * { color: #fff !important; }</style>
-<div id="top-tint" aria-hidden="true"></div>
-<style id="top-tint-css">/* 5 Nov 2026: Safari (iOS 26) colours the area behind the clock and Dynamic Island from a fixed element on the top edge.
-   This 1px strip is dark while the painting is at the top and white once the light page is under the bar. */
-#top-tint { position: fixed; top: 0; left: 0; right: 0; height: 1px; z-index: 2147483002; pointer-events: none; background: #1b150d; transition: background-color .25s ease; }
-</style>
 <script id="top-tint-js">(function(){var t=document.getElementById('top-tint');var h=document.querySelector('.hero-art, .dkh .dk-head, .nf-art');if(!t)return;var meta=document.querySelector('meta[name="theme-color"]');var dark=null;function set(){var y=Math.max(0,scrollY||0);var b=h?h.getBoundingClientRect().bottom+y:0;var d=!!h&&y<b-40;if(d!==dark){dark=d;var c=d?'#1b150d':'#ffffff';t.style.backgroundColor=c;if(meta)meta.setAttribute('content',c);}}set();addEventListener('scroll',function(){requestAnimationFrame(set)},{passive:true});addEventListener('load',set);})();</script>
 <style id="foot-gap">/* 5 Nov 2026: breathing room between the last section and the painted footer on every page. */ html body footer.site { margin-top: clamp(72px, 9vw, 120px) !important; }</style>
+<script id="safari-noshadow">/* 5 Nov 2026: Safari paints black boxes over the page (the hero, the right edge) while a drop-shadow filter sits on any image. Chrome is fine, so only Safari loses those shadows. */(function(){var u=navigator.userAgent;if(!/Safari/.test(u)||/Chrome|CriOS|FxiOS|Android/.test(u))return;function k(){document.querySelectorAll("img, picture, video, figure, .dzg-halo, [class*=phone]").forEach(function(e){if(getComputedStyle(e).filter.indexOf("drop-shadow")>-1)e.style.setProperty("filter","none","important")})}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",k);else k();addEventListener("load",k)})();</script>
 </body>
 </html>
