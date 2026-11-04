@@ -1206,6 +1206,10 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
 body.dk .dk-studio { position: absolute; left: 50%; top: 40px; height: calc(100% - 80px); width: auto; max-width: none; transform: translateX(-50%); filter: drop-shadow(0 24px 48px rgba(0,0,0,.5)); }
 @media (max-width: 760px) { body.dk .dk-studio { top: 20px; height: calc(100% - 40px); } }
 </style>
+<style id="dz-head-laptop">/* 4 Nov 2026 (André): the dropzones page opens on "Dark arcade" because the figure on the right works at a laptop. Keep that corner in frame and visible. */
+body.dk .dk-head-art { object-position: 50% 100%; -webkit-mask-image: linear-gradient(#000 80%, transparent); mask-image: linear-gradient(#000 80%, transparent); }
+@media (max-width: 760px) { body.dk .dk-head-art { object-position: 50% 100%; } }
+</style>
 </head>
 <body class="dk">
 <a class="skip" href="#main">Skip to main content</a>
@@ -1308,7 +1312,7 @@ body.dk .dk-studio { position: absolute; left: 50%; top: 40px; height: calc(100%
 
   <header class="dk-head">
     <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
-    <picture><source media="(max-width: 760px)" srcset="/assets/paint/04-distant-city-phone-828.webp" /><img class="dk-head-art" src="/assets/paint/04-distant-city-1280.webp" srcset="/assets/paint/04-distant-city-1280.webp 1280w, /assets/paint/04-distant-city-2560.webp 2560w" sizes="(max-width: 760px) 100vw, 1240px" alt="" decoding="async" fetchpriority="high" /></picture>
+    <picture><source media="(max-width: 760px)" srcset="/assets/paint/10-dark-arcade-phone-828.webp" /><img class="dk-head-art" src="/assets/paint/10-dark-arcade-1280.webp" srcset="/assets/paint/10-dark-arcade-1280.webp 1280w, /assets/paint/10-dark-arcade-2560.webp 2560w" sizes="(max-width: 760px) 100vw, 1240px" alt="" decoding="async" fetchpriority="high" /></picture>
     <p class="dk-eyebrow">Manifest Desk</p>
     <h1 class="dk-h1">The manifest your jumpers already carry.</h1>
     <p class="dk-l">Desk plugs your dropzone into the app skydivers at <b>230 dropzones</b> already use.</p>
