@@ -492,3 +492,11 @@ html body .sh.is-away { opacity: 0 !important; visibility: hidden !important; tr
   transition: opacity .55s cubic-bezier(.65,0,.35,1), transform .55s cubic-bezier(.65,0,.35,1), visibility linear .55s !important; }
 /* Phones: the burger and the header button reach Apple's 44 px tap size. */
 @media (max-width: 760px) { html body .sh .sh-burger { width: 44px !important; height: 44px !important; } html body .sh .sh-right > .sh-cta { height: 44px !important; } }
+
+/* Phones (4 Nov 2026, André: "I don't want to end up on the grey area, just on the painting"): the footer painting runs on under
+   Safari's floating search bar to the very end of the page, and everything in the footer stops above that bar. The bounce colour is
+   the paintings' dark brown, not page grey. */
+@media (max-width: 720px) {
+  html body footer.site, html body.dk footer.site { padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 128px) !important; }
+  html { background-color: #15110c !important; }
+}

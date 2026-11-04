@@ -4305,5 +4305,14 @@ html body .sh.li-bar { animation-fill-mode: backwards !important; }
   #pricing .pay-row { gap: 10px 12px; } #pricing .pay-row img { height: 30px; }
 }
 </style>
+<style id="ft-under-bar">
+/* Phones (4 Nov 2026, André: "I don't want to end up on the grey area, just on the painting"): the footer painting runs on under
+   Safari's floating search bar to the very end of the page, and everything in the footer stops above that bar. The bounce colour is
+   the paintings' dark brown, not page grey. */
+@media (max-width: 720px) {
+  html body footer.site, html body.dk footer.site { padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 128px) !important; }
+  html { background-color: #15110c !important; }
+}
+</style>
 </body>
 </html>
