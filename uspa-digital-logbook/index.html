@@ -23,8 +23,7 @@
 <link rel="icon" type="image/png" href="/assets/app-icon.png?v=3" />
 <link rel="apple-touch-icon" href="/assets/app-icon.png?v=3" />
 <!-- Fonts self-hosted (perf, 20 Oct 2026): General Sans (Fontshare ITF FFL, self-hosting allowed) + Manrope (SIL OFL), same files the CDNs served. -->
-<link rel="preload" href="/assets/fonts/geist-variable.woff2" as="font" type="font/woff2" crossorigin />
-<style>@font-face{font-family:"Geist";font-style:normal;font-weight:100 900;font-display:swap;src:url(/assets/fonts/geist-variable.woff2) format("woff2")}</style>
+<link rel="preload" href="/assets/opt/fonts/manrope-latin.101877a7.woff2" as="font" type="font/woff2" crossorigin />
 <style>
 @font-face{font-family:'General Sans';font-style:normal;font-weight:200 700;font-display:swap;src:url(/assets/opt/fonts/GeneralSans-Variable.8e765124.woff2) format('woff2')}
 @font-face{font-family:'Manrope';font-style:normal;font-weight:400 800;font-display:swap;src:url(/assets/opt/fonts/manrope-cyrillic-ext.28f2a82c.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F}
@@ -46,7 +45,7 @@
   .wordmark { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); }
   .wordmark img { width: 34px; height: auto; }
   .wordmark img.wm { width: auto; height: 22px; }
-  .wordmark span { font-family: "Geist", sans-serif; font-weight: 700; font-size: 29px; letter-spacing: -0.055em; line-height: 1; margin-top: -3px; }
+  .wordmark span { font-family: "Manrope", sans-serif; font-weight: 700; font-size: 29px; letter-spacing: -0.055em; line-height: 1; margin-top: -3px; }
   .tb-links { display: flex; align-items: center; gap: 34px; }
   .tb-links a { font-size: 15.5px; font-weight: 600; color: #0f0b1c; letter-spacing: -0.01em; }
   .tb-links a:hover { color: var(--muted); }
@@ -165,23 +164,23 @@
      purple #6D42F5, subline 20px/31px #71717B with the claim in 600 black,
      64px pill buttons with a 48px chevron circle, a #F0ECFE badge. */
   :root { --violet: #6D42F5; --violet-d: #6D42F5; }
-  body { font-family: "Geist", -apple-system, sans-serif; }
-  .kicker { font-family: "Geist", sans-serif; background: #F0ECFE; color: #040815; font-size: 12px; font-weight: 500;
+  body { font-family: "Manrope", -apple-system, sans-serif; }
+  .kicker { font-family: "Manrope", sans-serif; background: #F0ECFE; color: #040815; font-size: 12px; font-weight: 500;
             line-height: 18px; padding: 7px 14px; border-radius: 224px; }
   .kicker b { font-weight: 700; }
   /* Headings: General Sans 500 (Fontshare, free for commercial use), the
      closest free match to Softriver's Neue Montreal 500, which is paid.
      -2px at 72px = -0.028em, as theirs. */
-  h1, h2 { font-family: "Geist", "Geist", sans-serif; font-weight: 500; letter-spacing: -.028em; }
+  h1, h2 { font-family: "General Sans", "Manrope", sans-serif; font-weight: 500; letter-spacing: -.028em; }
   h2 { text-wrap: balance; }
   h1 { line-height: 1; }
   h1 span { color: #6D42F5; }
   /* The sentence in grey so the black wordmark lands as the punchline (2 Oct 2026). */
   h1 .dim { color: #71717A; display: inline !important; }
   h1 span.l2 { color: inherit; } /* the second line is all ink: "on", the black wordmark, the full stop */
-  .sub { font-family: "Geist", sans-serif; font-size: 20px; font-weight: 400; line-height: 31px; color: #71717B; }
+  .sub { font-family: "Manrope", sans-serif; font-size: 20px; font-weight: 400; line-height: 31px; color: #71717B; }
   .sub b { font-weight: 600; color: #000; }
-  .btn { font-family: "Geist", sans-serif; font-size: 20px; font-weight: 600; line-height: 30px; border-radius: 28px; }
+  .btn { font-family: "Manrope", sans-serif; font-size: 20px; font-weight: 600; line-height: 30px; border-radius: 28px; }
   .btn.primary { background: #6D42F5; color: #fff; height: 64px; padding: 8px 8px 8px 28px; gap: 12px; justify-content: space-between;
     box-shadow: rgba(109,66,245,.08) 0 4px 4px, rgba(109,66,245,.04) 0 8px 8px, rgba(109,66,245,.02) 0 16px 5px,
                 inset 0 0 2px rgba(255,255,255,.12), inset 0 0 20px rgba(255,255,255,.08); }
@@ -199,15 +198,15 @@
      (text starts at 80), h1 a fixed 72px/72px -2px, subline two lines at
      20/31, buttons and the trust row on one line, a red-dot line beside the
      pill. */
-  .live { display: inline-flex; align-items: center; gap: 10px; font-family: "Geist", sans-serif; font-size: 14px; font-weight: 500; color: #040815; }
+  .live { display: inline-flex; align-items: center; gap: 10px; font-family: "Manrope", sans-serif; font-size: 14px; font-weight: 500; color: #040815; }
   .live i { width: 6px; height: 6px; border-radius: 50%; background: #F04438; box-shadow: 0 0 0 4px rgba(240,68,56,.14); }
-  .kicker-brand { display: inline-flex; align-items: baseline; gap: 5px; font-family: "Geist", sans-serif; font-size: 20px; line-height: 1; font-weight: 700; color: #050505; padding: 9px 16px 10px; letter-spacing: -.02em; }
+  .kicker-brand { display: inline-flex; align-items: baseline; gap: 5px; font-family: "Manrope", sans-serif; font-size: 20px; line-height: 1; font-weight: 700; color: #050505; padding: 9px 16px 10px; letter-spacing: -.02em; }
   .kicker-brand img { height: 15px; width: auto; display: inline-block; align-self: baseline; }
   .toprow { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 12px 20px; }
   .herorow { display: flex; flex-direction: column; align-items: center; gap: 28px; margin-top: 34px; }
   .herorow .ctas { margin-top: 0; }
   .trust { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px 0;
-           font-family: "Geist", sans-serif; font-size: 16px; font-weight: 400; color: #040815; }
+           font-family: "Manrope", sans-serif; font-size: 16px; font-weight: 400; color: #040815; }
   .trust > * { display: inline-flex; align-items: center; gap: 8px; padding: 0 16px; line-height: 24px; color: inherit; }
   .trust > * + * { border-left: 1px solid rgba(15,11,28,.12); }
   .trust svg { width: 20px; height: 20px; flex: 0 0 auto; }
@@ -235,7 +234,7 @@
   /* Owner bar, measured from softriver.co/white-label: #2D0896, 56px tall,
      16/24 Manrope white at -0.32px. Says who the page is for and sends
      jumpers who land here to the App Store. */
-  .ownerbar { background: #111111; color: #fff; text-align: center; padding: 16px 5vw; font-family: "Geist", sans-serif;
+  .ownerbar { background: #111111; color: #fff; text-align: center; padding: 16px 5vw; font-family: "Manrope", sans-serif;
               font-size: 16px; font-weight: 400; line-height: 24px; letter-spacing: -.32px; }
   .ownerbar a { color: #fff; font-weight: 600; white-space: nowrap; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(255,255,255,.4); }
   .ownerbar a:hover { text-decoration-color: #fff; }
@@ -245,7 +244,7 @@
      middle one outlined in purple under a purple band, "Custom" where they
      show a price, a ticked list, and one strip of what every size gets. */
   .pricing { text-align: center; }
-  .pr-top { display: inline-flex; align-items: center; gap: 10px; font-family: "Geist", sans-serif; font-size: 16px; line-height: 24px; color: #040815; }
+  .pr-top { display: inline-flex; align-items: center; gap: 10px; font-family: "Manrope", sans-serif; font-size: 16px; line-height: 24px; color: #040815; }
   .pr-top i { width: 6px; height: 6px; border-radius: 50%; background: #F04438; box-shadow: 0 0 0 4px rgba(240,68,56,.14); }
   .pricing h2 { margin-top: 18px; font-size: clamp(36px, 5.4vw, 74px); letter-spacing: -.028em; line-height: 1.05; }
   .pricing .lead { color: var(--muted); font-size: 20px; line-height: 31px; margin: 18px auto 0; max-width: 760px; text-wrap: balance; }
@@ -253,13 +252,13 @@
   .pc-grid { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: end; text-align: left; }
   .pc { background: #fff; border: 1px solid #E4E4E7; border-radius: 22px; overflow: hidden; }
   .pc.hl { border: 2px solid #6D42F5; box-shadow: 0 24px 60px rgba(109,66,245,.14); }
-  .pc-band { background: #6D42F5; color: #fff; text-align: center; font-family: "Geist", sans-serif; font-weight: 600; font-size: 17px; letter-spacing: .02em; text-transform: uppercase; padding: 14px 0; }
+  .pc-band { background: #6D42F5; color: #fff; text-align: center; font-family: "Manrope", sans-serif; font-weight: 600; font-size: 17px; letter-spacing: .02em; text-transform: uppercase; padding: 14px 0; }
   .pc-in { padding: 36px 34px 38px; }
-  .pc h3 { font-family: "Geist", "Geist", sans-serif; font-weight: 550; font-size: 24px; letter-spacing: -.5px; color: #040815; }
-  .pc-price { margin-top: 18px; font-family: "Geist", "Geist", sans-serif; font-weight: 600; font-size: 48px; line-height: 1; letter-spacing: -1.5px; color: #040815; }
+  .pc h3 { font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: 24px; letter-spacing: -.5px; color: #040815; }
+  .pc-price { margin-top: 18px; font-family: "General Sans", "Manrope", sans-serif; font-weight: 600; font-size: 48px; line-height: 1; letter-spacing: -1.5px; color: #040815; }
   .pc-desc { margin-top: 18px; font-size: 17px; line-height: 26px; color: #71717B; min-height: 52px; }
   .pc-out { margin-top: 26px; display: flex; align-items: center; justify-content: center; gap: 10px; height: 64px; border: 1.5px solid #6D42F5; border-radius: 28px;
-            color: #6D42F5; font-family: "Geist", sans-serif; font-weight: 600; font-size: 20px; transition: background .15s ease; }
+            color: #6D42F5; font-family: "Manrope", sans-serif; font-weight: 600; font-size: 20px; transition: background .15s ease; }
   .pc-out:hover { background: #fff; }
   .pc-out svg { width: 18px; height: 18px; }
   .pc .pc-btn { margin-top: 26px; display: flex; width: 100%; }
@@ -279,7 +278,7 @@
   .pc-band { height: 52px; padding: 0 !important; display: flex; align-items: center; justify-content: center; }
   @media (min-width: 981px) { .pc:not(.hl) { margin-top: 52px; } }
   .pr-all { margin: 32px auto 0; background: #FFFFFF; border: 1px solid #E4E4E7; border-radius: 10px !important; border-radius: clamp(22px, 2.6vw, 32px); padding: clamp(26px, 3.4vw, 44px); text-align: left; }
-  .pr-all h3 { font-family: "Geist", "Geist", sans-serif; font-weight: 550; font-size: clamp(22px, 2.2vw, 28px); letter-spacing: -.6px; }
+  .pr-all h3 { font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: clamp(22px, 2.2vw, 28px); letter-spacing: -.6px; }
   .pr-all ul { list-style: none; margin: 20px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px 28px; }
   .pr-all li { display: flex; align-items: center; gap: 12px; font-size: 16.5px; line-height: 24px; color: #040815; }
   .pr-yes { width: 28px; height: 28px; border-radius: 50%; background: #6D42F5; flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; }
@@ -295,10 +294,10 @@
   .pc { border-radius: 10px; border-color: #E4E4E7; }
   .pc.hl { border-radius: 10px; border: 1px solid #6D42F5; box-shadow: none; } /* slim line, no glow: as Softriver */
   .pc-in { padding: 32px; }
-  .pc h3 { font-family: "Geist", sans-serif; font-weight: 500; font-size: 20px; line-height: 28px; letter-spacing: -1px; }
+  .pc h3 { font-family: "Manrope", sans-serif; font-weight: 500; font-size: 20px; line-height: 28px; letter-spacing: -1px; }
   .pc-price { margin-top: 14px; font-weight: 550; font-size: 38px; letter-spacing: -1px; }
-  .pc-price small { font-family: "Geist", sans-serif; font-size: 16px; font-weight: 500; letter-spacing: 0; color: #71717B; margin-left: 4px; }
-  .pc-price .from { font-family: "Geist", sans-serif; font-size: 16px; font-weight: 500; letter-spacing: 0; color: #71717B; margin-right: 6px; }
+  .pc-price small { font-family: "Manrope", sans-serif; font-size: 16px; font-weight: 500; letter-spacing: 0; color: #71717B; margin-left: 4px; }
+  .pc-price .from { font-family: "Manrope", sans-serif; font-size: 16px; font-weight: 500; letter-spacing: 0; color: #71717B; margin-right: 6px; }
   .pr-founder { margin-top: 32px; font-size: 18px; line-height: 28px; color: #71717B; }
   .pr-founder b { color: #050505; font-weight: 600; }
   .pr-founder.pr-plain { margin-top: 6px; }
@@ -355,7 +354,7 @@
   .final .pc-out { display: inline-flex; margin-top: 0; padding: 0 36px; background: #fff; }
   @media (max-width: 600px) { .final .pc-out { width: 100%; padding: 0 20px; } }
   .pr-guar { max-width: 760px; margin: 72px auto 0; }
-  .pr-guar h3 { font-family: "Geist", "Geist", sans-serif; font-weight: 550; font-size: clamp(24px, 2.6vw, 32px); letter-spacing: -.6px; color: #050505; }
+  .pr-guar h3 { font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: clamp(24px, 2.6vw, 32px); letter-spacing: -.6px; color: #050505; }
   .pr-guar p { margin: 16px 0 0; font-size: 18px; line-height: 28px; color: #71717B; text-wrap: balance; }
   .pr-guar.pr-jump { margin-top: 48px; }
   .pr-guar .pr-guar-s { margin-top: 10px; font-size: 16px; line-height: 24px; }
@@ -393,7 +392,7 @@
   .pc ul.pc-feats li .tk { width: 15px; height: 15px; }
   .pc ul.pc-feats .soon-tag { font-size: 9.5px; padding: 2px 6px; }
   .pc-call { margin-top: 32px; display: flex; align-items: center; justify-content: center; gap: 10px; height: 67px; border: 1px solid #6D42F5;
-             border-radius: 20px; background: #fff; color: #6D42F5; font-family: "Geist", sans-serif; font-weight: 600; font-size: 20px; }
+             border-radius: 20px; background: #fff; color: #6D42F5; font-family: "Manrope", sans-serif; font-weight: 600; font-size: 20px; }
   .pc-call:hover { background: #fff; } .pc-call svg { width: 18px; height: 18px; }
   /* Claude-style (1 Oct 2026): short cards show only what differs, then a
      full comparison below with the tier names pinned while you scroll. */
@@ -402,10 +401,10 @@
   .cm-head, .cm-r { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; align-items: center; }
   .cm-head { position: sticky; top: 0; z-index: 2; background: #F9F9F9; padding: 18px 0; border-bottom: 1px solid #E4E4E7; }
   .cm-head .cm-c { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-  .cm-head b { font-family: "Geist", "Geist", sans-serif; font-weight: 550; font-size: 22px; letter-spacing: -.4px; color: #040815; }
+  .cm-head b { font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: 22px; letter-spacing: -.4px; color: #040815; }
   .cm-head a { font-size: 14px; font-weight: 600; color: #fff; background: #6D42F5; border-radius: 10px; padding: 8px 14px; transition: background .15s ease; }
   .cm-head a:hover { background: #5A32E0; }
-  .cm-g { font-family: "Geist", "Geist", sans-serif; font-weight: 550; font-size: clamp(22px, 2.2vw, 30px); letter-spacing: -.5px; color: #040815; padding: 44px 20px 18px; border-bottom: 1px solid #E4E4E7; }
+  .cm-g { font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: clamp(22px, 2.2vw, 30px); letter-spacing: -.5px; color: #040815; padding: 44px 20px 18px; border-bottom: 1px solid #E4E4E7; }
   .cm-r { min-height: 64px; border-bottom: 1px solid #E4E4E7; }
   .cm-l { padding: 14px 20px; font-size: 17px; line-height: 24px; color: #040815; }
   .cm-c { text-align: center; padding: 10px 8px; }
@@ -500,7 +499,7 @@
   /* Content starts 56px under the heading block. */
   .app-panel, .grid, .how-grid, .pc-grid, .vs { margin-top: 56px; }
   /* Card titles 24 / 33.6 weight 500; card text 16 / 20.8 weight 500 grey. */
-  .app-card b, .card b, .how-grid b { font-family: "Geist", "Geist", sans-serif; font-size: 24px; line-height: 33.6px; font-weight: 500; letter-spacing: normal; color: var(--t); }
+  .app-card b, .card b, .how-grid b { font-family: "General Sans", "Manrope", sans-serif; font-size: 24px; line-height: 33.6px; font-weight: 500; letter-spacing: normal; color: var(--t); }
   .card b { margin-bottom: 8px; }
   .app-card p, .card p, .how-grid p, .pc-desc { font-size: 16px; line-height: 20.8px; font-weight: 500; letter-spacing: -.5px; color: var(--g); }
   .app-card p, .how-grid p { margin-top: 8px; }
@@ -517,7 +516,7 @@
   .vs-col { border-radius: 22px; padding: 36px 36px 16px; }
   .vs-old { background: #F9F9F9; }
   .vs-new { background: #fff; border: 1px solid #6D42F5; }
-  .vs-col h3 { display: flex; align-items: center; gap: 12px; font-family: "Geist", "Geist", sans-serif; font-size: 32px; line-height: 44.8px;
+  .vs-col h3 { display: flex; align-items: center; gap: 12px; font-family: "General Sans", "Manrope", sans-serif; font-size: 32px; line-height: 44.8px;
     font-weight: 500; letter-spacing: -1px; color: var(--t); }
   .vs-col h3 .eb-mark { width: 32px; height: 24px; }
   .vs ul { list-style: none; margin: 20px 0 0; padding: 0; }
@@ -588,7 +587,7 @@
   .bt-row { flex-direction: row; align-items: stretch; }
   .bt figcaption { padding: 44px 44px 0; text-align: center; position: relative; z-index: 1; }
   .bt-row figcaption { text-align: left; padding: 44px 28px 44px 44px; flex: 1 1 52%; align-self: center; }
-  .bt b { display: block; font-family: "Geist", "Geist", sans-serif; font-weight: 550; font-size: 34px; line-height: 38px; letter-spacing: -.028em; color: #050505; text-wrap: balance; }
+  .bt b { display: block; font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: 34px; line-height: 38px; letter-spacing: -.028em; color: #050505; text-wrap: balance; }
   .bt span { display: block; margin-top: 10px; font-size: 18px; line-height: 26px; font-weight: 500; color: #71717B; }
   .bt-dark { background: #050505; }
   .bt-dark b { color: #fff; } .bt-dark span { color: #D4D4D8; }
@@ -641,7 +640,7 @@
   .jstats { list-style: none; margin: 16px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); background: #F7F7F9; border-radius: 22px; }
   .jstats li { padding: 28px 24px; font-size: 16px; line-height: 20.8px; font-weight: 500; color: var(--g); text-align: center; }
   .jstats li + li { border-left: 1px solid #E4E4E7; }
-  .jstats b { display: block; margin-bottom: 6px; font-family: "Geist", "Geist", sans-serif; font-size: 34px; line-height: 40px; font-weight: 500; letter-spacing: -.5px; color: var(--t); }
+  .jstats b { display: block; margin-bottom: 6px; font-family: "General Sans", "Manrope", sans-serif; font-size: 34px; line-height: 40px; font-weight: 500; letter-spacing: -.5px; color: var(--t); }
   .jfoot { text-align: center; margin-top: 32px; font-size: 20px; line-height: 31px; color: #71717B; }
   .jfoot b { color: #040815; font-weight: 600; }
   @media (max-width: 980px) { .jstats { grid-template-columns: repeat(2, 1fr); }
@@ -711,7 +710,7 @@ footer.site .ft-col a em { color: #FFFFFF !important; background: rgba(255,255,2
 
 /* REVIEW FIXES (16 Oct 2026, A02 A18 A19): column titles are H3 now (same look
    as the old H4); a white focus ring on the dark footer; 44 px tap targets on phones. */
-footer.site .ft-col h3 { font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif !important; font-size: 15px !important;
+footer.site .ft-col h3 { font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif !important; font-size: 15px !important;
       line-height: normal !important; font-weight: 600 !important; letter-spacing: -0.01em !important; text-transform: none !important;
       color: #8E8E93 !important; margin: 4px 0 18px !important; padding: 0 !important; }
 footer.site :where(a, button):focus-visible { outline-color: #fff !important; box-shadow: none; }
@@ -741,7 +740,7 @@ section[id], header[id], div[id], [id] { scroll-margin-top: 96px; }
 h1, h2, h3 { text-wrap: balance; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto !important; } }
 .sh, .sh-sheet { --sh-ink: #050505; --sh-muted: #71717B; --sh-purple: #6D42F5; --sh-pale: #F0ECFE; --sh-hover: #F6F6F8;
-      font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif; color: var(--sh-ink); }
+      font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif; color: var(--sh-ink); }
 .sh { position: sticky; top: 0; z-index: 60; background: #fff; border-bottom: 1px solid rgba(5,5,5,.08); }
 .sh a, .sh-sheet a { color: inherit; text-decoration: none; }
 .sh-in { height: 76px; padding: 0 5vw; display: flex; align-items: center; gap: 40px; }
@@ -751,7 +750,7 @@ h1, h2, h3 { text-wrap: balance; }
       background: none; border: 0; border-radius: 0; box-shadow: none; }
 .sh-nav { display: flex; align-items: center; gap: 30px; height: 100%; flex: 1; min-width: 0; }
 .sh-right { display: flex; align-items: center; gap: 24px; margin-left: auto; flex: none; }
-.sh-trig, .sh-link, .sh-login { font: 600 15.5px/1 "Geist", sans-serif; letter-spacing: -0.01em; color: var(--sh-ink);
+.sh-trig, .sh-link, .sh-login { font: 600 15.5px/1 "Manrope", sans-serif; letter-spacing: -0.01em; color: var(--sh-ink);
       background: none; border: 0; padding: 8px 0; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;
       white-space: nowrap; transition: color .15s ease; }
 .sh-trig:hover, .sh-link:hover, .sh-login:hover, .sh-dd.open .sh-trig { color: var(--sh-muted); }
@@ -785,7 +784,7 @@ h1, h2, h3 { text-wrap: balance; }
 
 /* buttons: Download keeps the grey pill; Get started is the purple pill */
 .sh-cta { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 99px;
-      background: #F2F2F5; color: var(--sh-ink) !important; font: 700 15px/1.2 "Geist", sans-serif; letter-spacing: -0.01em;
+      background: #F2F2F5; color: var(--sh-ink) !important; font: 700 15px/1.2 "Manrope", sans-serif; letter-spacing: -0.01em;
       white-space: nowrap; transition: background .15s ease; }
 .sh-cta:hover { background: #E7E7EC; }
 .sh-cta svg { width: 15px; height: 15px; }
@@ -805,7 +804,7 @@ h1, h2, h3 { text-wrap: balance; }
 @keyframes sh-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
 .sh-macc, .sh-mlink { width: 100%; display: flex; align-items: center; justify-content: space-between; min-height: 58px;
       padding: 0 4px; background: none; border: 0; cursor: pointer; color: var(--sh-ink);
-      font: 600 17px/1.2 "Geist", sans-serif; letter-spacing: -0.01em; text-align: left; }
+      font: 600 17px/1.2 "Manrope", sans-serif; letter-spacing: -0.01em; text-align: left; }
 .sh-macc .sh-chev { width: 14px; height: 14px; }
 .sh-mgroup, .sh-mlink { border-bottom: 1px solid rgba(5,5,5,.08) !important; }
 .sh-macc.is-current > span, .sh-mlink.is-current .sh-t { color: var(--sh-purple); }
@@ -845,7 +844,7 @@ h1, h2, h3 { text-wrap: balance; }
    bottom of the phone menu. */
 .skip { position: fixed; left: 16px; top: -120px; z-index: 100; display: inline-flex; align-items: center; height: 44px;
       padding: 0 20px; border-radius: 999px; background: #fff; color: #050505 !important; border: 1.5px solid #050505;
-      font: 700 15px/1 "Geist", -apple-system, BlinkMacSystemFont, sans-serif; text-decoration: none !important; }
+      font: 700 15px/1 "Manrope", -apple-system, BlinkMacSystemFont, sans-serif; text-decoration: none !important; }
 .skip:focus { top: 16px; }
 #main:focus { outline: none !important; box-shadow: none !important; }
 :where(a, button, summary, input, select, textarea, [tabindex]):focus-visible {
@@ -954,9 +953,63 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
 .sh-nav:has(.sh-dd.open) .sh-dd:not(.open) .sh-panel{transition:none}
 .sh-cta-demo:focus-visible,.fd-btn:focus-visible,.btn.ghost:focus-visible,.btn.demo:focus-visible,.band-btn:focus-visible,.pc-out:focus-visible,.sms-btn:focus-visible,.sm-btn:focus-visible,.pc-call:focus-visible,.lo-btn:focus-visible,.lc-btn:focus-visible,.hmw-btn:focus-visible,.dp-btn:focus-visible,.btn.primary:focus-visible,.pq-btn:focus-visible,a.btn[href*="apps.apple.com"]:focus-visible,a.btn[href="/get"]:focus-visible{outline:2px solid #050505!important;outline-offset:3px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 3px #fff!important}
 </style>
-<link rel="stylesheet" href="/assets/site-dark.css?v=19" />
+<style id="dk-head-only">.dkh{--pg:#1A1B20;--plate:#23242A;--ink:#F1F2F5;--ink2:#D1D1D6;font-family:"Geist",-apple-system,BlinkMacSystemFont,sans-serif;background:#1A1B20;color:#F1F2F5;-webkit-font-smoothing:antialiased}
+.dkh .dk-head{padding-top:clamp(96px,11vw,150px)!important}
+.dkh .dk-btn{color:#fff!important}
+@font-face{ font-family: "Inter Widget"; font-weight: 500; font-display: swap; src: url(/assets/hero/inter-500.woff) format("woff"); }
+@font-face{ font-family: "Inter Widget"; font-weight: 600; font-display: swap; src: url(/assets/hero/inter-600.woff) format("woff"); }
+@font-face{ font-family: "Inter Widget"; font-weight: 700; font-display: swap; src: url(/assets/hero/inter-700.woff) format("woff"); }
+.dkh .dk-eyebrow{ display: block; margin: 0 0 12px; font-family: "Geist", sans-serif; font-size: 14px; line-height: 20px; font-weight: 600; letter-spacing: 0; color: var(--ink2); }
+.dkh .dk-h1{ margin: 0 auto; padding: 0; max-width: 18ch; font-family: "Geist", "Geist", sans-serif; font-weight: 500; font-size: clamp(36px, 5vw, 56px); line-height: 1.06; letter-spacing: -.018em; color: #fff; text-wrap: balance; text-shadow: 0 1px 24px rgba(6,10,40,.45); }
+.dkh .dk-l{ margin: 16px auto 0; max-width: 56ch; font-size: clamp(17px, 1.6vw, 19px); line-height: 1.55; font-weight: 400; color: var(--ink2); text-wrap: pretty; }
+.dkh .dk-n{ margin: 12px 0 0; font-size: 13px; line-height: 20.8px; font-weight: 500; color: var(--ink2); }
+.dkh .dk-a{ color: var(--ink); font-weight: 500; text-decoration: none; background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat; padding-bottom: 1px; transition: background-size .15s cubic-bezier(.32,.72,.28,1); }
+.dkh .dk-a:hover{ background-size: 0 1px; background-position: 100% 100%; }
+.dkh .dk-ctas{ display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 14px 24px; margin-top: 24px; font-size: 15px; }
+.dkh .dk-head{ position: relative; isolation: isolate; padding: clamp(132px, 15vw, 196px) 20px clamp(48px, 6vw, 88px); text-align: center; overflow: hidden; }
+.dkh .dk-head.plain{ padding-top: clamp(112px, 11vw, 152px); padding-bottom: 0; overflow: visible; }
+.dkh .dk-head-art{ position: absolute; inset: 0; z-index: -1; display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; -webkit-mask-image: linear-gradient(#000 52%, transparent); mask-image: linear-gradient(#000 52%, transparent); }
+.dkh .dk-head:not(.plain)::after{ content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(rgba(2,3,6,.58) 0, rgba(2,3,6,0) 110px), radial-gradient(62% 56% at 50% 56%, rgba(6,8,20,.62) 0, rgba(6,8,20,.36) 60%, rgba(6,8,20,0) 100%); }
+.dkh .dk-head .dk-eyebrow{ color: #fff; }
+.dkh .dk-head:not(.plain) .dk-l{ color: #fff; text-shadow: 0 1px 14px rgba(6,10,40,.6); }
+.dkh .dk-head .dk-a{ color: #fff; }
+.dkh .dk-head-under{ margin: 16px auto 0; font-size: 15px; line-height: 22px; font-weight: 500; color: var(--ink2); }
+.dkh .dk-head-under b{ font-weight: 700; color: var(--ink); }
+.dkh .dk-btn, .dkh .dk-btn2{ display: inline-flex; align-items: center; justify-content: center; height: 42px; padding: 0 22px; border: 0; border-radius: 999px; font: 600 14.5px/1 "Geist", sans-serif; letter-spacing: -.006em; cursor: pointer; text-decoration: none; transition: transform .15s ease, background-color .15s ease; }
+.dkh .dk-btn{ background: #F4F5F8; color: #050505; box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(0,0,0,.3), 0 4px 8px rgba(0,0,0,.2); }
+.dkh .dk-btn:hover{ background: #fff; transform: translateY(-1px); }
+.dkh .dk-btn2{ background: rgba(241,242,245,.08); color: var(--ink); box-shadow: inset 0 0 0 1px rgba(241,242,245,.16); }
+.dkh .dk-btn2:hover{ background: rgba(241,242,245,.13); }
+.dkh .dk-badge{ display: block; transition: transform .15s ease; }
+.dkh .dk-badge:hover{ transform: translateY(-1px); }
+.dkh .dk-badge img{ display: block; height: 44px; width: auto; }
+.dkh .dk-split .dk-l{ margin-left: 0; }
+.dkh .dk-close .dk-l{ color: #fff; text-shadow: 0 1px 14px rgba(6,10,40,.6); }
+@media (max-width: 760px){.dkh .dk-head{ padding: 104px 20px 40px; }
+.dkh .dk-head.plain{ padding: 96px 20px 0; }
+.dkh .dk-h1{ font-size: clamp(32px, 9.4vw, 40px); }
+.dkh .dk-l{ font-size: 17px; line-height: 26.35px; }
+.dkh .dk-split .dk-l{ margin-left: auto; }}
+@media (prefers-reduced-motion: reduce){.dkh .dk-btn, .dkh .dk-badge, .dkh .dk-a, .dkh .dk-q summary::after{ transition: none !important; }}
+.dkh .dk-h1, .dkh .dk-h, .dkh main.doc h1, .dkh main.doc h2, .dkh .dk-long h1, .dkh .dk-long h2, .dkh h1, .dkh h2, .dkh .dk-big{ font-weight: 400 !important; }
+.dkh .dk-a{ background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; }
+.dkh .dk-a:hover{ background-size: 100% 1px; background-position: 0 100%; }
+.dkh .sh .sh-right > .sh-cta, .dkh .sh-mctas .sh-cta, .dkh .sh-mctas .sh-cta-demo, .dkh .sh-mcta, .dkh .dk-btn, .dkh .hb-btn{
+  --dl-top: #2f5cf2; --dl-bot: #1439c9; --dl-top-hv: #3a63f2; --dl-bot-hv: #1a45e0; --dl-press: #1a44dc;
+  background: linear-gradient(180deg, var(--dl-top) 0%, var(--dl-bot) 100%) !important; color: #fff !important; border: 0 !important;
+  box-shadow: rgba(255,255,255,.24) 0 1px 0 inset, rgba(8,18,64,.34) 0 -1px 0 inset, rgba(10,22,80,.14) 0 1px 2px, rgba(10,22,80,.12) 0 2px 4px, rgba(10,22,80,.1) 0 4px 8px !important;
+  transition: background 150ms cubic-bezier(.32,.72,.28,1), box-shadow 150ms cubic-bezier(.32,.72,.28,1), transform 150ms cubic-bezier(.32,.72,.28,1) !important; }
+.dkh .sh-cta *, .dkh .sh-mcta *, .dkh .dk-btn *, .dkh .hb-btn *{ color: #fff !important; }
+@media (hover: hover){.dkh .sh .sh-right > .sh-cta:hover, .dkh .sh-mcta:hover, .dkh .dk-btn:hover, .dkh .hb-btn:hover{ background: linear-gradient(180deg, var(--dl-top-hv) 0%, var(--dl-bot-hv) 100%) !important; transform: translateY(-1px) !important;
+    box-shadow: rgba(255,255,255,.3) 0 1px 0 inset, rgba(8,18,64,.3) 0 -1px 0 inset, rgba(10,22,80,.14) 0 2px 4px, rgba(10,22,80,.12) 0 4px 8px, rgba(10,22,80,.12) 0 8px 16px !important; }}
+.dkh .sh .sh-right > .sh-cta:active, .dkh .sh-mcta:active, .dkh .dk-btn:active, .dkh .hb-btn:active{ transform: translateY(0) !important; transition-duration: 90ms !important; background: linear-gradient(180deg, var(--dl-press) 0%, var(--dl-press) 100%) !important;
+  box-shadow: rgba(255,255,255,.08) 0 1px 0 inset, rgba(6,14,52,.4) 0 2px 4px inset, rgba(10,22,80,.22) 0 1px 2px !important; }
+.dkh .ownerbar{ position: absolute; top: 66px; left: 0; right: 0; z-index: 2; padding: 0 20px; background: transparent; font-size: 13px; line-height: 20px; color: #fff; text-shadow: 0 1px 10px rgba(6,10,40,.7); }
+.dkh .ownerbar a{ color: #fff; }
+html body:has(.sh-burger[aria-expanded="true"]) .ownerbar{ visibility: hidden; }
+.dkh .dk-head .dk-eyebrow{ color: #fff; }</style>
 </head>
-<body class="dk">
+<body>
 <a class="skip" href="#main">Skip to main content</a>
 <!-- SITE HEADER (9 Oct 2026): one header on every page. Mega dropdowns on
      laptops, a full-height sheet on phones. Same markup, CSS and JS on each
@@ -965,7 +1018,7 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
   <div class="sh-in">
     <a class="sh-logo" href="/" aria-label="Manifest home"><img class="lockup" src="/assets/manifest-lockup.svg?v=6" alt="Manifest" /></a>
     <nav class="sh-nav" aria-label="Main">
-      <div class="sh-dd" data-dd><button class="sh-trig is-current" type="button" aria-expanded="false" aria-controls="sh-p-jumpers"><span class="sh-t">For jumpers</span><svg class="sh-chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="sh-panel" id="sh-p-jumpers"><div class="sh-card"><div class="sh-grid"><a class="sh-item" href="/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18h3"/></svg></span><span class="sh-tx"><b>The skydiving app</b><small>Loads, 3D replays and every jump in one app.</small></span></a><a class="sh-item" href="/live-skydiving-loads/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M8.5 15.5a5 5 0 0 1 0-7M15.5 8.5a5 5 0 0 1 0 7M5.6 18.4a9 9 0 0 1 0-12.8M18.4 5.6a9 9 0 0 1 0 12.8"/></svg></span><span class="sh-tx"><b>Live loads</b><small>Your load and calls, live at 150 dropzones.</small></span></a><a class="sh-item" href="/skydive-3d-tracking/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg></span><span class="sh-tx"><b>3D replay</b><small>Every jump in 3D from your phone's GPS.</small></span></a><a class="sh-item" href="/skydiving-weather/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h11a3 3 0 1 0-3-3"/><path d="M3 13h15a3 3 0 1 1-3 3"/><path d="M3 17h7"/></svg></span><span class="sh-tx"><b>Weather</b><small>Wind at exit, under canopy and on the ground.</small></span></a><a aria-current="page" class="sh-item" href="/uspa-digital-logbook/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19.5v-15A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5zm0 0A1.5 1.5 0 0 0 6.5 21H19v-3"/><path d="M9 10.5l2 2 4-4"/></svg></span><span class="sh-tx"><b>Sign-offs</b><small>Your jumps, signed off in person.</small></span></a><a class="sh-item" href="/#locker"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6V4.5A1.5 1.5 0 0 1 10.5 3h3A1.5 1.5 0 0 1 15 4.5V6"/><rect x="5" y="6" width="14" height="15" rx="3.5"/><path d="M9 13.5h6V17H9z"/></svg></span><span class="sh-tx"><b>Gear locker</b><small>Repacks and AAD service, reminded in time.</small></span></a><a class="sh-item" href="/skydive-landout-safety/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M12 8v5M12 16h.01"/></svg></span><span class="sh-tx"><b>Landout SOS</b><small>Landed out? Your dropzone sees you on a map.</small></span></a></div><a class="sh-item sh-foot" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M12 7.5v6M9.5 11L12 13.5 14.5 11M10.5 18h3"/></svg></span><span class="sh-tx"><b>Download the app</b><small>Free on the App Store for iPhone.</small></span><span class="sh-go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a></div></div></div>
+      <div class="sh-dd" data-dd><button class="sh-trig is-current" type="button" aria-expanded="false" aria-controls="sh-p-jumpers"><span class="sh-t">For jumpers</span><svg class="sh-chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="sh-panel" id="sh-p-jumpers"><div class="sh-card"><div class="sh-grid"><a class="sh-item" href="/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18h3"/></svg></span><span class="sh-tx"><b>The skydiving app</b><small>Loads, 3D replays and every jump in one app.</small></span></a><a class="sh-item" href="/live-skydiving-loads/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M8.5 15.5a5 5 0 0 1 0-7M15.5 8.5a5 5 0 0 1 0 7M5.6 18.4a9 9 0 0 1 0-12.8M18.4 5.6a9 9 0 0 1 0 12.8"/></svg></span><span class="sh-tx"><b>Live loads</b><small>Your load and calls, live at 150 dropzones.</small></span></a><a class="sh-item" href="/skydive-3d-tracking/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg></span><span class="sh-tx"><b>3D replay</b><small>Every jump in 3D from your phone's GPS.</small></span></a><a class="sh-item" href="/skydiving-weather/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h11a3 3 0 1 0-3-3"/><path d="M3 13h15a3 3 0 1 1-3 3"/><path d="M3 17h7"/></svg></span><span class="sh-tx"><b>Weather</b><small>Wind at exit, under canopy and on the ground.</small></span></a><a class="sh-item" href="/uspa-digital-logbook/" aria-current="page"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19.5v-15A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5zm0 0A1.5 1.5 0 0 0 6.5 21H19v-3"/><path d="M9 10.5l2 2 4-4"/></svg></span><span class="sh-tx"><b>Sign-offs</b><small>Your jumps, signed off in person.</small></span></a><a class="sh-item" href="/#locker"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6V4.5A1.5 1.5 0 0 1 10.5 3h3A1.5 1.5 0 0 1 15 4.5V6"/><rect x="5" y="6" width="14" height="15" rx="3.5"/><path d="M9 13.5h6V17H9z"/></svg></span><span class="sh-tx"><b>Gear locker</b><small>Repacks and AAD service, reminded in time.</small></span></a><a class="sh-item" href="/skydive-landout-safety/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M12 8v5M12 16h.01"/></svg></span><span class="sh-tx"><b>Landout SOS</b><small>Landed out? Your dropzone sees you on a map.</small></span></a></div><a class="sh-item sh-foot" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M12 7.5v6M9.5 11L12 13.5 14.5 11M10.5 18h3"/></svg></span><span class="sh-tx"><b>Download the app</b><small>Free on the App Store for iPhone.</small></span><span class="sh-go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a></div></div></div>
       <div class="sh-dd" data-dd><button class="sh-trig" type="button" aria-expanded="false" aria-controls="sh-p-dropzones"><span class="sh-t">For dropzones</span><svg class="sh-chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="sh-panel" id="sh-p-dropzones"><div class="sh-card"><div class="sh-grid"><a class="sh-item" href="/dropzones/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><span class="sh-tx"><b>Manifest Desk</b><small>Loads, money, staff and safety on one screen.</small></span></a><a class="sh-item" href="/dropzone-payments/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3 10h18M7 14.5h3"/></svg></span><span class="sh-tx"><b>Payments and top-ups</b><small>Apple Pay top-ups, straight to your Stripe.</small></span></a><a class="sh-item" href="/skydive-landout-safety/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="sh-tx"><b>Safety</b><small>Landouts on a live map, and who's back after each load.</small></span></a><a class="sh-item" href="/skydiving-load-calls/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15L6 16z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg></span><span class="sh-tx"><b>Load calls</b><small>Every call on every jumper's phone.</small></span></a><a class="sh-item" href="/self-manifest-skydiving/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M3 20a6 6 0 0 1 10.5-4"/><path d="M15 18l2 2 4-4"/></svg></span><span class="sh-tx"><b>Self-manifest</b><small>Jumpers book themselves, you keep control.</small></span></a><a class="sh-item" href="/how-manifest-works/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M11 6h9M11 18h9M6 8.5v7"/></svg></span><span class="sh-tx"><b>How it works</b><small>From sign-up to your first jump day.</small></span></a><a class="sh-item" href="/dropzones/#hangar-board"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M7 8.5h6M7 12.5h10M9 21h6"/></svg></span><span class="sh-tx"><b>Hangar board</b><small>A live board for every TV in the hangar.</small></span></a><a class="sh-item" href="/dropzones/#pricing"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4.5A1.5 1.5 0 0 1 4.5 3H12l9 9-9 9-9-9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><span class="sh-tx"><b>Pricing</b><small>Free until you fly. $1 per seat.</small></span></a></div><a class="sh-item sh-foot" href="/get-started/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M13 8.5l3.5 3.5-3.5 3.5"/></svg></span><span class="sh-tx"><b>Get started</b><small>Tell us about your dropzone. Free until you fly.</small></span><span class="sh-go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a></div></div></div>
       <a class="sh-link" href="/about/"><span class="sh-t">About</span></a>
       <a class="sh-link" href="/support/"><span class="sh-t">Support</span></a>
@@ -978,7 +1031,7 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
     </div>
   </div>
   <div class="sh-sheet" id="sh-sheet" hidden>
-    <div class="sh-mgroup"><button class="sh-macc is-current" type="button" aria-expanded="false" aria-controls="sh-m-jumpers"><span>For jumpers</span><svg class="sh-chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="sh-mlist" id="sh-m-jumpers" hidden><a class="sh-mitem" href="/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18h3"/></svg></span><span class="sh-tx"><b>The skydiving app</b><small>Loads, 3D replays and every jump in one app.</small></span></a><a class="sh-mitem" href="/live-skydiving-loads/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M8.5 15.5a5 5 0 0 1 0-7M15.5 8.5a5 5 0 0 1 0 7M5.6 18.4a9 9 0 0 1 0-12.8M18.4 5.6a9 9 0 0 1 0 12.8"/></svg></span><span class="sh-tx"><b>Live loads</b><small>Your load and calls, live at 150 dropzones.</small></span></a><a class="sh-mitem" href="/skydive-3d-tracking/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg></span><span class="sh-tx"><b>3D replay</b><small>Every jump in 3D from your phone's GPS.</small></span></a><a class="sh-mitem" href="/skydiving-weather/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h11a3 3 0 1 0-3-3"/><path d="M3 13h15a3 3 0 1 1-3 3"/><path d="M3 17h7"/></svg></span><span class="sh-tx"><b>Weather</b><small>Wind at exit, under canopy and on the ground.</small></span></a><a aria-current="page" class="sh-mitem" href="/uspa-digital-logbook/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19.5v-15A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5zm0 0A1.5 1.5 0 0 0 6.5 21H19v-3"/><path d="M9 10.5l2 2 4-4"/></svg></span><span class="sh-tx"><b>Sign-offs</b><small>Your jumps, signed off in person.</small></span></a><a class="sh-mitem" href="/#locker"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6V4.5A1.5 1.5 0 0 1 10.5 3h3A1.5 1.5 0 0 1 15 4.5V6"/><rect x="5" y="6" width="14" height="15" rx="3.5"/><path d="M9 13.5h6V17H9z"/></svg></span><span class="sh-tx"><b>Gear locker</b><small>Repacks and AAD service, reminded in time.</small></span></a><a class="sh-mitem" href="/skydive-landout-safety/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M12 8v5M12 16h.01"/></svg></span><span class="sh-tx"><b>Landout SOS</b><small>Landed out? Your dropzone sees you on a map.</small></span></a><a class="sh-mitem" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M12 7.5v6M9.5 11L12 13.5 14.5 11M10.5 18h3"/></svg></span><span class="sh-tx"><b>Download the app</b><small>Free on the App Store for iPhone.</small></span></a></div></div>
+    <div class="sh-mgroup"><button class="sh-macc is-current" type="button" aria-expanded="false" aria-controls="sh-m-jumpers"><span>For jumpers</span><svg class="sh-chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="sh-mlist" id="sh-m-jumpers" hidden><a class="sh-mitem" href="/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18h3"/></svg></span><span class="sh-tx"><b>The skydiving app</b><small>Loads, 3D replays and every jump in one app.</small></span></a><a class="sh-mitem" href="/live-skydiving-loads/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M8.5 15.5a5 5 0 0 1 0-7M15.5 8.5a5 5 0 0 1 0 7M5.6 18.4a9 9 0 0 1 0-12.8M18.4 5.6a9 9 0 0 1 0 12.8"/></svg></span><span class="sh-tx"><b>Live loads</b><small>Your load and calls, live at 150 dropzones.</small></span></a><a class="sh-mitem" href="/skydive-3d-tracking/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg></span><span class="sh-tx"><b>3D replay</b><small>Every jump in 3D from your phone's GPS.</small></span></a><a class="sh-mitem" href="/skydiving-weather/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h11a3 3 0 1 0-3-3"/><path d="M3 13h15a3 3 0 1 1-3 3"/><path d="M3 17h7"/></svg></span><span class="sh-tx"><b>Weather</b><small>Wind at exit, under canopy and on the ground.</small></span></a><a class="sh-mitem" href="/uspa-digital-logbook/" aria-current="page"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19.5v-15A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5zm0 0A1.5 1.5 0 0 0 6.5 21H19v-3"/><path d="M9 10.5l2 2 4-4"/></svg></span><span class="sh-tx"><b>Sign-offs</b><small>Your jumps, signed off in person.</small></span></a><a class="sh-mitem" href="/#locker"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6V4.5A1.5 1.5 0 0 1 10.5 3h3A1.5 1.5 0 0 1 15 4.5V6"/><rect x="5" y="6" width="14" height="15" rx="3.5"/><path d="M9 13.5h6V17H9z"/></svg></span><span class="sh-tx"><b>Gear locker</b><small>Repacks and AAD service, reminded in time.</small></span></a><a class="sh-mitem" href="/skydive-landout-safety/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M12 8v5M12 16h.01"/></svg></span><span class="sh-tx"><b>Landout SOS</b><small>Landed out? Your dropzone sees you on a map.</small></span></a><a class="sh-mitem" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M12 7.5v6M9.5 11L12 13.5 14.5 11M10.5 18h3"/></svg></span><span class="sh-tx"><b>Download the app</b><small>Free on the App Store for iPhone.</small></span></a></div></div>
     <div class="sh-mgroup"><button class="sh-macc" type="button" aria-expanded="false" aria-controls="sh-m-dropzones"><span>For dropzones</span><svg class="sh-chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="sh-mlist" id="sh-m-dropzones" hidden><a class="sh-mitem" href="/dropzones/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><span class="sh-tx"><b>Manifest Desk</b><small>Loads, money, staff and safety on one screen.</small></span></a><a class="sh-mitem" href="/dropzone-payments/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3 10h18M7 14.5h3"/></svg></span><span class="sh-tx"><b>Payments and top-ups</b><small>Apple Pay top-ups, straight to your Stripe.</small></span></a><a class="sh-mitem" href="/skydive-landout-safety/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="sh-tx"><b>Safety</b><small>Landouts on a live map, and who's back after each load.</small></span></a><a class="sh-mitem" href="/skydiving-load-calls/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15L6 16z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg></span><span class="sh-tx"><b>Load calls</b><small>Every call on every jumper's phone.</small></span></a><a class="sh-mitem" href="/self-manifest-skydiving/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M3 20a6 6 0 0 1 10.5-4"/><path d="M15 18l2 2 4-4"/></svg></span><span class="sh-tx"><b>Self-manifest</b><small>Jumpers book themselves, you keep control.</small></span></a><a class="sh-mitem" href="/how-manifest-works/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M11 6h9M11 18h9M6 8.5v7"/></svg></span><span class="sh-tx"><b>How it works</b><small>From sign-up to your first jump day.</small></span></a><a class="sh-mitem" href="/dropzones/#hangar-board"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M7 8.5h6M7 12.5h10M9 21h6"/></svg></span><span class="sh-tx"><b>Hangar board</b><small>A live board for every TV in the hangar.</small></span></a><a class="sh-mitem" href="/dropzones/#pricing"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4.5A1.5 1.5 0 0 1 4.5 3H12l9 9-9 9-9-9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><span class="sh-tx"><b>Pricing</b><small>Free until you fly. $1 per seat.</small></span></a><a class="sh-mitem" href="/get-started/"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M13 8.5l3.5 3.5-3.5 3.5"/></svg></span><span class="sh-tx"><b>Get started</b><small>Tell us about your dropzone. Free until you fly.</small></span></a></div></div>
     <a class="sh-mlink" href="/about/"><span class="sh-t">About</span></a>
     <a class="sh-mlink" href="/support/"><span class="sh-t">Support</span></a>
@@ -988,55 +1041,7 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
   </div>
 </div>
 
-<main id="main">
-  <style id="pg-css">
-  body.dk .ownerbar { position: absolute; top: 66px; left: 0; right: 0; z-index: 2; padding: 0 20px; background: transparent; font-size: 13px; line-height: 20px; color: #fff; text-shadow: 0 1px 10px rgba(6,10,40,.7); }
-  body.dk .ownerbar a { color: #fff; }
-  body.dk #main .x-disp { position: absolute; left: 50%; top: 56px; width: min(960px, 78%); aspect-ratio: 1546 / 899; transform: translateX(-50%); overflow: hidden; border-radius: 14px; background: #000; box-shadow: var(--sh-win); }
-  body.dk #main .x-disp img { position: absolute; left: -1.746%; top: -3.782%; width: 103.49%; max-width: none; height: auto; margin: 0; }
-  body.dk #main .x-win { display: block; width: 100%; height: auto; border-radius: 22px; box-shadow: var(--sh-win); }
-  body.dk #main .x-board { box-sizing: border-box; width: min(100%, 460px); margin: 0 auto; padding: 20px; border-radius: 22px; background: var(--plate); box-shadow: var(--sh-win); text-align: left; }
-  body.dk #main .x-board-h { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 10px; font-size: 14px; line-height: 20px; color: var(--ink2); }
-  body.dk #main .x-board-h b { font-size: 17px; font-weight: 600; color: var(--ink); }
-  body.dk #main .x-row { display: flex; align-items: center; gap: 12px; padding: 11px 0; border-top: 1px solid var(--hair); font-size: 15px; line-height: 22px; font-weight: 500; color: var(--ink); }
-  body.dk #main .x-row em { margin-left: auto; font-style: normal; font-size: 13px; font-weight: 500; color: var(--ink2); }
-  body.dk #main .x-av { flex: none; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #34353C; font-size: 11px; font-weight: 700; letter-spacing: .02em; color: #fff; }
-  @media (max-width: 760px) {
-    body.dk #main .dk-head { padding-top: 124px; }
-    body.dk #main section > .dk-n { padding: 0 20px; }
-    body.dk #main .x-disp { width: 118%; left: 6%; top: 28px; transform: none; }
-  }
-
-  body.dk #main .x-yes { display: block; margin: 8px 0 0; font-family: "Geist", "Geist", sans-serif; font-size: clamp(72px, 10vw, 128px); line-height: 1; font-weight: 500; letter-spacing: -.03em; color: #fff; text-shadow: 0 1px 24px rgba(6,10,40,.45); }
-  body.dk #main .x-quote { margin: 0 auto; padding: 0; border: 0; background: none; font-family: "Geist", "Geist", sans-serif; font-size: clamp(22px, 2.6vw, 30px); line-height: 1.32; font-weight: 500; letter-spacing: -.01em; color: var(--ink2); text-align: center; }
-  body.dk #main .x-quote mark { background: none; color: #fff; }
-  body.dk #main .x-src { margin: 16px 0 72px; font-size: 13px; line-height: 21px; font-weight: 500; color: var(--ink2); }
-  body.dk #main .x-entry { box-sizing: border-box; padding: 20px; border-radius: 22px; background: var(--plate); box-shadow: var(--sh-win); text-align: left; }
-  body.dk #main .x-entry-h { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; font-size: 14px; line-height: 20px; color: var(--ink2); }
-  body.dk #main .x-entry-h b { font-size: 17px; font-weight: 600; color: var(--ink); }
-  body.dk #main .x-f { display: grid; grid-template-columns: 30px minmax(0, 1fr) auto; align-items: baseline; gap: 2px 8px; padding: 11px 0; border-top: 1px solid var(--hair); font-size: 15px; line-height: 22px; font-weight: 500; color: var(--ink); }
-  body.dk #main .x-f i { font-style: normal; font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--ink2); }
-  body.dk #main .x-f em { font-style: normal; font-size: 13px; line-height: 20px; color: var(--ink2); text-align: right; }
-  body.dk #main .x-f.sig { font-weight: 600; color: #fff; }
-  body.dk #main .x-f.sig em { grid-column: 2 / -1; text-align: left; font-weight: 400; }
-  body.dk #main .x-who { list-style: none; width: min(1000px, calc(100vw - 40px)); margin: 48px auto 0; padding: 0; text-align: left; }
-  body.dk #main .x-who li { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 16px clamp(24px, 5vw, 64px); align-items: center; margin: 0; padding: 22px 0; border-top: 1px solid var(--hair); }
-  body.dk #main .x-who b { display: block; font-size: 19px; line-height: 24px; font-weight: 600; letter-spacing: -.012em; color: var(--ink); }
-  body.dk #main .x-who small { display: block; margin-top: 4px; font-size: 15px; line-height: 23px; color: var(--ink2); }
-  body.dk #main .x-chips { display: flex; flex-wrap: wrap; gap: 8px; }
-  body.dk #main .x-chips span { padding: 6px 12px; border-radius: 999px; background: #34353C; font-size: 13px; line-height: 18px; font-weight: 600; color: #fff; }
-  body.dk #main .x-never { width: min(743px, calc(100vw - 40px)); margin: 32px auto 0; font-size: 16px; line-height: 25px; font-weight: 500; color: var(--ink); }
-  body.dk #main .x-checks { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px clamp(24px, 5vw, 64px); width: min(900px, calc(100vw - 40px)); margin: 48px auto 0; padding: 0; text-align: left; }
-  body.dk #main .x-checks li { display: flex; gap: 12px; margin: 0; font-size: 17px; line-height: 26px; color: var(--ink); }
-  body.dk #main .x-checks svg { flex: none; width: 22px; height: 22px; margin-top: 2px; color: #30D158; }
-  @media (max-width: 760px) {
-    body.dk #main .x-who li { grid-template-columns: 1fr; }
-    body.dk #main .x-checks { grid-template-columns: 1fr; }
-    body.dk #main .x-src { margin-bottom: 56px; }
-  }
-  </style>
-
-  <header class="dk-head">
+<div class="dkh"><header class="dk-head">
     <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
     <picture><source media="(max-width: 760px)" srcset="/assets/paint/04-distant-city-phone-828.webp" /><img class="dk-head-art" src="/assets/paint/04-distant-city-1280.webp" srcset="/assets/paint/04-distant-city-1280.webp 1280w, /assets/paint/04-distant-city-2560.webp 2560w" sizes="(max-width: 760px) 100vw, 1240px" alt="" decoding="async" fetchpriority="high" /></picture>
     <p class="dk-eyebrow">USPA SIM 3-1, in plain language</p>
@@ -1044,124 +1049,305 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
     <p class="x-yes">Yes.</p>
     <p class="dk-l">USPA allows them explicitly. What matters is what each jump contains, and who signs it.</p>
     <div class="dk-ctas"><a class="dk-badge" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="Download Manifest on the App Store"><img src="/assets/appstore-badge.svg?v=1" alt="Download on the App Store" width="160" height="54" /></a></div>
-  </header>
+  </header></div>
+<main id="main" class="wrap ul">
+  <style id="review-b">
+  /* A11: no divider can start a wrapped line of hero chips; spacing only. */
+  .trust { gap: 12px 24px; }
+  .trust > * { padding: 0; }
+  .trust > * + * { border-left: 0; }
+  /* F12: founding status right under the hero actions. */
+  .hero-founding { margin: 22px 0 0; font-size: 16px; line-height: 24px; font-weight: 500; color: #050505; text-align: center; }
+  @media (min-width: 900px) { .hero-founding { text-align: left; } }
+  /* F13: readable Desk panels, captioned as sample data. */
+  /* Hero: the full Desk with the jumper's iPhone in front, as on the other
+     Desk pages (André, 16 Oct 2026). */
+  .hm-wrap { position: relative; }
+  /* MUG + STEAM (19 Oct). Real 3D render (Blender), shot straight on like the display; real scale for a
+     9.5 cm mug, set a little in front of the display so it sits just below the stand's foot line. */
+  .hm-mug { position: absolute; left: 10%; bottom: -2.2%; width: 22%; pointer-events: none; transform: translateY(8%); }
+  /* The steam starts BEHIND the mug, at the coffee, so it rises out of the opening; the mug image covers its root. */
+  .hm-mug .mug-body { position: relative; z-index: 1; display: block; width: 100%; height: auto; }
+  .hm-mug .mug-steam { position: absolute; z-index: 0; left: 7.8%; bottom: 86%; width: 57.4%; overflow: visible; }
+  /* Real coffee steam is thin, white and barely there: a white ribbon (shows on the dark bezel) over a faint
+     grey one (shows on the white page), slow, delicate, always rising out of the cup. */
+  .mug-steam .w { fill: none; stroke-linecap: round; opacity: 0; transform-box: fill-box; transform-origin: 50% 100%;
+    animation: steamRise 9s cubic-bezier(.3,.1,.4,1) infinite; }
+  .mug-steam .tone .w { stroke: url(#steamS); stroke-width: 3.2; }
+  .mug-steam .lite .w { stroke: url(#steamG); stroke-width: 2.2; }
+  .mug-steam .w2 { animation-delay: 3s; }
+  .mug-steam .w3 { animation-delay: 6s; }
+  @keyframes steamRise {
+    0% { opacity: 0; transform: translateY(4%) scale(.9, .7); }
+    20% { opacity: 1; }
+    70% { opacity: .55; }
+    100% { opacity: 0; transform: translateY(-8%) scale(1.2, 1.05); }
+  }
+  @media (prefers-reduced-motion: reduce) { .mug-steam .w { animation: none; opacity: .6; } }
+  .hero-media .desk-cap { margin-top: 44px; text-align: center; }
+  /* STUDIO DISPLAY (19 Oct 2026, André): the desk shown on a Studio Display, white background blends with the page. */
+  img.studio { display: block; width: 100%; height: auto; }
+  /* André 19 Oct: never a grey card around the Studio Display. */
+  .vis-media:has(img.studio) { background: transparent !important; padding: 0 !important; border-radius: 0 !important; }
+  .hm-phone { position: absolute; right: -3%; bottom: -6%; width: 26%; max-width: 190px; height: auto; filter: drop-shadow(0 18px 28px rgba(15,23,42,.28)); }
+  @media (max-width: 767px) { .hm-phone { width: 30%; right: -1%; bottom: -8%; } .hero-media .desk-cap { margin-top: 26px; } }
+  figure.hero-media { margin: 0; }
+  .desk-cap { margin: 8px 0 0; font-size: 14px; line-height: 20px; color: #52525B; text-align: left; }
+  /* F08: card copy on the pale card fills at 7:1, not 4.4:1. */
+  .app-card p, .card p, .how-grid p { color: #52525B; }
+  /* André 19 Oct: Apple-style row, no lilac panel, no boxes, no number chips. */
+  #app .app-panel { background: none; border-radius: 0; padding: 0; margin-top: 64px; }
+  #app .app-grid { gap: 56px; }
+  #app .app-card { background: none; border-radius: 0; padding: 0; text-align: center; }
+  #app .app-card .ic { width: 40px; height: 40px; color: #050505; display: block; margin: 0 auto; }
+  #app .app-card b { margin-top: 20px; }
+  #app .app-card p { max-width: 320px; margin-left: auto; margin-right: auto; }
+  #app .app-foot { margin-top: 56px; }
+  /* Top-up phones (André 19 Oct): same phone height, side by side. */
+  /* Meadow behind the phones (André 19 Oct): Unsplash photo _8fRer9hPv0 (Unsplash License). */
+  #app .pay-duo { display: flex; justify-content: center; align-items: center; gap: clamp(12px, 4vw, 64px); margin-top: 56px;
+    padding: clamp(36px, 6vw, 80px) 16px; border-radius: 28px; background:#F5F5F6; 
+    isolation: isolate; transform: translateZ(0); } /* keeps the phones' drop-shadow layer from repainting the owner bar white in Safari */
+  #app .pay-duo img { display: block; height: auto; filter: drop-shadow(0 24px 40px rgba(0,0,0,.35)); }
+  @media (max-width: 600px) { #app .pay-duo { border-radius: 22px; padding: 28px 10px; gap: 10px; } #app .pay-duo .pd-a, #app .pay-duo .pd-b { width: 46%; } }
+  #app .pay-duo .pd-a { width: min(300px, 44%); }
+  #app .pay-duo .pd-b { width: min(300px, 44%); }
+  @media (max-width: 600px) { #app .app-foot b { display: block; } }
+  @media (max-width: 900px) { #app .app-grid { gap: 44px; } }
+  /* F02: each plan's limits right under the price slot. */
+  .pc-limits { margin: 10px 0 0; font-size: 16px; line-height: 22px; font-weight: 700; color: #050505; letter-spacing: -.2px; }
+  .pc-limits + .pc-desc { margin-top: 4px; }
+  /* F08: rows a plan does not include: readable text, a dash, a visible label. */
+  .pc ul.pc-list li.off { color: #52525B; }
+  .pc .off .tk-off { color: #52525B; border-color: #A1A1AA; }
+  .pc .off .off-tag { flex: 0 0 auto; font-size: 11.5px; line-height: 18px; font-weight: 600; letter-spacing: 0; color: #3F3F46; background: #F4F4F5; border-radius: 6px; padding: 1px 6px; }
+  .pc ul.pc-list li.off { gap: 10px; letter-spacing: -.4px; }
+  /* F06: a demo action between the hero and pricing, white on the black band. */
+  .band-cta { margin-top: 32px; display: flex; justify-content: center; }
+  .band-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; padding: 0 28px; border-radius: 999px; background: #fff; color: #050505; font-family: "Manrope", sans-serif; font-size: 18px; font-weight: 700; }
+  .band-btn:hover { background: #F4F4F5; }
+  .band-btn svg { width: 16px; height: 16px; }
+  .band .band-sub { color: #E4E4E7; }
+  /* A05: what the dropzone sends us, under the setup steps. */
+  .how-need { max-width: 820px; margin: 28px auto 0; text-align: center; font-size: 17px; line-height: 26px; color: #3F3F46; }
+  /* F10: group labels inside the FAQ. */
+  .faq-g { max-width: 820px; margin: 0 auto; padding: 0 4px 14px; font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: 26px; line-height: 32px; letter-spacing: -.4px; color: #050505; }
+  .faq-g + .faq-list { margin-bottom: 44px; }
+  @media (max-width: 600px) { .faq-g { font-size: 21px; line-height: 28px; } .band-btn { font-size: 17px; width: 100%; } }
+  </style>
+  <style id="ul-css">
+  /* USPA DIGITAL RECORDS PAGE (20 Oct 2026, André: every page its own layout).
+     Base system is the dropzones page; these are the page-only parts. */
+  .ul-hero{display:grid;grid-template-columns:1fr;gap:56px;align-items:center;padding-top:clamp(48px,7vw,96px);text-align:center}
+  /* 21 Oct 2026 (André): text centred at the top, like the home page; the pass below it. */
+  .ul-hero .eyebrow{justify-content:center!important}
+  .ul-hero h1{margin:0 auto!important;max-width:24ch!important}
+  .ul-hero .lead{font-size:20px;line-height:31px;color:#52525B;max-width:560px}
+  .ul-hero .lead{margin-left:auto!important;margin-right:auto!important;text-align:center!important}
+  .ul-hero .ul-act{justify-content:center}
+  .ul-hero .ul-meadow{max-width:760px;width:100%;margin:0 auto!important}
+  .ul-hero .eyebrow{justify-content:flex-start}
+  .ul-hero h1{margin:0;max-width:17ch;font-family:"General Sans","Manrope",sans-serif;font-weight:500;letter-spacing:-.02em;font-size:clamp(28px,2.6vw,36px);line-height:1.18;color:#050505;text-wrap:balance}
+  .ul-yes{margin:8px 0 0;font-family:"General Sans","Manrope",sans-serif;font-weight:600;letter-spacing:-.055em;font-size:clamp(96px,11.7vw,120px);line-height:.9;color:#050505}
+  .ul-yes span{color:#6D42F5}
+  .ul-hero .lead{margin:28px 0 0;max-width:500px;text-align:left}
+  .ul-act{display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px;margin-top:32px}
+  .ul-badge img{display:block;height:54px;width:auto}
+  .ul-meadow{position:relative;border-radius:32px;overflow:hidden;padding:clamp(36px,5vw,64px) 24px;display:flex;justify-content:center;background:#F5F5F6;isolation:isolate;transform:translateZ(0)}
+  .ul-meadow img{display:block;width:min(300px,70%);height:auto;filter:drop-shadow(0 26px 40px rgba(0,0,0,.38))}
+  /* black band: the SIM quote */
+  .ul-band{position:relative;isolation:isolate;margin-top:clamp(96px,12vw,140px);padding:clamp(80px,10vw,128px) 0}
+  .ul-band::before{content:"";position:absolute;inset:0 auto 0 50%;width:100vw;transform:translateX(-50%);background:#050505;z-index:-1}
+  .ul-band .eyebrow{color:#fff;justify-content:center}
+  .ul-band blockquote{margin:0 auto;max-width:920px;color:#fff;font-family:"General Sans","Manrope",sans-serif;font-weight:500;letter-spacing:-.015em;font-size:clamp(23px,2.5vw,33px);line-height:1.32;text-align:center;text-wrap:pretty}
+  .ul-band blockquote mark{background:none;color:#B2A4F9}
+  .ul-band .ul-src{margin:28px auto 0;text-align:center;font-size:15px;color:#D1D1D6}
+  .ul-band h2{margin:clamp(56px,7vw,88px) auto 0;max-width:16ch;color:#fff;text-align:center;font-family:"General Sans","Manrope",sans-serif;font-weight:550;letter-spacing:-.03em;font-size:clamp(36px,4.9vw,50px);line-height:1.06;text-wrap:balance}
+  .ul-band .ul-bp{margin:20px auto 0;max-width:560px;text-align:center;font-size:20px;line-height:31px;color:#D1D1D6}
+  /* nine fields: text + an example entry */
+  .ul-nine{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;align-items:center}
+  .ul-nine .eyebrow{justify-content:flex-start}
+  .ul-nine h2{text-align:left;margin:0}
+  .ul-nine .lead{text-align:left;margin:20px 0 0}
+  .ul-note{margin:32px 0 0;padding-left:20px;border-left:3px solid #6D42F5;font-size:18px;line-height:28px;color:#050505;font-weight:500}
+  .ul-entry{background:#0B0B0F;border-radius:28px;padding:30px 30px 22px;color:#fff;box-shadow:0 30px 70px -30px rgba(15,23,42,.45)}
+  .ul-entry-h{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:14px;font-family:"Manrope",sans-serif;font-weight:700;font-size:14px;color:#A1A1AA}
+  .ul-entry-h b{font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:24px;color:#fff}
+  .ul-f{display:grid;grid-template-columns:30px 1fr auto;gap:12px;align-items:baseline;padding:12px 0;border-top:1px solid rgba(255,255,255,.08);font-family:"Manrope",sans-serif;font-size:16px;font-weight:600}
+  .ul-f i{font-style:normal;font-size:13px;color:#A1A1AA;font-variant-numeric:tabular-nums}
+  .ul-f em{font-style:normal;color:#E4E4E7;font-weight:500;text-align:right}
+  .ul-f.sig{margin-top:6px;padding:14px 16px;border:0;border-radius:16px;background:#6D42F5;grid-template-columns:30px 1fr;row-gap:4px}
+  .ul-f.sig i{color:#fff}
+  .ul-f.sig em{grid-column:2;text-align:left;color:#fff;font-size:15px}
+  .ul-cap{margin:14px 0 0;font-size:14px;color:#52525B;text-align:center}
+  /* who signs: open rows */
+  .ul-who{margin:56px auto 0;max-width:980px;list-style:none;padding:0}
+  .ul-who li{display:grid;grid-template-columns:340px 1fr;gap:10px 48px;padding:30px 0;border-top:1px solid #E4E4E7}
+  .ul-who li:last-child{border-bottom:1px solid #E4E4E7}
+  .ul-who b{font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:28px;line-height:34px;color:#050505;letter-spacing:-.01em}
+  .ul-who small{display:block;margin-top:6px;font-size:15px;line-height:22px;color:#52525B}
+  .ul-chips{display:flex;flex-wrap:wrap;gap:10px;align-content:flex-start;padding-top:2px}
+  .ul-chips span{display:inline-flex;align-items:center;height:38px;padding:0 16px;border-radius:99px;background:#F4F4F5;color:#050505;font-family:"Manrope",sans-serif;font-weight:600;font-size:15px}
+  .ul-chips span.k{background:#050505;color:#fff}
+  .ul-never{margin:40px auto 0;max-width:720px;text-align:center;font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:clamp(24px,2.4vw,30px);line-height:1.3;color:#050505;text-wrap:balance}
+  /* first 500 */
+  .ul-500{text-align:center}
+  .ul-num{margin:0;font-family:"General Sans","Manrope",sans-serif;font-weight:600;letter-spacing:-.06em;line-height:.85;font-size:clamp(96px,11.7vw,120px);background:linear-gradient(180deg,#6D42F5 0%,#2B1A6E 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .ul-500 h2{margin-top:20px}
+  .ul-500 .ul-q{margin:24px auto 0;max-width:640px;font-size:20px;line-height:31px;color:#050505;font-style:italic}
+  .ul-500 .lead{margin-top:16px}
+  /* Manifest: phone + checklist */
+  .ul .vis-media.ul-dark{background:#050505}
+  .ul .vis-media.ul-dark img{display:block;width:min(300px,78%);height:auto}
+  .ul-count{margin:28px 0 0;font-size:16px;line-height:25px;color:#52525B;max-width:520px}
+  .ul-count b{color:#050505}
+  /* in practice: four open checks */
+  .ul-checks{margin:56px auto 0;max-width:880px;display:grid;grid-template-columns:1fr 1fr;gap:36px 56px;list-style:none;padding:0}
+  .ul-checks li{display:flex;gap:16px;align-items:flex-start;font-size:19px;line-height:28px;color:#050505;font-weight:500}
+  .ul-checks svg{width:26px;height:26px;flex:0 0 auto;color:#22C55E;margin-top:1px}
+  .ul-src2{margin:56px auto 0;max-width:720px;text-align:center;font-size:15px;line-height:24px;color:#52525B}
+  .ul-src2 a{color:#050505;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+  /* final: hand + badge */
+  .ul-final{display:grid;grid-template-columns:1fr auto;gap:56px;align-items:center;max-width:980px;margin:0 auto;padding:var(--gap) 0 0;text-align:left}
+  .ul-final h2{margin:0;text-align:left;max-width:12ch;font-family:"General Sans","Manrope",sans-serif;font-weight:500;letter-spacing:-.03em;font-size:clamp(36px,4.9vw,50px);line-height:1.06;color:#050505}
+  .ul-final p{margin:18px 0 0;max-width:460px;font-size:20px;line-height:31px;color:#52525B}
+  .ul-final .ul-act{margin-top:32px}
+  .ul-final .qr{margin:0;display:flex;align-items:center;gap:14px}
+  .ul-final .qr img{width:88px;height:88px;display:block}
+  .ul-final .qr figcaption{max-width:150px;font-size:13px;line-height:18px;color:#52525B}
+  .ul-hand{display:block;width:min(340px,34vw);height:auto}
+  .ul-final .ul-desk{margin:28px 0 0;font-size:15px;line-height:24px;color:#52525B}
+  .ul-desk a{color:#050505;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+  @media (max-width:899px){
+    .ul-hero{grid-template-columns:1fr;gap:48px;text-align:center}
+    .ul-hero .eyebrow{justify-content:center}
+    .ul-hero h1{margin:0 auto}
+    .ul-hero .lead{margin-left:auto;margin-right:auto;text-align:center}
+    .ul-act{justify-content:center}
+    .ul-nine{grid-template-columns:1fr;gap:40px}
+    .ul-who li{grid-template-columns:1fr;gap:14px;padding:24px 0}
+    .ul-who b{font-size:23px;line-height:29px}
+    .ul-checks{grid-template-columns:1fr;gap:22px}
+    .ul-checks li{font-size:17px;line-height:26px}
+    .ul-final{grid-template-columns:1fr;gap:40px;text-align:center}
+    .ul-final h2{margin:0 auto;text-align:center}
+    .ul-final p{margin-left:auto;margin-right:auto}
+    .ul-final .qr{display:none}
+    .ul-hand{width:min(300px,78%);margin:0 auto}
+    .ul-band .ul-bp{font-size:17px;line-height:27px}
+    .ul-500 .ul-q{font-size:18px;line-height:28px}
+  }
+  @media (max-width:600px){
+    .ul-meadow{border-radius:24px}
+    .ul-entry{padding:22px 18px 16px;border-radius:22px}
+    .ul-f{font-size:14.5px;grid-template-columns:24px 1fr auto;gap:8px}
+    .ul-f.sig{grid-template-columns:24px 1fr;padding:12px}
+    .ul-chips span{height:34px;font-size:14px;padding:0 13px}
+    .ul-note{font-size:16px;line-height:25px}
+  }
+  </style>
 
-  <section class="dk-band dk-tight">
-    <div class="dk-plate dk-plate-sill" style="margin-top:0">
-      <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
-      <img class="dk-paint" src="/assets/paint/09-open-loggia-1280.webp" srcset="/assets/paint/09-open-loggia-1280.webp 1280w, /assets/paint/09-open-loggia-2560.webp 2560w" sizes="(max-width: 760px) 100vw, 1240px" alt="" decoding="async" />
-      <img class="dk-ph mid" src="/assets/opt/checkin-pass-framed.webp" width="640" height="1325" alt="Manifest Check-in Pass showing licence, current status, total jumps, jumps signed off, reserve repack and AAD service dates" decoding="async" />
-    </div>
+  
+
+  <section class="ul-band" id="short-answer">
+    <p class="eyebrow">The short answer, from SIM 3-1</p>
+    <blockquote>&ldquo;Applicants who use digital devices instead of traditional paper logbooks to record jumps must ensure that the digital device contains the required information, including <mark>a signature verification from a licensed skydiver, the pilot, or a USPA National or FAI Judge who witnessed the skydive.</mark> Each instructor, S&amp;TA, examiner, or board member who verifies license requirements for a USPA license must review and verify the jumps logged in a digital device.&rdquo;</blockquote>
+    <p class="ul-src">USPA Skydiver&rsquo;s Information Manual, Section 3-1</p>
+    <h2>Same bar as paper.</h2>
+    <p class="ul-bp">Digital is not a lesser option. It has to meet the same bar, and someone appropriate has to be able to review it.</p>
   </section>
 
-  <section class="dk-band" id="short-answer">
-    <div class="dk-t">
-      <p class="dk-eyebrow">The short answer, from SIM 3-1</p>
-      <blockquote class="x-quote">&ldquo;Applicants who use digital devices instead of traditional paper logbooks to record jumps must ensure that the digital device contains the required information, including <mark>a signature verification from a licensed skydiver, the pilot, or a USPA National or FAI Judge who witnessed the skydive.</mark> Each instructor, S&amp;TA, examiner, or board member who verifies license requirements for a USPA license must review and verify the jumps logged in a digital device.&rdquo;</blockquote>
-      <p class="x-src">USPA Skydiver&rsquo;s Information Manual, Section 3-1</p>
-      <h2 class="dk-h">Same bar as paper.</h2>
-      <p class="dk-l">Digital is not a lesser option. It has to meet the same bar, and someone appropriate has to be able to review it.</p>
+  <section class="sec ul-nine" id="nine-fields">
+    <div>
+      <p class="eyebrow">What every jump must contain</p>
+      <h2>Nine fields. Every jump.</h2>
+      <p class="lead">SIM 3-1 wants each one &ldquo;legibly recorded in chronological order&rdquo;.</p>
+      <p class="ul-note">The last one is the part people miss. A signature on its own is not enough: it needs a number that identifies the person who signed.</p>
     </div>
-  </section>
-
-  <section class="dk-band" id="nine-fields">
-    <div class="dk-split">
-      <div>
-        <p class="dk-eyebrow">What every jump must contain</p>
-        <h2 class="dk-h">Nine fields. Every jump.</h2>
-        <p class="dk-l">SIM 3-1 wants each one &ldquo;legibly recorded in chronological order&rdquo;.</p>
-        <p class="dk-p" style="margin-top:16px">The last one is the part people miss. A signature on its own is not enough: it needs a number that identifies the person who signed.</p>
+    <div>
+      <div class="ul-entry" role="img" aria-label="The nine fields SIM 3-1 requires for each jump: jump number, date, location, exit altitude, freefall length, type of jump, landing distance from the target, equipment used, and a verifying signature with a USPA membership, licence or pilot certificate number">
+        <div class="ul-entry-h"><b>One jump</b><span>Nine fields</span></div>
+        <div class="ul-f"><i>01</i>Jump number<em>Every jump, in order</em></div>
+        <div class="ul-f"><i>02</i>Date</div>
+        <div class="ul-f"><i>03</i>Location</div>
+        <div class="ul-f"><i>04</i>Exit altitude</div>
+        <div class="ul-f"><i>05</i>Freefall length<em>Time</em></div>
+        <div class="ul-f"><i>06</i>Type of jump<em>FS, freefly, CF</em></div>
+        <div class="ul-f"><i>07</i>Landing distance<em>From the target</em></div>
+        <div class="ul-f"><i>08</i>Equipment used</div>
+        <div class="ul-f sig"><i>09</i>Verifying signature<em>With a legible USPA membership number, skydiving licence number or pilot certificate number</em></div>
       </div>
-      <div>
-        <div class="x-entry" role="img" aria-label="The nine fields SIM 3-1 requires for each jump: jump number, date, location, exit altitude, freefall length, type of jump, landing distance from the target, equipment used, and a verifying signature with a USPA membership, licence or pilot certificate number">
-          <div class="x-entry-h"><b>One jump</b><span>Nine fields</span></div>
-          <div class="x-f"><i>01</i>Jump number<em>Every jump, in order</em></div>
-          <div class="x-f"><i>02</i>Date</div>
-          <div class="x-f"><i>03</i>Location</div>
-          <div class="x-f"><i>04</i>Exit altitude</div>
-          <div class="x-f"><i>05</i>Freefall length<em>Time</em></div>
-          <div class="x-f"><i>06</i>Type of jump<em>FS, freefly, CF</em></div>
-          <div class="x-f"><i>07</i>Landing distance<em>From the target</em></div>
-          <div class="x-f"><i>08</i>Equipment used</div>
-          <div class="x-f sig"><i>09</i>Verifying signature<em>With a legible USPA membership number, skydiving licence number or pilot certificate number</em></div>
-        </div>
-        <p class="dk-n">The fields listed in SIM 3-1.</p>
-      </div>
+      <p class="ul-cap">The fields listed in SIM 3-1.</p>
     </div>
   </section>
 
-  <section class="dk-band" id="who-signs">
-    <div class="dk-t">
-      <p class="dk-eyebrow">Who is allowed to sign</p>
-      <h2 class="dk-h">It depends on what you claim.</h2>
-      <p class="dk-l">There are two different bars for the jump, and a third for the application.</p>
-    </div>
-    <ol class="x-who">
-      <li><div><b>Number of jumps</b><small>A witness of the jump signs off jumps submitted to meet the number-of-jumps requirement.</small></div><div class="x-chips"><span>Licensed skydiver</span><span>Pilot</span><span>USPA Instructor</span><span>Examiner</span><span>S&amp;TA</span><span>Board member</span></div></li>
-      <li><div><b>Skill requirements</b><small>Everything that is not purely a jump count: accuracy landings, formations, D-licence skill requirements.</small></div><div class="x-chips"><span>USPA Coach</span><span>Instructor</span><span>Examiner</span><span>S&amp;TA</span><span>Board member</span></div></li>
-      <li><div><b>A, B and C licences</b><small>Verifying the logbook entries on the application itself.</small></div><div class="x-chips"><span>USPA Instructor</span><span>Examiner</span><span>S&amp;TA</span><span>Board member</span></div></li>
-      <li><div><b>D licence</b><small>Verifying the logbook entries on the application itself.</small></div><div class="x-chips"><span>USPA S&amp;TA</span><span>Board member</span></div></li>
+  <section class="sec" id="who-signs">
+    <p class="eyebrow">Who is allowed to sign</p>
+    <h2>It depends on what you claim.</h2>
+    <p class="lead">There are two different bars for the jump, and a third for the application.</p>
+    <ol class="ul-who">
+      <li><div><b>Number of jumps</b><small>A witness of the jump signs off jumps submitted to meet the number-of-jumps requirement.</small></div><div class="ul-chips"><span>Licensed skydiver</span><span>Pilot</span><span>USPA Instructor</span><span>Examiner</span><span>S&amp;TA</span><span>Board member</span></div></li>
+      <li><div><b>Skill requirements</b><small>Everything that is not purely a jump count: accuracy landings, formations, D-licence skill requirements.</small></div><div class="ul-chips"><span class="k">USPA Coach</span><span class="k">Instructor</span><span class="k">Examiner</span><span class="k">S&amp;TA</span><span class="k">Board member</span></div></li>
+      <li><div><b>A, B and C licences</b><small>Verifying the logbook entries on the application itself.</small></div><div class="ul-chips"><span class="k">USPA Instructor</span><span class="k">Examiner</span><span class="k">S&amp;TA</span><span class="k">Board member</span></div></li>
+      <li><div><b>D licence</b><small>Verifying the logbook entries on the application itself.</small></div><div class="ul-chips"><span class="k">USPA S&amp;TA</span><span class="k">Board member</span></div></li>
     </ol>
-    <p class="x-never">You may not sign for your own licence application, or initial any of its verification blocks.</p>
+    <p class="ul-never">You may not sign for your own licence application, or initial any of its verification blocks.</p>
   </section>
 
-  <section class="dk-band" id="first-500">
-    <div class="dk-t">
-      <p class="dk-big" aria-hidden="true">500</p>
-      <h2 class="dk-h">Your first 500 jumps matter most.</h2>
-      <p class="dk-l" style="color:var(--ink)">&ldquo;Skydivers pursuing licenses and ratings must clearly log their first 500 jumps so officials can easily verify them.&rdquo; SIM 3-1</p>
-      <p class="dk-l">Moving an old paper history across? Bulk-imported jumps with missing altitudes, freefall times or signatures are exactly the ones an S&amp;TA will stop at. Get the early ones complete.</p>
-    </div>
+  <section class="sec ul-500" id="first-500">
+    <p class="ul-num" aria-hidden="true">500</p>
+    <h2>Your first 500 jumps matter most.</h2>
+    <p class="ul-q">&ldquo;Skydivers pursuing licenses and ratings must clearly log their first 500 jumps so officials can easily verify them.&rdquo; SIM 3-1</p>
+    <p class="lead">Moving an old paper history across? Bulk-imported jumps with missing altitudes, freefall times or signatures are exactly the ones an S&amp;TA will stop at. Get the early ones complete.</p>
   </section>
 
-  <section class="dk-band" id="in-practice">
-    <div class="dk-t">
-      <p class="dk-eyebrow">What this means in practice</p>
-      <h2 class="dk-h">Accepted, if it does four things.</h2>
-    </div>
-    <ul class="x-checks">
+  <section class="sec" id="in-practice">
+    <p class="eyebrow">What this means in practice</p>
+    <h2>Accepted, if it does four things.</h2>
+    <ul class="ul-checks">
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-6.5"/></svg>Records all nine fields on every jump.</li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-6.5"/></svg>Keeps them in chronological order.</li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-6.5"/></svg>Carries a real signature with an identifying number on each jump used as evidence.</li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-6.5"/></svg>Can be reviewed by the official verifying your application.</li>
     </ul>
-    <p class="x-never">What it cannot be is a jump counter. A number with nobody&rsquo;s name against it proves nothing at a licence application.</p>
+    <p class="ul-never">What it cannot be is a jump counter. A number with nobody&rsquo;s name against it proves nothing at a licence application.</p>
   </section>
 
-  <section class="dk-band" id="manifest">
-    <div class="dk-split flip">
-      <div>
-        <p class="dk-eyebrow">Sign-offs in Manifest</p>
-        <h2 class="dk-h">Witnessed, not self&#8209;reported.</h2>
-        <p class="dk-l">Jump records in Manifest are built around SIM 3-1.</p>
-        <ul class="dk-list">
-          <li>Every jump records the nine fields</li>
-          <li>Signed off in person by another licensed jumper</li>
-          <li>Their name and licence number stored on the entry</li>
-          <li>A signed entry locks, so it cannot be edited afterwards</li>
-        </ul>
-      </div>
-      <div class="dk-split-v">
-        <img class="dk-ph mid" src="/assets/opt/app-wallet.webp" width="640" height="1325" alt="The Manifest app at a dropzone: balance, My Pass, top up, and the jumper checked in on Load 1" loading="lazy" decoding="async" />
-      </div>
+  <section class="sec vis flip" id="manifest">
+    <div class="vis-txt">
+      <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>Sign-offs in Manifest</p>
+      <h2>Witnessed, not self&#8209;reported.</h2>
+      <p class="lead">Jump records in Manifest are built around SIM 3-1.</p>
+      <ul class="vis-pts">
+        <li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Every jump records the nine fields</span></li>
+        <li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Signed off in person by another licensed jumper</span></li>
+        <li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Their name and licence number stored on the entry</span></li>
+        <li><svg class="tk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>A signed entry locks, so it cannot be edited afterwards</span></li>
+      </ul>
     </div>
-    <p class="dk-n" style="width:min(743px,calc(100vw - 40px));margin:72px auto 0">Source: USPA Skydiver&rsquo;s Information Manual, Section 3-1, &ldquo;Licenses&rdquo;: <a class="dk-a" href="https://www.uspa.org/SIM/3" rel="noopener">uspa.org/SIM/3</a>. Requirements change; check the current SIM before submitting an application. This page is a plain-language summary, not official USPA guidance.</p>
+    <div class="vis-media ul-dark">
+      <img src="/assets/opt/app-wallet.webp" width="640" height="1325" alt="The Manifest app at a dropzone: balance, My Pass, top up, and the jumper checked in on Load 1" loading="lazy" decoding="async" />
+    </div>
   </section>
 
-  <section class="dk-band dk-tight dk-close-b">
-    <div class="dk-plate dk-plate-close" style="margin-top:0">
-      <img class="dk-paint" src="/assets/paint/01-golden-dome-1280.webp" srcset="/assets/paint/01-golden-dome-1280.webp 1280w, /assets/paint/01-golden-dome-2560.webp 2560w" sizes="(max-width: 760px) 100vw, 1240px" alt="" loading="lazy" decoding="async" />
-      <div class="dk-close">
-        <h2 class="dk-h">Every jump, witnessed.</h2>
-        <p class="dk-l">Manifest is the app for skydivers: loads, 3D replays and every jump, signed off in person.</p>
-        <div class="dk-close-get"><a class="dk-badge" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="Download Manifest on the App Store"><img src="/assets/appstore-badge.svg?v=1" alt="Download on the App Store" width="160" height="54" /></a><img class="dk-qr" src="/assets/appstore-qr.svg?v=1" width="120" height="120" alt="Scan with your iPhone camera to open Manifest in the App Store." loading="lazy" /></div>
-        <p class="dk-close-dz">More: <a href="/skydiving-app/">The skydiving app</a>, <a href="/live-skydiving-loads/">Live loads</a>, <a href="/skydive-3d-tracking/">3D replay</a>, <a href="/skydiving-weather/">Weather</a>. Own a dropzone? <a href="/dropzones/">See Manifest Desk</a>.</p>
+  <p class="ul-src2">Source: USPA Skydiver&rsquo;s Information Manual, Section 3-1, &ldquo;Licenses&rdquo;: <a href="https://www.uspa.org/SIM/3" rel="noopener">uspa.org/SIM/3</a>. Requirements change; check the current SIM before submitting an application. This page is a plain-language summary, not official USPA guidance.</p>
+
+  <section class="ul-final">
+    <div>
+      <h2>Every jump, witnessed.</h2>
+      <p>Manifest is the app for skydivers: loads, 3D replays and every jump, signed off in person.</p>
+      <div class="ul-act">
+        <a class="ul-badge" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="Download Manifest on the App Store"><img src="/assets/appstore-badge.svg?v=1" alt="Download on the App Store" width="162" height="54" /></a>
+        <figure class="qr"><img src="/assets/appstore-qr.svg?v=1" width="88" height="88" alt="Scan with your iPhone camera to open Manifest in the App Store." loading="lazy" /><figcaption aria-hidden="true">Scan with your iPhone camera to open it in the App Store.</figcaption></figure>
       </div>
+      <p class="ul-desk">More: <a href="/skydiving-app/">The skydiving app</a>, <a href="/live-skydiving-loads/">Live loads</a>, <a href="/skydive-3d-tracking/">3D replay</a>, <a href="/skydiving-weather/">Weather</a>. Own a dropzone? <a href="/dropzones/">See Manifest Desk</a>.</p>
     </div>
+    <img class="ul-hand" src="/assets/opt/hand-phone.c1c25f9a.webp" width="631" height="841" alt="A hand holding an iPhone with the Manifest home screen: jump number, next load and jump day shortcuts" loading="lazy" decoding="async" />
   </section>
 </main>
 
 <footer class="site">
+<div class="ftp-art" aria-hidden="true"><picture><source media="(max-width: 760px)" srcset="/assets/paint/06-sun-behind-the-hill-phone-828.webp" /><img src="/assets/paint/06-sun-behind-the-hill-2560.webp" alt="" loading="lazy" decoding="async" /></picture></div>
   <div class="ft">
     <div class="ft-brand">
       <a class="wordmark" href="/" aria-label="Manifest home"><img class="lockup" src="/assets/manifest-lockup-white.svg?v=6" alt="Manifest" /></a>
@@ -1180,8 +1366,6 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
       <a href="/about/">About</a><a href="/support/">Support</a><a href="/help/">Help center</a><a href="/#faq">FAQ</a><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a></div>
   </div>
   <div class="ft-base"><span>© 2026 Manifest Jump LLC · Wyoming, USA · Dubai,&nbsp;UAE</span><div class="ft-pay" aria-label="Payment methods accepted"><img src="/assets/pay/apple_pay.svg?v=1" alt="Apple Pay" height="24" /><img src="/assets/pay/visa.svg?v=1" alt="Visa" height="24" /><img src="/assets/pay/master.svg?v=1" alt="Mastercard" height="24" /><img src="/assets/pay/american_express.svg?v=1" alt="American Express" height="24" /><img src="/assets/pay/cashapppay.svg?v=1" alt="Cash App Pay" height="24" /><img src="/assets/pay/stripe.svg?v=1" alt="Stripe" height="24" /></div></div>
-  <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
-  <div class="ft-art" aria-hidden="true"><img src="/assets/paint/05-crimson-loggia-1280.webp" srcset="/assets/paint/05-crimson-loggia-1280.webp 1280w, /assets/paint/05-crimson-loggia-2560.webp 2560w" sizes="100vw" alt="" loading="lazy" decoding="async" /></div>
 </footer>
 
 <script>
@@ -1447,7 +1631,19 @@ span.go > svg{background:#050505!important}
 .vs-yes svg{width:16px!important;height:16px!important;stroke-width:2.6}
 .vs-no{color:#FF453A!important;background:none!important;width:20px!important;height:20px!important}.vs-no svg{width:16px!important;height:16px!important;stroke-width:2.6}
 </style>
-
-<script src="/assets/site-dark.js?v=5" defer></script>
+<script>/* phone footer: tap a menu heading to open it */document.addEventListener('click',function(e){var h=e.target.closest&&e.target.closest('footer.site .ft-col:not(:last-child) h3');if(!h||innerWidth>560)return;h.parentNode.classList.toggle('open');});</script>
+<style id="ft-painting">/* 4 Nov 2026 (André): the previous live footer, on a painting ("Sun behind the hill"). The painting fills the footer; its top dissolves
+   out of the page above, a dark veil keeps every line readable, and it runs on under Safari's bar to the very end. */
+footer.site { position: relative !important; isolation: isolate; overflow: hidden; background: #14110d !important; box-shadow: none !important; border-top: 0 !important; margin-top: 0 !important; }
+footer.site > :not(.ftp-art) { position: relative; z-index: 1; }
+.ftp-art { position: absolute; inset: 0; z-index: 0; pointer-events: none; -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 120px); mask-image: linear-gradient(to bottom, transparent 0, #000 120px); }
+.ftp-art img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 70%; display: block; }
+.ftp-art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(14,12,10,.86) 0, rgba(14,12,10,.62) 45%, rgba(14,12,10,.38) 100%); }
+footer.site, footer.site p, footer.site a, footer.site span, footer.site small { color: rgba(255,255,255,.82); }
+footer.site h3, footer.site b, footer.site strong { color: #fff; }
+html { background-color: #14110d; overscroll-behavior: none; } body { overscroll-behavior: none; }
+@media (max-width: 760px) { footer.site { padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 128px) !important; } .ftp-art img { object-position: 50% 100%; } }
+</style>
+<style id="phone-nofilter">/* Safari paints a white/black box over the painted head while a drop-shadow filter is on the page. */ @media (max-width: 760px) { img:not(.lockup), video { filter: none !important; } }</style>
 </body>
 </html>
