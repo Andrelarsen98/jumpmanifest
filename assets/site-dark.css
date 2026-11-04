@@ -413,3 +413,4 @@ html body.dk .sh .sh-right > .sh-cta:active, html body.dk .sh-mcta:active, html 
 html body .sh-trig, html body .sh-link, html body .sh-login { font: 400 14px/22.4px "Geist", -apple-system, BlinkMacSystemFont, system-ui, sans-serif !important; letter-spacing: normal !important; color: #F1F2F5 !important; }
 html body .sh .sh-right > .sh-cta, html body .sh-mcta { font: 500 14px/19.6px "Geist", -apple-system, BlinkMacSystemFont, system-ui, sans-serif !important; letter-spacing: -0.084px !important; }
 html body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+html body .sh-trig, html body .sh-link, html body .sh-login, html body .sh-t { text-shadow: none !important; }

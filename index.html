@@ -4046,6 +4046,10 @@ html body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: graysc
 .hero-art .art-lede a { color: #fff; font-weight: 500; }
 .hero-art .art-note { font-weight: 400 !important; line-height: 20.8px !important; color: rgba(255,255,255,.82) !important; }
 .hero-art .art-note a { color: #fff !important; font-weight: 500; }
+/* Shadows exactly as ocelli.app: only the headline has a soft one; lede, note and header links have none (ours had dark glows that blurred the letter edges). */
+.hero-art .art-copy h1 { text-shadow: rgba(6,10,40,.35) 0 .98px 23.5px !important; }
+.hero-art .art-lede, .hero-art .art-note, .hero-art .art-note a, .hero-art .art-lede a { text-shadow: none !important; }
+html body .sh-trig, html body .sh-link, html body .sh-login, html body .sh-t { text-shadow: none !important; }
 .art-win, .art-win :not(.la):not(.la *) { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif !important; }
 .art-win .aw-time { font-weight: 400; color: rgba(255,255,255,.85); }
 .art-win .aw-key { color: #fff; }
