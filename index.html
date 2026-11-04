@@ -1785,19 +1785,19 @@ body:has(.hero-art) { padding-top: 0 !important; }
     </div>
     <div class="aw-body">
       <div class="aw-seg" role="tablist" aria-label="Manifest app demo" data-seg>
-        <i class="aw-pill" style="transform:translateX(100%)" data-pill aria-hidden="true"></i>
-        <button class="aw-tab" type="button" role="tab" id="aw-tab-0" aria-controls="aw-pane-0" aria-selected="false" tabindex="-1">Load calls</button>
-        <button class="aw-tab is-on" type="button" role="tab" id="aw-tab-1" aria-controls="aw-pane-1" aria-selected="true">Next load</button>
+        <i class="aw-pill" style="transform:translateX(0%)" data-pill aria-hidden="true"></i>
+        <button class="aw-tab is-on" type="button" role="tab" id="aw-tab-0" aria-controls="aw-pane-0" aria-selected="true">Load calls</button>
+        <button class="aw-tab" type="button" role="tab" id="aw-tab-1" aria-controls="aw-pane-1" aria-selected="false" tabindex="-1">Next load</button>
         <button class="aw-tab" type="button" role="tab" id="aw-tab-2" aria-controls="aw-pane-2" aria-selected="false" tabindex="-1">3D replay</button>
       </div>
       <div class="aw-feed" data-feed>
-        <div class="aw-pane" role="tabpanel" id="aw-pane-0" aria-labelledby="aw-tab-0" aria-hidden="true">
+        <div class="aw-pane is-on" role="tabpanel" id="aw-pane-0" aria-labelledby="aw-tab-0">
           <div class="aw-tr" data-tr>
             <div class="aw-ntf is-in" data-m="-3"><img src="/assets/hero/app-icon.png" width="38" height="38" alt="" /><div class="aw-ntx2"><span class="aw-ntop"><b>You're on Blue Caravan 3</b><time>3m ago</time></span><p>You've been manifested at Skydive Elsinore.</p></div></div>
             <div class="aw-ntf is-in" data-m="0"><img src="/assets/hero/app-icon.png" width="38" height="38" alt="" /><div class="aw-ntx2"><span class="aw-ntop"><b>Blue Caravan 3 is On Call</b><time>now</time></span><p>The plane's inbound at Skydive Elsinore.</p></div></div>
           </div>
         </div>
-        <div class="aw-pane is-on" role="tabpanel" id="aw-pane-1" aria-labelledby="aw-tab-1">
+        <div class="aw-pane" role="tabpanel" id="aw-pane-1" aria-labelledby="aw-tab-1" aria-hidden="true">
           <!-- The real Lock Screen card, every number from LoadLockScreenView in targets/loadwidget/index.swift. -->
           <div class="la">
             <div class="la-top"><span class="la-k">YOUR LOAD</span><span class="la-dz">SKYDIVE ELSINORE</span></div>
@@ -1815,7 +1815,7 @@ body:has(.hero-art) { padding-top: 0 !important; }
         </div>
       </div>
     </div>
-    <a class="aw-bar" data-tab="1" data-bar href="#live" aria-label="See your load on the Lock Screen"><span class="aw-slot"><svg class="aw-ic aw-ic-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16v-5a6 6 0 0 1 12 0v5l1.5 2h-15L6 16z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg><svg class="aw-ic aw-ic-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V7.5a4 4 0 0 1 8 0V11"/></svg><svg class="aw-ic aw-ic-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3M8 7l4-4 4 4"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg></span><span class="aw-field"><span class="aw-ph" data-ph>On your Lock Screen and Dynamic Island</span><span class="aw-ghost"><span data-typed></span><i class="aw-caret"></i></span></span><span class="aw-send" data-send><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span></a>
+    <a class="aw-bar" data-tab="0" data-bar href="#live" aria-label="Pin this load for every call"><span class="aw-slot"><svg class="aw-ic aw-ic-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16v-5a6 6 0 0 1 12 0v5l1.5 2h-15L6 16z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg><svg class="aw-ic aw-ic-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V7.5a4 4 0 0 1 8 0V11"/></svg><svg class="aw-ic aw-ic-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3M8 7l4-4 4 4"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg></span><span class="aw-field"><span class="aw-ph" data-ph>Pin this load for every call</span><span class="aw-ghost"><span data-typed></span><i class="aw-caret"></i></span></span><span class="aw-send" data-send><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span></a>
   </div>
 
   <div class="art-copy">
@@ -2711,7 +2711,7 @@ body:has(.hero-art) { padding-top: 0 !important; }
   const VERB = ['Pin this load for every call', 'On your Lock Screen and Dynamic Island', 'Share this jump'];
   // The bar is a link, not a text box: the app has no such field. Each tab's line goes to the part of the page that shows it.
   const BAR_TO = ['#live', '#live', '#apps'];
-  let tab = 1;
+  let tab = 0;
   function setTab(i) {
     tab = i;
     pill.style.transform = 'translateX(' + i * 100 + '%)';
@@ -2794,7 +2794,7 @@ body:has(.hero-art) { padding-top: 0 !important; }
   const acts = [], at = (t0, dur, run) => acts.push({ t0, t1: t0 + dur, run, done: false });
   const FADE = 0.7, LOOP = 27.4;
   at(0, 0, () => { feed.style.opacity = '1'; });
-  at(3.6, 0, () => setTab(0));
+  at(7.6, 0, () => setTab(1));
   at(12.6, 0, () => { barEl.classList.add('is-typing'); gHold = true; });
   at(12.8, 2.4, ghost);
   at(15.9, 0, () => {
@@ -2813,7 +2813,7 @@ body:has(.hero-art) { padding-top: 0 !important; }
     acts.forEach((a) => { a.done = false; });
     chat.innerHTML = REST;
     stick.set(chat.closest('.aw-pane'), true); pin(chat);
-    clearGhost(); gHold = false; setTab(1);
+    clearGhost(); gHold = false; setTab(0);
   }
 
   let manual = false;
@@ -2833,7 +2833,7 @@ body:has(.hero-art) { padding-top: 0 !important; }
   });
 
   panes.forEach((p) => { p.scrollTop = p.scrollHeight; });
-  setTab(1); paintClock();
+  setTab(0); paintClock();
   if (REDUCED) { feed.style.opacity = '1'; manual = true; win.classList.add('is-manual'); pin(trBody); drawMeter(0, true); return; }
 
   // First visit: the content is there from the first paint. The fade only belongs to the loop coming round again.
