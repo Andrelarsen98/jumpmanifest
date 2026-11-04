@@ -4160,5 +4160,10 @@ html body footer.site, html body.dk footer.site { justify-content: flex-end !imp
   .art-bg img { transform: translateZ(0); -webkit-backface-visibility: hidden; backface-visibility: hidden; }
 }
 </style>
+<style id="rows-mask">/* 4 Nov 2026 (André's iPhone): the side fade of the screenshot rows sat on the section, so on phones its dark ground was faded too
+   and the pinned hero painting showed through the edges. The fade now sits on each row; the section keeps a solid ground. */
+.hb-rows { -webkit-mask-image: none !important; mask-image: none !important; }
+.hb-rows .rw { -webkit-mask-image: linear-gradient(90deg, transparent, #000 11%, #000 89%, transparent); mask-image: linear-gradient(90deg, transparent, #000 11%, #000 89%, transparent); }
+</style>
 </body>
 </html>
