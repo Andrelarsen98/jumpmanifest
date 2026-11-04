@@ -2073,5 +2073,17 @@ html body span.go { background: none !important; box-shadow: none !important; tr
 #top-tint { position: fixed; top: 0; left: 0; right: 0; height: 1px; z-index: 2147483002; pointer-events: none; background: #1b150d; transition: background-color .25s ease; }
 </style>
 <script id="top-tint-js">(function(){var t=document.getElementById('top-tint');var h=document.querySelector('.hero-art, .dkh .dk-head, .nf-art');if(!t)return;var meta=document.querySelector('meta[name="theme-color"]');var dark=null;function set(){var y=Math.max(0,scrollY||0);var b=h?h.getBoundingClientRect().bottom+y:0;var d=!!h&&y<b-40;if(d!==dark){dark=d;var c=d?'#1b150d':'#ffffff';t.style.backgroundColor=c;if(meta)meta.setAttribute('content',c);}}set();addEventListener('scroll',function(){requestAnimationFrame(set)},{passive:true});addEventListener('load',set);})();</script>
+<style id="dz-desk-front">/* 5 Nov 2026 (André): on computers too, the Desk page opens like the home page: one full screen of painting,
+   the Studio Display with the iPhone centred at the top, the words below. */
+@media (min-width: 761px) {
+  .dkh .dk-head { height: max(100vh, 760px) !important; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 20px 6vh !important; overflow: hidden; }
+  .dkh .dk-head > picture img, .dkh .dk-head-art { -webkit-mask-image: none !important; mask-image: none !important; }
+  .dzh-dev { display: block; position: absolute; left: 50%; top: 92px; transform: translateX(-50%); height: max(300px, calc(100vh - 500px)); aspect-ratio: 1600 / 1242; pointer-events: none; }
+  .dzh-studio { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 24px 40px rgba(0,0,0,.5)); }
+  .dzh-phone { position: absolute; right: -8%; bottom: -4%; height: 66%; width: auto; filter: drop-shadow(0 18px 30px rgba(0,0,0,.55)); }
+  .dkh .dk-head .dk-h1 { font-size: clamp(34px, 3.6vw, 52px) !important; }
+  #today .dk-plate, #today .dz-cap { display: none !important; }
+}
+</style>
 </body>
 </html>
