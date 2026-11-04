@@ -1810,5 +1810,14 @@ html body .sh-cta *,html body .sh-cta-demo *,html body .fd-btn *,html body .btn.
 html body .sh-cta:active,html body .sh-cta-demo:active,html body .fd-btn:active,html body .btn.ghost:active,html body .btn.demo:active,html body .band-btn:active,html body .pc-out:active,html body .sms-btn:active,html body .sm-btn:active,html body .pc-call:active,html body .lo-btn:active,html body .lc-btn:active,html body .hmw-btn:active,html body .dp-btn:active,html body .btn.primary:active,html body .pq-btn:active,html body .go:active,html body a.btn[href*="apps.apple.com"]:active,html body a.btn[href="/get"]:active,html body a.btn[href^="/get-started"]:active{background:#1a44dc!important;transform:none}
 html body .sh.over-art .sh-cta{background:linear-gradient(180deg,#2f5cf2 0%,#1439c9 100%)!important}
 </style>
+<style id="nav-smooth">/* 4 Nov 2026 (André: "something flashes on refresh", "nav should come smoothly in and out over the paintings").
+   1. No late drop-in: the bar is there from the first frame (it used to slide in 0.95 s after load, the flash on refresh).
+   2. Over the painting and back: the bar fades out (.22 s), changes shape while invisible, and fades back in (.42 s, Ocelli's curve). */
+html body .sh.li-bar, html.sh-seen body .sh.li-bar { animation: none !important; opacity: 1; transform: none;
+  transition: opacity .42s cubic-bezier(.32,.72,0,1), transform .42s cubic-bezier(.32,.72,0,1), visibility 0s !important; }
+html body .sh.li-bar.sh-hide, html.sh-seen body .sh.li-bar.sh-hide { opacity: 0 !important; transform: translateY(-10px) !important; pointer-events: none;
+  transition: opacity .22s ease, transform .22s ease !important; }
+@media (prefers-reduced-motion: reduce) { html body .sh.li-bar, html body .sh.li-bar.sh-hide { transition: opacity .01s !important; transform: none !important; } }
+</style>
 </body>
 </html>
