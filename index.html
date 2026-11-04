@@ -1781,7 +1781,7 @@ body:has(.hero-art) { padding-top: 0 !important; }
   <div class="art-win" role="group" aria-label="Manifest app demo: load calls, next load and 3D replay" data-art-win>
     <div class="aw-chrome">
       <span class="aw-meter" aria-hidden="true"><canvas class="aw-scope" width="60" height="40"></canvas><span class="aw-time" data-time>10:00</span></span>
-      <span class="aw-tools" aria-hidden="true"><span class="aw-key">Weather</span><span class="aw-key aw-key-on">Check-in</span></span>
+      <span class="aw-tools"><a class="aw-key" href="#weather">Weather</a><a class="aw-key aw-key-on" href="/uspa-digital-logbook/">Check-in</a></span>
     </div>
     <div class="aw-body">
       <div class="aw-seg" role="tablist" aria-label="Manifest app demo" data-seg>
@@ -2793,7 +2793,7 @@ body:has(.hero-art) { padding-top: 0 !important; }
 
   const acts = [], at = (t0, dur, run) => acts.push({ t0, t1: t0 + dur, run, done: false });
   const FADE = 0.7, LOOP = 27.4;
-  at(0, FADE, (k) => { feed.style.opacity = String(k); });
+  at(0, 0, () => { feed.style.opacity = '1'; });
   at(3.6, 0, () => setTab(0));
   at(12.6, 0, () => { barEl.classList.add('is-typing'); gHold = true; });
   at(12.8, 2.4, ghost);
@@ -2809,10 +2809,9 @@ body:has(.hero-art) { padding-top: 0 !important; }
     rep.querySelectorAll('.aw-stat').forEach((x) => x.classList.remove('is-in')); bubble(rep);
   });
   at(17.5, 2.3, (k) => { chat.querySelectorAll('.aw-stat').forEach((x, i) => { if (k >= (i + .4) / 3) x.classList.add('is-in'); }); pin(chat); });
-  at(LOOP - FADE, FADE, (k) => { feed.style.opacity = String(1 - k); });
   function reset() {
     acts.forEach((a) => { a.done = false; });
-    feed.style.opacity = '0'; chat.innerHTML = REST;
+    chat.innerHTML = REST;
     stick.set(chat.closest('.aw-pane'), true); pin(chat);
     clearGhost(); gHold = false; setTab(1);
   }
@@ -4030,6 +4029,11 @@ html body .sh .sh-right > .sh-cta:active, html body .sh-mcta:active, html body #
   box-shadow: rgba(255,255,255,.08) 0 1px 0 inset, rgba(6,14,52,.4) 0 2px 4px inset, rgba(10,22,80,.22) 0 1px 2px !important; }
 .bn-r.is-own u { background-color: #3563F4 !important; background-image: repeating-linear-gradient(45deg, rgba(255,255,255,.1) 0, rgba(255,255,255,.1) 2.5px, transparent 2.5px, transparent 6px), linear-gradient(#3563F4 0%, #1033B8 100%) !important; }
 .bn-r.is-own b { color: #7D99FF !important; }
+</style>
+<style id="aw-keys">/* 4 Nov 2026: Weather and Check-in in the demo window are real links now, not decoration. */
+.aw-key { color: inherit; text-decoration: none; cursor: pointer; transition: background-color .15s ease; }
+@media (hover: hover) { .aw-key:hover { background: rgba(255,255,255,.14); } }
+.aw-key:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 </style>
 </body>
 </html>
