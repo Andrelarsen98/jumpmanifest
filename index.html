@@ -2383,7 +2383,7 @@ body:has(.hero-art) { padding-top: 0 !important; }
   </div>
   <div class="ft-base"><span>© 2026 Manifest Jump LLC · Wyoming, USA · Dubai,&nbsp;UAE</span><div class="ft-pay" aria-label="Payment methods accepted"><img src="/assets/pay/apple_pay.svg?v=1" alt="Apple Pay" height="24" /><img src="/assets/pay/visa.svg?v=1" alt="Visa" height="24" /><img src="/assets/pay/master.svg?v=1" alt="Mastercard" height="24" /><img src="/assets/pay/american_express.svg?v=1" alt="American Express" height="24" /><img src="/assets/pay/cashapppay.svg?v=1" alt="Cash App Pay" height="24" /><img src="/assets/pay/stripe.svg?v=1" alt="Stripe" height="24" /></div></div>
   <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
-  <div class="ft-art" aria-hidden="true"><img src="/assets/paint/01-golden-dome-1280.webp" srcset="/assets/paint/01-golden-dome-1280.webp 1280w, /assets/paint/01-golden-dome-2560.webp 2560w" sizes="(max-width: 760px) 100vw, 1240px" alt="" loading="lazy" decoding="async" /></div>
+  <div class="ft-art" aria-hidden="true"><img src="/assets/paint/01-golden-dome-1280.webp" srcset="/assets/paint/01-golden-dome-1280.webp 1280w, /assets/paint/01-golden-dome-2560.webp 2560w" sizes="(max-width: 720px) 170vw, 100vw" alt="" loading="lazy" decoding="async" /></div>
 </footer>
 
 <script>
@@ -4061,6 +4061,25 @@ html body .sh-trig, html body .sh-link, html body .sh-login, html body .sh-t { t
 <style id="hero-loggia">/* 4 Nov 2026: hero painting is Ocelli's "Open loggia" (Mac 5120x3200, iPhone 1290x2796), used with Ocelli's written OK per André. Centred: the open arch sits behind the copy. */
 .art-bg img { object-position: 50% 60% !important; }
 @media (max-width: 760px) { .art-bg img { object-position: 50% 50% !important; } }
+</style>
+<style id="ft-closure">
+/* ---------- Footer painting (4 Nov 2026, André: "on footer do like this"). ocelli.app's .closure, numbers sampled from its live CSS:
+   the painting fills the width and sits on the bottom edge, a page-colour veil fades it in from the top (5 stops), and a 10-step
+   mask dissolves its top edge into the page. Section height 74.84vw (127.2vw on phones, painting at 170% from 58%). ---------- */
+html body footer.site { position: relative !important; isolation: isolate; overflow: hidden; min-height: max(74.84vw, 100svh); }
+html body footer.site > :not(.ft-art) { position: relative; z-index: 1; }
+html body footer.site .ft-art { position: absolute !important; inset: 0 !important; z-index: 0 !important; height: auto !important; margin: 0 !important; pointer-events: none;
+  -webkit-mask-image: linear-gradient(to top,#000 0 48vw,rgb(0 0 0 / 0.972) 50.68vw,rgb(0 0 0 / 0.896) 53.37vw,rgb(0 0 0 / 0.784) 56.05vw,rgb(0 0 0 / 0.648) 58.74vw,rgb(0 0 0 / 0.5) 61.42vw,rgb(0 0 0 / 0.352) 64.1vw,rgb(0 0 0 / 0.216) 66.79vw,rgb(0 0 0 / 0.104) 69.47vw,rgb(0 0 0 / 0.028) 72.16vw,transparent 74.84vw); mask-image: linear-gradient(to top,#000 0 48vw,rgb(0 0 0 / 0.972) 50.68vw,rgb(0 0 0 / 0.896) 53.37vw,rgb(0 0 0 / 0.784) 56.05vw,rgb(0 0 0 / 0.648) 58.74vw,rgb(0 0 0 / 0.5) 61.42vw,rgb(0 0 0 / 0.352) 64.1vw,rgb(0 0 0 / 0.216) 66.79vw,rgb(0 0 0 / 0.104) 69.47vw,rgb(0 0 0 / 0.028) 72.16vw,transparent 74.84vw); }
+html body footer.site .ft-art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,27,32,.42) 0, rgba(26,27,32,.62) 17vw, rgba(26,27,32,.80) 31vw, rgba(26,27,32,.93) 48vw, rgba(26,27,32,.97) 68vw); }
+html body footer.site .ft-art img { position: absolute !important; left: 0; bottom: 0; width: 100% !important; height: auto !important; max-width: none; object-fit: fill !important; -webkit-mask-image: none !important; mask-image: none !important; }
+html body footer.site :is(p, a, span, li, small) { color: #A1A4B0; }
+html body footer.site :is(h3, h4, b, strong) { color: #F1F2F5; }
+@media (max-width: 720px) {
+  html body footer.site { min-height: max(127.2vw, 100svh); }
+  html body footer.site .ft-art { -webkit-mask-image: linear-gradient(to top,#000 0 81.6vw,rgb(0 0 0 / 0.972) 86.16vw,rgb(0 0 0 / 0.896) 90.72vw,rgb(0 0 0 / 0.784) 95.28vw,rgb(0 0 0 / 0.648) 99.84vw,rgb(0 0 0 / 0.5) 104.4vw,rgb(0 0 0 / 0.352) 108.96vw,rgb(0 0 0 / 0.216) 113.52vw,rgb(0 0 0 / 0.104) 118.08vw,rgb(0 0 0 / 0.028) 122.64vw,transparent 127.2vw); mask-image: linear-gradient(to top,#000 0 81.6vw,rgb(0 0 0 / 0.972) 86.16vw,rgb(0 0 0 / 0.896) 90.72vw,rgb(0 0 0 / 0.784) 95.28vw,rgb(0 0 0 / 0.648) 99.84vw,rgb(0 0 0 / 0.5) 104.4vw,rgb(0 0 0 / 0.352) 108.96vw,rgb(0 0 0 / 0.216) 113.52vw,rgb(0 0 0 / 0.104) 118.08vw,rgb(0 0 0 / 0.028) 122.64vw,transparent 127.2vw); }
+  html body footer.site .ft-art::after { background: linear-gradient(to top, rgba(26,27,32,.42) 0, rgba(26,27,32,.62) 29vw, rgba(26,27,32,.80) 53vw, rgba(26,27,32,.93) 81.6vw, rgba(26,27,32,.97) 115.6vw); }
+  html body footer.site .ft-art img { width: 170% !important; left: -40.6%; }
+}
 </style>
 </body>
 </html>
