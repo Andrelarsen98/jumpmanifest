@@ -23,8 +23,8 @@
 <link rel="icon" type="image/png" href="/assets/app-icon.png?v=3" />
 <link rel="apple-touch-icon" href="/assets/app-icon.png?v=3" />
 <!-- Fonts self-hosted (perf, 20 Oct 2026): General Sans (Fontshare ITF FFL, self-hosting allowed) + Manrope (SIL OFL), same files the CDNs served. -->
-<link rel="preload" href="/assets/opt/fonts/manrope-latin.101877a7.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preload" href="/assets/opt/fonts/GeneralSans-Variable.8e765124.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/assets/fonts/geist-variable.woff2" as="font" type="font/woff2" crossorigin />
+<style>@font-face{font-family:"Geist";font-style:normal;font-weight:100 900;font-display:swap;src:url(/assets/fonts/geist-variable.woff2) format("woff2")}</style>
 <style>
 @font-face{font-family:'General Sans';font-style:normal;font-weight:200 700;font-display:swap;src:url(/assets/opt/fonts/GeneralSans-Variable.8e765124.woff2) format('woff2')}
 @font-face{font-family:'Manrope';font-style:normal;font-weight:400 800;font-display:swap;src:url(/assets/opt/fonts/manrope-cyrillic-ext.28f2a82c.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F}
@@ -128,7 +128,7 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
   .wordmark { display: inline-flex; align-items: center; gap: 10px; color: #050505; }
   .wordmark img { width: 34px; height: auto; border-radius: 0; }
   .wordmark img.wm { width: auto; height: 22px; }
-  .wordmark span { font-family: "Manrope", sans-serif; font-weight: 700; font-size: 29px;
+  .wordmark span { font-family: "Geist", sans-serif; font-weight: 700; font-size: 29px;
                    letter-spacing: -0.055em; line-height: 1; margin-top: -3px; }
   .tb-links { display: flex; align-items: center; gap: 34px; }
   .tb-links a { font-size: 15.5px; font-weight: 600; color: #0f0b1c; letter-spacing: -0.01em; }
@@ -215,8 +215,8 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
   /* Same type as the home and dropzones pages (1 Oct 2026): body in Manrope,
      headings in General Sans 550, purple #6D42F5; header and footer as on
      every page. */
-  body { font-family: "Manrope", -apple-system, sans-serif; }
-  h1, h2 { font-family: "General Sans", "Manrope", sans-serif; font-weight: 550 !important; letter-spacing: -.028em; text-wrap: balance; }
+  body { font-family: "Geist", -apple-system, sans-serif; }
+  h1, h2 { font-family: "Geist", "Geist", sans-serif; font-weight: 550 !important; letter-spacing: -.028em; text-wrap: balance; }
   /* Wide like the home and dropzones pages (1 Oct 2026): same 1280 box with
      5vw outside it, so the text starts on the same edge; paragraphs keep a
      760px reading width. */
@@ -232,10 +232,10 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
      grey #71717B. 120px of rhythm on laptops, 80px on phones. */
   :root { --gap: 120px; --t: #040815; --g: #71717B; }
   @media (max-width: 600px) { :root { --gap: 80px; } }
-  body { font-family: "Manrope", -apple-system, sans-serif; font-size: 16px; line-height: 24px; color: var(--t); }
+  body { font-family: "Geist", -apple-system, sans-serif; font-size: 16px; line-height: 24px; color: var(--t); }
   .doc { padding: var(--gap) 0 0; }
   footer.site { margin-top: var(--gap); }
-  .doc h1, .doc h2, .doc h3 { font-family: "General Sans", "Manrope", sans-serif; font-weight: 500 !important; color: var(--t); }
+  .doc h1, .doc h2, .doc h3 { font-family: "Geist", "Geist", sans-serif; font-weight: 500 !important; color: var(--t); }
   /* Page title: 72 / 72, -2px. */
   .doc h1 { font-size: 72px; line-height: 72px; letter-spacing: -2px; max-width: 20ch; text-wrap: balance; }
   /* Lead line under the title: 20 / 31 grey, 24px below. */
@@ -252,7 +252,7 @@ nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-inde
   .card { margin: 24px 0; }
   .card p, .card .reply { font-size: 16px; line-height: 20.8px; font-weight: 500; letter-spacing: -.5px; color: var(--g); }
   .card .lbl { font-size: 16px; line-height: 24px; font-weight: 500; color: var(--t); }
-  .card .email { margin: 4px 0 8px; font-family: "General Sans", "Manrope", sans-serif; font-size: 24px; line-height: 33.6px; font-weight: 500; }
+  .card .email { margin: 4px 0 8px; font-family: "Geist", "Geist", sans-serif; font-size: 24px; line-height: 33.6px; font-weight: 500; }
   @media (min-width: 900px) {
     .doc > .wrap > *:not(h1) { max-width: 760px; }
     .doc h1 { font-size: 72px; line-height: 72px; max-width: 20ch; }
@@ -279,7 +279,7 @@ footer.site .ft-col a em { color: #FFFFFF !important; background: rgba(255,255,2
 
 /* REVIEW FIXES (16 Oct 2026, A02 A18 A19): column titles are H3 now (same look
    as the old H4); a white focus ring on the dark footer; 44 px tap targets on phones. */
-footer.site .ft-col h3 { font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif !important; font-size: 15px !important;
+footer.site .ft-col h3 { font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif !important; font-size: 15px !important;
       line-height: normal !important; font-weight: 600 !important; letter-spacing: -0.01em !important; text-transform: none !important;
       color: #8E8E93 !important; margin: 4px 0 18px !important; padding: 0 !important; }
 footer.site :where(a, button):focus-visible { outline-color: #fff !important; box-shadow: none; }
@@ -299,7 +299,7 @@ section[id], header[id], div[id], [id] { scroll-margin-top: 96px; }
 h1, h2, h3 { text-wrap: balance; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto !important; } }
 .sh, .sh-sheet { --sh-ink: #050505; --sh-muted: #71717B; --sh-purple: #6D42F5; --sh-pale: #F0ECFE; --sh-hover: #F6F6F8;
-      font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif; color: var(--sh-ink); }
+      font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif; color: var(--sh-ink); }
 .sh { position: sticky; top: 0; z-index: 60; background: #fff; border-bottom: 1px solid rgba(5,5,5,.08); }
 .sh a, .sh-sheet a { color: inherit; text-decoration: none; }
 .sh-in { height: 76px; padding: 0 5vw; display: flex; align-items: center; gap: 40px; }
@@ -309,7 +309,7 @@ h1, h2, h3 { text-wrap: balance; }
       background: none; border: 0; border-radius: 0; box-shadow: none; }
 .sh-nav { display: flex; align-items: center; gap: 30px; height: 100%; flex: 1; min-width: 0; }
 .sh-right { display: flex; align-items: center; gap: 24px; margin-left: auto; flex: none; }
-.sh-trig, .sh-link, .sh-login { font: 600 15.5px/1 "Manrope", sans-serif; letter-spacing: -0.01em; color: var(--sh-ink);
+.sh-trig, .sh-link, .sh-login { font: 600 15.5px/1 "Geist", sans-serif; letter-spacing: -0.01em; color: var(--sh-ink);
       background: none; border: 0; padding: 8px 0; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;
       white-space: nowrap; transition: color .15s ease; }
 .sh-trig:hover, .sh-link:hover, .sh-login:hover, .sh-dd.open .sh-trig { color: var(--sh-muted); }
@@ -343,7 +343,7 @@ h1, h2, h3 { text-wrap: balance; }
 
 /* buttons: Download keeps the grey pill; Get started is the purple pill */
 .sh-cta { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 99px;
-      background: #F2F2F5; color: var(--sh-ink) !important; font: 700 15px/1.2 "Manrope", sans-serif; letter-spacing: -0.01em;
+      background: #F2F2F5; color: var(--sh-ink) !important; font: 700 15px/1.2 "Geist", sans-serif; letter-spacing: -0.01em;
       white-space: nowrap; transition: background .15s ease; }
 .sh-cta:hover { background: #E7E7EC; }
 .sh-cta svg { width: 15px; height: 15px; }
@@ -363,7 +363,7 @@ h1, h2, h3 { text-wrap: balance; }
 @keyframes sh-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
 .sh-macc, .sh-mlink { width: 100%; display: flex; align-items: center; justify-content: space-between; min-height: 58px;
       padding: 0 4px; background: none; border: 0; cursor: pointer; color: var(--sh-ink);
-      font: 600 17px/1.2 "Manrope", sans-serif; letter-spacing: -0.01em; text-align: left; }
+      font: 600 17px/1.2 "Geist", sans-serif; letter-spacing: -0.01em; text-align: left; }
 .sh-macc .sh-chev { width: 14px; height: 14px; }
 .sh-mgroup, .sh-mlink { border-bottom: 1px solid rgba(5,5,5,.08) !important; }
 .sh-macc.is-current > span, .sh-mlink.is-current .sh-t { color: var(--sh-purple); }
@@ -403,7 +403,7 @@ h1, h2, h3 { text-wrap: balance; }
    bottom of the phone menu. */
 .skip { position: fixed; left: 16px; top: -120px; z-index: 100; display: inline-flex; align-items: center; height: 44px;
       padding: 0 20px; border-radius: 999px; background: #fff; color: #050505 !important; border: 1.5px solid #050505;
-      font: 700 15px/1 "Manrope", -apple-system, BlinkMacSystemFont, sans-serif; text-decoration: none !important; }
+      font: 700 15px/1 "Geist", -apple-system, BlinkMacSystemFont, sans-serif; text-decoration: none !important; }
 .skip:focus { top: 16px; }
 #main:focus { outline: none !important; box-shadow: none !important; }
 :where(a, button, summary, input, select, textarea, [tabindex]):focus-visible {
@@ -459,7 +459,7 @@ ol.steps > li::before { content: counter(s); position: absolute; left: 0; top: -
 @media (min-width: 760px) { .help-grid { grid-template-columns: 1fr 1fr; } }
 .help-grid a.hcard { display: block; padding: 24px; border-radius: 22px; background: #F6F6F8; color: var(--t); transition: background .15s ease; }
 .help-grid a.hcard:hover { background: #EDEFF7; text-decoration: none; }
-.help-grid .hcard b { display: block; font-family: "General Sans", "Manrope", sans-serif; font-weight: 500; font-size: 24px; line-height: 32px; }
+.help-grid .hcard b { display: block; font-family: "Geist", "Geist", sans-serif; font-weight: 500; font-size: 24px; line-height: 32px; }
 .help-grid .hcard span { display: block; margin-top: 6px; color: var(--g); font-size: 16px; line-height: 22px; }
 .help-grid .hcard i { display: inline-block; margin-top: 14px; font-style: normal; font-weight: 600; color: #6D42F5; }
 .doc kbd { font-family: inherit; font-weight: 600; background: #F0ECFE; color: #2D0896; padding: 1px 7px; border-radius: 6px; font-size: 15px; white-space: nowrap; }
@@ -520,7 +520,7 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
 .sh-nav:has(.sh-dd.open) .sh-dd:not(.open) .sh-panel{transition:none}
 .sh-cta-demo:focus-visible,.fd-btn:focus-visible,.btn.ghost:focus-visible,.btn.demo:focus-visible,.band-btn:focus-visible,.pc-out:focus-visible,.sms-btn:focus-visible,.sm-btn:focus-visible,.pc-call:focus-visible,.lo-btn:focus-visible,.lc-btn:focus-visible,.hmw-btn:focus-visible,.dp-btn:focus-visible,.btn.primary:focus-visible,.pq-btn:focus-visible,a.btn[href*="apps.apple.com"]:focus-visible,a.btn[href="/get"]:focus-visible{outline:2px solid #050505!important;outline-offset:3px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 3px #fff!important}
 </style>
-<link rel="stylesheet" href="/assets/site-dark.css?v=6" />
+<link rel="stylesheet" href="/assets/site-dark.css?v=7" />
 </head>
 <body class="dk">
 <a class="skip" href="#main">Skip to main content</a>

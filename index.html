@@ -152,8 +152,8 @@
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png?v=4" />
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=4" />
 <!-- Fonts self-hosted (perf, 20 Oct 2026): General Sans (Fontshare ITF FFL, self-hosting allowed) + Manrope (SIL OFL), same files the CDNs served. -->
-<link rel="preload" href="/assets/opt/fonts/manrope-latin.101877a7.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preload" href="/assets/opt/fonts/GeneralSans-Variable.8e765124.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/assets/fonts/geist-variable.woff2" as="font" type="font/woff2" crossorigin />
+<style>@font-face{font-family:"Geist";font-style:normal;font-weight:100 900;font-display:swap;src:url(/assets/fonts/geist-variable.woff2) format("woff2")}</style>
 <style>
 @font-face{font-family:'General Sans';font-style:normal;font-weight:200 700;font-display:swap;src:url(/assets/opt/fonts/GeneralSans-Variable.8e765124.woff2) format('woff2')}
 @font-face{font-family:'Manrope';font-style:normal;font-weight:400 800;font-display:swap;src:url(/assets/opt/fonts/manrope-cyrillic-ext.28f2a82c.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F}
@@ -761,7 +761,7 @@
   .wordmark { display: inline-flex; align-items: center; gap: 10px; color: #050505; }
   .wordmark img { width: 34px; height: auto; border-radius: 0; }
   .wordmark img.wm { width: auto; height: 22px; }
-  .wordmark span { font-family: "Manrope", sans-serif; font-weight: 700; font-size: 29px;
+  .wordmark span { font-family: "Geist", sans-serif; font-weight: 700; font-size: 29px;
                    letter-spacing: -0.055em; line-height: 1; margin-top: -3px; }
   .tb-links { display: flex; align-items: center; gap: 34px; }
   .tb-links a { font-size: 15.5px; font-weight: 600; color: #0f0b1c; letter-spacing: -0.01em; }
@@ -818,7 +818,7 @@ footer.site .ft-col a em { color: #FFFFFF !important; background: rgba(255,255,2
 
 /* REVIEW FIXES (16 Oct 2026, A02 A18 A19): column titles are H3 now (same look
    as the old H4); a white focus ring on the dark footer; 44 px tap targets on phones. */
-footer.site .ft-col h3 { font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif !important; font-size: 15px !important;
+footer.site .ft-col h3 { font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif !important; font-size: 15px !important;
       line-height: normal !important; font-weight: 600 !important; letter-spacing: -0.01em !important; text-transform: none !important;
       color: #8E8E93 !important; margin: 4px 0 18px !important; padding: 0 !important; }
 footer.site :where(a, button):focus-visible { outline-color: #fff !important; box-shadow: none; }
@@ -851,7 +851,7 @@ section[id], header[id], div[id], [id] { scroll-margin-top: 96px; }
 h1, h2, h3 { text-wrap: balance; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto !important; } }
 .sh, .sh-sheet { --sh-ink: #050505; --sh-muted: #71717B; --sh-purple: #6D42F5; --sh-pale: #F0ECFE; --sh-hover: #F6F6F8;
-      font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif; color: var(--sh-ink); }
+      font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif; color: var(--sh-ink); }
 .sh { position: sticky; top: 0; z-index: 60; background: #fff; border-bottom: 1px solid rgba(5,5,5,.08); }
 .sh a, .sh-sheet a { color: inherit; text-decoration: none; }
 .sh-in { height: 76px; padding: 0 5vw; display: flex; align-items: center; gap: 40px; }
@@ -861,7 +861,7 @@ h1, h2, h3 { text-wrap: balance; }
       background: none; border: 0; border-radius: 0; box-shadow: none; }
 .sh-nav { display: flex; align-items: center; gap: 30px; height: 100%; flex: 1; min-width: 0; }
 .sh-right { display: flex; align-items: center; gap: 24px; margin-left: auto; flex: none; }
-.sh-trig, .sh-link, .sh-login { font: 600 15.5px/1 "Manrope", sans-serif; letter-spacing: -0.01em; color: var(--sh-ink);
+.sh-trig, .sh-link, .sh-login { font: 600 15.5px/1 "Geist", sans-serif; letter-spacing: -0.01em; color: var(--sh-ink);
       background: none; border: 0; padding: 8px 0; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;
       white-space: nowrap; transition: color .15s ease; }
 .sh-trig:hover, .sh-link:hover, .sh-login:hover, .sh-dd.open .sh-trig { color: var(--sh-muted); }
@@ -895,7 +895,7 @@ h1, h2, h3 { text-wrap: balance; }
 
 /* buttons: Download keeps the grey pill; Get started is the purple pill */
 .sh-cta { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 99px;
-      background: #F2F2F5; color: var(--sh-ink) !important; font: 700 15px/1.2 "Manrope", sans-serif; letter-spacing: -0.01em;
+      background: #F2F2F5; color: var(--sh-ink) !important; font: 700 15px/1.2 "Geist", sans-serif; letter-spacing: -0.01em;
       white-space: nowrap; transition: background .15s ease; }
 .sh-cta:hover { background: #E7E7EC; }
 .sh-cta svg { width: 15px; height: 15px; }
@@ -915,7 +915,7 @@ h1, h2, h3 { text-wrap: balance; }
 @keyframes sh-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
 .sh-macc, .sh-mlink { width: 100%; display: flex; align-items: center; justify-content: space-between; min-height: 58px;
       padding: 0 4px; background: none; border: 0; cursor: pointer; color: var(--sh-ink);
-      font: 600 17px/1.2 "Manrope", sans-serif; letter-spacing: -0.01em; text-align: left; }
+      font: 600 17px/1.2 "Geist", sans-serif; letter-spacing: -0.01em; text-align: left; }
 .sh-macc .sh-chev { width: 14px; height: 14px; }
 .sh-mgroup, .sh-mlink { border-bottom: 1px solid rgba(5,5,5,.08) !important; }
 .sh-macc.is-current > span, .sh-mlink.is-current .sh-t { color: var(--sh-purple); }
@@ -955,7 +955,7 @@ h1, h2, h3 { text-wrap: balance; }
    bottom of the phone menu. */
 .skip { position: fixed; left: 16px; top: -120px; z-index: 100; display: inline-flex; align-items: center; height: 44px;
       padding: 0 20px; border-radius: 999px; background: #fff; color: #050505 !important; border: 1.5px solid #050505;
-      font: 700 15px/1 "Manrope", -apple-system, BlinkMacSystemFont, sans-serif; text-decoration: none !important; }
+      font: 700 15px/1 "Geist", -apple-system, BlinkMacSystemFont, sans-serif; text-decoration: none !important; }
 .skip:focus { top: 16px; }
 #main:focus { outline: none !important; box-shadow: none !important; }
 :where(a, button, summary, input, select, textarea, [tabindex]):focus-visible {
@@ -997,7 +997,7 @@ h1, h2, h3 { text-wrap: balance; }
 #desk .desk-ctas { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 32px; }
 /* Buttons as /dropzones/ (.btn.primary / .btn.ghost), scoped so the home .btn is untouched. */
 #desk .btn { display: inline-flex; align-items: center; gap: 10px; box-shadow: none; white-space: nowrap;
-  font-family: "Manrope", sans-serif; font-size: 20px; font-weight: 600; line-height: 30px; letter-spacing: normal; border-radius: 28px; }
+  font-family: "Geist", sans-serif; font-size: 20px; font-weight: 600; line-height: 30px; letter-spacing: normal; border-radius: 28px; }
 #desk .btn:hover { transform: none; }
 #desk .btn.primary { background: #6D42F5; color: #fff; height: 64px; padding: 8px 8px 8px 28px; gap: 12px; justify-content: space-between;
   box-shadow: rgba(109,66,245,.08) 0 4px 4px, rgba(109,66,245,.04) 0 8px 8px, rgba(109,66,245,.02) 0 16px 5px,
@@ -1013,7 +1013,7 @@ h1, h2, h3 { text-wrap: balance; }
 #desk .btn.demo { height: 64px; padding: 0 30px; gap: 12px; background: #fff; color: #050505; border: 1.5px solid #050505; }
 #desk .btn.demo svg { width: 16px; height: 16px; flex: 0 0 auto; }
 #desk .btn.demo:hover { background: #F6F6F8; }
-#desk .desk-link { display: inline-block; padding: 10px 0; font-family: "Manrope", sans-serif; font-size: 20px; line-height: 30px; font-weight: 600; color: #050505;
+#desk .desk-link { display: inline-block; padding: 10px 0; font-family: "Geist", sans-serif; font-size: 20px; line-height: 30px; font-weight: 600; color: #050505;
   text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1.5px; }
 #desk .desk-link:hover { color: var(--violet); }
 #desk .btn:focus-visible, #desk .desk-link:focus-visible { outline: 2px solid #6D42F5; outline-offset: 3px; }
@@ -1027,7 +1027,7 @@ h1, h2, h3 { text-wrap: balance; }
 #desk .dp-dir { display: flex; align-items: center; gap: 8px; font-size: 13px; line-height: 18px; font-weight: 700; color: var(--t); }
 #desk .dp-dir span { background: #fff; border-radius: 99px; padding: 5px 11px; }
 #desk .dp-dir svg { width: 16px; height: 16px; color: var(--g); flex: 0 0 auto; }
-#desk .dp h3 { margin-top: 18px; font-family: "General Sans", "Manrope", sans-serif; font-size: 24px; line-height: 33.6px; font-weight: 500; letter-spacing: normal; color: var(--t); }
+#desk .dp h3 { margin-top: 18px; font-family: "Geist", "Geist", sans-serif; font-size: 24px; line-height: 33.6px; font-weight: 500; letter-spacing: normal; color: var(--t); }
 #desk .dp p { margin-top: 8px; font-size: 16px; line-height: 20.8px; font-weight: 500; letter-spacing: -.5px; color: var(--g); }
 @media (min-width: 600px) and (max-width: 899px) { #desk .desk-pairs { grid-template-columns: repeat(2, 1fr); max-width: 640px; } }
 @media (max-width: 899px) { #desk .desk-art { max-width: 560px; margin: 0 auto; width: 100%; } }
@@ -1081,7 +1081,7 @@ h1, h2, h3 { text-wrap: balance; }
   .dzg-hit.on .dzg-dot { transform: scale(1.5); }
   .dzg-label { position: absolute; left: 0; top: 0; z-index: 3; pointer-events: none; white-space: nowrap;
     padding: 8px 12px; border-radius: 12px; background: #fff; color: #050505; text-align: left;
-    box-shadow: 0 8px 24px rgba(15,11,28,.16); font-family: "Manrope", sans-serif; font-size: 14px; line-height: 18px;
+    box-shadow: 0 8px 24px rgba(15,11,28,.16); font-family: "Geist", sans-serif; font-size: 14px; line-height: 18px;
     transform: translate(-50%, calc(-100% - 14px)); opacity: 0; transition: opacity .12s ease; }
   .dzg-label.show { opacity: 1; }
   .dzg-label.below { transform: translate(-50%, 14px); }
@@ -1145,7 +1145,7 @@ body:has(.hero-art) { padding-top: 0 !important; }
 /* The window that hangs from the top edge. Every number read off ocelli.app at 1440x900 (computed styles, 2 Nov 2026). */
 .art-win { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: min(54%, 560px); height: 327px; z-index: 1; overflow: hidden; display: flex; flex-direction: column; text-align: left;
   --feed-h: 190px; --map-w: 220px; --map-h: 138px; --map-y: -50px;
-  font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif; color: rgba(255,255,255,.85); user-select: none; -webkit-user-select: none;
+  font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif; color: rgba(255,255,255,.85); user-select: none; -webkit-user-select: none;
   border-radius: 0 0 22px 22px; box-shadow: 0 18px 44px rgba(4,8,18,.42), 0 4px 12px rgba(4,8,18,.28);
   background: linear-gradient(180deg, #000 0, #000 38px, rgba(0,0,0,.70) calc(16.0022% + 31.9192px), rgba(0,0,0,.18) calc(40.0024% + 22.7991px), rgba(0,0,0,0) calc(62% + 14.44px)), rgba(0,0,0,.15);
   -webkit-backdrop-filter: blur(34px) saturate(1.75); backdrop-filter: blur(34px) saturate(1.75); }
@@ -1220,13 +1220,13 @@ body:has(.hero-art) { padding-top: 0 !important; }
 /* Icon, headline, lede, button, note */
 .art-copy { position: absolute; left: 0; right: 0; top: calc(327px + var(--gap-top)); padding: 0 24px; display: flex; flex-direction: column; align-items: center; z-index: 2; }
 .art-icon { width: 44px; height: 44px; border-radius: 13px; box-shadow: 0 2px 6px rgba(4,8,30,.18), 0 12px 30px rgba(4,8,30,.22); }
-.hero-art h1 { margin: clamp(14px, 2.7svh, 34px) 0 0; font-family: "General Sans", "Manrope", sans-serif; font-weight: 500; font-size: clamp(36px, 5vw, 56px); line-height: 1.06; letter-spacing: -.018em; color: #fff; text-shadow: 0 1px 24px rgba(6,10,40,.45); }
-.art-lede { margin: clamp(14px, 2.5svh, 23px) 0 0; max-width: 480px; font-family: "Manrope", sans-serif; font-size: 19px; line-height: 1.55; font-weight: 400; color: #fff; text-shadow: 0 1px 14px rgba(6,10,40,.6); text-wrap: pretty; }
+.hero-art h1 { margin: clamp(14px, 2.7svh, 34px) 0 0; font-family: "Geist", "Geist", sans-serif; font-weight: 500; font-size: clamp(36px, 5vw, 56px); line-height: 1.06; letter-spacing: -.018em; color: #fff; text-shadow: 0 1px 24px rgba(6,10,40,.45); }
+.art-lede { margin: clamp(14px, 2.5svh, 23px) 0 0; max-width: 480px; font-family: "Geist", sans-serif; font-size: 19px; line-height: 1.55; font-weight: 400; color: #fff; text-shadow: 0 1px 14px rgba(6,10,40,.6); text-wrap: pretty; }
 .art-lede a { color: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .art-store { display: block; margin-top: clamp(16px, 3.6svh, 40px); transition: transform .15s ease; }
 .art-store:hover { transform: translateY(-1px); }
 .art-store img { display: block; height: 44px; width: auto; }
-.hero-art .art-note { margin: 14px 0 0; font-family: "Manrope", sans-serif; font-size: 13px; line-height: 1.5; font-weight: 500; color: #fff !important; text-shadow: 0 1px 10px rgba(6,10,40,.7); }
+.hero-art .art-note { margin: 14px 0 0; font-family: "Geist", sans-serif; font-size: 13px; line-height: 1.5; font-weight: 500; color: #fff !important; text-shadow: 0 1px 10px rgba(6,10,40,.7); }
 .hero-art .art-note a { color: #fff !important; text-decoration: underline; text-underline-offset: 2px; }
 
 /* Header sits on the painting until the page slides over it */
@@ -1435,7 +1435,7 @@ body:has(.hero-art) { padding-top: 0 !important; }
   /* "Get manifest": the name is the real wordmark, sized so its x-height
      matches the heading's. "Get" is set in the wordmark's own face (Manrope
      780, -0.055em), x-height 0.54em; the wordmark's is 1080 of its 1520 box. */
-  .final h2 { font-family: "Manrope", sans-serif; font-weight: 780; letter-spacing: -.055em; color: #050505; }
+  .final h2 { font-family: "Geist", sans-serif; font-weight: 780; letter-spacing: -.055em; color: #050505; }
   .wm-inline { display: inline-block; height: .76em; width: auto; vertical-align: -.015em; margin-left: .02em; }
 
   /* Hero subline, Softriver-style: grey sentence, then the claim in ink on
@@ -1458,14 +1458,14 @@ body:has(.hero-art) { padding-top: 0 !important; }
      -0.028em, the hero subline 20px/31px #71717B with the claim in 600
      black. Header and footer stay as on every page; "Get manifest" keeps
      the wordmark face. */
-  body { font-family: "Manrope", -apple-system, sans-serif; }
+  body { font-family: "Geist", -apple-system, sans-serif; }
   .statement-sub { margin: 20px auto 0; text-align: center; }
   /* Hero, 1 Oct 2026 (Softriver comparison): the headline is one solid ink,
      not grey + black, and the proof leads in a pill above it. Grey pill, not
      pale purple: no soft colours (BRAND.md). */
   .hero h1 .l1 { color: var(--ink); }
   .toppill { display: inline-flex; align-items: center; gap: 9px; margin: 0 auto 22px; padding: 4px 0; border-radius: 999px;
-             background: transparent; color: #18181B; font-family: "Manrope", sans-serif; font-size: 15px; line-height: 20px; font-weight: 500; }
+             background: transparent; color: #18181B; font-family: "Geist", sans-serif; font-size: 15px; line-height: 20px; font-weight: 500; }
   /* Free + Android line under the badge (F04, F03) and the dropzone link (F05). */
   .hero-note { margin: 12px auto 0; text-align: center; font-size: 15px; line-height: 22px; font-weight: 500; color: #050505; }
   .hero-note a { display: inline-block; padding: 11px 0; margin: -11px 0; color: #050505; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
@@ -1492,16 +1492,16 @@ body:has(.hero-art) { padding-top: 0 !important; }
      two 450px columns 48px apart, 32px column titles, 48px rows on thin
      dividers, a grey cross on the left, the brand mark in purple on the right. */
   .vs { margin-top: clamp(90px, 10vw, 140px); text-align: center; }
-  .vs-proof { display: inline-flex; align-items: center; gap: 10px; font-family: "Manrope", sans-serif; font-size: 16px; line-height: 24px; color: #040815; }
+  .vs-proof { display: inline-flex; align-items: center; gap: 10px; font-family: "Geist", sans-serif; font-size: 16px; line-height: 24px; color: #040815; }
   .vs-proof img { width: 22px; height: 22px; object-fit: contain; }
   .vs h2 { line-height: 1.12; }
-  .vs-sub { margin: 24px auto 0; font-family: "Manrope", sans-serif; font-size: 20px; line-height: 31px; color: #71717B; }
+  .vs-sub { margin: 24px auto 0; font-family: "Geist", sans-serif; font-size: 20px; line-height: 31px; color: #71717B; }
   .vs-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 450px)); justify-content: center; gap: 0 48px; margin-top: 56px; text-align: left; }
-  .vs-col h3 { font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: 32px; line-height: 44.8px; letter-spacing: -1px;
+  .vs-col h3 { font-family: "Geist", "Geist", sans-serif; font-weight: 550; font-size: 32px; line-height: 44.8px; letter-spacing: -1px;
                padding-bottom: 16px; border-bottom: 1px solid rgba(4,8,21,.1); color: #040815; }
   .vs-col ul { list-style: none; margin: 0; padding: 0; }
   .vs-col li { display: flex; align-items: center; gap: 14px; min-height: 64px; border-bottom: 1px solid rgba(4,8,21,.1);
-               font-family: "Manrope", sans-serif; font-size: 18px; line-height: 24px; color: #040815; }
+               font-family: "Geist", sans-serif; font-size: 18px; line-height: 24px; color: #040815; }
   .vs-col:first-child li { color: #71717B; }
   .vs-ic { width: 28px; height: 28px; border-radius: 50%; flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; }
   .vs-ic.no { background: #EDEDEF; } .vs-ic.no svg { width: 11px; height: 11px; }
@@ -1561,7 +1561,7 @@ body:has(.hero-art) { padding-top: 0 !important; }
   body { font-size: 16px; line-height: 24px; color: var(--t); }
 
   /* Hero H1: 72 / 72, weight 500, -2px on laptops; phones as /dropzones/. */
-  h1 { font-family: "General Sans", "Manrope", sans-serif; font-weight: 500; font-size: 42px; line-height: 1; letter-spacing: -.028em; color: var(--t); }
+  h1 { font-family: "Geist", "Geist", sans-serif; font-weight: 500; font-size: 42px; line-height: 1; letter-spacing: -.028em; color: var(--t); }
   @media (min-width: 900px) {
     .hero h1 { font-size: clamp(56px, 5vw, 72px); line-height: 1; letter-spacing: -2px; }
     .hero h1 .l1, .hero h1 .l2 { white-space: normal; }
@@ -1570,12 +1570,12 @@ body:has(.hero-art) { padding-top: 0 !important; }
   .hero .sub b { font-weight: 600; color: var(--t); }
 
   /* Section headings: 50 / 50, weight 500, -0.5px. */
-  :root body h2, :root body .statement { font-family: "General Sans", "Manrope", sans-serif; font-size: 50px; line-height: 50px; font-weight: 500; letter-spacing: -.5px;
+  :root body h2, :root body .statement { font-family: "Geist", "Geist", sans-serif; font-size: 50px; line-height: 50px; font-weight: 500; letter-spacing: -.5px;
     max-width: 1024px; margin: 20px auto 0; color: var(--t); text-wrap: balance; }
   @media (min-width: 900px) { :root body .flag h2 { margin: 20px 0 0; max-width: none; text-align: left; } }
   :root body .statement { margin-top: 0; }
   /* "Get manifest" keeps the wordmark's own face, at the section size. */
-  :root body .final h2 { font-family: "Manrope", sans-serif; font-weight: 780; letter-spacing: -.055em; max-width: none; margin-top: 0; }
+  :root body .final h2 { font-family: "Geist", sans-serif; font-weight: 780; letter-spacing: -.055em; max-width: none; margin-top: 0; }
   /* Smaller sub-heading (the FAQ, as on /dropzones/): 34 / 47.6. */
   .faq-h2, #faq .faq-h2 { font-size: 34px; line-height: 47.6px; font-weight: 500; letter-spacing: -.5px; max-width: 14ch; }
   /* Bigger on desktop only (13 Oct); phones keep the 28px rule below. */
@@ -1589,7 +1589,7 @@ body:has(.hero-art) { padding-top: 0 !important; }
   .flag p.trustline { font-size: 16px; line-height: 24px; font-weight: 600; }
 
   /* Card titles 24 / 33.6 weight 500; card text 16 / 20.8 weight 500 grey. */
-  .tcard h3, .feat h3 { font-family: "General Sans", "Manrope", sans-serif; font-size: 24px; line-height: 33.6px; font-weight: 500; letter-spacing: normal; color: var(--t); }
+  .tcard h3, .feat h3 { font-family: "Geist", "Geist", sans-serif; font-size: 24px; line-height: 33.6px; font-weight: 500; letter-spacing: normal; color: var(--t); }
   .feat h3::before { top: 13px; }
   .tcard p, .feat p { margin-top: 8px; font-size: 16px; line-height: 20.8px; font-weight: 500; letter-spacing: -.5px; color: var(--g); }
 
@@ -1645,7 +1645,7 @@ body:has(.hero-art) { padding-top: 0 !important; }
   }
   /* A01: the eyebrow sits inside its h2, so the heading names the feature. */
   :root body h2.hk, :root body .flag h2.hk { margin-top: 0; }
-  h2.hk .kicker { display: block; margin: 0 0 20px; font-family: "Manrope", sans-serif; font-size: 13px; line-height: 24px; font-weight: 700;
+  h2.hk .kicker { display: block; margin: 0 0 20px; font-family: "Geist", sans-serif; font-size: 13px; line-height: 24px; font-weight: 700;
     letter-spacing: .14em; text-transform: uppercase; color: var(--violet); }
   @media (min-width: 900px) { .flag h2.hk .kicker { text-align: left; } }
   /* A01: FAQ questions are h3s inside their summary, looking exactly as before. */
@@ -1672,7 +1672,7 @@ body:has(.hero-art) { padding-top: 0 !important; }
   #globe .statement-sub { color: #52525B; }
   /* A08: privacy facts next to the final download. */
   .privacy-row { list-style: none; margin: 28px auto 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 24px;
-    font-family: "Manrope", sans-serif; font-size: 15px; line-height: 22px; font-weight: 500; color: #18181B; }
+    font-family: "Geist", sans-serif; font-size: 15px; line-height: 22px; font-weight: 500; color: #18181B; }
   .privacy-row li { display: inline-flex; align-items: center; gap: 8px; }
   .privacy-row svg { width: 16px; height: 16px; color: #050505; flex: 0 0 auto; }
   .privacy-row a { color: #050505; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; display: inline-block; padding: 11px 0; margin: -11px 0; }
@@ -1683,7 +1683,7 @@ body:has(.hero-art) { padding-top: 0 !important; }
   .get-row .appbtn { margin: 0; }
   .get-qr { display: none; margin: 0; align-items: center; gap: 14px; text-align: left; }
   .get-qr img { width: 120px; height: 120px; border-radius: 10px; box-shadow: 0 0 0 1px rgba(5,5,5,.1); }
-  .get-qr figcaption { max-width: 190px; font-family: "Manrope", sans-serif; font-size: 14px; line-height: 20px; font-weight: 500; color: #52525B; }
+  .get-qr figcaption { max-width: 190px; font-family: "Geist", sans-serif; font-size: 14px; line-height: 20px; font-weight: 500; color: #52525B; }
   @media (min-width: 1024px) { .get-qr { display: inline-flex; } }
 /* the QR is a desktop-to-phone handoff: hide it on touch tablets (iPad) */
 @media (hover: none) and (pointer: coarse) { .get-qr { display: none; } }
@@ -1729,7 +1729,7 @@ body:has(.hero-art) { padding-top: 0 !important; }
   .vpause:hover, .mq-btn:hover { background: #F6F6F8; }
   .vpause:focus-visible, .mq-btn:focus-visible { outline: 2px solid #6D42F5; outline-offset: 3px; }
   .mq-ctl { display: flex; justify-content: flex-end; margin-top: clamp(48px, 6vw, 84px); }
-  .mq-btn { height: 44px; padding: 0 18px 0 16px; font: 600 15px/1 "Manrope", sans-serif; box-shadow: none; }
+  .mq-btn { height: 44px; padding: 0 18px 0 16px; font: 600 15px/1 "Geist", sans-serif; box-shadow: none; }
   .carousel-rows.paused .ctrack { animation-play-state: paused; }
   @media (prefers-reduced-motion: reduce) { .mq-ctl { display: none; } }
 </style>
@@ -2998,7 +2998,7 @@ span.go > svg{background:#050505!important}
   --band: clamp(72px, 9vw, 128px); --stage: min(calc(100vw - 2 * clamp(20px, 4vw, 40px)), 1240px);
   --sh-win: 0 0 0 1px rgba(255,255,255,.10), 0 1px 2px rgba(0,0,0,.44), 0 4px 8px rgba(0,0,0,.38), 0 8px 16px rgba(0,0,0,.38), 0 16px 32px rgba(0,0,0,.42), 0 32px 64px rgba(0,0,0,.46); }
 html { background-color: var(--pg) !important; scrollbar-color: #6B6D76 var(--pg) !important; }
-body { background-color: var(--pg) !important; color: var(--ink) !important; font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif !important; }
+body { background-color: var(--pg) !important; color: var(--ink) !important; font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif !important; }
 #main { background: transparent; }
 #main > .hero-art ~ * { background-color: var(--pg); }
 /* One continuous page: the hero scrolls away, its last 96 px fade into the page colour, the arches start right under it. */
@@ -3009,12 +3009,12 @@ body { background-color: var(--pg) !important; color: var(--ink) !important; fon
 /* Shared type */
 .hb { padding-block: var(--band); text-align: center; color: var(--ink); }
 .hb-t { width: min(743px, calc(100vw - 40px)); margin: 0 auto; }
-#main .hb-h { margin: 0; padding: 0; max-width: none; font-family: "General Sans", "Manrope", sans-serif; font-weight: 500; font-size: clamp(30px, 3.5vw, 40px); line-height: 1.14; letter-spacing: -.014em; color: var(--ink); text-align: center; text-wrap: balance; }
+#main .hb-h { margin: 0; padding: 0; max-width: none; font-family: "Geist", "Geist", sans-serif; font-weight: 500; font-size: clamp(30px, 3.5vw, 40px); line-height: 1.14; letter-spacing: -.014em; color: var(--ink); text-align: center; text-wrap: balance; }
 .hb-l { margin: 16px auto 0; max-width: 56ch; font-size: clamp(17px, 1.6vw, 19px); line-height: 1.55; font-weight: 400; color: var(--ink2); text-wrap: pretty; }
 .hb-n { margin: 12px 0 0; font-size: 13px; line-height: 20.8px; font-weight: 500; color: var(--ink2); }
 .hb-a { color: var(--ink) !important; font-weight: 500; text-decoration: none; background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat; padding-bottom: 1px; transition: background-size .15s cubic-bezier(.32,.72,.28,1); }
 .hb-a:hover { background-size: 0 1px; background-position: 100% 100%; }
-.hb-btn, .hb-btn2 { display: inline-flex; align-items: center; justify-content: center; height: 42px; padding: 0 22px; border: 0; border-radius: 999px; font: 600 14.5px/1 "Manrope", sans-serif; letter-spacing: -.006em; cursor: pointer; text-decoration: none; transition: transform .15s ease, background-color .15s ease; }
+.hb-btn, .hb-btn2 { display: inline-flex; align-items: center; justify-content: center; height: 42px; padding: 0 22px; border: 0; border-radius: 999px; font: 600 14.5px/1 "Geist", sans-serif; letter-spacing: -.006em; cursor: pointer; text-decoration: none; transition: transform .15s ease, background-color .15s ease; }
 #main .hb-btn { background: #F4F5F8; color: #050505 !important; box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(0,0,0,.3), 0 4px 8px rgba(0,0,0,.2); }
 #main .hb-btn:hover { background: #fff; transform: translateY(-1px); }
 .hb-btn2 { background: rgba(241,242,245,.08); color: var(--ink); box-shadow: inset 0 0 0 1px rgba(241,242,245,.16); }
@@ -3033,7 +3033,7 @@ body { background-color: var(--pg) !important; color: var(--ink) !important; fon
 .hb-obj-gear { background-image: url(/assets/hero/obj-gear.png); }
 .hb-obj-wind { background-image: url(/assets/hero/obj-wind.png); }
 .hb-obj-signoff { background-image: url(/assets/hero/obj-signoff.png); }
-#main .hb-fact h3 { margin: 0; font-family: "Manrope", sans-serif; font-size: 19px; line-height: 24px; font-weight: 600; letter-spacing: -.012em; color: var(--ink); }
+#main .hb-fact h3 { margin: 0; font-family: "Geist", sans-serif; font-size: 19px; line-height: 24px; font-weight: 600; letter-spacing: -.012em; color: var(--ink); }
 .hb-fact p { margin: 8px 0 0; font-size: 17px; line-height: 26px; color: var(--ink2); }
 
 /* 3D replay: library slot, plate 1240 x 937 */
@@ -3086,7 +3086,7 @@ body { background-color: var(--pg) !important; color: var(--ink) !important; fon
 
 /* Desk: agents slot. Pill tabs, one window 860 x 510, plays through the real screens. */
 .dk-tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 4px; width: min(860px, calc(100vw - 40px)); margin: 48px auto 0; scroll-margin-top: 90px; }
-.dk-tab { height: 35px; padding: 0 16px; border: 0; border-radius: 999px; background: transparent; color: var(--ink2); font: 500 15px/1 "Manrope", sans-serif; cursor: pointer; transition: background-color .2s ease, color .2s ease; }
+.dk-tab { height: 35px; padding: 0 16px; border: 0; border-radius: 999px; background: transparent; color: var(--ink2); font: 500 15px/1 "Geist", sans-serif; cursor: pointer; transition: background-color .2s ease, color .2s ease; }
 .dk-tab:hover { color: #fff; }
 .dk-tab.is-on { background: rgba(241,242,245,.08); color: #fff; }
 .dk-win { width: min(860px, calc(100vw - 40px)); margin: 20px auto 0; border-radius: 22px; overflow: hidden; background: var(--plate); box-shadow: var(--sh-win); text-align: left; }
@@ -3110,7 +3110,7 @@ body { background-color: var(--pg) !important; color: var(--ink) !important; fon
 .hb-note figure { margin: 0; } .hb-note figure + figure { margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--hair); }
 .hb-stars { display: flex; gap: 3px; } .hb-stars svg { width: 14px; height: 14px; fill: #fff; }
 .hb-note blockquote { margin: 10px 0 0; padding: 0; border: 0; }
-#main .hb-note h3 { margin: 0; font-family: "Manrope", sans-serif; font-size: 17px; line-height: 22px; font-weight: 600; letter-spacing: -.012em; color: var(--ink); }
+#main .hb-note h3 { margin: 0; font-family: "Geist", sans-serif; font-size: 17px; line-height: 22px; font-weight: 600; letter-spacing: -.012em; color: var(--ink); }
 .hb-note p { margin: 6px 0 0; font-size: 15px; line-height: 24px; color: var(--ink2); }
 .hb-note figcaption { margin-top: 8px; font-size: 13px; line-height: 20px; font-weight: 500; color: var(--ink2); }
 
@@ -3125,10 +3125,10 @@ body { background-color: var(--pg) !important; color: var(--ink) !important; fon
 .pc { display: flex; flex-direction: column; padding: 29px; border-radius: 22px; background: radial-gradient(120% 90% at 20% 0, #262933, #1B1D24); box-shadow: 0 0 0 1px rgba(255,255,255,.10), 0 1px 2px rgba(0,0,0,.44), 0 4px 8px rgba(0,0,0,.38), 0 8px 16px rgba(0,0,0,.30), 0 16px 32px rgba(0,0,0,.24); }
 .pc-hi { background: linear-gradient(180deg, rgba(255,255,255,.05), transparent 40%), #302F36; }
 .pc-chip { align-self: flex-start; padding: 3px 10px; border-radius: 999px; background: rgba(241,242,245,.05); box-shadow: inset 0 0 0 1px rgba(241,242,245,.16); font-size: 13px; line-height: 20px; font-weight: 500; color: var(--ink); }
-#main .pc h3 { margin: 20px 0 0; font-family: "Manrope", sans-serif; font-size: 19px; line-height: 24px; font-weight: 600; letter-spacing: -.228px; color: var(--ink); }
+#main .pc h3 { margin: 20px 0 0; font-family: "Geist", sans-serif; font-size: 19px; line-height: 24px; font-weight: 600; letter-spacing: -.228px; color: var(--ink); }
 .pc-b { margin: 6px 0 0; font-size: 17px; line-height: 26px; color: var(--ink2); }
 .pc-p { display: flex; align-items: baseline; gap: 8px; margin: 18px 0 0; }
-.pc-p b { font-family: "General Sans", "Manrope", sans-serif; font-size: 52px; line-height: 1.1; font-weight: 500; letter-spacing: -.51px; font-variant-numeric: tabular-nums; color: var(--ink); }
+.pc-p b { font-family: "Geist", "Geist", sans-serif; font-size: 52px; line-height: 1.1; font-weight: 500; letter-spacing: -.51px; font-variant-numeric: tabular-nums; color: var(--ink); }
 .pc-p span { font-size: 17px; color: var(--ink2); }
 .pc-l { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 20px 0 0; padding: 20px 0 0; border-top: 1px solid var(--hair); font-size: 15px; line-height: 21.75px; color: var(--ink); }
 .pc-l li { position: relative; margin: 0; padding-left: 24px; }
@@ -3156,7 +3156,7 @@ body { background-color: var(--pg) !important; color: var(--ink) !important; fon
 .hb-q summary:hover::before { background: rgba(241,242,245,.05); box-shadow: inset 0 0 0 1px rgba(241,242,245,.13); }
 .hb-q summary::after { content: ""; position: absolute; right: 4px; top: 21px; width: 8px; height: 8px; border-right: 1.6px solid var(--ink2); border-bottom: 1.6px solid var(--ink2); transform: rotate(45deg); transition: transform .25s ease; }
 .hb-q[open] summary::after { transform: translateY(3px) rotate(-135deg); }
-#main .hb-q h3 { position: relative; z-index: 1; margin: 0; font-family: "Manrope", sans-serif; font-size: 17px; line-height: 23px; font-weight: 500; letter-spacing: -.008em; color: var(--ink); }
+#main .hb-q h3 { position: relative; z-index: 1; margin: 0; font-family: "Geist", sans-serif; font-size: 17px; line-height: 23px; font-weight: 500; letter-spacing: -.008em; color: var(--ink); }
 .hb-q p, .hb-q ul { margin: 0 0 12px; font-size: 15px; line-height: 24px; color: var(--ink2); }
 .hb-q ul { padding-left: 20px; list-style: disc; } .hb-q li { margin: 0 0 4px; color: var(--ink2); }
 .hb-q p a { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
@@ -3300,7 +3300,7 @@ footer.site .ft-base { position: relative; z-index: 1; border-top-color: var(--h
 .hb-plate-dock { height: 322px; box-sizing: border-box; padding: 20px 56px 113.6px; }
 .hb-plate-dock::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(62% 56% at 50% 54%, rgba(6,8,20,.42), rgba(6,8,20,.10) 68%, transparent 82%), radial-gradient(120% 100% at 50% 42%, transparent 52%, rgba(6,8,20,.34) 100%); }
 .dc-stage { --i: 72px; --air: calc(var(--i) / 6); --tray: calc(var(--i) + var(--air) * .7 + var(--i) * .2); display: flex; justify-content: center; padding-top: calc(var(--i) * .5 + 3.6em); }
-.dc { --gx: 0px; position: relative; isolation: isolate; display: flex; align-items: flex-start; gap: var(--air); list-style: none; margin: 0; padding: calc(var(--air) * .7) calc(var(--air) * 1.25) calc(var(--i) * .2); border-radius: calc(var(--tray) * .3); font-family: "Manrope", sans-serif; }
+.dc { --gx: 0px; position: relative; isolation: isolate; display: flex; align-items: flex-start; gap: var(--air); list-style: none; margin: 0; padding: calc(var(--air) * .7) calc(var(--air) * 1.25) calc(var(--i) * .2); border-radius: calc(var(--tray) * .3); font-family: "Geist", sans-serif; }
 .dc::before { content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: calc(-1 * var(--gx)); right: calc(-1 * var(--gx)); border-radius: inherit; background: rgba(30,31,37,.72); -webkit-backdrop-filter: blur(24px) saturate(180%); backdrop-filter: blur(24px) saturate(180%); box-shadow: inset 0 1px 0 rgba(255,255,255,.07), inset 0 0 0 1px rgba(255,255,255,.10), 0 16px 40px rgba(0,0,0,.34); }
 .dc-i { position: relative; flex: none; width: var(--i); height: var(--i); margin: 0; --k: 0; --dx: 0px; --lift: 0px; }
 .dc-ico { display: block; width: 100%; height: 100%; max-width: none; transform-origin: 50% 100%; transform: translateX(var(--dx)) scale(calc(1 + var(--k) * .5)); filter: drop-shadow(0 1px 1px rgba(16,20,40,.16)); will-change: transform; user-select: none; -webkit-user-drag: none; }
@@ -3465,15 +3465,15 @@ a.aw-bar .aw-ph { color: #fff; }
 .dk-tab:focus-visible, .hb-q summary:focus-visible, .hb-btn2:focus-visible { outline: 2px solid #fff !important; outline-offset: 2px; }
 .dk-win { --sc: 1; }
 .dk-view { aspect-ratio: auto; height: 402px; background: #f3f4f7; }
-.dkx { position: absolute; inset: 0; overflow: hidden; opacity: 0; visibility: hidden; transition: opacity .35s ease, visibility 0s linear .35s; font-family: "Manrope", -apple-system, sans-serif; color: #1e1e2a; background: #f3f4f7; padding: 22px 24px; box-sizing: border-box; text-align: left; font-size: 13px; }
+.dkx { position: absolute; inset: 0; overflow: hidden; opacity: 0; visibility: hidden; transition: opacity .35s ease, visibility 0s linear .35s; font-family: "Geist", -apple-system, sans-serif; color: #1e1e2a; background: #f3f4f7; padding: 22px 24px; box-sizing: border-box; text-align: left; font-size: 13px; }
 .dkx.is-on { opacity: 1; visibility: visible; transition: opacity .35s ease; }
 .dkx-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 14px; }
-.dkx-head h3 { margin: 0; font: 800 24px/30px "Manrope", sans-serif !important; letter-spacing: -.025em; color: #1e1e2a !important; }
+.dkx-head h3 { margin: 0; font: 800 24px/30px "Geist", sans-serif !important; letter-spacing: -.025em; color: #1e1e2a !important; }
 .dkx-head p { margin: 0; font-size: 13px; font-weight: 500; color: #535461; }
 .dkx-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .dkx-card { background: #fff; border-radius: 12px; box-shadow: 0 0 0 1px rgba(112,115,147,.1); display: flex; flex-direction: column; min-width: 0; }
 .dkx-ch { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; padding: 14px 16px 10px; }
-.dkx-ch h4 { display: flex; align-items: center; gap: 8px; margin: 0; font: 700 15px/20px "Manrope", sans-serif !important; color: #1e1e2a !important; letter-spacing: 0; }
+.dkx-ch h4 { display: flex; align-items: center; gap: 8px; margin: 0; font: 700 15px/20px "Geist", sans-serif !important; color: #1e1e2a !important; letter-spacing: 0; }
 .dkx-pill { display: inline-flex; align-items: center; height: 20px; padding: 0 8px; border-radius: 4px; font-size: 12px; font-weight: 400; font-style: normal; letter-spacing: .2px; transition: background-color .25s ease, color .25s ease; }
 .dkx-pill.building { background: rgba(112,115,147,.1); color: #363644; } .dkx-pill.called { background: #fef9c3; color: #3f3f46; } .dkx-pill.boarding { background: rgba(109,66,245,.08); color: #5a32e0; }
 .dkx-line { display: flex; flex-wrap: wrap; column-gap: 12px; margin-top: 3px; font-size: 12px; line-height: 17px; font-weight: 500; color: #535461; } .dkx-line b { color: #1e1e2a; font-weight: 700; }
@@ -3525,7 +3525,7 @@ a.aw-bar .aw-ph { color: #fff; }
 .dkx-av { position: relative; flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: rgba(112,115,147,.14); font-weight: 700; font-size: 14px; }
 .dkx-av i { position: absolute; right: -1px; bottom: -1px; width: 10px; height: 10px; border-radius: 50%; background: #facc15; box-shadow: 0 0 0 2.5px #fff; }
 .dkx-eb { font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #70707d; }
-.dkx-ti { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 2px; } .dkx-ti h4 { margin: 0; font: 700 18px/23px "Manrope", sans-serif !important; letter-spacing: -.01em; color: #1e1e2a !important; }
+.dkx-ti { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 2px; } .dkx-ti h4 { margin: 0; font: 700 18px/23px "Geist", sans-serif !important; letter-spacing: -.01em; color: #1e1e2a !important; }
 .dkx-ld { padding: 2px 7px; border-radius: 5px; background: rgba(112,115,147,.1); font-size: 12px; font-weight: 600; }
 .dkx-chip { padding: 2px 8px; border-radius: 5px; background: #facc15; color: #3f3f46; font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .03em; }
 .dkx-me { margin-top: 2px; font-size: 12.5px; font-weight: 500; color: #535461; }
@@ -3786,7 +3786,7 @@ footer.site .ft-col { display: flex; flex-direction: column; }
       line.setAttribute('d', d); band.setAttribute('d', d);
       let r = ''; const hubY = top - 520;
       for (let k = -9; k <= 9; k++) { const x0 = c + k * 62, a = Math.atan2(x0 - c, y(x0) - hubY), x1 = x0 + Math.sin(a) * 96, y1 = y(x0) + Math.cos(a) * 96; r += '<path d="M' + x0 + ' ' + (y(x0) + 4) + 'L' + x1 + ' ' + y1 + '" stroke-opacity=".05"/>'; }
-      ['VII', 'VIII', 'IX', 'X', 'XI'].forEach((n, k) => { const x = c + (k - 2) * far * .62; r += '<text x="' + x + '" y="' + (y(x) + 58) + '" text-anchor="middle" fill="currentColor" fill-opacity=".10" stroke="none" font-family="General Sans, serif" font-size="18">' + n + '</text>'; });
+      ['VII', 'VIII', 'IX', 'X', 'XI'].forEach((n, k) => { const x = c + (k - 2) * far * .62; r += '<text x="' + x + '" y="' + (y(x) + 58) + '" text-anchor="middle" fill="currentColor" fill-opacity=".10" stroke="none" font-family="Geist, sans-serif" font-size="18">' + n + '</text>'; });
       raysG.innerHTML = r;
     };
     layout(); addEventListener('resize', layout);
@@ -4034,6 +4034,22 @@ html body .sh .sh-right > .sh-cta:active, html body .sh-mcta:active, html body #
 .aw-key { color: inherit; text-decoration: none; cursor: pointer; transition: background-color .15s ease; }
 @media (hover: hover) { .aw-key:hover { background: rgba(255,255,255,.14); } }
 .aw-key:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+</style>
+<style id="ocelli-type">
+/* ---------- Ocelli type (4 Nov 2026, André: "use their font same everything", sampled from ocelli.app at 1440 wide).
+   Page text Geist; the header links 14/22.4 regular; the header button 14 medium. ---------- */
+html body .sh-trig, html body .sh-link, html body .sh-login { font: 400 14px/22.4px "Geist", -apple-system, BlinkMacSystemFont, system-ui, sans-serif !important; letter-spacing: normal !important; color: #F1F2F5 !important; }
+html body .sh .sh-right > .sh-cta, html body .sh-mcta { font: 500 14px/19.6px "Geist", -apple-system, BlinkMacSystemFont, system-ui, sans-serif !important; letter-spacing: -0.084px !important; }
+html body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+/* Hero: lede 19/1.55 at 82% white, the note under the badge 13/20.8 at 82%, links medium. The demo window speaks the Mac's own font (Ocelli's --font-app). */
+.hero-art .art-lede { color: rgba(255,255,255,.82) !important; }
+.hero-art .art-lede a { color: #fff; font-weight: 500; }
+.hero-art .art-note { font-weight: 400 !important; line-height: 20.8px !important; color: rgba(255,255,255,.82) !important; }
+.hero-art .art-note a { color: #fff !important; font-weight: 500; }
+.art-win, .art-win :not(.la):not(.la *) { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif !important; }
+.art-win .aw-time { font-weight: 400; color: rgba(255,255,255,.85); }
+.art-win .aw-key { color: #fff; }
+.art-win .aw-ph { color: rgba(255,255,255,.55); }
 </style>
 </body>
 </html>

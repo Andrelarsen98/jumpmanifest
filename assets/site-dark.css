@@ -11,16 +11,16 @@ html:has(> body.dk) { background-color: #1A1B20 !important; scrollbar-color: #6B
 body.dk { --pg: #1A1B20; --plate: #23242A; --ink: #F1F2F5; --ink2: #D1D1D6; --hair: rgba(241,242,245,.10);
   --band: clamp(72px, 9vw, 128px); --stage: min(calc(100vw - 2 * clamp(20px, 4vw, 40px)), 1240px);
   --sh-win: 0 0 0 1px rgba(255,255,255,.10), 0 1px 2px rgba(0,0,0,.44), 0 4px 8px rgba(0,0,0,.38), 0 8px 16px rgba(0,0,0,.38), 0 16px 32px rgba(0,0,0,.42), 0 32px 64px rgba(0,0,0,.46);
-  padding-top: 0 !important; background-color: var(--pg) !important; color: var(--ink) !important; font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif !important; }
+  padding-top: 0 !important; background-color: var(--pg) !important; color: var(--ink) !important; font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif !important; }
 body.dk #main { display: block; width: auto; max-width: none; margin: 0; padding: 0; background: transparent; color: var(--ink); }
 body.dk :where(a, button, summary):focus-visible { outline: 2px solid #fff !important; outline-offset: 2px; box-shadow: none !important; }
 body.dk .skip { color: #050505; background: #fff; }
 
 /* ---------- Type ---------- */
-body.dk #main .dk-eyebrow { display: block; margin: 0 0 12px; font-family: "Manrope", sans-serif; font-size: 14px; line-height: 20px; font-weight: 600; letter-spacing: 0; color: var(--ink2); }
-body.dk #main .dk-h1 { margin: 0 auto; padding: 0; max-width: 18ch; font-family: "General Sans", "Manrope", sans-serif; font-weight: 500; font-size: clamp(36px, 5vw, 56px); line-height: 1.06; letter-spacing: -.018em; color: #fff; text-wrap: balance; text-shadow: 0 1px 24px rgba(6,10,40,.45); }
-body.dk #main .dk-h { margin: 0; padding: 0; max-width: none; font-family: "General Sans", "Manrope", sans-serif; font-weight: 500; font-size: clamp(30px, 3.5vw, 40px); line-height: 1.14; letter-spacing: -.014em; color: var(--ink); text-wrap: balance; }
-body.dk #main .dk-h3 { margin: 0; font-family: "Manrope", sans-serif; font-size: 19px; line-height: 24px; font-weight: 600; letter-spacing: -.012em; color: var(--ink); }
+body.dk #main .dk-eyebrow { display: block; margin: 0 0 12px; font-family: "Geist", sans-serif; font-size: 14px; line-height: 20px; font-weight: 600; letter-spacing: 0; color: var(--ink2); }
+body.dk #main .dk-h1 { margin: 0 auto; padding: 0; max-width: 18ch; font-family: "Geist", "Geist", sans-serif; font-weight: 500; font-size: clamp(36px, 5vw, 56px); line-height: 1.06; letter-spacing: -.018em; color: #fff; text-wrap: balance; text-shadow: 0 1px 24px rgba(6,10,40,.45); }
+body.dk #main .dk-h { margin: 0; padding: 0; max-width: none; font-family: "Geist", "Geist", sans-serif; font-weight: 500; font-size: clamp(30px, 3.5vw, 40px); line-height: 1.14; letter-spacing: -.014em; color: var(--ink); text-wrap: balance; }
+body.dk #main .dk-h3 { margin: 0; font-family: "Geist", sans-serif; font-size: 19px; line-height: 24px; font-weight: 600; letter-spacing: -.012em; color: var(--ink); }
 body.dk #main .dk-l { margin: 16px auto 0; max-width: 56ch; font-size: clamp(17px, 1.6vw, 19px); line-height: 1.55; font-weight: 400; color: var(--ink2); text-wrap: pretty; }
 body.dk #main .dk-p { margin: 8px 0 0; font-size: 16px; line-height: 25px; font-weight: 400; color: var(--ink2); }
 body.dk #main .dk-n { margin: 12px 0 0; font-size: 13px; line-height: 20.8px; font-weight: 500; color: var(--ink2); }
@@ -46,7 +46,7 @@ body.dk .dk-head-under { margin: 16px auto 0; font-size: 15px; line-height: 22px
 body.dk .dk-head-under b { font-weight: 700; color: var(--ink); }
 
 /* ---------- Buttons. White with black text. The App Store link is always the official badge. ---------- */
-body.dk .dk-btn, body.dk .dk-btn2 { display: inline-flex; align-items: center; justify-content: center; height: 42px; padding: 0 22px; border: 0; border-radius: 999px; font: 600 14.5px/1 "Manrope", sans-serif; letter-spacing: -.006em; cursor: pointer; text-decoration: none; transition: transform .15s ease, background-color .15s ease; }
+body.dk .dk-btn, body.dk .dk-btn2 { display: inline-flex; align-items: center; justify-content: center; height: 42px; padding: 0 22px; border: 0; border-radius: 999px; font: 600 14.5px/1 "Geist", sans-serif; letter-spacing: -.006em; cursor: pointer; text-decoration: none; transition: transform .15s ease, background-color .15s ease; }
 body.dk #main .dk-btn { background: #F4F5F8; color: #050505; box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(0,0,0,.3), 0 4px 8px rgba(0,0,0,.2); }
 body.dk #main .dk-btn:hover { background: #fff; transform: translateY(-1px); }
 body.dk #main .dk-btn2 { background: rgba(241,242,245,.08); color: var(--ink); box-shadow: inset 0 0 0 1px rgba(241,242,245,.16); }
@@ -112,7 +112,7 @@ body.dk #main .dk-calls .m { font-family: "Inter Widget", sans-serif; font-weigh
 body.dk #main .dk-calls .fin .m { color: #FF453A; }
 
 /* A big number */
-body.dk .dk-big { display: block; margin: 0 0 8px; font-family: "General Sans", "Manrope", sans-serif; font-size: clamp(72px, 10vw, 128px); line-height: 1; font-weight: 500; letter-spacing: -.03em; color: var(--ink); }
+body.dk .dk-big { display: block; margin: 0 0 8px; font-family: "Geist", "Geist", sans-serif; font-size: clamp(72px, 10vw, 128px); line-height: 1; font-weight: 500; letter-spacing: -.03em; color: var(--ink); }
 body.dk .dk-big small { font-size: .28em; letter-spacing: 0; margin-left: .15em; color: var(--ink2); }
 
 /* Figures: phones with a line under them, each its own width. Three at most. */
@@ -173,9 +173,9 @@ body.dk #main.doc, body.dk #main.dk-long { padding: clamp(112px, 11vw, 152px) 0 
 body.dk main.doc .wrap, body.dk .dk-long .wrap { width: auto; max-width: none; padding: 0; }
 body.dk main.doc > .wrap, body.dk .dk-long > .wrap { width: min(743px, calc(100vw - 40px)); margin: 0 auto; }
 body.dk main.doc > .wrap > *, body.dk .dk-long > .wrap > * { max-width: none; }
-body.dk main.doc h1, body.dk .dk-long h1 { margin: 0; max-width: none; font-family: "General Sans", "Manrope", sans-serif; font-weight: 500 !important; font-size: clamp(36px, 5vw, 56px) !important; line-height: 1.06 !important; letter-spacing: -.018em; color: #fff; text-wrap: balance; }
-body.dk main.doc h2, body.dk .dk-long h2 { margin: 56px 0 10px; font-family: "General Sans", "Manrope", sans-serif; font-weight: 500 !important; font-size: clamp(24px, 2.6vw, 30px); line-height: 1.2; letter-spacing: -.012em; color: var(--ink); scroll-margin-top: 90px; }
-body.dk main.doc h3, body.dk .dk-long h3 { margin: 32px 0 6px; font-family: "Manrope", sans-serif; font-weight: 600 !important; font-size: 19px; line-height: 24px; letter-spacing: -.012em; color: var(--ink); scroll-margin-top: 90px; }
+body.dk main.doc h1, body.dk .dk-long h1 { margin: 0; max-width: none; font-family: "Geist", "Geist", sans-serif; font-weight: 500 !important; font-size: clamp(36px, 5vw, 56px) !important; line-height: 1.06 !important; letter-spacing: -.018em; color: #fff; text-wrap: balance; }
+body.dk main.doc h2, body.dk .dk-long h2 { margin: 56px 0 10px; font-family: "Geist", "Geist", sans-serif; font-weight: 500 !important; font-size: clamp(24px, 2.6vw, 30px); line-height: 1.2; letter-spacing: -.012em; color: var(--ink); scroll-margin-top: 90px; }
+body.dk main.doc h3, body.dk .dk-long h3 { margin: 32px 0 6px; font-family: "Geist", sans-serif; font-weight: 600 !important; font-size: 19px; line-height: 24px; letter-spacing: -.012em; color: var(--ink); scroll-margin-top: 90px; }
 body.dk main.doc p, body.dk main.doc ul, body.dk main.doc ol, body.dk main.doc li, body.dk .dk-long p, body.dk .dk-long ul, body.dk .dk-long ol, body.dk .dk-long li { font-size: 16px; line-height: 26px; font-weight: 400; color: var(--ink2); }
 body.dk main.doc p, body.dk .dk-long p { margin: 14px 0; }
 body.dk main.doc ul, body.dk main.doc ol, body.dk .dk-long ul, body.dk .dk-long ol { margin: 14px 0; padding-left: 22px; }
@@ -407,3 +407,9 @@ html body.dk .sh-cta *, html body.dk .sh-mcta *, html body.dk #main .dk-btn *, h
 }
 html body.dk .sh .sh-right > .sh-cta:active, html body.dk .sh-mcta:active, html body.dk #main .dk-btn:active, html body.dk #main .hb-btn:active { transform: translateY(0) !important; transition-duration: 90ms !important; background: linear-gradient(180deg, var(--dl-press) 0%, var(--dl-press) 100%) !important;
   box-shadow: rgba(255,255,255,.08) 0 1px 0 inset, rgba(6,14,52,.4) 0 2px 4px inset, rgba(10,22,80,.22) 0 1px 2px !important; }
+
+/* ---------- Ocelli type (4 Nov 2026, André: "use their font same everything", sampled from ocelli.app at 1440 wide).
+   Page text Geist; the header links 14/22.4 regular; the header button 14 medium. ---------- */
+html body .sh-trig, html body .sh-link, html body .sh-login { font: 400 14px/22.4px "Geist", -apple-system, BlinkMacSystemFont, system-ui, sans-serif !important; letter-spacing: normal !important; color: #F1F2F5 !important; }
+html body .sh .sh-right > .sh-cta, html body .sh-mcta { font: 500 14px/19.6px "Geist", -apple-system, BlinkMacSystemFont, system-ui, sans-serif !important; letter-spacing: -0.084px !important; }
+html body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }

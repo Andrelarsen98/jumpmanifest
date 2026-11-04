@@ -22,8 +22,8 @@
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg?v=4" />
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=4" />
 <!-- Fonts self-hosted (perf, 20 Oct 2026): General Sans (Fontshare ITF FFL, self-hosting allowed) + Manrope (SIL OFL), same files the CDNs served. -->
-<link rel="preload" href="/assets/opt/fonts/manrope-latin.101877a7.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preload" href="/assets/opt/fonts/GeneralSans-Variable.8e765124.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/assets/fonts/geist-variable.woff2" as="font" type="font/woff2" crossorigin />
+<style>@font-face{font-family:"Geist";font-style:normal;font-weight:100 900;font-display:swap;src:url(/assets/fonts/geist-variable.woff2) format("woff2")}</style>
 <style>
 @font-face{font-family:'General Sans';font-style:normal;font-weight:200 700;font-display:swap;src:url(/assets/opt/fonts/GeneralSans-Variable.8e765124.woff2) format('woff2')}
 @font-face{font-family:'Manrope';font-style:normal;font-weight:400 800;font-display:swap;src:url(/assets/opt/fonts/manrope-cyrillic-ext.28f2a82c.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F}
@@ -45,7 +45,7 @@
   .wordmark { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); }
   .wordmark img { width: 34px; height: auto; }
   .wordmark img.wm { width: auto; height: 22px; }
-  .wordmark span { font-family: "Manrope", sans-serif; font-weight: 700; font-size: 29px; letter-spacing: -0.055em; line-height: 1; margin-top: -3px; }
+  .wordmark span { font-family: "Geist", sans-serif; font-weight: 700; font-size: 29px; letter-spacing: -0.055em; line-height: 1; margin-top: -3px; }
   .tb-links { display: flex; align-items: center; gap: 34px; }
   .tb-links a { font-size: 15.5px; font-weight: 600; color: #0f0b1c; letter-spacing: -0.01em; }
   .tb-links a:hover { color: var(--muted); }
@@ -164,23 +164,23 @@
      purple #6D42F5, subline 20px/31px #71717B with the claim in 600 black,
      64px pill buttons with a 48px chevron circle, a #F0ECFE badge. */
   :root { --violet: #6D42F5; --violet-d: #6D42F5; }
-  body { font-family: "Manrope", -apple-system, sans-serif; }
-  .kicker { font-family: "Manrope", sans-serif; background: #F0ECFE; color: #040815; font-size: 12px; font-weight: 500;
+  body { font-family: "Geist", -apple-system, sans-serif; }
+  .kicker { font-family: "Geist", sans-serif; background: #F0ECFE; color: #040815; font-size: 12px; font-weight: 500;
             line-height: 18px; padding: 7px 14px; border-radius: 224px; }
   .kicker b { font-weight: 700; }
   /* Headings: General Sans 500 (Fontshare, free for commercial use), the
      closest free match to Softriver's Neue Montreal 500, which is paid.
      -2px at 72px = -0.028em, as theirs. */
-  h1, h2 { font-family: "General Sans", "Manrope", sans-serif; font-weight: 500; letter-spacing: -.028em; }
+  h1, h2 { font-family: "Geist", "Geist", sans-serif; font-weight: 500; letter-spacing: -.028em; }
   h2 { text-wrap: balance; }
   h1 { line-height: 1; }
   h1 span { color: #6D42F5; }
   /* The sentence in grey so the black wordmark lands as the punchline (2 Oct 2026). */
   h1 .dim { color: #71717A; display: inline !important; }
   h1 span.l2 { color: inherit; } /* the second line is all ink: "on", the black wordmark, the full stop */
-  .sub { font-family: "Manrope", sans-serif; font-size: 20px; font-weight: 400; line-height: 31px; color: #71717B; }
+  .sub { font-family: "Geist", sans-serif; font-size: 20px; font-weight: 400; line-height: 31px; color: #71717B; }
   .sub b { font-weight: 600; color: #000; }
-  .btn { font-family: "Manrope", sans-serif; font-size: 20px; font-weight: 600; line-height: 30px; border-radius: 28px; }
+  .btn { font-family: "Geist", sans-serif; font-size: 20px; font-weight: 600; line-height: 30px; border-radius: 28px; }
   .btn.primary { background: #6D42F5; color: #fff; height: 64px; padding: 8px 8px 8px 28px; gap: 12px; justify-content: space-between;
     box-shadow: rgba(109,66,245,.08) 0 4px 4px, rgba(109,66,245,.04) 0 8px 8px, rgba(109,66,245,.02) 0 16px 5px,
                 inset 0 0 2px rgba(255,255,255,.12), inset 0 0 20px rgba(255,255,255,.08); }
@@ -198,15 +198,15 @@
      (text starts at 80), h1 a fixed 72px/72px -2px, subline two lines at
      20/31, buttons and the trust row on one line, a red-dot line beside the
      pill. */
-  .live { display: inline-flex; align-items: center; gap: 10px; font-family: "Manrope", sans-serif; font-size: 14px; font-weight: 500; color: #040815; }
+  .live { display: inline-flex; align-items: center; gap: 10px; font-family: "Geist", sans-serif; font-size: 14px; font-weight: 500; color: #040815; }
   .live i { width: 6px; height: 6px; border-radius: 50%; background: #F04438; box-shadow: 0 0 0 4px rgba(240,68,56,.14); }
-  .kicker-brand { display: inline-flex; align-items: baseline; gap: 5px; font-family: "Manrope", sans-serif; font-size: 20px; line-height: 1; font-weight: 700; color: #050505; padding: 9px 16px 10px; letter-spacing: -.02em; }
+  .kicker-brand { display: inline-flex; align-items: baseline; gap: 5px; font-family: "Geist", sans-serif; font-size: 20px; line-height: 1; font-weight: 700; color: #050505; padding: 9px 16px 10px; letter-spacing: -.02em; }
   .kicker-brand img { height: 15px; width: auto; display: inline-block; align-self: baseline; }
   .toprow { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 12px 20px; }
   .herorow { display: flex; flex-direction: column; align-items: center; gap: 28px; margin-top: 34px; }
   .herorow .ctas { margin-top: 0; }
   .trust { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px 0;
-           font-family: "Manrope", sans-serif; font-size: 16px; font-weight: 400; color: #040815; }
+           font-family: "Geist", sans-serif; font-size: 16px; font-weight: 400; color: #040815; }
   .trust > * { display: inline-flex; align-items: center; gap: 8px; padding: 0 16px; line-height: 24px; color: inherit; }
   .trust > * + * { border-left: 1px solid rgba(15,11,28,.12); }
   .trust svg { width: 20px; height: 20px; flex: 0 0 auto; }
@@ -234,7 +234,7 @@
   /* Owner bar, measured from softriver.co/white-label: #2D0896, 56px tall,
      16/24 Manrope white at -0.32px. Says who the page is for and sends
      jumpers who land here to the App Store. */
-  .ownerbar { background: #111111; color: #fff; text-align: center; padding: 16px 5vw; font-family: "Manrope", sans-serif;
+  .ownerbar { background: #111111; color: #fff; text-align: center; padding: 16px 5vw; font-family: "Geist", sans-serif;
               font-size: 16px; font-weight: 400; line-height: 24px; letter-spacing: -.32px; }
   .ownerbar a { color: #fff; font-weight: 600; white-space: nowrap; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(255,255,255,.4); }
   .ownerbar a:hover { text-decoration-color: #fff; }
@@ -244,7 +244,7 @@
      middle one outlined in purple under a purple band, "Custom" where they
      show a price, a ticked list, and one strip of what every size gets. */
   .pricing { text-align: center; }
-  .pr-top { display: inline-flex; align-items: center; gap: 10px; font-family: "Manrope", sans-serif; font-size: 16px; line-height: 24px; color: #040815; }
+  .pr-top { display: inline-flex; align-items: center; gap: 10px; font-family: "Geist", sans-serif; font-size: 16px; line-height: 24px; color: #040815; }
   .pr-top i { width: 6px; height: 6px; border-radius: 50%; background: #F04438; box-shadow: 0 0 0 4px rgba(240,68,56,.14); }
   .pricing h2 { margin-top: 18px; font-size: clamp(36px, 5.4vw, 74px); letter-spacing: -.028em; line-height: 1.05; }
   .pricing .lead { color: var(--muted); font-size: 20px; line-height: 31px; margin: 18px auto 0; max-width: 760px; text-wrap: balance; }
@@ -252,13 +252,13 @@
   .pc-grid { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: end; text-align: left; }
   .pc { background: #fff; border: 1px solid #E4E4E7; border-radius: 22px; overflow: hidden; }
   .pc.hl { border: 2px solid #6D42F5; box-shadow: 0 24px 60px rgba(109,66,245,.14); }
-  .pc-band { background: #6D42F5; color: #fff; text-align: center; font-family: "Manrope", sans-serif; font-weight: 600; font-size: 17px; letter-spacing: .02em; text-transform: uppercase; padding: 14px 0; }
+  .pc-band { background: #6D42F5; color: #fff; text-align: center; font-family: "Geist", sans-serif; font-weight: 600; font-size: 17px; letter-spacing: .02em; text-transform: uppercase; padding: 14px 0; }
   .pc-in { padding: 36px 34px 38px; }
-  .pc h3 { font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: 24px; letter-spacing: -.5px; color: #040815; }
-  .pc-price { margin-top: 18px; font-family: "General Sans", "Manrope", sans-serif; font-weight: 600; font-size: 48px; line-height: 1; letter-spacing: -1.5px; color: #040815; }
+  .pc h3 { font-family: "Geist", "Geist", sans-serif; font-weight: 550; font-size: 24px; letter-spacing: -.5px; color: #040815; }
+  .pc-price { margin-top: 18px; font-family: "Geist", "Geist", sans-serif; font-weight: 600; font-size: 48px; line-height: 1; letter-spacing: -1.5px; color: #040815; }
   .pc-desc { margin-top: 18px; font-size: 17px; line-height: 26px; color: #71717B; min-height: 52px; }
   .pc-out { margin-top: 26px; display: flex; align-items: center; justify-content: center; gap: 10px; height: 64px; border: 1.5px solid #6D42F5; border-radius: 28px;
-            color: #6D42F5; font-family: "Manrope", sans-serif; font-weight: 600; font-size: 20px; transition: background .15s ease; }
+            color: #6D42F5; font-family: "Geist", sans-serif; font-weight: 600; font-size: 20px; transition: background .15s ease; }
   .pc-out:hover { background: #fff; }
   .pc-out svg { width: 18px; height: 18px; }
   .pc .pc-btn { margin-top: 26px; display: flex; width: 100%; }
@@ -278,7 +278,7 @@
   .pc-band { height: 52px; padding: 0 !important; display: flex; align-items: center; justify-content: center; }
   @media (min-width: 981px) { .pc:not(.hl) { margin-top: 52px; } }
   .pr-all { margin: 32px auto 0; background: #FFFFFF; border: 1px solid #E4E4E7; border-radius: 10px !important; border-radius: clamp(22px, 2.6vw, 32px); padding: clamp(26px, 3.4vw, 44px); text-align: left; }
-  .pr-all h3 { font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: clamp(22px, 2.2vw, 28px); letter-spacing: -.6px; }
+  .pr-all h3 { font-family: "Geist", "Geist", sans-serif; font-weight: 550; font-size: clamp(22px, 2.2vw, 28px); letter-spacing: -.6px; }
   .pr-all ul { list-style: none; margin: 20px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px 28px; }
   .pr-all li { display: flex; align-items: center; gap: 12px; font-size: 16.5px; line-height: 24px; color: #040815; }
   .pr-yes { width: 28px; height: 28px; border-radius: 50%; background: #6D42F5; flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; }
@@ -294,10 +294,10 @@
   .pc { border-radius: 10px; border-color: #E4E4E7; }
   .pc.hl { border-radius: 10px; border: 1px solid #6D42F5; box-shadow: none; } /* slim line, no glow: as Softriver */
   .pc-in { padding: 32px; }
-  .pc h3 { font-family: "Manrope", sans-serif; font-weight: 500; font-size: 20px; line-height: 28px; letter-spacing: -1px; }
+  .pc h3 { font-family: "Geist", sans-serif; font-weight: 500; font-size: 20px; line-height: 28px; letter-spacing: -1px; }
   .pc-price { margin-top: 14px; font-weight: 550; font-size: 38px; letter-spacing: -1px; }
-  .pc-price small { font-family: "Manrope", sans-serif; font-size: 16px; font-weight: 500; letter-spacing: 0; color: #71717B; margin-left: 4px; }
-  .pc-price .from { font-family: "Manrope", sans-serif; font-size: 16px; font-weight: 500; letter-spacing: 0; color: #71717B; margin-right: 6px; }
+  .pc-price small { font-family: "Geist", sans-serif; font-size: 16px; font-weight: 500; letter-spacing: 0; color: #71717B; margin-left: 4px; }
+  .pc-price .from { font-family: "Geist", sans-serif; font-size: 16px; font-weight: 500; letter-spacing: 0; color: #71717B; margin-right: 6px; }
   .pr-founder { margin-top: 32px; font-size: 18px; line-height: 28px; color: #71717B; }
   .pr-founder b { color: #050505; font-weight: 600; }
   .pr-founder.pr-plain { margin-top: 6px; }
@@ -354,7 +354,7 @@
   .final .pc-out { display: inline-flex; margin-top: 0; padding: 0 36px; background: #fff; }
   @media (max-width: 600px) { .final .pc-out { width: 100%; padding: 0 20px; } }
   .pr-guar { max-width: 760px; margin: 72px auto 0; }
-  .pr-guar h3 { font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: clamp(24px, 2.6vw, 32px); letter-spacing: -.6px; color: #050505; }
+  .pr-guar h3 { font-family: "Geist", "Geist", sans-serif; font-weight: 550; font-size: clamp(24px, 2.6vw, 32px); letter-spacing: -.6px; color: #050505; }
   .pr-guar p { margin: 16px 0 0; font-size: 18px; line-height: 28px; color: #71717B; text-wrap: balance; }
   .pr-guar.pr-jump { margin-top: 48px; }
   .pr-guar .pr-guar-s { margin-top: 10px; font-size: 16px; line-height: 24px; }
@@ -392,7 +392,7 @@
   .pc ul.pc-feats li .tk { width: 15px; height: 15px; }
   .pc ul.pc-feats .soon-tag { font-size: 9.5px; padding: 2px 6px; }
   .pc-call { margin-top: 32px; display: flex; align-items: center; justify-content: center; gap: 10px; height: 67px; border: 1px solid #6D42F5;
-             border-radius: 20px; background: #fff; color: #6D42F5; font-family: "Manrope", sans-serif; font-weight: 600; font-size: 20px; }
+             border-radius: 20px; background: #fff; color: #6D42F5; font-family: "Geist", sans-serif; font-weight: 600; font-size: 20px; }
   .pc-call:hover { background: #fff; } .pc-call svg { width: 18px; height: 18px; }
   /* Claude-style (1 Oct 2026): short cards show only what differs, then a
      full comparison below with the tier names pinned while you scroll. */
@@ -401,10 +401,10 @@
   .cm-head, .cm-r { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; align-items: center; }
   .cm-head { position: sticky; top: 0; z-index: 2; background: #F9F9F9; padding: 18px 0; border-bottom: 1px solid #E4E4E7; }
   .cm-head .cm-c { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-  .cm-head b { font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: 22px; letter-spacing: -.4px; color: #040815; }
+  .cm-head b { font-family: "Geist", "Geist", sans-serif; font-weight: 550; font-size: 22px; letter-spacing: -.4px; color: #040815; }
   .cm-head a { font-size: 14px; font-weight: 600; color: #fff; background: #6D42F5; border-radius: 10px; padding: 8px 14px; transition: background .15s ease; }
   .cm-head a:hover { background: #5A32E0; }
-  .cm-g { font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: clamp(22px, 2.2vw, 30px); letter-spacing: -.5px; color: #040815; padding: 44px 20px 18px; border-bottom: 1px solid #E4E4E7; }
+  .cm-g { font-family: "Geist", "Geist", sans-serif; font-weight: 550; font-size: clamp(22px, 2.2vw, 30px); letter-spacing: -.5px; color: #040815; padding: 44px 20px 18px; border-bottom: 1px solid #E4E4E7; }
   .cm-r { min-height: 64px; border-bottom: 1px solid #E4E4E7; }
   .cm-l { padding: 14px 20px; font-size: 17px; line-height: 24px; color: #040815; }
   .cm-c { text-align: center; padding: 10px 8px; }
@@ -499,7 +499,7 @@
   /* Content starts 56px under the heading block. */
   .app-panel, .grid, .how-grid, .pc-grid, .vs { margin-top: 56px; }
   /* Card titles 24 / 33.6 weight 500; card text 16 / 20.8 weight 500 grey. */
-  .app-card b, .card b, .how-grid b { font-family: "General Sans", "Manrope", sans-serif; font-size: 24px; line-height: 33.6px; font-weight: 500; letter-spacing: normal; color: var(--t); }
+  .app-card b, .card b, .how-grid b { font-family: "Geist", "Geist", sans-serif; font-size: 24px; line-height: 33.6px; font-weight: 500; letter-spacing: normal; color: var(--t); }
   .card b { margin-bottom: 8px; }
   .app-card p, .card p, .how-grid p, .pc-desc { font-size: 16px; line-height: 20.8px; font-weight: 500; letter-spacing: -.5px; color: var(--g); }
   .app-card p, .how-grid p { margin-top: 8px; }
@@ -516,7 +516,7 @@
   .vs-col { border-radius: 22px; padding: 36px 36px 16px; }
   .vs-old { background: #F9F9F9; }
   .vs-new { background: #fff; border: 1px solid #6D42F5; }
-  .vs-col h3 { display: flex; align-items: center; gap: 12px; font-family: "General Sans", "Manrope", sans-serif; font-size: 32px; line-height: 44.8px;
+  .vs-col h3 { display: flex; align-items: center; gap: 12px; font-family: "Geist", "Geist", sans-serif; font-size: 32px; line-height: 44.8px;
     font-weight: 500; letter-spacing: -1px; color: var(--t); }
   .vs-col h3 .eb-mark { width: 32px; height: 24px; }
   .vs ul { list-style: none; margin: 20px 0 0; padding: 0; }
@@ -587,7 +587,7 @@
   .bt-row { flex-direction: row; align-items: stretch; }
   .bt figcaption { padding: 44px 44px 0; text-align: center; position: relative; z-index: 1; }
   .bt-row figcaption { text-align: left; padding: 44px 28px 44px 44px; flex: 1 1 52%; align-self: center; }
-  .bt b { display: block; font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: 34px; line-height: 38px; letter-spacing: -.028em; color: #050505; text-wrap: balance; }
+  .bt b { display: block; font-family: "Geist", "Geist", sans-serif; font-weight: 550; font-size: 34px; line-height: 38px; letter-spacing: -.028em; color: #050505; text-wrap: balance; }
   .bt span { display: block; margin-top: 10px; font-size: 18px; line-height: 26px; font-weight: 500; color: #71717B; }
   .bt-dark { background: #050505; }
   .bt-dark b { color: #fff; } .bt-dark span { color: #D4D4D8; }
@@ -640,7 +640,7 @@
   .jstats { list-style: none; margin: 16px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); background: #F7F7F9; border-radius: 22px; }
   .jstats li { padding: 28px 24px; font-size: 16px; line-height: 20.8px; font-weight: 500; color: var(--g); text-align: center; }
   .jstats li + li { border-left: 1px solid #E4E4E7; }
-  .jstats b { display: block; margin-bottom: 6px; font-family: "General Sans", "Manrope", sans-serif; font-size: 34px; line-height: 40px; font-weight: 500; letter-spacing: -.5px; color: var(--t); }
+  .jstats b { display: block; margin-bottom: 6px; font-family: "Geist", "Geist", sans-serif; font-size: 34px; line-height: 40px; font-weight: 500; letter-spacing: -.5px; color: var(--t); }
   .jfoot { text-align: center; margin-top: 32px; font-size: 20px; line-height: 31px; color: #71717B; }
   .jfoot b { color: #040815; font-weight: 600; }
   @media (max-width: 980px) { .jstats { grid-template-columns: repeat(2, 1fr); }
@@ -711,7 +711,7 @@ footer.site .ft-col a em { color: #FFFFFF !important; background: rgba(255,255,2
 
 /* REVIEW FIXES (16 Oct 2026, A02 A18 A19): column titles are H3 now (same look
    as the old H4); a white focus ring on the dark footer; 44 px tap targets on phones. */
-footer.site .ft-col h3 { font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif !important; font-size: 15px !important;
+footer.site .ft-col h3 { font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif !important; font-size: 15px !important;
       line-height: normal !important; font-weight: 600 !important; letter-spacing: -0.01em !important; text-transform: none !important;
       color: #8E8E93 !important; margin: 4px 0 18px !important; padding: 0 !important; }
 footer.site :where(a, button):focus-visible { outline-color: #fff !important; box-shadow: none; }
@@ -741,7 +741,7 @@ section[id], header[id], div[id], [id] { scroll-margin-top: 96px; }
 h1, h2, h3 { text-wrap: balance; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto !important; } }
 .sh, .sh-sheet { --sh-ink: #050505; --sh-muted: #71717B; --sh-purple: #6D42F5; --sh-pale: #F0ECFE; --sh-hover: #F6F6F8;
-      font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif; color: var(--sh-ink); }
+      font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif; color: var(--sh-ink); }
 .sh { position: sticky; top: 0; z-index: 60; background: #fff; border-bottom: 1px solid rgba(5,5,5,.08); }
 .sh a, .sh-sheet a { color: inherit; text-decoration: none; }
 .sh-in { height: 76px; padding: 0 5vw; display: flex; align-items: center; gap: 40px; }
@@ -751,7 +751,7 @@ h1, h2, h3 { text-wrap: balance; }
       background: none; border: 0; border-radius: 0; box-shadow: none; }
 .sh-nav { display: flex; align-items: center; gap: 30px; height: 100%; flex: 1; min-width: 0; }
 .sh-right { display: flex; align-items: center; gap: 24px; margin-left: auto; flex: none; }
-.sh-trig, .sh-link, .sh-login { font: 600 15.5px/1 "Manrope", sans-serif; letter-spacing: -0.01em; color: var(--sh-ink);
+.sh-trig, .sh-link, .sh-login { font: 600 15.5px/1 "Geist", sans-serif; letter-spacing: -0.01em; color: var(--sh-ink);
       background: none; border: 0; padding: 8px 0; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;
       white-space: nowrap; transition: color .15s ease; }
 .sh-trig:hover, .sh-link:hover, .sh-login:hover, .sh-dd.open .sh-trig { color: var(--sh-muted); }
@@ -785,7 +785,7 @@ h1, h2, h3 { text-wrap: balance; }
 
 /* buttons: Download keeps the grey pill; Get started is the purple pill */
 .sh-cta { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 99px;
-      background: #F2F2F5; color: var(--sh-ink) !important; font: 700 15px/1.2 "Manrope", sans-serif; letter-spacing: -0.01em;
+      background: #F2F2F5; color: var(--sh-ink) !important; font: 700 15px/1.2 "Geist", sans-serif; letter-spacing: -0.01em;
       white-space: nowrap; transition: background .15s ease; }
 .sh-cta:hover { background: #E7E7EC; }
 .sh-cta svg { width: 15px; height: 15px; }
@@ -805,7 +805,7 @@ h1, h2, h3 { text-wrap: balance; }
 @keyframes sh-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
 .sh-macc, .sh-mlink { width: 100%; display: flex; align-items: center; justify-content: space-between; min-height: 58px;
       padding: 0 4px; background: none; border: 0; cursor: pointer; color: var(--sh-ink);
-      font: 600 17px/1.2 "Manrope", sans-serif; letter-spacing: -0.01em; text-align: left; }
+      font: 600 17px/1.2 "Geist", sans-serif; letter-spacing: -0.01em; text-align: left; }
 .sh-macc .sh-chev { width: 14px; height: 14px; }
 .sh-mgroup, .sh-mlink { border-bottom: 1px solid rgba(5,5,5,.08) !important; }
 .sh-macc.is-current > span, .sh-mlink.is-current .sh-t { color: var(--sh-purple); }
@@ -845,7 +845,7 @@ h1, h2, h3 { text-wrap: balance; }
    bottom of the phone menu. */
 .skip { position: fixed; left: 16px; top: -120px; z-index: 100; display: inline-flex; align-items: center; height: 44px;
       padding: 0 20px; border-radius: 999px; background: #fff; color: #050505 !important; border: 1.5px solid #050505;
-      font: 700 15px/1 "Manrope", -apple-system, BlinkMacSystemFont, sans-serif; text-decoration: none !important; }
+      font: 700 15px/1 "Geist", -apple-system, BlinkMacSystemFont, sans-serif; text-decoration: none !important; }
 .skip:focus { top: 16px; }
 #main:focus { outline: none !important; box-shadow: none !important; }
 :where(a, button, summary, input, select, textarea, [tabindex]):focus-visible {
@@ -1150,18 +1150,18 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
   .pc ul.pc-list li.off { gap: 10px; letter-spacing: -.4px; }
   /* F06: a demo action between the hero and pricing, white on the black band. */
   .band-cta { margin-top: 32px; display: flex; justify-content: center; }
-  .band-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; padding: 0 28px; border-radius: 999px; background: #fff; color: #050505; font-family: "Manrope", sans-serif; font-size: 18px; font-weight: 700; }
+  .band-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; padding: 0 28px; border-radius: 999px; background: #fff; color: #050505; font-family: "Geist", sans-serif; font-size: 18px; font-weight: 700; }
   .band-btn:hover { background: #F4F4F5; }
   .band-btn svg { width: 16px; height: 16px; }
   .band .band-sub { color: #E4E4E7; }
   /* A05: what the dropzone sends us, under the setup steps. */
   .how-need { max-width: 820px; margin: 28px auto 0; text-align: center; font-size: 17px; line-height: 26px; color: #3F3F46; }
   /* F10: group labels inside the FAQ. */
-  .faq-g { max-width: 820px; margin: 0 auto; padding: 0 4px 14px; font-family: "General Sans", "Manrope", sans-serif; font-weight: 550; font-size: 26px; line-height: 32px; letter-spacing: -.4px; color: #050505; }
+  .faq-g { max-width: 820px; margin: 0 auto; padding: 0 4px 14px; font-family: "Geist", "Geist", sans-serif; font-weight: 550; font-size: 26px; line-height: 32px; letter-spacing: -.4px; color: #050505; }
   .faq-g + .faq-list { margin-bottom: 44px; }
   @media (max-width: 600px) { .faq-g { font-size: 21px; line-height: 28px; } .band-btn { font-size: 17px; width: 100%; } }
     /* 21 Oct 2026 (André): make it clear, "THAT'S IT". */
-  .pc .pc-thats{margin:22px 0 0;font-family:"General Sans","Manrope",sans-serif;font-weight:600;font-size:32px;line-height:38px;letter-spacing:-.02em;color:#050505}
+  .pc .pc-thats{margin:22px 0 0;font-family:"Geist","Geist",sans-serif;font-weight:600;font-size:32px;line-height:38px;letter-spacing:-.02em;color:#050505}
   .pc ul.pc-nos{list-style:none;margin:14px 0 26px;padding:0;display:flex;flex-wrap:wrap;gap:8px}
   .pc ul.pc-nos li{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:99px;background:#F5F5F6;font-size:15px;line-height:20px;font-weight:600;color:#050505}
   .pc ul.pc-nos li::before{content:"";width:14px;height:14px;flex:0 0 auto;background:no-repeat center/14px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%2322C55E' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 8.5l3.2 3L13 4.5'/%3E%3C/svg%3E")}
@@ -1176,17 +1176,17 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
   .pq-ic-g svg{width:18px;height:18px}
   .pq-top{display:flex;justify-content:space-between;align-items:flex-start}
   .pq-tag{font-size:12px;line-height:16px;font-weight:700;color:#050505;border:1px solid #E4E4E7;border-radius:8px;padding:4px 9px}
-  .pq h3{margin:22px 0 0;font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:20px;line-height:26px;color:#050505;text-align:left}
+  .pq h3{margin:22px 0 0;font-family:"Geist","Geist",sans-serif;font-weight:500;font-size:20px;line-height:26px;color:#050505;text-align:left}
   .pq-sub{margin:4px 0 0;font-size:14px;line-height:20px;color:#66666F}
-  .pq-big{display:flex;align-items:baseline;margin-top:22px;font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:48px;line-height:1;letter-spacing:-.03em;color:#050505}
+  .pq-big{display:flex;align-items:baseline;margin-top:22px;font-family:"Geist","Geist",sans-serif;font-weight:500;font-size:48px;line-height:1;letter-spacing:-.03em;color:#050505}
   .pq-big i{font-style:normal;color:#85858E}
-  .pq-big small{margin-left:8px;font-family:"Manrope",sans-serif;font-size:14px;letter-spacing:0;font-weight:500;color:#52525B}
+  .pq-big small{margin-left:8px;font-family:"Geist",sans-serif;font-size:14px;letter-spacing:0;font-weight:500;color:#52525B}
   .pq-rule{height:1px;background:#E4E4E7;margin:26px 0 22px}
   .pq-h{margin:0;font-size:14px;line-height:20px;font-weight:700;color:#050505}
   .pq-list{list-style:none;margin:12px 0 0;padding:0}
   .pq-list li{display:flex;gap:9px;align-items:flex-start;padding:4px 0;font-size:14px;line-height:20px;color:#3F3F46}
   .pq-list svg{width:15px;height:15px;flex:0 0 auto;margin-top:2px;color:#30D158;stroke-width:2.6}
-  .pq-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;margin-top:auto;height:46px;padding:0 22px;border-radius:14px;background:linear-gradient(180deg,#2A2A2E,#050505);color:#fff!important;font-family:"Manrope",sans-serif;font-weight:600;font-size:15px;text-decoration:none!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14)}
+  .pq-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;margin-top:auto;height:46px;padding:0 22px;border-radius:14px;background:linear-gradient(180deg,#2A2A2E,#050505);color:#fff!important;font-family:"Geist",sans-serif;font-weight:600;font-size:15px;text-decoration:none!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14)}
   .pq-card .pq-btn{margin-top:28px}
   .pq-btn:hover{background:#6D42F5}
   .pq-btn svg{width:15px;height:15px}
@@ -1195,13 +1195,13 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
   .pq-faces img{width:56px;height:56px;border-radius:50%;border:3px solid #fff;display:block}
   .pq-faces span{width:56px;height:56px;margin-left:-10px;border-radius:50%;background:#fff;display:inline-flex;align-items:center;justify-content:center;color:#050505}
   .pq-faces svg{width:20px;height:20px}
-  .pq-call-h{margin:16px 0 0;font-family:"General Sans","Manrope",sans-serif;font-weight:500;font-size:20px;line-height:26px;color:#050505}
+  .pq-call-h{margin:16px 0 0;font-family:"Geist","Geist",sans-serif;font-weight:500;font-size:20px;line-height:26px;color:#050505}
   .pq-call-s{margin:6px 0 0;font-size:14px;line-height:20px;color:#52525B}
   .pq-btn-s{margin-top:18px;height:42px;border-radius:99px}
   .pq-card{order:-1}
   @media (max-width:700px){.pq-tray{grid-template-columns:1fr}}
   </style>
-<link rel="stylesheet" href="/assets/site-dark.css?v=6" />
+<link rel="stylesheet" href="/assets/site-dark.css?v=7" />
 <style id="dz-studio">/* 4 Nov 2026 (André): the whole Studio Display, stand and all, not a cropped window. */
 body.dk .dk-studio { position: absolute; left: 50%; top: 40px; height: calc(100% - 80px); width: auto; max-width: none; transform: translateX(-50%); filter: drop-shadow(0 24px 48px rgba(0,0,0,.5)); }
 @media (max-width: 760px) { body.dk .dk-studio { top: 20px; height: calc(100% - 40px); } }
@@ -1292,8 +1292,8 @@ body.dk .dk-studio { position: absolute; left: 50%; top: 40px; height: calc(100%
   }
   body.dk #main .dz-five { grid-template-columns: repeat(5, minmax(0, 1fr)); width: var(--stage); gap: clamp(14px, 2vw, 28px); }
   body.dk #main .dz-five .dk-ph, body.dk #main .dz-five .dk-screen { width: 100%; }
-  body.dk #main .dz-plan-big { font-family: "General Sans", "Manrope", sans-serif; font-size: 52px; line-height: 1.1; font-weight: 500; letter-spacing: -.02em; color: #F1F2F5; margin: 18px 0 0; }
-  body.dk #main .dz-plan-big small { margin-left: 8px; font-family: "Manrope", sans-serif; font-size: 17px; letter-spacing: 0; font-weight: 400; color: #D1D1D6; }
+  body.dk #main .dz-plan-big { font-family: "Geist", "Geist", sans-serif; font-size: 52px; line-height: 1.1; font-weight: 500; letter-spacing: -.02em; color: #F1F2F5; margin: 18px 0 0; }
+  body.dk #main .dz-plan-big small { margin-left: 8px; font-family: "Geist", sans-serif; font-size: 17px; letter-spacing: 0; font-weight: 400; color: #D1D1D6; }
   body.dk #main .dz-plan-h { margin: 18px 0 0; padding-top: 18px; border-top: 1px solid rgba(241,242,245,.14); font-size: 15px; line-height: 22px; font-weight: 600; color: #F1F2F5; }
   body.dk #main .dz-all { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 32px; width: min(1000px, calc(100vw - 40px)); margin: 24px auto 0; padding: 0; text-align: left; font-size: 15px; line-height: 23px; color: #D1D1D6; }
   body.dk #main .dz-all li { margin: 0; padding-left: 18px; position: relative; }
