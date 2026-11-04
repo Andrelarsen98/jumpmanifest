@@ -4093,5 +4093,16 @@ html body footer.site .ft-art img { inset: 0 !important; left: 0 !important; wid
   html body footer.site .ft-art img { width: 100% !important; left: 0 !important; object-position: 58% 100% !important; }
 }
 </style>
+<style id="ft-closure-4">
+/* ---------- Footer v4 (4 Nov 2026, André's screenshot: "this should be the bottom, on all footers"): the footer is one screen tall and
+   its content sits on the bottom edge, so the painting shows above the links and the copyright line ends 28px from the bottom. ---------- */
+html body footer.site, html body.dk footer.site { justify-content: flex-end !important; padding: 140px 0 28px !important; }
+@media (max-width: 720px) {
+  html body footer.site, html body.dk footer.site { padding: 96px 0 28px !important; }
+  html body.dk footer.site .ft { width: calc(100vw - 44px) !important; grid-template-columns: 1fr 1fr 1fr !important; gap: 32px 12px !important; }
+  html body.dk footer.site .ft-col a { padding: 6px 0 !important; min-height: 28px !important; line-height: 16px !important; font-size: 13px !important; }
+  html body.dk footer.site .ft-base { width: calc(100vw - 44px) !important; }
+}
+</style>
 </body>
 </html>

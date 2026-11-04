@@ -443,3 +443,31 @@ html body footer.site .ft-art img { inset: 0 !important; left: 0 !important; wid
   html body footer.site { min-height: 100svh !important; padding: 96px 0 40px !important; }
   html body footer.site .ft-art img { width: 100% !important; left: 0 !important; object-position: 58% 100% !important; }
 }
+
+/* ---------- Footer v3 (4 Nov 2026, André: "make sure text is where it should be on all pages"): every page's footer is the home
+   page's, measured off it at 1440 wide. Padding 140/48, grid 1040 wide (1fr 157 147 104, gap 40), links 13/20.8 with 4px rows. ---------- */
+html body.dk footer.site { min-height: 100svh !important; padding: 140px 0 48px !important; justify-content: flex-start !important; }
+html body.dk footer.site .ft { width: min(1040px, calc(100vw - 80px)) !important; max-width: none !important; margin-inline: auto !important; padding-inline: 0 !important; grid-template-columns: minmax(0, 1fr) 157px 147px 104px !important; gap: 40px !important; font-size: 16px; line-height: 24px; }
+html body.dk footer.site .ft-col a { padding: 4px 0 !important; margin: 0 !important; line-height: 20.8px !important; min-height: 0 !important; font-size: 13px !important; }
+html body.dk footer.site .ft-base { width: min(1040px, calc(100vw - 80px)) !important; max-width: none !important; margin: 56px auto 0 !important; padding: 22px 0 0 !important; }
+html body.dk footer.site .ft-base { gap: 16px !important; }
+
+/* ---------- Footer v4 (4 Nov 2026, André's screenshot: "this should be the bottom, on all footers"): the footer is one screen tall and
+   its content sits on the bottom edge, so the painting shows above the links and the copyright line ends 28px from the bottom. ---------- */
+html body footer.site, html body.dk footer.site { justify-content: flex-end !important; padding: 140px 0 28px !important; }
+@media (max-width: 720px) {
+  html body footer.site, html body.dk footer.site { padding: 96px 0 28px !important; }
+  html body.dk footer.site .ft { width: calc(100vw - 44px) !important; grid-template-columns: 1fr 1fr 1fr !important; gap: 32px 12px !important; }
+  html body.dk footer.site .ft-col a { padding: 6px 0 !important; min-height: 28px !important; line-height: 16px !important; font-size: 13px !important; }
+  html body.dk footer.site .ft-base { width: calc(100vw - 44px) !important; }
+}
+/* Phone footer = the home page's, measured: grid 331 wide (margin 20), 3 columns, gap 28/10; links block 13/20.8, 6px rows; headings no bottom margin; base 20px top. */
+@media (max-width: 720px) {
+  html body.dk footer.site .ft { width: auto !important; margin-inline: 20px !important; gap: 28px 10px !important; }
+  html body.dk footer.site .ft-col a { display: block !important; line-height: 20.8px !important; }
+  html body.dk footer.site .ft-col h3 { margin: 0 !important; }
+  html body.dk footer.site .ft-base { width: auto !important; margin: 56px 20px 0 !important; padding-top: 20px !important; }
+}
+@media (max-width: 720px) {
+  html body.dk footer.site .ft-col:not(.x-open) a, html body.dk footer.site .ft-col.open a { display: block !important; padding: 6px 0 !important; min-height: 28px !important; line-height: 20.8px !important; font-size: 13px !important; }
+}
