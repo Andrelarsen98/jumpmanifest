@@ -1274,5 +1274,12 @@ html body span.go { background: none !important; box-shadow: none !important; tr
 #top-tint { position: fixed; top: 0; left: 0; right: 0; height: 1px; z-index: 2147483002; pointer-events: none; background: #1b150d; transition: background-color .25s ease; }
 </style>
 <script id="top-tint-js">(function(){var t=document.getElementById('top-tint');var h=document.querySelector('.hero-art, .dkh .dk-head, .nf-art');if(!t)return;var meta=document.querySelector('meta[name="theme-color"]');var dark=null;function set(){var y=Math.max(0,scrollY||0);var b=h?h.getBoundingClientRect().bottom+y:0;var d=!!h&&y<b-40;if(d!==dark){dark=d;var c=d?'#1b150d':'#ffffff';t.style.backgroundColor=c;if(meta)meta.setAttribute('content',c);}}set();addEventListener('scroll',function(){requestAnimationFrame(set)},{passive:true});addEventListener('load',set);})();</script>
+<style id="head-full">/* 5 Nov 2026 (André: "all pages need a full image"): every page opens on one full screen of its painting, the words centred
+   on it, laptop and phone. On phones the height is taken once, so moving browser bars never shift it. */
+.dkh .dk-head { min-height: max(100vh, 640px) !important; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; }
+.dkh .dk-head > picture, .dkh .dk-head > picture img, .dkh .dk-head-art { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; -webkit-mask-image: none !important; mask-image: none !important; }
+@media (max-width: 760px) { .dkh .dk-head { min-height: var(--hero-h, 100svh) !important; padding-top: calc(env(safe-area-inset-top, 0px) + 96px) !important; } .dkh .dk-head > picture img, .dkh .dk-head-art { object-position: 50% 0 !important; } }
+</style>
+<script id="head-h">(function(){if(document.getElementById('hero-h')||document.getElementById('dz-hero-h'))return;if(!matchMedia('(max-width: 760px)').matches)return;var r=document.documentElement,w=0;function set(){r.style.setProperty('--hero-h',Math.max(600,Math.round(innerHeight))+'px');w=innerWidth;}set();addEventListener('orientationchange',function(){setTimeout(set,300)});addEventListener('resize',function(){if(Math.abs(innerWidth-w)>40)set();});})();</script>
 </body>
 </html>
