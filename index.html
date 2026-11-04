@@ -4177,6 +4177,9 @@ html body footer.site, html body.dk footer.site { justify-content: flex-end !imp
 @media (max-width: 760px) {
   .hero-art { height: 216.74vw !important; min-height: 0 !important; top: min(0px, calc(100svh - 216.74vw)) !important; }
   .art-bg img { object-fit: cover; object-position: 50% 0 !important; }
+  /* The painting is taller than the screen, so the copy is placed on the first SCREEN, not on the painting's bottom edge:
+     it ends 40px above the bottom of what you see when the page opens (Safari's bars included, that is what svh is). */
+  .art-copy { bottom: max(calc(env(safe-area-inset-bottom) + 40px), calc(216.74vw - 100svh + 40px)) !important; }
 }
 </style>
 </body>
