@@ -1257,13 +1257,8 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
 html body:has(.sh-burger[aria-expanded="true"]) .ownerbar{ visibility: hidden; }
 .dkh .dk-head .dk-eyebrow{ color: #fff; }</style>
 <meta name="theme-color" content="#ffffff" />
-<style id="top-tint-css">/* 5 Nov 2026: Safari (iOS 26) colours the area behind the clock and Dynamic Island from a fixed element on the top edge.
-   This 1px strip is dark while the painting is at the top and white once the light page is under the bar. */
-#top-tint { position: fixed; top: 0; left: 0; right: 0; height: 1px; z-index: 2147483002; pointer-events: none; background: #1b150d; transition: background-color .25s ease; }
-</style>
 </head>
 <body>
-<div id="top-tint" aria-hidden="true"></div>
 <a class="skip" href="#main">Skip to main content</a>
 
 <!-- SITE HEADER (9 Oct 2026): one header on every page. Mega dropdowns on
@@ -2072,7 +2067,6 @@ html body span.go { background: none !important; box-shadow: none !important; tr
 }
 </style>
 <script id="dz-hero-h">(function(){if(!matchMedia('(max-width: 760px)').matches)return;var r=document.documentElement,w=0;function set(){r.style.setProperty('--hero-h',Math.max(600,Math.round((function(){try{var d=document.createElement('div');d.style.cssText='position:fixed;top:0;height:100lvh;width:0;visibility:hidden';document.body.appendChild(d);var v=d.getBoundingClientRect().height;d.remove();return Math.max(v||0,innerHeight);}catch(e){return innerHeight}})()))+'px');w=innerWidth;}set();addEventListener('orientationchange',function(){setTimeout(set,300)});addEventListener('resize',function(){if(Math.abs(innerWidth-w)>40)set();});})();</script>
-<script id="top-tint-js">(function(){var t=document.getElementById('top-tint');var h=document.querySelector('.hero-art, .dkh .dk-head, .nf-art');if(!t)return;var meta=document.querySelector('meta[name="theme-color"]');var dark=null;function set(){var y=Math.max(0,scrollY||0);var b=h?h.getBoundingClientRect().bottom+y:0;var d=!!h&&y<b-40;if(d!==dark){dark=d;var c=d?'#1b150d':'#ffffff';t.style.backgroundColor=c;if(meta)meta.setAttribute('content',c);}}set();addEventListener('scroll',function(){requestAnimationFrame(set)},{passive:true});addEventListener('load',set);})();</script>
 <style id="dz-desk-front">/* 5 Nov 2026 (André): on computers too, the Desk page opens like the home page: one full screen of painting,
    the Studio Display with the iPhone centred at the top, the words below. */
 @media (min-width: 761px) {
