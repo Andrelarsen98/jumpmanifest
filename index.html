@@ -1341,7 +1341,8 @@ body:has(.hero-art) { padding-top: 0 !important; }
 }
 @media (prefers-reduced-motion: reduce) { .aw-ntf { transition: none; opacity: 1; transform: none; } }
 </style>
-<link rel="preload" as="image" type="image/avif" imagesrcset="/assets/hero/wind-hold-1600.avif 1600w, /assets/hero/wind-hold-2560.avif 2560w, /assets/hero/wind-hold-3840.avif 3840w" imagesizes="max(100vw, 183vh)" />
+<link rel="preload" as="image" type="image/avif" media="(min-width: 761px)" imagesrcset="/assets/hero/loggia-1600.avif 1600w, /assets/hero/loggia-2560.avif 2560w, /assets/hero/loggia-3840.avif 3840w" imagesizes="max(100vw, 160vh)" />
+<link rel="preload" as="image" type="image/avif" media="(max-width: 760px)" imagesrcset="/assets/hero/loggia-phone-828.avif 828w, /assets/hero/loggia-phone-1290.avif 1290w" imagesizes="100vw" />
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
@@ -1770,10 +1771,12 @@ body:has(.hero-art) { padding-top: 0 !important; }
      top edge, icon, 56px headline, 19px lede, button, 13px note. The hero stays put
      and the page slides over it. Panel data is the same demo data as the app screenshots. -->
 <header class="hero-art" id="top">
-  <div class="art-bg" aria-hidden="true" style="background:#0b1020 url(data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAADQBACdASogABEAPu1kqk+ppSOiMBgIATAdiUAWHYI/pB8NUeUvw6SJc6W5CrYIQAD+8t5bTYUykS3VAH8lj+shyU+iQYdTYyEPuDMhrUBP1Eb/3JbIvecztlbEM4Dqyfjd2qSYe8d/678udCDpa8Q+KQhpqdoyH8pQoPuodg0wJxfBku+gZkrYDf4am6nDl4+8+80Uw8fgk1ZHisRq2sdAAAA=) 91% 100%/cover no-repeat">
+  <div class="art-bg" aria-hidden="true" style="background:#0b1020 url(data:image/webp;base64,UklGRs4AAABXRUJQVlA4IMIAAADQBACdASogABQAPtFUokuoJKMhsAgBABoJQBOmUABFXz4rugHorWYiPQjus8p7AAD8gx3WFlPajv0T2dE956DYlLxaNWzA8URGz7pPfV+uNytF6jQzy0R+DGtesZKlUNeZjI8/R8XtpbMACCa0c8/3F4gItBHQ3ZusrhjbUEpjB28YeTpsku/wQJLeGFrSda2K5Y2aK/EOpkArUnqJ9vZUzxLNw36kbij8m+ZQExttt61eiwrEDzhUD5iYLW0dubAAAA==) 91% 100%/cover no-repeat">
     <picture>
-      <source type="image/avif" srcset="/assets/hero/wind-hold-1600.avif 1600w, /assets/hero/wind-hold-2560.avif 2560w, /assets/hero/wind-hold-3840.avif 3840w" sizes="max(100vw, 183vh)" />
-      <img src="/assets/hero/wind-hold-2560.webp" srcset="/assets/hero/wind-hold-1600.webp 1600w, /assets/hero/wind-hold-2560.webp 2560w, /assets/hero/wind-hold-3840.webp 3840w" sizes="max(100vw, 183vh)" width="3840" height="2095" fetchpriority="high" alt="" />
+      <source media="(max-width: 760px)" type="image/avif" srcset="/assets/hero/loggia-phone-828.avif 828w, /assets/hero/loggia-phone-1290.avif 1290w" sizes="100vw" />
+      <source media="(max-width: 760px)" type="image/webp" srcset="/assets/hero/loggia-phone-828.webp 828w, /assets/hero/loggia-phone-1290.webp 1290w" sizes="100vw" />
+      <source type="image/avif" srcset="/assets/hero/loggia-1600.avif 1600w, /assets/hero/loggia-2560.avif 2560w, /assets/hero/loggia-3840.avif 3840w" sizes="max(100vw, 160vh)" />
+      <img src="/assets/hero/loggia-2560.webp" srcset="/assets/hero/loggia-1600.webp 1600w, /assets/hero/loggia-2560.webp 2560w, /assets/hero/loggia-3840.webp 3840w" sizes="max(100vw, 160vh)" width="3840" height="2400" fetchpriority="high" alt="" />
     </picture>
     <script>(function(){var i=document.currentScript.previousElementSibling.querySelector("img");if(i.complete)return;i.style.opacity=0;var f=function(){i.style.transition="opacity .2s linear";i.style.opacity=1};i.addEventListener("load",f);i.addEventListener("error",f)})();</script>
   </div>
@@ -4054,6 +4057,10 @@ html body .sh-trig, html body .sh-link, html body .sh-login, html body .sh-t { t
 .art-win .aw-time { font-weight: 400; color: rgba(255,255,255,.85); }
 .art-win .aw-key { color: #fff; }
 .art-win .aw-ph { color: rgba(255,255,255,.55); }
+</style>
+<style id="hero-loggia">/* 4 Nov 2026: hero painting is Ocelli's "Open loggia" (Mac 5120x3200, iPhone 1290x2796), used with Ocelli's written OK per André. Centred: the open arch sits behind the copy. */
+.art-bg img { object-position: 50% 60% !important; }
+@media (max-width: 760px) { .art-bg img { object-position: 50% 50% !important; } }
 </style>
 </body>
 </html>
