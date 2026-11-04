@@ -23,6 +23,16 @@
   ],
   "redirects": [
     {
+      "source": "/app",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/app/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/dropzones/start",
       "destination": "/get-started/",
       "permanent": false
