@@ -1201,7 +1201,11 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
   .pq-card{order:-1}
   @media (max-width:700px){.pq-tray{grid-template-columns:1fr}}
   </style>
-<link rel="stylesheet" href="/assets/site-dark.css?v=5" />
+<link rel="stylesheet" href="/assets/site-dark.css?v=6" />
+<style id="dz-studio">/* 4 Nov 2026 (André): the whole Studio Display, stand and all, not a cropped window. */
+body.dk .dk-studio { position: absolute; left: 50%; top: 40px; height: calc(100% - 80px); width: auto; max-width: none; transform: translateX(-50%); filter: drop-shadow(0 24px 48px rgba(0,0,0,.5)); }
+@media (max-width: 760px) { body.dk .dk-studio { top: 20px; height: calc(100% - 40px); } }
+</style>
 </head>
 <body class="dk">
 <a class="skip" href="#main">Skip to main content</a>
@@ -1318,7 +1322,7 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
     <div class="dk-plate dk-plate-wide" style="margin-top:0">
       <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
       <img class="dk-paint" src="/assets/hero/plate-dropzones-2.webp" alt="" decoding="async" />
-      <img class="dk-wide" src="/assets/opt/desk-today.68a82734.webp" width="1440" height="900" alt="The Today page of Manifest Desk: charged for jumps today against last week, open loads, next load, standby and accounts" decoding="async" />
+      <img class="dk-studio" srcset="/assets/opt/studio-desk-today-800w-cut.webp 800w, /assets/features/studio-desk-today-cut.webp 1600w" sizes="(max-width: 760px) 90vw, 830px" src="/assets/features/studio-desk-today-cut.webp" width="1600" height="1242" alt="The Today page of Manifest Desk: charged for jumps today against last week, open loads, next load, standby and accounts" decoding="async" />
       <img class="dk-wide-ph" src="/assets/opt/mock-home3.a2e7757f.webp" width="640" height="1330" alt="" decoding="async" />
     </div>
     <p class="dk-n dz-cap">Manifest Desk with sample data from a demo dropzone.</p>
@@ -1368,7 +1372,7 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
     </div>
     <div class="dk-plate dk-plate-row">
       <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
-      <img class="dk-paint" src="/assets/hero/plate-dropzones-2.webp" alt="" loading="lazy" decoding="async" />
+      <img class="dk-paint" srcset="/assets/features/meadow-1400.webp 1400w, /assets/features/meadow.webp 2200w" sizes="(max-width: 760px) 100vw, 1240px" src="/assets/features/meadow.webp" alt="" loading="lazy" decoding="async" />
       <img class="dk-ph" src="/assets/features/topup-bundles.webp?v=2" width="900" height="1710" alt="A jumper tops up in the Manifest app: 10 jump tickets for $330" loading="lazy" decoding="async" />
       <img class="dk-ph" src="/assets/features/topup-applepay.webp" width="900" height="1710" alt="Apple Pay confirming $330.00 to the dropzone in the Manifest app" loading="lazy" decoding="async" />
     </div>

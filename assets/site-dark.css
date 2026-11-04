@@ -392,3 +392,18 @@ body.dk .sh-macc svg { color: #F1F2F5; }
 body.dk .sh-mctas .sh-cta, body.dk .sh-mctas .sh-cta-demo, body.dk .sh-mcta { background: #fff !important; color: #050505 !important; box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(0,0,0,.3) !important; }
 body.dk .sh-mctas .sh-cta *, body.dk .sh-mcta * { color: #050505 !important; }
 body.dk .is-current > .sh-t::after { background: #fff !important; }
+
+/* ---------- Blue buttons (4 Nov 2026, André: "blue is trust", "COPY EXACT"). ocelli.app's .btn-dl, sampled from its live CSS:
+   #2F5CF2 -> #1439C9, hover #3A63F2 -> #1A45E0 lifted 1px, press #1A44DC, white text. Same block as the home page's #ocelli-blue. ---------- */
+html body.dk .sh .sh-right > .sh-cta, html body.dk .sh-mctas .sh-cta, html body.dk .sh-mctas .sh-cta-demo, html body.dk .sh-mcta, html body.dk #main .dk-btn, html body.dk #main .hb-btn {
+  --dl-top: #2f5cf2; --dl-bot: #1439c9; --dl-top-hv: #3a63f2; --dl-bot-hv: #1a45e0; --dl-press: #1a44dc;
+  background: linear-gradient(180deg, var(--dl-top) 0%, var(--dl-bot) 100%) !important; color: #fff !important; border: 0 !important;
+  box-shadow: rgba(255,255,255,.24) 0 1px 0 inset, rgba(8,18,64,.34) 0 -1px 0 inset, rgba(10,22,80,.14) 0 1px 2px, rgba(10,22,80,.12) 0 2px 4px, rgba(10,22,80,.1) 0 4px 8px !important;
+  transition: background 150ms cubic-bezier(.32,.72,.28,1), box-shadow 150ms cubic-bezier(.32,.72,.28,1), transform 150ms cubic-bezier(.32,.72,.28,1) !important; }
+html body.dk .sh-cta *, html body.dk .sh-mcta *, html body.dk #main .dk-btn *, html body.dk #main .hb-btn * { color: #fff !important; }
+@media (hover: hover) {
+  html body.dk .sh .sh-right > .sh-cta:hover, html body.dk .sh-mcta:hover, html body.dk #main .dk-btn:hover, html body.dk #main .hb-btn:hover { background: linear-gradient(180deg, var(--dl-top-hv) 0%, var(--dl-bot-hv) 100%) !important; transform: translateY(-1px) !important;
+    box-shadow: rgba(255,255,255,.3) 0 1px 0 inset, rgba(8,18,64,.3) 0 -1px 0 inset, rgba(10,22,80,.14) 0 2px 4px, rgba(10,22,80,.12) 0 4px 8px, rgba(10,22,80,.12) 0 8px 16px !important; }
+}
+html body.dk .sh .sh-right > .sh-cta:active, html body.dk .sh-mcta:active, html body.dk #main .dk-btn:active, html body.dk #main .hb-btn:active { transform: translateY(0) !important; transition-duration: 90ms !important; background: linear-gradient(180deg, var(--dl-press) 0%, var(--dl-press) 100%) !important;
+  box-shadow: rgba(255,255,255,.08) 0 1px 0 inset, rgba(6,14,52,.4) 0 2px 4px inset, rgba(10,22,80,.22) 0 1px 2px !important; }

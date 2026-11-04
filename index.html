@@ -4014,5 +4014,22 @@ footer.site .ft-col { display: flex; flex-direction: column; }
   if (v && 'IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) new IntersectionObserver((e) => { if (e[0].isIntersecting) { const p = v.play(); if (p && p.catch) p.catch(() => {}); } else v.pause(); }, { threshold: .2 }).observe(v);
 })();
 </script>
+<style id="ocelli-blue">/* 4 Nov 2026 (André: "blue is trust", "COPY EXACT"): ocelli.app's .btn-dl, sampled from its live CSS.
+   Fill #2F5CF2 -> #1439C9, hover #3A63F2 -> #1A45E0 lifted 1px, press #1A44DC, white text. Accent text #7D99FF, bar #3563F4 -> #1033B8. */
+html body .sh .sh-right > .sh-cta, html body .sh-mctas .sh-cta, html body .sh-mctas .sh-cta-demo, html body .sh-mcta, html body #main .hb-btn {
+  --dl-top: #2f5cf2; --dl-bot: #1439c9; --dl-top-hv: #3a63f2; --dl-bot-hv: #1a45e0; --dl-press: #1a44dc;
+  background: linear-gradient(180deg, var(--dl-top) 0%, var(--dl-bot) 100%) !important; color: #fff !important; border: 0 !important;
+  box-shadow: rgba(255,255,255,.24) 0 1px 0 inset, rgba(8,18,64,.34) 0 -1px 0 inset, rgba(10,22,80,.14) 0 1px 2px, rgba(10,22,80,.12) 0 2px 4px, rgba(10,22,80,.1) 0 4px 8px !important;
+  transition: background 150ms cubic-bezier(.32,.72,.28,1), box-shadow 150ms cubic-bezier(.32,.72,.28,1), transform 150ms cubic-bezier(.32,.72,.28,1) !important; }
+html body .sh-cta *, html body .sh-mcta *, html body #main .hb-btn * { color: #fff !important; }
+@media (hover: hover) {
+  html body .sh .sh-right > .sh-cta:hover, html body .sh-mcta:hover, html body #main .hb-btn:hover { background: linear-gradient(180deg, var(--dl-top-hv) 0%, var(--dl-bot-hv) 100%) !important; transform: translateY(-1px) !important;
+    box-shadow: rgba(255,255,255,.3) 0 1px 0 inset, rgba(8,18,64,.3) 0 -1px 0 inset, rgba(10,22,80,.14) 0 2px 4px, rgba(10,22,80,.12) 0 4px 8px, rgba(10,22,80,.12) 0 8px 16px !important; }
+}
+html body .sh .sh-right > .sh-cta:active, html body .sh-mcta:active, html body #main .hb-btn:active { transform: translateY(0) !important; transition-duration: 90ms !important; background: linear-gradient(180deg, var(--dl-press) 0%, var(--dl-press) 100%) !important;
+  box-shadow: rgba(255,255,255,.08) 0 1px 0 inset, rgba(6,14,52,.4) 0 2px 4px inset, rgba(10,22,80,.22) 0 1px 2px !important; }
+.bn-r.is-own u { background-color: #3563F4 !important; background-image: repeating-linear-gradient(45deg, rgba(255,255,255,.1) 0, rgba(255,255,255,.1) 2.5px, transparent 2.5px, transparent 6px), linear-gradient(#3563F4 0%, #1033B8 100%) !important; }
+.bn-r.is-own b { color: #7D99FF !important; }
+</style>
 </body>
 </html>
