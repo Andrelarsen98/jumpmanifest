@@ -1070,7 +1070,7 @@ h1, h2, h3 { text-wrap: balance; }
   .dzg { position: relative; width: min(56vw, calc(100vh - 140px), 760px); aspect-ratio: 1 / 1; margin: 0; cursor: grab; overflow: hidden; touch-action: pan-y; }
   .dzg:active { cursor: grabbing; }
   .dzg-halo { position: absolute; left: 50%; top: 50%; width: calc(111.4% * var(--hs, 1)); height: calc(111.4% * var(--hs, 1)); transform: translate(-50%, -50%); border-radius: 50%; pointer-events: none;
-    background: radial-gradient(circle, rgba(217,179,106,0) 37%, rgba(217,179,106,.55) 40%, rgba(217,179,106,.28) 47%, rgba(217,179,106,.1) 58%, rgba(217,179,106,0) 72%);
+    background: radial-gradient(circle, rgba(98,112,240,0) 37%, rgba(98,112,240,.9) 40%, rgba(98,112,240,.5) 47%, rgba(98,112,240,.18) 58%, rgba(98,112,240,0) 72%);
     filter: blur(14px); opacity: 0; transition: opacity .6s ease; }
   .dzg.ready .dzg-halo { opacity: 1; }
   .dzg-stage { position: absolute; inset: 0; z-index: 1; isolation: isolate; opacity: 0; transition: opacity .6s ease; }
@@ -2036,9 +2036,9 @@ body:has(.hero-art) { padding-top: 0 !important; }
   // the same painting saved once as assets/globe-map.webp (150 KB), so the
   // only library left is globe.gl, and it all starts as the page loads.
   var LIBS = ['/assets/vendor/globe.gl-2.46.2.min.js'];
-  var MAP_URL = '/assets/globe-map-painted.webp'; // 4 Nov 2026 (André): the globe painted like the site's paintings
+  var MAP_URL = '/assets/globe-map.webp';
   // The admin's colours: light grey-lavender sea, dark slate land.
-  var SEA = '#8b91bf', LAND = '#2a2f47', BORDER = 'rgba(140, 148, 200, 0.35)', HALO = '#d9b36a';
+  var SEA = '#8b91bf', LAND = '#2a2f47', BORDER = 'rgba(140, 148, 200, 0.35)', HALO = '#6b7cff';
   // Further out than the admin's 1.45: its panel is wide, this frame is
   // square, and at 1.45 the atmosphere ran into the canvas edge as a hard
   // line. The CSS halo shrinks by the admin's own formula to stay on the rim.
@@ -2065,8 +2065,8 @@ body:has(.hero-art) { padding-top: 0 !important; }
       var m = obj.material;
       if (!('shininess' in m)) return;
       m.shininess = 2;
-      m.specular.set('#2a2418');
-      m.emissive.set('#140f08');
+      m.specular.set('#22264a');
+      m.emissive.set('#0e1128');
       m.emissiveIntensity = 0.15;
       var sharpen = function (t) { t.anisotropy = maxAniso; t.minFilter = 1008 /* LinearMipmapLinearFilter */; t.generateMipmaps = true; t.needsUpdate = true; };
       if (m.map) sharpen(m.map);
