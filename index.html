@@ -4314,5 +4314,12 @@ html body .sh.li-bar { animation-fill-mode: backwards !important; }
   html { background-color: #15110c !important; }
 }
 </style>
+<style id="no-overscroll">
+/* 4 Nov 2026 (André: "I don't want people to scroll outside the page, it should work like a pro page"): no rubber-band past the top or
+   bottom (Safari showed a grey/olive band under the footer painting), nothing can push the page sideways, and the colour behind the page
+   is the footer painting's own dark so even a pinch shows no grey. */
+html { overscroll-behavior: none; overflow-x: clip; background-color: #14110d !important; }
+body { overscroll-behavior: none; overflow-x: clip; }
+</style>
 </body>
 </html>
