@@ -1368,7 +1368,7 @@ html body:has(.sh-burger[aria-expanded="true"]) .ownerbar{ visibility: hidden; }
     </div>
   </section>
 
-  <section class="sa-band" id="replay">
+  <section class="dkb sa-band" id="replay">
     <p class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l8.5 4.75v9.5L12 21.5l-8.5-4.75v-9.5z"/><path d="M3.5 7.25L12 12l8.5-4.75M12 12v9.5"/></svg>3D jump replay, free</p>
     <h2 class="sa-h">Every jump. In 3D.</h2>
     <p>Record with your phone&rsquo;s GPS from a zipped pocket. Then replay the whole flight over real terrain: climb, exit, freefall, opening and canopy.</p>
@@ -1930,5 +1930,8 @@ html body span.go { background: none !important; box-shadow: none !important; tr
 <script id="head-h">(function(){if(document.getElementById('hero-h')||document.getElementById('dz-hero-h'))return;if(!matchMedia('(max-width: 760px)').matches)return;var r=document.documentElement,w=0;function set(){r.style.setProperty('--hero-h',Math.max(600,Math.round((function(){try{var d=document.createElement('div');d.style.cssText='position:fixed;top:0;height:100lvh;width:0;visibility:hidden';document.body.appendChild(d);var v=d.getBoundingClientRect().height;d.remove();return Math.max(v||0,innerHeight);}catch(e){return innerHeight}})()))+'px');w=innerWidth;}set();addEventListener('orientationchange',function(){setTimeout(set,300)});addEventListener('resize',function(){if(Math.abs(innerWidth-w)>40)set();});})();</script>
 <style id="foot-gap">/* 5 Nov 2026: breathing room between the last section and the painted footer on every page. */ html body footer.site { margin-top: clamp(72px, 9vw, 120px) !important; }</style>
 <script id="safari-noshadow">/* 5 Nov 2026: Safari paints black boxes over the page (the hero, the right edge) while a drop-shadow filter sits on any image. Chrome is fine, so only Safari loses those shadows. */(function(){var u=navigator.userAgent;if(!/Safari/.test(u)||/Chrome|CriOS|FxiOS|Android/.test(u))return;function k(){document.querySelectorAll("img, picture, video, figure, .dzg-halo, [class*=phone]").forEach(function(e){if(getComputedStyle(e).filter.indexOf("drop-shadow")>-1)e.style.setProperty("filter","none","important")})}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",k);else k();addEventListener("load",k)})();</script>
+<style id="dark-band">/* 6 Nov 2026 (André): every page's dark band is the same #1A1B20 as the home wall (it was #050505). Colour only, nothing added that costs anything to scroll. */
+main section.dkb::before { background: #1A1B20 !important; }
+</style>
 </body>
 </html>
