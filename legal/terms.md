@@ -44,7 +44,7 @@ Payment is charged to your Apple ID or Google account at confirmation of purchas
 
 Purchases are processed by Apple or Google under their terms, and refunds are handled by them, not by us. If you bought a one-time Lifetime purchase before it was retired, it never renews and does not end. If your subscription ends, Pro features stop, but your logbook, gear and account remain: nothing you have logged is deleted or locked because you stopped paying.
 
-**Features that need a live load board.** Live loads, your load on the Lock Screen and in the Dynamic Island, the load alerts (manifested, gear up, 10 minute call and final call), the Next load widget and automatic start of 3D Jump Track are free for everyone. The pre-filled logbook is part of Pro. All of these only work at a dropzone that publishes its loads on a live load board the App can read. Your name on the dropzone's manifest must match the name on your Manifest profile, and automatic start also needs Location set to Always. Not every dropzone has a live board, a dropzone can stop publishing at any time, and we do not control or guarantee the accuracy or availability of any board. Check in the App that your dropzone is supported before you buy Pro: where it is not, the pre-filled logbook will not work there, and the rest of Pro still does.
+**Features that need a live load board.** Live loads, your load on the Lock Screen and in the Dynamic Island, the load alerts (manifested, gear up, 10 minute call and final call), the Next load widget and automatic start of 3D Jump Track are free for everyone. The pre-filled day is part of Pro. All of these only work at a dropzone that publishes its loads on a live load board the App can read. Your name on the dropzone's manifest must match the name on your Manifest profile, and automatic start also needs Location set to Always. Not every dropzone has a live board, a dropzone can stop publishing at any time, and we do not control or guarantee the accuracy or availability of any board. Check in the App that your dropzone is supported before you buy Pro: where it is not, the pre-filled day will not work there, and the rest of Pro still does.
 
 ## 8. Manifest Desk for dropzones
 
@@ -68,7 +68,7 @@ Manifest Desk is the system a dropzone uses to run its loads, jumpers, staff and
 
 ## 9. Acceptable use
 
-You agree not to: break the law; harass, defraud, or endanger others; post false or misleading content; scrape or abuse the service; impersonate others; or interfere with the App's operation. We may remove content, suspend, or terminate accounts that violate these Terms or create risk for the community.
+You agree not to: break the law; harass, defraud, or endanger others; post false or misleading content; scrape or abuse the service; impersonate others; or interfere with the App's operation. There is no tolerance for objectionable content or abusive users: you can report or block anyone in the App, and we remove reported content and suspend or terminate accounts that violate these Terms or create risk for the community.
 
 ## 10. Verification badges
 
