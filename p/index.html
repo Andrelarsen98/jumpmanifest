@@ -70,6 +70,20 @@
   .due .l .sub { display:block; font-size:12px; color:var(--muted); font-weight:500; margin-top:2px; }
   .foot { text-align:center; margin-top:18px; font-size:12.5px; color:var(--muted); line-height:1.55; }
   .foot strong { color:#fff; }
+  /* Documents, only behind a live key from the app (v135). */
+  .docs { padding:6px 22px 18px; border-top:1px solid var(--line); }
+  .docs .sub2 { font-size:12.5px; color:var(--muted); margin:2px 0 8px; }
+  .doc { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:11px 0; }
+  .doc + .doc { border-top:1px solid var(--line); }
+  .doc a { color:inherit; font-weight:700; font-size:13.5px; text-decoration:underline; }
+  .docbtns { display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
+  .docbtn { flex:1 1 140px; border:0; border-radius:12px; padding:12px 14px; font:inherit; font-weight:700; font-size:14.5px; cursor:pointer; }
+  .docbtn.primary { background:#fff; color:#050505; }
+  .docbtn.ghost { background:rgba(255,255,255,.1); color:#fff; }
+  .docmail { display:none; gap:8px; margin-top:10px; }
+  .docmail.on { display:flex; }
+  .docmail input { flex:1; min-width:0; border-radius:12px; border:1px solid var(--line); background:transparent; color:inherit; padding:11px 12px; font:inherit; font-size:15px; }
+  .docnote { font-size:12.5px; margin-top:8px; min-height:16px; }
   .cta { display:inline-block; margin-top:16px; background:#fff; color:#050505; font-weight:700; font-size:14.5px;
     text-decoration:none; padding:13px 24px; border-radius:999px; }
 </style>
@@ -239,6 +253,7 @@
           ${dueChip('AAD service', p.aad_due)}
         </div>
         ${credsHtml(p.credentials)}
+        <div id="docs"></div>
         ${recentJumpsHtml(p.recent_jumps)}
       </div>
       <div class="foot">
@@ -254,6 +269,43 @@
       </div>`;
   }
 
+  // THE DOCUMENTS (v135). The QR the jumper shows live from the app carries
+  // ?d=<key>, good for 15 minutes; the permanent code alone never opens files.
+  const DOCS_FN = 'https://wkefdtglgbfprvfajrrw.supabase.co/functions/v1/pass-docs';
+  const docKey = new URLSearchParams(location.search).get('d');
+  async function docsCall(body) {
+    const r = await fetch(DOCS_FN, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.assign({ key: docKey }, body)) });
+    return r.json().catch(() => ({ error: 'Try again' }));
+  }
+  async function loadDocs() {
+    const box = document.getElementById('docs');
+    if (!box || !docKey) return;
+    const d = await docsCall({ action: 'list' }).catch(() => null);
+    if (!d || d.expired) {
+      box.innerHTML = `<div class="docs"><div class="credhead">DOCUMENTS</div><div class="sub2">This link has expired. Ask the jumper to show their pass again from the app.</div></div>`;
+      return;
+    }
+    if (!d.docs || !d.docs.length) return;
+    const mins = Math.max(1, Math.round((new Date(d.expires_at) - Date.now()) / 60000));
+    const rows = d.docs.map((x) => `<div class="doc"><span class="l">${esc(x.label)}${x.number ? `<span class="sub">#${esc(x.number)}</span>` : ''}</span><a href="${esc(x.url)}" download>Download</a></div>`).join('');
+    box.innerHTML = `<div class="docs"><div class="credhead">DOCUMENTS</div>
+      <div class="sub2">Shared by the jumper. Open for ${mins} more minute${mins === 1 ? '' : 's'}.</div>${rows}
+      <div class="docbtns"><button class="docbtn primary" id="dl-all">Download all</button><button class="docbtn ghost" id="mail-open">Email to me</button></div>
+      <form class="docmail" id="mail-form"><input type="email" id="mail-to" placeholder="you@dropzone.com" autocomplete="email" required /><button class="docbtn primary" style="flex:0 0 auto">Send</button></form>
+      <div class="docnote" id="doc-note"></div></div>`;
+    document.getElementById('dl-all').onclick = () => {
+      d.docs.forEach((x, i) => setTimeout(() => { const a = document.createElement('a'); a.href = x.url; a.download = ''; document.body.appendChild(a); a.click(); a.remove(); }, i * 400));
+    };
+    document.getElementById('mail-open').onclick = () => { document.getElementById('mail-form').classList.add('on'); document.getElementById('mail-to').focus(); };
+    document.getElementById('mail-form').onsubmit = async (e) => {
+      e.preventDefault();
+      const note = document.getElementById('doc-note');
+      note.textContent = 'Sending…';
+      const r = await docsCall({ action: 'email', email: document.getElementById('mail-to').value }).catch(() => ({ error: 'Try again' }));
+      note.textContent = r.sent ? 'Sent. Check your inbox.' : r.expired ? 'This link has expired.' : (r.error || 'Try again');
+    };
+  }
+
   (async () => {
     const code = getCode();
     if (!code) { showState('No pass code in this link.', 'The QR may have been cropped. Ask the jumper to show it again.'); return; }
@@ -266,6 +318,7 @@
       const data = await res.json();
       if (!data) { showState('No pass matches this code.', 'Ask the jumper to reopen their Check-in Pass in the Manifest app for a fresh code.'); return; }
       render(data);
+      loadDocs();
     } catch (e) {
       showState('Couldn’t load this pass.', 'Check your connection and try again.');
     }
