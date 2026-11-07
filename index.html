@@ -3145,7 +3145,9 @@ span.go > svg{background:#050505!important}
     // Fixed distances with a gap between them. Never the bar's own height: that changes with the state and made it flip on every scroll event.
     const foot = document.querySelector('footer.site'), still = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const TO_PILL = 0, TO_BAR = 80, OUT_MS = 220;
-    let isOver = next.getBoundingClientRect().top > TO_PILL, want = isOver, swapping = 0, ticking = 0, lastY = scrollY, away = false, up = 0;
+    // 8 Nov 2026 (André): the pill nav shows over the painting too, like every other page.
+    const ALWAYS_PILL = true;
+    let isOver = !ALWAYS_PILL && next.getBoundingClientRect().top > TO_PILL, want = isOver, swapping = 0, ticking = 0, lastY = scrollY, away = false, up = 0;
     bar.classList.toggle('over-art', isOver);
     const swap = () => {
       // The layout changes only while the bar is invisible. What you see is opacity and transform.
@@ -3155,7 +3157,7 @@ span.go > svg{background:#050505!important}
     const update = () => {
       ticking = 0;
       const top = next.getBoundingClientRect().top;
-      if (top <= TO_PILL) want = false; else if (top > TO_BAR) want = true;
+      if (ALWAYS_PILL || top <= TO_PILL) want = false; else if (top > TO_BAR) want = true;
       if (want !== isOver && !swapping) {
         if (still) { isOver = want; bar.classList.toggle('over-art', isOver); }
         else { bar.classList.add('sh-hide'); swapping = setTimeout(swap, OUT_MS); }
@@ -3179,7 +3181,7 @@ span.go > svg{background:#050505!important}
         const y = Math.max(0, scrollY || 0);
         bar.classList.remove('over-art', 'sh-hide');
         const bottom = heroBottom - y;
-        const want = sheetOpen() ? true : (y === 0 ? false : (open === true ? bottom < 14 : bottom <= 0));
+        const want = ALWAYS_PILL || sheetOpen() ? true : (y === 0 ? false : (open === true ? bottom < 14 : bottom <= 0));
         if (want !== open) { open = want; bar.classList.toggle('gate-closed', !want); }
         // Once the page fully covers the pinned painting, the painting stops drawing: nothing can bleed through a hairline
         // between sections and the phone stops compositing a full-screen layer nobody sees. Back 120px before it is uncovered.
@@ -3587,5 +3589,17 @@ html body span.go { background: none !important; box-shadow: none !important; tr
 }
 </style>
 <script id="safari-noshadow">/* 5 Nov 2026: Safari paints black boxes over the page (the hero, the right edge) while a drop-shadow filter sits on any image. Chrome is fine, so only Safari loses those shadows. */(function(){var u=navigator.userAgent;if(!/Safari/.test(u)||/Chrome|CriOS|FxiOS|Android/.test(u))return;function k(){document.querySelectorAll("img, picture, video, figure, .dzg-halo, [class*=phone]").forEach(function(e){if(getComputedStyle(e).filter.indexOf("drop-shadow")>-1)e.style.setProperty("filter","none","important")})}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",k);else k();addEventListener("load",k)})();</script>
+<style id="win-under-pill">/* 8 Nov 2026 (André): the pill nav shows on the home top now, so the demo window sits under it as a whole card, a little tighter. */
+@media (min-width: 761px) {
+  .art-win { top: 72px !important; height: 330px !important; border-radius: 22px !important; --feed-h: 196px !important; --map-h: 170px !important; }
+  .art-win::after { border-top: 1px solid rgba(255,255,255,.21) !important; border-radius: 22px !important; -webkit-mask-image: none !important; mask-image: none !important; }
+  .aw-map.aw-map-v { height: 186px !important; }
+  .art-copy { top: calc(72px + 330px + var(--gap-top)) !important; }
+}
+@media (max-width: 760px) {
+  .art-win { top: calc(env(safe-area-inset-top, 0px) + 66px) !important; padding-top: 0 !important; height: calc(var(--win-h) - env(safe-area-inset-top, 0px)) !important; border-radius: 22px !important; }
+  .art-win::after { border-top: 1px solid rgba(255,255,255,.21) !important; border-radius: 22px !important; -webkit-mask-image: none !important; mask-image: none !important; }
+}
+</style>
 </body>
 </html>
