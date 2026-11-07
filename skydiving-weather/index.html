@@ -1120,12 +1120,23 @@ html body:has(.sh-burger[aria-expanded="true"]) .ownerbar{ visibility: hidden; }
 </div>
 
 
-<div class="dkh"><header class="dk-head plain">
-    <h1 class="dk-h1">Skydiving weather app, <br />built around the jump.</h1>
-    <p class="dk-l">The wind where you get out, under canopy and on the ground, for any dropzone.</p>
-    <div class="dk-ctas"><a class="dk-badge" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="Download Manifest on the App Store"><img src="/assets/appstore-badge.svg?v=1" alt="Download on the App Store" width="160" height="54" /></a><a class="dk-a" href="#winds">Read the three winds</a></div>
-  </header></div>
 <main id="main" class="wrap wx">
+  <section class="wx-top">
+    <h1><span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h11a3 3 0 1 0-3-3"/><path d="M3 13h15a3 3 0 1 1-3 3"/><path d="M3 17h7"/></svg>Skydiving weather app</span><span class="h1-main">Built around the jump.</span></h1>
+    <p class="lead">The wind where you get out, under canopy and on the ground, for any dropzone.</p>
+    <div class="wx-ctas">
+        <a class="wx-badge" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="Download Manifest on the App Store"><img src="/assets/appstore-badge.svg?v=1" alt="Download on the App Store" width="162" height="54" /></a>
+        <a class="wx-link" href="#winds">Read the three winds</a>
+      </div>
+    <div class="wx-strata" role="img" aria-label="The three cloud bands Manifest shows: high above 26,000 feet, middle from 10,000 to 26,000 feet, and low below about 10,000 feet, with the summary line No cloud layer up to 14,000 ft">
+      <div class="wx-layer wx-l1"><b>High</b><span>Above 26,000 ft</span><img src="/assets/opt/cloud-r.8c2fd097.webp" alt="" width="1150" height="646" loading="lazy" decoding="async" /></div>
+      <div class="wx-layer wx-l2"><b>Middle</b><span>10,000 to 26,000 ft</span><img src="/assets/opt/cloud.852c5bc0.webp" alt="" width="1150" height="646" loading="lazy" decoding="async" /></div>
+      <div class="wx-layer wx-l3"><b>Low</b><span>Below about 10,000 ft</span><img src="/assets/opt/cloud-r.8c2fd097.webp" alt="" width="1150" height="646" loading="lazy" decoding="async" /></div>
+      <div class="wx-ground"></div>
+      <div class="wx-summary">No cloud layer up to 14,000 ft.</div>
+    </div>
+    <p class="wx-fine"><b>These are the forecast model&rsquo;s bands, not a measured cloud base.</b> Cloud clearance is your dropzone&rsquo;s call.</p>
+  </section>
   <style id="review-b">
   /* A11: no divider can start a wrapped line of hero chips; spacing only. */
   .trust { gap: 12px 24px; }
