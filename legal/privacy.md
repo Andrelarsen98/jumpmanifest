@@ -1,6 +1,6 @@
 # Privacy Policy, Manifest
 
-_Last updated: 25 October 2026_
+_Last updated: 7 November 2026_
 
 Manifest ("we", "us", the "App") is a skydiving app for jumpers, with live loads, jump recording and 3D replay, gear, events and community, and Manifest Desk, the system dropzones use to run their loads, jumpers and payments. This policy explains what personal data we collect, why, and your rights over it.
 
@@ -56,7 +56,7 @@ We do not sell your personal data. We share it only with service providers who p
 - **Mapbox**: the maps, satellite imagery and 3D terrain used by the dropzone maps and the jump replay. Rendering a map necessarily tells Mapbox which part of the world you are looking at, and Mapbox collects its own telemetry as described in its privacy policy.
 - **RevenueCat**: manages Manifest Pro subscription status. Payment itself is taken by Apple or Google; we never see your card details.
 - **Dropzone manifest systems.** Many dropzones publish their live load boards. To show you your own load and to alert you when it is called, the App reads the board for the dropzone you are at and matches the name on your profile against the names the dropzone has published. We store which dropzone you are tracking and the name we matched, and which loads you were manifested on, so your logbook can be pre-filled. We send nothing about you to the load board; we only read what it already publishes.
-- **Dropzones that run Manifest Desk.** At a dropzone that runs Manifest Desk, the App shares your bookings, balance, gear and currency status with that dropzone. If you send a landout alert, the dropzone also sees your live position during the alert. When you share your papers with a dropzone in the App, its owner and manifest staff see your license, membership card, insurance and reserve or rigger card, until the dropzone's next season starts or until you stop sharing. Never medical papers or a passport. A dropzone that adds you by your Pass is not shown your papers.
+- **Dropzones that run Manifest Desk.** At a dropzone that runs Manifest Desk, the App shares your bookings, balance, gear and currency status with that dropzone. If you send a landout alert, the dropzone also sees your live position during the alert. When you share your papers with a dropzone in the App, its owner and manifest staff see your license, membership card, insurance and reserve or rigger card, until the dropzone's next season starts or until you stop sharing. Never medical papers or a passport. When you show your Check-in Pass from the App, whoever scans it can view and download, for 15 minutes, only the documents you switched on for sharing. Sharing is off until you turn it on for a document, and never includes medical papers or a passport.
 - **Stripe**: payments at dropzones that run Manifest Desk, such as balance top-ups. Each payment is made to the dropzone's own Stripe account; Stripe handles the card details and we never see them.
 - **Apple** and **Google**: only if you choose to sign in with them, to authenticate you and pass us your name and email address.
 
