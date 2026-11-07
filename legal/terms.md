@@ -1,6 +1,6 @@
 # Terms of Service, Manifest
 
-_Last updated: 25 October 2026_
+_Last updated: 8 November 2026_
 
 Welcome to Manifest ("the App"), operated by Manifest Jump LLC, a Wyoming limited liability company ("we", "us"). By creating an account or using the App you agree to these Terms. If you do not agree, do not use the App.
 
@@ -38,17 +38,21 @@ Hosts set event details and capacity. Joining and RSVPing to events is free. Eve
 
 ## 7. Manifest Pro subscriptions
 
-Manifest is free to use. Manifest Pro is optional and paid, sold as an auto-renewable monthly or yearly subscription through the Apple App Store or Google Play. There are no free trials. Current pricing is shown in the app before you buy; prices vary by country and may change with notice.
+Manifest is free to use. Manifest Pro is optional: $5.99 a month or $49.99 a year in the US (prices vary by country and are shown before you buy). It renews automatically. There are no free trials. On iPhone it is sold through the App Store. Pro is coming to Android and is not on sale there yet.
+
+Pro adds: replay stats, two jumps on one replay, backup of every recording, Google Earth export, stats on your shares, sharing two jumps, CSV export, logbook PDF, tunnel log PDF, gear passport PDF and the gold verified check. Free for everyone: live loads, your load on the Lock Screen, load alerts, the Next load widget, automatic start of 3D Jump Track, the Check-in Pass and the pre-filled day.
 
 Payment is charged to your Apple ID or Google account at confirmation of purchase. Subscriptions renew automatically at the end of each period unless auto-renew is switched off at least 24 hours before the period ends, and your account is charged for renewal within 24 hours of the end of the current period. You manage and cancel subscriptions in your Apple ID or Google Play settings, not in Manifest; deleting the app does not cancel a subscription.
 
-Purchases are processed by Apple or Google under their terms, and refunds are handled by them, not by us. If you bought a one-time Lifetime purchase before it was retired, it never renews and does not end. If your subscription ends, Pro features stop, but your logbook, gear and account remain: nothing you have logged is deleted or locked because you stopped paying.
+Cancel in your Apple ID settings (or Google Play subscriptions, once on sale there). Deleting the App does not cancel. You keep Pro until the end of the paid period. Refunds are handled by Apple, or by Google under Google Play's refund policy. A Lifetime purchase made before it was retired stays valid for life and never renews. If your subscription ends, Pro features stop, but your logbook, gear and account remain: nothing you have logged is deleted or locked because you stopped paying.
 
 **Features that need a live load board.** Live loads, your load on the Lock Screen and in the Dynamic Island, the load alerts (manifested, gear up, 10 minute call and final call), the Next load widget and automatic start of 3D Jump Track and the pre-filled day (your loads handed back as jumps to confirm) are free for everyone. All of these only work at a dropzone that publishes its loads on a live load board the App can read. Your name on the dropzone's manifest must match the name on your Manifest profile, and automatic start also needs Location set to Always. Not every dropzone has a live board, a dropzone can stop publishing at any time, and we do not control or guarantee the accuracy or availability of any board. Check in the App that your dropzone is supported: where it is not, these features will not work there.
 
 ## 8. Manifest Desk for dropzones
 
-Manifest Desk is the system a dropzone uses to run its loads, jumpers, staff and payments. It is open to dropzones we approve. It is free to use; a dropzone pays a fee per seat flown and a fee on top-ups jumpers make in the Manifest app, as shown on our pricing page. This section applies to dropzones that use it, and to the jumpers and staff of those dropzones.
+Manifest Desk is the system a dropzone uses to run its loads, jumpers, staff and payments. It is open to dropzones we approve. This section applies to dropzones that use it, and to the jumpers and staff of those dropzones.
+
+Manifest Desk is free to use. A dropzone pays Manifest (a) $1 per seat flown, billed monthly to a card on file for the month before; founding dropzones pay $0 per seat for 6 months from their first departed load; crew, practice and cancelled loads never count; and (b) 1% of each in-app top-up, taken by Stripe at the moment of payment. Cash and card taken at the desk carry no Manifest fee. We give 30 days' notice of price changes. To take payments, a dropzone connects its own Stripe account and agrees to Stripe's Services Agreement and the Stripe Connected Account Agreement. The dropzone is the merchant of record and is responsible for its receipts, refunds, disputes, taxes and Stripe fees.
 
 **Your dropzone’s data.** The records a dropzone keeps in Manifest Desk, such as its jumpers, loads, bookings, waivers, payments, staff and settings, belong to that dropzone. We store and process them to run the Desk for the dropzone, and we do not sell them. Our admins can open them to support the dropzone and to fix problems.
 
@@ -66,30 +70,42 @@ Manifest Desk is the system a dropzone uses to run its loads, jumpers, staff and
 
 **Safety stays with the dropzone.** Manifest Desk is a tool. The dropzone remains responsible for its operations, its safety checks and the rules it must follow.
 
-## 9. Acceptable use
+## 9. Payments at dropzones
+
+At a dropzone that runs Manifest Desk you can top up a balance with Apple Pay, Google Pay (where available) or a card. The dropzone is the seller and merchant of record. Your payment goes to the dropzone's own Stripe account, and Manifest never holds it. The dropzone pays Manifest a 1% fee out of its side. You pay only the amount you choose. Your balance is credit at that dropzone only, for jumps and its services. It is not cash, not transferable and not refundable by Manifest. Receipts, refunds and disputes are the dropzone's. Card details are handled by Stripe.
+
+## 10. Check-in Pass
+
+When you show your Check-in Pass, anyone who scans it can view and download, for 15 minutes, the documents you switched on. You choose what to share. Medical papers and passports are never shared.
+
+## 11. Landout SOS
+
+Landout SOS is not an emergency service and may fail without signal, battery or a dropzone watching. In an emergency call local emergency services first. Your position is shared with the dropzone only during an alert.
+
+## 12. Acceptable use
 
 You agree not to: break the law; harass, defraud, or endanger others; post false or misleading content; scrape or abuse the service; impersonate others; or interfere with the App's operation. There is no tolerance for objectionable content or abusive users: you can report or block anyone in the App, and we remove reported content and suspend or terminate accounts that violate these Terms or create risk for the community.
 
-## 10. Verification badges
+## 13. Verification badges
 
 Verified badges indicate account status we assign. They are not a guarantee of any person's skill, certification, or trustworthiness.
 
-## 11. Termination and account deletion
+## 14. Termination and account deletion
 
 You may delete your account at any time (Profile → Settings → Delete account). We may suspend or terminate accounts that violate these Terms. Certain records may be retained as described in the Privacy Policy. Deleting your account removes the tracks you backed up or posted. Tracks that exist only on your phone stay there; delete them in the App or remove the App.
 
-## 12. Disclaimers and limitation of liability
+## 15. Disclaimers and limitation of liability
 
 The App is provided "as is" without warranties of any kind. To the maximum extent permitted by law, we are not liable for any indirect, incidental, or consequential damages, or for injury, loss, or damage arising from use of the App, events hosted or joined through it, reliance on any content, or reliance on any figure recorded or displayed by 3D Jump Track. Nothing in these Terms limits liability that cannot be limited by law.
 
-## 13. Changes
+## 16. Changes
 
 We may update these Terms. Material changes will be notified in-app or by email. Continued use after changes means you accept them.
 
-## 14. Governing law
+## 17. Governing law
 
-These Terms are governed by the laws of the United Arab Emirates, without regard to conflict-of-laws rules. Disputes are subject to the courts of Dubai, United Arab Emirates, unless mandatory local consumer law provides otherwise.
+These Terms are governed by the laws of the State of Wyoming, USA, without regard to conflict-of-laws rules. Disputes go to the state or federal courts in Wyoming, unless mandatory consumer law where you live says otherwise.
 
-## 15. Contact
+## 18. Contact
 
 Manifest Jump LLC, a Wyoming company, United States. **andre@manifestjump.com**
