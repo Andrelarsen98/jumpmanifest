@@ -1078,6 +1078,7 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
 .dkh .ownerbar a{ color: #fff; }
 html body:has(.sh-burger[aria-expanded="true"]) .ownerbar{ visibility: hidden; }
 .dkh .dk-head .dk-eyebrow{ color: #fff; }</style>
+<style id="plain-head">/* 8 Nov 2026 (André): paintings only on the home page top and the footer. A page head without a painting is as tall as its words, not a full screen. */.dkh .dk-head.plain{min-height:0!important;padding-bottom:clamp(40px,5vw,72px)!important}</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
@@ -1112,9 +1113,7 @@ html body:has(.sh-burger[aria-expanded="true"]) .ownerbar{ visibility: hidden; }
   </div>
 </div>
 
-<div class="dkh"><header class="dk-head">
-    <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
-    <picture><source media="(max-width: 760px)" srcset="/assets/paint/09-open-loggia-phone-828.webp" /><img class="dk-head-art" src="/assets/paint/09-open-loggia-1280.webp" srcset="/assets/paint/09-open-loggia-1280.webp 1280w, /assets/paint/09-open-loggia-2560.webp 2560w" sizes="(max-width: 760px) 100vw, 1240px" alt="" decoding="async" fetchpriority="high" /></picture>
+<div class="dkh"><header class="dk-head plain">
     <p class="dk-eyebrow">Skydive landout safety</p>
     <h1 class="dk-h1">Landed out. Found in seconds.</h1>
     <p class="dk-l">One tap from the jumper puts them on a live map at your desk, with a driver on the way.</p>

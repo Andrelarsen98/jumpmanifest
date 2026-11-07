@@ -1085,6 +1085,7 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
 .dkh .ownerbar a{ color: #fff; }
 html body:has(.sh-burger[aria-expanded="true"]) .ownerbar{ visibility: hidden; }
 .dkh .dk-head .dk-eyebrow{ color: #fff; }</style>
+<style id="plain-head">/* 8 Nov 2026 (André): paintings only on the home page top and the footer. A page head without a painting is as tall as its words, not a full screen. */.dkh .dk-head.plain{min-height:0!important;padding-bottom:clamp(40px,5vw,72px)!important}</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
@@ -1119,9 +1120,7 @@ html body:has(.sh-burger[aria-expanded="true"]) .ownerbar{ visibility: hidden; }
   </div>
 </div>
 
-<div class="dkh"><header class="dk-head">
-    <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
-    <picture><source media="(max-width: 760px)" srcset="/assets/paint/07-temple-in-the-valley-phone-828.webp" /><img class="dk-head-art" src="/assets/paint/07-temple-in-the-valley-1280.webp" srcset="/assets/paint/07-temple-in-the-valley-1280.webp 1280w, /assets/paint/07-temple-in-the-valley-2560.webp 2560w" sizes="(max-width: 760px) 100vw, 1240px" alt="" decoding="async" fetchpriority="high" /></picture>
+<div class="dkh"><header class="dk-head plain">
     <h1 class="dk-h1">Skydiving load calls <br />on every jumper&rsquo;s phone.</h1>
     <p class="dk-l">Staff press one button at the desk. Every jumper on that load gets it, wherever they are on the dropzone.</p>
     <div class="dk-ctas"><a class="dk-btn" href="/get-started/?demo">Book a demo</a><a class="dk-a" href="/dropzones/">See Manifest Desk</a></div>

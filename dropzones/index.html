@@ -1257,6 +1257,7 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
 html body:has(.sh-burger[aria-expanded="true"]) .ownerbar{ visibility: hidden; }
 .dkh .dk-head .dk-eyebrow{ color: #fff; }</style>
 <meta name="theme-color" content="#ffffff" />
+<style id="plain-head">/* 8 Nov 2026 (André): paintings only on the home page top and the footer. A page head without a painting is as tall as its words, not a full screen. */.dkh .dk-head.plain{min-height:0!important;padding-bottom:clamp(40px,5vw,72px)!important}</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
@@ -1293,9 +1294,7 @@ html body:has(.sh-burger[aria-expanded="true"]) .ownerbar{ visibility: hidden; }
 
 
 
-<div class="dkh"><header class="dk-head"><div class="dzh-dev" aria-hidden="true"><img class="dzh-studio" src="/assets/opt/studio-desk-today-800w-cut.webp" alt="" fetchpriority="high" /><img class="dzh-phone" src="/assets/opt/mock-home3.a2e7757f.webp" alt="" /></div>
-    <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
-    <picture><source media="(max-width: 760px)" srcset="/assets/paint/10-dark-arcade-phone-828.webp" /><img class="dk-head-art" src="/assets/paint/10-dark-arcade-1280.webp" srcset="/assets/paint/10-dark-arcade-1280.webp 1280w, /assets/paint/10-dark-arcade-2560.webp 2560w" sizes="(max-width: 760px) 100vw, 1240px" alt="" decoding="async" fetchpriority="high" /></picture>
+<div class="dkh"><header class="dk-head plain"><div class="dzh-dev" aria-hidden="true"><img class="dzh-studio" src="/assets/opt/studio-desk-today-800w-cut.webp" alt="" fetchpriority="high" /><img class="dzh-phone" src="/assets/opt/mock-home3.a2e7757f.webp" alt="" /></div>
     <p class="dk-eyebrow">Manifest Desk</p>
     <h1 class="dk-h1">The manifest your jumpers already carry.</h1>
     <p class="dk-l">Desk plugs your dropzone into the app skydivers at <b>230 dropzones</b> already use.</p>

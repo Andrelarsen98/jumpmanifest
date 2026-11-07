@@ -1084,6 +1084,7 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
 .dkh .ownerbar a{ color: #fff; }
 html body:has(.sh-burger[aria-expanded="true"]) .ownerbar{ visibility: hidden; }
 .dkh .dk-head .dk-eyebrow{ color: #fff; }</style>
+<style id="plain-head">/* 8 Nov 2026 (André): paintings only on the home page top and the footer. A page head without a painting is as tall as its words, not a full screen. */.dkh .dk-head.plain{min-height:0!important;padding-bottom:clamp(40px,5vw,72px)!important}</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
@@ -1119,9 +1120,7 @@ html body:has(.sh-burger[aria-expanded="true"]) .ownerbar{ visibility: hidden; }
 </div>
 
 
-<div class="dkh"><header class="dk-head">
-    <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
-    <picture><source media="(max-width: 760px)" srcset="/assets/paint/02-rose-parterre-phone-828.webp" /><img class="dk-head-art" src="/assets/paint/02-rose-parterre-1280.webp" srcset="/assets/paint/02-rose-parterre-1280.webp 1280w, /assets/paint/02-rose-parterre-2560.webp 2560w" sizes="(max-width: 760px) 100vw, 1240px" alt="" decoding="async" fetchpriority="high" /></picture>
+<div class="dkh"><header class="dk-head plain">
     <h1 class="dk-h1">Skydiving weather app, <br />built around the jump.</h1>
     <p class="dk-l">The wind where you get out, under canopy and on the ground, for any dropzone.</p>
     <div class="dk-ctas"><a class="dk-badge" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="Download Manifest on the App Store"><img src="/assets/appstore-badge.svg?v=1" alt="Download on the App Store" width="160" height="54" /></a><a class="dk-a" href="#winds">Read the three winds</a></div>

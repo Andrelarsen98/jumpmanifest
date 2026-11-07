@@ -760,6 +760,7 @@ aside.founder.fc .fc-eb{color:rgba(255,255,255,.78)!important}aside.founder.fc .
 .dkh .ownerbar a{ color: #fff; }
 html body:has(.sh-burger[aria-expanded="true"]) .ownerbar{ visibility: hidden; }
 .dkh .dk-head .dk-eyebrow{ color: #fff; }</style>
+<style id="plain-head">/* 8 Nov 2026 (André): paintings only on the home page top and the footer. A page head without a painting is as tall as its words, not a full screen. */.dkh .dk-head.plain{min-height:0!important;padding-bottom:clamp(40px,5vw,72px)!important}</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
@@ -796,9 +797,7 @@ html body:has(.sh-burger[aria-expanded="true"]) .ownerbar{ visibility: hidden; }
 <!-- ABOUT (9 Oct 2026): the whole story, not just the logbook. Jumpers
      first, dropzones second. Every line is true today; reach numbers from
      BRAND.md, never raw counts. Lock Screen loads are Pro, said as such. -->
-<div class="dkh"><header class="dk-head">
-  <!-- PLACEHOLDER PAINTING: drop the final file at this path. -->
-  <picture><source media="(max-width: 760px)" srcset="/assets/paint/01-golden-dome-phone-828.webp" /><img class="dk-head-art" src="/assets/paint/01-golden-dome-1280.webp" srcset="/assets/paint/01-golden-dome-1280.webp 1280w, /assets/paint/01-golden-dome-2560.webp 2560w" sizes="(max-width: 760px) 100vw, 1240px" alt="" decoding="async" fetchpriority="high" /></picture>
+<div class="dkh"><header class="dk-head plain">
   <h1 class="dk-h1">One system for both sides of the hangar.</h1>
   <p class="dk-l">Manifest is the skydiving app jumpers use for everything on a jump day. Manifest Desk is the manifest software that runs the dropzone. They are connected live, so a load called at the desk lands on every jumper's phone.</p>
   <p class="dk-head-under">Jumpers at <b>230</b> dropzones in <b>46</b> countries</p>
