@@ -285,7 +285,11 @@
       box.innerHTML = `<div class="docs"><div class="credhead">DOCUMENTS</div><div class="sub2">This link has expired. Ask the jumper to show their pass again from the app.</div></div>`;
       return;
     }
-    if (!d.docs || !d.docs.length) return;
+    if (!d.docs || !d.docs.length) {
+      // A live key but nothing switched on: say so, instead of showing nothing.
+      box.innerHTML = `<div class="docs"><div class="credhead">DOCUMENTS</div><div class="sub2">No documents shared yet. The jumper can turn on sharing for each document in Manifest (Check-in Pass, then the document, then Share from my Check-in Pass).</div></div>`;
+      return;
+    }
     const mins = Math.max(1, Math.round((new Date(d.expires_at) - Date.now()) / 60000));
     const rows = d.docs.map((x) => `<div class="doc"><span class="l">${esc(x.label)}${x.number ? `<span class="sub">#${esc(x.number)}</span>` : ''}</span><a href="${esc(x.url)}" download>Download</a></div>`).join('');
     box.innerHTML = `<div class="docs"><div class="credhead">DOCUMENTS</div>
