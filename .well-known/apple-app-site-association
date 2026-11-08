@@ -21,6 +21,10 @@
           {
             "/": "/join/*",
             "comment": "Join a Manifest Desk dropzone: opens the app's join screen when installed."
+          },
+          {
+            "/": "/p/*",
+            "comment": "A Check-in Pass QR (with its ?d= documents key): opens the app's scanned-pass screen when installed."
           }
         ]
       }
