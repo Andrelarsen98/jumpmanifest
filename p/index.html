@@ -70,22 +70,27 @@
   .due .l .sub { display:block; font-size:12px; color:var(--muted); font-weight:500; margin-top:2px; }
   .foot { text-align:center; margin-top:18px; font-size:12.5px; color:var(--muted); line-height:1.55; }
   .foot strong { color:#fff; }
-  /* Documents, only behind a live key from the app (v135). */
-  .docs { padding:6px 22px 18px; border-top:1px solid var(--line); }
-  .docs .sub2 { font-size:12.5px; color:var(--muted); margin:2px 0 8px; }
+  /* Documents (v135, one-tap download 8 Nov 2026): straight under the status, one white button. */
+  .docs { padding:6px 22px 18px; border-bottom:1px solid var(--line); }
+  .docs .sub2 { font-size:13.5px; color:var(--muted); margin:4px 0 2px; line-height:1.5; }
+  .docs .sub2 strong { color:#fff; font-weight:700; }
   .doc { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:11px 0; }
   .doc + .doc { border-top:1px solid var(--line); }
-  .doc a { color:inherit; font-weight:700; font-size:13.5px; text-decoration:underline; }
-  .docbtns { display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
-  .docbtn { flex:1 1 140px; border:0; border-radius:12px; padding:12px 14px; font:inherit; font-weight:700; font-size:14.5px; cursor:pointer; }
-  .docbtn.primary { background:#fff; color:#050505; }
-  .docbtn.ghost { background:rgba(255,255,255,.1); color:#fff; }
+  .doc .l { font-size:14.5px; font-weight:600; color:#fff; min-width:0; }
+  .doc .l .sub { display:block; font-size:12px; color:var(--muted); font-weight:500; margin-top:2px; }
+  .doc .r { display:flex; gap:14px; flex:none; }
+  .doc a { color:#fff; font-weight:700; font-size:13.5px; text-decoration:underline; }
+  .docbtn { display:block; text-align:center; margin-top:12px; background:#fff; color:#050505; text-decoration:none;
+    border-radius:999px; padding:14px 18px; font-weight:700; font-size:15.5px; }
+  .docbtn.wait { opacity:.55; pointer-events:none; }
+  .doclink { display:block; margin:10px auto 0; background:none; border:0; color:var(--muted); font:inherit; font-size:13px; text-decoration:underline; cursor:pointer; }
   .docmail { display:none; gap:8px; margin-top:10px; }
   .docmail.on { display:flex; }
-  .docmail input { flex:1; min-width:0; border-radius:12px; border:1px solid var(--line); background:transparent; color:inherit; padding:11px 12px; font:inherit; font-size:15px; }
-  .docnote { font-size:12.5px; margin-top:8px; min-height:16px; }
-  .cta { display:inline-block; margin-top:16px; background:#fff; color:#050505; font-weight:700; font-size:14.5px;
-    text-decoration:none; padding:13px 24px; border-radius:999px; }
+  .docmail input { flex:1; min-width:0; border-radius:12px; border:1px solid var(--line); background:transparent; color:inherit; padding:11px 12px; font:inherit; font-size:16px; }
+  .docsend { border:0; border-radius:12px; padding:0 16px; background:var(--raised); color:#fff; font:inherit; font-weight:700; font-size:14.5px; cursor:pointer; }
+  .docnote { font-size:12.5px; color:var(--muted); text-align:center; margin-top:8px; min-height:0; }
+  .docnote:empty { display:none; }
+  .getlink { display:inline-block; margin-top:10px; color:#fff; font-weight:600; font-size:13px; }
 </style>
 <style id="lockup-css">img.lockup{aspect-ratio:10747/2250} img[src*="appstore-badge.svg"]{aspect-ratio:135/40} /* One logo file: the M centred on the lowercase letters, reaching above and below (2 Oct 2026). */ img.lockup{height:32px!important;width:auto!important;border-radius:0!important;display:block;max-width:none!important} @media (max-width:600px){img.lockup{height:29px!important}} .brand img.lockup{height:21px!important} .hub-wordmark img.lockup{height:22px!important}</style>
 <meta property="og:type" content="website" />
@@ -243,6 +248,7 @@
           <span class="s"><span class="dot" style="background:${since == null ? 'var(--grey)' : current ? 'var(--green)' : 'var(--red)'}"></span>${since == null ? 'NO DATA YET' : current ? 'CURRENT' : 'NOT CURRENT'}</span>
           <span class="ss">${p.last_jump ? ('Last jump ' + (since === 0 ? 'today' : since + 'd ago') + ' · ' + (p.currency_window||90) + 'd window') : 'No jumps logged yet'}</span>
         </div>
+        <div id="docs"></div>
         <div class="stats">
           <div class="stat"><div class="v">${Number(p.total_jumps||0).toLocaleString()}</div><div class="l">Total jumps</div><div class="statsub">self-logged</div></div>
           <div class="sep"></div>
@@ -253,60 +259,105 @@
           ${dueChip('AAD service', p.aad_due)}
         </div>
         ${credsHtml(p.credentials)}
-        <div id="docs"></div>
         ${recentJumpsHtml(p.recent_jumps)}
       </div>
       <div class="foot">
-        <div style="margin-bottom:12px">Pass code <strong style="letter-spacing:2px">${esc(String(getCode() || '').toUpperCase())}</strong></div>
-        <!-- The old line read "updates in real time, can't be edited or faked",
-             which overstated it: licence number, total jumps and gear dates are
-             all entered by the holder. Only the signed-off count is witnessed.
-             Bold the DISTINCTION rather than an absolute claim — this is the one
-             page whose whole job is being believed. -->
-        <strong>Verified jumps were signed off in person by another licensed jumper. Their name and licence are recorded on each, and a signed jump can't be edited afterwards.</strong><br/>
-        Everything else on this pass (licence, total jumps, reserve and AAD dates) is entered by the holder. Live from Manifest, updates in real time.
-        <br/><a class="cta" href="/get">Get Manifest</a>
+        <!-- 8 Nov 2026, André: "nobody reads a book". One line, one small link. -->
+        Verified jumps are signed off in person. The rest is entered by the holder.
+        <br/><a class="getlink" href="/get">Get Manifest</a>
       </div>`;
   }
 
-  // THE DOCUMENTS (v135). The QR the jumper shows live from the app carries
-  // ?d=<key>, good for 15 minutes; the permanent code alone never opens files.
+  // THE DOCUMENTS (v135; one-tap download 8 Nov 2026). The QR the jumper shows
+  // live from the app carries ?d=<key>. The key lives 15 minutes and the app
+  // swaps it once it has under 5 left, so a fresh scan is good for 5 to 15
+  // minutes. The permanent code alone (a screenshot, the Wallet pass) never
+  // opens files, so without a live key we say plainly what to do.
+  //
+  // "Download documents" is ONE real link to ONE zip, built here as soon as the
+  // list arrives (fflate, from the signed links pass-docs hands back). A real
+  // <a download> tapped by the user is the only multi-file download iPhone
+  // Safari does not block; firing several downloads from a script loses all but
+  // the first. One document skips the zip and links the file itself.
   const DOCS_FN = 'https://wkefdtglgbfprvfajrrw.supabase.co/functions/v1/pass-docs';
+  const FFLATE = 'https://cdn.jsdelivr.net/npm/fflate@0.8.2/umd/index.js';
   const docKey = new URLSearchParams(location.search).get('d');
   async function docsCall(body) {
     const r = await fetch(DOCS_FN, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.assign({ key: docKey }, body)) });
     return r.json().catch(() => ({ error: 'Try again' }));
   }
-  async function loadDocs() {
+  const docsBox = (inner) => `<div class="docs"><div class="credhead">DOCUMENTS</div>${inner}</div>`;
+  // The signed link carries &download=<name> (attachment); without it the file opens in the tab.
+  const viewUrl = (u) => { try { const x = new URL(u); x.searchParams.delete('download'); return x.toString(); } catch { return u; } };
+  const fileName = (u, fallback) => { try { return new URL(u).searchParams.get('download') || fallback; } catch { return fallback; } };
+  function loadScript(src) {
+    return new Promise((ok, no) => { const t = document.createElement('script'); t.src = src; t.onload = ok; t.onerror = no; document.head.appendChild(t); });
+  }
+  async function buildZip(docs) {
+    if (!window.fflate) await loadScript(FFLATE);
+    const files = {};
+    const used = new Set();
+    for (const x of docs) {
+      const r = await fetch(x.url);
+      if (!r.ok) throw new Error('fetch ' + r.status);
+      let n = fileName(x.url, x.label + '.' + x.kind);
+      for (let i = 2; used.has(n); i++) n = n.replace(/(\.\w+)?$/, ` ${i}$1`);
+      used.add(n);
+      files[n] = [new Uint8Array(await r.arrayBuffer()), { level: 0 }]; // PDFs and JPEGs are already compressed
+    }
+    return new Blob([window.fflate.zipSync(files)], { type: 'application/zip' });
+  }
+  async function loadDocs(name) {
     const box = document.getElementById('docs');
-    if (!box || !docKey) return;
+    if (!box) return;
+    const again = docsBox(`<div class="sub2"><strong>Ask them to show their pass again.</strong><br/>Documents open only from a fresh scan of the pass in the Manifest app.</div>`);
+    if (!docKey) { box.innerHTML = again; return; }
+    box.innerHTML = docsBox(`<div class="sub2">Loading documents…</div>`);
     const d = await docsCall({ action: 'list' }).catch(() => null);
-    if (!d || d.expired) {
-      box.innerHTML = `<div class="docs"><div class="credhead">DOCUMENTS</div><div class="sub2">This link has expired. Ask the jumper to show their pass again from the app.</div></div>`;
-      return;
-    }
+    if (!d || d.error) { box.innerHTML = docsBox(`<div class="sub2">Couldn’t load the documents. Refresh to try again.</div>`); return; }
+    if (d.expired) { box.innerHTML = again; return; }
     if (!d.docs || !d.docs.length) {
-      // A live key but nothing switched on: say so, instead of showing nothing.
-      box.innerHTML = `<div class="docs"><div class="credhead">DOCUMENTS</div><div class="sub2">No documents shared yet. The jumper can turn on sharing for each document in Manifest (Check-in Pass, then the document, then Share from my Check-in Pass).</div></div>`;
+      box.innerHTML = docsBox(`<div class="sub2">No documents shared on this pass.</div>`);
       return;
     }
-    const mins = Math.max(1, Math.round((new Date(d.expires_at) - Date.now()) / 60000));
-    const rows = d.docs.map((x) => `<div class="doc"><span class="l">${esc(x.label)}${x.number ? `<span class="sub">#${esc(x.number)}</span>` : ''}</span><a href="${esc(x.url)}" download>Download</a></div>`).join('');
-    box.innerHTML = `<div class="docs"><div class="credhead">DOCUMENTS</div>
-      <div class="sub2">Shared by the jumper. Open for ${mins} more minute${mins === 1 ? '' : 's'}.</div>${rows}
-      <div class="docbtns"><button class="docbtn primary" id="dl-all">Download all</button><button class="docbtn ghost" id="mail-open">Email to me</button></div>
-      <form class="docmail" id="mail-form"><input type="email" id="mail-to" placeholder="you@dropzone.com" autocomplete="email" required /><button class="docbtn primary" style="flex:0 0 auto">Send</button></form>
-      <div class="docnote" id="doc-note"></div></div>`;
-    document.getElementById('dl-all').onclick = () => {
-      d.docs.forEach((x, i) => setTimeout(() => { const a = document.createElement('a'); a.href = x.url; a.download = ''; document.body.appendChild(a); a.click(); a.remove(); }, i * 400));
-    };
+    const n = d.docs.length;
+    const rows = d.docs.map((x) => `<div class="doc"><span class="l">${esc(x.label)}${x.number ? `<span class="sub">#${esc(x.number)}</span>` : ''}</span>
+      <span class="r"><a href="${esc(viewUrl(x.url))}" target="_blank" rel="noopener">View</a><a href="${esc(x.url)}" download>Download</a></span></div>`).join('');
+    box.innerHTML = docsBox(`${rows}
+      <a class="docbtn" id="dl-all" href="${esc(d.docs[0].url)}" download>${n === 1 ? 'Download document' : 'Download documents'}</a>
+      <div class="docnote" id="doc-note">${n === 1 ? '' : 'Preparing ' + n + ' files…'}</div>
+      <button class="doclink" id="mail-open" type="button">Email them to me</button>
+      <form class="docmail" id="mail-form"><input type="email" id="mail-to" placeholder="you@dropzone.com" autocomplete="email" required /><button class="docsend">Send</button></form>`);
+    const btn = document.getElementById('dl-all');
+    const note = document.getElementById('doc-note');
+    // Links die with the key: after that, say so instead of serving an error page.
+    const left = new Date(d.expires_at) - Date.now();
+    setTimeout(() => { box.innerHTML = again; }, Math.max(0, left));
+    if (n > 1) {
+      btn.classList.add('wait');
+      btn.onclick = (e) => { if (btn.classList.contains('wait')) e.preventDefault(); };
+      try {
+        const zip = await buildZip(d.docs);
+        btn.href = URL.createObjectURL(zip);
+        btn.download = `${(d.name || name || 'Jumper').replace(/[\\/:*?"<>|]/g, '')} - documents.zip`;
+        note.textContent = '';
+      } catch (err) {
+        // No zip (a blocked CDN, a failed fetch): fall back to one file after another.
+        console.warn('zip', err);
+        btn.onclick = (e) => {
+          e.preventDefault();
+          d.docs.forEach((x, i) => setTimeout(() => { const a = document.createElement('a'); a.href = x.url; a.download = ''; document.body.appendChild(a); a.click(); a.remove(); }, i * 600));
+        };
+        note.textContent = '';
+      }
+      btn.classList.remove('wait');
+    }
     document.getElementById('mail-open').onclick = () => { document.getElementById('mail-form').classList.add('on'); document.getElementById('mail-to').focus(); };
     document.getElementById('mail-form').onsubmit = async (e) => {
       e.preventDefault();
-      const note = document.getElementById('doc-note');
       note.textContent = 'Sending…';
       const r = await docsCall({ action: 'email', email: document.getElementById('mail-to').value }).catch(() => ({ error: 'Try again' }));
-      note.textContent = r.sent ? 'Sent. Check your inbox.' : r.expired ? 'This link has expired.' : (r.error || 'Try again');
+      note.textContent = r.sent ? 'Sent. Check your inbox.' : r.expired ? 'Ask them to show their pass again.' : (r.error || 'Try again');
     };
   }
 
@@ -322,7 +373,7 @@
       const data = await res.json();
       if (!data) { showState('No pass matches this code.', 'Ask the jumper to reopen their Check-in Pass in the Manifest app for a fresh code.'); return; }
       render(data);
-      loadDocs();
+      loadDocs(data.name);
     } catch (e) {
       showState('Couldn’t load this pass.', 'Check your connection and try again.');
     }
