@@ -78,7 +78,7 @@ We do not sell your personal data. We share it only with service providers who p
 
 **Your papers.** When you share your papers with a dropzone in the App, its owner and manifest staff see your licence, membership card, insurance and reserve or rigger card, until the dropzone's next season starts (always at least 30 days) or until you stop sharing, whichever comes first. You can stop sharing at any time. Never medical papers or a passport.
 
-**Your Check-in Pass.** When you show your Check-in Pass, whoever scans it can, for 15 minutes, view and download the documents you switched on, with your name, document number and expiry. They can also email them as attachments to an address they type, up to three times. A copy that was downloaded or emailed stays with that person after the 15 minutes. Sharing is off until you turn it on for a document, and never includes medical papers or a passport.
+**Your Check-in Pass.** When you show your Check-in Pass, whoever scans it can, for 15 minutes, view and download the documents shared from your pass, with your name, document number and expiry. They can also email them as attachments to an address they type, up to three times. A copy that was downloaded or emailed stays with that person after the 15 minutes. A new document is shared from your pass unless you turn it off for that document. Medical papers and passports are never shared.
 
 After each flying day, the dropzone's owners get an email with a spreadsheet of that day's loads and payments, including jumper names. If a landout call says someone is injured, crew see that person's emergency contact.
 
