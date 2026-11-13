@@ -51,7 +51,7 @@ Manifest Desk is skydiving software and dropzone management software (a skydive 
 - Rental gear.
 - Landout SOS with a live map and chat, a pickup pin for the driver, and Who's back after each load.
 - Hangar TV board on any TV with a browser.
-- Pricing: we are setting pricing together with our first dropzones. Talk to us at https://www.jumpmanifest.com/get-started/ and we will walk you through it.
+- Pricing: contact us for a quote at https://www.jumpmanifest.com/get-started/
 
 ## How to get it
 - Jumpers: download Manifest free on the App Store: https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429 (iPhone). Android is in the making.
