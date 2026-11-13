@@ -600,7 +600,6 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
 </main>
 
 <footer class="site">
-<div class="ftp-art" aria-hidden="true"><picture><source media="(max-width: 760px)" srcset="/assets/paint/12-garden-belvedere-phone-828.webp" /><img src="/assets/paint/12-garden-belvedere-2560.webp" alt="" loading="lazy" decoding="async" /></picture></div>
   <div class="ft">
     <div class="ft-brand">
       <a class="wordmark" href="/" aria-label="Manifest home"><img class="lockup" src="/assets/manifest-lockup-white.svg?v=6" alt="Manifest" /></a>
@@ -946,5 +945,44 @@ html { background-color: #14110d; overscroll-behavior: none; } body { overscroll
 <style id="foot-gap">/* 5 Nov 2026: breathing room between the last section and the painted footer on every page. */ html body footer.site { margin-top: clamp(72px, 9vw, 120px) !important; }</style>
 <script id="safari-noshadow">/* 5 Nov 2026: Safari paints black boxes over the page (the hero, the right edge) while a drop-shadow filter sits on any image. Chrome is fine, so only Safari loses those shadows. */(function(){var u=navigator.userAgent;if(!/Safari/.test(u)||/Chrome|CriOS|FxiOS|Android/.test(u))return;function k(){document.querySelectorAll("img, picture, video, figure, .dzg-halo, [class*=phone]").forEach(function(e){if(getComputedStyle(e).filter.indexOf("drop-shadow")>-1)e.style.setProperty("filter","none","important")})}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",k);else k();addEventListener("load",k)})();</script>
 <script id="android-links">/* 13 Nov 2026: on Android, Download buttons go to Google Play. Store badges keep their own store. */if(/Android/i.test(navigator.userAgent)){document.querySelectorAll('a[href*="apps.apple.com"]').forEach(function(a){if(!a.querySelector('img[src*="appstore-badge"]'))a.href="https://play.google.com/store/apps/details?id=com.andrelarsen.manifest";});}</script>
+<style id="ft-clean">/* 13 Nov 2026 (André): a clean dark footer, no painting. Near-black, columns
+   with small grey labels (like softriver.co), every link visible on phones too. */
+html { background-color: #0A0A0A !important; }
+html body footer.site { position: relative !important; min-height: 0 !important; display: block !important; background: #0A0A0A !important;
+  margin-top: 0 !important; padding: 88px 0 40px !important; border-top: 0 !important; box-shadow: none !important; overflow: visible; }
+html body footer.site .ftp-art { display: none !important; }
+html body footer.site .ft { display: grid !important; grid-template-columns: minmax(0, 1.6fr) repeat(3, minmax(0, 1fr)) !important; gap: 40px 48px !important;
+  width: min(1280px, 90vw) !important; max-width: none !important; margin: 0 auto !important; padding: 0 !important; box-sizing: border-box; }
+html body footer.site .ft-brand { grid-column: auto !important; margin: 0 !important; }
+html body footer.site .ft-brand p { color: #A1A1AA !important; font-size: 15px !important; line-height: 24px !important; max-width: 360px; margin: 20px 0 0 !important; text-shadow: none !important; }
+html body footer.site .ft-brand .mail { color: #FFFFFF !important; font-size: 15px !important; margin-top: 20px !important; }
+html body footer.site .ft-brand .mail a { color: #A1A1AA !important; }
+html body footer.site .ft-social { margin-top: 24px !important; gap: 10px !important; }
+html body footer.site .ft-social a { width: 44px !important; height: 44px !important; border-radius: 999px !important; background: #1C1C1E !important; }
+html body footer.site .ft-social a:hover { background: #2C2C2E !important; }
+html body footer.site .ft-col { grid-column: auto !important; border-top: 0 !important; padding: 0 !important; display: block !important; }
+html body footer.site .ft-col h3 { display: block !important; min-height: 0 !important; margin: 4px 0 16px !important; padding: 0 !important; cursor: default !important;
+  font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif !important; font-size: 12px !important; font-weight: 600 !important;
+  letter-spacing: .12em !important; text-transform: uppercase !important; color: #8E8E93 !important; }
+html body footer.site .ft-col h3::after { content: none !important; display: none !important; }
+html body footer.site .ft-col a { display: block !important; min-height: 0 !important; margin: 0 !important; padding: 7px 0 !important;
+  font-size: 15px !important; font-weight: 400 !important; line-height: 22px !important; letter-spacing: 0 !important; color: #E5E5EA !important; text-shadow: none !important; }
+html body footer.site .ft-col a:hover { color: #FFFFFF !important; }
+html body footer.site .ft-base { width: min(1280px, 90vw) !important; max-width: none !important; margin: 64px auto 0 !important; padding: 24px 0 0 !important; box-sizing: border-box;
+  display: flex !important; justify-content: space-between !important; align-items: center !important; flex-wrap: wrap !important; gap: 16px 24px !important;
+  border-top: 1px solid rgba(255,255,255,.10) !important; color: #8E8E93 !important; font-size: 13px !important; }
+html body footer.site .ft-base span { color: #8E8E93 !important; }
+@media (max-width: 900px) {
+  html body footer.site .ft { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 36px 24px !important; width: calc(100% - 48px) !important; }
+  html body footer.site .ft-brand { grid-column: 1 / -1 !important; }
+  html body footer.site .ft-base { width: calc(100% - 48px) !important; margin-top: 48px !important; justify-content: flex-start !important; }
+}
+@media (max-width: 760px) {
+  html body footer.site { padding: 64px 0 calc(env(safe-area-inset-bottom, 0px) + 40px) !important; }
+  html body footer.site .ft-col:last-child { grid-column: 1 / -1 !important; }
+  html body footer.site .ft-col:last-child h3 { flex-basis: auto !important; }
+  html body footer.site .ft-col a { padding: 10px 0 !important; }
+}
+</style>
 </body>
 </html>
