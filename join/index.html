@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Join your dropzone on Manifest</title>
-<meta name="description" content="Join your dropzone on Manifest: ask the desk to add you." />
+<meta name="description" content="Join your dropzone on Manifest: get the app, find your dropzone and enter its join code." />
 <meta name="robots" content="noindex" />
 <link rel="icon" type="image/png" href="/assets/app-icon.png?v=3" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -59,29 +59,36 @@ html body .btn, html body a.btn, html body a.btn[href="/get"] { background: #F4F
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Join your dropzone on Manifest" />
 <meta name="twitter:image" content="https://www.jumpmanifest.com/assets/og-image.png?v=11" />
+<style id="join-code">.jcode{margin:18px auto 4px;font-size:34px;font-weight:600;letter-spacing:.18em;color:#fff;background:rgba(255,255,255,.08);border-radius:14px;padding:14px 18px;font-variant-numeric:tabular-nums;display:inline-block}.jcode[hidden]{display:none}.jstores{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px}.jstores img{height:44px;width:auto;display:block}</style>
 </head>
 <body>
   <div class="card">
     <img class="lockup" src="/assets/manifest-lockup.svg?v=6" alt="Manifest" />
     <img class="logo" id="logo" alt="" hidden />
     <h1 id="title">Join your dropzone</h1>
-    <p class="lead" id="lead">Ask the desk to add you.</p>
-    <p class="hint" id="hint">Joining in the app with this code is not open yet.</p>
-    <a class="btn" href="/get">Get Manifest</a>
+    <p class="lead" id="lead">Get Manifest, find your dropzone and tap Join. Enter this code:</p>
+    <div class="jcode" id="jcode" hidden></div>
+    <div class="jstores">
+      <a href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="Download Manifest on the App Store"><img src="/assets/appstore-badge.svg?v=1" alt="Download on the App Store" /></a>
+      <a href="https://play.google.com/store/apps/details?id=com.andrelarsen.manifest" aria-label="Get Manifest on Google Play"><img src="/assets/googleplay-badge.svg?v=1" alt="Get it on Google Play" /></a>
+    </div>
+    <p class="hint" id="hint">Free on iPhone and Android. No phone? Ask the desk to add you.</p>
   </div>
 <script>
   var code = (location.pathname.split('/')[2] || new URLSearchParams(location.search).get('c') || '').toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 12);
-  if (!code) document.getElementById('hint').hidden = true;
+  if (!code) document.getElementById('lead').textContent = 'Get Manifest, find your dropzone and tap Join. Ask the desk for the join code.';
+  else { var jc = document.getElementById('jcode'); jc.textContent = code; jc.hidden = false; }
   if (code) fetch('https://wkefdtglgbfprvfajrrw.supabase.co/rest/v1/rpc/desk_join_preview', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', apikey: 'sb_publishable_bSZ85fokRcmDjIzYr7Q9mQ_w4dQ0b3b' },
     body: JSON.stringify({ p_code: code })
   }).then(function (r) { return r.json(); }).then(function (d) {
-    if (!d || !d.name) { document.getElementById('lead').textContent = 'We could not find this code. Check it with the desk.'; document.getElementById('hint').style.display = 'none'; return; }
+    if (!d || !d.name) { document.getElementById('lead').textContent = 'We could not find this code. Check it with the desk.'; document.getElementById('jcode').hidden = true; return; }
     document.getElementById('title').textContent = 'Join ' + d.name;
     document.title = 'Join ' + d.name + ' on Manifest';
     if (d.logo_url) { var l = document.getElementById('logo'); l.src = d.logo_url; l.hidden = false; }
-    if (d.open === false) document.getElementById('lead').textContent = d.name + ' is not taking new members in the app right now. Ask the desk.';
+    if (d.open === false) { document.getElementById('lead').textContent = d.name + ' is not taking new members in the app right now. Ask the desk to add you.'; document.getElementById('jcode').hidden = true; }
+    else document.getElementById('lead').textContent = 'Get Manifest, find ' + d.name + ' and tap Join. Enter this code:';
   }).catch(function () {});
 </script>
 <style id="btn-black">/* 21 Oct 2026 (André): no purple buttons anywhere. Every filled button is the
