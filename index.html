@@ -5,10 +5,10 @@
 <meta name="google-site-verification" content="LSNgKsqUgjF5U6ow4S-UaRolkd8qAiVDrORzruiayW0" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>Manifest: the skydive app with live loads and 3D replays</title>
-<meta name="description" content="The skydive app for iPhone: live loads, every jump replayed in 3D, weather and gear. Plus Manifest Desk for dropzones." />
+<meta name="description" content="The skydive app for iPhone and Android: live loads, every jump replayed in 3D, weather and gear. Plus Manifest Desk for dropzones." />
 <meta property="og:site_name" content="Manifest" />
 <meta property="og:title" content="Manifest: the app for skydivers, the system for dropzones" />
-<meta property="og:description" content="Live loads for jumpers at 150 dropzones, every jump replayed in 3D over real terrain, and Manifest Desk for dropzones. Free on iPhone." />
+<meta property="og:description" content="Live loads for jumpers at 150 dropzones, every jump replayed in 3D over real terrain, and Manifest Desk for dropzones. Free on iPhone and Android." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.jumpmanifest.com/" />
 <meta property="og:image" content="https://www.jumpmanifest.com/assets/og-image.png?v=11" />
@@ -17,7 +17,7 @@
 <meta property="og:image:alt" content="Manifest, the app for skydivers and the system for dropzones" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Manifest: the app for skydivers, the system for dropzones" />
-<meta name="twitter:description" content="Live loads for jumpers at 150 dropzones, every jump replayed in 3D over real terrain, and Manifest Desk for dropzones. Free on iPhone." />
+<meta name="twitter:description" content="Live loads for jumpers at 150 dropzones, every jump replayed in 3D over real terrain, and Manifest Desk for dropzones. Free on iPhone and Android." />
 <meta name="twitter:image" content="https://www.jumpmanifest.com/assets/og-image.png?v=11" />
 <meta name="theme-color" content="#1b150d" />
 <!-- Apple Smart App Banner. iOS renders this itself, above the page, and the
@@ -40,7 +40,7 @@
       "name": "What does the Manifest skydiving app do?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Manifest is the app for skydivers, on iPhone. It shows the loads turning live at 150 dropzones, records your jump from your pocket and replays the whole flight in 3D over real terrain, and keeps your logbook with jumps signed off in person by licensed jumpers. It also has weather and winds for jumping, gear and reserve repack reminders, your Check-in Pass, dropzones, events, coaches and community."
+        "text": "Manifest is the app for skydivers, on iPhone and Android. It shows the loads turning live at 150 dropzones, records your jump from your pocket and replays the whole flight in 3D over real terrain, and keeps your logbook with jumps signed off in person by licensed jumpers. It also has weather and winds for jumping, gear and reserve repack reminders, your Check-in Pass, dropzones, events, coaches and community."
       }
     },
     {
@@ -133,10 +133,10 @@
     },
     {
       "@type": "Question",
-      "name": "Is Android coming?",
+      "name": "Is Manifest on Android?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Android is being built right now. Email me and I will let you know the day it is out."
+        "text": "Yes. Manifest is on Google Play for Android phones."
       }
     }
   ]
@@ -230,8 +230,8 @@
     "Manifest skydive app",
     "Manifest Skydive"
   ],
-  "description": "Manifest is the skydiving app for iPhone. It shows the loads turning live at 150 dropzones, records your jump from your pocket and replays the whole flight in 3D over real terrain, and keeps every jump, signed off in person. It also covers weather, gear reminders, dropzones and community, and connects to Manifest Desk, the manifest system for dropzones. Free to download.",
-  "operatingSystem": "iOS",
+  "description": "Manifest is the skydiving app for iPhone and Android. It shows the loads turning live at 150 dropzones, records your jump from your pocket and replays the whole flight in 3D over real terrain, and keeps every jump, signed off in person. It also covers weather, gear reminders, dropzones and community, and connects to Manifest Desk, the manifest system for dropzones. Free to download.",
+  "operatingSystem": "iOS, Android",
   "applicationCategory": "SportsApplication",
   "applicationSubCategory": "Skydiving",
   "url": "https://www.jumpmanifest.com/",
@@ -1224,7 +1224,7 @@ body:has(.hero-art) { padding-top: 0 !important; }
 .hero-art h1 { margin: clamp(14px, 2.7svh, 34px) 0 0; font-family: "Geist", "Geist", sans-serif; font-weight: 500; font-size: clamp(36px, 5vw, 56px); line-height: 1.06; letter-spacing: -.018em; color: #fff; text-shadow: 0 1px 24px rgba(6,10,40,.45); }
 .art-lede { margin: clamp(14px, 2.5svh, 23px) 0 0; max-width: 480px; font-family: "Geist", sans-serif; font-size: 19px; line-height: 1.55; font-weight: 400; color: #fff; text-shadow: 0 1px 14px rgba(6,10,40,.6); text-wrap: pretty; }
 .art-lede a { color: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
-.art-store { display: block; margin-top: clamp(16px, 3.6svh, 40px); transition: transform .15s ease; }
+.art-store { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: clamp(16px, 3.6svh, 40px); transition: transform .15s ease; }
 .art-store:hover { transform: translateY(-1px); }
 .art-store img { display: block; height: 44px; width: auto; }
 .hero-art .art-note { margin: 14px 0 0; font-family: "Geist", sans-serif; font-size: 13px; line-height: 1.5; font-weight: 500; color: #fff !important; text-shadow: 0 1px 10px rgba(6,10,40,.7); }
@@ -1750,8 +1750,9 @@ a.aw-bar .aw-ph{ color: #fff; }
   @media (max-width: 600px) { .hero .storebtns { margin-top: 20px; } }
   @media (max-width: 599px) { .privacy-row { flex-direction: column; align-items: center; gap: 10px; } }
   /* A09: QR handoff beside (never on) the badge, 1024px and wider only. */
-  .get-row { display: flex; align-items: center; justify-content: center; gap: 28px; margin-top: 24px; }
+  .get-row { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 14px 20px; margin-top: 24px; }
   .get-row .appbtn { margin: 0; }
+  @media (max-width: 600px) { .get-row { gap: 10px; flex-wrap: nowrap; } .get-row .appbtn img { height: 46px; } }
   .get-qr { display: none; margin: 0; align-items: center; gap: 14px; text-align: left; }
   .get-qr img { width: 120px; height: 120px; border-radius: 10px; box-shadow: 0 0 0 1px rgba(5,5,5,.1); }
   .get-qr figcaption { max-width: 190px; font-family: "Manrope", sans-serif; font-size: 14px; line-height: 20px; font-weight: 500; color: #52525B; }
@@ -1892,9 +1893,9 @@ a.aw-bar .aw-ph{ color: #fff; }
   <div class="art-copy">
     <a class="art-icon-a" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="Manifest on the App Store"><img class="art-icon" src="/assets/hero/app-icon.png" width="49" height="49" alt="" /></a>
     <h1>The app for skydivers.<br />The system for dropzones.</h1>
-    <p class="art-lede">Manifest is the iPhone app for live dropzone loads and 3D jump replay. Dropzones run on <a href="/dropzones/">Manifest Desk</a>.</p>
-    <a class="art-store" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="Download Manifest on the App Store"><img src="assets/appstore-badge.svg?v=1" alt="Download on the App Store" /></a>
-    <p class="hero-note art-note">Free to download on iPhone. Android is on the way. <a data-android href="#android">Tell me the day it is out.</a></p>
+    <p class="art-lede">Manifest is the iPhone and Android app for live dropzone loads and 3D jump replay. Dropzones run on <a href="/dropzones/">Manifest Desk</a>.</p>
+    <div class="art-store"><a href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="Download Manifest on the App Store"><img src="assets/appstore-badge.svg?v=1" alt="Download on the App Store" /></a><a href="https://play.google.com/store/apps/details?id=com.andrelarsen.manifest" aria-label="Get Manifest on Google Play"><img src="assets/googleplay-badge.svg?v=1" alt="Get it on Google Play" /></a></div>
+    <p class="hero-note art-note">Free to download on iPhone and Android.</p>
   </div>
 </header>
 
@@ -2067,9 +2068,14 @@ a.aw-bar .aw-ph{ color: #fff; }
       <b>Measured by your phone's GPS and barometer, to within metres.</b>
     </p>
     <p class="trustline">Free to record and replay</p>
-    <a class="appbtn replay-badge" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="Download Manifest on the App Store">
+    <div class="storebtns replay-badge">
+    <a class="appbtn" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="Download Manifest on the App Store">
       <img src="assets/appstore-badge.svg?v=1" alt="Download on the App Store" />
     </a>
+    <a class="appbtn" href="https://play.google.com/store/apps/details?id=com.andrelarsen.manifest" aria-label="Get Manifest on Google Play">
+      <img src="assets/googleplay-badge.svg?v=1" alt="Get it on Google Play" />
+    </a>
+    </div>
     </div>
   </div>
 </section>
@@ -2333,9 +2339,12 @@ a.aw-bar .aw-ph{ color: #fff; }
     <h2>Jumpers at 230 dropzones in 46 countries</h2>
     <p class="statement-sub">Each dot is a home dropzone of Manifest jumpers.</p>
     <p class="statement-sub dzg-more">Live loads work at 150 dropzones. Everywhere else you still get 3D replay, sign-offs and your Check-in Pass. <a href="/live-skydiving-loads/#not-covered">Is my dropzone covered?</a></p>
-    <div class="gl-cta">
+    <div class="gl-cta storebtns">
       <a class="appbtn" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="Download Manifest on the App Store">
         <img src="assets/appstore-badge.svg?v=1" alt="Download on the App Store" />
+      </a>
+      <a class="appbtn" href="https://play.google.com/store/apps/details?id=com.andrelarsen.manifest" aria-label="Get Manifest on Google Play">
+        <img src="assets/googleplay-badge.svg?v=1" alt="Get it on Google Play" />
       </a>
     </div>
     </div>
@@ -2613,7 +2622,7 @@ a.aw-bar .aw-ph{ color: #fff; }
     <div class="faqs">
       <details class="faq">
         <summary><h3 class="faq-q">What does the Manifest skydiving app do?</h3></summary>
-        <p>Manifest is the app for skydivers, on iPhone. It shows the loads turning live at 150 dropzones, records your jump from your pocket and replays the whole flight in 3D over real terrain, and keeps your logbook with jumps signed off in person by licensed jumpers. It also has weather and winds for jumping, gear and reserve repack reminders, your Check-in Pass, dropzones, events, coaches and community.</p>
+        <p>Manifest is the app for skydivers, on iPhone and Android. It shows the loads turning live at 150 dropzones, records your jump from your pocket and replays the whole flight in 3D over real terrain, and keeps your logbook with jumps signed off in person by licensed jumpers. It also has weather and winds for jumping, gear and reserve repack reminders, your Check-in Pass, dropzones, events, coaches and community.</p>
       </details>
       <details class="faq">
         <summary><h3 class="faq-q">Is Manifest free?</h3></summary>
@@ -2673,8 +2682,8 @@ a.aw-bar .aw-ph{ color: #fff; }
         <p>Manifest Desk is skydiving software for dropzones, running in the browser. It handles loads and exit order, standby, jumper accounts and payments, waivers, staff, aircraft, safety checks and a hangar TV board, and pushes every load call to jumpers' Lock Screens. Jumpers top up with Apple Pay, straight into the dropzone's own Stripe account. It is free until you fly: no monthly fee, just $1 per seat flown, and you can stop anytime. <a href="/dropzones/">See Manifest Desk</a> or read <a href="/skydiving-manifest-software/">what our dropzone software does</a>.</p>
       </details>
       <details class="faq">
-        <summary><h3 class="faq-q">Is Android coming?</h3></summary>
-        <p>Yes. Android is being built right now. <a data-android href="#android">Email me</a> and I will let you know the day it is out.</p>
+        <summary><h3 class="faq-q">Is Manifest on Android?</h3></summary>
+        <p>Yes. Manifest is on Google Play. <a href="https://play.google.com/store/apps/details?id=com.andrelarsen.manifest">Get it for Android.</a></p>
       </details>
     </div>
 
@@ -2701,6 +2710,9 @@ a.aw-bar .aw-ph{ color: #fff; }
       <div class="get-row">
         <a class="appbtn" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="Download Manifest on the App Store">
           <img src="assets/appstore-badge.svg?v=1" alt="Download on the App Store" />
+        </a>
+        <a class="appbtn" href="https://play.google.com/store/apps/details?id=com.andrelarsen.manifest" aria-label="Get Manifest on Google Play">
+          <img src="assets/googleplay-badge.svg?v=1" alt="Get it on Google Play" />
         </a>
         <!-- Desktop to phone handoff (A09): QR of the App Store link, shown at 1024px and wider only. -->
         <figure class="get-qr">
@@ -3601,5 +3613,6 @@ html body span.go { background: none !important; box-shadow: none !important; tr
   .art-win::after { border-top: 1px solid rgba(255,255,255,.21) !important; border-radius: 22px !important; -webkit-mask-image: none !important; mask-image: none !important; }
 }
 </style>
+<script>if(/Android/i.test(navigator.userAgent)){document.querySelectorAll('a[href*="apps.apple.com"]').forEach(function(a){if(!a.querySelector('img[src*="appstore-badge"]'))a.href="https://play.google.com/store/apps/details?id=com.andrelarsen.manifest";});}</script>
 </body>
 </html>
