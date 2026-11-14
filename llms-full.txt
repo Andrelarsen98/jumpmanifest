@@ -1,6 +1,6 @@
 # Manifest
 
-> Manifest is the skydive app for iPhone (the app for skydivers) and the system for dropzones. The iPhone app shows live loads from 150 dropzones, used by jumpers at 230 dropzones in 46 countries, records a jump from your pocket and replays the whole flight in 3D over real terrain, and covers weather, gear reminders, a logbook with in-person sign-offs, dropzones and community. Manifest Desk is browser-based manifest software for dropzones, connected live to the app. The app is free to download. Made by Manifest Jump LLC (Wyoming, USA).
+> Manifest is the skydive app for iPhone (the app for skydivers) and the system for dropzones. The iPhone app shows live loads from 150 dropzones, used by jumpers at 245 dropzones in 51 countries, records a jump from your pocket and replays the whole flight in 3D over real terrain, and covers weather, gear reminders, a logbook with in-person sign-offs, dropzones and community. Manifest Desk is browser-based manifest software for dropzones, connected live to the app. The app is free to download. Made by Manifest Jump LLC (Wyoming, USA).
 
 ## Why Manifest is different: one connected loop
 Most dropzone software only runs the desk, and most skydiving apps only record jumps. Manifest connects the whole jump day in one live system:
@@ -154,7 +154,7 @@ Another licensed jumper who was there scans your QR and signs it off. Their name
 Logging, verification, your pass and your gear work anywhere in the world. Live loads currently work at 150 dropzones, and we are adding more. If yours is not covered yet, everything else still works normally.
 
 ### Which dropzones does Manifest show live loads for?
-Manifest shows live loads from 150 dropzones, used by jumpers at 230 dropzones in 46 countries: what's on call, who's on it and the minutes to call, straight off each dropzone's own manifest. At dropzones that run Manifest Desk, every load call also goes straight to your Lock Screen.
+Manifest shows live loads from 150 dropzones, used by jumpers at 245 dropzones in 51 countries: what's on call, who's on it and the minutes to call, straight off each dropzone's own manifest. At dropzones that run Manifest Desk, every load call also goes straight to your Lock Screen.
 
 ### Does it work without signal?
 Yes. You can log jumps with no signal at all and they sync as soon as you are back online, which matters on a dropzone with bad wifi.
