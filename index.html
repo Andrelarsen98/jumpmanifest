@@ -1777,7 +1777,7 @@ a.aw-bar .aw-ph{ color: #fff; }
   .flag .vbox { width: min(340px, 68vw); margin: 30px auto 0; }
   .flag .vbox > .flagvid { width: 100%; margin: 0; }
   /* Top-up phone measured against the Lock Screen video: same phone height (19 Oct). */
-  #topup .vbox { width: min(332px, 56vw) !important; }
+  #topup .vbox, #live .vbox { width: min(332px, 56vw) !important; }
   @media (max-width: 600px) { .flag .vbox { margin-top: 40px; } }
   @media (min-width: 900px) {
     .flag .vbox { grid-column: 2; grid-row: 1 / -1; align-self: center; justify-self: center; margin: 0; width: min(400px, 100%); }
@@ -2022,10 +2022,7 @@ a.aw-bar .aw-ph{ color: #fff; }
     <h2 style="margin-top:0"><span class="l1">Your load.</span><br />Live on your Lock Screen.</h2>
     <p>Notifications the second the plane's called, gear-up and final call, plus a live countdown in your Dynamic Island. So it never leaves without you.</p>
     </div>
-    <div class="vbox"><video class="flagvid" id="flagVid" autoplay data-lazy loop muted playsinline preload="none" poster="/assets/opt/lockscreen-v3-poster.webp" width="720" height="1152"
-           aria-label="Live loads on your Lock Screen">
-      <source data-src="/assets/opt/lockscreen-v3.mp4" type="video/mp4" />
-    </video><button class="vpause" type="button" aria-label="Pause video" aria-pressed="false"><svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="3.5" y="2.5" width="3" height="11" rx="1"/><rect x="9.5" y="2.5" width="3" height="11" rx="1"/></svg><svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 2.8v10.4a.8.8 0 0 0 1.2.7l8.3-5.2a.8.8 0 0 0 0-1.4L5.7 2.1a.8.8 0 0 0-1.2.7z"/></svg></button></div>
+    <div class="vbox"><img class="flagvid flagimg" src="/assets/opt/lockscreen-2026.webp?v=2" width="900" height="1710" alt="Load 4 called, live on the iPhone Lock Screen with the Manifest load card and notifications" loading="lazy" decoding="async"></div>
     <div class="ftext fb">
     <p class="flagsub">No shouting across the hangar. No missed calls. No sprinting for the plane.
       <b>Just your load on your Lock Screen, the second it's called.</b>
@@ -2034,6 +2031,76 @@ a.aw-bar .aw-ph{ color: #fff; }
     </div>
   </div>
 </section>
+<section class="isl" id="island" aria-label="Your load in the Dynamic Island">
+  <div class="isl-wrap">
+    <h2 class="isl-h">In your Dynamic Island.</h2>
+    <p class="isl-p">The countdown to your load, on top of every app.</p>
+    <div class="isl-stage" aria-hidden="true">
+      <div class="isl-bar">
+        <img class="isl-bg" src="/assets/opt/island-bar.webp" width="1320" height="210" alt="" />
+        <div class="isl-pill" id="islPill">
+          <img class="isl-ic" src="/assets/dock/manifest-desk-2.png" alt="" width="40" height="40" />
+          <span class="isl-min" id="islMin">14m</span>
+        </div>
+      </div>
+    </div>
+    <div class="isl-card" id="islCard" aria-hidden="true">
+      <div class="isl-row"><span class="isl-tag">YOUR LOAD</span><span class="isl-dz">DESERT DROPZONE</span></div>
+      <div class="isl-row isl-main">
+        <div><div class="isl-load">Load 4</div><div class="isl-st"><b id="islStatus">CALLED</b> · 17/22</div></div>
+        <div class="isl-big"><span id="islBig">14</span><small id="islUnit">MIN</small></div>
+      </div>
+      <div class="isl-others"><div class="isl-row"><span>Load 5 · 6/22</span><b>20 min</b></div><div class="isl-row"><span>Load 6 · 0/22</span><b>43 min</b></div></div>
+    </div>
+  </div>
+</section>
+<style id="isl-css">
+section.isl#island{background:#fff!important;color:#040815;padding:120px 24px 130px!important;text-align:center;overflow:hidden;margin:0!important}
+.isl-wrap{max-width:1100px;margin:0 auto}
+#island .isl-h{max-width:none!important;font-family:"General Sans","Manrope",sans-serif;font-weight:550;font-size:clamp(34px,5vw,64px);line-height:1.05;letter-spacing:-.03em;margin:0 0 14px!important;color:#040815!important}
+#island .isl-p{font-size:19px;line-height:29px;color:#52525B!important;margin:0 auto 56px!important;max-width:560px}
+.isl-stage{display:flex;justify-content:center}
+.isl-card{width:min(620px,100%);margin:32px auto 0;box-sizing:border-box;background:#000;color:#fff;border-radius:44px;padding:30px 36px;text-align:left;box-shadow:0 24px 60px rgba(4,8,21,.18)}
+.isl-row{display:flex;justify-content:space-between;align-items:center}
+.isl-tag{font-size:14px;font-weight:700;letter-spacing:.08em;color:#B2A4F9}.isl-dz{font-size:14px;font-weight:700;letter-spacing:.08em;color:#C7C7CC}
+.isl-main{margin-top:14px;align-items:flex-end}
+.isl-load{font-family:"General Sans","Manrope",sans-serif;font-size:34px;font-weight:600;letter-spacing:-.02em;color:#fff}
+.isl-st{margin-top:6px;font-size:17px;color:#C7C7CC}.isl-st b{color:#30D158;font-weight:700;letter-spacing:.04em}
+.isl-big{font-family:"Manrope",sans-serif;font-weight:800;font-size:64px;line-height:1;color:#30D158;font-variant-numeric:tabular-nums;transition:color .3s}.isl-big small{font-size:18px;font-weight:700;margin-left:6px;color:#C7C7CC}
+.isl-card.red .isl-big{color:#FF453A}
+.isl-others{margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.14);display:grid;gap:8px;font-size:17px;color:#fff}.isl-others b{color:#30D158;font-weight:700}
+/* The top of a real iPhone (14 Nov, Load 4): the status bar is the screenshot;
+   the pill on top is live, laid exactly over the real one (406,42 to 929,151 of 1320x210). */
+.isl-bar{position:relative;width:min(900px,100%);border-radius:28px;overflow:hidden;box-shadow:0 24px 60px rgba(4,8,21,.18)}
+.isl-bg{display:block;width:100%;height:auto}
+.isl-pill{position:absolute;left:30.76%;top:20%;width:39.62%;height:51.9%;border-radius:999px;background:#000;display:flex;align-items:center;justify-content:space-between;padding:0 4.6% 0 2.6%;box-sizing:border-box;container-type:size}
+.isl-ic{height:58%;width:auto;aspect-ratio:1;border-radius:22%;display:block}
+.isl-min{font-family:"Manrope",-apple-system,sans-serif;font-weight:700;font-size:44cqh;letter-spacing:-.01em;color:#30D158;font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:.3em;transition:color .3s}
+.isl-pill.red .isl-min{color:#FF453A}
+.isl-min i{width:.35em;height:.35em;border-radius:50%;background:#30D158;display:inline-block}
+.isl-min.tick{animation:islTick .35s ease}
+@keyframes islTick{0%{transform:translateY(30%);opacity:0}100%{transform:none;opacity:1}}
+@media (max-width:700px){section.isl#island{padding:90px 16px 100px!important}.isl-bar{border-radius:18px}.isl-card{border-radius:28px;padding:20px 22px;margin-top:20px}.isl-tag,.isl-dz{font-size:11px}.isl-load{font-size:24px}.isl-st{font-size:13px}.isl-big{font-size:44px}.isl-big small{font-size:13px}.isl-others{font-size:13px;margin-top:10px;padding-top:10px}}
+@media (prefers-reduced-motion:reduce){.isl-min.tick{animation:none}}
+</style>
+<script>
+/* DYNAMIC ISLAND (14 Nov 2026): the compact island exactly as the app draws
+   it (logo left, minutes right): green above 10, red at 10 and under, then the
+   status token when the load boards. Counts down only while on screen. */
+(function(){
+  var pill=document.getElementById('islPill'), mEl=document.getElementById('islMin'); if(!pill) return;
+  var seq=[14,13,12,11,10,9,8,7,6,5,4,3,2,1,'BOARD'], k=0, t=null, live=false;
+  function show(v){
+    var card=document.getElementById('islCard'), big=document.getElementById('islBig'), unit=document.getElementById('islUnit'), st=document.getElementById('islStatus');
+    if(v==='BOARD'){ pill.classList.remove('red'); mEl.innerHTML='<i></i>BOARD'; card.classList.remove('red'); big.textContent='0'; st.textContent='BOARDING'; }
+    else { pill.classList.toggle('red', v<=10); mEl.textContent=v+'m'; card.classList.toggle('red', v<=10); big.textContent=v; st.textContent='CALLED'; }
+    mEl.classList.remove('tick'); void mEl.offsetWidth; mEl.classList.add('tick');
+  }
+  function tick(){ if(!live) return; var v=seq[k]; show(v); k=(k+1)%seq.length; t=setTimeout(tick, v==='BOARD'?2600:(v===14?1600:900)); }
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){ show(9); return; }
+  new IntersectionObserver(function(es){ es.forEach(function(x){ if(x.isIntersecting&&!live){live=true;tick();} else if(!x.isIntersecting&&live){live=false;clearTimeout(t);} }); },{threshold:.3}).observe(pill);
+})();
+</script>
 
 <!-- TOP UP (André, 19 Oct 2026): real app screen, demo dropzone. -->
 <section class="flag" id="topup">
