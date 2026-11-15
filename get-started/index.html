@@ -207,6 +207,7 @@ footer .co, footer a { color: #D1D1D6; } footer a:hover { color: #fff; }
 
     <div id="done" hidden>
       <h1 id="doneTitle" tabindex="-1">You're on the list</h1>
+      <p class="sub" id="doneSub" hidden></p>
       <ol class="next" id="nextList">
         <li><i>1</i>We review your dropzone, usually the same day</li>
         <li><i>2</i>Your invite arrives by email</li>
@@ -235,6 +236,32 @@ footer .co, footer a { color: #D1D1D6; } footer a:hover { color: #fff; }
     document.getElementById('nextList').innerHTML = '<li><i>1</i>We email you today</li><li><i>2</i>We pick a time together</li><li><i>3</i>20 minutes on a video call</li>';
     document.getElementById('call').hidden = true;
     document.getElementById('doneTitle').textContent = 'Request sent';
+  }
+  // THE CONFIRM LINK (v177): the email's button opens this page with
+  // #confirm=<token>. Post it to desk-lead, then show the finished state.
+  var cm = /^#confirm=([A-Za-z0-9_-]{20,100})$/.exec(location.hash);
+  if (cm) {
+    try { history.replaceState(null, '', location.pathname); } catch (e) {}
+    f.hidden = true; document.getElementById('done').hidden = false;
+    ['s1', 's2', 's3'].forEach(function (id) { document.getElementById(id).className = 'ok'; });
+    var dt = document.getElementById('doneTitle'), dsub = document.getElementById('doneSub'), nl = document.getElementById('nextList');
+    dt.textContent = 'Confirming...'; nl.style.display = 'none'; document.getElementById('call').hidden = true;
+    fetch(URL_, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ kind: 'confirm', token: cm[1] }) })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j || {} }; }); })
+      .then(function (x) {
+        if (!x.ok) throw new Error(x.j.status === 'unknown' || x.j.status === 'expired' ? 'expired' : 'failed');
+        if (x.j.kind === 'demo') {
+          dt.textContent = 'Request sent';
+          nl.innerHTML = '<li><i>1</i>We email you today</li><li><i>2</i>We pick a time together</li><li><i>3</i>20 minutes on a video call</li>';
+        } else dt.textContent = "You're on the list";
+        dsub.textContent = 'Email confirmed.'; dsub.hidden = false; nl.style.display = '';
+      })
+      .catch(function (e) {
+        dt.textContent = e && e.message === 'expired' ? 'This link has expired' : 'Could not confirm';
+        dsub.innerHTML = e && e.message === 'expired' ? 'Sign up again and we will send a new link. <a href="/get-started/">Start again</a>' : 'Open the link from your email again, or email <a href="mailto:andre@manifestjump.com">andre@manifestjump.com</a>.';
+        dsub.hidden = false;
+      })
+      .then(function () { dt.focus(); });
   }
   f.addEventListener('input', function (e) { if (e.target.getAttribute('aria-invalid')) e.target.removeAttribute('aria-invalid'); if (!f.querySelector('[aria-invalid="true"]')) err.hidden = true; });
   // STEP 1: check the three fields, then the options (nothing sent yet).
@@ -277,7 +304,19 @@ footer .co, footer a { color: #D1D1D6; } footer a:hover { color: #fff; }
     finT.textContent = 'Sending...'; err2.hidden = true;
     fetch(URL_, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) })
       .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
-      .then(function (x) { if (!x.ok) throw new Error(x.j && x.j.error || 'Could not send'); last = body; f.reset(); step(3); })
+      .then(function (x) {
+        if (!x.ok) throw new Error(x.j && x.j.error || 'Could not send');
+        last = body; f.reset();
+        // CONFIRM FIRST (v177, 15 Nov 2026): nothing reaches us until they
+        // open the link we just emailed them.
+        if (!x.j || x.j.confirm !== false) {
+          document.getElementById('doneTitle').textContent = 'Check your email to confirm';
+          var ds = document.getElementById('doneSub');
+          ds.textContent = 'We sent a link to ' + body.email.trim() + '. Tap it to ' + (demo ? 'send your request.' : 'finish signing up.');
+          ds.hidden = false;
+        }
+        step(3);
+      })
       .catch(function () { err2.textContent = 'Could not send. Email andre@manifestjump.com'; err2.hidden = false; sending = false; })
       .then(function () { finT.textContent = 'Finish'; });
   }
