@@ -758,7 +758,7 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
 
 /* 2. Header: active-page underline + mobile menu current item */
 .is-current > .sh-t::after{background:#050505!important}
-.sh-macc.is-current > span,.sh-mlink.is-current .sh-t{color:#050505!important}
+.sh-macc.is-current > span,.sh-mlink.is-current .sh-t{color:#fff!important}
 
 /* 3. Body links on help / support / privacy / terms (were purple text) */
 main.doc a:not([class]),.sup-tracks .email a{color:#050505!important;text-decoration:underline!important;text-decoration-color:rgba(5,5,5,.3)!important;text-underline-offset:3px}
@@ -892,7 +892,7 @@ html body .sh.li-bar.sh-hide, html.sh-seen body .sh.li-bar.sh-hide { opacity: 0 
   transition: opacity .22s ease, transform .22s ease !important; }
 @media (prefers-reduced-motion: reduce) { html body .sh.li-bar, html body .sh.li-bar.sh-hide { transition: opacity .01s !important; transform: none !important; } }
 </style><style id="sheet-solid">/* 4 Nov 2026 bug: the phone menu was see-through and page videos played over it. Solid sheet, above everything. */ html body .sh-sheet { background: #1A1B20 !important; z-index: 2147483000 !important; isolation: isolate; } html body .sh.li-bar { z-index: 2147483001 !important; } html body:has(.sh-burger[aria-expanded="true"]) { overflow: hidden; } html body:has(.sh-burger[aria-expanded="true"]) #main { visibility: hidden; }</style><style id="tap44">@media (max-width: 760px) { html body footer.site .ft-col a, html body footer.site a { min-height: 44px; display: inline-flex; align-items: center; } html body .sh .sh-burger { width: 44px !important; height: 44px !important; } html body .sh .sh-right > .sh-cta { min-height: 44px !important; } }</style><style id="nav-always">/* 5 Nov 2026 (André): the bar stays on screen all the way down, footer included. */ html body .sh.is-away, html.sh-seen body .sh.li-bar.is-away { opacity: 1 !important; visibility: visible !important; transform: none !important; pointer-events: auto !important; }</style><style id="cta-blue-fix">html body .sh .sh-right > .sh-cta, html body .sh.over-art .sh-right > .sh-cta, html body .sh .sh-mctas .sh-cta { background: linear-gradient(180deg,#2A2A2E 0%,#050505 100%) !important; color: #fff !important; box-shadow: rgba(255,255,255,.24) 0 1px 0 inset, rgba(8,18,64,.34) 0 -1px 0 inset, rgba(10,22,80,.14) 0 1px 2px !important; } html body .sh .sh-right > .sh-cta * { color: #fff !important; }</style>
-<style id="pill-gap">/* 8 Nov 2026: the floating pill nav needs room above the first line on phones. */ @media (max-width: 760px) { html body #main { padding-top: 26px !important; } }</style>
+<style id="pill-gap">/* 8 Nov 2026: the floating pill nav needs room above the first line on phones. */ @media (max-width: 760px) { html body #main { padding-top: 110px !important; } }</style>
 <script id="android-links">/* 13 Nov 2026: on Android, Download buttons go to Google Play. Store badges keep their own store. */if(/Android/i.test(navigator.userAgent)){document.querySelectorAll('a[href*="apps.apple.com"]').forEach(function(a){if(!a.querySelector('img[src*="appstore-badge"]'))a.href="https://play.google.com/store/apps/details?id=com.andrelarsen.manifest";});}</script>
 <style id="ft-clean">/* 13 Nov 2026 (André): a clean dark footer, no painting. Near-black, columns
    with small grey labels (like softriver.co), every link visible on phones too. */
@@ -932,6 +932,16 @@ html body footer.site .ft-base span { color: #8E8E93 !important; }
   html body footer.site .ft-col:last-child h3 { flex-basis: auto !important; }
   html body footer.site .ft-col a { padding: 10px 0 !important; }
 }
+</style>
+<style id="audit-1115">/* 15 Nov 2026 audit (phone + MacBook). Menu opens solid on its first frame (no white flash), the bar and its X stay above the sheet on every page, the current section stays readable on the dark sheet, the bar reads black over white pages, footer column titles match, dropdowns line up with the bar, doc pages breathe above the footer. */
+html body .sh-sheet{animation:none!important}
+html body:has(.sh-burger[aria-expanded="true"]){background:#1A1B20!important}
+html body:has(.sh-burger[aria-expanded="true"]) .sh{z-index:2147483001!important}
+html body .sh-sheet .sh-macc.is-current > span, html body .sh-sheet .sh-mlink.is-current .sh-t{color:#fff!important}
+html body .sh::before{background:rgba(26,27,32,.92)!important}
+html body footer.site .ft-col:not(:last-child) h3{display:block!important;min-height:0!important;margin:4px 0 16px!important;color:#8E8E93!important}
+html body main.doc{padding-bottom:clamp(72px,9vw,120px)!important}
+@media (min-width:761px){html body .sh .sh-dd, html body .sh nav.sh-nav{position:static!important} html body .sh .sh-panel{left:0!important;right:0!important;width:auto!important;max-width:none!important}}
 </style>
 </body>
 </html>

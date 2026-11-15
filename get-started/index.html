@@ -422,5 +422,14 @@ html { color-scheme: dark; }
 <style id="tap44">@media (max-width: 760px) { html body footer.site .ft-col a, html body footer.site a { min-height: 44px; display: inline-flex; align-items: center; } html body .sh .sh-burger { width: 44px !important; height: 44px !important; } html body .sh .sh-right > .sh-cta { min-height: 44px !important; } }</style>
 <script id="safari-noshadow">/* 5 Nov 2026: Safari paints black boxes over the page (the hero, the right edge) while a drop-shadow filter sits on any image. Chrome is fine, so only Safari loses those shadows. */(function(){var u=navigator.userAgent;if(!/Safari/.test(u)||/Chrome|CriOS|FxiOS|Android/.test(u))return;function k(){document.querySelectorAll("img, picture, video, figure, .dzg-halo, [class*=phone]").forEach(function(e){if(getComputedStyle(e).filter.indexOf("drop-shadow")>-1)e.style.setProperty("filter","none","important")})}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",k);else k();addEventListener("load",k)})();</script>
 <script id="android-links">/* 13 Nov 2026: on Android, Download buttons go to Google Play. Store badges keep their own store. */if(/Android/i.test(navigator.userAgent)){document.querySelectorAll('a[href*="apps.apple.com"]').forEach(function(a){if(!a.querySelector('img[src*="appstore-badge"]'))a.href="https://play.google.com/store/apps/details?id=com.andrelarsen.manifest";});}</script>
+<style id="audit-1115">/* 15 Nov 2026 audit: on the dark card the main button is the white pill with black text (as /s and /p), the current step is white, the second button is a pill of the same size. */
+html body .go, html body a.go, html body button.go { background: #F4F5F8 !important; background-image: none !important; color: #050505 !important; box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(0,0,0,.3), 0 4px 8px rgba(0,0,0,.2) !important; }
+html body .go *, html body .go svg { color: #050505 !important; }
+@media (hover: hover) { html body .go:not([disabled]):hover, html body a.go:hover { background: #fff !important; color: #050505 !important; } }
+html body .go:not([disabled]):active { background: #E4E4E7 !important; }
+html body .steps i.on { background: #fff !important; color: #050505 !important; }
+html body .alt { border: 0 !important; border-radius: 999px; height: 52px; font-weight: 600; font-size: 16px; box-shadow: inset 0 0 0 1px rgba(241,242,245,.22); }
+@media (max-width: 400px) { html body .opts button { font-size: 14px; white-space: nowrap; letter-spacing: -.01em; } }
+</style>
 </body>
 </html>

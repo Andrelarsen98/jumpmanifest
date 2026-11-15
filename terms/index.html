@@ -786,7 +786,7 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
 
 /* 2. Header: active-page underline + mobile menu current item */
 .is-current > .sh-t::after{background:#050505!important}
-.sh-macc.is-current > span,.sh-mlink.is-current .sh-t{color:#050505!important}
+.sh-macc.is-current > span,.sh-mlink.is-current .sh-t{color:#fff!important}
 
 /* 3. Body links on help / support / privacy / terms (were purple text) */
 main.doc a:not([class]),.sup-tracks .email a{color:#050505!important;text-decoration:underline!important;text-decoration-color:rgba(5,5,5,.3)!important;text-underline-offset:3px}
@@ -983,6 +983,17 @@ html body footer.site .ft-base span { color: #8E8E93 !important; }
   html body footer.site .ft-col:last-child h3 { flex-basis: auto !important; }
   html body footer.site .ft-col a { padding: 10px 0 !important; }
 }
+</style>
+<style id="pill-gap">/* 15 Nov 2026: room under the floating pill on phones, same as /desk-app/ and /help/. */ @media (max-width: 760px) { html body #main { padding-top: 110px !important; } }</style>
+<style id="audit-1115-page">/* 15 Nov 2026 audit: page fixes. */ html body .doc h2, html body .doc h3 { text-wrap: pretty; }</style><style id="audit-1115">/* 15 Nov 2026 audit (phone + MacBook). Menu opens solid on its first frame (no white flash), the bar and its X stay above the sheet on every page, the current section stays readable on the dark sheet, the bar reads black over white pages, footer column titles match, dropdowns line up with the bar, doc pages breathe above the footer. */
+html body .sh-sheet{animation:none!important}
+html body:has(.sh-burger[aria-expanded="true"]){background:#1A1B20!important}
+html body:has(.sh-burger[aria-expanded="true"]) .sh{z-index:2147483001!important}
+html body .sh-sheet .sh-macc.is-current > span, html body .sh-sheet .sh-mlink.is-current .sh-t{color:#fff!important}
+html body .sh::before{background:rgba(26,27,32,.92)!important}
+html body footer.site .ft-col:not(:last-child) h3{display:block!important;min-height:0!important;margin:4px 0 16px!important;color:#8E8E93!important}
+html body main.doc{padding-bottom:clamp(72px,9vw,120px)!important}
+@media (min-width:761px){html body .sh .sh-dd, html body .sh nav.sh-nav{position:static!important} html body .sh .sh-panel{left:0!important;right:0!important;width:auto!important;max-width:none!important}}
 </style>
 </body>
 </html>

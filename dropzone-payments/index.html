@@ -1268,7 +1268,7 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
       <img src="/assets/features/topup-bundles.webp?v=2" width="900" height="1710" alt="A jumper tops up in the Manifest app: 10 jump tickets for $330, paid with Apple Pay, Cash App or card" decoding="async" fetchpriority="high">
       <img class="dp-ph2" src="/assets/features/topup-applepay.webp" width="900" height="1710" alt="Apple Pay confirming $330.00 to the dropzone in the Manifest app" decoding="async">
     </div>
-    <p class="dp-cap">Sample data from a demo dropzone.</p>
+    <p class="dp-cap">Sample data.</p>
   </section>
 
   <section class="sec" id="apple-pay">
@@ -1327,10 +1327,10 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
     </div>
     <div class="vis-media">
       <div class="dp-studio">
-        <img srcset="/assets/opt/studio-desk-today-800w.04733ab5.webp 800w, /assets/features/studio-desk-today.webp 1600w" style="aspect-ratio: 1600 / 1242" sizes="(max-width: 600px) 95vw, (max-width: 1000px) 810px, 720px" class="studio" src="/assets/features/studio-desk-today.webp" alt="Manifest Desk Today page for a demo dropzone: charged for jumps today, a Top up button, open loads, next load, standby, and an Accounts card showing money owed to the dropzone and balances held" width="1600" height="1242" loading="lazy" decoding="async" />
+        <img srcset="/assets/opt/studio-desk-today-800w.04733ab5.webp 800w, /assets/features/studio-desk-today.webp 1600w" style="aspect-ratio: 1600 / 1242" sizes="(max-width: 600px) 95vw, (max-width: 1000px) 810px, 720px" class="studio" src="/assets/features/studio-desk-today.webp" alt="Manifest Desk Today page for a sample dropzone: charged for jumps today, a Top up button, open loads, next load, standby, and an Accounts card showing money owed to the dropzone and balances held" width="1600" height="1242" loading="lazy" decoding="async" />
         <img class="dp-wallet" src="/assets/opt/app-wallet.webp" width="640" height="1325" alt="The Manifest app at a dropzone: balance, Top up, and the jumper's load" loading="lazy" decoding="async" />
       </div>
-      <p class="desk-cap">Manifest Desk with sample data from a demo dropzone.</p>
+      <p class="desk-cap">Manifest Desk with sample data.</p>
     </div>
   </section>
 
@@ -1339,13 +1339,13 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
     <h2>Every dollar, day by day.</h2>
     <p class="lead">Charged for jumps against money in, without exporting anything.</p>
     <figure class="dp-money">
-      <img class="dp-chart" src="/assets/features/desk-money.webp" width="1200" height="492" alt="Manifest Desk money report for a demo dropzone: charged for jumps, money in from top-ups, jumps and planes full, with a day by day chart of charged against money in" loading="lazy" decoding="async">
+      <img class="dp-chart" src="/assets/features/desk-money.webp" width="1200" height="492" alt="Manifest Desk money report for a sample dropzone: charged for jumps, money in from top-ups, jumps and planes full, with a day by day chart of charged against money in" loading="lazy" decoding="async">
       <img class="dp-paid" src="/assets/features/desk-paid.webp" width="880" height="519" alt="A cash payment of $285.00 taken at the desk for a jumper on load 7, with Print receipt and Done" loading="lazy" decoding="async">
     </figure>
     <ul class="dp-money-note">
       <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Cash and your own card terminal still go on the account</li>
     </ul>
-    <p class="dp-cap">Sample data from a demo dropzone.</p>
+    <p class="dp-cap">Sample data.</p>
   </section>
 
   <section class="sec vis flip" id="self-manifest">
@@ -1633,7 +1633,7 @@ html.sh-seen .sh.li-bar{animation:none!important;opacity:1!important;transform:n
 
 /* 2. Header: active-page underline + mobile menu current item */
 .is-current > .sh-t::after{background:#050505!important}
-.sh-macc.is-current > span,.sh-mlink.is-current .sh-t{color:#050505!important}
+.sh-macc.is-current > span,.sh-mlink.is-current .sh-t{color:#fff!important}
 
 /* 3. Body links on help / support / privacy / terms (were purple text) */
 main.doc a:not([class]),.sup-tracks .email a{color:#050505!important;text-decoration:underline!important;text-decoration-color:rgba(5,5,5,.3)!important;text-underline-offset:3px}
@@ -1809,6 +1809,16 @@ html body footer.site .ft-base span { color: #8E8E93 !important; }
   html body footer.site .ft-col:last-child h3 { flex-basis: auto !important; }
   html body footer.site .ft-col a { padding: 10px 0 !important; }
 }
+</style>
+<style id="audit-1115-page">/* 15 Nov 2026 audit: secondary hero link underlined, as on the other topic pages. */ html body .dp-link { text-decoration: underline !important; text-underline-offset: 4px; text-decoration-color: #A1A1AA; }</style><style id="audit-1115">/* 15 Nov 2026 audit (phone + MacBook). Menu opens solid on its first frame (no white flash), the bar and its X stay above the sheet on every page, the current section stays readable on the dark sheet, the bar reads black over white pages, footer column titles match, dropdowns line up with the bar, doc pages breathe above the footer. */
+html body .sh-sheet{animation:none!important}
+html body:has(.sh-burger[aria-expanded="true"]){background:#1A1B20!important}
+html body:has(.sh-burger[aria-expanded="true"]) .sh{z-index:2147483001!important}
+html body .sh-sheet .sh-macc.is-current > span, html body .sh-sheet .sh-mlink.is-current .sh-t{color:#fff!important}
+html body .sh::before{background:rgba(26,27,32,.92)!important}
+html body footer.site .ft-col:not(:last-child) h3{display:block!important;min-height:0!important;margin:4px 0 16px!important;color:#8E8E93!important}
+html body main.doc{padding-bottom:clamp(72px,9vw,120px)!important}
+@media (min-width:761px){html body .sh .sh-dd, html body .sh nav.sh-nav{position:static!important} html body .sh .sh-panel{left:0!important;right:0!important;width:auto!important;max-width:none!important}}
 </style>
 </body>
 </html>
