@@ -1413,6 +1413,18 @@ a.aw-bar .aw-ph{ color: #fff; }
 .hero-art{position:relative!important;top:auto!important}
 .art-bg::before{display:none!important}
 </style>
+<style id="hero-island">
+/* Hero Next load: the island strip above the Lock Screen card, and the wordmark above the app icon (15 Nov 2026). */
+.aw-pane .la-isl{flex:none;width:min(290px,80%);margin:auto auto 8px;border-radius:16px;box-shadow:none}
+.aw-pane .la-isl + .la{margin-top:0}
+/* The feed fades its top 46px for the scrolling panes; this pane does not scroll, so no fade over the island. */
+.aw-feed:has(#aw-pane-1.is-on){-webkit-mask-image:none;mask-image:none}
+.art-wm{display:block;height:30px;width:auto;margin:0 auto 18px}
+@media (max-width:760px){.aw-pane .la-isl{width:230px;border-radius:12px;margin-bottom:6px}.art-wm{height:24px;margin-bottom:14px}}
+/* Short phones have no room above the card: card only, as before. */
+html.hero-short .aw-pane .la-isl{display:none}
+@media (max-width:760px) and (max-height:720px){.aw-pane .la-isl{display:none}}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
@@ -1872,6 +1884,11 @@ a.aw-bar .aw-ph{ color: #fff; }
         </div>
         <div class="aw-pane" role="tabpanel" id="aw-pane-1" aria-labelledby="aw-tab-1" aria-hidden="true">
           <!-- The real Lock Screen card, every number from LoadLockScreenView in targets/loadwidget/index.swift. -->
+          <!-- The Dynamic Island strip from #island, the same countdown as the card under it (15 Nov 2026). -->
+          <div class="isl-bar la-isl" aria-hidden="true">
+            <img class="isl-bg" src="/assets/opt/island-bar.webp" width="1320" height="210" alt="" />
+            <div class="isl-pill"><img class="isl-ic" src="/assets/dock/manifest-desk-2.png" alt="" width="40" height="40" /><span class="isl-min"><span data-min="0" data-hero>10</span>m</span></div>
+          </div>
           <div class="la">
             <div class="la-top"><span class="la-k">YOUR LOAD</span><span class="la-dz">SKYDIVE ELSINORE</span></div>
             <div class="la-mid"><div class="la-l"><div class="la-name">Blue Caravan 3</div><div class="la-st"><b>ON CALL</b><span>   ·   7/12</span></div></div><div class="la-count"><u data-min="0" data-hero>10</u><s>MIN</s></div></div>
@@ -1892,6 +1909,7 @@ a.aw-bar .aw-ph{ color: #fff; }
   </div>
 
   <div class="art-copy">
+    <img class="art-wm" src="/assets/manifest-wordmark-white.svg" alt="manifest" width="150" height="34" />
     <a class="art-icon-a" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="Manifest on the App Store"><img class="art-icon" src="/assets/hero/app-icon.png" width="49" height="49" alt="" /></a>
     <h1>The app for skydivers.<br />The system for dropzones.</h1>
     <p class="art-lede">Manifest is the iPhone and Android app for live dropzone loads and 3D jump replay. Dropzones run on <a href="/dropzones/">Manifest Desk</a>.</p>
