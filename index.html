@@ -1426,21 +1426,16 @@ html.hero-short .aw-pane .la-isl{display:none}
 @media (max-width:760px) and (max-height:720px){.aw-pane .la-isl{display:none}}
 </style>
 <style id="island-glass">
-/* The status bar is built, not a photo (15 Nov 2026, André: "same transparency as the Lock Screen card"):
-   black glass like the card under it, the real island pill on top, the time and icons in white. */
-/* Liquid glass, iOS 26 style: a frosted body, a bright specular rim along the top, a soft lit edge all round. */
-.isl-bar{aspect-ratio:1320/210;container-type:inline-size;position:relative;
-  background:linear-gradient(180deg,rgba(255,255,255,.26) 0,rgba(255,255,255,.07) 38%,rgba(255,255,255,.02) 62%,rgba(255,255,255,.09) 100%),rgba(18,18,20,.88);
-  -webkit-backdrop-filter:blur(30px) saturate(1.8);backdrop-filter:blur(30px) saturate(1.8);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.55),inset 0 -1px 0 rgba(255,255,255,.14),inset 0 0 0 .5px rgba(255,255,255,.28),inset 0 0 22px rgba(255,255,255,.06),0 20px 50px rgba(4,8,21,.22)}
-.aw-pane .la-isl{background:linear-gradient(180deg,rgba(255,255,255,.30) 0,rgba(255,255,255,.08) 40%,rgba(255,255,255,.03) 62%,rgba(255,255,255,.12) 100%),rgba(255,255,255,.05);
-  -webkit-backdrop-filter:blur(22px) saturate(1.8);backdrop-filter:blur(22px) saturate(1.8);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.6),inset 0 -1px 0 rgba(255,255,255,.18),inset 0 0 0 .5px rgba(255,255,255,.3),0 8px 24px rgba(0,0,0,.25)}
-.isl-pill{background:#000;box-shadow:inset 0 0 0 .5px rgba(255,255,255,.08)}
-.isl-sl,.isl-sr{position:absolute;top:0;bottom:0;display:flex;align-items:center;gap:1.1cqw;color:#fff;font:600 4.6cqw/1 -apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
-.isl-sl{left:9.5%}.isl-sr{right:8%}
-.isl-sl svg{width:3.4cqw;height:3.4cqw;opacity:.9}
-.isl-sig{width:3.6cqw;height:auto;fill:currentColor}.isl-bat{width:5cqw;height:auto;fill:currentColor}
+/* A real iPhone top (15 Nov 2026, André: "like a real Dynamic Island, real battery emblems"): no bar behind it,
+   just the time, the black island and the signal, Wi-Fi and battery icons, the way iOS draws them.
+   Dark icons on the white section, white icons over the painting. */
+.isl-bar{aspect-ratio:1320/210;container-type:inline-size;position:relative;background:none!important;box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;border-radius:0!important;overflow:visible!important}
+.aw-pane .la-isl{background:none!important;box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+.isl-pill{background:#000;box-shadow:none}
+.isl-sl,.isl-sr{position:absolute;top:0;bottom:0;display:flex;align-items:center;color:#000;font:600 5.6cqw/1 -apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.aw-pane .isl-sl,.aw-pane .isl-sr{color:#fff}
+.isl-sl{left:11%}.isl-sr{right:8.5%;gap:1.4cqw}
+.isl-sig{width:4.1cqw;height:auto;fill:currentColor}.isl-wifi{width:3.7cqw;height:auto;fill:currentColor}.isl-bat{width:5.8cqw;height:auto;fill:currentColor}
 </style>
 </head>
 <body>
@@ -1903,7 +1898,7 @@ html.hero-short .aw-pane .la-isl{display:none}
           <!-- The real Lock Screen card, every number from LoadLockScreenView in targets/loadwidget/index.swift. -->
           <!-- The Dynamic Island strip from #island, the same countdown as the card under it (15 Nov 2026). -->
           <div class="isl-bar la-isl" aria-hidden="true">
-            <span class="isl-sl">9:41<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.7 3.6A6 6 0 0 1 18 8c0 4.2 1 6.6 1.9 7.9M17 17H3s3-2 3-9c0-.5 0-1 .2-1.5M10.3 21a1.94 1.94 0 0 0 3.4 0M2 2l20 20"/></svg></span><span class="isl-sr"><svg class="isl-sig" viewBox="0 0 18 12" aria-hidden="true"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1" opacity=".35"/></svg>5G<svg class="isl-bat" viewBox="0 0 27 13" aria-hidden="true"><rect x=".5" y=".5" width="23" height="12" rx="3.5" fill="none" stroke="currentColor" opacity=".45"/><rect x="2" y="2" width="15" height="9" rx="2"/><path d="M25 4.5v4c.8-.3 1.5-1 1.5-2s-.7-1.7-1.5-2z" opacity=".45"/></svg></span>
+            <span class="isl-sl">9:41</span><span class="isl-sr"><svg class="isl-sig" viewBox="0 0 19 12" aria-hidden="true"><rect x="0" y="7.5" width="3.2" height="4.5" rx="1"/><rect x="5.2" y="5" width="3.2" height="7" rx="1"/><rect x="10.4" y="2.5" width="3.2" height="9.5" rx="1"/><rect x="15.6" y="0" width="3.2" height="12" rx="1"/></svg><svg class="isl-wifi" viewBox="0 0 17 12" aria-hidden="true"><path d="M8.5 2.3c2.4 0 4.6.9 6.2 2.5.2.2.5.2.7 0l1.1-1.1c.2-.2.2-.5 0-.7C14.5 1 11.6-.2 8.5-.2S2.5 1 .5 3c-.2.2-.2.5 0 .7l1.1 1.1c.2.2.5.2.7 0 1.6-1.6 3.8-2.5 6.2-2.5z"/><path d="M8.5 6c1.4 0 2.6.5 3.6 1.4.2.2.5.2.7 0l1.1-1.1c.2-.2.2-.5 0-.7-1.4-1.3-3.3-2.1-5.4-2.1s-4 .8-5.4 2.1c-.2.2-.2.5 0 .7l1.1 1.1c.2.2.5.2.7 0C5.9 6.5 7.1 6 8.5 6z"/><path d="M10.9 9.3c.2-.2.2-.5 0-.7-.6-.6-1.5-.9-2.4-.9s-1.8.3-2.4.9c-.2.2-.2.5 0 .7l2 2c.2.2.5.2.7 0l2.1-2z"/></svg><svg class="isl-bat" viewBox="0 0 27 13" aria-hidden="true"><rect x=".5" y=".5" width="23" height="12" rx="3.8" fill="none" stroke="currentColor" stroke-opacity=".35"/><rect x="2" y="2" width="17" height="9" rx="2.3"/><path d="M25 4.3v4.4c.9-.4 1.5-1.2 1.5-2.2S25.9 4.7 25 4.3z" fill-opacity=".4"/></svg></span>
             <div class="isl-pill"><img class="isl-ic" src="/assets/dock/manifest-desk-2.png" alt="" width="40" height="40" /><span class="isl-min"><span data-min="0" data-hero>10</span>m</span></div>
           </div>
           <div class="la">
@@ -2073,7 +2068,7 @@ html.hero-short .aw-pane .la-isl{display:none}
     <p class="isl-p">The countdown to your load, on top of every app.</p>
     <div class="isl-stage" aria-hidden="true">
       <div class="isl-bar">
-        <span class="isl-sl">9:41<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.7 3.6A6 6 0 0 1 18 8c0 4.2 1 6.6 1.9 7.9M17 17H3s3-2 3-9c0-.5 0-1 .2-1.5M10.3 21a1.94 1.94 0 0 0 3.4 0M2 2l20 20"/></svg></span><span class="isl-sr"><svg class="isl-sig" viewBox="0 0 18 12" aria-hidden="true"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1" opacity=".35"/></svg>5G<svg class="isl-bat" viewBox="0 0 27 13" aria-hidden="true"><rect x=".5" y=".5" width="23" height="12" rx="3.5" fill="none" stroke="currentColor" opacity=".45"/><rect x="2" y="2" width="15" height="9" rx="2"/><path d="M25 4.5v4c.8-.3 1.5-1 1.5-2s-.7-1.7-1.5-2z" opacity=".45"/></svg></span>
+        <span class="isl-sl">9:41</span><span class="isl-sr"><svg class="isl-sig" viewBox="0 0 19 12" aria-hidden="true"><rect x="0" y="7.5" width="3.2" height="4.5" rx="1"/><rect x="5.2" y="5" width="3.2" height="7" rx="1"/><rect x="10.4" y="2.5" width="3.2" height="9.5" rx="1"/><rect x="15.6" y="0" width="3.2" height="12" rx="1"/></svg><svg class="isl-wifi" viewBox="0 0 17 12" aria-hidden="true"><path d="M8.5 2.3c2.4 0 4.6.9 6.2 2.5.2.2.5.2.7 0l1.1-1.1c.2-.2.2-.5 0-.7C14.5 1 11.6-.2 8.5-.2S2.5 1 .5 3c-.2.2-.2.5 0 .7l1.1 1.1c.2.2.5.2.7 0 1.6-1.6 3.8-2.5 6.2-2.5z"/><path d="M8.5 6c1.4 0 2.6.5 3.6 1.4.2.2.5.2.7 0l1.1-1.1c.2-.2.2-.5 0-.7-1.4-1.3-3.3-2.1-5.4-2.1s-4 .8-5.4 2.1c-.2.2-.2.5 0 .7l1.1 1.1c.2.2.5.2.7 0C5.9 6.5 7.1 6 8.5 6z"/><path d="M10.9 9.3c.2-.2.2-.5 0-.7-.6-.6-1.5-.9-2.4-.9s-1.8.3-2.4.9c-.2.2-.2.5 0 .7l2 2c.2.2.5.2.7 0l2.1-2z"/></svg><svg class="isl-bat" viewBox="0 0 27 13" aria-hidden="true"><rect x=".5" y=".5" width="23" height="12" rx="3.8" fill="none" stroke="currentColor" stroke-opacity=".35"/><rect x="2" y="2" width="17" height="9" rx="2.3"/><path d="M25 4.3v4.4c.9-.4 1.5-1.2 1.5-2.2S25.9 4.7 25 4.3z" fill-opacity=".4"/></svg></span>
         <div class="isl-pill" id="islPill">
           <img class="isl-ic" src="/assets/dock/manifest-desk-2.png" alt="" width="40" height="40" />
           <span class="isl-min" id="islMin">14m</span>
