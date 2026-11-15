@@ -1419,7 +1419,12 @@ a.aw-bar .aw-ph{ color: #fff; }
 .aw-pane .la-isl + .la{margin-top:0}
 /* The feed fades its top 46px for the scrolling panes; this pane does not scroll, so no fade over the island. */
 .aw-feed:has(#aw-pane-1.is-on){-webkit-mask-image:none;mask-image:none}
+.art-brand{display:flex;align-items:center;justify-content:center;gap:12px;margin:0 auto 18px}.art-brand .art-wm{margin:0}
 .art-wm{display:block;height:30px;width:auto;margin:0 auto 18px}
+/* Where the big app icon is hidden for lack of height, a small one sits next to the wordmark instead. */
+.art-mini{display:none;width:34px;height:34px;border-radius:9px}
+@media (min-width:761px) and (max-height:860px){.art-mini{display:block}}
+html.hero-short .art-mini{display:block;width:28px;height:28px;border-radius:7px}
 @media (max-width:760px){.aw-pane .la-isl{width:230px;border-radius:12px;margin-bottom:6px}.art-wm{height:24px;margin-bottom:14px}}
 /* Short phones have no room above the card: card only, as before. */
 html.hero-short .aw-pane .la-isl{display:none}
@@ -1921,7 +1926,7 @@ html.hero-short .aw-pane .la-isl{display:none}
   </div>
 
   <div class="art-copy">
-    <img class="art-wm" src="/assets/manifest-wordmark-white.svg" alt="manifest" width="150" height="34" />
+    <div class="art-brand"><img class="art-mini" src="/assets/hero/app-icon.png" alt="" width="34" height="34" /><img class="art-wm" src="/assets/manifest-wordmark-white.svg" alt="manifest" width="150" height="34" /></div>
     <a class="art-icon-a" href="https://apps.apple.com/us/app/manifest-skydive-play-share/id6778510429" aria-label="Manifest on the App Store"><img class="art-icon" src="/assets/hero/app-icon.png" width="49" height="49" alt="" /></a>
     <h1>The app for skydivers.<br />The system for dropzones.</h1>
     <p class="art-lede">Manifest is the iPhone and Android app for live dropzone loads and 3D jump replay. Dropzones run on <a href="/dropzones/">Manifest Desk</a>.</p>
@@ -3376,6 +3381,7 @@ span.go > svg{background:#050505!important}
     const sec = Math.ceil(left);
     if (sec === lastSec) return; lastSec = sec;
     timeEl.textContent = Math.floor(sec / 60) + ':' + String(sec % 60).padStart(2, '0');
+    win.querySelectorAll('.la-isl .isl-sl').forEach((e) => { e.textContent = timeEl.textContent; }); // the island shows the widget's own clock
     mins.forEach((m) => { const v = Math.ceil((sec + +m.dataset.min) / 60); m.textContent = v; if ('hero' in m.dataset) m.style.color = v <= 5 ? '#FF453A' : '#30D158'; });
   }
 
