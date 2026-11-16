@@ -51,6 +51,7 @@ Manifest Desk is skydiving software and dropzone management software (a skydive 
 - Rental gear.
 - Landout SOS with a live map and chat, a pickup pin for the driver, and Who's back after each load.
 - Hangar TV board on any TV with a browser.
+- Online tandem and course bookings: customers book and pay on the dropzone's own booking page (no account), with deposits, a waiver signed after booking, a waiting list and weather-day moves; bookings land in the Desk ready for a load. Payments go to the dropzone's own Stripe. Details: https://www.jumpmanifest.com/tandem-bookings/
 - Pricing: contact us for a quote at https://www.jumpmanifest.com/get-started/
 
 ## How to get it
@@ -119,6 +120,10 @@ At Manifest Desk dropzones, jumpers book themselves and their friends onto a loa
 ### Skydiving weather
 https://www.jumpmanifest.com/skydiving-weather/
 The Manifest app shows skydiving weather for any dropzone: wind at exit altitude, under canopy and on the ground with gusts, the winds aloft profile, cloud, rain, the calmest window and sunset. It is a forecast, not a jumpable verdict; the dropzone decides whether loads fly. Weather is free.
+
+### Tandem bookings
+https://www.jumpmanifest.com/tandem-bookings/
+Customers book and pay for tandems and courses on the dropzone's own booking page, with no account: pick a time, add who is jumping, pay a deposit or in full on the dropzone's own Stripe (or at the dropzone, if allowed). Each jumper signs the waiver on their phone after booking. Bookings land in Manifest Desk, where staff check people in, take what is owed and put them on a load with their crew. Owners set products (tandem, tandem with video, courses), times by the season, seats by instructors on duty, rules for changes and cancellations, a waiting list, promo codes, gift vouchers and price by time. On a weather day, staff move or message everyone on a time in one go. The booking page is in English and Norwegian. Owners add it to their website with their builder's own button and the link: https://www.jumpmanifest.com/help/bookings/#website
 
 ## Contact
 - Manifest Jump LLC, Wyoming, USA. andre@manifestjump.com
@@ -219,6 +224,9 @@ No. The Manifest app is free to download. At your dropzone, jumpers book, top up
 
 ### Who owns the data?
 You do. Download everything any time, as a dropzone of any size.
+
+### Can Manifest Desk take tandem bookings online?
+Yes. Customers book and pay for tandems and courses on your own booking page, with no account, and the booking lands in the Desk ready for a load. Payments go to your own Stripe account. See https://www.jumpmanifest.com/tandem-bookings/
 
 ## FAQ: support
 

@@ -51,6 +51,7 @@ Manifest Desk is skydiving software and dropzone management software (a skydive 
 - Rental gear.
 - Landout SOS with a live map and chat, a pickup pin for the driver, and Who's back after each load.
 - Hangar TV board on any TV with a browser.
+- Online tandem and course bookings: customers book and pay on the dropzone's own booking page (no account), with deposits, a waiver signed after booking, a waiting list and weather-day moves; bookings land in the Desk ready for a load. Payments go to the dropzone's own Stripe. Details: https://www.jumpmanifest.com/tandem-bookings/
 - Pricing: contact us for a quote at https://www.jumpmanifest.com/get-started/
 
 ## How to get it
@@ -78,6 +79,8 @@ Manifest Desk is skydiving software and dropzone management software (a skydive 
 - [Manifest guide](https://www.jumpmanifest.com/help/manifest/): build and call loads, check jumpers in, take top-ups and close the day
 - [Crew guide](https://www.jumpmanifest.com/help/crew/): for instructors, packers and pilots, with your loads, the pilot view, logging a pack and your pay
 - [Jumper guide](https://www.jumpmanifest.com/help/jumper/): join your dropzone in the app, sign the waiver, top up, book and get called
+- [Tandem bookings](https://www.jumpmanifest.com/tandem-bookings/): online tandem and course booking for dropzones, paid on the dropzone's own Stripe, straight into Manifest Desk
+- [Bookings guide](https://www.jumpmanifest.com/help/bookings/): turn on bookings, add products and times, put the booking button on your website, and the day itself
 - [Security and your data](https://www.jumpmanifest.com/help/security/): where dropzone data lives, who sees what, and how to take it with you
 - [Privacy Policy](https://www.jumpmanifest.com/privacy/)
 - [Terms of Service](https://www.jumpmanifest.com/terms/)

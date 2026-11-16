@@ -148,4 +148,16 @@
     <priority>0.3</priority>
   </url>
   <url><loc>https://www.jumpmanifest.com/desk-app/</loc></url>
+  <url>
+    <loc>https://www.jumpmanifest.com/tandem-bookings/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.jumpmanifest.com/help/bookings/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
