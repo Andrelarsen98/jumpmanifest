@@ -1885,7 +1885,7 @@ html.hero-short .aw-pane .la-isl{display:none}
     </div>
   <div class="art-win" role="group" aria-label="Manifest app demo: load calls, next load and 3D replay" data-art-win>
     <div class="aw-chrome">
-      <span class="aw-meter" aria-hidden="true"><canvas class="aw-scope" width="60" height="40"></canvas><span class="aw-time" data-time>10:00</span></span>
+      <span class="aw-meter" aria-hidden="true"><canvas class="aw-scope" width="60" height="40"></canvas><span class="aw-time" data-time>9:43</span></span>
       <span class="aw-tools"><a class="aw-key" href="/skydiving-weather/">Weather</a><a class="aw-key aw-key-on" href="/uspa-digital-logbook/">Check-in</a></span>
     </div>
     <div class="aw-body">
@@ -3369,18 +3369,23 @@ span.go > svg{background:#050505!important}
     while (trBody.children.length > 5) trBody.removeChild(trBody.firstElementChild);
     ages(); pin(trBody); void n.offsetHeight; n.classList.add('is-in');
   }
-  let gClock = 0, gT0 = 0, gI = 1, gHold = false;
+  // The first call lands 0.8 s after the page opens, not a whole cycle later (André, 16 Nov 2026).
+  let gClock = 0, gT0 = 0.8 - G_CYCLE, gI = 1, gHold = false;
   function growTo(g) {
     while (g >= gT0 + G_CYCLE) { gI = (gI + 1) % LIVE.length; dayMin += LIVE[gI][0]; addNtf(LIVE[gI]); gT0 += G_CYCLE; }
   }
 
-  // The clock in the title bar counts down to the load, and every minute shown on the card follows it.
+  // The title bar is a real clock and runs forward (16 Nov 2026, André: it read as a clock going
+  // backwards). The load leaves at 9:53, so the clock shows 9:53 minus the time left, and every
+  // minute on the card counts down to it.
   const timeEl = q('[data-time]'), mins = [...win.querySelectorAll('[data-min]')];
+  const DEPART = 9 * 60 + 53;
   let left = 600, lastSec = -1;
   function paintClock() {
     const sec = Math.ceil(left);
     if (sec === lastSec) return; lastSec = sec;
-    timeEl.textContent = Math.floor(sec / 60) + ':' + String(sec % 60).padStart(2, '0');
+    const now = DEPART - Math.ceil(sec / 60);
+    timeEl.textContent = Math.floor(now / 60) + ':' + String(now % 60).padStart(2, '0');
     win.querySelectorAll('.la-isl .isl-sl').forEach((e) => { e.textContent = timeEl.textContent; }); // the island shows the widget's own clock
     mins.forEach((m) => { const v = Math.ceil((sec + +m.dataset.min) / 60); m.textContent = v; if ('hero' in m.dataset) m.style.color = v <= 5 ? '#FF453A' : '#30D158'; });
   }
