@@ -1446,12 +1446,13 @@ html.hero-short .aw-pane .la-isl{display:none}
 <style id="light-only">/* 15 Nov 2026 (André): the site is light only; this also tells Safari dark-mode extensions to leave it alone. */ :root{color-scheme:light only} html body .sh .sh-logo{color:#fff} html body .sh a.sh-logo img.lockup.lockup{filter:none!important;object-position:-99999px 0;background:currentColor;-webkit-mask:url(/assets/manifest-lockup.svg?v=6) center/contain no-repeat;mask:url(/assets/manifest-lockup.svg?v=6) center/contain no-repeat} /* The bar logo is drawn in the text colour, so a phone dark-mode tool that lightens the bar darkens the logo with it. */</style>
 <meta name="darkreader-lock" />
 <style id="hero-phone-copy">/* 16 Nov 2026 (André): phones have room under the card, so the app icon and the one-line pitch show there too. */
-.art-mlogo { display: none; }
+.art-mlogo, .art-mwm { display: none; }
 @media (max-width: 760px) {
+  .art-mwm { display: block; height: 26px; width: auto; margin: 0 auto 14px; }
   .art-mlogo { display: block; width: 46px; height: 46px; border-radius: 12px; margin: 0 auto 12px; box-shadow: 0 6px 18px rgba(0,0,0,.28); }
   .hero-art .art-lede { display: block !important; margin: 12px auto 0; max-width: 330px; font-size: 15.5px; line-height: 1.5; text-align: center; }
 }
-@media (max-width: 760px) and (max-height: 700px) { .art-mlogo { display: none; } .hero-art .art-lede { display: none !important; } }
+@media (max-width: 760px) and (max-height: 700px) { .art-mlogo, .art-mwm { display: none; } .hero-art .art-lede { display: none !important; } }
 </style>
 </head>
 <body>
@@ -1937,6 +1938,7 @@ html.hero-short .aw-pane .la-isl{display:none}
   </div>
 
   <div class="art-copy">
+    <img class="art-mwm" src="/assets/manifest-wordmark-white.svg" width="150" height="34" alt="manifest" />
     <img class="art-mlogo" src="/assets/hero/app-icon.png" width="52" height="52" alt="" />
     <h1>The app for skydivers.<br />The system for dropzones.</h1>
     <p class="art-lede">Manifest is the iPhone and Android app for live dropzone loads and 3D jump replay. Dropzones run on <a href="/dropzones/">Manifest Desk</a>.</p>
