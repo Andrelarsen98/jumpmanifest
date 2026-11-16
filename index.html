@@ -3401,7 +3401,7 @@ span.go > svg{background:#050505!important}
     const now = DEPART - Math.ceil(sec / 60);
     timeEl.textContent = Math.floor(now / 60) + ':' + String(now % 60).padStart(2, '0');
     win.querySelectorAll('.la-isl .isl-sl').forEach((e) => { e.textContent = timeEl.textContent; }); // the island shows the widget's own clock
-    mins.forEach((m) => { const v = Math.ceil((sec + +m.dataset.min) / 60); m.textContent = v; if ('hero' in m.dataset) m.style.color = v <= 10 ? '#FF453A' : '#30D158'; });
+    mins.forEach((m) => { const v = Math.ceil((sec + +m.dataset.min) / 60); m.textContent = v; if ('hero' in m.dataset) { const c = v <= 10 ? '#FF453A' : '#30D158'; m.style.color = c; const pill = m.closest('.isl-min'); if (pill) pill.style.color = c; } });
   }
 
   // The meter: three thin strokes that swell with bursts of speech. Still line when motion is off.
