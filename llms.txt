@@ -10,7 +10,7 @@
 Most dropzone software only runs the desk, and most skydiving apps only record jumps. Manifest connects the whole jump day in one live system:
 1. The jumper already carries the Manifest app (live loads, 3D replays) and manifests themselves onto a load from their phone.
 2. The dropzone sees it instantly on Manifest Desk and stays in control: staff move people between loads, run standby and approve every slot.
-3. Payments land in the dropzone's own Stripe account (Apple Pay top-ups), so Manifest never holds the dropzone's money.
+3. Payments land in the dropzone's own Stripe account (Apple Pay top-ups and online tandem and course bookings), so Manifest never holds the dropzone's money.
 4. Load calls (called, gear-up at 15 minutes, 10 minutes, 5 minutes, boarding, holds) reach every jumper on the load on their phone the moment staff press the button.
 5. Safety stays shared: the desk sees who is on which load, who is back after the jump, and any landout on a live map.
 
