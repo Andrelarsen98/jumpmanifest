@@ -23,6 +23,16 @@
   ],
   "redirects": [
     {
+      "source": "/tandem-bookings/",
+      "destination": "/bookings/",
+      "permanent": true
+    },
+    {
+      "source": "/tandem-bookings",
+      "destination": "/bookings/",
+      "permanent": true
+    },
+    {
       "source": "/app/:path*/",
       "destination": "/",
       "permanent": true
