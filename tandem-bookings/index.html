@@ -592,6 +592,8 @@ html body:has(.mfb-ov) .sh{opacity:0!important;visibility:hidden!important;point
 @media (hover:hover){.doc a.tb-b1:hover{background:linear-gradient(180deg,#3A3A3F,#0A0A0A)}.doc a.tb-b2:hover{background:#E7E7EC}}
 .doc a.tb-b1 svg,.doc a.tb-b2 svg{width:16px;height:16px}
 .doc p.tb-note{font-size:14px;line-height:20px;color:var(--g);margin:16px 0 0;text-align:center}
+.tb-hero-img{display:block;max-width:1100px;margin:48px auto 0}
+.tb-hero-img img{display:block;width:100%;height:auto}
 
 /* sections */
 .tb-sec{padding-top:var(--gap)}
@@ -852,6 +854,7 @@ html body .sh::before{ -webkit-backdrop-filter: none !important; backdrop-filter
         <a class="tb-b2" href="/get-started/?demo">Book a call</a>
       </div>
       <p class="tb-note">Opens the Demo Dropzone&rsquo;s booking page. Nothing is charged.</p>
+      <picture class="tb-hero-img"><source type="image/webp" srcset="/assets/opt/tandem-bookings-hero-1100.webp 1100w, /assets/opt/tandem-bookings-hero.webp 2200w" sizes="(max-width: 1180px) calc(100vw - 40px), 1100px" /><img src="/assets/opt/tandem-bookings-hero.png" width="1100" height="748" loading="eager" decoding="async" alt="Manifest Desk booking calendar with the week's tandems and courses, and the booking page on an iPhone" /></picture>
     </section>
 
     <section class="tb-w tb-sec" id="how" aria-labelledby="tb-how">
