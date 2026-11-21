@@ -108,4 +108,4 @@ These Terms are governed by the laws of the State of Wyoming, USA, without regar
 
 ## 18. Contact
 
-Manifest Jump LLC, a Wyoming company, United States. **andre@manifestjump.com**
+Manifest Jump LLC, a Wyoming company, United States. **help@jumpmanifest.com**

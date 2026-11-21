@@ -126,7 +126,7 @@ https://www.jumpmanifest.com/bookings/
 Customers book and pay for tandems and courses on the dropzone's own booking page, with no account: pick a time, add who is jumping, pay a deposit or in full on the dropzone's own Stripe (or at the dropzone, if allowed). Each jumper signs the waiver on their phone after booking. Bookings land in Manifest Desk, where staff check people in, take what is owed and put them on a load with their crew. Owners set products (tandem, tandem with video, courses), times by the season, seats by instructors on duty, rules for changes and cancellations, a waiting list, promo codes, gift vouchers and price by time. On a weather day, staff move or message everyone on a time in one go. The booking page is in English and Norwegian. Owners add it to their website with their builder's own button and the link: https://www.jumpmanifest.com/help/bookings/#website
 
 ## Contact
-- Manifest Jump LLC, Wyoming, USA. andre@manifestjump.com
+- Manifest Jump LLC, Wyoming, USA. help@jumpmanifest.com
 - Instagram: https://www.instagram.com/manifestjump/
 
 ## How 3D jump replay works
@@ -252,7 +252,7 @@ Subscriptions are billed through your Apple ID, so you manage them in iOS: Setti
 In the app, go to Profile → Settings (gear) → Delete account. This permanently erases your profile, logbook, gear, listings and events via an automated cascade. It can’t be undone. See our Privacy Policy for what is retained.
 
 ### How do I report or block someone?
-Open the person’s profile or a conversation and use Report or Block. Reports are reviewed, and content is removed or accounts suspended where they break the Terms. To report something urgently, email andre@manifestjump.com.
+Open the person’s profile or a conversation and use Report or Block. Reports are reviewed, and content is removed or accounts suspended where they break the Terms. To report something urgently, email help@jumpmanifest.com.
 
 ### How do I get the blue verification check?
 Verification is free. Upload a credential in your in-app credentials wallet and apply. An authorised admin reviews it. Verification reflects account status; it is not a guarantee of anyone’s skill or certification.

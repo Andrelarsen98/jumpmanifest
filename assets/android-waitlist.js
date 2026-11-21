@@ -38,7 +38,7 @@
       go.disabled = true; go.textContent = 'Sending...'; err.hidden = true;
       fetch(URL_, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ kind: 'android', email: email, name: '', website: f.website.value }) })
         .then(function (r) { if (!r.ok) throw new Error(); f.innerHTML = '<button type="button" class="aw-x" aria-label="Close">&times;</button><h3>You are on the list.</h3><p>We will email you the day Manifest is out on Android.</p><button type="button" class="aw-go">Done</button>'; f.querySelectorAll('button').forEach(function (b) { b.onclick = close; }); f.querySelector('.aw-go').focus(); })
-        .catch(function () { err.textContent = 'Could not send. Email andre@manifestjump.com instead.'; err.hidden = false; go.disabled = false; go.textContent = 'Tell me'; });
+        .catch(function () { err.textContent = 'Could not send. Email help@jumpmanifest.com instead.'; err.hidden = false; go.disabled = false; go.textContent = 'Tell me'; });
     });
   }
   document.addEventListener('keydown', function (e) { if (scrim && e.key === 'Escape') close(); });

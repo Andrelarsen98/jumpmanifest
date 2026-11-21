@@ -89,5 +89,5 @@ Manifest Desk is skydiving software and dropzone management software (a skydive 
 - [Full text for language models](https://www.jumpmanifest.com/llms-full.txt): every feature and the FAQ answers in plain text
 
 ## Contact
-- Manifest Jump LLC, Wyoming, USA. andre@manifestjump.com
+- Manifest Jump LLC, Wyoming, USA. help@jumpmanifest.com
 - Instagram: https://www.instagram.com/manifestjump/

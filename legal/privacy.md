@@ -4,7 +4,7 @@ _Last updated: 8 November 2026_
 
 Manifest ("we", "us", the "App") is a skydiving app for jumpers, with live loads, jump recording and 3D replay, gear, events and community, and Manifest Desk, the system dropzones use to run their loads, jumpers and payments. This policy explains what personal data we collect, why, and your rights over it.
 
-**Data controller:** Manifest Jump LLC, a Wyoming company, United States. Contact: **andre@manifestjump.com**.
+**Data controller:** Manifest Jump LLC, a Wyoming company, United States. Contact: **help@jumpmanifest.com**.
 
 ## 1. Data we collect
 
@@ -111,7 +111,7 @@ Depending on your location (including the EU/EEA under the GDPR), you have the r
 - **Edit** your profile in-app.
 - **Delete your account** in-app (Profile → Settings → Delete account), which erases your data except the records described under Retention.
 - **Delete a jump track** in-app, at any time. That removes it from the phone, from your backup and from Community in one step.
-- **Contact us** at **andre@manifestjump.com** for any other request.
+- **Contact us** at **help@jumpmanifest.com** for any other request.
 
 You may also lodge a complaint with your local data protection authority.
 
@@ -131,4 +131,4 @@ We may update this policy. Material changes will be notified in-app or by email.
 
 ## 10. Contact
 
-Manifest Jump LLC, a Wyoming company, United States. **andre@manifestjump.com**
+Manifest Jump LLC, a Wyoming company, United States. **help@jumpmanifest.com**

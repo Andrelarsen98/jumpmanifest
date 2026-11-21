@@ -195,7 +195,7 @@ footer .co, footer a { color: #D1D1D6; } footer a:hover { color: #fff; }
       <button class="go" type="submit" id="go"><span id="goT">Continue</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></button>
       <p class="fine">By continuing, you agree to our<br /><a href="/terms/">terms of service</a> and <a href="/privacy/">privacy policy</a>.</p>
     </form>
-    <noscript><p class="sub">This form needs JavaScript. Email <a href="mailto:andre@manifestjump.com">andre@manifestjump.com</a> with your dropzone's name instead.</p></noscript>
+    <noscript><p class="sub">This form needs JavaScript. Email <a href="mailto:andre@jumpmanifest.com">andre@jumpmanifest.com</a> with your dropzone's name instead.</p></noscript>
 
     <div id="opt" hidden>
       <h1 tabindex="-1" id="optTitle">Your dropzone</h1>
@@ -261,7 +261,7 @@ footer .co, footer a { color: #D1D1D6; } footer a:hover { color: #fff; }
       })
       .catch(function (e) {
         dt.textContent = e && e.message === 'expired' ? 'This link has expired' : 'Could not confirm';
-        dsub.innerHTML = e && e.message === 'expired' ? 'Sign up again and we will send a new link. <a href="/get-started/">Start again</a>' : 'Open the link from your email again, or email <a href="mailto:andre@manifestjump.com">andre@manifestjump.com</a>.';
+        dsub.innerHTML = e && e.message === 'expired' ? 'Sign up again and we will send a new link. <a href="/get-started/">Start again</a>' : 'Open the link from your email again, or email <a href="mailto:andre@jumpmanifest.com">andre@jumpmanifest.com</a>.';
         dsub.hidden = false;
       })
       .then(function () { dt.focus(); });
@@ -320,7 +320,7 @@ footer .co, footer a { color: #D1D1D6; } footer a:hover { color: #fff; }
         }
         step(3);
       })
-      .catch(function () { err2.textContent = 'Could not send. Email andre@manifestjump.com'; err2.hidden = false; sending = false; })
+      .catch(function () { err2.textContent = 'Could not send. Email andre@jumpmanifest.com'; err2.hidden = false; sending = false; })
       .then(function () { finT.textContent = 'Finish'; });
   }
   document.getElementById('fin').addEventListener('click', function () { send(true); });
