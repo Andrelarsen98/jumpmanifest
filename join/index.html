@@ -78,6 +78,15 @@ html body .btn, html body a.btn, html body a.btn[href="/get"] { background: #F4F
     </div>
     <p class="hint" id="hint">Free on iPhone and Android. No phone? Ask the desk to add you.</p>
   </div>
+  <footer class="jft"><div class="co">&copy; 2026 Manifest Jump LLC &middot; Wyoming, USA &middot; Dubai,&nbsp;UAE</div><nav><a href="/bookings/">Bookings</a><a href="/terms/">Terms of service</a><a href="/privacy/">Privacy policy</a><a href="/support/">Contact</a></nav></footer>
+  <style id="join-footer">/* 22 Nov 2026: footer with Bookings, same links as get-started. Card stays centred, footer sits at the bottom. */
+  body { flex-direction: column; }
+  .card { margin: auto 0; }
+  .jft { width: 100%; max-width: 1060px; margin-top: 32px; padding-top: 20px; border-top: 1px solid rgba(241,242,245,.10); display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; font-size: 14px; line-height: 20px; color: #D1D1D6; }
+  .jft nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 18px; }
+  .jft a { color: #D1D1D6; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
+  .jft a:hover { color: #fff; }
+  </style>
 <script>
   var code = (location.pathname.split('/')[2] || new URLSearchParams(location.search).get('c') || '').toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 12);
   if (!code) document.getElementById('lead').textContent = 'Get Manifest, find your dropzone and tap Join. Ask the desk for the join code.';
