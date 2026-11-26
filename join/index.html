@@ -88,6 +88,25 @@ html body .btn, html body a.btn, html body a.btn[href="/get"] { background: #F4F
   .jft a:hover { color: #fff; }
   </style>
 <script>
+  // 26 Nov 2026: a TEAM invite link (/join/team-XXXXXXXX, from the app's team
+  // QR). The app opens it when installed; here we show the team and send the
+  // jumper to the store. No code to type: the link itself joins, in the app.
+  var raw = decodeURIComponent(location.pathname.split('/')[2] || '');
+  if (/^team-/i.test(raw)) {
+    document.getElementById('title').textContent = 'Join the team';
+    document.getElementById('lead').textContent = 'Get Manifest, then open this link again on your phone and tap Join.';
+    document.getElementById('hint').textContent = 'Free on iPhone and Android.';
+    fetch('https://wkefdtglgbfprvfajrrw.supabase.co/rest/v1/rpc/desk_team_invite_preview', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', apikey: 'sb_publishable_bSZ85fokRcmDjIzYr7Q9mQ_w4dQ0b3b' },
+      body: JSON.stringify({ p_code: raw })
+    }).then(function (r) { return r.json(); }).then(function (d) {
+      if (!d || !d.name) { document.getElementById('title').textContent = 'This link has expired'; document.getElementById('lead').textContent = 'Ask your team for a new invite link.'; return; }
+      document.getElementById('title').textContent = 'Join ' + d.name;
+      document.title = 'Join ' + d.name + ' on Manifest';
+      document.getElementById('lead').textContent = d.owner + ' invited you to ' + d.name + ' on Manifest. Get the app, then open this link again on your phone and tap Join.';
+    }).catch(function () {});
+  } else {
   var code = (location.pathname.split('/')[2] || new URLSearchParams(location.search).get('c') || '').toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 12);
   if (!code) document.getElementById('lead').textContent = 'Get Manifest, find your dropzone and tap Join. Ask the desk for the join code.';
   else { var jc = document.getElementById('jcode'); jc.textContent = code; jc.hidden = false; }
@@ -103,6 +122,7 @@ html body .btn, html body a.btn, html body a.btn[href="/get"] { background: #F4F
     if (d.open === false) { document.getElementById('lead').textContent = d.name + ' is not taking new members in the app right now. Ask the desk to add you.'; document.getElementById('jcode').hidden = true; }
     else document.getElementById('lead').textContent = 'Get Manifest, find ' + d.name + ' and tap Join. Enter this code:';
   }).catch(function () {});
+  }
 </script>
 <style id="btn-black">/* 21 Oct 2026 (André): no purple buttons anywhere. Every filled button is the
    black price-card button: dark gradient, white text, soft ring. Shapes stay. */
